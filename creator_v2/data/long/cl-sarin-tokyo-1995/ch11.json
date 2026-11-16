@@ -1,0 +1,440 @@
+{
+ "title": "HAI NGÀY SAU: Ngày khám xét đến muộn",
+ "lines": [
+  {
+   "t": "Cổng khu Kamikuishiki sáng ngày 22 tháng 3, sương nhẹ, những chiếc xe cảnh sát dừng thành hàng dài.",
+   "p": 0.8
+  },
+  {
+   "t": "Có lẽ điều đầu tiên người ta cảm nhận được là sự vắng lặng.",
+   "p": 1.0
+  },
+  "Ngày 22 tháng 3 năm 1995, đúng ngày đã chốt, cảnh sát vào khu Kamikuishiki.",
+  "Họ cũng khám xét 25 cơ sở của Aum trên toàn quốc.",
+  "Các thành viên ở lại phản đối bằng tay không, không có chống cự vũ trang.",
+  "Nhưng thủ lĩnh Shoko Asahara, các nhân vật cấp cao và những nhà khoa học của giáo phái đã rời đi.",
+  {
+   "t": "Chưa ai bị bắt ở đó.",
+   "p": 1.0
+  },
+  "Trong các cuộc khám xét tháng 3 năm 1995, cảnh sát thấy thuốc nổ, vật liệu hóa học và một chiếc trực thăng Mi-17 của Nga.",
+  "Một giáo phái bắt đầu từ lớp yoga đã có cả máy bay trực thăng.",
+  "Ngày 8 tháng 4, cảnh sát bắt một thành viên cấp cao.",
+  "Lý do ghi trên giấy: trộm một chiếc xe đạp bỏ không.",
+  "Một tội nhỏ trên giấy, trong một hồ sơ lớn hơn nhiều.",
+  "Ngày 16 tháng 5 năm 1995, ông Asahara bị bắt, ngay trong khu Kamikuishiki, ở tòa nhà số 6.",
+  "Người ta tìm thấy ông đang trốn bên trong một bức tường của tòa nhà ấy.",
+  {
+   "t": "Câu chuyện của Matsumoto, rốt cuộc, nối vào câu chuyện của Tokyo.",
+   "p": 1.0
+  },
+  "Và ông Kono?",
+  "Theo trang về ông, sau cuộc khám xét, ông Hiromu Nonaka, người đứng đầu Ủy ban An ninh Công cộng Quốc gia, cùng các báo đã xin lỗi ông.",
+  "Sau khi ông Asahara bị bắt, ông Kono nói với phóng viên một điều, theo Nippon.com.",
+  {
+   "t": "Hãy xem Asahara thật sự đã làm gì, đừng vội kết luận.",
+   "p": 1.0
+  },
+  "Người từng bị nghi nói lời ấy về kẻ mà tòa án sau này xác định đã chủ mưu vụ làm hại vợ mình.",
+  "Nhiều người sẽ chọn im lặng, hoặc chọn giận dữ.",
+  "Tôi hiểu lời ấy như một đòi hỏi kiểm chứng trước khi kết luận, điều mà chính ông từng không được nhận. Đó chỉ là cách hiểu của tôi.",
+  "Tôi không dám đoán cảm xúc của ông.",
+  {
+   "t": "Tôi chỉ thuật lại những gì ông đã nói.",
+   "p": 1.0
+  },
+  "Trong mùa hè năm 1995, hơn 200 thành viên của giáo phái bị bắt.",
+  {
+   "t": "Chuyện Matsumoto, vốn chưa ai gọi tên, bắt đầu được kể lại với một cái tên: Aum.",
+   "p": 1.0
+  },
+  "Một lá thư nặc danh gửi cảnh sát sau vụ Matsumoto từng viết rằng Matsumoto chắc chắn là một thí nghiệm.",
+  "Lá thư ấy có từ sớm.",
+  "Còn chuyện nó được xử lý ra sao thì tôi chưa tìm được tài liệu nào kể rõ.",
+  "Giả thuyết của tôi: nếu lá thư ấy đúng, thì lần ở Matsumoto là một lần thử, và không ai ngoài giáo phái biết mình đang chứng kiến một lần thử.",
+  {
+   "t": "Tôi không có bằng chứng cho điều đó, và tôi chỉ nêu nó như một câu hỏi.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "11",
+   "k": "CHƯƠNG 11",
+   "title": "NGÀY KHÁM XÉT\nĐẾN MUỘN",
+   "sub": "HAI NGÀY SAU · 22/3/1995",
+   "titleAt": [
+    0,
+    "Cổng"
+   ],
+   "bg": "ai25",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "ai19",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "CẢNH SÁT VÀO KHU KAMIKUISHIKI",
+   "date": "22/3/1995",
+   "bg": "sat36",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "THÀNH VIÊN Ở LẠI",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "PHẢN ĐỐI BẰNG TAY KHÔNG · KHÔNG CHỐNG CỰ VŨ TRANG",
+     "at": [
+      4,
+      "các"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "prot20",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 5,
+   "text": "ASAHARA ĐÃ RỜI\nĐI",
+   "sub": "CÙNG CÁC NHÀ KHOA HỌC · CHƯA AI BỊ BẮT Ở ĐÓ",
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "CẢNH SÁT TÌM THẤY",
+   "rows": [
+    {
+     "k": "THUỐC NỔ",
+     "v": "VÀ VẬT LIỆU HÓA HỌC",
+     "at": 7
+    },
+    {
+     "k": "TRỰC THĂNG",
+     "v": "MI-17 CỦA NGA",
+     "at": 7
+    }
+   ],
+   "bg": "sat7",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "TỪ LỚP YOGA",
+   "sub": "ĐẾN MỘT CHIẾC TRỰC THĂNG",
+   "bg": "sat36"
+  },
+  {
+   "type": "date",
+   "at": 9,
+   "day": "BẮT THÀNH VIÊN CẤP CAO · TỘI TRỘM XE ĐẠP",
+   "date": "8/4/1995",
+   "bg": "prot20",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "MỘT TỘI NHỎ",
+   "sub": "TRONG MỘT HỒ SƠ LỚN HƠN NHIỀU",
+   "bg": "ai19",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": 12,
+   "day": "ASAHARA BỊ BẮT · TÒA NHÀ SỐ 6",
+   "date": "16/5/1995",
+   "bg": "sat7",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "TÌM THẤY ÔNG\nTRỐN TRONG MỘT\nBỨC TƯỜNG",
+     "at": 13,
+     "acc": true
+    }
+   ],
+   "bg": "sat36"
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "text": "CÂU CHUYỆN\nMATSUMOTO\nNỐI VÀO CÂU\nCHUYỆN TOKYO",
+   "sub": "ASAHARA BỊ BẮT NGAY TRONG KHU KAMIKUISHIKI",
+   "bg": "sat7"
+  },
+  {
+   "type": "file",
+   "at": 15,
+   "k": "SAU CUỘC KHÁM XÉT",
+   "name": "ÔNG HIROMU\nNONAKA",
+   "desc": "Theo trang về ông Kono",
+   "bg": "cas46",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": [
+    16,
+    "người"
+   ],
+   "items": [
+    {
+     "text": "NGƯỜI ĐỨNG ĐẦU\nỦY BAN AN NINH\nCÔNG CỘNG QUỐC\nGIA",
+     "at": [
+      16,
+      "người"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CÙNG CÁC BÁO ĐÃ\nXIN LỖI ÔNG",
+     "at": [
+      16,
+      "cùng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "quote",
+   "at": [
+    17,
+    "nói"
+   ],
+   "text": "Hãy xem Asahara thật sự đã làm gì, đừng vội kết luận.",
+   "by": "ÔNG KONO · THEO NIPPON.COM",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 18,
+   "typeAt": 18,
+   "bg": "cas54",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "NGƯỜI TỪNG BỊ\nNGHI",
+     "at": 19,
+     "acc": true
+    },
+    {
+     "text": "NÓI LỜI ẤY VỀ KẺ TÒA ÁN XÁC ĐỊNH ĐÃ CHỦ MƯU",
+     "at": [
+      19,
+      "về"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mat55",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "text": "IM LẶNG\nHOẶC GIẬN DỮ",
+   "sub": "NHIỀU NGƯỜI SẼ CHỌN MỘT TRONG HAI",
+   "bg": "cas45",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "TÔI HIỂU LỜI ẤY",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "NHƯ MỘT ĐÒI HỎI KIỂM CHỨNG TRƯỚC KHI KẾT LUẬN",
+     "at": [
+      21,
+      "như"
+     ],
+     "sm": true
+    },
+    {
+     "text": "ĐÓ CHỈ LÀ CÁCH\nHIỂU CỦA TÔI",
+     "at": [
+      21,
+      "đó"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "TÔI KHÔNG DÁM\nĐOÁN\nCẢM XÚC CỦA ÔNG",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "CHỈ THUẬT LẠI LỜI ÔNG NÓI",
+     "at": [
+      23,
+      "tôi"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas45",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "counter",
+   "at": 24,
+   "suffix": " THÀNH VIÊN",
+   "label": "BỊ BẮT TRONG MÙA HÈ 1995",
+   "from": 0,
+   "to": 200,
+   "prefix": "HƠN ",
+   "bg": "prot20",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "CHUYỆN MATSUMOTO",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "VỐN CHƯA AI GỌI\nTÊN · BẮT ĐẦU\nĐƯỢC KỂ LẠI VỚI\nMỘT CÁI TÊN: AUM",
+     "at": [
+      25,
+      "bắt"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "MỘT LÁ THƯ NẶC\nDANH",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "GỬI CẢNH SÁT SAU VỤ MATSUMOTO",
+     "at": [
+      26,
+      "gửi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "VIẾT: ĐÓ CHẮC\nCHẮN LÀ MỘT THÍ\nNGHIỆM",
+     "at": [
+      26,
+      "viết"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "text": "LÁ THƯ ẤY CÓ TỪ\nSỚM",
+   "sub": "CÁCH XỬ LÝ NÓ · CHƯA TÌM ĐƯỢC TÀI LIỆU NÀO KỂ RÕ",
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "GIẢ THUYẾT CỦA\nTÔI",
+     "at": 29,
+     "acc": true
+    },
+    {
+     "text": "NẾU LÁ THƯ ĐÚNG · MATSUMOTO LÀ MỘT LẦN THỬ",
+     "at": [
+      29,
+      "nếu"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG AI NGOÀI\nGIÁO PHÁI BIẾT\nMÌNH ĐANG THẤY\nMỘT LẦN THỬ",
+     "at": [
+      29,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai01",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "question",
+   "at": 30,
+   "text": "LẦN Ở MATSUMOTO\nCÓ PHẢI MỘT LẦN THỬ?",
+   "bg": "ai05",
+   "illus": "MINH HỌA CHUNG"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "NGÀY KHÁM XÉT ĐẾN MUỘN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

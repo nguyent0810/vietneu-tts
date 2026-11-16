@@ -1,0 +1,168 @@
+{
+ "title": "MỞ ĐẦU: Sáng thứ Hai",
+ "lines": [
+  {
+   "t": "Ông là người gọi cấp cứu cho vợ mình. Vậy mà về sau, báo chí gọi ông bằng một biệt danh: Người Khí Độc.",
+   "p": 1.0
+  },
+  "Vợ ông nằm hôn mê vì khí độc, còn người bị nghi ngờ lại chính là ông.",
+  {
+   "t": "Chín tháng sau, thứ khí độc cùng loại ấy xuất hiện ở Tokyo, trong những toa tàu đông nhất nước Nhật.",
+   "p": 1.0
+  },
+  {
+   "t": "Vì sao cả nước Nhật nhìn nhầm chỗ, và cái giá của lần nhìn nhầm ấy là gì?",
+   "p": 1.0
+  },
+  "Sáng thứ Hai, ngày 20 tháng 3 năm 1995, một toa tàu điện ngầm Tokyo chật người.",
+  "Mùi áo khoác còn ẩm hơi lạnh, tiếng giày trên sàn, những tờ báo gấp làm tư.",
+  {
+   "t": "Có lẽ chẳng ai trong toa nghĩ gì ngoài một tuần làm việc vừa bắt đầu.",
+   "p": 1.0
+  },
+  "Khoảng 8 giờ sáng, trên năm chuyến tàu, khí sarin bắt đầu lan ra.",
+  {
+   "t": "Về sau, số người chết được ghi từ 12 đến 14, tùy cách tính.",
+   "p": 1.0
+  },
+  "Giữa Matsumoto và Tokyo có chín tháng, và ngần ấy dấu hiệu bị nhìn sang chỗ khác.",
+  "Ai đã nhìn sang chỗ khác, và vì sao? Hãy ở lại, tôi sẽ kể từng dấu hiệu một."
+ ],
+ "scenes": [
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198013"
+  },
+  {
+   "type": "photo",
+   "at": [
+    0,
+    "chí"
+   ],
+   "img": "ai03",
+   "illus": "MINH HỌA CHUNG",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "mm8",
+   "illus": "TOKYO METRO · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 3,
+   "text": "VÌ SAO CẢ NƯỚC NHẬT\nNHÌN NHẦM CHỖ?",
+   "bg": "ai10",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "photo",
+   "at": 4,
+   "img": "ai11",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "ai14",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 6,
+   "img": "ai12",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "NĂM CHUYẾN TÀU",
+   "sub": "KHOẢNG 8 GIỜ SÁNG · 20/3/1995",
+   "bg": "emer3",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "12 ĐẾN 14\nNGƯỜI CHẾT",
+   "sub": "TÙY CÁCH TÍNH",
+   "bg": "jr1",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "map",
+   "at": 9,
+   "geo": "jp1",
+   "pins": [
+    {
+     "name": "Matsumoto"
+    },
+    {
+     "name": "Tokyo"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "AI ĐÃ NHÌN\nSANG CHỖ KHÁC?",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "HÃY Ở LẠI · TÔI KỂ TỪNG DẤU HIỆU",
+     "at": [
+      10,
+      "hãy"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198012"
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "SÁNG THỨ HAI"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

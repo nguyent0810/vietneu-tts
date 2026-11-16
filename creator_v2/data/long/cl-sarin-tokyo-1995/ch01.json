@@ -1,0 +1,299 @@
+{
+ "title": "LỘ TRÌNH: Ba khoản nợ thời gian",
+ "lines": [
+  {
+   "t": "Trên tường một đồn cảnh sát treo một tấm bảng, ghi ba khoản nợ chưa ai trả.",
+   "p": 0.8
+  },
+  {
+   "t": "Giữa đêm 27 tháng 6 năm 1994 và sáng 20 tháng 3 năm 1995, ba khoản nợ ấy cứ dày lên.",
+   "p": 1.0
+  },
+  "Khoản thứ nhất là một cái tên: vì sao cảnh sát chọn ông Kono, người có vợ đang nằm viện?",
+  "Khoản thứ hai là cây cối chết ở chân núi Phú Sĩ, và một mẫu đất.",
+  {
+   "t": "Khoản thứ ba là một ngày trên tờ lịch: ngày khám xét đã được chốt, nhưng đến chậm hai ngày.",
+   "p": 1.0
+  },
+  "Tôi sẽ không chỉ tay vào một người rồi nói: đây là kẻ có lỗi.",
+  "Hồ sơ không cho phép làm thế.",
+  {
+   "t": "Cái tôi có là một chuỗi quyết định, và mỗi quyết định có lý do riêng vào lúc được đưa ra.",
+   "p": 1.0
+  },
+  "Tôi dựa vào báo cáo của Nippon.com, bản tin AP nhân 30 năm vụ tàu điện, bản tin về phán quyết năm 2004 và các trang bách khoa.",
+  "Có những nơi lớn tôi chưa mở được, như bản án gốc, nên chỗ nào chỉ nghe lại qua người khác, tôi sẽ nói thẳng.",
+  "Trong video này có hai loại câu mà tôi sẽ gọi tên rõ: điều có dẫn chứng, và điều tôi suy đoán.",
+  "Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, đều mang nhãn PHỎNG DỰNG.",
+  {
+   "t": "Chúng là phỏng dựng để bạn thấy được không khí, không phải ảnh chụp, và không có lời của người thật nào trong đó.",
+   "p": 1.0
+  },
+  "Ngay cả con số người chết cũng có ba cách đếm, và tôi sẽ nói lý do khi đến đúng chỗ.",
+  {
+   "t": "Video này dài khoảng nửa tiếng, vì chín tháng từ Matsumoto đến Kamikuishiki không kể được trong năm phút.",
+   "p": 1.0
+  },
+  "Bạn không cần biết trước điều gì về Nhật Bản hay về giáo phái này.",
+  "Chỉ cần đi theo từng ngày, từng quyết định, từng người ngồi ở bàn họp.",
+  {
+   "t": "Hãy bắt đầu từ đêm đầu tiên, ở một thành phố có tòa lâu đài màu đen.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "1",
+   "k": "CHƯƠNG 01",
+   "title": "BA KHOẢN NỢ\nTHỜI GIAN",
+   "sub": "GIỮA 27/6/1994 VÀ 20/3/1995",
+   "titleAt": [
+    0,
+    "Trên"
+   ],
+   "bg": "cas42",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 1,
+   "day": "GIỮA HAI NGÀY",
+   "date": "1994 → 1995",
+   "bg": "motosu40",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 2,
+   "items": [
+    {
+     "text": "KHOẢN THỨ NHẤT",
+     "at": 2,
+     "acc": true
+    },
+    {
+     "text": "MỘT CÁI TÊN",
+     "at": [
+      2,
+      "một"
+     ],
+     "acc": true
+    },
+    {
+     "text": "VÌ SAO CHỌN ÔNG KONO?",
+     "at": [
+      2,
+      "vì"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas42",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "KHOẢN THỨ HAI",
+   "sub": "CÂY CỐI CHẾT · MỘT MẪU ĐẤT",
+   "bg": "motosu40",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "KHOẢN THỨ BA",
+   "sub": "MỘT NGÀY TRÊN TỜ LỊCH",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "9160920"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "KHÔNG CHỈ TAY\nVÀO MỘT NGƯỜI",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "HỒ SƠ KHÔNG CHO PHÉP LÀM THẾ",
+     "at": [
+      6,
+      "hồ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas42",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "MỘT CHUỖI\nQUYẾT ĐỊNH",
+   "sub": "MỖI QUYẾT ĐỊNH CÓ LÝ DO RIÊNG",
+   "bg": "motosu40",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 8,
+   "title": "TÔI DỰA VÀO",
+   "rows": [
+    {
+     "k": "BÁO CÁO",
+     "v": "NIPPON.COM",
+     "at": 8
+    },
+    {
+     "k": "BẢN TIN",
+     "v": "AP · 30 NĂM VỤ TÀU ĐIỆN",
+     "at": 8
+    },
+    {
+     "k": "BẢN TIN",
+     "v": "PHÁN QUYẾT 2004",
+     "at": 8
+    },
+    {
+     "k": "VÀ",
+     "v": "CÁC TRANG BÁCH KHOA",
+     "at": 8
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "33068304",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "broll",
+   "at": 9,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "10480415"
+  },
+  {
+   "type": "org",
+   "at": 10,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI LOẠI CÂU",
+     "s": "TÔI SẼ GỌI TÊN",
+     "cls": "top",
+     "at": 10
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "ĐIỀU CÓ DẪN CHỨNG",
+     "s": "NÓI RÕ NGUỒN",
+     "at": 10
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐIỀU TÔI SUY ĐOÁN",
+     "s": "GỌI LÀ GIẢ THUYẾT",
+     "at": 10
+    }
+   ],
+   "bg": "cas42",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "PHỎNG DỰNG",
+   "sub": "NHÃN CHO MỖI CẢNH DỰNG LẠI",
+   "bg": "ai13",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "KHÔNG PHẢI ẢNH\nCHỤP",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CÓ LỜI CỦA NGƯỜI THẬT",
+     "at": [
+      12,
+      "và"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai14",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "slam",
+   "at": 13,
+   "text": "BA CÁCH ĐẾM",
+   "sub": "SỐ NGƯỜI CHẾT · SẼ NÓI Ở ĐÚNG CHỖ",
+   "bg": "ai19",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "map",
+   "at": 14,
+   "geo": "jp1",
+   "pins": [
+    {
+     "name": "Matsumoto"
+    },
+    {
+     "name": "Kamikuishiki"
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "KHÔNG CẦN BIẾT\nTRƯỚC\nVỀ NHẬT BẢN",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "CHỈ CẦN ĐI THEO TỪNG NGÀY",
+     "at": [
+      16,
+      "chỉ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 17,
+   "img": "cas54",
+   "illus": "LÂU ĐÀI MATSUMOTO · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 01",
+  "t": "BA KHOẢN NỢ THỜI GIAN"
+ },
+ "bgm": {
+  "mood": "quiet",
+  "at": 0,
+  "gain": 0.12
+ }
+}

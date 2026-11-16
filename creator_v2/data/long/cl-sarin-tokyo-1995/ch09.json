@@ -1,0 +1,479 @@
+{
+ "title": "SÁNG 20 THÁNG 3: Tám giờ mười phút",
+ "lines": [
+  {
+   "t": "Sáng thứ Hai, 20 tháng 3 năm 1995, thành phố Tokyo đang đi làm.",
+   "p": 0.8
+  },
+  "Một sân ga giờ cao điểm, nhìn từ phía sau những hàng người đang chờ tàu.",
+  {
+   "t": "Có người cúi xuống tờ báo, có người nhìn đồng hồ ga, có người ngáp, như mọi sáng thứ Hai.",
+   "p": 1.0
+  },
+  "Khoảng 8 giờ sáng, trên năm chuyến tàu thuộc ba tuyến, chuyện xảy ra.",
+  "Ba tuyến ấy là Marunouchi, Hibiya và Chiyoda.",
+  "Cả ba cùng đi qua ga Kasumigaseki.",
+  {
+   "t": "Tòa án sau này xác định mười thành viên của Aum thực hiện vụ này.",
+   "p": 1.0
+  },
+  "Tôi sẽ không kể họ làm gì trên tàu.",
+  "Điều đó không cần thiết cho câu chuyện, và cũng không nên được kể.",
+  "Thứ cần kể là những người ở lại: nhân viên nhà ga, hành khách, và những người đứng ở cuối dây chuyền cấp cứu.",
+  "Trên tuyến Hibiya, một hành khách bấm nút dừng khẩn cấp lúc 8 giờ 10 phút.",
+  "Con tàu vẫn chạy tiếp đến ga Tsukiji, nơi những hành khách loạng choạng bước ra sân ga.",
+  "Chiếc tàu ấy sau đó bị đưa ra khỏi hoạt động.",
+  "Trên tuyến Chiyoda, hai nhân viên nhà ga ở ga Kasumigaseki đã dọn những vật lạ để lại trên tàu, và cả hai đã mất.",
+  "Sáng hôm ấy, một nhân viên ga thấy một vật lạ trên sàn tàu.",
+  "Việc của người ấy là giữ sân ga sạch và an toàn.",
+  "Họ không biết mình đang cầm thứ gì.",
+  {
+   "t": "Họ chỉ làm điều mà một người làm nghề đường sắt sẽ làm: dọn thứ lạ khỏi sân ga.",
+   "p": 1.0
+  },
+  "Lúc 8 giờ 35 phút, toàn bộ tuyến Hibiya bị đóng và hành khách được sơ tán.",
+  "Trên tuyến Marunouchi, một chuyến tàu về đến ga cuối Ikebukuro lúc 8 giờ 30 phút.",
+  "Hành khách của chuyến ấy đã báo cho nhân viên ở ga Korakuen, và đến 9 giờ 27 phút tàu mới được đưa ra khỏi hoạt động ở ga Kokkai-gijidomae.",
+  "Từng quyết định như vậy đều ngắn, và đều thật.",
+  {
+   "t": "Không ai trong số họ có tờ giấy hướng dẫn cho một ngày như hôm nay.",
+   "p": 1.0
+  },
+  "Điều đáng kể là cái xảy ra sau đó, ở trên mặt đất.",
+  "Lúc 8 giờ 10 phút, cuộc gọi đầu tiên đến Sở Cảnh sát Tokyo.",
+  {
+   "t": "Cuộc gọi báo rằng có một vụ nổ.",
+   "p": 1.0
+  },
+  "Hãy dừng ở từ ấy: một vụ nổ.",
+  "Không ai nói đến khí độc.",
+  "Không ai nghĩ đến loại chất mà chín tháng trước đã làm cả một khu nhà ở Matsumoto hôn mê.",
+  "Vì tin là vụ nổ, nhiều cảnh sát đã vào hiện trường và bị ảnh hưởng bởi chất độc.",
+  "Đó không phải lỗi của một người nào.",
+  {
+   "t": "Đó là một cái tên sai gắn lên một sự kiện, trong những phút đầu tiên.",
+   "p": 1.0
+  },
+  "Trên đường phố gần ga Tsukiji, bệnh viện St. Luke's nhận nhiều bệnh nhân nhất.",
+  {
+   "t": "Các bác sĩ ở đó đã bắt đầu điều trị theo hướng chất độc thần kinh khi chưa có kết quả phòng thí nghiệm.",
+   "p": 1.0
+  },
+  "Họ biết điều đó từ đâu?"
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "9",
+   "k": "CHƯƠNG 09",
+   "title": "TÁM GIỜ\nMƯỜI PHÚT",
+   "sub": "SÁNG 20 THÁNG 3 · TOKYO",
+   "titleAt": [
+    0,
+    "Sáng"
+   ],
+   "bg": "kasu68",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "ai11",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 2,
+   "img": "ai14",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "org",
+   "at": 3,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "NĂM CHUYẾN TÀU",
+     "s": "BA TUYẾN",
+     "cls": "top",
+     "at": 3
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "MARUNOUCHI",
+     "s": "ĐI QUA KASUMIGASEKI",
+     "at": 3
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "HIBIYA",
+     "s": "ĐI QUA KASUMIGASEKI",
+     "at": 3
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "CHIYODA",
+     "s": "ĐI QUA KASUMIGASEKI",
+     "at": 3
+    }
+   ],
+   "bg": "mm8",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "MƯỜI THÀNH VIÊN",
+   "sub": "TÒA ÁN SAU NÀY XÁC ĐỊNH",
+   "bg": "ai18",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "CHỌN KHÔNG KỂ",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "ĐIỀU ĐÓ KHÔNG CẦN THIẾT CHO CÂU CHUYỆN",
+     "at": [
+      8,
+      "điều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tsuk119",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "THỨ CẦN KỂ LÀ\nNHỮNG NGƯỜI Ở\nLẠI",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "NHÂN VIÊN GA · HÀNH KHÁCH · DÂY CHUYỀN CẤP CỨU",
+     "at": [
+      9,
+      "nhân"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sdf27"
+  },
+  {
+   "type": "date",
+   "at": 10,
+   "day": "TUYẾN HIBIYA · NÚT DỪNG KHẨN CẤP",
+   "date": "8:10",
+   "bg": "tsuk119",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "tsuk122",
+   "illus": "GA TSUKIJI · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "print",
+   "at": 13,
+   "img": "map_hib",
+   "right": true,
+   "tone": null,
+   "maxW": 820,
+   "maxH": 760,
+   "caption": "SƠ ĐỒ TUYẾN · WIKIPEDIA",
+   "side": {
+    "k": "TUYẾN HIBIYA",
+    "h": "HAI NHÂN VIÊN GA",
+    "lines": [
+     {
+      "text": "KASUMIGASEKI DỌN VẬT LẠ TRÊN TÀU",
+      "at": [
+       13,
+       "hai"
+      ]
+     },
+     {
+      "text": "CẢ HAI ĐÃ MẤT",
+      "at": [
+       13,
+       "và"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "at": 14,
+   "img": "ai16",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "ai15",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "HỌ KHÔNG BIẾT\nMÌNH ĐANG CẦM GÌ",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "DỌN THỨ LẠ KHỎI SÂN GA",
+     "at": [
+      17,
+      "họ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tsuk119",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "day": "ĐÓNG TOÀN TUYẾN HIBIYA",
+   "date": "8:35",
+   "bg": "tsuk132",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 19,
+   "day": "TUYẾN MARUNOUCHI · ĐẾN GA CUỐI IKEBUKURO",
+   "date": "8:30",
+   "bg": "mar83",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "timeline",
+   "at": 20,
+   "title": null,
+   "items": [
+    {
+     "year": "8:30",
+     "text": "TÀU VỀ GA IKEBUKURO",
+     "at": 20
+    },
+    {
+     "year": "GA KORAKUEN",
+     "text": "HÀNH KHÁCH BÁO NHÂN VIÊN",
+     "at": 20
+    },
+    {
+     "year": "9:27",
+     "text": "TÀU RA KHỎI HOẠT ĐỘNG",
+     "at": 20
+    }
+   ],
+   "bg": "tsuk132",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "TỪNG QUYẾT ĐỊNH\nĐỀU NGẮN",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "VÀ ĐỀU THẬT",
+     "at": [
+      21,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mm8",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "ĐIỀU ĐÁNG KỂ",
+   "sub": "Ở TRÊN MẶT ĐẤT",
+   "bg": "ai17",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "date",
+   "at": 24,
+   "day": "CUỘC GỌI ĐẦU TIÊN · SỞ CẢNH SÁT TOKYO",
+   "date": "8:10",
+   "bg": "ai17",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "text": "MỘT VỤ NỔ",
+   "sub": "KHÔNG AI NÓI ĐẾN KHÍ ĐỘC",
+   "bg": "ai19",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "KHÔNG AI NGHĨ\nĐẾN",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "CHẤT ĐÃ LÀM HÔN\nMÊ CẢ MỘT KHU\nNHÀ Ở MATSUMOTO",
+     "at": [
+      28,
+      "loại"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai01",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 29,
+   "items": [
+    {
+     "text": "TIN LÀ VỤ NỔ",
+     "at": 29,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU CẢNH SÁT VÀO HIỆN TRƯỜNG VÀ BỊ ẢNH HƯỞNG",
+     "at": [
+      29,
+      "nhiều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "hz15"
+  },
+  {
+   "type": "slam",
+   "at": 31,
+   "text": "MỘT CÁI TÊN SAI",
+   "sub": "GẮN LÊN MỘT SỰ KIỆN",
+   "bg": "ai16",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 32,
+   "items": [
+    {
+     "text": "BỆNH VIỆN GẦN GA\nTSUKIJI",
+     "at": 32,
+     "acc": true
+    },
+    {
+     "text": "NHẬN NHIỀU BỆNH NHÂN NHẤT",
+     "at": [
+      32,
+      "nhiều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tspol118",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "ĐIỀU TRỊ THEO\nHƯỚNG\nCHẤT ĐỘC THẦN\nKINH",
+     "at": 33,
+     "acc": true
+    }
+   ],
+   "bg": "tsuk132",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "question",
+   "at": [
+    33,
+    "khi"
+   ],
+   "text": "KHI CHƯA CÓ KẾT QUẢ XÉT NGHIỆM,\nHỌ BIẾT ĐIỀU ĐÓ TỪ ĐÂU?",
+   "bg": "tsuk119",
+   "illus": "MINH HỌA CHUNG"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "TÁM GIỜ MƯỜI PHÚT"
+ },
+ "bgm": {
+  "mood": "dark",
+  "at": 0,
+  "gain": 0.12
+ }
+}

@@ -1,0 +1,427 @@
+{
+ "title": "TRONG NHÀ ÔNG: Khoảng 20 loại hóa chất",
+ "lines": [
+  {
+   "t": "Cảnh sát tìm thấy trong nhà ông khoảng 20 loại hóa chất.",
+   "p": 0.8
+  },
+  "Chúng được mua để rửa ảnh và làm gốm, cùng với một số thuốc trừ sâu.",
+  "Về sau, người ta xác định rằng không thể điều chế sarin từ những thứ ấy.",
+  {
+   "t": "Nhưng điều đó chỉ được biết sau, rất lâu sau.",
+   "p": 1.0
+  },
+  "Ngày 28 tháng 6 năm 1994, báo Asahi đăng ý kiến của nhà sử học Keiichi Tsuneishi.",
+  "Ông viết rằng sarin có thể làm từ một loại thuốc trừ sâu.",
+  "Ngày 4 tháng 7, ông viết thêm một bài nữa.",
+  "Một bàn biên tập vào buổi chiều ấy, nơi một bài viết nghe rất khoa học vừa được duyệt.",
+  "Tôi không biết ai đã ngồi ở đó, và tôi không gán lỗi cho một cái tên nào.",
+  {
+   "t": "Có lẽ với người duyệt bài, đó là một lời giải thích kịp lúc, từ một học giả có tên tuổi.",
+   "p": 1.0
+  },
+  "Về sau, điều đó bị coi là sai.",
+  {
+   "t": "Nhưng trong những ngày ấy, nó là lời giải thích nghe hợp lý nhất, và nó nằm trên một tờ báo lớn.",
+   "p": 1.0
+  },
+  "Theo một bài báo năm 2018, thông tin từ phía cảnh sát Nagano đã bị rò ra báo chí.",
+  "Báo chí gọi ông là Người Khí Độc.",
+  "Thư căm ghét gửi đến nhà ông. Cả những lời đe dọa giết.",
+  "Bạn có thể thấy ở đây cách một nghi ngờ nhỏ lớn dần thành một bản án trong mắt công chúng.",
+  "Vợ ông vẫn nằm đó, chưa tỉnh.",
+  {
+   "t": "Những người viết thư ấy không phải ngồi bên một giường bệnh.",
+   "p": 1.0
+  },
+  "Hãy nhớ ông chưa bao giờ bị buộc tội.",
+  "Ông không bị bắt, không bị đưa ra tòa.",
+  "Ông bị xử ở những nơi khác: trên mặt báo, ở khu phố, trong những bức thư.",
+  {
+   "t": "Một người có thể thua một vụ án mà không có vụ án nào.",
+   "p": 1.0
+  },
+  "Điều tôi thấy rõ là sai lầm ấy không đến từ một kẻ ác.",
+  {
+   "t": "Nó đến từ một chuỗi người bình thường, mỗi người nghe một lời, tin một lời, rồi chuyển tiếp đi.",
+   "p": 1.0
+  },
+  {
+   "t": "Trong lúc ấy, ở một nơi khác, có người bắt đầu nhìn về một hướng hoàn toàn khác.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "4",
+   "k": "CHƯƠNG 04",
+   "title": "KHOẢNG\n20 LOẠI\nHÓA CHẤT",
+   "sub": "MỘT LỜI GIẢI THÍCH NGHE CÓ LÝ",
+   "titleAt": [
+    0,
+    "Cảnh"
+   ],
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "KHOẢNG 20 LOẠI HÓA CHẤT TRONG NHÀ ÔNG",
+   "rows": [
+    {
+     "k": "RỬA",
+     "v": "ẢNH",
+     "at": 1
+    },
+    {
+     "k": "LÀM",
+     "v": "GỐM",
+     "at": 1
+    },
+    {
+     "k": "KÈM",
+     "v": "MỘT SỐ THUỐC TRỪ SÂU",
+     "at": 1
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "text": "KHÔNG THỂ\nĐIỀU CHẾ SARIN",
+   "sub": "TỪ NHỮNG THỨ ẤY",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "10480415"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "NHƯNG ĐIỀU ĐÓ",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "CHỈ ĐƯỢC BIẾT SAU, RẤT LÂU SAU",
+     "at": [
+      3,
+      "chỉ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu61",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 4,
+   "day": "BÁO ASAHI ĐĂNG Ý KIẾN SỬ GIA KEIICHI TSUNEISHI",
+   "date": "28/6/1994",
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "SARIN CÓ THỂ LÀM\nTỪ",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "MỘT LOẠI THUỐC\nTRỪ SÂU",
+     "at": [
+      5,
+      "một"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198013"
+  },
+  {
+   "type": "date",
+   "at": 6,
+   "day": "BÀI THỨ HAI CỦA ÔNG",
+   "date": "4/7/1994",
+   "bg": "kasu78",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "ai07",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 8,
+   "img": "ai09",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "ai10",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "VỀ SAU",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "BỊ COI LÀ SAI",
+     "at": [
+      10,
+      "bị"
+     ],
+     "acc": true
+    },
+    {
+     "text": "NHƯNG ĐÓ LÀ LỜI GIẢI THÍCH NGHE HỢP LÝ NHẤT",
+     "at": [
+      11,
+      "nhưng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": [
+    11,
+    "và"
+   ],
+   "text": "NẰM TRÊN\nMỘT TỜ BÁO LỚN",
+   "sub": "LỜI GIẢI THÍCH ẤY ĐƯỢC ĐĂNG RA CÔNG CHÚNG",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198012"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "THEO BÀI BÁO\n2018",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "TIN CẢNH SÁT NAGANO ĐÃ BỊ RÒ RA BÁO CHÍ",
+     "at": [
+      12,
+      "thông"
+     ],
+     "sm": true
+    },
+    {
+     "text": "BIỆT DANH: NGƯỜI\nKHÍ ĐỘC",
+     "at": [
+      13,
+      "báo"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 14,
+   "items": [
+    {
+     "text": "THƯ CĂM GHÉT\nGỬI ĐẾN NHÀ",
+     "at": 14,
+     "acc": true
+    },
+    {
+     "text": "CẢ NHỮNG LỜI ĐE\nDỌA GIẾT",
+     "at": [
+      14,
+      "cả"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai04",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 15,
+   "items": [
+    {
+     "text": "MỘT NGHI NGỜ NHỎ",
+     "at": 15,
+     "acc": true
+    },
+    {
+     "text": "LỚN DẦN THÀNH BẢN ÁN TRONG MẮT CÔNG CHÚNG",
+     "at": [
+      15,
+      "cách"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "cas46",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "broll",
+   "at": 16,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198015"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "ÔNG CHƯA BAO GIỜ\nBỊ BUỘC TỘI",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG BỊ BẮT · KHÔNG BỊ ĐƯA RA TÒA",
+     "at": [
+      19,
+      "ông"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "8731439"
+  },
+  {
+   "type": "org",
+   "at": 20,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "ÔNG BỊ XỬ",
+     "s": "Ở NHỮNG NƠI KHÁC",
+     "cls": "top",
+     "at": 20
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "TRÊN MẶT BÁO",
+     "s": "",
+     "at": 20
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "Ở KHU PHỐ",
+     "s": "",
+     "at": 20
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRONG NHỮNG BỨC THƯ",
+     "s": "",
+     "at": 20
+    }
+   ],
+   "bg": "ai19",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "THUA MỘT VỤ ÁN",
+   "sub": "MÀ KHÔNG CÓ VỤ ÁN NÀO",
+   "bg": "ai06",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "SAI LẦM ẤY",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG ĐẾN TỪ MỘT\nKẺ ÁC",
+     "at": [
+      22,
+      "không"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mat55",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 23,
+   "text": "MỘT CHUỖI NGƯỜI\nBÌNH THƯỜNG",
+   "sub": "MỖI NGƯỜI NGHE MỘT LỜI · TIN MỘT LỜI · CHUYỂN TIẾP ĐI",
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "Ở MỘT NƠI KHÁC",
+   "sub": "CÓ NGƯỜI NHÌN VỀ MỘT HƯỚNG HOÀN TOÀN KHÁC",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "4296589"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 04",
+  "t": "KHOẢNG 20 LOẠI HÓA CHẤT"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

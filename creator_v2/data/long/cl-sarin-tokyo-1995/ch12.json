@@ -1,0 +1,558 @@
+{
+ "title": "PHÁN QUYẾT: Tám năm trên ghế bị cáo",
+ "lines": [
+  {
+   "t": "Một phòng xử án ở Tokyo trước giờ mở phiên, những hàng ghế trống, ánh sáng nhạt, một chiếc bàn dài.",
+   "p": 0.8
+  },
+  {
+   "t": "Có lẽ sau ngần ấy năm, căn phòng chỉ còn chờ một câu.",
+   "p": 1.0
+  },
+  "Phiên xử ông Asahara kéo dài khoảng tám năm.",
+  "Ngày 27 tháng 2 năm 2004, thẩm phán Shoji Ogawa của Tòa án quận Tokyo tuyên án tử hình.",
+  "Ông bị kết tội ở 13 trong 17 tội danh, bốn tội danh còn lại bị bỏ.",
+  "Trang ấy ghi phiên xử kéo dài hơn bảy năm, còn bản tin Al Jazeera ghi tám năm.",
+  {
+   "t": "Hai con số khác nhau nhưng cùng chỉ một điều: một phiên tòa rất dài.",
+   "p": 1.0
+  },
+  "Ông bị kết tội ra lệnh giết luật sư Sakamoto cùng gia đình, âm mưu vụ Matsumoto và âm mưu vụ tàu điện năm 1995.",
+  "Ông đối mặt 27 tội danh giết người trong 13 bản cáo trạng.",
+  "Ông không nhận tội, và cũng chưa bao giờ ra làm chứng.",
+  "Thẩm phán nói về những hành vi ấy.",
+  {
+   "t": "Những hành động này đã đẩy Nhật Bản và cả thế giới vào nỗi sợ sâu sắc.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  {
+   "t": "Ông Asahara kháng cáo, nhưng Tòa án Tối cao bác đơn ngày 15 tháng 9 năm 2006, và bản án tử hình có hiệu lực.",
+   "p": 1.0
+  },
+  "Trong vụ này, 189 thành viên bị truy tố.",
+  "13 người nhận án tử hình, 5 người chung thân và 80 người án tù.",
+  "87 người được hưởng án treo, hai người bị phạt tiền, và một người được tuyên trắng án.",
+  {
+   "t": "Hai người cuối cùng còn đang bỏ trốn bị bắt vào tháng 6 năm 2012.",
+   "p": 1.0
+  },
+  "Ngày 6 tháng 7 năm 2018, ông Asahara và sáu người khác bị hành quyết.",
+  {
+   "t": "Ngày 26 tháng 7, sáu người còn lại cũng vậy.",
+   "p": 1.0
+  },
+  "Với những người sống sót, các bản án không làm câu chuyện đóng lại.",
+  "Các khảo sát năm 1998 và 2001 cho thấy nhiều nạn nhân vẫn còn chấn thương tâm lý.",
+  "Trong một khảo sát, 20 phần trăm trong số 837 người trả lời nói họ thấy không an toàn khi đi tàu.",
+  "Năm 2008, một đạo luật cho phép bồi thường cho nạn nhân.",
+  {
+   "t": "Đến tháng 12 năm 2009, 5.259 người đã nộp đơn.",
+   "p": 1.0
+  },
+  "Ông Hiroyuki Nagaoka, từng bị Aum nhắm đến trong một vụ tấn công riêng, nói sau phán quyết năm 2004.",
+  {
+   "t": "Chuyện này sẽ không bao giờ kết thúc. Tôi không nghĩ nó mang lại sự khép lại nào cả.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Giáo phái sau đó đổi tên thành Aleph năm 2000.",
+  "Theo bản tin AP năm 2025, nhóm này đã nhiều lần xin lỗi và cam kết bồi thường cho nạn nhân.",
+  "Nhưng luật sư Yuji Nakamura, đại diện cho nạn nhân, vẫn nói rằng vụ tàu điện xảy ra sau một cuộc điều tra hỏng.",
+  "Theo ông, cuộc điều tra ấy đã không nối được giáo phái với những tội trước đó.",
+  "Lời xin lỗi của một tổ chức và sự thật về một cuộc điều tra là hai chuyện khác nhau.",
+  "Có một chi tiết nữa về dư luận thời ấy: học giả Hiromi Shimada từng gợi ý rằng Aum có thể vô tội.",
+  "Về sau ông xin lỗi và từ chức, theo trang về ông.",
+  "Dư luận thời ấy không chỉ sai về ông Kono, mà còn có cả những người nghiêng về phía Aum.",
+  "Một nhóm tách ra, gọi là Hikari no Wa, ra đời năm 2007.",
+  {
+   "t": "Nhiều năm nay, cả hai nằm dưới sự giám sát của chính quyền Nhật, lúc nới lúc siết.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "12",
+   "k": "CHƯƠNG 12",
+   "title": "TÁM NĂM\nTRÊN GHẾ\nBỊ CÁO",
+   "sub": "PHÁN QUYẾT 2004 · 2006 · 2018",
+   "titleAt": [
+    0,
+    "Một"
+   ],
+   "bg": "ai21",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "photo",
+   "at": 1,
+   "img": "ai22",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "date",
+   "at": 2,
+   "day": "PHIÊN XỬ ASAHARA · KHOẢNG TÁM NĂM",
+   "date": "27/2/2004",
+   "bg": "mar83",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: AL JAZEERA"
+  },
+  {
+   "type": "counter",
+   "at": 4,
+   "suffix": " / 17 TỘI DANH",
+   "label": "ÔNG BỊ KẾT TỘI · BỐN TỘI DANH CÒN LẠI BỊ BỎ",
+   "from": 0,
+   "to": 13,
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 5,
+   "items": [
+    {
+     "text": "PHIÊN XỬ KÉO DÀI",
+     "at": 5,
+     "acc": true
+    },
+    {
+     "text": "HƠN BẢY NĂM THEO MỘT TRANG · TÁM NĂM THEO AL JAZEERA",
+     "at": [
+      5,
+      "còn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mar83",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "MỘT PHIÊN TÒA\nRẤT DÀI",
+   "sub": "HAI CON SỐ KHÁC NHAU · CÙNG CHỈ MỘT ĐIỀU",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "ÔNG BỊ KẾT TỘI",
+   "rows": [
+    {
+     "k": "RA LỆNH GIẾT",
+     "v": "LUẬT SƯ SAKAMOTO CÙNG GIA ĐÌNH",
+     "at": 7
+    },
+    {
+     "k": "ÂM MƯU",
+     "v": "VỤ MATSUMOTO",
+     "at": 7
+    },
+    {
+     "k": "ÂM MƯU",
+     "v": "VỤ TÀU ĐIỆN 1995",
+     "at": 7
+    }
+   ],
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "27 TỘI DANH GIẾT\nNGƯỜI",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "TRONG 13 BẢN CÁO TRẠNG",
+     "at": [
+      8,
+      "trong"
+     ],
+     "sm": true
+    },
+    {
+     "text": "KHÔNG NHẬN TỘI ·\nKHÔNG BAO GIỜ RA\nLÀM CHỨNG",
+     "at": [
+      9,
+      "ông"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "mar83",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "quote",
+   "at": 10,
+   "text": "Những hành động này đã đẩy Nhật Bản và cả thế giới vào nỗi sợ sâu sắc.",
+   "by": "THẨM PHÁN SHOJI OGAWA · 2004",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": 11,
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "ASAHARA KHÁNG\nCÁO",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "TÒA ÁN TỐI CAO BÁC ĐƠN NGÀY 15/9/2006",
+     "at": [
+      12,
+      "tòa"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "mar83",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "counter",
+   "at": [
+    12,
+    "và"
+   ],
+   "suffix": " NGƯỜI",
+   "label": "BỊ TRUY TỐ · BẢN ÁN TỬ HÌNH CÓ HIỆU LỰC",
+   "from": 0,
+   "to": 189,
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "KẾT QUẢ XÉT XỬ",
+   "rows": [
+    {
+     "k": "TỬ HÌNH",
+     "v": "13 NGƯỜI",
+     "at": 14
+    },
+    {
+     "k": "CHUNG THÂN",
+     "v": "5 NGƯỜI",
+     "at": 14
+    },
+    {
+     "k": "ÁN TÙ",
+     "v": "80 NGƯỜI",
+     "at": 14
+    }
+   ],
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "87 NGƯỜI ÁN TREO",
+   "sub": "HAI NGƯỜI BỊ PHẠT TIỀN · MỘT NGƯỜI TRẮNG ÁN",
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "date",
+   "at": 16,
+   "day": "HAI NGƯỜI CUỐI CÙNG BỊ BẮT",
+   "date": "6/2012",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "date",
+   "at": 17,
+   "day": "ASAHARA VÀ SÁU NGƯỜI KHÁC BỊ HÀNH QUYẾT",
+   "date": "6/7/2018",
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "date",
+   "at": 18,
+   "day": "SÁU NGƯỜI CÒN LẠI BỊ HÀNH QUYẾT",
+   "date": "26/7/2018",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "KHẢO SÁT 1998 VÀ\n2001",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "NHIỀU NẠN NHÂN VẪN CÒN CHẤN THƯƠNG TÂM LÝ",
+     "at": [
+      20,
+      "cho"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "counter",
+   "at": 21,
+   "suffix": "%",
+   "label": "TRONG 837 NGƯỜI TRẢ LỜI THẤY KHÔNG AN TOÀN KHI ĐI TÀU",
+   "from": 0,
+   "to": 20,
+   "bg": "mar83",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "date",
+   "at": 22,
+   "day": "MỘT ĐẠO LUẬT CHO PHÉP BỒI THƯỜNG NẠN NHÂN",
+   "date": "2008",
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "file",
+   "at": 24,
+   "k": "NGƯỜI TỪNG BỊ AUM NHẮM TỚI",
+   "name": "HIROYUKI\nNAGAOKA",
+   "desc": "Bị nhắm đến trong một vụ tấn công riêng · nói sau phán quyết năm 2004",
+   "bg": "kasu78",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "quote",
+   "at": 25,
+   "text": "Chuyện này sẽ không bao giờ kết thúc. Tôi không nghĩ nó mang lại sự khép lại nào cả.",
+   "by": "HIROYUKI NAGAOKA · 2004",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 25,
+   "typeAt": 25,
+   "bg": "ai29",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "GIÁO PHÁI ĐỔI\nTÊN THÀNH ALEPH",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "NĂM 2000",
+     "at": [
+      26,
+      "giáo"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "prot20",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "kinetic",
+   "at": 27,
+   "items": [
+    {
+     "text": "THEO BẢN TIN AP\n2025",
+     "at": 27,
+     "acc": true
+    },
+    {
+     "text": "NHÓM NÀY NHIỀU\nLẦN XIN LỖI VÀ\nCAM KẾT BỒI\nTHƯỜNG",
+     "at": [
+      27,
+      "nhóm"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "kasu78",
+   "srcnote": "NGUỒN: AP 2025",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 28,
+   "items": [
+    {
+     "text": "LUẬT SƯ YUJI\nNAKAMURA",
+     "at": 28,
+     "acc": true
+    },
+    {
+     "text": "VỤ TÀU ĐIỆN XẢY RA SAU MỘT CUỘC ĐIỀU TRA HỎNG",
+     "at": [
+      28,
+      "vụ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: AP 2025",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 29,
+   "text": "KHÔNG NỐI ĐƯỢC",
+   "sub": "GIÁO PHÁI VỚI NHỮNG TỘI TRƯỚC ĐÓ",
+   "bg": "ai22",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 30,
+   "text": "LỜI XIN LỖI",
+   "sub": "KHÁC VỚI SỰ THẬT VỀ MỘT CUỘC ĐIỀU TRA",
+   "bg": "ai21",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "file",
+   "at": 31,
+   "k": "HỌC GIẢ",
+   "name": "HIROMI\nSHIMADA",
+   "desc": "Từng gợi ý Aum có thể vô tội · về sau xin lỗi và từ chức, theo trang về ông",
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 32,
+   "text": "VỀ SAU ÔNG XIN\nLỖI",
+   "sub": "VÀ TỪ CHỨC · THEO TRANG VỀ ÔNG",
+   "bg": "ai10",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "items": [
+    {
+     "text": "DƯ LUẬN THỜI ẤY",
+     "at": 33,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG CHỈ SAI VỀ\nÔNG KONO",
+     "at": [
+      33,
+      "dư"
+     ],
+     "acc": true
+    },
+    {
+     "text": "CÒN CÓ NHỮNG NGƯỜI NGHIÊNG VỀ PHÍA AUM",
+     "at": [
+      33,
+      "mà"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "MỘT NHÓM TÁCH RA",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "HIKARI NO WA ·\nRA ĐỜI NĂM 2007",
+     "at": [
+      34,
+      "một"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "prot20",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA · AL JAZEERA"
+  },
+  {
+   "type": "kinetic",
+   "at": 35,
+   "items": [
+    {
+     "text": "CẢ HAI NHÓM",
+     "at": 35,
+     "acc": true
+    },
+    {
+     "text": "NẰM DƯỚI SỰ GIÁM SÁT CỦA CHÍNH QUYỀN NHẬT",
+     "at": [
+      35,
+      "nhiều"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu78",
+   "illus": "ẢNH NGÀY NAY"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 12",
+  "t": "TÁM NĂM TRÊN GHẾ BỊ CÁO"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
+}

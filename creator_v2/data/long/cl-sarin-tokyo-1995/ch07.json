@@ -1,0 +1,489 @@
+{
+ "title": "DẤU VẾT Ở CHÂN NÚI: Một mẫu đất",
+ "lines": [
+  {
+   "t": "Cuối tháng 9 năm 1994, cảnh sát Kanagawa báo về một chuyện lạ.",
+   "p": 0.8
+  },
+  {
+   "t": "Có khí độc làm cây cối chết gần cơ sở của Aum ở tỉnh Yamanashi.",
+   "p": 1.0
+  },
+  "Ngày 7 tháng 10, Cơ quan Cảnh sát Quốc gia ra lệnh cho cảnh sát Nagano và Yamanashi lấy mẫu đất.",
+  "Ngày 16 tháng 11, phòng giám định của cơ quan này tìm thấy cặn sarin trong các mẫu đó.",
+  {
+   "t": "Bạn có thể nghĩ: thế là xong, đã có bằng chứng.",
+   "p": 1.0
+  },
+  "Nhưng mẫu đất không phải là lệnh khám xét.",
+  "Cảnh sát quyết định rằng đột nhập vào nhà máy ấy có thể đe dọa tính mạng chính các sĩ quan.",
+  "Họ cần đồ bảo hộ của Cục Phòng vệ.",
+  "Họ cần bàn bạc với Viện Công tố.",
+  "Phòng họp ở Tokyo vào một chiều cuối năm, hơi sưởi khô, tấm rèm kéo kín.",
+  "Trên bàn có hai chồng giấy: một chồng là kết quả giám định, một chồng là những điều kiện phải có trước khi bước vào.",
+  {
+   "t": "Có lẽ không ai trong phòng nói to điều mà ai cũng đang nghĩ.",
+   "p": 1.0
+  },
+  "Một khu nhà máy mà nghi là có khí độc không phải nơi người ta xông vào rồi hỏi sau.",
+  "Giám đốc Cơ quan Cảnh sát Quốc gia họp với các cán bộ cấp cao, nhưng không chốt được ngày khám xét.",
+  {
+   "t": "Năm 1994 hết mà chưa có ngày nào.",
+   "p": 1.0
+  },
+  "Sáng 1 tháng 1 năm 1995, báo Yomiuri đăng bài đầu tiên về chuyện này: có cặn sarin ở Kamikuishiki.",
+  "Đây là lần đầu tiên công chúng đọc hai từ ấy đi liền nhau: sarin và Kamikuishiki.",
+  "Tôi chưa đọc được bản gốc của bài báo, nên chỉ dựa vào trang tiếng Nhật.",
+  {
+   "t": "Đến đây, câu chuyện không còn là bí mật của cảnh sát nữa.",
+   "p": 1.0
+  },
+  "Hơn sáu tuần trôi qua giữa ngày 16 tháng 11 và ngày bài báo ra.",
+  {
+   "t": "Trong khoảng thời gian ấy, giáo phái đã biết gì, và đã làm gì?",
+   "p": 1.0
+  },
+  "Người viết điểm sách nhận xét rằng chính sự quá thận trọng đã khiến cảnh sát luôn ở thế bị động.",
+  "Đó là lời của một người đứng ngoài, nhìn lại sau ba mươi năm.",
+  "Những người ngồi trong phòng họp năm 1994 không có cái lợi ấy.",
+  "Họ không biết còn bao nhiêu thời gian.",
+  "Hồ sơ tôi có không trả lời được câu hỏi ấy.",
+  {
+   "t": "Tôi thà để câu hỏi mở còn hơn điền vào đó một điều không có nguồn.",
+   "p": 1.0
+  },
+  "Hãy đặt mình vào chiếc ghế của một người chỉ huy ở Tokyo.",
+  "Bạn có bằng chứng hóa học, bạn có một nghi phạm, và bạn biết rằng bước tiếp theo có thể làm bị thương người của mình.",
+  {
+   "t": "Bạn sẽ chốt ngày nào?",
+   "p": 1.0
+  },
+  {
+   "t": "Ông Kakimi, trong cuốn sách ông viết năm 2025, nói rằng ông thấy mình có trách nhiệm vì sự do dự ấy.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "7",
+   "k": "CHƯƠNG 07",
+   "title": "MỘT\nMẪU ĐẤT",
+   "sub": "CUỐI 1994 · CHÂN NÚI PHÚ SĨ",
+   "titleAt": [
+    0,
+    "Cuối"
+   ],
+   "bg": "motosu40",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "broll",
+   "at": 1,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "4296589"
+  },
+  {
+   "type": "timeline",
+   "at": 2,
+   "title": null,
+   "items": [
+    {
+     "year": "7/10",
+     "text": "LỆNH LẤY MẪU ĐẤT",
+     "at": 2
+    },
+    {
+     "year": "16/11",
+     "text": "CẶN SARIN TRONG MẪU",
+     "at": 2
+    }
+   ],
+   "bg": "sat36",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 3,
+   "text": "16 THÁNG 11",
+   "sub": "CẶN SARIN TRONG CÁC MẪU ĐẤT",
+   "bg": "kofu41",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "BẠN CÓ THỂ NGHĨ",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "THẾ LÀ XONG · ĐÃ CÓ BẰNG CHỨNG",
+     "at": [
+      4,
+      "thế"
+     ],
+     "sm": true
+    },
+    {
+     "text": "MẪU ĐẤT KHÔNG\nPHẢI LỆNH KHÁM\nXÉT",
+     "at": [
+      5,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai07",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 6,
+   "items": [
+    {
+     "text": "ĐỘT NHẬP NHÀ MÁY",
+     "at": 6,
+     "acc": true
+    },
+    {
+     "text": "CÓ THỂ ĐE DỌA TÍNH MẠNG CHÍNH CÁC SĨ QUAN",
+     "at": [
+      6,
+      "có"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sat36"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "CẦN CÓ TRƯỚC KHI VÀO",
+   "rows": [
+    {
+     "k": "ĐỒ BẢO HỘ",
+     "v": "CỦA CỤC PHÒNG VỆ",
+     "at": 7
+    },
+    {
+     "k": "BÀN BẠC",
+     "v": "VỚI VIỆN CÔNG TỐ",
+     "at": 7
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "6980366"
+  },
+  {
+   "type": "photo",
+   "at": 9,
+   "img": "ai07",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 10,
+   "img": "ai08",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 11,
+   "img": "ai12",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "MỘT KHU NHÀ MÁY\nNGHI CÓ KHÍ ĐỘC",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "KHÔNG PHẢI NƠI XÔNG VÀO RỒI HỎI SAU",
+     "at": [
+      12,
+      "không"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "sat7"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "GIÁM ĐỐC CƠ QUAN\nCẢNH SÁT QUỐC\nGIA",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "HỌP VỚI CÁC CÁN BỘ CẤP CAO",
+     "at": [
+      13,
+      "họp"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": [
+    13,
+    "nhưng"
+   ],
+   "text": "KHÔNG CHỐT ĐƯỢC\nNGÀY KHÁM XÉT",
+   "sub": "NĂM 1994 HẾT MÀ CHƯA CÓ NGÀY NÀO",
+   "bg": "kasu61",
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "date",
+   "at": 15,
+   "day": "BÁO YOMIURI ĐĂNG BÀI ĐẦU TIÊN",
+   "date": "1/1/1995",
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "text": "SARIN ·\nKAMIKUISHIKI",
+   "sub": "LẦN ĐẦU CÔNG CHÚNG ĐỌC HAI TỪ ĐI LIỀN NHAU",
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "TÔI CHƯA ĐỌC\nĐƯỢC BẢN GỐC",
+     "at": 17,
+     "acc": true
+    },
+    {
+     "text": "CHỈ DỰA VÀO TRANG TIẾNG NHẬT",
+     "at": [
+      17,
+      "nên"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai09",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 18,
+   "text": "HẾT BÍ MẬT\nCỦA CẢNH SÁT",
+   "sub": "CÂU CHUYỆN ĐÃ ĐẾN TAY CÔNG CHÚNG",
+   "bg": "kofu41",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "counter",
+   "at": 19,
+   "suffix": " TUẦN",
+   "label": "TRÔI QUA GIỮA 16/11 VÀ NGÀY BÀI BÁO RA",
+   "from": 0,
+   "to": 6,
+   "prefix": "HƠN ",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "question",
+   "at": 20,
+   "text": "GIÁO PHÁI ĐÃ BIẾT GÌ,\nVÀ ĐÃ LÀM GÌ?",
+   "bg": "ai23",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "NGƯỜI VIẾT ĐIỂM\nSÁCH",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "CHÍNH SỰ QUÁ THẬN TRỌNG KHIẾN CẢNH SÁT BỊ ĐỘNG",
+     "at": [
+      21,
+      "chính"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "LỜI CỦA NGƯỜI\nĐỨNG NGOÀI",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "NHÌN LẠI SAU BA MƯƠI NĂM",
+     "at": [
+      22,
+      "nhìn"
+     ],
+     "sm": true
+    },
+    {
+     "text": "NGƯỜI TRONG\nPHÒNG HỌP KHÔNG\nCÓ CÁI LỢI ẤY",
+     "at": [
+      23,
+      "những"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "ai07",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "HỌ KHÔNG BIẾT",
+   "sub": "CÒN BAO NHIÊU THỜI GIAN",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "TÔI THÀ ĐỂ CÂU\nHỎI MỞ",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "HƠN ĐIỀN VÀO ĐÓ ĐIỀU KHÔNG CÓ NGUỒN",
+     "at": [
+      26,
+      "còn"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "ai08",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "slam",
+   "at": 27,
+   "text": "ĐẶT MÌNH VÀO",
+   "sub": "CHIẾC GHẾ CỦA NGƯỜI CHỈ HUY Ở TOKYO",
+   "bg": "toky113",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "ledger",
+   "at": 28,
+   "title": "BẠN CÓ",
+   "rows": [
+    {
+     "k": "BẰNG CHỨNG",
+     "v": "HÓA HỌC",
+     "at": 28
+    },
+    {
+     "k": "MỘT",
+     "v": "NGHI PHẠM",
+     "at": 28
+    },
+    {
+     "k": "NGUY CƠ",
+     "v": "LÀM BỊ THƯƠNG NGƯỜI CỦA MÌNH",
+     "at": 28
+    }
+   ],
+   "bg": "ai26",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "question",
+   "at": [
+    28,
+    "và"
+   ],
+   "text": "BẠN SẼ CHỐT\nNGÀY NÀO?",
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "ÔNG KAKIMI ·\nSÁCH NĂM 2025",
+     "at": 30,
+     "acc": true
+    },
+    {
+     "text": "THẤY MÌNH CÓ TRÁCH NHIỆM VÌ SỰ DO DỰ ẤY",
+     "at": [
+      30,
+      "nói"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "kasu61",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 07",
+  "t": "MỘT MẪU ĐẤT"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}
