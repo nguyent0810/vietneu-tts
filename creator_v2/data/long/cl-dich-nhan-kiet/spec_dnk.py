@@ -8,8 +8,8 @@ from pathlib import Path
 
 D = Path(__file__).resolve().parent
 
-TITLE = 'Địch Nhân Kiệt Thật: Nhận Tội Mưu Phản Để Sống Sót'
-TITLES = [TITLE, 'ĐỊCH NHÂN KIỆT Ngoài Đời Thật: Phản Là Thật', 'Địch Nhân Kiệt: Hai Cuốn Sổ, Một Người']
+TITLE = 'Tể Tướng Tự Nhận Mình Phản: Ba Chữ Cứu Mạng Địch Nhân Kiệt'
+TITLES = [TITLE, 'Mảnh Lụa Giấu Trong Áo Bông: Tể Tướng Thoát Chết Ra Sao?', 'Xử Xong Cho 17.000 Người Không Ai Oan, Rồi Nhận Mình Phản?']
 LOOK = 'rose'      # khác ba video CL lân cận trên lịch: classic (Hoàng Kim Vinh), jade (Lưu Gù), sulfur (Đông Lang)
 
 # file Commons -> (tác giả, giấy phép)
@@ -142,7 +142,8 @@ def apply(CH, chapter_titles, used, IMGS):
     yt = spec.setdefault('youtube', {})
     yt.update({
         'titles': TITLES,
-        'summary': 'Địch Nhân Kiệt qua hai cuốn sổ đặt cạnh nhau: người thám tử trong phim và người trong hồ sơ Cựu Đường thư, Tân Đường thư, Tư trị thông giám. Từ cây bách ở Chiêu Lăng, Dự Châu đến lời nhận tội "phản là thật" và mảnh lụa giấu trong áo bông.',
+        'summary': 'Địch Nhân Kiệt, vị tể tướng sống sót dưới chế độ mật vụ của Võ Tắc Thiên bằng một lời nhận tội "phản là thật" và một mảnh lụa giấu trong áo bông. '
+                   'Từ cây bách ở Chiêu Lăng, Dự Châu, cuốn sổ tố giác của Lai Tuấn Thần đến cậu bé chưa mười tuổi và cuộc tranh ngôi thái tử: cái giá của việc cứu người giữa thời khủng bố.',
         'more': [],
         'sources': SOURCES,
         'tags': ['địch nhân kiệt', 'võ tắc thiên', 'lai tuấn thần', 'thần thám địch nhân kiệt', 'nhà đường', 'võ chu', 'lịch sử trung quốc', 'hồ sơ lịch sử'],

@@ -1,57 +1,47 @@
 {
- "title": "Cậu bé ngồi đọc sách",
+ "title": "Mười bảy ngàn người và một cây bách",
  "lines": [
   {
-   "t": "Địch Nhân Kiệt sinh năm 630, người Thái Nguyên, thuộc Tinh Châu.",
+   "t": "Năm 674, hoàng đế Cao Tông xưng Thiên Hoàng, còn hoàng hậu xưng Thiên Hậu.",
    "p": 0.8
   },
-  "Ông nội làm tả thừa ở Thượng thư tỉnh, cha làm trưởng sử ở Quỳ Châu.",
-  "Sinh trong nhà làm quan, ông được hai bộ Đường thư nhắc đến qua một chuyện thuở nhỏ.",
-  "Một người trong nhà bị hại, tiểu lại đến hỏi, ai cũng ra đối đáp, riêng cậu bé ngồi yên đọc sách.",
-  "Nếu là phim, đây sẽ là cảnh cậu bé nhìn ra manh mối.",
+  "Người ngồi cạnh nhà vua ấy tên là Võ Tắc Thiên.",
+  "Một năm sau, ông nhận chức đại lý thừa, một chức quan lo việc xét án.",
+  "Án tồn đọng lúc ấy chất lên rất nhiều.",
+  "Hãy hình dung sau mỗi tập hồ sơ là một gia đình đang ngồi chờ.",
   {
-   "t": "Cựu Đường thư chép: giữa lúc mọi người đối đáp, cậu vẫn đọc sách.",
+   "t": "Trong vòng một năm, ông xử xong án tồn của 17.000 người.",
    "p": 1.0
   },
-  "Tiểu lại trách. Cậu đáp.",
+  "Sử còn chép thêm: không ai kêu oan.",
+  "Đừng vội hình dung một bảng thống kê. Những trang sử ấy không kê tên từng vụ.",
+  "Hãy hình dung một căn phòng chất đầy hồ sơ, mùi giấy cũ trộn với mùi mực, và một người ngồi lại bên ngọn đèn cho đến khuya.",
+  "Người ta khen ông, và lời khen ấy đến tai cả triều đình.",
   {
-   "t": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
-   "q": 1,
-   "tr": 1
-  },
-  {
-   "t": "Chuyện này chỉ có trong hai bộ Đường thư, không thấy ở Tư trị thông giám.",
+   "t": "Danh tiếng ấy sắp bị thử bằng một cái cây.",
    "p": 1.0
   },
-  "Theo bản tiếng Trung của Wikipedia, ông đỗ minh kinh năm 659, rồi làm phán tá ở Biện Châu.",
-  "Ở đó ông bị tiểu lại vu cáo.",
-  "Viên quan sứ đi xét, Diêm Lập Bản, nghe ông nói xong thì khen.",
+  "Tháng chín năm 676, ở Chiêu Lăng, lăng của Thái Tông, hai viên tướng chặt nhầm một cây bách.",
+  "Hai người ấy là Quyền Thiện Tài và Phạm Hoài Nghĩa.",
+  "Luật định tội họ chỉ đến mức cách chức.",
+  "Nhưng hoàng đế lại ra lệnh giết cả hai.",
+  "Hãy hình dung triều đường lặng đi, khi mọi người nghe lệnh ấy, và không ai muốn là người đầu tiên thở mạnh.",
+  "Cao Tông không giấu lý do. Ông muốn tỏ ra mình là một người con hiếu thảo với cha.",
   {
-   "t": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "t": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
    "q": 1,
-   "tr": 1
-  },
-  "Nhờ lời tiến cử ấy, ông sang Tinh Châu làm pháp tào.",
-  "Một lần lên núi Thái Hàng, ông nhìn về nơi cha mẹ sống.",
-  "Ông ngẩng nhìn một đám mây trắng lẻ loi bay qua, rồi nói với người đi cùng.",
-  {
-   "t": "Cha mẹ ta ở dưới đám mây ấy.",
-   "q": 1,
-   "tr": 1
-  },
-  "Hai bộ Đường thư kể ông đứng nhìn rất lâu, mãi đến khi mây dời đi ông mới cất bước.",
-  "Cũng ở Tinh Châu, một đồng liêu tên Trịnh Sùng Chất phải đi sứ nơi xa, trong khi mẹ ông ta già và đang bệnh.",
-  "Địch Nhân Kiệt tìm trưởng sử, xin đi thay.",
-  "Chuyện này nằm cả trong Tư trị thông giám.",
-  "Viên trưởng sử Lận Nhân Cơ vốn bất hòa với một người cùng sở, nghe vậy thì tự thấy xấu hổ, hai người làm lành.",
-  {
-   "t": "Ta chưa thấy trong chặng đời này một vụ án nào do ông phá.",
+   "tr": 1,
    "p": 1.0
   },
-  "Điều sử giữ lại là một cậu bé ngồi đọc sách, và một người lớn xin đi thay đồng nghiệp.",
-  "Hai chuyện ấy rất nhỏ.",
+  "Bạn thử nghĩ xem, ai dám cãi một người đang nhân danh lòng hiếu với cha?",
+  "Địch Nhân Kiệt dám. Ông bước ra, và nói rằng tội của hai tướng chưa tới mức phải chết.",
+  "Hoàng đế nổi giận, bảo ông lui ra ngoài.",
   {
-   "t": "Và chúng chưa phải chuyện của một thám tử.",
+   "t": "Ông không lui. Ông nói tiếp.",
+   "p": 1.0
+  },
+  {
+   "t": "Ông sắp nói ba câu. Câu cuối cùng hỏi đúng điều mà mọi vị vua sợ nhất.",
    "p": 1.0
   }
  ],
@@ -60,177 +50,41 @@
    "type": "chapter",
    "no": "2",
    "k": "CHƯƠNG 02",
-   "title": "CẬU BÉ NGỒI\nĐỌC SÁCH",
-   "sub": "SINH NĂM 630 · THÁI NGUYÊN · TINH CHÂU",
+   "title": "17.000 NGƯỜI\nVÀ MỘT CÂY\nBÁCH",
+   "sub": "NĂM 674 · ĐẠI LÝ THỪA",
    "titleAt": [
     0,
-    "Địch"
+    "Năm"
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900006"
-  },
-  {
-   "type": "org",
-   "at": 1,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "GIA ĐÌNH",
-     "s": "LÀM QUAN",
-     "cls": "top",
-     "at": 1
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "ÔNG NỘI",
-     "s": "TẢ THỪA THƯỢNG THƯ TỈNH",
-     "at": 1
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "CHA",
-     "s": "TRƯỞNG SỬ QUỲ CHÂU",
-     "at": 1
-    }
-   ],
-   "bg": "off7"
-  },
-  {
-   "type": "photo",
-   "at": 2,
-   "img": "dnk_b",
-   "illus": "ĐỊCH NHÂN KIỆT · TRANH CỔ",
-   "tone": null,
-   "move": null,
+   "bg": "wu3",
    "focus": [
     0.5,
     0.3
    ]
   },
   {
-   "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "TIỂU LẠI ĐẾN HỎI",
-     "at": 3,
-     "acc": true
-    },
-    {
-     "text": "AI CŨNG RA ĐỐI ĐÁP",
-     "at": [
-      3,
-      "ai"
-     ],
-     "sm": true
-    },
-    {
-     "text": "RIÊNG CẬU BÉ ĐỌC SÁCH",
-     "at": [
-      3,
-      "riêng"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "dnk_t"
-  },
-  {
-   "type": "org",
-   "at": 4,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "CHẶNG 1 · THUỞ NHỎ",
-     "s": "HAI CUỐN SỔ",
-     "cls": "top",
-     "at": 4
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "CẬU BÉ NHÌN RA MANH MỐI",
-     "at": 4
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "CẬU VẪN ĐỌC SÁCH",
-     "at": 4
-    }
-   ],
-   "bg": "ladies"
-  },
-  {
-   "type": "quote",
-   "at": 6,
-   "text": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 7,
-   "typeAt": 7,
-   "bg": "silk3"
-  },
-  {
-   "type": "kinetic",
-   "at": 8,
-   "items": [
-    {
-     "text": "CHỈ CÓ TRONG",
-     "at": 8,
-     "acc": true
-    },
-    {
-     "text": "HAI BỘ ĐƯỜNG THƯ",
-     "at": [
-      8,
-      "hai"
-     ],
-     "acc": true
-    },
-    {
-     "text": "KHÔNG THẤY Ở THÔNG GIÁM",
-     "at": [
-      8,
-      "không"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "dnk_t"
+   "type": "file",
+   "at": 1,
+   "k": "THIÊN HẬU",
+   "name": "VÕ TẮC THIÊN",
+   "desc": "Người ngồi cạnh nhà vua",
+   "bg": "zl1"
   },
   {
    "type": "date",
-   "at": 9,
-   "day": "MINH KINH · PHÁN TÁ BIỆN CHÂU · THEO BÁCH KHOA",
-   "date": "659",
-   "bg": "off2",
-   "illus": "BÁCH KHOA",
-   "focus": [
-    0.5,
-    0.3
-   ]
-  },
-  {
-   "type": "quote",
-   "at": 11,
-   "text": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 12,
-   "typeAt": 12,
-   "bg": "jar"
+   "at": 2,
+   "day": "ĐẠI LÝ THỪA · ĐẠI LÝ TỰ · XÉT ÁN",
+   "date": "675",
+   "bg": "hanguang",
+   "srcnote": "NGUỒN: BÁCH KHOA",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
    "type": "photo",
-   "at": 13,
-   "img": "map700",
-   "illus": "TRUNG HOA ĐỜI ĐƯỜNG · KHOẢNG NĂM 700",
-   "tone": "color",
+   "at": 4,
+   "img": "ministers",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
    "move": null,
    "focus": [
     0.5,
@@ -238,134 +92,196 @@
    ]
   },
   {
-   "type": "quote",
+   "type": "counter",
+   "at": 5,
+   "suffix": " NGƯỜI",
+   "label": "ÁN TỒN XỬ XONG TRONG MỘT NĂM",
+   "from": 0,
+   "to": 17000,
+   "bg": "zhaoling",
+   "srcnote": "NGUỒN: CỰU ĐƯỜNG THƯ · Q.89",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "KHÔNG AI\nKÊU OAN",
+   "sub": "KHÔNG CÓ BẢNG KÊ TỪNG VỤ",
+   "bg": "zl1"
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "LỜI KHEN",
+     "at": 9,
+     "acc": true
+    },
+    {
+     "text": "ĐẾN TAI CẢ TRIỀU ĐÌNH",
+     "at": [
+      9,
+      "đến"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "zl3"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "MỘT CÁI CÂY",
+   "sub": "THỬ DANH TIẾNG ẤY",
+   "bg": "zl1"
+  },
+  {
+   "type": "date",
+   "at": 11,
+   "day": "CHIÊU LĂNG · HAI TƯỚNG CHẶT NHẦM MỘT CÂY BÁCH",
+   "date": "676",
+   "bg": "zl2",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.202"
+  },
+  {
+   "type": "ledger",
+   "at": 12,
+   "title": "HAI TƯỚNG CHẶT NHẦM",
+   "rows": [
+    {
+     "k": "TƯỚNG",
+     "v": "QUYỀN THIỆN TÀI",
+     "at": 12
+    },
+    {
+     "k": "TƯỚNG",
+     "v": "PHẠM HOÀI NGHĨA",
+     "at": 12
+    }
+   ],
+   "bg": "zhaoling",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "LUẬT CHỈ ĐỊNH\nCÁCH CHỨC",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "NHƯNG HOÀNG ĐẾ\nRA LỆNH GIẾT CẢ\nHAI",
+     "at": [
+      14,
+      "nhưng"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "zl3"
+  },
+  {
+   "type": "broll",
    "at": 15,
-   "text": "Cha mẹ ta ở dưới đám mây ấy.",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 16,
-   "typeAt": 16,
-   "bg": "m220"
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900003"
   },
   {
    "type": "kinetic",
+   "at": 16,
+   "items": [
+    {
+     "text": "MUỐN LÀM NGƯỜI\nCON\nHIẾU THẢO",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "CAO TÔNG KHÔNG GIẤU LÝ DO",
+     "at": [
+      16,
+      "cao"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "tz",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
    "at": 17,
-   "items": [
-    {
-     "text": "ĐỨNG NHÌN RẤT LÂU",
-     "at": 17,
-     "acc": true
-    },
-    {
-     "text": "MÂY DỜI MỚI CẤT BƯỚC",
-     "at": [
-      17,
-      "mãi"
-     ],
-     "sm": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "text": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": 17,
+   "bg": "tzaud"
   },
   {
-   "type": "file",
+   "type": "question",
    "at": 18,
-   "k": "ĐỒNG LIÊU · TINH CHÂU",
-   "name": "TRỊNH\nSÙNG CHẤT",
-   "desc": "Phải đi sứ nơi xa · mẹ già đang bệnh",
-   "bg": "off8"
+   "text": "AI DÁM CÃI MỘT NGƯỜI\nĐANG NHÂN DANH LÒNG HIẾU VỚI CHA?",
+   "bg": "zhaoling",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "ĐỊCH NHÂN KIỆT\nDÁM",
+   "sub": "NÓI TỘI HAI TƯỚNG CHƯA TỚI MỨC CHẾT",
+   "bg": "zl1"
   },
   {
    "type": "kinetic",
-   "at": 19,
+   "at": 20,
    "items": [
     {
-     "text": "ÔNG XIN ĐI THAY",
-     "at": 19,
+     "text": "HOÀNG ĐẾ NỔI\nGIẬN",
+     "at": 20,
      "acc": true
     },
     {
-     "text": "CẢ TƯ TRỊ THÔNG GIÁM CŨNG CHÉP",
+     "text": "ÔNG KHÔNG LUI ·\nÔNG NÓI TIẾP",
      "at": [
-      20,
-      "chuyện"
+      21,
+      "ông"
      ],
-     "sm": true
+     "acc": true
     }
    ],
-   "bg": "off4"
-  },
-  {
-   "type": "org",
-   "at": 21,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "LẬN NHÂN CƠ",
-     "s": "TRƯỞNG SỬ",
-     "cls": "top",
-     "at": 21
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "BẤT HÒA",
-     "s": "VỚI MỘT NGƯỜI CÙNG SỞ",
-     "at": 21
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SAU ĐÓ",
-     "s": "XẤU HỔ · LÀM LÀNH",
-     "at": 21
-    }
-   ],
-   "bg": "off9"
+   "bg": "qian1",
+   "illus": "ẢNH NGÀY NAY"
   },
   {
    "type": "slam",
    "at": 22,
-   "text": "CHƯA CÓ VỤ ÁN NÀO",
-   "sub": "DO ÔNG PHÁ",
-   "bg": "off10"
-  },
-  {
-   "type": "kinetic",
-   "at": 23,
-   "items": [
-    {
-     "text": "MỘT CẬU BÉ ĐỌC SÁCH",
-     "at": 23,
-     "acc": true
-    },
-    {
-     "text": "MỘT NGƯỜI LỚN XIN ĐI THAY",
-     "at": [
-      23,
-      "một"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "dnk_b"
-  },
-  {
-   "type": "slam",
-   "at": 24,
-   "text": "HAI CHUYỆN NHỎ",
-   "sub": "CHƯA PHẢI CHUYỆN THÁM TỬ",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "text": "BA CÂU NÓI",
+   "sub": "CÂU CUỐI HỎI ĐÚNG ĐIỀU VUA SỢ NHẤT",
+   "bg": "guardo",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 02",
-  "t": "CẬU BÉ NGỒI ĐỌC SÁCH"
+  "t": "MƯỜI BẢY NGÀN NGƯỜI VÀ MỘT CÂY BÁCH"
  },
  "bgm": {
-  "mood": "quiet",
+  "mood": "mystery",
   "at": 0,
   "gain": 0.12
  }

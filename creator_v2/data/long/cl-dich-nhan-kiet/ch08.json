@@ -1,52 +1,57 @@
 {
- "title": "Chữ \"thật\" được nói ra",
+ "title": "Mảnh lụa trong áo bông",
  "lines": [
   {
-   "t": "Lai Tuấn Thần tố bảy người mưu phản, trong đó có ba tể tướng.",
+   "t": "Ông xin người canh một cây bút và một nghiên mực.",
    "p": 0.8
   },
-  "Địch Nhân Kiệt là một trong ba người đó.",
-  "Trước đó, Lai Tuấn Thần đã xin một sắc lệnh: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.",
+  "Người canh đưa cho ông.",
+  "Ông xé một mảnh lụa ở đầu chăn, viết lên đó oan trạng, rồi nhét vào trong áo bông.",
   {
-   "t": "Đó là cái bẫy, hay là một lối thoát?",
+   "t": "Đó không phải là một bức thư máu như nhiều người hay tưởng. Đó là mực, và một mảnh lụa.",
    "p": 1.0
   },
-  "Năm 692, theo Tư trị thông giám và Wikipedia tiếng Anh.",
-  "Bản tiếng Trung ghi là năm 693.",
-  "Câu ông nói ở đầu bài được ba bộ sử chép với những câu chữ khác nhau.",
-  "Ý thì giống nhau: ông nhận.",
-  "Lai Tuấn Thần bèn nới tay.",
-  "Cùng bị tố còn có hai tể tướng Nhâm Tri Cổ, Bùi Hành Bản và cả Ngụy Nguyên Trung.",
-  "Bản tiếng Anh ghi thêm: ông nhận tội và không bị tra tấn.",
+  "Hãy hình dung nét chữ viết vội dưới ánh sáng yếu, và mảnh lụa được gấp lại thật nhỏ.",
+  "Rồi ông nhờ một câu rất tự nhiên.",
   {
-   "t": "Sau đó, phán quan Vương Đức Thọ tìm gặp ông.",
-   "p": 1.0
-  },
-  "Y nói rằng ngài chắc chắn được giảm án.",
-  "Y chỉ xin một điều: ngài khai thêm tên một tể tướng khác, Dương Chấp Nhu.",
-  {
-   "t": "Rồi y chờ.",
-   "p": 1.0
-  },
-  {
-   "t": "Trời đất lại sai Địch Nhân Kiệt làm chuyện này sao!",
+   "t": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
    "q": 1,
-   "tr": 1
-  },
-  "Ba bộ sử đều chép: nói xong, ông lấy đầu đập vào cột, máu chảy đầy mặt.",
-  "Vương Đức Thọ sợ, và tạ lỗi.",
-  "Lời từ chối ấy được cả ba bộ sử ghi lại.",
-  "Ông nhận tội của chính mình, nhưng không khai ra tội của người khác.",
-  "Một lời nhận tội có thể mở cửa cho người khác chết thay.",
-  {
-   "t": "Ông không nhận kiểu đó.",
+   "tr": 1,
    "p": 1.0
   },
-  "Sau khi ông nhận, người canh ngục không còn canh nghiêm.",
-  "Bạn đang nghĩ ông sẽ làm gì?",
-  "Nếu là bạn, bạn sẽ nằm chờ ngày thi hành án, hay làm gì đó?",
+  "Một lời xin nghe vô hại. Ai nghe cũng thấy hợp lý, mùa nóng thì ai mặc áo bông.",
+  "Một lời nhờ vả nhỏ về chuyện mùa nóng, trong đó giấu một việc sống còn.",
+  "Ông nhờ chuyển chiếc áo về cho người nhà, qua tay chính Vương Đức Thọ.",
+  "Có lẽ viên phán quan cầm chiếc áo nặng hơn mức một người cầm áo thường.",
+  "Nhưng chiếc áo vẫn tới được tay người nhà ông.",
+  "Một mảnh lụa nhỏ, nhưng nặng bằng cả một vụ án.",
+  "Chiếc áo về tới nhà. Con trai ông là Quang Viễn tháo bông ra.",
+  "Mảnh lụa rơi ra, và Quang Viễn cầm nó đi báo biến.",
+  "Anh đem nó vào cung, báo rằng cha mình bị oan.",
+  "Võ Tắc Thiên cho gọi anh vào. Bà xem thư. Rồi bà gọi Lai Tuấn Thần tới hỏi.",
   {
-   "t": "Ông xin người canh một cây bút.",
+   "t": "Lai Tuấn Thần không chịu thua. Ông ta nói một câu nghe rất tự tin.",
+   "p": 1.0
+  },
+  {
+   "t": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Nhưng ông ta cũng biết mình đang đứng trên miệng hố.",
+  "Ông ta cho các tù nhân đội lại mũ đai tươm tất, rồi dẫn họ ra gặp sứ giả của bà.",
+  "Hãy hình dung bảy người ngồi đó, áo mũ chỉnh tề, mặt không còn một dấu vết nào.",
+  "Chưa hết, ông ta còn dựng thêm một tờ tấu tạ tội chết, rồi bảo Vương Đức Thọ ký thay ông.",
+  "Một tờ giấy giả, ký thay một người sống.",
+  "Hồ sơ vụ án đã đầy đủ, và Lai Tuấn Thần tin rằng mọi chuyện đã xong.",
+  {
+   "t": "Nhưng ông ta đã quên một điều. Một mảnh lụa nhỏ đang nằm trong tay bà.",
+   "p": 1.0
+  },
+  "Và có một người khác, không ai ngờ, sắp bước vào đại điện.",
+  {
+   "t": "Người ấy chưa tới mười tuổi.",
    "p": 1.0
   }
  ],
@@ -55,55 +60,99 @@
    "type": "chapter",
    "no": "8",
    "k": "CHƯƠNG 08",
-   "title": "CHỮ \"THẬT\"\nĐƯỢC NÓI RA",
-   "sub": "MỘT TRONG BA TỂ TƯỚNG BỊ TỐ",
+   "title": "MẢNH LỤA\nTRONG\nÁO BÔNG",
+   "sub": "MỘT CÂY BÚT · MỘT NGHIÊN MỰC",
    "titleAt": [
     0,
-    "Lai"
+    "Ông"
    ],
-   "bg": "guard1"
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
   },
   {
    "type": "kinetic",
-   "at": 2,
+   "at": 1,
    "items": [
     {
-     "text": "XIN MỘT SẮC LỆNH",
-     "at": 2,
+     "text": "MỘT MẢNH LỤA\nĐẦU CHĂN",
+     "at": 1,
      "acc": true
     },
     {
-     "text": "NHẬN NGAY LẦN HỎI ĐẦU",
+     "text": "VIẾT OAN TRẠNG · NHÉT VÀO ÁO BÔNG",
      "at": [
       2,
-      "ai"
-     ],
-     "acc": true
-    },
-    {
-     "text": "ĐƯỢC GIẢM ÁN CHẾT",
-     "at": [
-      2,
-      "thì"
+      "viết"
      ],
      "sm": true
     }
    ],
-   "bg": "off1"
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
   },
   {
-   "type": "question",
+   "type": "myth",
    "at": 3,
-   "text": "CÁI BẪY,\nHAY MỘT LỐI THOÁT?",
-   "bg": "mirror"
+   "mythLab": "AI HAY TƯỞNG",
+   "myth": "THƯ MÁU",
+   "truthLab": "THỰC RA LÀ",
+   "truth": "MỰC TRÊN MẢNH LỤA",
+   "strikeAt": [
+    3,
+    "máu"
+   ],
+   "truthAt": [
+    3,
+    "mực"
+   ],
+   "bg": "silk3"
   },
   {
-   "type": "date",
+   "type": "broll",
    "at": 4,
-   "day": "THEO TƯ TRỊ THÔNG GIÁM VÀ WIKIPEDIA TIẾNG ANH",
-   "date": "692",
-   "bg": "wu3",
-   "sub": "BẢN TIẾNG TRUNG GHI: 693",
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "silk3"
+  },
+  {
+   "type": "kinetic",
+   "at": 7,
+   "items": [
+    {
+     "text": "MỘT LỜI XIN\nNGHE VÔ HẠI",
+     "at": 7,
+     "acc": true
+    },
+    {
+     "text": "MÙA NÓNG THÌ AI MẶC ÁO BÔNG",
+     "at": [
+      7,
+      "ai"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off8",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 8,
+   "text": "GIẤU MỘT VIỆC\nSỐNG CÒN",
+   "sub": "TRONG LỜI NHỜ VẢ VỀ MÙA NÓNG",
+   "bg": "off3",
    "focus": [
     0.5,
     0.3
@@ -111,90 +160,22 @@
   },
   {
    "type": "kinetic",
-   "at": 6,
+   "at": 9,
    "items": [
     {
-     "text": "BA BỘ SỬ",
-     "at": 6,
+     "text": "NGƯỜI CHUYỂN ÁO",
+     "at": 9,
      "acc": true
     },
     {
-     "text": "CHÉP CÂU ẤY KHÁC NHAU",
+     "text": "VƯƠNG ĐỨC THỌ ·\nQUA TAY CHÍNH\nHẮN",
      "at": [
-      6,
-      "với"
-     ],
-     "sm": true
-    },
-    {
-     "text": "Ý THÌ GIỐNG: ÔNG NHẬN",
-     "at": [
-      7,
-      "ý"
+      9,
+      "qua"
      ],
      "acc": true
     }
    ],
-   "bg": "dnk_t"
-  },
-  {
-   "type": "ledger",
-   "at": 8,
-   "title": "NHỮNG NGƯỜI CÙNG BỊ TỐ",
-   "rows": [
-    {
-     "k": "1",
-     "v": "NHÂM TRI CỔ",
-     "at": 8
-    },
-    {
-     "k": "2",
-     "v": "BÙI HÀNH BẢN",
-     "at": 8
-    },
-    {
-     "k": "3",
-     "v": "NGỤY NGUYÊN TRUNG",
-     "at": 8
-    }
-   ],
-   "bg": "off4"
-  },
-  {
-   "type": "kinetic",
-   "at": 10,
-   "items": [
-    {
-     "text": "NHẬN TỘI",
-     "at": 10,
-     "acc": true
-    },
-    {
-     "text": "KHÔNG BỊ TRA TẤN · THEO BẢN TIẾNG ANH",
-     "at": [
-      10,
-      "bản"
-     ],
-     "sm": true
-    },
-    {
-     "text": "PHÁN QUAN VƯƠNG ĐỨC THỌ TÌM GẶP",
-     "at": [
-      11,
-      "sau"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "guard1",
-   "illus": "BÁCH KHOA"
-  },
-  {
-   "type": "file",
-   "at": 12,
-   "k": "PHÁN QUAN",
-   "name": "VƯƠNG\nĐỨC THỌ",
-   "desc": "Hứa giảm án · xin khai thêm một tể tướng",
    "bg": "off2",
    "focus": [
     0.5,
@@ -202,107 +183,226 @@
    ]
   },
   {
-   "type": "quote",
-   "at": 14,
-   "text": "Trời đất lại sai Địch Nhân Kiệt làm chuyện này sao!",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 15,
-   "typeAt": 15,
-   "bg": "mirror"
+   "type": "photo",
+   "at": 10,
+   "img": "off6",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 11,
+   "text": "CHIẾC ÁO VẪN TỚI\nTAY NGƯỜI NHÀ",
+   "sub": "MỘT MẢNH LỤA NHỎ · NẶNG BẰNG CẢ VỤ ÁN",
+   "bg": "dnk_b",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "file",
+   "at": 13,
+   "k": "CON TRAI ÔNG",
+   "name": "ĐỊCH\nQUANG VIỄN",
+   "desc": "Tháo bông · cầm mảnh lụa đi báo biến",
+   "bg": "off9",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "VÀO CUNG",
+   "sub": "BÁO RẰNG CHA MÌNH BỊ OAN",
+   "bg": "hanguang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
    "type": "kinetic",
    "at": 16,
    "items": [
     {
-     "text": "ĐẬP ĐẦU VÀO CỘT",
+     "text": "VÕ TẮC THIÊN",
      "at": 16,
      "acc": true
     },
     {
-     "text": "MÁU CHẢY ĐẦY MẶT",
+     "text": "CHO GỌI ANH VÀO · XEM THƯ",
      "at": [
       16,
-      "máu"
+      "cho"
      ],
+     "sm": true
+    },
+    {
+     "text": "RỒI GỌI LAI TUẤN\nTHẦN TỚI HỎI",
+     "at": [
+      16,
+      "rồi"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "LAI TUẤN THẦN",
+     "at": 17,
      "acc": true
     },
     {
-     "text": "VƯƠNG ĐỨC THỌ SỢ · TẠ LỖI",
+     "text": "KHÔNG CHỊU THUA",
      "at": [
       17,
-      "vương"
+      "không"
      ],
-     "sm": true
+     "acc": true
     }
    ],
+   "bg": "guard1",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 18,
+   "text": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 18,
+   "typeAt": 18,
+   "bg": "guard2"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "ÔNG TA BIẾT",
+   "sub": "MÌNH ĐỨNG TRÊN MIỆNG HỐ",
    "illus": "MINH HỌA CHUNG",
    "vid": "900008"
   },
   {
-   "type": "slam",
-   "at": 18,
-   "text": "CẢ BA BỘ SỬ",
-   "sub": "GHI LỜI TỪ CHỐI ẤY",
-   "bg": "dnk_c"
-  },
-  {
-   "type": "org",
-   "at": 19,
-   "nodes": [
+   "type": "kinetic",
+   "at": 20,
+   "items": [
     {
-     "id": "r",
-     "t": "MỘT LỜI NHẬN TỘI",
-     "s": "HAI CÁCH DÙNG",
-     "cls": "top",
-     "at": 19
+     "text": "TÙ NHÂN ĐỘI LẠI\nMŨ ĐAI TƯƠM TẤT",
+     "at": 20,
+     "acc": true
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "NHẬN TỘI MÌNH",
-     "s": "ÔNG LÀM",
-     "at": 19
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "KHAI THÊM TÊN",
-     "s": "ÔNG KHÔNG",
-     "at": 19
+     "text": "DẪN RA GẶP SỨ GIẢ CỦA BÀ",
+     "at": [
+      20,
+      "rồi"
+     ],
+     "sm": true
     }
    ],
-   "bg": "off3"
+   "bg": "off10",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "slam",
+   "type": "photo",
    "at": 21,
-   "text": "KHÔNG NHẬN\nKIỂU ĐÓ",
-   "sub": "NGƯỜI CANH BỚT NGHIÊM",
-   "bg": "jar"
+   "img": "ministers",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
   },
   {
-   "type": "question",
-   "at": 23,
-   "text": "NẾU LÀ BẠN,\nBẠN SẼ LÀM GÌ?",
-   "bg": "off1"
+   "type": "ledger",
+   "at": 22,
+   "title": "TỜ TẤU TẠ TỘI CHẾT",
+   "rows": [
+    {
+     "k": "NGƯỜI DỰNG",
+     "v": "LAI TUẤN THẦN",
+     "at": 22
+    },
+    {
+     "k": "NGƯỜI KÝ THAY",
+     "v": "VƯƠNG ĐỨC THỌ",
+     "at": 22
+    },
+    {
+     "k": "KÝ THAY TÊN",
+     "v": "ĐỊCH NHÂN KIỆT",
+     "at": 22
+    }
+   ],
+   "bg": "silk2"
   },
   {
    "type": "slam",
+   "at": 23,
+   "text": "MỘT TỜ GIẤY GIẢ\nKÝ THAY NGƯỜI\nSỐNG",
+   "sub": "HỒ SƠ ĐẦY ĐỦ · LAI TIN MỌI CHUYỆN ĐÃ XONG",
+   "bg": "off4"
+  },
+  {
+   "type": "kinetic",
    "at": 25,
-   "text": "MỘT CÂY BÚT",
-   "sub": "XIN NGƯỜI CANH",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "items": [
+    {
+     "text": "ÔNG TA ĐÃ QUÊN",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "MỘT MẢNH LỤA NHỎ\nĐANG NẰM TRONG\nTAY BÀ",
+     "at": [
+      25,
+      "mảnh"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "silk1",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "text": "MỘT NGƯỜI KHÁC\nSẮP BƯỚC VÀO",
+   "sub": "NGƯỜI ẤY CHƯA TỚI MƯỜI TUỔI",
+   "bg": "off5"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 08",
-  "t": "CHỮ \"THẬT\" ĐƯỢC NÓI RA"
+  "t": "MẢNH LỤA TRONG ÁO BÔNG"
  },
  "bgm": {
-  "mood": "tense",
+  "mood": "quiet",
   "at": 0,
   "gain": 0.12
  }

@@ -1,72 +1,64 @@
 {
- "title": "Thứ gần với ma quái nhất",
+ "title": "Dự Châu: lá thư viết rồi lại xé",
  "lines": [
   {
-   "t": "Làm thị ngự sử, ông dâng lời hặc cả những người có thế lực.",
+   "t": "Việt vương Lý Trinh khởi binh ở Dự Châu, rồi thua.",
    "p": 0.8
   },
-  "Khoảng năm 679, quan Tư Nông là Vi Hoằng Cơ xây các cung Túc Vũ, Cao Sơn, Thượng Dương ở Lạc Dương.",
-  "Địch Nhân Kiệt tâu rằng ông ta dẫn nhà vua vào chỗ xa hoa, và Vi Hoằng Cơ bị cách chức.",
-  "Một quan khác, Vương Bản Lập, được vua che chở.",
-  "Nhà vua định tha.",
+  "Triều đình cử Địch Nhân Kiệt đến làm thứ sử nơi ấy.",
+  "Nơi ông đến chẳng còn là một châu bình thường. Đó là nơi người ta đang chờ đến lượt bị trừng trị.",
+  "Hãy hình dung những con phố im lặng, và những mái nhà mà ai cũng sợ gõ cửa.",
+  "Số người bị liên lụy được kể không giống nhau.",
+  "Có nơi nói sáu bảy trăm gia đình, có nơi nói năm ngàn người bị tịch thu, có nơi nói hai ngàn người bị án tử.",
+  "Dù con số nào đúng, đó vẫn là cả một vùng người.",
   {
-   "t": "Ông không chịu.",
+   "t": "Ông đứng giữa hai cách làm sai: nói ra thì có thể bị coi là bênh kẻ phản, im lặng thì có thể trái ý nhà vua.",
    "p": 1.0
   },
+  "Hãy hình dung một đêm dài, một ngọn đèn, và một cây bút cứ dừng giữa chừng.",
   {
-   "t": "Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "t": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
    "q": 1,
-   "tr": 1
-  },
-  "Bản Lập cuối cùng bị tội, và sử viết triều đình từ đó nghiêm chỉnh.",
-  "Tân Đường thư kể một chuyến đi khác, nghe rất gần với phim.",
-  "Ông được cử đến Kỳ Châu, nơi mấy trăm lính trốn đang cướp người đi đường, làm tắc cả đường cái.",
-  "Quan sở tại bắt đồng bọn về tra hỏi, nhưng bọn còn lại càng kéo đông, không ai trị nổi.",
-  "Ông cho rằng họ đã cùng đường, và người cùng đường thì dễ thành họa.",
-  "Ông bèn công khai ban một tờ lệnh cho phép tự thú, thả những người đang giam, cho lương để họ về báo tin.",
-  "Cả toán lính tự trói mình, kéo nhau về nộp.",
-  "Hoàng đế thở dài khen ông biết tùy cơ.",
-  "Nếu là phim, đây có thể là cảnh bắt cướp.",
-  {
-   "t": "Trong Tân Đường thư, toán lính tự nộp mình.",
+   "tr": 1,
    "p": 1.0
   },
-  "Nhưng những chuyện ấy vẫn chưa phải án ma quái.",
-  "Nếu phim có ma quái, thì sử có gì?",
-  "Ta đã đọc hết phần truyện của ông trong hai bộ Đường thư, và nói thẳng: không có một vụ án ma quái nào.",
-  "Điều gần nhất là một ngôi đền.",
-  "Cao Tông định đi cung Phần Dương, ông làm tri đốn sứ lo chỗ nghỉ dọc đường.",
-  "Quan Tinh Châu là Lý Xung Huyền muốn mở một con đường mới, vòng qua đền Đố Nữ.",
-  "Tục truyền ai mặc đẹp đi qua đền thì gặp sấm gió.",
-  "Ông ta huy động mấy vạn người để mở đường.",
+  "Tấu thư viết xong, ông lại xé. Lòng ông chưa quyết được.",
+  "Rồi ông vẫn gửi mật tấu đi.",
+  "Võ Tắc Thiên đọc, và ân xá cho họ, đày đến Phong Châu.",
   {
-   "t": "Địch Nhân Kiệt gạt đi.",
+   "t": "Đoàn người bị đày đi qua Ninh Châu. Các cụ già ra đón, khóc dưới tấm bia của ông.",
    "p": 1.0
   },
   {
-   "t": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
+   "t": "Chính sứ quân Địch đã cứu sống các ngươi!",
    "q": 1,
-   "tr": 1
-  },
-  "Cao Tông nghe, rồi khen ông là bậc đại trượng phu.",
-  {
-   "t": "Chuyện này chỉ có trong hai bộ Đường thư.",
+   "tr": 1,
    "p": 1.0
   },
-  "Ít năm sau ông làm thứ sử Ninh Châu.",
-  "Ngự sử Quách Hàn đi xét các châu, đến đó, thấy các cụ già đứng đầy đường hát khen vị thứ sử.",
-  "Rồi đến năm 688, ông được cử đi xem xét vùng Giang Nam.",
-  "Ông thấy ở đó có quá nhiều đền thờ không đúng phép.",
-  "Ông xin phá, và theo Tư trị thông giám, hơn 1.700 đền miếu bị đốt.",
-  "Ông chỉ giữ bốn nơi: thờ vua Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên.",
-  "Nếu là phim, đây là cảnh trừ tà.",
+  "Hãy hình dung đoàn tù còn mang xiềng, cúi xuống nền đất lạnh trước tấm bia của người đã cứu họ.",
+  "Những người tù dừng lại ba ngày ăn chay dưới bia ấy rồi mới đi tiếp.",
+  "Đến nơi đày, họ lại dựng thêm một tấm bia khác để ca ngợi ông.",
+  "Nhưng ông đã làm điều khiến một người có quyền không thể tha.",
+  "Tướng Trương Quang Phụ để quân dưới trướng đòi hỏi quá đáng, và ông từ chối.",
   {
-   "t": "Theo sử, hơn một nghìn bảy trăm đền miếu đã bị đốt.",
+   "t": "Ông còn nói thẳng một lời mà tướng quân nào cũng khó nghe.",
    "p": 1.0
   },
-  "Một người vừa giữ luật, vừa phá miếu.",
   {
-   "t": "Hai việc ấy cùng của một người, và người ấy sắp bước vào một vụ lớn hơn nhiều.",
+   "t": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Ông nói thêm: giết kẻ đã hàng để lấy công, máu chảy đỏ cánh đồng, thế chẳng phải là sinh ra vạn Trinh thì là gì.",
+  "Trương Quang Phụ trở về triều và tâu rằng ông bất kính.",
+  {
+   "t": "Địch Nhân Kiệt bị giáng làm thứ sử Phục Châu.",
+   "p": 1.0
+  },
+  "Ông cứu sáu bảy trăm gia đình, và đổi lại một chiếc ghế thấp hơn.",
+  {
+   "t": "Cái giá ấy còn nhẹ. Hai năm sau, triều đại đổi sang một họ khác, và cái giá bắt đầu nặng hơn.",
    "p": 1.0
   }
  ],
@@ -75,144 +67,256 @@
    "type": "chapter",
    "no": "5",
    "k": "CHƯƠNG 05",
-   "title": "THỨ GẦN VỚI\nMA QUÁI NHẤT",
-   "sub": "KHÔNG CÓ MỘT VỤ ÁN MA QUÁI NÀO",
+   "title": "DỰ CHÂU:\nLÁ THƯ VIẾT\nRỒI LẠI XÉ",
+   "sub": "VIỆT VƯƠNG KHỞI BINH RỒI THUA",
    "titleAt": [
     0,
-    "Làm"
+    "Việt"
    ],
-   "bg": "off2",
-   "focus": [
-    0.5,
-    0.3
-   ]
+   "bg": "xian"
   },
   {
-   "type": "ledger",
+   "type": "map",
    "at": 1,
-   "title": "VI HOẰNG CƠ · 679",
-   "rows": [
+   "geo": "ht1",
+   "pins": [
     {
-     "k": "CHỨC",
-     "v": "TƯ NÔNG",
-     "at": 1
+     "name": "Dự Châu"
     },
     {
-     "k": "XÂY CUNG",
-     "v": "TÚC VŨ",
-     "at": 1
-    },
-    {
-     "k": "XÂY CUNG",
-     "v": "CAO SƠN",
-     "at": 1
-    },
-    {
-     "k": "XÂY CUNG",
-     "v": "THƯỢNG DƯƠNG",
-     "at": 1
+     "name": "Lạc Dương"
     }
-   ],
-   "bg": "lymodel",
-   "illus": "MÔ HÌNH · BẢO TÀNG"
+   ]
   },
   {
    "type": "kinetic",
    "at": 2,
    "items": [
     {
-     "text": "VI HOẰNG CƠ BỊ CÁCH CHỨC",
+     "text": "NƠI NGƯỜI TA\nCHỜ ĐẾN LƯỢT",
      "at": 2,
      "acc": true
     },
     {
-     "text": "DẪN VUA VÀO CHỖ XA HOA",
+     "text": "BỊ TRỪNG TRỊ",
      "at": [
       2,
-      "dẫn"
+      "đó"
      ],
-     "sm": true
+     "acc": true
     }
    ],
-   "bg": "mingtang",
-   "illus": "MÔ HÌNH · BẢO TÀNG"
+   "bg": "xian"
   },
   {
-   "type": "kinetic",
+   "type": "broll",
    "at": 3,
-   "items": [
-    {
-     "text": "VƯƠNG BẢN LẬP",
-     "at": 3,
-     "acc": true
-    },
-    {
-     "text": "ĐƯỢC VUA CHE CHỞ",
-     "at": [
-      3,
-      "được"
-     ],
-     "sm": true
-    },
-    {
-     "text": "NHÀ VUA ĐỊNH THA · ÔNG KHÔNG CHỊU",
-     "at": [
-      4,
-      "nhà"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "off5"
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900003"
   },
   {
-   "type": "quote",
-   "at": 6,
-   "text": "Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.202",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 6,
-   "typeAt": 6,
-   "bg": "guard1"
-  },
-  {
-   "type": "kinetic",
-   "at": 7,
-   "items": [
-    {
-     "text": "BẢN LẬP BỊ TỘI",
-     "at": 7,
-     "acc": true
-    },
-    {
-     "text": "TRIỀU ĐÌNH TỪ ĐÓ NGHIÊM CHỈNH",
-     "at": [
-      7,
-      "và"
-     ],
-     "sm": true
-    },
-    {
-     "text": "CHUYẾN ĐI KHÁC · TÂN ĐƯỜNG THƯ",
-     "at": [
-      8,
-      "tân"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "wu3",
+   "type": "slam",
+   "at": 4,
+   "text": "AI BỊ LIÊN LỤY?",
+   "sub": "CON SỐ ĐƯỢC KỂ KHÔNG GIỐNG NHAU",
+   "bg": "guard1",
    "focus": [
     0.5,
     0.3
    ]
   },
   {
-   "type": "photo",
+   "type": "org",
+   "at": 5,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "DỰ CHÂU 688",
+     "s": "BA CÁCH ĐẾM",
+     "cls": "top",
+     "at": 5
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "BỊ BUỘC TỘI",
+     "s": "600–700 GIA ĐÌNH · THÔNG GIÁM",
+     "at": 5
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "BỊ TỊCH THU",
+     "s": "5.000 NGƯỜI · THÔNG GIÁM",
+     "at": 5
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "BỊ ÁN TỬ",
+     "s": "2.000 NGƯỜI · TÂN ĐƯỜNG THƯ",
+     "at": 5
+    }
+   ],
+   "bg": "dnk_t",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 6,
+   "text": "MỘT CẢ VÙNG\nNGƯỜI",
+   "sub": "DÙ CON SỐ NÀO ĐÚNG",
+   "bg": "lych",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "org",
+   "at": 7,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "ÔNG ĐỨNG GIỮA",
+     "s": "HAI CÁCH SAI",
+     "cls": "top",
+     "at": 7
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "NÓI RA",
+     "s": "BỊ COI LÀ BÊNH PHẢN",
+     "at": 7
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "IM LẶNG",
+     "s": "CÓ THỂ TRÁI Ý VUA",
+     "at": 7
+    }
+   ],
+   "bg": "off5"
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900002"
+  },
+  {
+   "type": "quote",
    "at": 9,
-   "img": "guard2",
-   "illus": "LÍNH ĐƯỜNG · TRANH VÁCH MỘ",
-   "tone": null,
+   "text": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 9,
+   "typeAt": 9,
+   "bg": "silk2"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "TẤU THƯ VIẾT\nXONG",
+     "at": 10,
+     "acc": true
+    },
+    {
+     "text": "ÔNG LẠI XÉ",
+     "at": [
+      10,
+      "ông"
+     ],
+     "acc": true
+    },
+    {
+     "text": "RỒI VẪN GỬI MẬT TẤU ĐI",
+     "at": [
+      11,
+      "rồi"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "items": [
+    {
+     "text": "VÕ TẮC THIÊN ĐỌC",
+     "at": 12,
+     "acc": true
+    },
+    {
+     "text": "ÂN XÁ · ĐÀY ĐẾN\nPHONG CHÂU",
+     "at": [
+      12,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "lych",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "ĐOÀN NGƯỜI BỊ\nĐÀY",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "ĐI QUA NINH CHÂU",
+     "at": [
+      13,
+      "đi"
+     ],
+     "sm": true
+    },
+    {
+     "text": "CÁC CỤ GIÀ KHÓC\nDƯỚI BIA CỦA ÔNG",
+     "at": [
+      13,
+      "các"
+     ],
+     "acc": true
+    }
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "quote",
+   "at": 14,
+   "text": "Chính sứ quân Địch đã cứu sống các ngươi!",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 14,
+   "typeAt": 14,
+   "bg": "stele"
+  },
+  {
+   "type": "photo",
+   "at": 15,
+   "img": "stele",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
    "move": null,
    "focus": [
     0.5,
@@ -221,339 +325,187 @@
   },
   {
    "type": "kinetic",
-   "at": 10,
+   "at": 16,
    "items": [
     {
-     "text": "MẤY TRĂM LÍNH TRỐN",
-     "at": 10,
+     "text": "BA NGÀY ĂN CHAY",
+     "at": 16,
      "acc": true
     },
     {
-     "text": "BỌN CÒN LẠI CÀNG KÉO ĐÔNG",
+     "text": "DƯỚI BIA ẤY RỒI MỚI ĐI TIẾP",
      "at": [
-      10,
-      "nhưng"
+      16,
+      "dưới"
      ],
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
-  },
-  {
-   "type": "slam",
-   "at": 11,
-   "text": "NGƯỜI CÙNG ĐƯỜNG",
-   "sub": "DỄ THÀNH HỌA",
-   "bg": "warrior"
-  },
-  {
-   "type": "ledger",
-   "at": 12,
-   "title": "MỘT TỜ LỆNH",
-   "rows": [
-    {
-     "k": "CHO PHÉP",
-     "v": "TỰ THÚ",
-     "at": 12
-    },
-    {
-     "k": "THẢ",
-     "v": "NGƯỜI ĐANG GIAM",
-     "at": 12
-    },
-    {
-     "k": "CẤP",
-     "v": "LƯƠNG VỀ BÁO TIN",
-     "at": 12
-    }
-   ],
-   "bg": "tguard"
+   "bg": "off2",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
-   "at": 13,
+   "at": 17,
    "items": [
     {
-     "text": "CẢ TOÁN LÍNH TỰ TRÓI",
-     "at": 13,
+     "text": "ĐẾN NƠI ĐÀY",
+     "at": 17,
      "acc": true
     },
     {
-     "text": "HOÀNG ĐẾ KHEN: BIẾT TÙY CƠ",
+     "text": "HỌ LẠI DỰNG THÊM\nMỘT TẤM BIA KHEN\nÔNG",
      "at": [
-      14,
-      "hoàng"
+      17,
+      "họ"
      ],
-     "sm": true
+     "acc": true
     }
    ],
-   "bg": "guardo"
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
-   "type": "org",
-   "at": 15,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "CHẶNG 4 · KỲ CHÂU",
-     "s": "HAI CUỐN SỔ",
-     "cls": "top",
-     "at": 15
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "CẢNH BẮT CƯỚP",
-     "at": 15
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "TOÁN LÍNH TỰ NỘP MÌNH",
-     "at": 15
-    }
-   ],
-   "bg": "hh2"
+   "type": "slam",
+   "at": 18,
+   "text": "ÔNG LÀM ĐIỀU",
+   "sub": "NGƯỜI CÓ QUYỀN KHÔNG THỂ THA",
+   "bg": "xian"
   },
   {
-   "type": "question",
-   "at": 17,
-   "text": "NẾU PHIM CÓ MA QUÁI,\nSỬ CÓ GÌ?",
-   "bg": "dnk_c"
-  },
-  {
-   "type": "myth",
+   "type": "file",
    "at": 19,
-   "mythLab": "TRONG PHIM",
-   "myth": "ÁN MA QUÁI",
-   "truthLab": "TRONG HAI BỘ ĐƯỜNG THƯ",
-   "truth": "KHÔNG CÓ VỤ NÀO",
-   "strikeAt": [
-    19,
-    "không"
-   ],
-   "truthAt": [
-    19,
-    "quái"
-   ],
-   "bg": "ministers"
+   "k": "TƯỚNG ĐÓNG QUÂN Ở DỰ CHÂU",
+   "name": "TRƯƠNG\nQUANG PHỤ",
+   "desc": "Quân dưới trướng đòi hỏi quá đáng · ông từ chối",
+   "bg": "off7",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
    "at": 20,
    "items": [
     {
-     "text": "ĐIỀU GẦN NHẤT\nLÀ MỘT NGÔI ĐỀN",
+     "text": "ÔNG NÓI THẲNG",
      "at": 20,
      "acc": true
     },
     {
-     "text": "CAO TÔNG ĐI PHẦN DƯƠNG · ÔNG LÀM TRI ĐỐN SỨ",
+     "text": "MỘT LỜI TƯỚNG QUÂN NÀO CŨNG KHÓ NGHE",
      "at": [
-      21,
-      "cao"
+      20,
+      "một"
      ],
      "sm": true
     }
    ],
-   "bg": "qian4",
-   "illus": "ẢNH NGÀY NAY"
+   "bg": "off3",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
+   "at": 21,
+   "text": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.204",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 21,
+   "typeAt": 21,
+   "bg": "guard2"
   },
   {
    "type": "kinetic",
    "at": 22,
    "items": [
     {
-     "text": "ĐỀN ĐỐ NỮ",
+     "text": "GIẾT KẺ ĐÃ HÀNG\nĐỂ LẤY CÔNG",
      "at": 22,
      "acc": true
     },
     {
-     "text": "MẶC ĐẸP ĐI QUA · GẶP SẤM GIÓ",
+     "text": "MÁU CHẢY ĐỎ CÁNH ĐỒNG · SINH RA VẠN TRINH",
      "at": [
-      23,
-      "tục"
+      22,
+      "máu"
      ],
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
-  },
-  {
-   "type": "slam",
-   "at": 24,
-   "text": "MẤY VẠN NGƯỜI",
-   "sub": "MỞ ĐƯỜNG VÒNG",
-   "bg": "sancaih"
-  },
-  {
-   "type": "quote",
-   "at": 26,
-   "text": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 26,
-   "typeAt": 26,
-   "bg": "tzaud"
-  },
-  {
-   "type": "kinetic",
-   "at": 27,
-   "items": [
-    {
-     "text": "CAO TÔNG KHEN",
-     "at": 27,
-     "acc": true
-    },
-    {
-     "text": "\"BẬC ĐẠI TRƯỢNG PHU\"",
-     "at": [
-      27,
-      "bậc"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "off3"
-  },
-  {
-   "type": "kinetic",
-   "at": 28,
-   "items": [
-    {
-     "text": "CHỈ CÓ TRONG HAI BỘ ĐƯỜNG THƯ",
-     "at": 28,
-     "acc": true
-    },
-    {
-     "text": "ÍT NĂM SAU: THỨ SỬ NINH CHÂU",
-     "at": [
-      29,
-      "ít"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "off10"
-  },
-  {
-   "type": "kinetic",
-   "at": 30,
-   "items": [
-    {
-     "text": "NINH CHÂU",
-     "at": 30,
-     "acc": true
-    },
-    {
-     "text": "CÁC CỤ GIÀ HÁT KHEN THỨ SỬ",
-     "at": [
-      30,
-      "thấy"
-     ],
-     "sm": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900006"
-  },
-  {
-   "type": "date",
-   "at": 31,
-   "day": "ĐI XEM XÉT GIANG NAM",
-   "date": "688",
-   "bg": "map700"
-  },
-  {
-   "type": "counter",
-   "at": 33,
-   "suffix": " ĐỀN MIẾU",
-   "label": "BỊ ĐỐT · THEO TƯ TRỊ THÔNG GIÁM",
-   "from": 0,
-   "to": 1700,
-   "prefix": "HƠN ",
-   "year": false,
-   "bg": "bod1"
-  },
-  {
-   "type": "ledger",
-   "at": 34,
-   "title": "BỐN NƠI ĐƯỢC GIỮ",
-   "rows": [
-    {
-     "k": "1",
-     "v": "HẠ VŨ",
-     "at": 34
-    },
-    {
-     "k": "2",
-     "v": "NGÔ THÁI BÁ",
-     "at": 34
-    },
-    {
-     "k": "3",
-     "v": "QUÝ TRÁT",
-     "at": 34
-    },
-    {
-     "k": "4",
-     "v": "NGŨ VIÊN",
-     "at": 34
-    }
-   ],
-   "bg": "bod2"
-  },
-  {
-   "type": "org",
-   "at": 35,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "CHẶNG 5 · ĐỀN MIẾU",
-     "s": "HAI CUỐN SỔ",
-     "cls": "top",
-     "at": 35
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "CẢNH TRỪ TÀ",
-     "at": 35
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "HƠN 1.700 MIẾU BỊ ĐỐT",
-     "at": 35
-    }
-   ],
-   "bg": "fengxian",
-   "illus": "ẢNH NGÀY NAY"
-  },
-  {
-   "type": "slam",
-   "at": 37,
-   "text": "VỪA GIỮ LUẬT",
-   "sub": "VỪA PHÁ MIẾU",
-   "bg": "dnk_a",
+   "bg": "warrior",
    "focus": [
     0.5,
-    0.78
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "items": [
+    {
+     "text": "TRƯƠNG QUANG PHỤ\nTÂU ÔNG BẤT KÍNH",
+     "at": 23,
+     "acc": true
+    },
+    {
+     "text": "ĐỊCH NHÂN KIỆT\nBỊ GIÁNG",
+     "at": [
+      24,
+      "địch"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THỨ SỬ PHỤC CHÂU",
+     "at": [
+      24,
+      "thứ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off9",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 25,
+   "text": "SÁU BẢY TRĂM\nGIA ĐÌNH",
+   "sub": "ĐỔI LẠI MỘT CHIẾC GHẾ THẤP HƠN",
+   "bg": "jar",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 26,
+   "text": "CÁI GIÁ\nBẮT ĐẦU NẶNG",
+   "sub": "HAI NĂM SAU · TRIỀU ĐẠI ĐỔI HỌ",
+   "bg": "lych",
+   "focus": [
+    0.5,
+    0.3
    ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 05",
-  "t": "THỨ GẦN VỚI MA QUÁI NHẤT"
+  "t": "DỰ CHÂU: LÁ THƯ VIẾT RỒI LẠI XÉ"
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "tense",
   "at": 0,
   "gain": 0.12
  }

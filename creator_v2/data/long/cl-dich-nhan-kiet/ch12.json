@@ -1,76 +1,107 @@
 {
- "title": "Biên cương, Hà Bắc, một pho tượng",
+ "title": "\"Việc nhà ta\"",
  "lines": [
   {
-   "t": "Trở lại năm 697, trước chuyện kế vị, ông dâng sớ xin bỏ các trấn xa ở Tây Vực.",
+   "t": "Hai người cháu của Võ Tắc Thiên là Võ Thừa Tự và Võ Tam Tư đều muốn làm thái tử.",
    "p": 0.8
   },
-  "Cựu Đường thư chép câu then chốt.",
+  "Ngôi báu sẽ về tay họ Võ, hay trở lại với họ Lý của nhà Đường?",
+  "Địch Nhân Kiệt chọn nói thẳng với bà, bằng những câu rất giản dị.",
   {
-   "t": "Xin bỏ bốn trấn để làm giàu Trung Quốc, bãi An Đông để làm đầy Liêu Tây.",
+   "t": "Đầu tiên, ông nhắc về Thái Tông.",
+   "p": 1.0
+  },
+  {
+   "t": "Văn hoàng đế dãi gió dầm mưa, xông pha mũi tên hòn đạn để định thiên hạ, rồi truyền cho con cháu.",
    "q": 1,
-   "tr": 1
-  },
-  "Việc ấy không được nghe theo, nhưng Tư trị thông giám chép: người hiểu biết cho là đúng.",
-  "Sang năm 698, quân Đột Quyết của Mặc Xuyết đánh vào Triệu Châu và Định Châu.",
-  "Họ giết hơn mười nghìn người bị bắt, rồi rút lui.",
-  "Địch Nhân Kiệt dẫn mười vạn quân đuổi theo, nhưng không kịp.",
-  "Nếu là phim, cuộc truy đuổi có thể kết thúc nhanh gọn.",
-  {
-   "t": "Sử chép ông đuổi không kịp.",
-   "p": 1.0
-  },
-  "Sau đó, ông được cử đi an phủ Hà Bắc.",
-  "Dân ở đó từng bị giặc ép theo, giờ sợ bị trị tội nên chạy trốn.",
-  "Theo Tư trị thông giám, trước đó Võ Ý Tông đi dẹp Hà Bắc và ra tay tàn khốc.",
-  {
-   "t": "Địch Nhân Kiệt dâng một bản sớ khác.",
+   "tr": 1,
    "p": 1.0
   },
   {
-   "t": "Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai.",
+   "t": "Rồi ông hỏi một câu mà ai cũng thấy đau.",
+   "p": 1.0
+  },
+  {
+   "t": "Cô cháu với mẹ con, bên nào thân hơn?",
    "q": 1,
-   "tr": 1
-  },
-  "Triều đình nghe theo.",
-  "Ông tìm những người bị Đột Quyết bắt đi, đưa họ trả về quê cũ.",
-  "Ông tu sửa các trạm dịch để đón quân về, phát lương cho người nghèo, và tự ăn cơm thô.",
-  "Ông cấm quân tướng quấy nhiễu dân, ai phạm thì chém.",
-  {
-   "t": "Sử viết: Hà Bắc yên ổn.",
-   "p": 1.0
-  },
-  "Năm 700, Võ Tắc Thiên muốn dựng một pho tượng Phật rất lớn.",
-  "Chi phí lên đến nhiều triệu tiền, và bà bắt tăng ni cả nước mỗi ngày góp một đồng.",
-  {
-   "t": "Ông dâng sớ can.",
+   "tr": 1,
    "p": 1.0
   },
   {
-   "t": "Việc không thể sai quỷ làm, phải dùng người. Của cải không từ trời rơi, rốt cuộc phải từ đất ra. Không hại trăm họ thì lấy đâu?",
+   "t": "Rồi ông nói đến chuyện ai sẽ thờ bà sau khi bà mất.",
+   "p": 1.0
+  },
+  {
+   "t": "Bệ hạ lập con, ngàn năm sau còn được thờ ở Thái miếu. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu.",
    "q": 1,
-   "tr": 1
+   "tr": 1,
+   "p": 1.0
   },
+  "Bà đáp lại.",
   {
-   "t": "Bà đáp.",
+   "t": "Đây là việc nhà ta, khanh đừng dự vào.",
+   "q": 1,
+   "tr": 1,
    "p": 1.0
   },
   {
-   "t": "Khanh dạy trẫm làm điều thiện, sao lại cãi?",
-   "q": 1,
-   "tr": 1
+   "t": "Ông trả lời liền.",
+   "p": 1.0
   },
-  "Rồi bà bãi việc dựng tượng.",
-  "Tháng tư năm 700, Võ Tắc Thiên lên cung Tam Dương tránh nóng.",
-  "Một nhà sư người Hồ mời bà đi xem lễ chôn xá lợi.",
-  "Ông quỳ trước ngựa của bà, tâu rằng nhà sư ấy dối trá, và đường núi hẹp, không chỗ cho thị vệ.",
-  "Bà quay xe giữa đường, và nói rằng việc ấy để thành khí phách của một bề tôi thẳng thắn.",
-  "Nhìn lại cây bách ở Chiêu Lăng và pho tượng chưa dựng.",
-  "Một cây bách mà vua định giết hai tướng.",
-  "Một pho tượng mà bà định thu tiền tăng ni cả nước.",
-  "Một lần ông nói về luật và chỗ đặt tay chân của dân.",
   {
-   "t": "Một lần ông nói về sức dân và đồng tiền của họ.",
+   "t": "Bậc vương giả lấy bốn biển làm nhà. Việc gì chẳng là việc nhà của bệ hạ?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Hãy hình dung căn phòng im phăng phắc, giữa hai người đang nhìn nhau qua một chiếc án thư.",
+  "Một hôm, bà kể giấc mơ của mình.",
+  {
+   "t": "Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  {
+   "t": "Ông giải mộng luôn, ngay trước mặt bà.",
+   "p": 1.0
+  },
+  {
+   "t": "Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Sau lần ấy, bà không còn ý lập Võ Thừa Tự hay Võ Tam Tư nữa.",
+  "Một lời giải mộng, nhưng đổi cả hướng đi của một triều đại.",
+  "Hãy hình dung hai hàng người xếp trước bàn ghi danh đi lính, một hàng lèo tèo, một hàng dài đến hết phố.",
+  "Nhưng đừng nghĩ ông làm một mình.",
+  "Vương Phương Khánh và Vương Cập Thiện cũng cùng khuyên bà.",
+  "Ngay cả Trương Dịch Chi, người được bà sủng ái, từng hỏi ông cách tự giữ mình cho yên.",
+  "Ông đáp rằng chỉ có một cách: khuyên bà đón Lư Lăng vương trở về.",
+  "Tháng ba năm 698, Lư Lăng vương được gọi về kinh. Sau đó, ông được lập làm thái tử.",
+  "Có một cảnh nữa, kể trong hai bộ Đường thư. Võ Tắc Thiên giấu con trai mình sau màn trướng.",
+  "Hãy hình dung tấm màn trướng khẽ lay, và một người đàn ông đang nín thở sau lớp vải.",
+  {
+   "t": "Bà gọi Địch Nhân Kiệt vào, bàn chuyện Lư Lăng vương. Rồi bà bất ngờ kéo màn ra.",
+   "p": 1.0
+  },
+  {
+   "t": "Trả lại thái tử cho khanh.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Ông khóc, nước mắt không ngừng được.",
+  "Sử còn ghi một lý lẽ ông dùng, rất cụ thể: Võ Tam Tư mộ dũng sĩ hơn một tháng mà chưa đủ ngàn người.",
+  "Lư Lăng vương thay vào, chưa đầy mười ngày đã có năm vạn.",
+  "Người con trai của bà trở lại làm thái tử.",
+  {
+   "t": "Nhưng ông già đi, và còn một việc nữa phải làm trước khi ngã xuống.",
+   "p": 1.0
+  },
+  {
+   "t": "Bạn nghĩ người như ông sẽ bỏ lại điều gì sau lưng?",
    "p": 1.0
   }
  ],
@@ -79,152 +110,123 @@
    "type": "chapter",
    "no": "12",
    "k": "CHƯƠNG 12",
-   "title": "BIÊN CƯƠNG,\nHÀ BẮC,\nMỘT PHO TƯỢNG",
-   "sub": "NĂM 697 · XIN BỎ CÁC TRẤN XA Ở TÂY VỰC",
+   "title": "\"VIỆC\nNHÀ TA\"",
+   "sub": "NĂM 698 · NGÔI THÁI TỬ",
    "titleAt": [
     0,
-    "Trở"
+    "Hai"
    ],
-   "bg": "turk2"
-  },
-  {
-   "type": "quote",
-   "at": 1,
-   "text": "Xin bỏ bốn trấn để làm giàu Trung Quốc, bãi An Đông để làm đầy Liêu Tây.",
-   "by": "CỰU ĐƯỜNG THƯ · Q.89",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 2,
-   "typeAt": 2,
-   "bg": "m220"
-  },
-  {
-   "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "KHÔNG ĐƯỢC NGHE THEO",
-     "at": 3,
-     "acc": true
-    },
-    {
-     "text": "NHƯNG: \"NGƯỜI HIỂU BIẾT CHO LÀ ĐÚNG\"",
-     "at": [
-      3,
-      "nhưng"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "gokturk",
-   "illus": "TƯ TRỊ THÔNG GIÁM"
-  },
-  {
-   "type": "map",
-   "at": 4,
-   "geo": "ht2",
-   "pins": [
-    {
-     "name": "Triệu Châu"
-    },
-    {
-     "name": "Định Châu"
-    }
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
    ]
   },
   {
-   "type": "counter",
-   "at": 6,
-   "suffix": " QUÂN",
-   "label": "ĐỊCH NHÂN KIỆT TRUY ĐUỔI QUÂN ĐỘT QUYẾT",
-   "from": 0,
-   "to": 100000,
-   "bg": "turkh"
-  },
-  {
    "type": "org",
-   "at": 7,
+   "at": 1,
    "nodes": [
     {
      "id": "r",
-     "t": "CHẶNG 9 · TRUY ĐUỔI",
-     "s": "HAI CUỐN SỔ",
+     "t": "NGÔI BÁU",
+     "s": "VỀ HỌ NÀO?",
      "cls": "top",
-     "at": 7
+     "at": 1
     },
     {
      "id": "k0",
      "p": "r",
-     "t": "NẾU LÀ PHIM",
-     "s": "CUỘC TRUY ĐUỔI NHANH GỌN",
-     "at": 7
+     "t": "HỌ VÕ",
+     "s": "HAI NGƯỜI CHÁU",
+     "at": 1
     },
     {
      "id": "k1",
      "p": "r",
-     "t": "SỬ CHÉP",
-     "s": "ÔNG ĐUỔI KHÔNG KỊP",
-     "at": 7
+     "t": "HỌ LÝ",
+     "s": "NHÀ ĐƯỜNG",
+     "at": 1
     }
    ],
-   "bg": "kol"
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
-   "type": "kinetic",
-   "at": 9,
-   "items": [
-    {
-     "text": "AN PHỦ HÀ BẮC",
-     "at": 9,
-     "acc": true
-    },
-    {
-     "text": "DÂN TỪNG BỊ GIẶC ÉP THEO",
-     "at": [
-      10,
-      "dân"
-     ],
-     "sm": true
-    },
-    {
-     "text": "SỢ BỊ TRỊ TỘI NÊN CHẠY TRỐN",
-     "at": [
-      10,
-      "giờ"
-     ],
-     "sm": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900003"
+   "type": "slam",
+   "at": 2,
+   "text": "NÓI THẲNG\nVỚI BÀ",
+   "sub": "BẰNG NHỮNG CÂU RẤT GIẢN DỊ",
+   "bg": "dnk_c",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "kinetic",
-   "at": 11,
-   "items": [
-    {
-     "text": "VÕ Ý TÔNG",
-     "at": 11,
-     "acc": true
-    },
-    {
-     "text": "RA TAY TÀN KHỐC",
-     "at": [
-      11,
-      "ra"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "warrior"
+   "type": "slam",
+   "at": 3,
+   "text": "CÂU THỨ NHẤT",
+   "sub": "ÔNG NHẮC VỀ THÁI TÔNG",
+   "bg": "tz",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
-   "at": 12,
-   "text": "Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai.",
+   "at": 4,
+   "text": "Văn hoàng đế dãi gió dầm mưa, xông pha mũi tên hòn đạn để định thiên hạ, rồi truyền cho con cháu.",
    "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
    "lbl": "TRÍCH DỊCH",
-   "qline": 13,
-   "typeAt": 13,
+   "qline": 4,
+   "typeAt": 4,
+   "bg": "zl2"
+  },
+  {
+   "type": "quote",
+   "at": 5,
+   "text": "Cô cháu với mẹ con, bên nào thân hơn?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 7,
+   "text": "AI SẼ THỜ BÀ",
+   "sub": "SAU KHI BÀ MẤT?",
+   "bg": "stele"
+  },
+  {
+   "type": "quote",
+   "at": 8,
+   "text": "Bệ hạ lập con, ngàn năm sau còn được thờ ở Thái miếu. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 8,
+   "typeAt": 8,
+   "bg": "qian2",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "quote",
+   "at": 9,
+   "text": "Đây là việc nhà ta, khanh đừng dự vào.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 10,
+   "typeAt": 10,
    "bg": "wu2",
    "focus": [
     0.5,
@@ -232,73 +234,83 @@
    ]
   },
   {
-   "type": "kinetic",
+   "type": "quote",
+   "at": 11,
+   "text": "Bậc vương giả lấy bốn biển làm nhà. Việc gì chẳng là việc nhà của bệ hạ?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "concert"
+  },
+  {
+   "type": "broll",
+   "at": 13,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900001"
+  },
+  {
+   "type": "quote",
    "at": 14,
+   "text": "Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao?",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 15,
+   "typeAt": 15,
+   "bg": "ladies"
+  },
+  {
+   "type": "kinetic",
+   "at": 16,
    "items": [
     {
-     "text": "TRIỀU ĐÌNH NGHE THEO",
-     "at": 14,
+     "text": "ÔNG GIẢI MỘNG",
+     "at": 16,
      "acc": true
     },
     {
-     "text": "ÔNG ĐƯA NGƯỜI BỊ BẮT VỀ QUÊ CŨ",
+     "text": "LUÔN, NGAY TRƯỚC\nMẶT BÀ",
      "at": [
-      15,
-      "ông"
+      16,
+      "ngay"
      ],
-     "sm": true
+     "acc": true
     }
    ],
-   "bg": "off6",
-   "focus": [
-    0.5,
-    0.3
-   ]
+   "bg": "off5"
   },
   {
-   "type": "ledger",
-   "at": 16,
-   "title": "NHỮNG VIỆC ÔNG LÀM",
-   "rows": [
-    {
-     "k": "TRẠM DỊCH",
-     "v": "TU SỬA ĐÓN QUÂN VỀ",
-     "at": 16
-    },
-    {
-     "k": "NGƯỜI NGHÈO",
-     "v": "PHÁT LƯƠNG",
-     "at": 16
-    },
-    {
-     "k": "BẢN THÂN",
-     "v": "ĂN CƠM THÔ",
-     "at": 16
-    }
-   ],
-   "bg": "off7"
+   "type": "quote",
+   "at": 17,
+   "text": "Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": 17,
+   "bg": "mirror"
   },
   {
    "type": "slam",
-   "at": 17,
-   "text": "QUẤY DÂN THÌ CHÉM",
-   "sub": "LỆNH CẤM QUÂN TƯỚNG",
-   "bg": "gokturk"
+   "at": 18,
+   "text": "BÀ KHÔNG CÒN Ý",
+   "sub": "LẬP VÕ THỪA TỰ HAY VÕ TAM TƯ",
+   "bg": "wudio",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
-   "type": "date",
-   "at": 18,
-   "day": "HÀ BẮC YÊN ỔN · TƯỢNG PHẬT RẤT LỚN",
-   "date": "700",
-   "bg": "longmen",
-   "illus": "ẢNH NGÀY NAY"
+   "type": "slam",
+   "at": 19,
+   "text": "MỘT LỜI\nGIẢI MỘNG",
+   "sub": "ĐỔI CẢ HƯỚNG ĐI CỦA MỘT TRIỀU ĐẠI",
+   "bg": "mingtang",
+   "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
    "type": "photo",
    "at": 20,
-   "img": "vairo",
-   "illus": "TƯỢNG PHẬT LONG MÔN · ẢNH NGÀY NAY",
-   "tone": "color",
+   "img": "guard2",
+   "illus": "PHỎNG DỰNG",
+   "tone": null,
    "move": null,
    "focus": [
     0.5,
@@ -306,127 +318,220 @@
    ]
   },
   {
-   "type": "quote",
-   "at": 22,
-   "text": "Việc không thể sai quỷ làm, phải dùng người. Của cải không từ trời rơi, rốt cuộc phải từ đất ra. Không hại trăm họ thì lấy đâu?",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.207",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 22,
-   "typeAt": 22,
-   "bg": "bod1"
-  },
-  {
-   "type": "quote",
-   "at": 23,
-   "text": "Khanh dạy trẫm làm điều thiện, sao lại cãi?",
-   "by": "TƯ TRỊ THÔNG GIÁM · Q.207",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 24,
-   "typeAt": 24,
-   "bg": "wu1",
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "KHÔNG LÀM\nMỘT MÌNH",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "VƯƠNG PHƯƠNG KHÁNH · VƯƠNG CẬP THIỆN CŨNG KHUYÊN BÀ",
+     "at": [
+      22,
+      "vương"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off1",
    "focus": [
     0.5,
     0.3
    ]
   },
   {
+   "type": "file",
+   "at": 23,
+   "k": "NGƯỜI BÀ SỦNG ÁI",
+   "name": "TRƯƠNG\nDỊCH CHI",
+   "desc": "Hỏi ông cách tự giữ mình cho yên",
+   "bg": "off3",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "CHỈ CÓ MỘT CÁCH",
+   "sub": "KHUYÊN BÀ ĐÓN LƯ LĂNG VƯƠNG VỀ",
+   "bg": "qian4",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
    "type": "date",
-   "at": 26,
-   "day": "THÁNG TƯ · CUNG TAM DƯƠNG · LỄ CHÔN XÁ LỢI",
-   "date": "700",
-   "bg": "bod2"
+   "at": 25,
+   "day": "LƯ LĂNG VƯƠNG ĐƯỢC GỌI VỀ KINH · SAU ĐÓ LẬP THÁI TỬ",
+   "date": "698",
+   "bg": "qian1",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.206",
+   "illus": "ẢNH NGÀY NAY"
   },
   {
    "type": "kinetic",
-   "at": 28,
+   "at": 26,
    "items": [
     {
-     "text": "ÔNG QUỲ TRƯỚC NGỰA CỦA BÀ",
-     "at": 28,
+     "text": "GIẤU CON TRAI\nSAU MÀN TRƯỚNG",
+     "at": 26,
      "acc": true
     },
     {
-     "text": "NHÀ SƯ ẤY DỐI TRÁ",
+     "text": "CHỈ HAI BỘ ĐƯỜNG THƯ KỂ CẢNH NÀY",
      "at": [
-      28,
-      "tâu"
+      26,
+      "kể"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "wu3",
+   "srcnote": "NGUỒN: CỰU ĐƯỜNG THƯ · Q.89 · TÂN ĐƯỜNG THƯ Q.115",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 27,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900007"
+  },
+  {
+   "type": "quote",
+   "at": 28,
+   "text": "Trả lại thái tử cho khanh.",
+   "by": "CỰU ĐƯỜNG THƯ · Q.89",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 29,
+   "typeAt": 29,
+   "bg": "wu3",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 30,
+   "items": [
+    {
+     "text": "ÔNG KHÓC",
+     "at": 30,
+     "acc": true
+    },
+    {
+     "text": "NƯỚC MẮT KHÔNG NGỪNG ĐƯỢC",
+     "at": [
+      30,
+      "nước"
      ],
      "sm": true
     },
     {
-     "text": "ĐƯỜNG NÚI HẸP, KHÔNG CHỖ CHO THỊ VỆ",
+     "text": "SỬ GHI MỘT LÝ LẼ\nRẤT CỤ THỂ",
      "at": [
-      28,
+      31,
+      "sử"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_b",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "ledger",
+   "at": [
+    31,
+    "Võ"
+   ],
+   "title": "MỘ QUÂN ĐỂ TRANH NGÔI",
+   "rows": [
+    {
+     "k": "VÕ TAM TƯ",
+     "v": "HƠN MỘT THÁNG · CHƯA ĐỦ NGÀN",
+     "at": [
+      31,
+      "Võ"
+     ]
+    },
+    {
+     "k": "LƯ LĂNG VƯƠNG",
+     "v": "CHƯA MƯỜI NGÀY · NĂM VẠN",
+     "at": [
+      31,
+      "Võ"
+     ]
+    }
+   ],
+   "bg": "warrior",
+   "srcnote": "NGUỒN: TÂN ĐƯỜNG THƯ Q.115",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 33,
+   "text": "THÁI TỬ TRỞ LẠI",
+   "sub": "NGƯỜI CON TRAI CỦA BÀ",
+   "bg": "qian2",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "kinetic",
+   "at": 34,
+   "items": [
+    {
+     "text": "ÔNG GIÀ ĐI",
+     "at": 34,
+     "acc": true
+    },
+    {
+     "text": "CÒN MỘT VIỆC NỮA PHẢI LÀM TRƯỚC KHI NGÃ XUỐNG",
+     "at": [
+      34,
       "và"
      ],
      "sm": true
     }
    ],
-   "bg": "kol"
+   "bg": "dnk_a",
+   "focus": [
+    0.5,
+    0.78
+   ]
   },
   {
-   "type": "slam",
-   "at": 29,
-   "text": "BÀ QUAY XE",
-   "sub": "GIỮA ĐƯỜNG",
-   "bg": "hh1"
-  },
-  {
-   "type": "split",
-   "at": 30,
-   "title": "HAI LẦN CAN",
-   "a": {
-    "img": "zhaoling",
-    "label": "CÂY BÁCH · LUẬT VÀ CHỖ ĐẶT TAY CHÂN"
-   },
-   "b": {
-    "img": "vairo",
-    "label": "PHO TƯỢNG · SỨC DÂN VÀ ĐỒNG TIỀN"
-   }
-  },
-  {
-   "type": "kinetic",
-   "at": 32,
-   "items": [
-    {
-     "text": "MỘT PHO TƯỢNG",
-     "at": 32,
-     "acc": true
-    },
-    {
-     "text": "BÀ ĐỊNH THU TIỀN TĂNG NI CẢ NƯỚC",
-     "at": [
-      32,
-      "một"
-     ],
-     "sm": true
-    },
-    {
-     "text": "MỘT LẦN ÔNG NÓI VỀ LUẬT",
-     "at": [
-      33,
-      "một"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "fengxian",
-   "illus": "ẢNH NGÀY NAY"
-  },
-  {
-   "type": "slam",
-   "at": 34,
-   "text": "SỨC DÂN",
-   "sub": "VÀ ĐỒNG TIỀN CỦA HỌ",
-   "bg": "turk2"
+   "type": "question",
+   "at": 35,
+   "text": "NGƯỜI NHƯ ÔNG\nSẼ BỎ LẠI ĐIỀU GÌ SAU LƯNG?",
+   "bg": "dnk_t",
+   "focus": [
+    0.5,
+    0.3
+   ]
   }
  ],
  "hud": {
   "k": "CHƯƠNG 12",
-  "t": "BIÊN CƯƠNG, HÀ BẮC, MỘT PHO TƯỢNG"
+  "t": "\"VIỆC NHÀ TA\""
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "tense",
   "at": 0,
   "gain": 0.12
  }

@@ -1,58 +1,59 @@
 {
- "title": "Từ Bành Trạch về Ngụy Châu",
+ "title": "Khi quân Khiết Đan gõ cửa",
  "lines": [
   {
-   "t": "Theo bản tiếng Trung, năm ông đến Bành Trạch, vùng ấy gặp hạn, dân hết lương.",
+   "t": "Năm 696, quân Khiết Đan hạ Ký Châu, và cả Hà Bắc chấn động.",
    "p": 0.8
   },
-  "Ông dâng sớ xin cứu đói và miễn thuế, và bà nghe theo.",
-  "Năm 696, quân Khiết Đan hạ Ký Châu, cả vùng Hà Bắc rung chuyển.",
-  "Triều đình gọi ông từ Bành Trạch ra làm thứ sử Ngụy Châu.",
-  "Người đứng đầu châu trước, Độc Cô Tư Trang, sợ giặc đến bất ngờ nên dồn hết dân vào thành, sửa thành lũy.",
+  "Triều đình gọi ông từ Bành Trạch ra, cử làm thứ sử Ngụy Châu.",
+  "Thứ sử trước là Độc Cô Tư Trang, và ông này đã dồn hết dân vào trong thành để phòng thủ.",
+  "Hãy hình dung người dân bỏ nhà, bỏ ruộng, chen chúc trong những bức tường chật chội.",
   {
-   "t": "Địch Nhân Kiệt đến nơi, và nói một câu.",
+   "t": "Địch Nhân Kiệt đến, nhìn cảnh ấy, và cho họ về.",
    "p": 1.0
   },
   {
    "t": "Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo.",
    "q": 1,
-   "tr": 1
-  },
-  "Ông cho dân về ruộng.",
-  "Hai bộ Đường thư chép thêm: giặc nghe tin thì tự rút.",
-  "Tư trị thông giám chỉ chép rằng dân rất mừng.",
-  {
-   "t": "Về sau, một chuyện khác liên quan đến quân Khiết Đan.",
+   "tr": 1,
    "p": 1.0
   },
-  "Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng nhà Chu.",
-  "Họ từng đánh bại quân Chu nhiều lần, nên có người xin giết cả họ.",
+  "Sử chép rằng giặc nghe tin ấy thì tự rút lui.",
+  "Dân rất mừng.",
+  "Hãy hình dung cả thành thở ra một hơi dài, khi người ta được trở về với ruộng đồng của mình.",
+  "Nhưng có một việc khác khó hơn nhiều. Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng.",
+  "Có người trách họ đến muộn, và xin diệt cả họ nhà họ.",
   {
-   "t": "Địch Nhân Kiệt thì xin tha.",
+   "t": "Địch Nhân Kiệt lên tiếng bênh họ.",
    "p": 1.0
   },
   {
    "t": "Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta.",
    "q": 1,
-   "tr": 1
-  },
-  "Sử chép: người thân của ông can ngăn, ông đáp rằng nếu lợi cho nước thì đâu phải lo cho thân mình.",
-  "Võ Tắc Thiên nghe theo, cho hai người chức tước, và họ đánh dẹp tàn quân Khiết Đan.",
-  "Giai Cố sau đó còn được ban họ Võ.",
-  "Về phần ông, Tân Đường thư chép ông làm đô đốc U Châu, được ban áo tía.",
-  {
-   "t": "Võ Tắc Thiên còn tự làm mười hai chữ vàng đính lên áo ấy, để khen lòng trung của ông.",
+   "tr": 1,
    "p": 1.0
   },
-  "Ở triều đình, sử còn chép một chuyện về Lâu Sư Đức.",
-  "Lâu Sư Đức từng tiến cử ông làm tể tướng.",
-  "Lâu Sư Đức trấn giữ vùng Hà Lũng hơn bốn mươi năm, nổi tiếng điềm đạm và khoan dung.",
-  "Ông không biết, và còn coi thường Lâu Sư Đức, tìm cách đẩy ông ta ra khỏi triều.",
-  "Một hôm Võ Tắc Thiên hỏi ông về Lâu Sư Đức, ông đáp qua loa.",
-  "Bà bèn nói rằng bà biết ông, chính là nhờ Lâu Sư Đức tiến cử.",
-  "Ông thở dài rằng đức của Lâu công dày, ông được che chở đã lâu mà không thấy bờ bến.",
+  "Những người thân thiết của ông can ông đừng làm thế. Sợ ông mang tai họa vào thân.",
+  "Ông đáp rằng nếu việc ấy có lợi cho nước, thì không thể lo cho thân mình.",
+  "Hai tướng được tha. Họ được giao chức, và đi dẹp tàn quân Khiết Đan.",
+  "Trong triều có Lâu Sư Đức, người trấn giữ Hà Lũng hơn bốn chục năm, tính điềm đạm khoan dung.",
+  "Chính Lâu Sư Đức đã tiến cử ông, nhưng ông không biết, và còn coi thường người ấy.",
+  "Một hôm bà hỏi ông rằng Sư Đức có phải là người hiền không. Ông đáp qua loa.",
+  "Bà nói rằng bà biết đến ông, chính là nhờ Sư Đức tiến cử.",
   {
-   "t": "Người ông từng coi thường lại là người đã tiến cử ông.",
+   "t": "Ông đành thừa nhận: Lâu công đức dày, và ông được bao dung đã lâu mà không hay.",
+   "p": 1.0
+  },
+  "Lý Giai Cố còn được ban họ Võ, và làm đại tướng quân.",
+  "Một người từng bị ép nhận mình là kẻ phản, giờ xin tha cho hai kẻ vừa ra hàng.",
+  "Có lẽ ông hiểu rất rõ cảm giác bị chặn hết đường sống.",
+  "Chiến sự chưa dừng lại.",
+  {
+   "t": "Còn kẻ đến sau, không còn là Khiết Đan.",
+   "p": 1.0
+  },
+  {
+   "t": "Đột Quyết kéo xuống phương nam, và Hà Bắc lại cần đến ông.",
    "p": 1.0
   }
  ],
@@ -61,33 +62,17 @@
    "type": "chapter",
    "no": "10",
    "k": "CHƯƠNG 10",
-   "title": "TỪ BÀNH\nTRẠCH VỀ\nNGỤY CHÂU",
-   "sub": "BÀNH TRẠCH · HẠN HÁN · DÂN HẾT LƯƠNG",
+   "title": "KHI QUÂN\nKHIẾT ĐAN\nGÕ CỬA",
+   "sub": "NĂM 696 · KÝ CHÂU BỊ HẠ",
    "titleAt": [
     0,
-    "Theo"
+    "Năm"
    ],
-   "bg": "off6",
-   "illus": "BÁCH KHOA",
-   "focus": [
-    0.5,
-    0.3
-   ]
-  },
-  {
-   "type": "slam",
-   "at": 1,
-   "text": "XIN CỨU ĐÓI",
-   "sub": "VÀ MIỄN THUẾ",
-   "bg": "wu1",
-   "focus": [
-    0.5,
-    0.3
-   ]
+   "bg": "turk1"
   },
   {
    "type": "map",
-   "at": 2,
+   "at": 1,
    "geo": "ht2",
    "pins": [
     {
@@ -100,11 +85,38 @@
   },
   {
    "type": "file",
-   "at": 4,
-   "k": "THỨ SỬ NGỤY CHÂU TRƯỚC",
+   "at": 2,
+   "k": "THỨ SỬ TRƯỚC",
    "name": "ĐỘC CÔ\nTƯ TRANG",
-   "desc": "Sợ giặc đến bất ngờ · dồn dân vào thành, sửa thành lũy",
-   "bg": "off7"
+   "desc": "Dồn hết dân vào trong thành để phòng thủ",
+   "bg": "off7",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "photo",
+   "at": 3,
+   "img": "cmodel",
+   "illus": "PHỎNG DỰNG · MÔ HÌNH BẢO TÀNG",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "ÔNG CHO DÂN VỀ",
+   "sub": "NHÌN CẢNH ẤY RỒI QUYẾT ĐỊNH",
+   "bg": "dnk_c",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "quote",
@@ -112,109 +124,88 @@
    "text": "Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo.",
    "by": "TƯ TRỊ THÔNG GIÁM · Q.205",
    "lbl": "TRÍCH DỊCH",
-   "qline": 6,
-   "typeAt": 6,
+   "qline": 5,
+   "typeAt": 5,
    "bg": "hanguang",
    "illus": "MÔ HÌNH · BẢO TÀNG"
   },
   {
    "type": "kinetic",
-   "at": 7,
+   "at": 6,
    "items": [
     {
-     "text": "ÔNG CHO DÂN VỀ RUỘNG",
-     "at": 7,
+     "text": "GIẶC NGHE TIN\nTHÌ TỰ RÚT",
+     "at": 6,
      "acc": true
     },
     {
-     "text": "GIẶC NGHE TIN THÌ TỰ RÚT",
+     "text": "DÂN RẤT MỪNG",
      "at": [
-      8,
-      "hai"
+      7,
+      "dân"
      ],
-     "sm": true
-    },
-    {
-     "text": "THÔNG GIÁM: DÂN RẤT MỪNG",
-     "at": [
-      9,
-      "tư"
-     ],
-     "sm": true
+     "acc": true
     }
    ],
-   "bg": "turk1",
-   "illus": "DỊ BẢN · HAI BỘ ĐƯỜNG THƯ"
+   "bg": "turkh",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "kinetic",
-   "at": 10,
-   "items": [
-    {
-     "text": "VỀ SAU",
-     "at": 10,
-     "acc": true
-    },
-    {
-     "text": "MỘT CHUYỆN KHÁC · QUÂN KHIẾT ĐAN",
-     "at": [
-      10,
-      "một"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "gokturk"
+   "type": "photo",
+   "at": 8,
+   "img": "hh1",
+   "illus": "PHỎNG DỰNG · HIỆN VẬT",
+   "tone": "color",
+   "move": null,
+   "focus": [
+    0.5,
+    0.45
+   ]
   },
   {
    "type": "org",
-   "at": 11,
+   "at": 9,
    "nodes": [
     {
      "id": "r",
      "t": "HAI TƯỚNG KHIẾT ĐAN",
      "s": "RA HÀNG NHÀ CHU",
      "cls": "top",
-     "at": 11
+     "at": 9
     },
     {
      "id": "k0",
      "p": "r",
      "t": "LÝ GIAI CỐ",
      "s": "TƯỚNG KHIẾT ĐAN",
-     "at": 11
+     "at": 9
     },
     {
      "id": "k1",
      "p": "r",
      "t": "LẠC VỤ CHỈNH",
      "s": "TƯỚNG KHIẾT ĐAN",
-     "at": 11
+     "at": 9
     }
    ],
-   "bg": "turkh"
+   "bg": "gokturk"
   },
   {
    "type": "kinetic",
-   "at": 12,
+   "at": 10,
    "items": [
     {
-     "text": "TỪNG ĐÁNH BẠI QUÂN CHU",
-     "at": 12,
+     "text": "NGƯỜI TA XIN\nDIỆT CẢ HỌ",
+     "at": 10,
      "acc": true
     },
     {
-     "text": "CÓ NGƯỜI XIN GIẾT CẢ HỌ",
+     "text": "ÔNG LÊN TIẾNG\nBÊNH HỌ",
      "at": [
-      12,
-      "nên"
-     ],
-     "sm": true
-    },
-    {
-     "text": "ÔNG XIN THA",
-     "at": [
-      13,
+      11,
       "địch"
      ],
      "acc": true
@@ -224,166 +215,146 @@
   },
   {
    "type": "quote",
-   "at": 14,
-   "text": "Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta.",
+   "at": 12,
+   "text": "Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta.",
    "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
    "lbl": "TRÍCH DỊCH",
-   "qline": 14,
-   "typeAt": 14,
-   "bg": "samar"
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "samar",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "quote",
+   "at": [
+    12,
+    "Vỗ"
+   ],
+   "text": "Vỗ về bằng ân đức, tất thành người của ta.",
+   "by": "TƯ TRỊ THÔNG GIÁM · Q.206",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": [
+    12,
+    "Vỗ"
+   ],
+   "bg": "samar",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "NGƯỜI THÂN CAN\nÔNG",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "SỢ ÔNG MANG TAI HỌA VÀO THÂN",
+     "at": [
+      13,
+      "sợ"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "off8",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 14,
+   "text": "LỢI CHO NƯỚC",
+   "sub": "THÌ KHÔNG THỂ LO CHO THÂN MÌNH",
+   "bg": "dnk_b",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
    "at": 15,
    "items": [
     {
-     "text": "NGƯỜI THÂN CAN NGĂN",
+     "text": "HAI TƯỚNG\nĐƯỢC THA",
      "at": 15,
      "acc": true
     },
     {
-     "text": "ÔNG: NẾU LỢI CHO NƯỚC THÌ ĐÂU PHẢI LO CHO THÂN",
+     "text": "ĐƯỢC GIAO CHỨC · ĐI DẸP TÀN QUÂN KHIẾT ĐAN",
      "at": [
       15,
-      "ông"
+      "họ"
      ],
      "sm": true
     }
    ],
-   "bg": "off8"
-  },
-  {
-   "type": "kinetic",
-   "at": 16,
-   "items": [
-    {
-     "text": "ĐƯỢC CHỨC TƯỚC",
-     "at": 16,
-     "acc": true
-    },
-    {
-     "text": "ĐÁNH DẸP TÀN QUÂN KHIẾT ĐAN",
-     "at": [
-      16,
-      "và"
-     ],
-     "sm": true
-    },
-    {
-     "text": "GIAI CỐ ĐƯỢC BAN HỌ VÕ",
-     "at": [
-      17,
-      "giai"
-     ],
-     "acc": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
-  },
-  {
-   "type": "kinetic",
-   "at": 18,
-   "items": [
-    {
-     "text": "ĐÔ ĐỐC U CHÂU",
-     "at": 18,
-     "acc": true
-    },
-    {
-     "text": "ĐƯỢC BAN ÁO TÍA",
-     "at": [
-      18,
-      "được"
-     ],
-     "acc": true
-    }
-   ],
-   "bg": "camel",
-   "illus": "TÂN ĐƯỜNG THƯ"
-  },
-  {
-   "type": "slam",
-   "at": 19,
-   "text": "MƯỜI HAI CHỮ VÀNG",
-   "sub": "ĐÍNH LÊN ÁO · KHEN LÒNG TRUNG",
-   "bg": "wugold"
+   "bg": "kol",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "file",
-   "at": 20,
+   "at": 16,
    "k": "TỂ TƯỚNG TIẾN CỬ ÔNG",
    "name": "LÂU\nSƯ ĐỨC",
-   "desc": "Trấn giữ vùng Hà Lũng hơn bốn mươi năm",
-   "bg": "off9"
+   "desc": "Trấn giữ Hà Lũng hơn bốn chục năm · điềm đạm khoan dung",
+   "bg": "off9",
+   "srcnote": "NGUỒN: TƯ TRỊ THÔNG GIÁM · Q.206",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "kinetic",
-   "at": 22,
+   "at": 17,
    "items": [
     {
-     "text": "HÀ LŨNG HƠN BỐN MƯƠI NĂM",
-     "at": 22,
+     "text": "LÂU SƯ ĐỨC",
+     "at": 17,
      "acc": true
     },
     {
-     "text": "ĐIỀM ĐẠM · KHOAN DUNG",
+     "text": "ĐÃ TIẾN CỬ ÔNG · ÔNG KHÔNG BIẾT",
      "at": [
-      22,
-      "nổi"
+      17,
+      "nhưng"
      ],
      "sm": true
-    }
-   ],
-   "bg": "off10"
-  },
-  {
-   "type": "kinetic",
-   "at": 23,
-   "items": [
+    },
     {
-     "text": "ÔNG COI THƯỜNG LÂU SƯ ĐỨC",
-     "at": 23,
+     "text": "ÔNG CÒN COI\nTHƯỜNG NGƯỜI ẤY",
+     "at": [
+      17,
+      "và"
+     ],
      "acc": true
-    },
-    {
-     "text": "TÌM CÁCH ĐẨY RA KHỎI TRIỀU",
-     "at": [
-      23,
-      "tìm"
-     ],
-     "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900003"
+   "bg": "off10",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "org",
-   "at": 24,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "LÂU SƯ ĐỨC",
-     "s": "NGƯỜI TIẾN CỬ",
-     "cls": "top",
-     "at": 24
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "ÔNG ĐÁP QUA LOA",
-     "s": "VỚI VÕ TẮC THIÊN",
-     "at": 24
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "BÀ NÓI",
-     "s": "NHỜ LÂU TIẾN CỬ",
-     "at": 24
-    }
-   ],
+   "type": "question",
+   "at": 18,
+   "text": "\"SƯ ĐỨC CÓ PHẢI\nNGƯỜI HIỀN KHÔNG?\"",
    "bg": "wu2",
    "focus": [
     0.5,
@@ -392,42 +363,127 @@
   },
   {
    "type": "kinetic",
-   "at": 26,
+   "at": 19,
    "items": [
     {
-     "text": "LÂU CÔNG ĐỨC DÀY",
-     "at": 26,
+     "text": "CHÍNH SƯ ĐỨC\nĐÃ TIẾN CỬ ÔNG",
+     "at": 19,
      "acc": true
     },
     {
-     "text": "ÔNG ĐƯỢC CHE CHỞ ĐÃ LÂU",
+     "text": "BÀ NÓI VỚI ÔNG",
      "at": [
-      26,
-      "ông"
+      19,
+      "bà"
      ],
      "sm": true
     }
    ],
-   "bg": "mirror"
+   "bg": "wu1",
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
-   "type": "slam",
-   "at": 27,
-   "text": "NGƯỜI BỊ COI THƯỜNG",
-   "sub": "LẠI LÀ NGƯỜI TIẾN CỬ",
+   "type": "kinetic",
+   "at": 20,
+   "items": [
+    {
+     "text": "ÔNG THỪA NHẬN",
+     "at": 20,
+     "acc": true
+    },
+    {
+     "text": "LÂU CÔNG ĐỨC DÀY · ÔNG ĐƯỢC BAO DUNG ĐÃ LÂU",
+     "at": [
+      20,
+      "lâu"
+     ],
+     "sm": true
+    }
+   ],
    "bg": "dnk_a",
    "focus": [
     0.5,
     0.78
    ]
+  },
+  {
+   "type": "slam",
+   "at": 21,
+   "text": "LÝ GIAI CỐ",
+   "sub": "ĐƯỢC BAN HỌ VÕ · LÀM ĐẠI TƯỚNG QUÂN",
+   "bg": "turkh",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "TỪNG BỊ ÉP NHẬN\nMÌNH LÀ KẺ PHẢN",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "GIỜ XIN THA CHO\nHAI KẺ VỪA RA\nHÀNG",
+     "at": [
+      22,
+      "giờ"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "dnk_c",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 23,
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900008"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "CHIẾN SỰ\nCHƯA DỪNG",
+   "sub": "CÒN KẺ ĐẾN SAU, KHÔNG CÒN LÀ KHIẾT ĐAN",
+   "bg": "gokturk"
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "ĐỘT QUYẾT\nXUỐNG PHƯƠNG NAM",
+     "at": 26,
+     "acc": true
+    },
+    {
+     "text": "HÀ BẮC LẠI CẦN\nĐẾN ÔNG",
+     "at": [
+      26,
+      "và"
+     ],
+     "acc": true
+    }
+   ],
+   "bg": "turk2"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 10",
-  "t": "TỪ BÀNH TRẠCH VỀ NGỤY CHÂU"
+  "t": "KHI QUÂN KHIẾT ĐAN GÕ CỬA"
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "tense",
   "at": 0,
   "gain": 0.12
  }

@@ -1,0 +1,15 @@
+Đã hoàn thành soát kịch bản v3 Địch Nhân Kiệt theo brief [GH-395-check-agy.md](file:///D:/Tools/Youtube%20Creator%20v2/wt-dnk3/creator_v2/docs/pm/tickets/GH-395-check-agy.md). Báo cáo đã được tạo bằng Python (`utf-8`) tại [GH-395-check-report.md](file:///D:/Tools/Youtube%20Creator%20v2/wt-dnk3/creator_v2/docs/pm/tickets/GH-395-check-report.md).
+
+### Tóm tắt kết quả kiểm tra theo 4 cổng (§14 mục 2):
+
+1. **Loại 1 (Sai dữ kiện tên, năm, nơi, quan hệ, ai làm gì):** **1 lỗi** trong lời đọc *(kèm 1 lưu ý tiêu đề)*.
+   - **CH03 (câu 107):** `Một nắm đất ở lăng cha nhà vua: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.`
+     - *Dòng FC liên quan:* Dòng 248 và dòng 86.
+     - *Lỗi:* Trường Lăng (ở câu 106) là lăng của Hán Cao Tổ (thời Hán), không phải lăng cha Đường Cao Tông (lăng cha Cao Tông là Chiêu Lăng). Viết `"lăng cha nhà vua"` trong ngữ cảnh đang can Đường Cao Tông khiến người nghe hiểu sai quan hệ và địa điểm lăng mộ.
+     - *Cách sửa tối thiểu giữ giọng kể:* `Một nắm đất ở lăng Hán Cao Tổ: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.` *(hoặc: `Một nắm đất ở lăng tiên đế thời Hán: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.`)*
+   - *Lưu ý Tiêu đề 3 (dòng 10):* `Xử 17.000 Án...` dùng sai đơn vị so với dòng 79, 80, 215 của `factcheck.md` (chính sử dùng đơn vị 17.000 người, không dùng đơn vị án). Thân bài đã dùng đúng (`"án tồn của 17.000 người"`). Đề xuất chọn Phương án tiêu đề 1 hoặc 2.
+2. **Loại 2 (Con số/ngày không có trong factcheck):** **0 lỗi**. Mọi mốc thời gian và số liệu định lượng đều có nguồn đối chiếu khớp từng dòng trong [factcheck.md](file:///D:/Tools/Youtube%20Creator%20v2/wt-dnk3/creator_v2/data/long/cl-dich-nhan-kiet/factcheck.md).
+3. **Loại 3 (Lời trích » / [TRÍCH DỊCH] không khớp nguyên văn):** **0 lỗi**. Toàn bộ 37/37 câu trích thoại `[TRÍCH DỊCH]` đều khớp chính xác 100% từng chữ với bản dịch trong `factcheck.md`.
+4. **Loại 4 (Bịa lời nói/cảm xúc người còn sống, nội dung nguy hiểm):** **0 lỗi**. Các nhân vật đương đại (Lương Quán Hoa, Lưu Đức Hoa, Từ Khắc ở CH13) chỉ được nhắc vai trò làm phim lịch sử; không bịa đặt lời thoại hay cảm xúc.
+
+Chi tiết đối chiếu đầy đủ được lưu tại [docs/pm/tickets/GH-395-check-report.md](file:///D:/Tools/Youtube%20Creator%20v2/wt-dnk3/creator_v2/docs/pm/tickets/GH-395-check-report.md). Không can thiệp file khác, không commit và không thay đổi lịch phát sóng.
