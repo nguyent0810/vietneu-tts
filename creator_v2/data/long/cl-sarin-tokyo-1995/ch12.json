@@ -100,8 +100,8 @@
   },
   {
    "type": "date",
-   "at": 2,
-   "day": "PHIÊN XỬ ASAHARA · KHOẢNG TÁM NĂM",
+   "at": 3,
+   "day": "TUYÊN ÁN ASAHARA · SAU KHOẢNG TÁM NĂM XỬ",
    "date": "27/2/2004",
    "bg": "mar83",
    "illus": "MINH HỌA CHUNG",
@@ -349,6 +349,17 @@
    "day": "MỘT ĐẠO LUẬT CHO PHÉP BỒI THƯỜNG NẠN NHÂN",
    "date": "2008",
    "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "counter",
+   "at": 23,
+   "suffix": " NGƯỜI",
+   "label": "ĐÃ NỘP ĐƠN BỒI THƯỜNG · THÁNG 12/2009",
+   "from": 0,
+   "to": 5259,
+   "bg": "mar83",
    "srcnote": "NGUỒN: WIKIPEDIA",
    "illus": "ẢNH NGÀY NAY"
   },

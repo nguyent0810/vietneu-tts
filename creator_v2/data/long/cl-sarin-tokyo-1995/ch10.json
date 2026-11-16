@@ -151,16 +151,25 @@
      "k": "MATSUMOTO",
      "v": "144 → HƠN 500 BỊ THƯƠNG",
      "at": 6
-    },
+    }
+   ],
+   "bg": "sdf26",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "HAI VỤ CẠNH NHAU",
+   "rows": [
     {
      "k": "TOKYO",
      "v": "12–14 NGƯỜI CHẾT",
-     "at": 6
+     "at": 7
     },
     {
      "k": "TOKYO",
      "v": "BỊ THƯƠNG TÍNH BẰNG NGHÌN",
-     "at": 6
+     "at": 7
     }
    ],
    "bg": "sdf26",

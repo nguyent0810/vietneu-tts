@@ -198,7 +198,10 @@
   },
   {
    "type": "map",
-   "at": 8,
+   "at": [
+    7,
+    "Nagano"
+   ],
    "geo": "jp1",
    "pins": [
     {
@@ -444,16 +447,6 @@
      "year": "CUỐI 9",
      "text": "CÂY CHẾT Ở YAMANASHI",
      "at": 28
-    },
-    {
-     "year": "7/10",
-     "text": "LỆNH LẤY MẪU ĐẤT",
-     "at": 28
-    },
-    {
-     "year": "16/11",
-     "text": "CẶN SARIN",
-     "at": 28
     }
    ],
    "bg": "ai12",
@@ -462,23 +455,43 @@
   },
   {
    "type": "timeline",
-   "at": 31,
+   "at": 30,
    "title": null,
    "items": [
     {
+     "year": "7/10",
+     "text": "LỆNH LẤY MẪU ĐẤT",
+     "at": 30
+    },
+    {
+     "year": "16/11",
+     "text": "CẶN SARIN",
+     "at": 30
+    },
+    {
      "year": "1/1/1995",
      "text": "BÀI BÁO YOMIURI",
-     "at": 31
-    },
+     "at": 30
+    }
+   ],
+   "bg": "ai12",
+   "illus": "MINH HỌA CHUNG",
+   "srcnote": "NGUỒN: WIKIPEDIA"
+  },
+  {
+   "type": "timeline",
+   "at": 32,
+   "title": null,
+   "items": [
     {
      "year": "2/1995",
      "text": "BẮT CÓC Ở TOKYO",
-     "at": 31
+     "at": 32
     },
     {
      "year": "17/3",
      "text": "CHỐT KHÁM XÉT",
-     "at": 31
+     "at": 32
     }
    ],
    "bg": "ai26",
