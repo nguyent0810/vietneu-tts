@@ -41,7 +41,9 @@ HFS.device("close", {
   cssW: `.cs-q{position:absolute;left:220px;right:220px;top:280px;font-size:100px;line-height:1.2;text-align:center}`,
   build(c, s, st) { const q = c.el("div", "cs-q heavy", null, st); return { ws: c.words(q, s.q, { mask: true }) }; },
   enter(c, h, t0, s) {
-    h.ws.forEach((w, i) => { c.tl.set(w.inn, { yPercent: 115 }, 0); c.tl.to(w.inn, { yPercent: 0, duration: c.S(.5), ease: "power3.out" }, t0 + .1 + i * .07); });
+    // fade:true -> chữ hiện dần tại chỗ (không trồi): câu nhiều dòng không chạm dòng dưới lúc vào cảnh (hyperframes check content_overlap)
+    if (s.fade) h.ws.forEach((w, i) => { c.tl.set(w.inn, { autoAlpha: 0 }, 0); c.tl.to(w.inn, { autoAlpha: 1, duration: c.S(.4), ease: "none" }, t0 + .1 + i * .07); });
+    else h.ws.forEach((w, i) => { c.tl.set(w.inn, { yPercent: 115 }, 0); c.tl.to(w.inn, { yPercent: 0, duration: c.S(.5), ease: "power3.out" }, t0 + .1 + i * .07); });
     const k = s.markWord != null ? s.markWord : h.ws.length - 1;
     h.ws.slice(Math.max(0, k - (s.markSpan || 1) + 1), k + 1).forEach((w) => c.underline(w.wd, t0 + .9, { cls: "u-line u-accent" }));
   },

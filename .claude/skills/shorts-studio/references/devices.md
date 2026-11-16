@@ -28,7 +28,7 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 | `unit_grid` | number | grid · Z | `title, total, cols, lit:[...], litAt, unitLabel` | "k trên N" |
 | `month_sheet` | time | grid · draw | `title, note, wd, weeks, goods:[{day,at}], strip, stripLab` | Tờ lịch tháng; vòng chỉ khoanh số dương |
 | `thiep_cuoi` | statement | card-on-field · static | `han, eyebrow, sub, rows:[{day,am,meta,mute}], note` | Thiệp; `mute` cho hàng không có ngày |
-| `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan` | Câu hỏi kết, gạch chân cụm cuối |
+| `close` | close | edge-band · mask | `q` (**nhấn**), `markWord, markSpan`, `fade` | Câu hỏi kết, gạch chân cụm cuối; `fade:true` = chữ hiện dần tại chỗ (câu ≥ 3 dòng trượt `check` khi trồi) |
 
 ---
 
