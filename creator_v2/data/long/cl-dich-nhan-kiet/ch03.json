@@ -1,40 +1,63 @@
 {
- "title": "Đại lý thừa, và con số 17.000",
+ "title": "Ba câu nói trước mặt hoàng đế",
  "lines": [
   {
-   "t": "Lúc ấy, hoàng đế Cao Tông xưng là Thiên Hoàng, và hoàng hậu Võ xưng là Thiên Hậu.",
-   "p": 0.8
-  },
-  "Hai người cùng đứng ở trung tâm triều đình.",
-  "Năm 675, theo Wikipedia, ông lên làm đại lý thừa, một viên quan của Đại Lý Tự, tòa án tối cao nhà Đường.",
-  "Nếu là phim, đây là lúc có một vụ án lớn đang chờ.",
-  "Trong sử, điều đang chờ là một chồng hồ sơ cũ.",
-  "Cựu Đường thư chép, trong khoảng niên hiệu Nghi Phụng, ông xử xong án tồn của 17.000 người trong một năm.",
-  {
-   "t": "Rồi thêm bốn chữ: không có ai kêu oan.",
+   "t": "Câu thứ nhất, ông không cãi luật. Ông nói về sự can gián.",
    "p": 1.0
   },
-  "Tân Đường thư chép khác một chút: người đời khen ông xử công bằng và khoan dung.",
-  "Bạn thử hình dung số án tồn liên quan đến một vạn bảy nghìn người.",
-  "Hai bộ sử đều ghi con số ấy, nhưng không có bảng kê từng vụ.",
-  "Con số này nằm trong hai bộ sử, mỗi bộ chép nó bằng đúng một câu.",
-  "Trong những trang ta đã mở, không có bảng kê từng vụ.",
-  "Bản tiếng Anh viết là 17.000 vụ, còn sử viết là 17.000 người.",
-  "Cả hai cách ghi đều để lại một con số rất lớn.",
   {
-   "t": "Nó chỉ nhắc rằng đây là một dòng sử, không phải một biên bản.",
+   "t": "Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ.",
+   "q": 1,
+   "tr": 1,
    "p": 1.0
   },
-  "Có một cách hiểu hợp với phim: một người phá án lớn bằng một trí tuệ lớn.",
-  "Sử mở ra cách hiểu khác: một người xử xong việc mà người khác để dồn lại.",
+  "Hãy nghe cho kỹ. Ông vừa nói với nhà vua rằng, nếu ngài là Nghiêu, Thuấn, thì chẳng ai phải sợ khi can ngài.",
   {
-   "t": "Theo Cựu Đường thư, số án tồn được xử xong mà không có ai kêu oan.",
+   "t": "Câu thứ hai, ông quay về luật.",
    "p": 1.0
   },
-  "Cũng trong những năm ấy, ông gặp một vụ có thật, trước mặt hoàng đế.",
-  "Vụ ấy không có xác chết.",
   {
-   "t": "Nó chỉ có một cây bách.",
+   "t": "Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Hãy hình dung nhà vua im lặng, và cả triều đường nín thở theo, chờ xem ông có bị lôi ra ngoài hay không.",
+  "Rồi đến câu thứ ba, câu mà ông để dành cho cuối cùng.",
+  {
+   "t": "Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Ông còn hỏi thêm một điều: nếu có kẻ trộm một nắm đất ở Trường Lăng, bệ hạ sẽ xử ra sao?",
+  "Một nắm đất ở lăng Hán Cao Tổ: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.",
+  "Sử chép rằng hai người kia bị cách chức và đày đi Lĩnh Nam.",
+  "Họ giữ được mạng. Còn ông thì sao?",
+  {
+   "t": "Vài ngày sau, Địch Nhân Kiệt được thăng làm thị ngự sử.",
+   "p": 1.0
+  },
+  "Đó là chức quan chuyên hặc tội các quan khác.",
+  "Ông chọc giận nhà vua, và nhận về đúng thứ vũ khí ấy.",
+  "Và ông dùng nó đến nơi đến chốn.",
+  "Năm 679, ông hặc Vi Hoằng Cơ, người xây các cung Túc Vũ, Cao Sơn, Thượng Dương.",
+  "Lý do ông đưa ra: Vi Hoằng Cơ dẫn nhà vua đi vào đường xa hoa.",
+  "Vi Hoằng Cơ bị cách chức.",
+  {
+   "t": "Rồi đến Vương Bản Lập, kẻ được chính nhà vua che chở. Lần này ông nói một câu liều hơn nhiều.",
+   "p": 1.0
+  },
+  {
+   "t": "Nếu nhất định tha Bản Lập, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Nghe câu ấy, Bản Lập rốt cuộc vẫn bị trị tội.",
+  "Từ đó, triều đình trở nên tề chỉnh hẳn.",
+  {
+   "t": "Nhưng có một việc mà ông sắp làm, chẳng ai trong triều muốn chạm tới. Đó là một ngôi đền.",
    "p": 1.0
   }
  ],

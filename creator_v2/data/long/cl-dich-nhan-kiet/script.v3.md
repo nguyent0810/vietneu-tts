@@ -5,13 +5,13 @@
 **Độ dài dự kiến:** khoảng ba mươi phút, mười bốn chương (số âm tiết theo script_lines.py, xem báo cáo)
 
 **Ba phương án tiêu đề (theo mẫu survival, không nêu nguồn):**
-1. Tể Tướng Tự Nhận Mình Phản: Ba Chữ Cứu Mạng Địch Nhân Kiệt (58 ký tự)
-2. Mảnh Lụa Giấu Trong Áo Bông: Tể Tướng Thoát Chết Ra Sao? (56 ký tự)
-3. Xử 17.000 Án Không Ai Kêu Oan, Rồi Tự Nhận Mình Phản? (53 ký tự)
+1. Tể Tướng Tự Nhận Mình Phản: Ba Chữ Cứu Mạng Địch Nhân Kiệt
+2. Mảnh Lụa Giấu Trong Áo Bông: Tể Tướng Thoát Chết Ra Sao?
+3. Xử Xong Cho 17.000 Người Không Ai Oan, Rồi Nhận Mình Phản?
 
 Quy ước đọc file:
 - Mỗi dòng là một câu đọc. `‖` cuối dòng là chỗ ngừng dài.
-- `»` là lời trích, đọc bằng giọng trích. `[TRÍCH DỊCH]` chỉ đánh dấu câu có nguyên văn chữ Hán và URL trong factcheck.md.
+- `»` là lời trích, đọc bằng giọng trích. nhãn dịch chỉ đánh dấu câu có nguyên văn chữ Hán và URL trong factcheck.md.
 - `{pd}` cuối câu là cảnh phỏng dựng hoặc giả thuyết hợp lý (không gian, vật dụng, người vô danh), luôn báo bằng lời "hãy hình dung" hoặc "có lẽ"; trên hình gắn nhãn PHỎNG DỰNG. `{beat: ...}` là nhịp diễn biến mới.
 
 **Trục kể:** Địch Nhân Kiệt, vị quan sống sót dưới chế độ mật vụ Võ Chu bằng lời nhận tội giả và một mảnh lụa trong áo bông, và cái giá của việc cứu người giữa thời khủng bố. Mỗi chương là một chặng của nhân vật: tình thế, lựa chọn, hệ quả, câu hỏi kéo sang chương sau. Phim chỉ được đối chiếu hai lần (CH04, CH13).
@@ -104,7 +104,7 @@ Hãy hình dung nhà vua im lặng, và cả triều đường nín thở theo, 
 Rồi đến câu thứ ba, câu mà ông để dành cho cuối cùng. {beat: câu thứ ba}
 » Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào? ‖ [TRÍCH DỊCH]
 Ông còn hỏi thêm một điều: nếu có kẻ trộm một nắm đất ở Trường Lăng, bệ hạ sẽ xử ra sao?
-Một nắm đất ở lăng cha nhà vua: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.
+Một nắm đất ở lăng Hán Cao Tổ: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.
 Sử chép rằng hai người kia bị cách chức và đày đi Lĩnh Nam. {beat: hệ quả}
 Họ giữ được mạng. Còn ông thì sao?
 Vài ngày sau, Địch Nhân Kiệt được thăng làm thị ngự sử. ‖
@@ -473,7 +473,7 @@ Nếu bạn đứng trước Lai Tuấn Thần, bạn sẽ viết gì lên mản
 
 ## Ghi chú kiểm chứng (để duyệt, không đọc)
 
-Ký hiệu: "FC §n" là mục n của `data/long/cl-dich-nhan-kiet/factcheck.md`. Mọi câu trích dịch đánh `[TRÍCH DỊCH]` lấy đúng bản dịch ở các dòng "TRÍCH DỊCH" của FC.
+Ký hiệu: "FC §n" là mục n của `data/long/cl-dich-nhan-kiet/factcheck.md`. Mọi câu dịch có nhãn lấy đúng bản dịch trong FC.
 
 | Chương | Dữ kiện hoặc câu gán tên/vai | Dòng dẫn tới factcheck | Ghi chú |
 |---|---|---|---|

@@ -1,58 +1,59 @@
 {
- "title": "Từ Bành Trạch về Ngụy Châu",
+ "title": "Khi quân Khiết Đan gõ cửa",
  "lines": [
   {
-   "t": "Theo bản tiếng Trung, năm ông đến Bành Trạch, vùng ấy gặp hạn, dân hết lương.",
+   "t": "Năm 696, quân Khiết Đan hạ Ký Châu, và cả Hà Bắc chấn động.",
    "p": 0.8
   },
-  "Ông dâng sớ xin cứu đói và miễn thuế, và bà nghe theo.",
-  "Năm 696, quân Khiết Đan hạ Ký Châu, cả vùng Hà Bắc rung chuyển.",
-  "Triều đình gọi ông từ Bành Trạch ra làm thứ sử Ngụy Châu.",
-  "Người đứng đầu châu trước, Độc Cô Tư Trang, sợ giặc đến bất ngờ nên dồn hết dân vào thành, sửa thành lũy.",
+  "Triều đình gọi ông từ Bành Trạch ra, cử làm thứ sử Ngụy Châu.",
+  "Thứ sử trước là Độc Cô Tư Trang, và ông này đã dồn hết dân vào trong thành để phòng thủ.",
+  "Hãy hình dung người dân bỏ nhà, bỏ ruộng, chen chúc trong những bức tường chật chội.",
   {
-   "t": "Địch Nhân Kiệt đến nơi, và nói một câu.",
+   "t": "Địch Nhân Kiệt đến, nhìn cảnh ấy, và cho họ về.",
    "p": 1.0
   },
   {
    "t": "Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo.",
    "q": 1,
-   "tr": 1
-  },
-  "Ông cho dân về ruộng.",
-  "Hai bộ Đường thư chép thêm: giặc nghe tin thì tự rút.",
-  "Tư trị thông giám chỉ chép rằng dân rất mừng.",
-  {
-   "t": "Về sau, một chuyện khác liên quan đến quân Khiết Đan.",
+   "tr": 1,
    "p": 1.0
   },
-  "Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng nhà Chu.",
-  "Họ từng đánh bại quân Chu nhiều lần, nên có người xin giết cả họ.",
+  "Sử chép rằng giặc nghe tin ấy thì tự rút lui.",
+  "Dân rất mừng.",
+  "Hãy hình dung cả thành thở ra một hơi dài, khi người ta được trở về với ruộng đồng của mình.",
+  "Nhưng có một việc khác khó hơn nhiều. Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng.",
+  "Có người trách họ đến muộn, và xin diệt cả họ nhà họ.",
   {
-   "t": "Địch Nhân Kiệt thì xin tha.",
+   "t": "Địch Nhân Kiệt lên tiếng bênh họ.",
    "p": 1.0
   },
   {
    "t": "Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta.",
    "q": 1,
-   "tr": 1
-  },
-  "Sử chép: người thân của ông can ngăn, ông đáp rằng nếu lợi cho nước thì đâu phải lo cho thân mình.",
-  "Võ Tắc Thiên nghe theo, cho hai người chức tước, và họ đánh dẹp tàn quân Khiết Đan.",
-  "Giai Cố sau đó còn được ban họ Võ.",
-  "Về phần ông, Tân Đường thư chép ông làm đô đốc U Châu, được ban áo tía.",
-  {
-   "t": "Võ Tắc Thiên còn tự làm mười hai chữ vàng đính lên áo ấy, để khen lòng trung của ông.",
+   "tr": 1,
    "p": 1.0
   },
-  "Ở triều đình, sử còn chép một chuyện về Lâu Sư Đức.",
-  "Lâu Sư Đức từng tiến cử ông làm tể tướng.",
-  "Lâu Sư Đức trấn giữ vùng Hà Lũng hơn bốn mươi năm, nổi tiếng điềm đạm và khoan dung.",
-  "Ông không biết, và còn coi thường Lâu Sư Đức, tìm cách đẩy ông ta ra khỏi triều.",
-  "Một hôm Võ Tắc Thiên hỏi ông về Lâu Sư Đức, ông đáp qua loa.",
-  "Bà bèn nói rằng bà biết ông, chính là nhờ Lâu Sư Đức tiến cử.",
-  "Ông thở dài rằng đức của Lâu công dày, ông được che chở đã lâu mà không thấy bờ bến.",
+  "Những người thân thiết của ông can ông đừng làm thế. Sợ ông mang tai họa vào thân.",
+  "Ông đáp rằng nếu việc ấy có lợi cho nước, thì không thể lo cho thân mình.",
+  "Hai tướng được tha. Họ được giao chức, và đi dẹp tàn quân Khiết Đan.",
+  "Trong triều có Lâu Sư Đức, người trấn giữ Hà Lũng hơn bốn chục năm, tính điềm đạm khoan dung.",
+  "Chính Lâu Sư Đức đã tiến cử ông, nhưng ông không biết, và còn coi thường người ấy.",
+  "Một hôm bà hỏi ông rằng Sư Đức có phải là người hiền không. Ông đáp qua loa.",
+  "Bà nói rằng bà biết đến ông, chính là nhờ Sư Đức tiến cử.",
   {
-   "t": "Người ông từng coi thường lại là người đã tiến cử ông.",
+   "t": "Ông đành thừa nhận: Lâu công đức dày, và ông được bao dung đã lâu mà không hay.",
+   "p": 1.0
+  },
+  "Lý Giai Cố còn được ban họ Võ, và làm đại tướng quân.",
+  "Một người từng bị ép nhận mình là kẻ phản, giờ xin tha cho hai kẻ vừa ra hàng.",
+  "Có lẽ ông hiểu rất rõ cảm giác bị chặn hết đường sống.",
+  "Chiến sự chưa dừng lại.",
+  {
+   "t": "Còn kẻ đến sau, không còn là Khiết Đan.",
+   "p": 1.0
+  },
+  {
+   "t": "Đột Quyết kéo xuống phương nam, và Hà Bắc lại cần đến ông.",
    "p": 1.0
   }
  ],

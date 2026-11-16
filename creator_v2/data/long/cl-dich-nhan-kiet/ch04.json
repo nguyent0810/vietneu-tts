@@ -1,60 +1,56 @@
 {
- "title": "Cây bách ở Chiêu Lăng",
+ "title": "Đền Đố Nữ và một ngàn bảy trăm ngôi miếu",
  "lines": [
   {
-   "t": "Tháng chín năm 676, hai tướng, Quyền Thiện Tài và Phạm Hoài Nghĩa, lỡ tay chặt phải cây bách ở Chiêu Lăng.",
+   "t": "Nhà vua sắp đi cung Phần Dương, và Địch Nhân Kiệt lo việc dọn đường, dựng chỗ nghỉ cho cả đoàn.",
    "p": 0.8
   },
-  "Chiêu Lăng là lăng của Đường Thái Tông, cha của đương kim hoàng đế Cao Tông.",
-  "Đại Lý Tự tâu rằng tội ấy đáng bị cách chức.",
-  "Cao Tông ra lệnh xử tử.",
-  "Tư trị thông giám chép lời nhà vua.",
+  "Giữa đường là đền Đố Nữ.",
+  "Lời đồn kể rằng ai mặc đẹp đi qua đền ấy sẽ gặp sấm gió.",
+  "Một viên quan tên Lý Xung Huyền muốn mở đường khác để tránh. Hàng vạn người bị gọi đến đào đắp.",
+  "Hãy hình dung hàng vạn bàn tay cầm xẻng, chỉ vì sợ một ngôi đền và vài tia chớp.",
   {
-   "t": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
-   "q": 1,
-   "tr": 1
-  },
-  "Trước lệnh của nhà vua, viên đại lý thừa vẫn giữ lời tâu của mình.",
-  "Ông vẫn tâu: hai người ấy không đáng chết.",
-  "Hoàng đế nổi giận, bảo ông lui ra.",
-  {
-   "t": "Ông tiếp tục can.",
+   "t": "Địch Nhân Kiệt phản đối, và ông có câu đáp của riêng mình.",
    "p": 1.0
   },
   {
-   "t": "Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ.",
-   "q": 1,
-   "tr": 1
-  },
-  "Rồi ông hỏi lại nhà vua một câu.",
-  "Nếu có kẻ trộm một nắm đất ở lăng Hán Cao Tổ, bệ hạ sẽ xử ra sao?",
-  "Tân Đường thư kể thêm tiền lệ ấy: Hán Văn Đế từng muốn tru cả họ một kẻ trộm ngọc ở miếu tổ.",
-  "Đại thần Trương Thích Chi can ngay giữa triều, và tội chỉ dừng ở một người.",
-  "Rồi ông nói về luật.",
-  {
-   "t": "Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu?",
-   "q": 1,
-   "tr": 1
-  },
-  "Rồi ông nói về chính nhà vua.",
-  {
-   "t": "Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào?",
+   "t": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
    "q": 1,
    "tr": 1,
    "p": 1.0
   },
-  "Ba bộ sử cùng chép cảnh này, và câu chữ mỗi nơi một khác, nên ta dùng bản của Tư trị thông giám.",
-  "Kết quả theo Tư trị thông giám: hai người bị cách chức, đày đi Lĩnh Nam.",
-  "Cựu Đường thư chép: Thiện Tài thoát chết.",
-  "Vài hôm sau, Địch Nhân Kiệt được cất lên làm thị ngự sử.",
-  "Nếu là phim, đây là cảnh tòa.",
+  "Cao Tông nghe xong, khen ông đúng là một bậc đại trượng phu.",
+  "Bạn có thể đang chờ một vụ án ma quái, như trong phim.",
+  "Hai bộ Đường thư chép cả đời ông mà không có vụ nào như thế. Chuyện gần nhất chính là ngôi đền này.",
   {
-   "t": "Trong sử, sau cuộc can ấy, hai viên tướng thoát án chết.",
+   "t": "Và nó kết thúc bằng một câu giễu cợt cả gió sấm.",
    "p": 1.0
   },
-  "Hãy giữ lại cảnh này.",
+  "Về sau, ông làm thứ sử Ninh Châu.",
+  "Khi ông đi qua, các cụ già đứng đầy đường mà hát khen ông.",
+  "Một ngự sử tên Quách Hàn thấy cảnh ấy, và tiến cử ông lên.",
+  "Sử còn kể một chuyện ở Kỳ Châu, nơi ông xử lý theo một cách khác hẳn.",
+  "Mấy trăm lính đào ngũ trốn vào núi, cướp người đi đường, khiến đường sá tắc nghẽn.",
+  "Bắt đồng bọn của họ thì không trị nổi.",
+  "Ông ban lệnh cho phép tự thú. Ông thả cả những người đang bị giam, cấp lương cho họ, rồi cho về báo tin.",
   {
-   "t": "Ông không bắt ai; hai người bị cách chức và đày đi.",
+   "t": "Và cả toán lính tự trói mình, kéo nhau về nộp.",
+   "p": 1.0
+  },
+  "Nhà vua khen ông biết tùy cơ ứng biến.",
+  "Vậy là ông không chỉ có một kiểu: lúc cứng, lúc mềm.",
+  "Nhưng đừng vẽ ông thành một người hiền lành quá mức.",
+  "Ông cũng cách chức người. Ông cũng đốt miếu.",
+  "Năm 688, ở Giang Nam, ông dâng tấu đốt hơn 1.700 ngôi miếu.",
+  "Ông chỉ giữ lại bốn: miếu Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên.",
+  {
+   "t": "Người không sợ lời đồn về đền Đố Nữ cũng dám đốt hơn một ngàn bảy trăm ngôi miếu của dân.",
+   "p": 1.0
+  },
+  "Vậy ông là người thế nào?",
+  "Một người giữ luật đến cùng, hay một người chỉ giữ những gì ông tin là đáng giữ?",
+  {
+   "t": "Cũng trong năm ấy, ở Dự Châu, ông gặp một việc mà luật nào cũng không giải quyết nổi.",
    "p": 1.0
   }
  ],

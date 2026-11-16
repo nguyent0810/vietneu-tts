@@ -1,33 +1,25 @@
 {
- "title": "MỞ ĐẦU: Một chữ \"thật\"",
+ "title": "MỞ ĐẦU: Ba chữ cứu mạng",
  "lines": [
-  "Theo sử, năm 692, một vị tể tướng ở Lạc Dương bị buộc tội mưu phản.",
-  "Người hỏi cung là Lai Tuấn Thần, viên quan chuyên lập hồ sơ tội danh cho triều Võ Chu.",
+  "Một vị tể tướng vừa tự nhận mình mưu phản, trước khi ai kịp đánh ông một roi.",
   {
-   "t": "Ông ta có một mẹo: ai nhận tội ngay ở lần hỏi đầu thì được giảm án chết.",
+   "t": "Ông là Địch Nhân Kiệt, và đây là lời ông nói.",
    "p": 1.0
   },
-  "Vị tể tướng ấy là Địch Nhân Kiệt.",
-  "Sử chép câu ông đáp lại.",
   {
    "t": "Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật!",
    "q": 1,
    "tr": 1,
    "p": 1.0
   },
-  "Sử cũng chép rằng, có lần ông xử xong án tồn của 17.000 người trong một năm, và không ai kêu oan.",
+  "Vì sao một người từng xử xong án tồn của 17.000 người lại tự nhận mình là kẻ phản?",
+  "Người hỏi cung là Lai Tuấn Thần, kẻ nắm cả một mạng lưới người tố giác của triều Võ Chu.",
+  "Ông ta có một luật riêng: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.",
+  "Hãy hình dung một căn phòng bí bách, và một người phải tính nhanh hơn cả nỗi sợ của mình.",
+  "Về sau, chính ông sẽ giải thích lý do, trước mặt Võ Tắc Thiên, bằng một câu đáp rất ngắn.",
+  "Nhưng muốn hiểu ba chữ ấy nặng đến đâu, bạn phải gặp ông sớm hơn thế nhiều.",
   {
-   "t": "Vậy vì sao chính ông lại tự nhận mình là kẻ phản?",
-   "p": 1.0
-  },
-  "Nếu bạn từng xem phim, bạn quen một Địch Nhân Kiệt khác.",
-  "Trong phim, một thám tử có thể lật bàn cờ bằng một phát hiện cuối cùng.",
-  {
-   "t": "Hồ sơ cho ta một người không làm thế.",
-   "p": 1.0
-  },
-  {
-   "t": "Về sau trong ngục, ông xin người canh một cây bút.",
+   "t": "Hãy lùi về thuở ông còn là một cậu bé, giữa lúc cả nhà bị tiểu lại gọi ra hỏi.",
    "p": 1.0
   }
  ],

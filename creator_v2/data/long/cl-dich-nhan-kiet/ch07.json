@@ -1,50 +1,51 @@
 {
- "title": "Lạc Dương dưới triều Võ Chu",
+ "title": "Lời nhận tội",
  "lines": [
   {
-   "t": "Năm 690, Võ Tắc Thiên lên ngôi, lập triều Chu.",
+   "t": "Cái bẫy của Lai Tuấn Thần được đặt sẵn từ trước khi ông bước vào.",
    "p": 0.8
   },
-  "Ít lâu sau, Địch Nhân Kiệt được gọi về triều, từ chức tư mã ở Lạc Châu.",
-  "Tháng chín năm 691, ông được phong làm tể tướng.",
-  "Võ Tắc Thiên hỏi ông một câu: ở Dự Châu ông làm tốt, ông có muốn biết ai đã gièm ông không?",
-  "Ông đáp rằng nếu bà cho là ông có lỗi, ông xin sửa.",
+  "Nhận ngay từ lần hỏi đầu thì được giảm án chết.",
+  "Chối thì phải chịu tra khảo.",
+  "Hãy hình dung ông ngồi trong phòng giam, nhìn hai con đường và biết rõ đường nào cũng có giá.",
+  "Hãy hình dung đêm ấy, ngoài hành lang, tiếng bước chân tuần tra đều đặn như tiếng đếm ngược.",
   {
-   "t": "Nếu bà biết ông không có lỗi, đó là may của ông.",
+   "t": "Ông chọn nhận. Ông nói đúng câu mà bạn đã nghe lúc mở đầu.",
+   "p": 1.0
+  },
+  "Trong câu ấy, ba chữ cuối là ba chữ người ta nhớ mãi.",
+  "Hãy nghe lại lời ông chọn. Ông không nói \"tôi phản bà\". Ông nói \"đổi mệnh\", \"muôn vật đổi mới\", \"bề tôi cũ nhà Đường\".",
+  "Nghe như một người chịu thua trước thời cuộc, không giống một kẻ mưu phản.",
+  "Lai Tuấn Thần nghe xong, bèn nới tay.",
+  "Người canh ngục không còn canh giữ chặt chẽ như trước. Họ chỉ còn chờ lệnh hành hình đưa xuống.",
+  "Nhưng chờ cũng là một khoảng thời gian.",
+  {
+   "t": "Ông đã mua được một thứ rất quý: thời gian.",
+   "p": 1.0
+  },
+  "Nhưng chưa hết. Một viên phán quan tên Vương Đức Thọ đến gặp ông.",
+  "Hắn nói mình chỉ là kẻ bị sai khiến, muốn nhờ ông giúp một chút để được thăng chức.",
+  "Hắn nhờ ông khai thêm một người nữa: Dương Chấp Nhu, một tể tướng khác.",
+  "Ông ngẩng lên nhìn hắn.",
+  {
+   "t": "Ông đã chịu nhận mình là kẻ phản. Nhưng kéo thêm một người xuống nước, thì ông không chịu.",
    "p": 1.0
   },
   {
-   "t": "Thần không muốn biết tên kẻ gièm pha.",
+   "t": "Trời đất chứng giám, lại sai Địch Nhân Kiệt làm chuyện này sao!",
    "q": 1,
-   "tr": 1
-  },
-  "Tư trị thông giám chép bà thở dài khen ngợi.",
-  "Trong những ngày đầu làm tể tướng, ông còn một lần can bà về một việc rất nhỏ.",
-  "Một sinh viên Thái học tên Vương Tuần Chi dâng biểu xin nghỉ về quê, và bà đã cho phép.",
-  "Ông tâu rằng quyền sinh sát là thứ vua không được giao ai, còn việc vặt thì phải để cho các quan phụ trách.",
-  "Nếu bà phải ban sắc cho từng việc như thế, thiên hạ có bao nhiêu sắc cho đủ?",
-  "Ông xin đặt một lệ chung, và bà nghe theo.",
-  "Sử còn ghi một mặt khác của triều đình ấy.",
-  "Tư trị thông giám viết: từ niên hiệu Thùy Củng trở đi, Võ Tắc Thiên dùng khốc lại.",
-  "Trước hết họ giết hàng trăm người trong hoàng tộc nhà Đường, rồi đến hàng trăm gia đình đại thần.",
-  "Mỗi lần có người được bổ một chức quan, tỳ nữ trong nhà thì thầm với nhau rằng ma quỷ lại đến rồi.",
-  "Chẳng bao lâu sau, người ấy bị bắt, và bị tru cả họ.",
-  "Cũng Tư trị thông giám kể: một viên ngự sử tên Nghiêm Thiện Tư được lệnh xét các vụ tố giác.",
-  "Ông tìm ra hơn tám trăm năm mươi người đã nhận tội oan.",
-  "Bè lũ khốc lại quay sang vu cho ông, và ông bị đày.",
-  "Bà biết ông bị oan, về sau gọi ông về.",
-  "Một trong những khốc lại được sử nhắc đến là Lai Tuấn Thần.",
-  "Wikipedia viết rằng không ai biết ông ta sinh năm nào, chỉ biết ông ta là người Vạn Niên, gần Trường An.",
-  "Ông ta nuôi hàng trăm kẻ chuyên làm đơn tố cáo.",
-  {
-   "t": "Cùng một cộng sự, ông ta viết một cuốn sách tên La chức kinh, dạy cách dựng hồ sơ vu cáo cho thật.",
+   "tr": 1,
    "p": 1.0
   },
-  "Một tể tướng đang nắm quyền, và một viên khốc lại đang nắm hồ sơ.",
-  "Nếu là phim, đây là lúc thám tử lật tẩy kẻ ác.",
-  "Trong sử, Lai Tuấn Thần là người ra tay tố cáo.",
+  "Rồi ông đập đầu vào cột nhà giam. Máu chảy đầy mặt.",
+  "Vương Đức Thọ hoảng sợ, và xin lỗi ông.",
+  "Hãy hình dung tiếng đầu chạm vào gỗ, và tiếng thở gấp của người vừa nhận ra mình đã đi quá xa.",
+  "Ông sẵn sàng nhận mình có tội, để giữ cái mạng. Nhưng ông không chịu để cái mạng ấy thành nấc thang cho người khác leo lên.",
+  "Nghe thì mâu thuẫn. Nhưng cả hai việc ấy lại đều là cách ông giữ người.",
+  "Giờ ông đã có thời gian, và một cái cột còn dính máu.",
+  "Còn thiếu một thứ duy nhất: một đường nào đó để lời kêu oan thoát ra khỏi bốn bức tường.",
   {
-   "t": "Địch Nhân Kiệt mới làm tể tướng chưa lâu thì bị tố cáo.",
+   "t": "Ông sẽ gửi nó bằng cái gì, và qua tay ai?",
    "p": 1.0
   }
  ],

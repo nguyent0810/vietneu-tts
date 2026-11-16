@@ -1,57 +1,47 @@
 {
- "title": "Cậu bé ngồi đọc sách",
+ "title": "Mười bảy ngàn người và một cây bách",
  "lines": [
   {
-   "t": "Địch Nhân Kiệt sinh năm 630, người Thái Nguyên, thuộc Tinh Châu.",
+   "t": "Năm 674, hoàng đế Cao Tông xưng Thiên Hoàng, còn hoàng hậu xưng Thiên Hậu.",
    "p": 0.8
   },
-  "Ông nội làm tả thừa ở Thượng thư tỉnh, cha làm trưởng sử ở Quỳ Châu.",
-  "Sinh trong nhà làm quan, ông được hai bộ Đường thư nhắc đến qua một chuyện thuở nhỏ.",
-  "Một người trong nhà bị hại, tiểu lại đến hỏi, ai cũng ra đối đáp, riêng cậu bé ngồi yên đọc sách.",
-  "Nếu là phim, đây sẽ là cảnh cậu bé nhìn ra manh mối.",
+  "Người ngồi cạnh nhà vua ấy tên là Võ Tắc Thiên.",
+  "Một năm sau, ông nhận chức đại lý thừa, một chức quan lo việc xét án.",
+  "Án tồn đọng lúc ấy chất lên rất nhiều.",
+  "Hãy hình dung sau mỗi tập hồ sơ là một gia đình đang ngồi chờ.",
   {
-   "t": "Cựu Đường thư chép: giữa lúc mọi người đối đáp, cậu vẫn đọc sách.",
+   "t": "Trong vòng một năm, ông xử xong án tồn của 17.000 người.",
    "p": 1.0
   },
-  "Tiểu lại trách. Cậu đáp.",
+  "Sử còn chép thêm: không ai kêu oan.",
+  "Đừng vội hình dung một bảng thống kê. Những trang sử ấy không kê tên từng vụ.",
+  "Hãy hình dung một căn phòng chất đầy hồ sơ, mùi giấy cũ trộn với mùi mực, và một người ngồi lại bên ngọn đèn cho đến khuya.",
+  "Người ta khen ông, và lời khen ấy đến tai cả triều đình.",
   {
-   "t": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
-   "q": 1,
-   "tr": 1
-  },
-  {
-   "t": "Chuyện này chỉ có trong hai bộ Đường thư, không thấy ở Tư trị thông giám.",
+   "t": "Danh tiếng ấy sắp bị thử bằng một cái cây.",
    "p": 1.0
   },
-  "Theo bản tiếng Trung của Wikipedia, ông đỗ minh kinh năm 659, rồi làm phán tá ở Biện Châu.",
-  "Ở đó ông bị tiểu lại vu cáo.",
-  "Viên quan sứ đi xét, Diêm Lập Bản, nghe ông nói xong thì khen.",
+  "Tháng chín năm 676, ở Chiêu Lăng, lăng của Thái Tông, hai viên tướng chặt nhầm một cây bách.",
+  "Hai người ấy là Quyền Thiện Tài và Phạm Hoài Nghĩa.",
+  "Luật định tội họ chỉ đến mức cách chức.",
+  "Nhưng hoàng đế lại ra lệnh giết cả hai.",
+  "Hãy hình dung triều đường lặng đi, khi mọi người nghe lệnh ấy, và không ai muốn là người đầu tiên thở mạnh.",
+  "Cao Tông không giấu lý do. Ông muốn tỏ ra mình là một người con hiếu thảo với cha.",
   {
-   "t": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "t": "Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu.",
    "q": 1,
-   "tr": 1
-  },
-  "Nhờ lời tiến cử ấy, ông sang Tinh Châu làm pháp tào.",
-  "Một lần lên núi Thái Hàng, ông nhìn về nơi cha mẹ sống.",
-  "Ông ngẩng nhìn một đám mây trắng lẻ loi bay qua, rồi nói với người đi cùng.",
-  {
-   "t": "Cha mẹ ta ở dưới đám mây ấy.",
-   "q": 1,
-   "tr": 1
-  },
-  "Hai bộ Đường thư kể ông đứng nhìn rất lâu, mãi đến khi mây dời đi ông mới cất bước.",
-  "Cũng ở Tinh Châu, một đồng liêu tên Trịnh Sùng Chất phải đi sứ nơi xa, trong khi mẹ ông ta già và đang bệnh.",
-  "Địch Nhân Kiệt tìm trưởng sử, xin đi thay.",
-  "Chuyện này nằm cả trong Tư trị thông giám.",
-  "Viên trưởng sử Lận Nhân Cơ vốn bất hòa với một người cùng sở, nghe vậy thì tự thấy xấu hổ, hai người làm lành.",
-  {
-   "t": "Ta chưa thấy trong chặng đời này một vụ án nào do ông phá.",
+   "tr": 1,
    "p": 1.0
   },
-  "Điều sử giữ lại là một cậu bé ngồi đọc sách, và một người lớn xin đi thay đồng nghiệp.",
-  "Hai chuyện ấy rất nhỏ.",
+  "Bạn thử nghĩ xem, ai dám cãi một người đang nhân danh lòng hiếu với cha?",
+  "Địch Nhân Kiệt dám. Ông bước ra, và nói rằng tội của hai tướng chưa tới mức phải chết.",
+  "Hoàng đế nổi giận, bảo ông lui ra ngoài.",
   {
-   "t": "Và chúng chưa phải chuyện của một thám tử.",
+   "t": "Ông không lui. Ông nói tiếp.",
+   "p": 1.0
+  },
+  {
+   "t": "Ông sắp nói ba câu. Câu cuối cùng hỏi đúng điều mà mọi vị vua sợ nhất.",
    "p": 1.0
   }
  ],

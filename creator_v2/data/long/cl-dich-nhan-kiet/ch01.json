@@ -1,40 +1,64 @@
 {
- "title": "LỘ TRÌNH: Hai cuốn sổ đặt cạnh nhau",
+ "title": "Cậu bé không ngẩng đầu",
  "lines": [
   {
-   "t": "Nếu bạn từng xem phim về Địch Nhân Kiệt, bạn đã gặp một người rất giỏi phá án.",
+   "t": "Ông sinh năm 630, ở Thái Nguyên, trong một gia đình làm quan.",
    "p": 0.8
   },
-  "Năm 2004, đài CCTV phát loạt phim Thần thám Địch Nhân Kiệt, do Lương Quán Hoa đóng vai chính.",
-  "Năm 2010, đạo diễn Từ Khắc ra một phim khác về ông, Lưu Đức Hoa đóng.",
+  "Ông nội ông làm tả thừa Thượng thư tỉnh. Cha ông làm trưởng sử ở Quỳ Châu.",
+  "Nhưng điều người ta nhớ về cậu bé ấy lại là một chuyện nhỏ hơn nhiều.",
+  "Một người trong nhà bị hại, và tiểu lại của huyện đến hỏi cung.",
+  "Ai nấy lần lượt đứng ra đối đáp. Chỉ có cậu bé ngồi yên, tay vẫn giữ quyển sách.",
+  "Hãy hình dung căn nhà ồn ào tiếng người, và một cái đầu cúi xuống trang giấy, không buồn ngẩng lên.",
   {
-   "t": "Đó là phim.",
+   "t": "Bị trách, cậu đáp một câu mà về sau còn được kể lại.",
    "p": 1.0
   },
-  "Trước những bộ phim ấy đã có tiểu thuyết.",
-  "Một tiểu thuyết đời Thanh tên Địch công án kể chuyện quan án họ Địch phá các vụ án.",
-  "Một tác giả người Hà Lan, Robert van Gulik, dịch nó sang tiếng Anh năm 1949.",
-  "Rồi ông viết thêm cả một loạt truyện về quan án Judge Dee.",
   {
-   "t": "Wikipedia gọi nhân vật ấy là một hình tượng bán hư cấu, dựa trên Địch Nhân Kiệt.",
+   "t": "Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách!",
+   "q": 1,
+   "tr": 1,
    "p": 1.0
   },
-  "Còn về người thật, ta có hai bộ Đường thư và bộ Tư trị thông giám.",
-  "Tân Đường thư là sách đời Tống.",
-  "Cả ba đều là sách của người đời sau, và chỗ nào chúng chép khác nhau, ta sẽ nói rõ là khác.",
-  "Cựu Đường thư nói lời tâu của ông, trước sau, lên đến hàng vạn chữ.",
-  "Đến đời Khai Nguyên, Lý Ung soạn một cuốn Lương công biệt truyện để chép lại những lời ấy.",
+  "Một đứa trẻ không chịu cúi đầu trước người cầm quyền nhỏ nhất của huyện mình.",
   {
-   "t": "Cuốn ấy ta chưa đọc được, và chỉ biết nó qua một dòng của Cựu Đường thư.",
+   "t": "Bạn hãy nhớ hình ảnh ấy, vì nhiều chục năm sau ông sẽ phải cúi đầu trước một kẻ cầm quyền lớn hơn gấp bội.",
    "p": 1.0
   },
-  "Vì vậy hôm nay ta đặt hai cuốn sổ cạnh nhau.",
-  "Ở mỗi chặng đời, ta hỏi trước: nếu đây là phim, ông sẽ làm gì?",
-  "Rồi ta đọc xem sử ghi ông đã làm gì.",
-  "Qua mỗi chặng, bạn sẽ thấy ông đứng trước những người khác nhau.",
-  "Ta cũng sẽ biết mảnh lụa ông viết trong ngục đã ra ngoài bằng cách nào.",
+  "Năm 659, ông đỗ minh kinh và được bổ làm phán tá ở Biện Châu.",
+  "Ở đó, một tiểu lại vu cáo ông.",
   {
-   "t": "Nhưng trước hết, ta cần biết cậu bé ấy từ đâu tới.",
+   "t": "Sứ giả đi xét các quan là Diêm Lập Bản. Ông ấy xem xét vụ việc, rồi gọi Địch Nhân Kiệt bằng một câu mà ai làm quan cũng mơ được nghe.",
+   "p": 1.0
+  },
+  {
+   "t": "Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Còn có một lần khác, ông leo núi Thái Hàng, và thấy một đám mây trắng trôi lẻ loi.",
+  "Ông đứng ngước nhìn, rất lâu, rồi nói về cha mẹ mình.",
+  {
+   "t": "Cha mẹ ta ở dưới đám mây ấy.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Mây dời đi rồi, ông mới chịu bước tiếp.",
+  "Nhớ nhà không làm ông yếu đi. Nó cho thấy ông là một người con, trước khi là một vị quan.",
+  "Người đứng nhìn mây vì nhớ cha mẹ cũng là người hiểu nỗi lo của kẻ khác.",
+  "Đồng nghiệp của ông là Trịnh Sùng Chất được cử đi sứ nơi xa, mà mẹ anh ta đã già lại đang bệnh.",
+  "Địch Nhân Kiệt nói rằng sao nỡ để một người mang nỗi lo ngàn dặm như thế.",
+  "Ông tới gặp trưởng sử Lận Nhân Cơ, và xin được đi thay.",
+  "Lận Nhân Cơ vốn bất hòa với tư mã Lý Hiếu Liêm. Từ lần ấy, hai người sống hòa thuận với nhau.",
+  {
+   "t": "Một người sẵn lòng nhận phần thiệt về mình, đến mức làm dịu cả mối bất hòa của người khác.",
+   "p": 1.0
+  },
+  "Nhưng gánh một chuyến đi xa thay bạn, chỉ là chuyện nhẹ.",
+  {
+   "t": "Bạn nghĩ ông sẽ ra sao, khi thứ phải gánh không còn là một chuyến đi, mà là mạng sống của hai vị tướng?",
    "p": 1.0
   }
  ],

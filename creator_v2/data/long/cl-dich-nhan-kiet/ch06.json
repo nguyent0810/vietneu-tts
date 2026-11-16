@@ -1,64 +1,43 @@
 {
- "title": "Dự Châu: sáu bảy trăm gia đình",
+ "title": "Triều Võ Chu và cuốn sổ tố giác",
  "lines": [
   {
-   "t": "Năm 688, Việt vương Lý Trinh khởi binh ở Dự Châu và thất bại.",
+   "t": "Năm 690, Võ Tắc Thiên lên ngôi, lập ra triều Chu.",
    "p": 0.8
   },
-  "Sau đó, Võ Tắc Thiên cử Địch Nhân Kiệt đến làm thứ sử ở đó.",
-  "Tư trị thông giám chép: có sáu bảy trăm gia đình bị buộc tội theo phe nổi loạn, và năm nghìn người bị tịch thu làm nô.",
-  "Cơ quan thi hành án thúc giục.",
-  "Ông đứng giữa hai điều: tâu thì như bênh người có tội, không tâu thì trái ý nhân từ của chính nhà vua.",
-  "Cựu Đường thư thêm một chi tiết: ông viết xong tờ biểu rồi lại xé, không quyết được.",
+  "Từ niên hiệu Thùy Củng, bà đã dùng những viên quan chuyên tra tấn.",
+  "Trước là hàng trăm người họ Đường. Sau đó là hàng trăm nhà đại thần.",
+  "Hãy hình dung một triều đình mà mỗi buổi sáng, quan lại nhìn nhau đều đếm xem ai còn thiếu.",
+  "Tháng chín năm 691, giữa lúc ấy, Địch Nhân Kiệt trở thành tể tướng.",
+  "Chiếc ghế ấy vừa gần quyền lực nhất, vừa gần lưỡi dao nhất.",
+  "Một hôm, Võ Tắc Thiên hỏi ông có muốn biết ai đã gièm pha ông không.",
   {
-   "t": "Cuối cùng ông gửi một bản mật.",
+   "t": "Ông đáp lại một câu mà người trong triều ít ai dám nói.",
    "p": 1.0
   },
   {
-   "t": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
+   "t": "Thần không muốn biết tên kẻ gièm pha.",
    "q": 1,
-   "tr": 1
-  },
-  "Võ Tắc Thiên tha chết, đày họ đi Phong Châu.",
-  "Đoàn người bị đày đi qua Ninh Châu, nơi ông từng làm thứ sử.",
-  "Các cụ già ra đón, và khóc dưới tấm bia ca ngợi ông.",
-  {
-   "t": "Sứ quân Địch của chúng ta đã cứu sống các ngươi sao!",
-   "q": 1,
-   "tr": 1
-  },
-  "Họ dừng lại ăn chay ba ngày rồi mới đi.",
-  {
-   "t": "Hai bộ Đường thư kể thêm: đến nơi đày, họ lại dựng một tấm bia khác cho ông.",
+   "tr": 1,
    "p": 1.0
   },
-  "Tư trị thông giám ghi sáu bảy trăm gia đình bị buộc tội và năm nghìn người bị tịch thu.",
-  "Tân Đường thư lại ghi, hai nghìn người bị án tử.",
-  "Ba cách đếm khác nhau, và ta không chọn thay cho sử.",
-  "Theo sử, họ được tha chết; một cuộc đối đầu khác đang chờ ông.",
-  "Tể tướng Trương Quang Phụ đang đóng quân ở Dự Châu, để quân tướng đòi hỏi đủ thứ.",
-  "Địch Nhân Kiệt từ chối.",
+  "Câu nói ấy nghe nhẹ nhàng, nhưng nó giữ cho ông một khoảng trống để còn sống chung với cả triều đình.",
+  "Còn Lai Tuấn Thần thì giữ hàng trăm người chuyên làm đơn tố cáo.",
+  "Ông ta cùng Vạn Quốc Tuấn viết cuốn La chức kinh, dạy cách dựng hồ sơ vu cáo.",
+  "Với ông ta, tên của người nào cũng có thể trở thành một tờ đơn.",
+  "Có một chi tiết cho thấy cái máy ấy chạy đến đâu.",
+  "Năm 692, ngự sử Nghiêm Thiện Tư xét lại các vụ tố cáo.",
+  "Ông tìm ra hơn 850 người đã nhận tội oan.",
   {
-   "t": "Trương Quang Phụ giận, hỏi ông có coi thường quan nguyên soái không.",
+   "t": "Rồi chính ông bị bè lũ khốc lại vu cáo, và bị đày đi.",
    "p": 1.0
   },
+  "Bạn hiểu chưa? Ở thời ấy, nhận tội oan không phải chuyện hiếm. Nó là một lối thoát mà hàng trăm người đã chọn.",
+  "Và một ngày, Lai Tuấn Thần gửi lên một danh sách bảy người, bị tố mưu phản.",
+  "Trong bảy người ấy có ba tể tướng: Nhâm Tri Cổ, Bùi Hành Bản và Địch Nhân Kiệt.",
+  "Hãy hình dung ba cái tên tể tướng nằm giữa một tờ giấy, mực còn chưa khô.",
   {
-   "t": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
-   "q": 1,
-   "tr": 1
-  },
-  "Ông kể rằng khi quan quân đến, người trong thành trèo tường ra hàng, đông đến mức đất thành đường mòn bốn phía.",
-  "Ông hỏi: giết người đã hàng để lấy công, máu đỏ cả cánh đồng, thế chẳng phải là vạn Trinh thì là gì?",
-  "Ông nói thêm rằng ông muốn có thanh kiếm chém ngựa của vua, để đặt lên cổ tướng quân.",
-  "Trương Quang Phụ về kinh, tâu ông bất kính.",
-  "Ông bị giáng làm thứ sử một châu nhỏ hơn, Phục Châu.",
-  {
-   "t": "Sau cuộc cãi với Trương Quang Phụ, ông bị giáng chức.",
-   "p": 1.0
-  },
-  "Phim thường cho người tốt thắng ở cảnh cuối.",
-  {
-   "t": "Hồ sơ ghi: họ được tha chết, còn ông sau đó bị giáng chức.",
+   "t": "Vậy ông sẽ làm gì, khi chỉ còn một lần được hỏi?",
    "p": 1.0
   }
  ],

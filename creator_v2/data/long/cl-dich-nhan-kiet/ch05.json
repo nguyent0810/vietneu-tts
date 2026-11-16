@@ -1,72 +1,64 @@
 {
- "title": "Thứ gần với ma quái nhất",
+ "title": "Dự Châu: lá thư viết rồi lại xé",
  "lines": [
   {
-   "t": "Làm thị ngự sử, ông dâng lời hặc cả những người có thế lực.",
+   "t": "Việt vương Lý Trinh khởi binh ở Dự Châu, rồi thua.",
    "p": 0.8
   },
-  "Khoảng năm 679, quan Tư Nông là Vi Hoằng Cơ xây các cung Túc Vũ, Cao Sơn, Thượng Dương ở Lạc Dương.",
-  "Địch Nhân Kiệt tâu rằng ông ta dẫn nhà vua vào chỗ xa hoa, và Vi Hoằng Cơ bị cách chức.",
-  "Một quan khác, Vương Bản Lập, được vua che chở.",
-  "Nhà vua định tha.",
+  "Triều đình cử Địch Nhân Kiệt đến làm thứ sử nơi ấy.",
+  "Nơi ông đến chẳng còn là một châu bình thường. Đó là nơi người ta đang chờ đến lượt bị trừng trị.",
+  "Hãy hình dung những con phố im lặng, và những mái nhà mà ai cũng sợ gõ cửa.",
+  "Số người bị liên lụy được kể không giống nhau.",
+  "Có nơi nói sáu bảy trăm gia đình, có nơi nói năm ngàn người bị tịch thu, có nơi nói hai ngàn người bị án tử.",
+  "Dù con số nào đúng, đó vẫn là cả một vùng người.",
   {
-   "t": "Ông không chịu.",
+   "t": "Ông đứng giữa hai cách làm sai: nói ra thì có thể bị coi là bênh kẻ phản, im lặng thì có thể trái ý nhà vua.",
    "p": 1.0
   },
+  "Hãy hình dung một đêm dài, một ngọn đèn, và một cây bút cứ dừng giữa chừng.",
   {
-   "t": "Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau.",
+   "t": "Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ.",
    "q": 1,
-   "tr": 1
-  },
-  "Bản Lập cuối cùng bị tội, và sử viết triều đình từ đó nghiêm chỉnh.",
-  "Tân Đường thư kể một chuyến đi khác, nghe rất gần với phim.",
-  "Ông được cử đến Kỳ Châu, nơi mấy trăm lính trốn đang cướp người đi đường, làm tắc cả đường cái.",
-  "Quan sở tại bắt đồng bọn về tra hỏi, nhưng bọn còn lại càng kéo đông, không ai trị nổi.",
-  "Ông cho rằng họ đã cùng đường, và người cùng đường thì dễ thành họa.",
-  "Ông bèn công khai ban một tờ lệnh cho phép tự thú, thả những người đang giam, cho lương để họ về báo tin.",
-  "Cả toán lính tự trói mình, kéo nhau về nộp.",
-  "Hoàng đế thở dài khen ông biết tùy cơ.",
-  "Nếu là phim, đây có thể là cảnh bắt cướp.",
-  {
-   "t": "Trong Tân Đường thư, toán lính tự nộp mình.",
+   "tr": 1,
    "p": 1.0
   },
-  "Nhưng những chuyện ấy vẫn chưa phải án ma quái.",
-  "Nếu phim có ma quái, thì sử có gì?",
-  "Ta đã đọc hết phần truyện của ông trong hai bộ Đường thư, và nói thẳng: không có một vụ án ma quái nào.",
-  "Điều gần nhất là một ngôi đền.",
-  "Cao Tông định đi cung Phần Dương, ông làm tri đốn sứ lo chỗ nghỉ dọc đường.",
-  "Quan Tinh Châu là Lý Xung Huyền muốn mở một con đường mới, vòng qua đền Đố Nữ.",
-  "Tục truyền ai mặc đẹp đi qua đền thì gặp sấm gió.",
-  "Ông ta huy động mấy vạn người để mở đường.",
+  "Tấu thư viết xong, ông lại xé. Lòng ông chưa quyết được.",
+  "Rồi ông vẫn gửi mật tấu đi.",
+  "Võ Tắc Thiên đọc, và ân xá cho họ, đày đến Phong Châu.",
   {
-   "t": "Địch Nhân Kiệt gạt đi.",
+   "t": "Đoàn người bị đày đi qua Ninh Châu. Các cụ già ra đón, khóc dưới tấm bia của ông.",
    "p": 1.0
   },
   {
-   "t": "Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được?",
+   "t": "Chính sứ quân Địch đã cứu sống các ngươi!",
    "q": 1,
-   "tr": 1
-  },
-  "Cao Tông nghe, rồi khen ông là bậc đại trượng phu.",
-  {
-   "t": "Chuyện này chỉ có trong hai bộ Đường thư.",
+   "tr": 1,
    "p": 1.0
   },
-  "Ít năm sau ông làm thứ sử Ninh Châu.",
-  "Ngự sử Quách Hàn đi xét các châu, đến đó, thấy các cụ già đứng đầy đường hát khen vị thứ sử.",
-  "Rồi đến năm 688, ông được cử đi xem xét vùng Giang Nam.",
-  "Ông thấy ở đó có quá nhiều đền thờ không đúng phép.",
-  "Ông xin phá, và theo Tư trị thông giám, hơn 1.700 đền miếu bị đốt.",
-  "Ông chỉ giữ bốn nơi: thờ vua Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên.",
-  "Nếu là phim, đây là cảnh trừ tà.",
+  "Hãy hình dung đoàn tù còn mang xiềng, cúi xuống nền đất lạnh trước tấm bia của người đã cứu họ.",
+  "Những người tù dừng lại ba ngày ăn chay dưới bia ấy rồi mới đi tiếp.",
+  "Đến nơi đày, họ lại dựng thêm một tấm bia khác để ca ngợi ông.",
+  "Nhưng ông đã làm điều khiến một người có quyền không thể tha.",
+  "Tướng Trương Quang Phụ để quân dưới trướng đòi hỏi quá đáng, và ông từ chối.",
   {
-   "t": "Theo sử, hơn một nghìn bảy trăm đền miếu đã bị đốt.",
+   "t": "Ông còn nói thẳng một lời mà tướng quân nào cũng khó nghe.",
    "p": 1.0
   },
-  "Một người vừa giữ luật, vừa phá miếu.",
   {
-   "t": "Hai việc ấy cùng của một người, và người ấy sắp bước vào một vụ lớn hơn nhiều.",
+   "t": "Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra.",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Ông nói thêm: giết kẻ đã hàng để lấy công, máu chảy đỏ cánh đồng, thế chẳng phải là sinh ra vạn Trinh thì là gì.",
+  "Trương Quang Phụ trở về triều và tâu rằng ông bất kính.",
+  {
+   "t": "Địch Nhân Kiệt bị giáng làm thứ sử Phục Châu.",
+   "p": 1.0
+  },
+  "Ông cứu sáu bảy trăm gia đình, và đổi lại một chiếc ghế thấp hơn.",
+  {
+   "t": "Cái giá ấy còn nhẹ. Hai năm sau, triều đại đổi sang một họ khác, và cái giá bắt đầu nặng hơn.",
    "p": 1.0
   }
  ],

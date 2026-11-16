@@ -1,52 +1,57 @@
 {
- "title": "Chữ \"thật\" được nói ra",
+ "title": "Mảnh lụa trong áo bông",
  "lines": [
   {
-   "t": "Lai Tuấn Thần tố bảy người mưu phản, trong đó có ba tể tướng.",
+   "t": "Ông xin người canh một cây bút và một nghiên mực.",
    "p": 0.8
   },
-  "Địch Nhân Kiệt là một trong ba người đó.",
-  "Trước đó, Lai Tuấn Thần đã xin một sắc lệnh: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.",
+  "Người canh đưa cho ông.",
+  "Ông xé một mảnh lụa ở đầu chăn, viết lên đó oan trạng, rồi nhét vào trong áo bông.",
   {
-   "t": "Đó là cái bẫy, hay là một lối thoát?",
+   "t": "Đó không phải là một bức thư máu như nhiều người hay tưởng. Đó là mực, và một mảnh lụa.",
    "p": 1.0
   },
-  "Năm 692, theo Tư trị thông giám và Wikipedia tiếng Anh.",
-  "Bản tiếng Trung ghi là năm 693.",
-  "Câu ông nói ở đầu bài được ba bộ sử chép với những câu chữ khác nhau.",
-  "Ý thì giống nhau: ông nhận.",
-  "Lai Tuấn Thần bèn nới tay.",
-  "Cùng bị tố còn có hai tể tướng Nhâm Tri Cổ, Bùi Hành Bản và cả Ngụy Nguyên Trung.",
-  "Bản tiếng Anh ghi thêm: ông nhận tội và không bị tra tấn.",
+  "Hãy hình dung nét chữ viết vội dưới ánh sáng yếu, và mảnh lụa được gấp lại thật nhỏ.",
+  "Rồi ông nhờ một câu rất tự nhiên.",
   {
-   "t": "Sau đó, phán quan Vương Đức Thọ tìm gặp ông.",
-   "p": 1.0
-  },
-  "Y nói rằng ngài chắc chắn được giảm án.",
-  "Y chỉ xin một điều: ngài khai thêm tên một tể tướng khác, Dương Chấp Nhu.",
-  {
-   "t": "Rồi y chờ.",
-   "p": 1.0
-  },
-  {
-   "t": "Trời đất lại sai Địch Nhân Kiệt làm chuyện này sao!",
+   "t": "Trời đang nóng, xin giao cho người nhà tháo bông ra.",
    "q": 1,
-   "tr": 1
-  },
-  "Ba bộ sử đều chép: nói xong, ông lấy đầu đập vào cột, máu chảy đầy mặt.",
-  "Vương Đức Thọ sợ, và tạ lỗi.",
-  "Lời từ chối ấy được cả ba bộ sử ghi lại.",
-  "Ông nhận tội của chính mình, nhưng không khai ra tội của người khác.",
-  "Một lời nhận tội có thể mở cửa cho người khác chết thay.",
-  {
-   "t": "Ông không nhận kiểu đó.",
+   "tr": 1,
    "p": 1.0
   },
-  "Sau khi ông nhận, người canh ngục không còn canh nghiêm.",
-  "Bạn đang nghĩ ông sẽ làm gì?",
-  "Nếu là bạn, bạn sẽ nằm chờ ngày thi hành án, hay làm gì đó?",
+  "Một lời xin nghe vô hại. Ai nghe cũng thấy hợp lý, mùa nóng thì ai mặc áo bông.",
+  "Một lời nhờ vả nhỏ về chuyện mùa nóng, trong đó giấu một việc sống còn.",
+  "Ông nhờ chuyển chiếc áo về cho người nhà, qua tay chính Vương Đức Thọ.",
+  "Có lẽ viên phán quan cầm chiếc áo nặng hơn mức một người cầm áo thường.",
+  "Nhưng chiếc áo vẫn tới được tay người nhà ông.",
+  "Một mảnh lụa nhỏ, nhưng nặng bằng cả một vụ án.",
+  "Chiếc áo về tới nhà. Con trai ông là Quang Viễn tháo bông ra.",
+  "Mảnh lụa rơi ra, và Quang Viễn cầm nó đi báo biến.",
+  "Anh đem nó vào cung, báo rằng cha mình bị oan.",
+  "Võ Tắc Thiên cho gọi anh vào. Bà xem thư. Rồi bà gọi Lai Tuấn Thần tới hỏi.",
   {
-   "t": "Ông xin người canh một cây bút.",
+   "t": "Lai Tuấn Thần không chịu thua. Ông ta nói một câu nghe rất tự tin.",
+   "p": 1.0
+  },
+  {
+   "t": "Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội?",
+   "q": 1,
+   "tr": 1,
+   "p": 1.0
+  },
+  "Nhưng ông ta cũng biết mình đang đứng trên miệng hố.",
+  "Ông ta cho các tù nhân đội lại mũ đai tươm tất, rồi dẫn họ ra gặp sứ giả của bà.",
+  "Hãy hình dung bảy người ngồi đó, áo mũ chỉnh tề, mặt không còn một dấu vết nào.",
+  "Chưa hết, ông ta còn dựng thêm một tờ tấu tạ tội chết, rồi bảo Vương Đức Thọ ký thay ông.",
+  "Một tờ giấy giả, ký thay một người sống.",
+  "Hồ sơ vụ án đã đầy đủ, và Lai Tuấn Thần tin rằng mọi chuyện đã xong.",
+  {
+   "t": "Nhưng ông ta đã quên một điều. Một mảnh lụa nhỏ đang nằm trong tay bà.",
+   "p": 1.0
+  },
+  "Và có một người khác, không ai ngờ, sắp bước vào đại điện.",
+  {
+   "t": "Người ấy chưa tới mười tuổi.",
    "p": 1.0
   }
  ],

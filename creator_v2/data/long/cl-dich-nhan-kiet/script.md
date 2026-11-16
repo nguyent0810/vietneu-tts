@@ -1,528 +1,516 @@
-# ĐỊCH NHÂN KIỆT NGOÀI ĐỜI THẬT: kịch bản lời đọc (bản 1, chờ Lead duyệt)
+# ĐỊCH NHÂN KIỆT: kịch bản lời đọc (bản 3, viết lại theo §14, chờ Lead duyệt)
 
 **Kênh:** Into the Killer's Mind (Hồ sơ vụ án lịch sử)
 **Giọng:** Anh Khôi (lời trích: giọng trích, lọc radio)
 **Độ dài dự kiến:** khoảng ba mươi phút, mười bốn chương (số âm tiết theo script_lines.py, xem báo cáo)
 
+**Ba phương án tiêu đề (theo mẫu survival, không nêu nguồn):**
+1. Tể Tướng Tự Nhận Mình Phản: Ba Chữ Cứu Mạng Địch Nhân Kiệt
+2. Mảnh Lụa Giấu Trong Áo Bông: Tể Tướng Thoát Chết Ra Sao?
+3. Xử Xong Cho 17.000 Người Không Ai Oan, Rồi Nhận Mình Phản?
+
 Quy ước đọc file:
-- Mỗi dòng là một câu đọc.
-- `‖` ở cuối dòng là chỗ ngừng dài.
-- `»` là lời trích, đọc bằng giọng trích. Nhãn trích-dịch (chữ in hoa trong ngoặc vuông) đánh dấu câu có thật trong sử sách, dịch sang tiếng Việt. Nguyên văn chữ Hán nằm trong factcheck.md.
-- Không có lời thoại bịa. Phim và tiểu thuyết chỉ được nhắc ở chương một và chương mười ba, luôn gọi là phim hoặc tiểu thuyết.
+- Mỗi dòng là một câu đọc. `‖` cuối dòng là chỗ ngừng dài.
+- `»` là lời trích, đọc bằng giọng trích. nhãn dịch chỉ đánh dấu câu có nguyên văn chữ Hán và URL trong factcheck.md.
+- `{pd}` cuối câu là cảnh phỏng dựng hoặc giả thuyết hợp lý (không gian, vật dụng, người vô danh), luôn báo bằng lời "hãy hình dung" hoặc "có lẽ"; trên hình gắn nhãn PHỎNG DỰNG. `{beat: ...}` là nhịp diễn biến mới.
 
-Tên riêng dùng âm Hán Việt (Địch Nhân Kiệt, Võ Tắc Thiên, Lai Tuấn Thần, Trương Giản Chi, Diêu Sùng...). Tên gốc hiện trên màn hình.
-
-**Cấu trúc giữ chân người nghe:**
-- **Hướng kể (khác Long `bao-thanh-thien`, khác Long `cl-hoang-kim-vinh`):** không kể Địch Nhân Kiệt như một vị quan xử án cương trực, cũng không chia bốn mốc. Trục kể là khoảng cách giữa thám tử trong phim và người trong hồ sơ. Ở mỗi chặng đời ta hỏi trước: nếu là phim, ông sẽ làm gì ở đây? Rồi đọc xem sử ghi ông đã làm gì. Câu hỏi xuyên suốt: người trong hồ sơ là ai, khi hai bộ Đường thư không có một vụ án ma quái nào?
-- **Lộ trình (chương 1):** dạng "hai cuốn sổ đặt cạnh nhau": sổ của phim, sổ của sử. Đi sau cảnh mở đầu.
-- **Cold open (khoảng bốn mươi lăm giây):** Lạc Dương năm 692, lời nhận tội trước Lai Tuấn Thần. Dừng ở đỉnh: ông xin người canh ngục một cây bút.
-- **3 vòng mở:**
-  1. Vì sao người xử xong án của 17.000 người lại tự nhận mình phản (đóng ở chương 8 và 9).
-  2. Địch Nhân Kiệt có phá án ma quái như phim không (đóng ở chương 5: hai bộ Đường thư không có vụ nào).
-  3. Có phải một mình ông giữ ngôi cho nhà Đường không (đóng ở chương 11 và 13: không phải một mình).
-- **Phần thưởng giữa video:** chương 7 và 8, đúng quãng nửa video: cái giá của một chữ "thật". **Cảnh mạnh:** chương 9 (mảnh lụa) và chương 11 (ngôi kế vị).
+**Trục kể:** Địch Nhân Kiệt, vị quan sống sót dưới chế độ mật vụ Võ Chu bằng lời nhận tội giả và một mảnh lụa trong áo bông, và cái giá của việc cứu người giữa thời khủng bố. Mỗi chương là một chặng của nhân vật: tình thế, lựa chọn, hệ quả, câu hỏi kéo sang chương sau. Phim chỉ được đối chiếu hai lần (CH04, CH13).
 
 ---
 
-## CH00 · MỞ ĐẦU: Một chữ "thật"
+## CH00 · MỞ ĐẦU: Ba chữ cứu mạng
 
-Theo sử, năm 692, một vị tể tướng ở Lạc Dương bị buộc tội mưu phản. {beat: bối cảnh, một tể tướng trong ngục}
-Người hỏi cung là Lai Tuấn Thần, viên quan chuyên lập hồ sơ tội danh cho triều Võ Chu.
-Ông ta có một mẹo: ai nhận tội ngay ở lần hỏi đầu thì được giảm án chết. ‖
-Vị tể tướng ấy là Địch Nhân Kiệt.
-Sử chép câu ông đáp lại.
+Một vị tể tướng vừa tự nhận mình mưu phản, trước khi ai kịp đánh ông một roi. {beat: nghịch lý mở đầu}
+Ông là Địch Nhân Kiệt, và đây là lời ông nói. ‖
 » Đại Chu đổi mệnh, muôn vật đổi mới. Bề tôi cũ nhà Đường cam chịu bị giết. Phản là thật! ‖ [TRÍCH DỊCH]
-Sử cũng chép rằng, có lần ông xử xong án tồn của 17.000 người trong một năm, và không ai kêu oan. {beat: con số đặt cạnh lời nhận tội}
-Vậy vì sao chính ông lại tự nhận mình là kẻ phản? ‖
-Nếu bạn từng xem phim, bạn quen một Địch Nhân Kiệt khác.
-Trong phim, một thám tử có thể lật bàn cờ bằng một phát hiện cuối cùng.
-Hồ sơ cho ta một người không làm thế. ‖
-Về sau trong ngục, ông xin người canh một cây bút. ‖
+Vì sao một người từng xử xong án tồn của 17.000 người lại tự nhận mình là kẻ phản? {beat: câu hỏi hậu quả}
+Người hỏi cung là Lai Tuấn Thần, kẻ nắm cả một mạng lưới người tố giác của triều Võ Chu.
+Ông ta có một luật riêng: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.
+Hãy hình dung một căn phòng bí bách, và một người phải tính nhanh hơn cả nỗi sợ của mình. {pd}
+Về sau, chính ông sẽ giải thích lý do, trước mặt Võ Tắc Thiên, bằng một câu đáp rất ngắn. {beat: lời hứa giải đáp}
+Nhưng muốn hiểu ba chữ ấy nặng đến đâu, bạn phải gặp ông sớm hơn thế nhiều.
+Hãy lùi về thuở ông còn là một cậu bé, giữa lúc cả nhà bị tiểu lại gọi ra hỏi. ‖
 
 ---
 
-## CH01 · LỘ TRÌNH: Hai cuốn sổ đặt cạnh nhau
+## CH01 · Cậu bé không ngẩng đầu
 
-Nếu bạn từng xem phim về Địch Nhân Kiệt, bạn đã gặp một người rất giỏi phá án.
-Năm 2004, đài CCTV phát loạt phim Thần thám Địch Nhân Kiệt, do Lương Quán Hoa đóng vai chính.
-Năm 2010, đạo diễn Từ Khắc ra một phim khác về ông, Lưu Đức Hoa đóng.
-Đó là phim. ‖
-Trước những bộ phim ấy đã có tiểu thuyết.
-Một tiểu thuyết đời Thanh tên Địch công án kể chuyện quan án họ Địch phá các vụ án. {beat: nguồn gốc hình tượng thám tử}
-Một tác giả người Hà Lan, Robert van Gulik, dịch nó sang tiếng Anh năm 1949.
-Rồi ông viết thêm cả một loạt truyện về quan án Judge Dee.
-Wikipedia gọi nhân vật ấy là một hình tượng bán hư cấu, dựa trên Địch Nhân Kiệt. ‖
-Còn về người thật, ta có hai bộ Đường thư và bộ Tư trị thông giám.
-Tân Đường thư là sách đời Tống.
-Cả ba đều là sách của người đời sau, và chỗ nào chúng chép khác nhau, ta sẽ nói rõ là khác.
-Cựu Đường thư nói lời tâu của ông, trước sau, lên đến hàng vạn chữ.
-Đến đời Khai Nguyên, Lý Ung soạn một cuốn Lương công biệt truyện để chép lại những lời ấy.
-Cuốn ấy ta chưa đọc được, và chỉ biết nó qua một dòng của Cựu Đường thư. ‖ {beat: giới hạn của hồ sơ}
-Vì vậy hôm nay ta đặt hai cuốn sổ cạnh nhau.
-Ở mỗi chặng đời, ta hỏi trước: nếu đây là phim, ông sẽ làm gì?
-Rồi ta đọc xem sử ghi ông đã làm gì.
-Qua mỗi chặng, bạn sẽ thấy ông đứng trước những người khác nhau. {beat: lời hứa lộ trình}
-Ta cũng sẽ biết mảnh lụa ông viết trong ngục đã ra ngoài bằng cách nào.
-Nhưng trước hết, ta cần biết cậu bé ấy từ đâu tới. ‖
-
----
-
-## CH02 · Cậu bé ngồi đọc sách
-
-Địch Nhân Kiệt sinh năm 630, người Thái Nguyên, thuộc Tinh Châu.
-Ông nội làm tả thừa ở Thượng thư tỉnh, cha làm trưởng sử ở Quỳ Châu.
-Sinh trong nhà làm quan, ông được hai bộ Đường thư nhắc đến qua một chuyện thuở nhỏ.
-Một người trong nhà bị hại, tiểu lại đến hỏi, ai cũng ra đối đáp, riêng cậu bé ngồi yên đọc sách. {beat: người nhà bị hại}
-Nếu là phim, đây sẽ là cảnh cậu bé nhìn ra manh mối.
-Cựu Đường thư chép: giữa lúc mọi người đối đáp, cậu vẫn đọc sách. ‖
-Tiểu lại trách. Cậu đáp.
-» Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách! [TRÍCH DỊCH] {beat: câu đầu tiên sử giữ lại của ông}
-Chuyện này chỉ có trong hai bộ Đường thư, không thấy ở Tư trị thông giám. ‖
-Theo bản tiếng Trung của Wikipedia, ông đỗ minh kinh năm 659, rồi làm phán tá ở Biện Châu.
-Ở đó ông bị tiểu lại vu cáo.
-Viên quan sứ đi xét, Diêm Lập Bản, nghe ông nói xong thì khen. 
-» Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam. [TRÍCH DỊCH]
-Nhờ lời tiến cử ấy, ông sang Tinh Châu làm pháp tào.
-Một lần lên núi Thái Hàng, ông nhìn về nơi cha mẹ sống.
-Ông ngẩng nhìn một đám mây trắng lẻ loi bay qua, rồi nói với người đi cùng.
-» Cha mẹ ta ở dưới đám mây ấy. [TRÍCH DỊCH]
-Hai bộ Đường thư kể ông đứng nhìn rất lâu, mãi đến khi mây dời đi ông mới cất bước. {beat: chi tiết hiếm hoi về nỗi nhớ nhà}
-Cũng ở Tinh Châu, một đồng liêu tên Trịnh Sùng Chất phải đi sứ nơi xa, trong khi mẹ ông ta già và đang bệnh.
-Địch Nhân Kiệt tìm trưởng sử, xin đi thay. {beat: ông xin đi thay đồng liêu}
-Chuyện này nằm cả trong Tư trị thông giám.
-Viên trưởng sử Lận Nhân Cơ vốn bất hòa với một người cùng sở, nghe vậy thì tự thấy xấu hổ, hai người làm lành. {beat: hai người làm lành}
-Ta chưa thấy trong chặng đời này một vụ án nào do ông phá. ‖
-Điều sử giữ lại là một cậu bé ngồi đọc sách, và một người lớn xin đi thay đồng nghiệp.
-Hai chuyện ấy rất nhỏ.
-Và chúng chưa phải chuyện của một thám tử. ‖
+Ông sinh năm 630, ở Thái Nguyên, trong một gia đình làm quan.
+Ông nội ông làm tả thừa Thượng thư tỉnh. Cha ông làm trưởng sử ở Quỳ Châu.
+Nhưng điều người ta nhớ về cậu bé ấy lại là một chuyện nhỏ hơn nhiều. {beat: chuyện thuở nhỏ}
+Một người trong nhà bị hại, và tiểu lại của huyện đến hỏi cung.
+Ai nấy lần lượt đứng ra đối đáp. Chỉ có cậu bé ngồi yên, tay vẫn giữ quyển sách.
+Hãy hình dung căn nhà ồn ào tiếng người, và một cái đầu cúi xuống trang giấy, không buồn ngẩng lên. {pd}
+Bị trách, cậu đáp một câu mà về sau còn được kể lại. ‖
+» Trong sách vàng có đủ thánh hiền, ta còn chưa đối đáp xuể, đâu rảnh tiếp tiểu lại mà bị trách! ‖ [TRÍCH DỊCH]
+Một đứa trẻ không chịu cúi đầu trước người cầm quyền nhỏ nhất của huyện mình. {beat: tính cách}
+Bạn hãy nhớ hình ảnh ấy, vì nhiều chục năm sau ông sẽ phải cúi đầu trước một kẻ cầm quyền lớn hơn gấp bội. ‖
+Năm 659, ông đỗ minh kinh và được bổ làm phán tá ở Biện Châu.
+Ở đó, một tiểu lại vu cáo ông.
+Sứ giả đi xét các quan là Diêm Lập Bản. Ông ấy xem xét vụ việc, rồi gọi Địch Nhân Kiệt bằng một câu mà ai làm quan cũng mơ được nghe. ‖
+» Ông là viên ngọc ở góc biển, báu vật bị bỏ sót của miền Đông Nam. ‖ [TRÍCH DỊCH]
+Còn có một lần khác, ông leo núi Thái Hàng, và thấy một đám mây trắng trôi lẻ loi. {beat: nỗi nhớ nhà}
+Ông đứng ngước nhìn, rất lâu, rồi nói về cha mẹ mình.
+» Cha mẹ ta ở dưới đám mây ấy. ‖ [TRÍCH DỊCH]
+Mây dời đi rồi, ông mới chịu bước tiếp.
+Nhớ nhà không làm ông yếu đi. Nó cho thấy ông là một người con, trước khi là một vị quan.
+Người đứng nhìn mây vì nhớ cha mẹ cũng là người hiểu nỗi lo của kẻ khác.
+Đồng nghiệp của ông là Trịnh Sùng Chất được cử đi sứ nơi xa, mà mẹ anh ta đã già lại đang bệnh. {beat: lần chịu thiệt đầu tiên}
+Địch Nhân Kiệt nói rằng sao nỡ để một người mang nỗi lo ngàn dặm như thế.
+Ông tới gặp trưởng sử Lận Nhân Cơ, và xin được đi thay.
+Lận Nhân Cơ vốn bất hòa với tư mã Lý Hiếu Liêm. Từ lần ấy, hai người sống hòa thuận với nhau.
+Một người sẵn lòng nhận phần thiệt về mình, đến mức làm dịu cả mối bất hòa của người khác. ‖
+Nhưng gánh một chuyến đi xa thay bạn, chỉ là chuyện nhẹ. {beat: leo thang}
+Bạn nghĩ ông sẽ ra sao, khi thứ phải gánh không còn là một chuyến đi, mà là mạng sống của hai vị tướng? ‖
 
 ---
 
-## CH03 · Đại lý thừa, và con số 17.000
+## CH02 · Mười bảy ngàn người và một cây bách
 
-Lúc ấy, hoàng đế Cao Tông xưng là Thiên Hoàng, và hoàng hậu Võ xưng là Thiên Hậu.
-Hai người cùng đứng ở trung tâm triều đình.
-Năm 675, theo Wikipedia, ông lên làm đại lý thừa, một viên quan của Đại Lý Tự, tòa án tối cao nhà Đường.
-Nếu là phim, đây là lúc có một vụ án lớn đang chờ.
-Trong sử, điều đang chờ là một chồng hồ sơ cũ. {beat: thứ đang chờ là hồ sơ tồn}
-Cựu Đường thư chép, trong khoảng niên hiệu Nghi Phụng, ông xử xong án tồn của 17.000 người trong một năm.
-Rồi thêm bốn chữ: không có ai kêu oan. ‖
-Tân Đường thư chép khác một chút: người đời khen ông xử công bằng và khoan dung.
-Bạn thử hình dung số án tồn liên quan đến một vạn bảy nghìn người.
-Hai bộ sử đều ghi con số ấy, nhưng không có bảng kê từng vụ.
-Con số này nằm trong hai bộ sử, mỗi bộ chép nó bằng đúng một câu.
-Trong những trang ta đã mở, không có bảng kê từng vụ.
-Bản tiếng Anh viết là 17.000 vụ, còn sử viết là 17.000 người. {beat: hai cách gọi cùng một con số}
-Cả hai cách ghi đều để lại một con số rất lớn.
-Nó chỉ nhắc rằng đây là một dòng sử, không phải một biên bản. ‖
-Có một cách hiểu hợp với phim: một người phá án lớn bằng một trí tuệ lớn.
-Sử mở ra cách hiểu khác: một người xử xong việc mà người khác để dồn lại.
-Theo Cựu Đường thư, số án tồn được xử xong mà không có ai kêu oan. ‖ {beat: kết luận từ hồ sơ}
-Cũng trong những năm ấy, ông gặp một vụ có thật, trước mặt hoàng đế.
-Vụ ấy không có xác chết.
-Nó chỉ có một cây bách. ‖
-
----
-
-## CH04 · Cây bách ở Chiêu Lăng
-
-Tháng chín năm 676, hai tướng, Quyền Thiện Tài và Phạm Hoài Nghĩa, lỡ tay chặt phải cây bách ở Chiêu Lăng.
-Chiêu Lăng là lăng của Đường Thái Tông, cha của đương kim hoàng đế Cao Tông.
-Đại Lý Tự tâu rằng tội ấy đáng bị cách chức.
-Cao Tông ra lệnh xử tử.
-Tư trị thông giám chép lời nhà vua. {beat: hoàng đế ra lệnh giết hai tướng}
-» Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu. [TRÍCH DỊCH]
-Trước lệnh của nhà vua, viên đại lý thừa vẫn giữ lời tâu của mình.
-Ông vẫn tâu: hai người ấy không đáng chết.
-Hoàng đế nổi giận, bảo ông lui ra. {beat: nhà vua bảo lui}
-Ông tiếp tục can. ‖
-» Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ. [TRÍCH DỊCH]
-Rồi ông hỏi lại nhà vua một câu.
-Nếu có kẻ trộm một nắm đất ở lăng Hán Cao Tổ, bệ hạ sẽ xử ra sao?
-Tân Đường thư kể thêm tiền lệ ấy: Hán Văn Đế từng muốn tru cả họ một kẻ trộm ngọc ở miếu tổ.
-Đại thần Trương Thích Chi can ngay giữa triều, và tội chỉ dừng ở một người. {beat: ông dùng tiền lệ để cãi}
-Rồi ông nói về luật.
-» Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu? [TRÍCH DỊCH] {beat: cuộc cãi giữa hoàng đế và một viên thừa}
-Rồi ông nói về chính nhà vua.
-» Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào? [TRÍCH DỊCH] ‖
-Ba bộ sử cùng chép cảnh này, và câu chữ mỗi nơi một khác, nên ta dùng bản của Tư trị thông giám.
-Kết quả theo Tư trị thông giám: hai người bị cách chức, đày đi Lĩnh Nam.
-Cựu Đường thư chép: Thiện Tài thoát chết. {beat: hai người sống}
-Vài hôm sau, Địch Nhân Kiệt được cất lên làm thị ngự sử.
-Nếu là phim, đây là cảnh tòa.
-Trong sử, sau cuộc can ấy, hai viên tướng thoát án chết. ‖
-Hãy giữ lại cảnh này.
-Ông không bắt ai; hai người bị cách chức và đày đi. ‖
+Năm 674, hoàng đế Cao Tông xưng Thiên Hoàng, còn hoàng hậu xưng Thiên Hậu.
+Người ngồi cạnh nhà vua ấy tên là Võ Tắc Thiên.
+Một năm sau, ông nhận chức đại lý thừa, một chức quan lo việc xét án. {beat: chức mới}
+Án tồn đọng lúc ấy chất lên rất nhiều.
+Hãy hình dung sau mỗi tập hồ sơ là một gia đình đang ngồi chờ. {pd}
+Trong vòng một năm, ông xử xong án tồn của 17.000 người. ‖
+Sử còn chép thêm: không ai kêu oan.
+Đừng vội hình dung một bảng thống kê. Những trang sử ấy không kê tên từng vụ.
+Hãy hình dung một căn phòng chất đầy hồ sơ, mùi giấy cũ trộn với mùi mực, và một người ngồi lại bên ngọn đèn cho đến khuya. {pd}
+Người ta khen ông, và lời khen ấy đến tai cả triều đình.
+Danh tiếng ấy sắp bị thử bằng một cái cây. ‖
+Tháng chín năm 676, ở Chiêu Lăng, lăng của Thái Tông, hai viên tướng chặt nhầm một cây bách. {beat: biến cố}
+Hai người ấy là Quyền Thiện Tài và Phạm Hoài Nghĩa.
+Luật định tội họ chỉ đến mức cách chức.
+Nhưng hoàng đế lại ra lệnh giết cả hai.
+Hãy hình dung triều đường lặng đi, khi mọi người nghe lệnh ấy, và không ai muốn là người đầu tiên thở mạnh. {pd}
+Cao Tông không giấu lý do. Ông muốn tỏ ra mình là một người con hiếu thảo với cha. {beat: lý do của vua}
+» Bọn Thiện Tài chặt cây bách ở lăng, ta mà không giết thì ta bất hiếu. ‖ [TRÍCH DỊCH]
+Bạn thử nghĩ xem, ai dám cãi một người đang nhân danh lòng hiếu với cha?
+Địch Nhân Kiệt dám. Ông bước ra, và nói rằng tội của hai tướng chưa tới mức phải chết. {beat: lựa chọn}
+Hoàng đế nổi giận, bảo ông lui ra ngoài.
+Ông không lui. Ông nói tiếp. ‖
+Ông sắp nói ba câu. Câu cuối cùng hỏi đúng điều mà mọi vị vua sợ nhất. ‖
 
 ---
 
-## CH05 · Thứ gần với ma quái nhất
+## CH03 · Ba câu nói trước mặt hoàng đế
 
-Làm thị ngự sử, ông dâng lời hặc cả những người có thế lực.
-Khoảng năm 679, quan Tư Nông là Vi Hoằng Cơ xây các cung Túc Vũ, Cao Sơn, Thượng Dương ở Lạc Dương.
-Địch Nhân Kiệt tâu rằng ông ta dẫn nhà vua vào chỗ xa hoa, và Vi Hoằng Cơ bị cách chức.
-Một quan khác, Vương Bản Lập, được vua che chở. {beat: hai quan bị hặc}
-Nhà vua định tha.
-Ông không chịu. ‖
-» Nếu nhất định tha Bản Lập một cách thiên vị, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau. [TRÍCH DỊCH]
-Bản Lập cuối cùng bị tội, và sử viết triều đình từ đó nghiêm chỉnh.
-Tân Đường thư kể một chuyến đi khác, nghe rất gần với phim.
-Ông được cử đến Kỳ Châu, nơi mấy trăm lính trốn đang cướp người đi đường, làm tắc cả đường cái.
-Quan sở tại bắt đồng bọn về tra hỏi, nhưng bọn còn lại càng kéo đông, không ai trị nổi.
-Ông cho rằng họ đã cùng đường, và người cùng đường thì dễ thành họa.
-Ông bèn công khai ban một tờ lệnh cho phép tự thú, thả những người đang giam, cho lương để họ về báo tin.
-Cả toán lính tự trói mình, kéo nhau về nộp. {beat: một vụ cướp kết thúc bằng tự thú}
-Hoàng đế thở dài khen ông biết tùy cơ.
-Nếu là phim, đây có thể là cảnh bắt cướp.
-Trong Tân Đường thư, toán lính tự nộp mình. ‖
-Nhưng những chuyện ấy vẫn chưa phải án ma quái.
-Nếu phim có ma quái, thì sử có gì?
-Ta đã đọc hết phần truyện của ông trong hai bộ Đường thư, và nói thẳng: không có một vụ án ma quái nào.
-Điều gần nhất là một ngôi đền. {beat: lời đáp cho câu hỏi về chuyện ma}
-Cao Tông định đi cung Phần Dương, ông làm tri đốn sứ lo chỗ nghỉ dọc đường.
-Quan Tinh Châu là Lý Xung Huyền muốn mở một con đường mới, vòng qua đền Đố Nữ.
-Tục truyền ai mặc đẹp đi qua đền thì gặp sấm gió.
-Ông ta huy động mấy vạn người để mở đường.
-Địch Nhân Kiệt gạt đi. ‖
-» Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được? [TRÍCH DỊCH]
-Cao Tông nghe, rồi khen ông là bậc đại trượng phu. {beat: nhà vua khen ông}
-Chuyện này chỉ có trong hai bộ Đường thư. ‖
-Ít năm sau ông làm thứ sử Ninh Châu.
-Ngự sử Quách Hàn đi xét các châu, đến đó, thấy các cụ già đứng đầy đường hát khen vị thứ sử.
-Rồi đến năm 688, ông được cử đi xem xét vùng Giang Nam.
-Ông thấy ở đó có quá nhiều đền thờ không đúng phép.
-Ông xin phá, và theo Tư trị thông giám, hơn 1.700 đền miếu bị đốt.
-Ông chỉ giữ bốn nơi: thờ vua Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên. {beat: 1.700 đền miếu bị phá}
-Nếu là phim, đây là cảnh trừ tà.
-Theo sử, hơn một nghìn bảy trăm đền miếu đã bị đốt. ‖
-Một người vừa giữ luật, vừa phá miếu.
-Hai việc ấy cùng của một người, và người ấy sắp bước vào một vụ lớn hơn nhiều. ‖
+Câu thứ nhất, ông không cãi luật. Ông nói về sự can gián. ‖
+» Đụng đến mặt rồng mà can, từ xưa ai cũng cho là khó. Thần cho rằng gặp Kiệt, Trụ thì khó, gặp Nghiêu, Thuấn thì dễ. ‖ [TRÍCH DỊCH]
+Hãy nghe cho kỹ. Ông vừa nói với nhà vua rằng, nếu ngài là Nghiêu, Thuấn, thì chẳng ai phải sợ khi can ngài. {pd}
+Câu thứ hai, ông quay về luật. ‖
+» Luật chưa đến mức chết mà bệ hạ riêng giết họ, thế là luật không còn khiến người tin. Dân biết đặt tay chân vào đâu? ‖ [TRÍCH DỊCH]
+Hãy hình dung nhà vua im lặng, và cả triều đường nín thở theo, chờ xem ông có bị lôi ra ngoài hay không. {pd}
+Rồi đến câu thứ ba, câu mà ông để dành cho cuối cùng. {beat: câu thứ ba}
+» Nay vì một cây bách mà giết hai tướng, đời sau sẽ gọi bệ hạ là vua thế nào? ‖ [TRÍCH DỊCH]
+Ông còn hỏi thêm một điều: nếu có kẻ trộm một nắm đất ở Trường Lăng, bệ hạ sẽ xử ra sao?
+Một nắm đất ở lăng Hán Cao Tổ: ví dụ nhỏ, nhưng đặt đúng vào chỗ nhà vua đang tự hào là người con hiếu.
+Sử chép rằng hai người kia bị cách chức và đày đi Lĩnh Nam. {beat: hệ quả}
+Họ giữ được mạng. Còn ông thì sao?
+Vài ngày sau, Địch Nhân Kiệt được thăng làm thị ngự sử. ‖
+Đó là chức quan chuyên hặc tội các quan khác.
+Ông chọc giận nhà vua, và nhận về đúng thứ vũ khí ấy.
+Và ông dùng nó đến nơi đến chốn.
+Năm 679, ông hặc Vi Hoằng Cơ, người xây các cung Túc Vũ, Cao Sơn, Thượng Dương. {beat: người đầu tiên bị hặc}
+Lý do ông đưa ra: Vi Hoằng Cơ dẫn nhà vua đi vào đường xa hoa.
+Vi Hoằng Cơ bị cách chức.
+Rồi đến Vương Bản Lập, kẻ được chính nhà vua che chở. Lần này ông nói một câu liều hơn nhiều. ‖
+» Nếu nhất định tha Bản Lập, xin vứt thần ra nơi không người, để răn kẻ trung trinh về sau. ‖ [TRÍCH DỊCH]
+Nghe câu ấy, Bản Lập rốt cuộc vẫn bị trị tội.
+Từ đó, triều đình trở nên tề chỉnh hẳn. {beat: kết quả}
+Nhưng có một việc mà ông sắp làm, chẳng ai trong triều muốn chạm tới. Đó là một ngôi đền. ‖
 
 ---
 
-## CH06 · Dự Châu: sáu bảy trăm gia đình
+## CH04 · Đền Đố Nữ và một ngàn bảy trăm ngôi miếu
 
-Năm 688, Việt vương Lý Trinh khởi binh ở Dự Châu và thất bại.
-Sau đó, Võ Tắc Thiên cử Địch Nhân Kiệt đến làm thứ sử ở đó.
-Tư trị thông giám chép: có sáu bảy trăm gia đình bị buộc tội theo phe nổi loạn, và năm nghìn người bị tịch thu làm nô.
-Cơ quan thi hành án thúc giục. {beat: án sắp thi hành}
-Ông đứng giữa hai điều: tâu thì như bênh người có tội, không tâu thì trái ý nhân từ của chính nhà vua.
-Cựu Đường thư thêm một chi tiết: ông viết xong tờ biểu rồi lại xé, không quyết được.
-Cuối cùng ông gửi một bản mật. ‖
-» Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ. [TRÍCH DỊCH]
-Võ Tắc Thiên tha chết, đày họ đi Phong Châu. {beat: đổi án chết thành đày}
-Đoàn người bị đày đi qua Ninh Châu, nơi ông từng làm thứ sử.
-Các cụ già ra đón, và khóc dưới tấm bia ca ngợi ông.
-» Sứ quân Địch của chúng ta đã cứu sống các ngươi sao! [TRÍCH DỊCH]
-Họ dừng lại ăn chay ba ngày rồi mới đi.
-Hai bộ Đường thư kể thêm: đến nơi đày, họ lại dựng một tấm bia khác cho ông. ‖
-Tư trị thông giám ghi sáu bảy trăm gia đình bị buộc tội và năm nghìn người bị tịch thu.
-Tân Đường thư lại ghi, hai nghìn người bị án tử.
-Ba cách đếm khác nhau, và ta không chọn thay cho sử. {beat: ba cách đếm}
-Theo sử, họ được tha chết; một cuộc đối đầu khác đang chờ ông.
-Tể tướng Trương Quang Phụ đang đóng quân ở Dự Châu, để quân tướng đòi hỏi đủ thứ.
-Địch Nhân Kiệt từ chối.
-Trương Quang Phụ giận, hỏi ông có coi thường quan nguyên soái không. ‖ {beat: cuộc cãi với tướng}
-» Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra. [TRÍCH DỊCH]
-Ông kể rằng khi quan quân đến, người trong thành trèo tường ra hàng, đông đến mức đất thành đường mòn bốn phía.
-Ông hỏi: giết người đã hàng để lấy công, máu đỏ cả cánh đồng, thế chẳng phải là vạn Trinh thì là gì?
-Ông nói thêm rằng ông muốn có thanh kiếm chém ngựa của vua, để đặt lên cổ tướng quân. {beat: một cuộc cãi với người có quân}
-Trương Quang Phụ về kinh, tâu ông bất kính.
-Ông bị giáng làm thứ sử một châu nhỏ hơn, Phục Châu.
-Sau cuộc cãi với Trương Quang Phụ, ông bị giáng chức. ‖
-Phim thường cho người tốt thắng ở cảnh cuối.
-Hồ sơ ghi: họ được tha chết, còn ông sau đó bị giáng chức. ‖
-
----
-
-## CH07 · Lạc Dương dưới triều Võ Chu
-
-Năm 690, Võ Tắc Thiên lên ngôi, lập triều Chu.
-Ít lâu sau, Địch Nhân Kiệt được gọi về triều, từ chức tư mã ở Lạc Châu.
-Tháng chín năm 691, ông được phong làm tể tướng.
-Võ Tắc Thiên hỏi ông một câu: ở Dự Châu ông làm tốt, ông có muốn biết ai đã gièm ông không? {beat: lời mời vào bẫy của người cầm quyền}
-Ông đáp rằng nếu bà cho là ông có lỗi, ông xin sửa.
-Nếu bà biết ông không có lỗi, đó là may của ông. ‖
-» Thần không muốn biết tên kẻ gièm pha. [TRÍCH DỊCH]
-Tư trị thông giám chép bà thở dài khen ngợi.
-Trong những ngày đầu làm tể tướng, ông còn một lần can bà về một việc rất nhỏ.
-Một sinh viên Thái học tên Vương Tuần Chi dâng biểu xin nghỉ về quê, và bà đã cho phép. {beat: lời xin nghỉ}
-Ông tâu rằng quyền sinh sát là thứ vua không được giao ai, còn việc vặt thì phải để cho các quan phụ trách.
-Nếu bà phải ban sắc cho từng việc như thế, thiên hạ có bao nhiêu sắc cho đủ?
-Ông xin đặt một lệ chung, và bà nghe theo. {beat: ranh giới giữa việc vua và việc quan}
-Sử còn ghi một mặt khác của triều đình ấy.
-Tư trị thông giám viết: từ niên hiệu Thùy Củng trở đi, Võ Tắc Thiên dùng khốc lại.
-Trước hết họ giết hàng trăm người trong hoàng tộc nhà Đường, rồi đến hàng trăm gia đình đại thần. {beat: bối cảnh khủng bố}
-Mỗi lần có người được bổ một chức quan, tỳ nữ trong nhà thì thầm với nhau rằng ma quỷ lại đến rồi.
-Chẳng bao lâu sau, người ấy bị bắt, và bị tru cả họ.
-Cũng Tư trị thông giám kể: một viên ngự sử tên Nghiêm Thiện Tư được lệnh xét các vụ tố giác.
-Ông tìm ra hơn tám trăm năm mươi người đã nhận tội oan.
-Bè lũ khốc lại quay sang vu cho ông, và ông bị đày. {beat: một người cố gỡ hồ sơ oan, và bị đày}
-Bà biết ông bị oan, về sau gọi ông về.
-Một trong những khốc lại được sử nhắc đến là Lai Tuấn Thần.
-Wikipedia viết rằng không ai biết ông ta sinh năm nào, chỉ biết ông ta là người Vạn Niên, gần Trường An.
-Ông ta nuôi hàng trăm kẻ chuyên làm đơn tố cáo.
-Cùng một cộng sự, ông ta viết một cuốn sách tên La chức kinh, dạy cách dựng hồ sơ vu cáo cho thật. ‖ {beat: cuốn sách dạy vu cáo}
-Một tể tướng đang nắm quyền, và một viên khốc lại đang nắm hồ sơ.
-Nếu là phim, đây là lúc thám tử lật tẩy kẻ ác.
-Trong sử, Lai Tuấn Thần là người ra tay tố cáo. {beat: Lai ra tay tố cáo}
-Địch Nhân Kiệt mới làm tể tướng chưa lâu thì bị tố cáo. ‖
+Nhà vua sắp đi cung Phần Dương, và Địch Nhân Kiệt lo việc dọn đường, dựng chỗ nghỉ cho cả đoàn.
+Giữa đường là đền Đố Nữ.
+Lời đồn kể rằng ai mặc đẹp đi qua đền ấy sẽ gặp sấm gió. {beat: lời đồn}
+Một viên quan tên Lý Xung Huyền muốn mở đường khác để tránh. Hàng vạn người bị gọi đến đào đắp.
+Hãy hình dung hàng vạn bàn tay cầm xẻng, chỉ vì sợ một ngôi đền và vài tia chớp. {pd}
+Địch Nhân Kiệt phản đối, và ông có câu đáp của riêng mình. ‖
+» Thiên tử đi, Phong Bá quét bụi, Vũ Sư rưới đường, Đố Nữ làm hại gì được? ‖ [TRÍCH DỊCH]
+Cao Tông nghe xong, khen ông đúng là một bậc đại trượng phu. {beat: nhà vua khen}
+Bạn có thể đang chờ một vụ án ma quái, như trong phim.
+Hai bộ Đường thư chép cả đời ông mà không có vụ nào như thế. Chuyện gần nhất chính là ngôi đền này.
+Và nó kết thúc bằng một câu giễu cợt cả gió sấm. ‖
+Về sau, ông làm thứ sử Ninh Châu.
+Khi ông đi qua, các cụ già đứng đầy đường mà hát khen ông.
+Một ngự sử tên Quách Hàn thấy cảnh ấy, và tiến cử ông lên.
+Sử còn kể một chuyện ở Kỳ Châu, nơi ông xử lý theo một cách khác hẳn. {beat: chuyện Kỳ Châu}
+Mấy trăm lính đào ngũ trốn vào núi, cướp người đi đường, khiến đường sá tắc nghẽn.
+Bắt đồng bọn của họ thì không trị nổi.
+Ông ban lệnh cho phép tự thú. Ông thả cả những người đang bị giam, cấp lương cho họ, rồi cho về báo tin.
+Và cả toán lính tự trói mình, kéo nhau về nộp. ‖
+Nhà vua khen ông biết tùy cơ ứng biến.
+Vậy là ông không chỉ có một kiểu: lúc cứng, lúc mềm. {beat: cứng và mềm}
+Nhưng đừng vẽ ông thành một người hiền lành quá mức. {beat: mặt khác của ông}
+Ông cũng cách chức người. Ông cũng đốt miếu.
+Năm 688, ở Giang Nam, ông dâng tấu đốt hơn 1.700 ngôi miếu.
+Ông chỉ giữ lại bốn: miếu Hạ Vũ, Ngô Thái Bá, Quý Trát và Ngũ Viên.
+Người không sợ lời đồn về đền Đố Nữ cũng dám đốt hơn một ngàn bảy trăm ngôi miếu của dân. ‖
+Vậy ông là người thế nào? {beat: câu hỏi nhân vật}
+Một người giữ luật đến cùng, hay một người chỉ giữ những gì ông tin là đáng giữ?
+Cũng trong năm ấy, ở Dự Châu, ông gặp một việc mà luật nào cũng không giải quyết nổi. ‖
 
 ---
 
-## CH08 · Chữ "thật" được nói ra
+## CH05 · Dự Châu: lá thư viết rồi lại xé
 
-Lai Tuấn Thần tố bảy người mưu phản, trong đó có ba tể tướng.
-Địch Nhân Kiệt là một trong ba người đó.
-Trước đó, Lai Tuấn Thần đã xin một sắc lệnh: ai nhận ngay ở lần hỏi đầu thì được giảm án chết.
-Đó là cái bẫy, hay là một lối thoát? ‖
-Năm 692, theo Tư trị thông giám và Wikipedia tiếng Anh.
-Bản tiếng Trung ghi là năm 693.
-Câu ông nói ở đầu bài được ba bộ sử chép với những câu chữ khác nhau.
-Ý thì giống nhau: ông nhận. {beat: ông nhận tội}
-Lai Tuấn Thần bèn nới tay.
-Cùng bị tố còn có hai tể tướng Nhâm Tri Cổ, Bùi Hành Bản và cả Ngụy Nguyên Trung.
-Bản tiếng Anh ghi thêm: ông nhận tội và không bị tra tấn.
-Sau đó, phán quan Vương Đức Thọ tìm gặp ông. ‖
-Y nói rằng ngài chắc chắn được giảm án.
-Y chỉ xin một điều: ngài khai thêm tên một tể tướng khác, Dương Chấp Nhu.
-Rồi y chờ. ‖
-» Trời đất lại sai Địch Nhân Kiệt làm chuyện này sao! [TRÍCH DỊCH]
-Ba bộ sử đều chép: nói xong, ông lấy đầu đập vào cột, máu chảy đầy mặt.
-Vương Đức Thọ sợ, và tạ lỗi.
-Lời từ chối ấy được cả ba bộ sử ghi lại. {beat: ông từ chối kéo người khác xuống}
-Ông nhận tội của chính mình, nhưng không khai ra tội của người khác.
-Một lời nhận tội có thể mở cửa cho người khác chết thay.
-Ông không nhận kiểu đó. ‖ {beat: ông không kéo ai theo}
-Sau khi ông nhận, người canh ngục không còn canh nghiêm.
-Bạn đang nghĩ ông sẽ làm gì?
-Nếu là bạn, bạn sẽ nằm chờ ngày thi hành án, hay làm gì đó?
-Ông xin người canh một cây bút. ‖
-
----
-
-## CH09 · Mảnh lụa trong áo bông
-
-Người canh đưa cho ông bút nghiên.
-Ông xé một mảnh lụa ở đầu chăn, và viết lên đó oan trạng của mình.
-Không có nguồn nào nói ông viết bằng máu.
-Máu chảy ra, theo sử, là vì ông đập đầu vào cột.
-Ông nhét mảnh lụa vào áo bông, rồi nói với Vương Đức Thọ. {beat: giấu thư vào áo bông}
-» Trời đang nóng, xin giao cho người nhà tháo bông ra. [TRÍCH DỊCH]
-Lời nhờ ấy đưa chiếc áo đến tay người nhà.
-Chiếc áo đi ra khỏi ngục. ‖
-Con trai ông là Địch Quang Viễn nhận được thư, và mang vào cung báo biến.
-Võ Tắc Thiên triệu kiến, đọc, rồi hỏi Lai Tuấn Thần.
-Lai Tuấn Thần cãi. ‖
-» Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội? [TRÍCH DỊCH]
-Bà cho người đến xem, và Lai Tuấn Thần vội đội lại mũ đai cho họ.
-Rồi y làm thêm một việc: nhờ Vương Đức Thọ viết một tờ tạ tội chết, ký thay tên Địch Nhân Kiệt. {beat: tờ tạ tội giả}
-Trong lúc đó, có một người khác cũng lên tiếng.
-Tư trị thông giám chép về một cậu bé chưa đầy mười tuổi, con của một người đã bị xử tử, bị tịch thu làm nô ở Tư Nông.
-Cậu cũng xin được gặp bà. ‖ {beat: một cậu bé xin gặp}
-» Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn. [TRÍCH DỊCH]
-Bà lắng nghe, rồi gọi Địch Nhân Kiệt cùng những người bị tố đến. {beat: cuộc đối chất}
-Bà hỏi Địch Nhân Kiệt vì sao nhận tội.
-Ông đáp. ‖
-» Nếu không nhận, thần đã chết dưới roi vọt rồi. [TRÍCH DỊCH]
-Bà đưa ra tờ tạ tội chết.
-Ông nói không có tờ nào như vậy. {beat: tờ giả bị lộ}
-Khi tờ biểu được đưa ra, ông mới biết có người ký thay. ‖
-Bảy người được tha chết, nhưng bị giáng chức, Địch Nhân Kiệt xuống làm lệnh ở Bành Trạch.
-Võ Thừa Tự nhiều lần xin giết ông.
-Tân Đường thư kể thêm một viên ngự sử tên Hoắc Hiến Khả dập đầu trước thềm điện, xin giết bằng được Địch Nhân Kiệt và những người cùng bị tố. {beat: một người khác xin giết}
-Tân Đường thư chép lời Võ Tắc Thiên: mệnh đã ban ra, không thể đổi.
-Dân ở Bành Trạch sau đó lập sinh từ cho ông. ‖
-Mảnh lụa đưa lời kêu oan của ông ra khỏi ngục.
-Sử còn ghi lời tố cáo của một cậu bé chưa đầy mười tuổi. ‖
+Việt vương Lý Trinh khởi binh ở Dự Châu, rồi thua.
+Triều đình cử Địch Nhân Kiệt đến làm thứ sử nơi ấy. {beat: nhiệm vụ mới}
+Nơi ông đến chẳng còn là một châu bình thường. Đó là nơi người ta đang chờ đến lượt bị trừng trị.
+Hãy hình dung những con phố im lặng, và những mái nhà mà ai cũng sợ gõ cửa. {pd}
+Số người bị liên lụy được kể không giống nhau.
+Có nơi nói sáu bảy trăm gia đình, có nơi nói năm ngàn người bị tịch thu, có nơi nói hai ngàn người bị án tử.
+Dù con số nào đúng, đó vẫn là cả một vùng người. {beat: quy mô}
+Ông đứng giữa hai cách làm sai: nói ra thì có thể bị coi là bênh kẻ phản, im lặng thì có thể trái ý nhà vua. ‖
+Hãy hình dung một đêm dài, một ngọn đèn, và một cây bút cứ dừng giữa chừng. {pd}
+» Thần muốn tâu công khai, e như đứng về phía kẻ phản; biết mà không nói, lại e trái ý nhân từ của bệ hạ. ‖ [TRÍCH DỊCH]
+Tấu thư viết xong, ông lại xé. Lòng ông chưa quyết được.
+Rồi ông vẫn gửi mật tấu đi. {beat: lựa chọn}
+Võ Tắc Thiên đọc, và ân xá cho họ, đày đến Phong Châu.
+Đoàn người bị đày đi qua Ninh Châu. Các cụ già ra đón, khóc dưới tấm bia của ông. ‖
+» Chính sứ quân Địch đã cứu sống các ngươi! ‖ [TRÍCH DỊCH]
+Hãy hình dung đoàn tù còn mang xiềng, cúi xuống nền đất lạnh trước tấm bia của người đã cứu họ. {pd}
+Những người tù dừng lại ba ngày ăn chay dưới bia ấy rồi mới đi tiếp. {beat: lòng biết ơn}
+Đến nơi đày, họ lại dựng thêm một tấm bia khác để ca ngợi ông.
+Nhưng ông đã làm điều khiến một người có quyền không thể tha. {beat: cái giá}
+Tướng Trương Quang Phụ để quân dưới trướng đòi hỏi quá đáng, và ông từ chối.
+Ông còn nói thẳng một lời mà tướng quân nào cũng khó nghe. ‖
+» Kẻ làm loạn Hà Nam chỉ có Việt vương Trinh. Nay một Trinh chết, vạn Trinh sinh ra. ‖ [TRÍCH DỊCH]
+Ông nói thêm: giết kẻ đã hàng để lấy công, máu chảy đỏ cánh đồng, thế chẳng phải là sinh ra vạn Trinh thì là gì. {beat: máu và công}
+Trương Quang Phụ trở về triều và tâu rằng ông bất kính.
+Địch Nhân Kiệt bị giáng làm thứ sử Phục Châu. ‖
+Ông cứu sáu bảy trăm gia đình, và đổi lại một chiếc ghế thấp hơn.
+Cái giá ấy còn nhẹ. Hai năm sau, triều đại đổi sang một họ khác, và cái giá bắt đầu nặng hơn. ‖
 
 ---
 
-## CH10 · Từ Bành Trạch về Ngụy Châu
+## CH06 · Triều Võ Chu và cuốn sổ tố giác
 
-Theo bản tiếng Trung, năm ông đến Bành Trạch, vùng ấy gặp hạn, dân hết lương.
-Ông dâng sớ xin cứu đói và miễn thuế, và bà nghe theo.
-Năm 696, quân Khiết Đan hạ Ký Châu, cả vùng Hà Bắc rung chuyển.
-Triều đình gọi ông từ Bành Trạch ra làm thứ sử Ngụy Châu. {beat: cứu đói ở Bành Trạch}
-Người đứng đầu châu trước, Độc Cô Tư Trang, sợ giặc đến bất ngờ nên dồn hết dân vào thành, sửa thành lũy.
-Địch Nhân Kiệt đến nơi, và nói một câu. ‖
-» Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo. [TRÍCH DỊCH]
-Ông cho dân về ruộng.
-Hai bộ Đường thư chép thêm: giặc nghe tin thì tự rút. {beat: một câu nói thay cả một thành lũy}
-Tư trị thông giám chỉ chép rằng dân rất mừng.
-Về sau, một chuyện khác liên quan đến quân Khiết Đan. ‖
-Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng nhà Chu.
-Họ từng đánh bại quân Chu nhiều lần, nên có người xin giết cả họ.
-Địch Nhân Kiệt thì xin tha. ‖
-» Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta. [TRÍCH DỊCH]
-Sử chép: người thân của ông can ngăn, ông đáp rằng nếu lợi cho nước thì đâu phải lo cho thân mình.
-Võ Tắc Thiên nghe theo, cho hai người chức tước, và họ đánh dẹp tàn quân Khiết Đan. {beat: hai tướng địch thành tướng nhà Chu}
-Giai Cố sau đó còn được ban họ Võ.
-Về phần ông, Tân Đường thư chép ông làm đô đốc U Châu, được ban áo tía.
-Võ Tắc Thiên còn tự làm mười hai chữ vàng đính lên áo ấy, để khen lòng trung của ông. ‖
-Ở triều đình, sử còn chép một chuyện về Lâu Sư Đức.
-Lâu Sư Đức từng tiến cử ông làm tể tướng. {beat: lời tiến cử}
-Lâu Sư Đức trấn giữ vùng Hà Lũng hơn bốn mươi năm, nổi tiếng điềm đạm và khoan dung.
-Ông không biết, và còn coi thường Lâu Sư Đức, tìm cách đẩy ông ta ra khỏi triều.
-Một hôm Võ Tắc Thiên hỏi ông về Lâu Sư Đức, ông đáp qua loa.
-Bà bèn nói rằng bà biết ông, chính là nhờ Lâu Sư Đức tiến cử. {beat: người cứu ông là người ông coi thường}
-Ông thở dài rằng đức của Lâu công dày, ông được che chở đã lâu mà không thấy bờ bến.
-Người ông từng coi thường lại là người đã tiến cử ông. ‖
+Năm 690, Võ Tắc Thiên lên ngôi, lập ra triều Chu.
+Từ niên hiệu Thùy Củng, bà đã dùng những viên quan chuyên tra tấn. {beat: bối cảnh khủng bố}
+Trước là hàng trăm người họ Đường. Sau đó là hàng trăm nhà đại thần.
+Hãy hình dung một triều đình mà mỗi buổi sáng, quan lại nhìn nhau đều đếm xem ai còn thiếu. {pd}
+Tháng chín năm 691, giữa lúc ấy, Địch Nhân Kiệt trở thành tể tướng. {beat: lên tể tướng}
+Chiếc ghế ấy vừa gần quyền lực nhất, vừa gần lưỡi dao nhất.
+Một hôm, Võ Tắc Thiên hỏi ông có muốn biết ai đã gièm pha ông không.
+Ông đáp lại một câu mà người trong triều ít ai dám nói. ‖
+» Thần không muốn biết tên kẻ gièm pha. ‖ [TRÍCH DỊCH]
+Câu nói ấy nghe nhẹ nhàng, nhưng nó giữ cho ông một khoảng trống để còn sống chung với cả triều đình.
+Còn Lai Tuấn Thần thì giữ hàng trăm người chuyên làm đơn tố cáo. {beat: Lai Tuấn Thần}
+Ông ta cùng Vạn Quốc Tuấn viết cuốn La chức kinh, dạy cách dựng hồ sơ vu cáo.
+Với ông ta, tên của người nào cũng có thể trở thành một tờ đơn.
+Có một chi tiết cho thấy cái máy ấy chạy đến đâu. {beat: nhận tội oan}
+Năm 692, ngự sử Nghiêm Thiện Tư xét lại các vụ tố cáo.
+Ông tìm ra hơn 850 người đã nhận tội oan.
+Rồi chính ông bị bè lũ khốc lại vu cáo, và bị đày đi. ‖
+Bạn hiểu chưa? Ở thời ấy, nhận tội oan không phải chuyện hiếm. Nó là một lối thoát mà hàng trăm người đã chọn. {beat: lối thoát}
+Và một ngày, Lai Tuấn Thần gửi lên một danh sách bảy người, bị tố mưu phản.
+Trong bảy người ấy có ba tể tướng: Nhâm Tri Cổ, Bùi Hành Bản và Địch Nhân Kiệt.
+Hãy hình dung ba cái tên tể tướng nằm giữa một tờ giấy, mực còn chưa khô. {pd}
+Vậy ông sẽ làm gì, khi chỉ còn một lần được hỏi? ‖
 
 ---
 
-## CH11 · Cô cháu hay mẹ con
+## CH07 · Lời nhận tội
 
-Năm 698, Võ Tắc Thiên đã già, và ngôi thái tử còn bỏ trống.
-Hai người cháu của bà, Võ Thừa Tự và Võ Tam Tư, đang chạy chọt để được làm thái tử.
-Nếu là phim, đây là cảnh ông bày mưu.
-Sử chép ông nhiều lần nói chuyện với bà. {beat: cuộc nói chuyện nhiều lần}
-Ông nhắc đến Thái Tông. ‖
-» Văn hoàng đế dãi gió dầm mưa, đích thân xông pha giáo mác và mũi tên để định thiên hạ, rồi truyền cho con cháu. [TRÍCH DỊCH]
-Rồi ông hỏi bà một câu rất đời thường. ‖
-» Cô cháu với mẹ con, bên nào thân hơn? [TRÍCH DỊCH]
-Rồi ông nói về chuyện thờ cúng.
-Một người làm vua, sau này phải được thờ ở Thái miếu.
-» Bệ hạ lập con, ngàn năm sau được thờ ở Thái miếu, nối thờ mãi mãi. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu. [TRÍCH DỊCH] {beat: lý lẽ của một người đang nói chuyện nhà}
-Bà đáp. ‖
-» Đây là việc nhà ta, khanh đừng dự vào. [TRÍCH DỊCH]
-Ông không lùi. ‖
-» Bậc vương giả lấy bốn biển làm nhà; người trong bốn biển đều là bề tôi. Việc gì chẳng là việc nhà của bệ hạ? [TRÍCH DỊCH]
-Tư trị thông giám còn chép một giấc mơ. ‖
-» Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao? [TRÍCH DỊCH]
-Chữ vũ trong anh vũ, tên con vẹt, đọc giống họ Võ của bà. {beat: cách giải giấc mơ}
-Ông giải. ‖
-» Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại. [TRÍCH DỊCH]
-Tân Đường thư chép một giấc mơ khác, về một ván cờ song lục mà bà không thắng.
-Tân Đường thư còn chép một lý lẽ rất thực tế của ông.
-Khi giặc phương Bắc đánh vào, Võ Tam Tư ra chợ mộ quân, hơn một tháng chưa đủ một nghìn người.
-Lư Lăng vương thay ông ta, chưa đầy mười ngày đã có năm vạn.
-Cũng bộ sách ấy kể: Trương Dịch Chi từng hỏi ông cách tự giữ mình, và ông đáp chỉ có khuyên đón Lư Lăng vương về. {beat: một lý lẽ bằng số người đi lính}
-Hai giấc mơ ấy được chép trong hai bộ sử khác nhau. {beat: hai dị bản của một giấc mơ}
-Tháng ba năm 698, Lư Lăng vương Lý Triết được gọi về kinh, và sau đó được lập làm thái tử.
-Hai bộ Đường thư còn kể một cảnh nữa, mà Tư trị thông giám không chép.
-Bà giấu Lư Lăng vương sau màn trướng, rồi gọi Địch Nhân Kiệt vào bàn chuyện này.
-Ông vừa nói vừa khóc, không ngăn được.
-Bà liền cho người ra khỏi màn trướng. ‖
-» Trả lại thái tử cho khanh. [TRÍCH DỊCH]
-Ông bước xuống bậc thềm, quỳ lạy. ‖
-Nhưng đừng nghĩ đây là chiến thắng của một người.
-Từ đó, theo Tư trị thông giám, bà không còn ý lập Võ Thừa Tự hay Võ Tam Tư. {beat: kết quả của lời khuyên}
-Tư trị thông giám chép: Vương Phương Khánh và Vương Cập Thiện cũng khuyên bà như vậy.
-Cát Húc, theo bản tiếng Anh, cũng thuyết phục hai anh em họ Trương, những người được bà sủng ái.
-Một người đứng giữa nhiều người, và đó là cách một lời khuyên thành việc. ‖
+Cái bẫy của Lai Tuấn Thần được đặt sẵn từ trước khi ông bước vào.
+Nhận ngay từ lần hỏi đầu thì được giảm án chết.
+Chối thì phải chịu tra khảo. {beat: cái bẫy}
+Hãy hình dung ông ngồi trong phòng giam, nhìn hai con đường và biết rõ đường nào cũng có giá. {pd}
+Hãy hình dung đêm ấy, ngoài hành lang, tiếng bước chân tuần tra đều đặn như tiếng đếm ngược. {pd}
+Ông chọn nhận. Ông nói đúng câu mà bạn đã nghe lúc mở đầu. ‖
+Trong câu ấy, ba chữ cuối là ba chữ người ta nhớ mãi. {beat: ba chữ}
+Hãy nghe lại lời ông chọn. Ông không nói "tôi phản bà". Ông nói "đổi mệnh", "muôn vật đổi mới", "bề tôi cũ nhà Đường".
+Nghe như một người chịu thua trước thời cuộc, không giống một kẻ mưu phản. {beat: lời được chọn}
+Lai Tuấn Thần nghe xong, bèn nới tay.
+Người canh ngục không còn canh giữ chặt chẽ như trước. Họ chỉ còn chờ lệnh hành hình đưa xuống.
+Nhưng chờ cũng là một khoảng thời gian.
+Ông đã mua được một thứ rất quý: thời gian. ‖
+Nhưng chưa hết. Một viên phán quan tên Vương Đức Thọ đến gặp ông.
+Hắn nói mình chỉ là kẻ bị sai khiến, muốn nhờ ông giúp một chút để được thăng chức.
+Hắn nhờ ông khai thêm một người nữa: Dương Chấp Nhu, một tể tướng khác.
+Ông ngẩng lên nhìn hắn. {beat: đòi hỏi thứ hai}
+Ông đã chịu nhận mình là kẻ phản. Nhưng kéo thêm một người xuống nước, thì ông không chịu. ‖
+» Trời đất chứng giám, lại sai Địch Nhân Kiệt làm chuyện này sao! ‖ [TRÍCH DỊCH]
+Rồi ông đập đầu vào cột nhà giam. Máu chảy đầy mặt.
+Vương Đức Thọ hoảng sợ, và xin lỗi ông. {beat: đập đầu}
+Hãy hình dung tiếng đầu chạm vào gỗ, và tiếng thở gấp của người vừa nhận ra mình đã đi quá xa. {pd}
+Ông sẵn sàng nhận mình có tội, để giữ cái mạng. Nhưng ông không chịu để cái mạng ấy thành nấc thang cho người khác leo lên.
+Nghe thì mâu thuẫn. Nhưng cả hai việc ấy lại đều là cách ông giữ người.
+Giờ ông đã có thời gian, và một cái cột còn dính máu. {beat: bước tiếp theo}
+Còn thiếu một thứ duy nhất: một đường nào đó để lời kêu oan thoát ra khỏi bốn bức tường.
+Ông sẽ gửi nó bằng cái gì, và qua tay ai? ‖
 
 ---
 
-## CH12 · Biên cương, Hà Bắc, một pho tượng
+## CH08 · Mảnh lụa trong áo bông
 
-Trở lại năm 697, trước chuyện kế vị, ông dâng sớ xin bỏ các trấn xa ở Tây Vực.
-Cựu Đường thư chép câu then chốt.
-» Xin bỏ bốn trấn để làm giàu Trung Quốc, bãi An Đông để làm đầy Liêu Tây. [TRÍCH DỊCH]
-Việc ấy không được nghe theo, nhưng Tư trị thông giám chép: người hiểu biết cho là đúng. {beat: một lời can không được nghe}
-Sang năm 698, quân Đột Quyết của Mặc Xuyết đánh vào Triệu Châu và Định Châu.
-Họ giết hơn mười nghìn người bị bắt, rồi rút lui.
-Địch Nhân Kiệt dẫn mười vạn quân đuổi theo, nhưng không kịp.
-Nếu là phim, cuộc truy đuổi có thể kết thúc nhanh gọn.
-Sử chép ông đuổi không kịp. ‖
-Sau đó, ông được cử đi an phủ Hà Bắc.
-Dân ở đó từng bị giặc ép theo, giờ sợ bị trị tội nên chạy trốn.
-Theo Tư trị thông giám, trước đó Võ Ý Tông đi dẹp Hà Bắc và ra tay tàn khốc. {beat: một người khác làm khác}
-Địch Nhân Kiệt dâng một bản sớ khác. ‖
-» Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai. [TRÍCH DỊCH]
-Triều đình nghe theo.
-Ông tìm những người bị Đột Quyết bắt đi, đưa họ trả về quê cũ.
-Ông tu sửa các trạm dịch để đón quân về, phát lương cho người nghèo, và tự ăn cơm thô.
-Ông cấm quân tướng quấy nhiễu dân, ai phạm thì chém. {beat: lệnh cấm quấy dân}
-Sử viết: Hà Bắc yên ổn. ‖
+Ông xin người canh một cây bút và một nghiên mực. {beat: bút nghiên}
+Người canh đưa cho ông.
+Ông xé một mảnh lụa ở đầu chăn, viết lên đó oan trạng, rồi nhét vào trong áo bông.
+Đó không phải là một bức thư máu như nhiều người hay tưởng. Đó là mực, và một mảnh lụa. ‖
+Hãy hình dung nét chữ viết vội dưới ánh sáng yếu, và mảnh lụa được gấp lại thật nhỏ. {pd}
+Rồi ông nhờ một câu rất tự nhiên.
+» Trời đang nóng, xin giao cho người nhà tháo bông ra. ‖ [TRÍCH DỊCH]
+Một lời xin nghe vô hại. Ai nghe cũng thấy hợp lý, mùa nóng thì ai mặc áo bông.
+Một lời nhờ vả nhỏ về chuyện mùa nóng, trong đó giấu một việc sống còn.
+Ông nhờ chuyển chiếc áo về cho người nhà, qua tay chính Vương Đức Thọ. {beat: chiếc áo}
+Có lẽ viên phán quan cầm chiếc áo nặng hơn mức một người cầm áo thường. {pd}
+Nhưng chiếc áo vẫn tới được tay người nhà ông.
+Một mảnh lụa nhỏ, nhưng nặng bằng cả một vụ án. {beat: sức nặng của mảnh lụa}
+Chiếc áo về tới nhà. Con trai ông là Quang Viễn tháo bông ra. {beat: người con}
+Mảnh lụa rơi ra, và Quang Viễn cầm nó đi báo biến.
+Anh đem nó vào cung, báo rằng cha mình bị oan.
+Võ Tắc Thiên cho gọi anh vào. Bà xem thư. Rồi bà gọi Lai Tuấn Thần tới hỏi.
+Lai Tuấn Thần không chịu thua. Ông ta nói một câu nghe rất tự tin. ‖
+» Địch Nhân Kiệt không bị gỡ mũ đai, ăn ngủ rất yên, vì sao phải nhận tội? ‖ [TRÍCH DỊCH]
+Nhưng ông ta cũng biết mình đang đứng trên miệng hố. {beat: Lai chống đỡ}
+Ông ta cho các tù nhân đội lại mũ đai tươm tất, rồi dẫn họ ra gặp sứ giả của bà.
+Hãy hình dung bảy người ngồi đó, áo mũ chỉnh tề, mặt không còn một dấu vết nào. {pd}
+Chưa hết, ông ta còn dựng thêm một tờ tấu tạ tội chết, rồi bảo Vương Đức Thọ ký thay ông.
+Một tờ giấy giả, ký thay một người sống. {beat: giấy giả}
+Hồ sơ vụ án đã đầy đủ, và Lai Tuấn Thần tin rằng mọi chuyện đã xong.
+Nhưng ông ta đã quên một điều. Một mảnh lụa nhỏ đang nằm trong tay bà. ‖
+Và có một người khác, không ai ngờ, sắp bước vào đại điện. {beat: nhân vật bất ngờ}
+Người ấy chưa tới mười tuổi. ‖
+
+---
+
+## CH09 · Cậu bé chưa mười tuổi
+
+Cậu là con trai của Lạc Tư Hối.
+Cha chết, nhà tan, cậu bị tịch làm nô ở Tư Nông, tuổi chưa đầy mười.
+Vậy mà cậu dâng thư báo biến, và được triệu kiến. {beat: cậu bé}
+Hãy hình dung một đứa trẻ bước lên bậc thềm điện, bên cạnh những viên quan râu tóc bạc phơ. {pd}
+Cậu nói một câu mà cả triều không ai dám nói. ‖
+» Cha thần đã chết, nhà thần đã tan, thần chỉ tiếc phép nước của bệ hạ bị bọn Tuấn Thần đùa bỡn. ‖ [TRÍCH DỊCH]
+Có lẽ Võ Tắc Thiên im lặng khá lâu sau câu ấy. {pd}
+Rồi bà quay sang Địch Nhân Kiệt, và hỏi thẳng: sao ông lại nhận tội? {beat: câu hỏi của nữ hoàng}
+Ông không vòng vo. ‖
+» Nếu không nhận, thần đã chết dưới roi vọt rồi. ‖ [TRÍCH DỊCH]
+Bà lại hỏi tiếp về tờ tấu tạ tội chết. Ông đáp rằng ông không hề có tờ ấy.
+Bà đưa tờ giấy ra cho ông xem. Ông mới biết nó đã bị ký thay.
+Tờ giấy giả mà Lai Tuấn Thần dựng lên để bịt miệng họ, giờ lại thành chứng cớ chống lại chính ông ta.
+Cả một ván cờ đảo lại chỉ nhờ vài câu hỏi. {beat: ván cờ đảo}
+Kết quả là bảy người được tha chết.
+Địch Nhân Kiệt bị giáng làm lệnh Bành Trạch, một chức quan nhỏ ở tận miền xa.
+Nhưng cuộc chiến vẫn chưa xong.
+Võ Thừa Tự, cháu của Võ Tắc Thiên, nhiều lần xin giết ông.
+Ngự sử Hoắc Hiến Khả còn dập đầu trước thềm điện, xin giết bằng được. {beat: sức ép đòi giết}
+Nhưng bà đã trả lời rằng mệnh đã ban ra rồi, không thể đổi.
+Câu ấy cứu bảy mạng người. ‖
+Hãy hình dung bảy gia đình, trong những ngày ấy, đã đếm từng ngày mà không biết tin gì. {pd}
+Năm ông đến Bành Trạch, trời hạn không mưa.
+Ông dâng sớ xin cứu đói và miễn thuế. Một bản tiếng Trung kể rằng bà đã nghe.
+Ở Bành Trạch, dân lập sinh từ thờ ông lúc ông còn sống. {beat: sinh từ}
+Bạn thử nghĩ xem: một người vừa phải nhận tội phản, giờ được dân dựng miếu thờ khi chưa mất.
+Ông đã sống sót qua thứ đáng sợ nhất của triều Võ Chu.
+Nhưng triều đình đang cần ông, và giặc đã gõ cửa. ‖
+Một đạo quân từ phương bắc vừa hạ xong Ký Châu. {beat: giặc đến}
+Ông sắp được gọi ra khỏi chốn xa. ‖
+
+---
+
+## CH10 · Khi quân Khiết Đan gõ cửa
+
+Năm 696, quân Khiết Đan hạ Ký Châu, và cả Hà Bắc chấn động.
+Triều đình gọi ông từ Bành Trạch ra, cử làm thứ sử Ngụy Châu. {beat: được gọi ra}
+Thứ sử trước là Độc Cô Tư Trang, và ông này đã dồn hết dân vào trong thành để phòng thủ.
+Hãy hình dung người dân bỏ nhà, bỏ ruộng, chen chúc trong những bức tường chật chội. {pd}
+Địch Nhân Kiệt đến, nhìn cảnh ấy, và cho họ về. ‖
+» Giặc còn ở xa, cần gì làm thế! Nhỡ giặc đến, ta tự lo. ‖ [TRÍCH DỊCH]
+Sử chép rằng giặc nghe tin ấy thì tự rút lui. {beat: giặc rút}
+Dân rất mừng.
+Hãy hình dung cả thành thở ra một hơi dài, khi người ta được trở về với ruộng đồng của mình. {pd}
+Nhưng có một việc khác khó hơn nhiều. Hai tướng Khiết Đan là Lý Giai Cố và Lạc Vụ Chỉnh ra hàng.
+Có người trách họ đến muộn, và xin diệt cả họ nhà họ. {beat: xin giết}
+Địch Nhân Kiệt lên tiếng bênh họ. ‖
+» Bọn Giai Cố dũng mãnh hơn người, đã hết sức vì chủ cũ thì cũng sẽ hết sức vì ta. Vỗ về bằng ân đức, tất thành người của ta. ‖ [TRÍCH DỊCH]
+Những người thân thiết của ông can ông đừng làm thế. Sợ ông mang tai họa vào thân.
+Ông đáp rằng nếu việc ấy có lợi cho nước, thì không thể lo cho thân mình. {beat: không lo thân}
+Hai tướng được tha. Họ được giao chức, và đi dẹp tàn quân Khiết Đan.
+Trong triều có Lâu Sư Đức, người trấn giữ Hà Lũng hơn bốn chục năm, tính điềm đạm khoan dung.
+Chính Lâu Sư Đức đã tiến cử ông, nhưng ông không biết, và còn coi thường người ấy. {beat: người tiến cử thầm lặng}
+Một hôm bà hỏi ông rằng Sư Đức có phải là người hiền không. Ông đáp qua loa.
+Bà nói rằng bà biết đến ông, chính là nhờ Sư Đức tiến cử.
+Ông đành thừa nhận: Lâu công đức dày, và ông được bao dung đã lâu mà không hay. ‖
+Lý Giai Cố còn được ban họ Võ, và làm đại tướng quân.
+Một người từng bị ép nhận mình là kẻ phản, giờ xin tha cho hai kẻ vừa ra hàng. {beat: nghịch lý}
+Có lẽ ông hiểu rất rõ cảm giác bị chặn hết đường sống. {pd}
+Chiến sự chưa dừng lại.
+Còn kẻ đến sau, không còn là Khiết Đan. ‖
+Đột Quyết kéo xuống phương nam, và Hà Bắc lại cần đến ông. ‖
+
+---
+
+## CH11 · Hà Bắc sau cơn giặc
+
+Năm 697, Lai Tuấn Thần bị xử tử, sau khi bị tố là định vu cáo cả hoàng tự và Lư Lăng vương.
+Kẻ từng nắm bảy cái tên trong tay, cuối cùng cũng thành một cái tên trong danh sách khác. {beat: Lai ngã}
+Cũng năm ấy, ông dâng một tờ sớ gây tranh cãi.
+Ông xin bỏ bốn trấn ở Tây Vực, và bãi An Đông. {beat: sớ gây tranh cãi}
+» Xin bỏ bốn trấn để làm giàu Trung Quốc, bãi An Đông để làm đầy Liêu Tây. ‖ [TRÍCH DỊCH]
+Việc ấy không được nghe theo.
+Nhưng những người hiểu biết đều cho rằng ông nói đúng. {beat: người hiểu chuyện}
+Sang năm 698, Mặc Chuyết cướp Triệu Châu và Định Châu.
+Hắn bắt hơn một vạn người, rồi giết sạch trước khi rút đi. {beat: Mặc Chuyết}
+Ông đem mười vạn quân đuổi theo, nhưng không kịp.
+Đó là một trận đuổi bắt thất bại. Không có chiến thắng nào ở đây cả. ‖
+Hãy hình dung đoàn quân mười vạn người đứng trên đồng cỏ, và bóng giặc đã mờ sau chân trời. {pd}
+Triều đình cử Võ Ý Tông đi dẹp Hà Bắc. Ông ta đến đâu cũng tàn khốc.
+Địch Nhân Kiệt nhìn vùng đất ấy, và dâng lên một lời xin lạ lùng.
+» Xin ân xá hết các châu Hà Bắc, không hỏi tội một ai. ‖ [TRÍCH DỊCH]
+Bà chuẩn y.
+Rồi ông bắt tay vào việc. Ông trả những người bị Đột Quyết bắt về quê cũ. {beat: trả dân về quê}
+Hãy hình dung từng đoàn người lặng lẽ đi bộ về làng cũ, qua những trạm dịch vừa được sửa lại. {pd}
+Ông cho sửa trạm dịch, để đón quân trở về.
+Ông tự ăn rau, ăn cơm thô, và cấm quân dưới trướng quấy nhiễu dân. Ai phạm thì chém.
+Hà Bắc yên ổn trở lại. ‖
+Một người từng vào ngục chỉ vì một tờ đơn, giờ xin tha cho cả một vùng. {beat: đảo chiều}
+Nhưng có một câu hỏi lớn hơn mọi tờ sớ đang chờ ông, ngay trong cung. {beat: câu hỏi lớn}
+Ai sẽ ngồi lên ngai vàng sau Võ Tắc Thiên? ‖
+
+---
+
+## CH12 · "Việc nhà ta"
+
+Hai người cháu của Võ Tắc Thiên là Võ Thừa Tự và Võ Tam Tư đều muốn làm thái tử.
+Ngôi báu sẽ về tay họ Võ, hay trở lại với họ Lý của nhà Đường? {beat: cuộc đua kế vị}
+Địch Nhân Kiệt chọn nói thẳng với bà, bằng những câu rất giản dị.
+Đầu tiên, ông nhắc về Thái Tông. ‖
+» Văn hoàng đế dãi gió dầm mưa, xông pha mũi tên hòn đạn để định thiên hạ, rồi truyền cho con cháu. ‖ [TRÍCH DỊCH]
+Rồi ông hỏi một câu mà ai cũng thấy đau. ‖
+» Cô cháu với mẹ con, bên nào thân hơn? ‖ [TRÍCH DỊCH]
+Rồi ông nói đến chuyện ai sẽ thờ bà sau khi bà mất. ‖
+» Bệ hạ lập con, ngàn năm sau còn được thờ ở Thái miếu. Lập cháu, chưa từng có cháu làm thiên tử mà thờ cô trong miếu. ‖ [TRÍCH DỊCH]
+Bà đáp lại. {beat: bà đáp lại}
+» Đây là việc nhà ta, khanh đừng dự vào. ‖ [TRÍCH DỊCH]
+Ông trả lời liền. ‖
+» Bậc vương giả lấy bốn biển làm nhà. Việc gì chẳng là việc nhà của bệ hạ? ‖ [TRÍCH DỊCH]
+Hãy hình dung căn phòng im phăng phắc, giữa hai người đang nhìn nhau qua một chiếc án thư. {pd}
+Một hôm, bà kể giấc mơ của mình. {beat: giấc mơ con vẹt}
+» Trẫm mơ thấy một con vẹt lớn gãy cả hai cánh, là sao? ‖ [TRÍCH DỊCH]
+Ông giải mộng luôn, ngay trước mặt bà. ‖
+» Chữ Vũ là họ của bệ hạ, hai cánh là hai con. Bệ hạ nâng hai con dậy, hai cánh sẽ vỗ lại. ‖ [TRÍCH DỊCH]
+Sau lần ấy, bà không còn ý lập Võ Thừa Tự hay Võ Tam Tư nữa.
+Một lời giải mộng, nhưng đổi cả hướng đi của một triều đại.
+Hãy hình dung hai hàng người xếp trước bàn ghi danh đi lính, một hàng lèo tèo, một hàng dài đến hết phố. {pd}
+Nhưng đừng nghĩ ông làm một mình. {beat: không chỉ một mình ông}
+Vương Phương Khánh và Vương Cập Thiện cũng cùng khuyên bà.
+Ngay cả Trương Dịch Chi, người được bà sủng ái, từng hỏi ông cách tự giữ mình cho yên.
+Ông đáp rằng chỉ có một cách: khuyên bà đón Lư Lăng vương trở về.
+Tháng ba năm 698, Lư Lăng vương được gọi về kinh. Sau đó, ông được lập làm thái tử.
+Có một cảnh nữa, kể trong hai bộ Đường thư. Võ Tắc Thiên giấu con trai mình sau màn trướng.
+Hãy hình dung tấm màn trướng khẽ lay, và một người đàn ông đang nín thở sau lớp vải. {pd}
+Bà gọi Địch Nhân Kiệt vào, bàn chuyện Lư Lăng vương. Rồi bà bất ngờ kéo màn ra. ‖
+» Trả lại thái tử cho khanh. ‖ [TRÍCH DỊCH]
+Ông khóc, nước mắt không ngừng được. {beat: nước mắt}
+Sử còn ghi một lý lẽ ông dùng, rất cụ thể: Võ Tam Tư mộ dũng sĩ hơn một tháng mà chưa đủ ngàn người.
+Lư Lăng vương thay vào, chưa đầy mười ngày đã có năm vạn.
+Người con trai của bà trở lại làm thái tử. {beat: kết quả kế vị}
+Nhưng ông già đi, và còn một việc nữa phải làm trước khi ngã xuống. ‖
+Bạn nghĩ người như ông sẽ bỏ lại điều gì sau lưng? ‖
+
+---
+
+## CH13 · Quốc lão
+
 Năm 700, Võ Tắc Thiên muốn dựng một pho tượng Phật rất lớn.
-Chi phí lên đến nhiều triệu tiền, và bà bắt tăng ni cả nước mỗi ngày góp một đồng.
-Ông dâng sớ can. ‖
-» Việc không thể sai quỷ làm, phải dùng người. Của cải không từ trời rơi, rốt cuộc phải từ đất ra. Không hại trăm họ thì lấy đâu? [TRÍCH DỊCH]
-Bà đáp. ‖
-» Khanh dạy trẫm làm điều thiện, sao lại cãi? [TRÍCH DỊCH]
-Rồi bà bãi việc dựng tượng. {beat: bãi một pho tượng}
-Tháng tư năm 700, Võ Tắc Thiên lên cung Tam Dương tránh nóng.
-Một nhà sư người Hồ mời bà đi xem lễ chôn xá lợi.
-Ông quỳ trước ngựa của bà, tâu rằng nhà sư ấy dối trá, và đường núi hẹp, không chỗ cho thị vệ.
-Bà quay xe giữa đường, và nói rằng việc ấy để thành khí phách của một bề tôi thẳng thắn. {beat: bà quay xe giữa đường}
-Nhìn lại cây bách ở Chiêu Lăng và pho tượng chưa dựng.
-Một cây bách mà vua định giết hai tướng.
-Một pho tượng mà bà định thu tiền tăng ni cả nước.
-Một lần ông nói về luật và chỗ đặt tay chân của dân.
-Một lần ông nói về sức dân và đồng tiền của họ. ‖
-
----
-
-## CH13 · KẾT: Người trong hồ sơ, người trong phim
-
-Sử còn ghi một việc khác của ông: tiến cử người.
-Võ Tắc Thiên từng hỏi ông có ai là người tài để bà dùng.
-Ông tiến cử Trương Giản Chi, và nói rằng ông ấy tuy già nhưng có tài tể tướng.
-Bà cho Trương Giản Chi làm tư mã Lạc Châu.
-Ông tâu rằng ông đã tiến cử người làm tể tướng, không phải làm tư mã. {beat: Trương Giản Chi}
-Về sau bà dùng Trương Giản Chi làm tể tướng. {beat: Trương Giản Chi làm tể tướng}
-Ông cũng tiến cử Diêu Nguyên Sùng, về sau là Diêu Sùng, cùng Hoàn Ngạn Phạm và Kính Huy.
-Có người nói với ông rằng đào lý thiên hạ đều ở cửa ông cả rồi. ‖
-» Tiến người hiền là vì nước, không phải vì riêng. [TRÍCH DỊCH]
-Võ Tắc Thiên gọi ông là quốc lão, và không gọi tên.
-Bà còn nói với ông một câu khác. ‖
-» Mỗi lần thấy công lạy, trẫm cũng đau mình. [TRÍCH DỊCH]
-Tư trị thông giám còn kể một cảnh nhỏ.
-Một lần đi chơi cùng bà, gió thổi rơi khăn của ông, ngựa hoảng không dừng được.
-Bà bảo thái tử đuổi theo, nắm dây cương ngựa cho ông. {beat: một cảnh đời thường của người già}
-Tháng chín năm 700, Tư trị thông giám chép, ông qua đời.
-Bà khóc. ‖
-» Triều đường trống rồi! [TRÍCH DỊCH]
-Về sau, mỗi khi triều đình có việc lớn mà các quan không quyết được, Tư trị thông giám chép bà thường thở dài.
-Bà nói: trời lấy mất quốc lão của ta sao sớm thế.
-Trung Tông lên ngôi thì truy tặng ông chức Tư không, và Duệ Tông phong ông làm Lương quốc công.
-Có một ghi chú về năm mất: bản tiếng Trung nêu rằng có học giả cho là ông mất năm 704.
-Ta theo năm 700 của sử, và đặt ghi chú ấy cạnh nó. {beat: năm mất còn tranh cãi}
-Năm 705, năm năm sau khi ông mất theo sử, Trương Giản Chi cùng các quan đã giết hai anh em họ Trương, phục vị cho Trung Tông.
-Sử không chép rằng ông dự mưu. {beat: giới hạn công của ông}
-Ông từng tiến cử một số người trong số ấy. ‖
-Hai người con của ông cũng được sử nhắc.
-Quang Tự được ông tiến cử làm quan trong bộ, và làm việc xứng chức.
-Cảnh Huy làm ở Ngụy Châu, tham bạo, và dân giận đến mức tự tay phá sinh từ của cha ông. {beat: một người con khác}
-Còn ngôi mộ, bản tiếng Anh nói ở phía đông chùa Bạch Mã, Lạc Dương.
-Bản tiếng Trung nói vị trí thật còn tranh cãi.
-Ngay cả chỗ nằm của người ấy, ta cũng không chắc. ‖
-Giờ ta quay lại hai cuốn sổ.
-Trong sổ của phim, ông phá án bằng một phát hiện cuối cùng.
-Trong sổ của sử, hai bộ Đường thư không có một vụ án ma quái nào.
-Cái sử chép là cây bách, Dự Châu, Hà Bắc, hai tướng Khiết Đan, một pho tượng.
-Trong nhiều chuyện, ông lên tiếng khi mạng người đứng trước nguy hiểm. {beat: điều lặp lại}
-Nhưng ta đã thấy, ông cũng đòi trị Vương Bản Lập, và đốt hơn 1.700 đền miếu.
-Nên ta không nói ông chỉ biết xin tha.
-Ta chỉ nói: những việc nổi nhất của ông, trong các trang ta đã đọc, phần lớn là chặn một điều tệ hơn. ‖
-Ông từng nhận mưu phản trước mặt Lai Tuấn Thần.
-Chính ông giải thích với Võ Tắc Thiên: nếu không nhận, ông đã chết dưới roi.
-Một chữ thật trong lời nhận tội, rồi mảnh lụa giấu trong áo bông. ‖
-Bạn chọn cảnh nào để nhớ về ông?
-Một thám tử lật bàn cờ trong phim?
-Hay một người đập đầu vào cột, rồi xin một cây bút? {beat: câu hỏi cuối}
+Mỗi tăng ni trong thiên hạ phải góp một đồng tiền mỗi ngày. {beat: pho tượng lớn}
+Chi phí lên đến hàng triệu, mà kho nhà nước không đủ.
+Địch Nhân Kiệt dâng sớ can. ‖
+» Việc không thể sai quỷ làm, phải dùng người. Của cải không từ trời rơi, rốt cuộc phải từ đất ra. Không hại trăm họ thì lấy đâu? ‖ [TRÍCH DỊCH]
+Bà trả lời một câu mà ít ai ngờ một nữ hoàng nói ra. ‖
+» Khanh dạy trẫm làm điều thiện, sao lại cãi? ‖ [TRÍCH DỊCH]
+Rồi bà bãi việc dựng tượng. {beat: bãi tượng}
+Cũng năm ấy, một nhà sư người Hồ mời bà xem lễ chôn xá lợi.
+Ông quỳ trước ngựa của bà, tâu rằng nhà sư ấy dối trá, và đường núi lại hẹp.
+Bà quay xe, nói rằng làm thế để thành khí phách của một trực thần.
+Ông còn làm một việc nữa: tiến cử người. {beat: tiến cử}
+Ông tiến cử Trương Giản Chi, nói rằng người này tuy già nhưng có tài làm tể tướng.
+Bà chỉ cho Trương Giản Chi làm tư mã Lạc Châu. Ông phản đối rằng ông tiến cử người làm tể tướng, không phải tư mã.
+Cuối cùng Trương Giản Chi cũng được dùng làm tể tướng. {beat: lời tiến cử thành sự thật}
+Ông còn tiến cử Diêu Nguyên Sùng, Hoàn Ngạn Phạm, Kính Huy, và hàng chục người khác. Phần lớn họ thành danh thần.
+Có người nói với ông một câu nửa đùa nửa thật. ‖
+» Đào lý thiên hạ đều ở cửa ông cả rồi. ‖ [TRÍCH DỊCH]
+Ông đáp. ‖
+» Tiến người hiền là vì nước, không phải vì riêng. ‖ [TRÍCH DỊCH]
+Ông từng làm đô đốc U Châu, và bà ban cho ông chiếc áo tía.
+Bà còn tự làm mười hai chữ vàng, đính lên áo để khen lòng trung của ông.
+Võ Tắc Thiên gọi ông là quốc lão, và không bao giờ gọi tên ông. {beat: quốc lão}
+» Mỗi lần thấy công lạy, trẫm cũng đau mình. ‖ [TRÍCH DỊCH]
+Có lần gió thổi rơi khăn của ông, ngựa hoảng không dừng. Bà liền sai thái tử đuổi theo nắm lấy cương. {beat: chiếc khăn rơi}
+Hãy hình dung vị thái tử vừa được trả lại ngôi, chạy theo con ngựa hoảng của một vị tể tướng già. {pd}
+Cuối năm 700, ông qua đời. {beat: ông mất}
+Có học giả cho rằng ông mất năm 704, nhưng phần lớn sách ghi năm 700. {beat: ngày mất}
+Võ Tắc Thiên khóc. ‖
+» Triều đường trống rồi! ‖ [TRÍCH DỊCH]
+Về sau, mỗi khi triều đình có việc lớn không quyết được, bà lại thở dài rằng trời lấy mất quốc lão của bà sao sớm thế.
+Năm 705, Trương Giản Chi cùng Hoàn Ngạn Phạm và Kính Huy giết anh em họ Trương, phục vị cho Trung Tông.
+Lúc ấy ông đã mất. Sử không chép rằng ông dự vào cuộc ấy. Ông chỉ là người đã tiến cử những con người này. {beat: 705}
+Con trai ông là Quang Tự làm việc xứng chức.
+Còn Cảnh Huy làm quan ở Ngụy Châu thì tham bạo, đến nỗi dân phá luôn ngôi sinh từ của cha mình.
+Người cha được dân thờ khi còn sống, người con khiến dân quay sang phá miếu ấy. {beat: người con}
+Trung Tông truy tặng ông chức Tư không. Duệ Tông phong ông làm Lương quốc công. {beat: danh hiệu sau khi mất}
+Còn ngôi mộ thì ngay cả nó cũng còn tranh cãi.
+Có nơi nói nó ở phía đông chùa Bạch Mã, Lạc Dương, có nơi nói nó nằm tại nghĩa địa dòng họ ở Bình Lạc. ‖
+Bạn có thể từng xem phim về ông. {beat: phim và hồ sơ đối chiếu}
+Năm 2004, đài CCTV phát loạt phim Thần thám Địch Nhân Kiệt, Lương Quán Hoa đóng.
+Năm 2010, đạo diễn Từ Khắc ra một phim khác, Lưu Đức Hoa đóng. {beat: phim và hồ sơ}
+Trước đó đã có một tiểu thuyết đời Thanh kể chuyện quan án họ Địch phá án.
+Nhà văn Hà Lan Robert van Gulik dịch nó năm 1949, rồi viết thêm cả một loạt truyện về quan án ấy.
+Nhân vật ấy là một hình tượng bán hư cấu, dựa trên Địch Nhân Kiệt.
+Trong phim, ông lật bàn cờ bằng một phát hiện cuối cùng. Trong hồ sơ, ông không có phát hiện cuối cùng nào.
+Ông chỉ có một lựa chọn lặp đi lặp lại: nói hay im, nhận hay chối, cứu hay tránh. {beat: lựa chọn lặp lại}
+Và mỗi lần chọn, ông đều phải trả một cái giá. ‖
+Nếu bạn đứng trước Lai Tuấn Thần, bạn sẽ viết gì lên mảnh lụa của mình? ‖ {beat: câu hỏi cuối}
 
 ---
 
 ## Ghi chú kiểm chứng (để duyệt, không đọc)
 
-Ký hiệu: "FC §n" là mục n của `data/long/cl-dich-nhan-kiet/factcheck.md`. Nguồn S1, S2, Z202 đến Z207, W1 đến W6 theo factcheck.
+Ký hiệu: "FC §n" là mục n của `data/long/cl-dich-nhan-kiet/factcheck.md`. Mọi câu dịch có nhãn lấy đúng bản dịch trong FC.
 
 | Chương | Dữ kiện hoặc câu gán tên/vai | Dòng dẫn tới factcheck | Ghi chú |
 |---|---|---|---|
-| CH00 | Lai Tuấn Thần hỏi cung; mẹo nhận tội ở lần hỏi đầu; câu nhận tội | FC §1 | Dùng nguyên văn Z205 |
-| CH00 | 17.000 người, không ai kêu oan | FC §4 | Sử chép, không có bảng kê |
-| CH01 | Phim 2004 CCTV (Lương Quán Hoa), phim 2010 (Từ Khắc, Lưu Đức Hoa), tiểu thuyết Địch công án, van Gulik 1949 | FC §13 | Nhãn PHIM; năm tiểu thuyết lệch giữa W1 và W4 nên chỉ nói "đời Thanh" |
-| CH02 | Chuyện thuở nhỏ, đám mây, Diêm Lập Bản | FC §3 | Chỉ hai bộ Đường thư; 659 do W2 |
-| CH03 | 675, 17.000 người, hai bộ sử chép khác nhau | FC §4 | Đơn vị người/vụ ghi rõ |
-| CH04 | 676, Chiêu Lăng, ba câu can | FC §5 | Z202 |
-| CH05 | Vi Hoằng Cơ 679, Vương Bản Lập, đền Đố Nữ, 1.700 miếu | FC §6 | Không có vụ ma quái nào trong S1, S2 |
-| CH06 | Dự Châu 688, ba cách đếm, Trương Quang Phụ | FC §7 | DỊ BẢN số người |
-| CH07 | 690, 691, hỏi gièm pha, Lai Tuấn Thần | FC §8 | Wikipedia en cho Lai |
-| CH08 | Lời nhận tội, Vương Đức Thọ, đập đầu vào cột | FC §1 | 692 hay 693 ghi rõ |
-| CH09 | Mảnh lụa, Quang Viễn, cậu bé, tờ tạ tội giả | FC §2 | Không viết bằng máu |
-| CH10 | 696 Ngụy Châu, hai tướng Khiết Đan, Lâu Sư Đức | FC §9 | |
-| CH11 | 698, Lư Lăng vương, hai giấc mơ | FC §10 | DỊ BẢN giấc mơ |
-| CH12 | 697 đến 700: bốn trấn, Hà Bắc, pho tượng | FC §11 | |
-| CH13 | Trương Giản Chi, Diêu Sùng, 700 hay 704, 705, mộ | FC §12 | Ghi mốc đúng thứ tự thời gian |
+| CH00 | Lai Tuấn Thần, mẹo nhận tội lần hỏi đầu, câu nhận tội, 17.000 người | FC §1, §4 | W1: nhận tội, không bị tra tấn |
+| CH01 | Sinh 630, ông nội, cha, chuyện đọc sách, Diêm Lập Bản, mây Thái Hàng, Trịnh Sùng Chất, Lận Nhân Cơ | FC §3, §16 | Chuyện thuở nhỏ và mây chỉ có ở hai bộ Đường thư |
+| CH02 | 674, 675, 17.000, cây bách 676, Quyền Thiện Tài, Phạm Hoài Nghĩa, lời Cao Tông | FC §4, §5, §16 | Đơn vị người/vụ: lời đọc nói "người", "không kê tên từng vụ" |
+| CH03 | Ba câu can, Trường Lăng, đày Lĩnh Nam, thị ngự sử, Vi Hoằng Cơ 679, Vương Bản Lập | FC §5, §6 | Bản Z202 |
+| CH04 | Đố Nữ, Cao Tông khen, Ninh Châu, Kỳ Châu, 1.700 miếu 688 | FC §6, §16 | Kỳ Châu chỉ có ở S2; năm Ninh Châu không nêu (686/683) |
+| CH05 | Dự Châu 688, ba cách đếm, mật tấu, bia, Trương Quang Phụ | FC §7 | DỊ BẢN số người; "viết xong lại xé" từ S1/S2 |
+| CH06 | 690, 691, khốc lại, La chức kinh, Nghiêm Thiện Tư (850), danh sách bảy người | FC §8, §16 | Năm 692 (693 theo W2) |
+| CH07 | Lai nới tay, người canh, Vương Đức Thọ, Dương Chấp Nhu, đập đầu vào cột | FC §1, §16 | Không nêu động cơ của ông ngoài lời ông nói |
+| CH08 | Xin bút nghiên, lụa ở chăn, "trời đang nóng", Quang Viễn, lời Lai, tờ tạ tội giả | FC §2 | Không viết bằng máu; không kết luận mùa |
+| CH09 | Con trai Lạc Tư Hối, lời đáp, bảy người được tha, Bành Trạch, Võ Thừa Tự, Hoắc Hiến Khả, sinh từ, hạn hán | FC §2, §16 | Hạn hán chỉ có ở W2 (lời đọc nói "bản tiếng Trung") |
+| CH10 | 696 Ngụy Châu, hai tướng Khiết Đan, Lâu Sư Đức | FC §9, §16 | Giặc tự rút chỉ có ở S1/S2 |
+| CH11 | Lai bị xử tử 697, sớ bốn trấn, Mặc Chuyết 698, xá Hà Bắc | FC §8, §11 | Võ Ý Tông chỉ nói "tàn khốc" |
+| CH12 | Kế vị 698, giấc mơ vẹt, Lư Lăng vương, màn trướng, lý lẽ số người đi lính | FC §10, §16 | Cảnh màn trướng và lý lẽ lính chỉ có ở S1/S2; không kể dị bản giấc mơ |
+| CH13 | Tượng Phật, sư Hồ, tiến cử, quốc lão, qua đời 700 hay 704, 705, con cháu, mộ, phim, van Gulik | FC §11, §12, §13, §16 | 705 xảy ra sau khi ông mất, sử không chép ông dự mưu |
+
+Câu phỏng dựng `{pd}` chỉ tả không gian, âm thanh, đồ vật, người vô danh; không thêm lời trích, con số, bằng chứng hay phán quyết. Trong bản này không dùng: tuổi lúc bị bắt, mùa, thư máu, lồng đinh, "đẩy lùi Đột Quyết không tốn một mũi tên", Tiêu phủ phán quan (đã BỎ ở FC §14).
+
+## Bảng phiên âm tên riêng (Hán Việt; tên gốc hiện trên màn hình)
+
+| Đọc | Chữ Hán |
+|---|---|
+| Địch Nhân Kiệt | 狄仁傑 |
+| Võ Tắc Thiên | 武則天 |
+| Lai Tuấn Thần | 來俊臣 |
+| Vương Đức Thọ | 王德壽 |
+| Dương Chấp Nhu | 楊執柔 |
+| Quang Viễn | 光遠 |
+| Lạc Tư Hối | 樂思晦 |
+| Quyền Thiện Tài | 權善才 |
+| Phạm Hoài Nghĩa | 范懷義 |
+| Vi Hoằng Cơ | 韋弘機 |
+| Vương Bản Lập | 王本立 |
+| Lý Xung Huyền | 李沖玄 |
+| Trương Quang Phụ | 張光輔 |
+| Lý Giai Cố, Lạc Vụ Chỉnh | 李楷固, 駱務整 |
+| Trương Giản Chi | 張柬之 |
+| Diêu Nguyên Sùng | 姚元崇 |
