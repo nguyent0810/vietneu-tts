@@ -181,3 +181,45 @@ def test_cli_expected_outcome_json_and_zero_exit(monkeypatch, capsys):
     monkeypatch.setattr(p, "next_render", lambda _timeout: p.EXIT_EMPTY)
     assert p.main(["next-render"]) == 0
     assert json.loads(capsys.readouterr().out) == {"code": "no_work", "result": p.EXIT_EMPTY}
+
+
+def test_qa_render_reads_studio_job_dir(tmp_path, monkeypatch):
+    import studio
+    assert p.JOBS == studio.JOBS
+    monkeypatch.setattr(p, "JOBS", tmp_path / "jobs")
+    (tmp_path / "jobs" / "a").mkdir(parents=True)
+    (tmp_path / "jobs" / "a" / "qa.json").write_text(json.dumps({"lint": {"ok": True}, "hook": {"ok": False}}))
+    mp4 = tmp_path / "a.mp4"; mp4.write_bytes(b"x")
+    with pytest.raises(RuntimeError, match="studio QA failed"):
+        p.qa_render({"id": "a"}, mp4)
+
+
+def test_remote_snapshot_reuses_cache_within_ttl(monkeypatch):
+    calls = []
+    monkeypatch.setattr(p, "list_channel_uploads", lambda c: calls.append(c) or [{"id": "v1"}])
+    assert p.remote_snapshot("creds") == [{"id": "v1"}]
+    assert p.remote_snapshot("creds") == [{"id": "v1"}]
+    assert len(calls) == 1                      # lần 2 dùng cache, không quét search.list
+    p.remote_snapshot("creds", force=True)
+    assert len(calls) == 2
+    stale = (datetime.now(timezone.utc) - p.REMOTE_TTL - timedelta(minutes=1)).isoformat()
+    p._atomic_json(p._remote_cache_path(), {"at": stale, "rows": []})
+    p.remote_snapshot("creds")
+    assert len(calls) == 3                      # quá TTL thì quét lại
+
+
+def test_resolve_occupied_uses_snapshot_and_ledger(monkeypatch):
+    monkeypatch.setattr(p, "remote_snapshot", lambda c, force=False: [
+        {"id": "a", "privacy": "private", "publish_at": "2026-11-17T04:30:00Z"},
+        {"id": "b", "privacy": "private", "publish_at": None, "published_at": "2026-11-01T00:00:00Z"},
+        {"id": "c", "privacy": "public", "published_at": "2026-11-02T12:00:00Z"}])
+    p._atomic_json(p.LEDGER, [{"id": "x", "publish_at": "2026-11-18T11:00:00+00:00"}])
+    assert p.resolve_occupied("creds") == {"2026-11-17T04:30", "2026-11-02T12:00", "2026-11-18T11:00"}
+
+
+def test_reconcile_drops_cache_before_rescanning(monkeypatch):
+    p._atomic_json(p._remote_cache_path(), {"at": datetime.now(timezone.utc).isoformat(), "rows": []})
+    put("uploading", item("a"))
+    monkeypatch.setattr(p, "_remote_uploads", lambda c: [])
+    p._reconcile_intents("creds")
+    assert not p._remote_cache_path().exists()

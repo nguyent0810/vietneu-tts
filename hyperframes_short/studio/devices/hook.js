@@ -1,4 +1,17 @@
 /* HOOK devices -- khung 0 phải đủ nghĩa (câu trả lời đã hiện), phát triển theo mốc giọng sau đó. */
+/* `img` (tuỳ chọn, khổ dọc): dải ảnh tư liệu dưới phần chữ, hiện từ khung 0, máy đẩy chậm 1.00 -> 1.06
+ * -> cổng 3 giây đầu (#253) thấy hình thật, chữ hook vẫn đọc trên nền giấy. Khổ ngang bỏ qua `img`. */
+function hookPhoto(c, s, st, top, height) {
+  if (!s.img || c.L.wide) return null;
+  const box = c.el("div", "hk-ph", null, st);
+  box.style.cssText = `position:absolute;left:0;right:0;top:${top}px;height:${height}px;overflow:hidden;background:var(--ink)`;
+  const im = c.el("img", "", null, box); im.src = s.img;
+  im.style.cssText = `width:100%;height:100%;object-fit:cover;object-position:${s.imgPos || "50% 50%"};transform-origin:50% 50%`;
+  return im;
+}
+function hookPhotoMove(c, im, t0) {
+  if (im) c.tl.fromTo(im, { scale: 1 }, { scale: 1.06, duration: 6, ease: "none", immediateRender: false }, t0);
+}
 HFS.device("hook_poster", {
   meta: { purpose: "hook", framing: "edge-band", axis: "static", circle: 0, energy: "H" },
   css: `.hp-num{position:absolute;left:96px;top:300px;font-size:380px;line-height:1;color:var(--accent);transform:rotate(-6deg);transform-origin:0 100%;
@@ -16,9 +29,9 @@ HFS.device("hook_poster", {
     const big = c.el("div", "hp-big heavy", null, st);
     if (c.L.wide) { const n = String(s.big || "").replace(/\*\*/g, "").length;   // khổ ngang: giữ 1 dòng trên dải phụ đề
       big.style.fontSize = (n > 30 ? 84 : n > 22 ? 104 : n > 16 ? 124 : 150) + "px"; }
-    return { ws: c.words(big, s.big) };
+    return { ws: c.words(big, s.big), im: hookPhoto(c, s, st, 1170, 270) };
   },
-  enter(c, h, t0, s) { const k = s.markWord != null ? s.markWord : h.ws.length - 1; c.underline(h.ws[k].wd, c.t(s.markAt, t0 + 1.2)); },
+  enter(c, h, t0, s) { const k = s.markWord != null ? s.markWord : h.ws.length - 1; c.underline(h.ws[k].wd, c.t(s.markAt, t0 + 1.2)); hookPhotoMove(c, h.im, t0); },
 });
 
 /* nhiều nhóm chữ đập vào theo mốc, mỗi nhóm một trục khác nhau (Z-slam -> X-snap -> Y-rise); nhóm 1 hiện sẵn ở khung 0 */
@@ -32,11 +45,12 @@ HFS.device("hook_slam", {
         .hs-kick{position:absolute;left:152px;top:150px;font-size:28px;color:var(--accent)}`,
   build(c, s, st) {
     if (s.kick) c.el("div", "hs-kick mono", c.esc(s.kick), st);
-    const w = c.el("div", "hs-wrap", null, st);
-    return { gs: s.groups.map((g) => { const d = c.el("div", "hs-g heavy" + (g.big ? " big disp" : ""), null, w); c.words(d, g.text); return d; }) };
+    const w = c.el("div", "hs-wrap", null, st), im = hookPhoto(c, s, st, 980, 450);
+    return { im, gs: s.groups.map((g) => { const d = c.el("div", "hs-g heavy" + (g.big ? " big disp" : ""), null, w); c.words(d, g.text); return d; }) };
   },
   enter(c, h, t0, s) {
     const moves = [{ scale: 1.5, filter: `blur(${c.M.blur}px)` }, { x: -320 }, { y: 90, rotation: 4 }];
+    hookPhotoMove(c, h.im, t0);
     if (s.allAtStart) { h.gs.forEach((g, i) => { if (!i) return; const t = c.t(s.groups[i].at, t0 + i);
         c.tl.fromTo(g, { scale: 1.12 }, { scale: 1, duration: c.S(.45), ease: c.E.entry, immediateRender: false }, t); });
       c.underline(h.gs[h.gs.length - 1], c.t(s.markAt, t0 + 2)); return; }
