@@ -9,8 +9,8 @@ Metadata (purpose / framing / axis / circle) dùng cho luật đa dạng -- kh�
 
 | Thiết bị | Mục đích | Khung · trục | Trường chính | Ghi chú |
 |---|---|---|---|---|
-| `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt` | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt` |
-| `hook_slam` | hook | edge-band · Z | `kick`, `groups:[{text, big?, at}]`, `markAt`, `allAtStart` | Mỗi nhóm một trục (Z-slam/X-snap/Y-rise); `allAtStart:true` = mọi nhóm hiện ở khung 0, tới mốc thì nhấn lại |
+| `hook_poster` | hook | edge-band · static | `num` (số/năm nghiêng đỏ), `kick`, `big` (**nhấn**), `markWord`, `markAt`, `img`, `imgPos` | Khung 0 đủ nghĩa; gạch chân vẽ ở `markAt`; `img` = dải ảnh y 1170–1440 |
+| `hook_slam` | hook | edge-band · Z | `kick`, `groups:[{text, big?, at}]`, `markAt`, `allAtStart`, `img`, `imgPos` | Mỗi nhóm một trục (Z-slam/X-snap/Y-rise); `allAtStart:true` = mọi nhóm hiện ở khung 0, tới mốc thì nhấn lại; `img` = dải ảnh y 980–1430 (giữ 2 nhóm ngắn) |
 | `split` | compare | stacked-split · mask | `a`/`b`: `{lab, val, num, at}`, `static` | Hai vùng cắt cạnh; `static:true` làm móc |
 | `myth_strike` | compare | center-hero · X | `mythLab, myth, truthLab, truth, strikeAt, truthAt` | Gạch chéo ngộ nhận, sự thật đến bằng inverse zoom |
 | `window` | statement | center-hero · in-glyph | `word, fill: rain\|solid\|image, img, lab, sub, subAt, size, y` | Chữ khổng lồ làm cửa sổ; `rain` vẽ bằng code |
@@ -71,3 +71,7 @@ Lead đã cài đặt sẵn các khối registry chính vào `hyperframes_short/
 - PROCESS: `proc_symbol_assemble` (biểu tượng ráp từng phần: sen, pháp luân, thái cực).
 - PLACE: `place_floorplan` (sơ đồ nhà + la bàn xoay cho phong thủy nhà ở).
 - EVIDENCE: `ev_photo_annotate` (ảnh thật tượng Phật/phù điêu + vòng chú thích tay).
+
+
+### Ảnh ở cảnh mở (16/11/2026)
+`hook_poster` và `hook_slam` nhận `img` (đường dẫn trong repo, studio chép vào `assets/`) và `imgPos` (object-position, mặc định `50% 50%`): dải ảnh tư liệu dưới phần chữ, hiện từ khung 0, máy đẩy chậm 1.00 → 1.06. Cổng 3 giây đầu (#253) coi cảnh mở có hình thật, chữ hook vẫn nằm trên nền giấy. Chỉ khổ dọc; khổ ngang bỏ qua `img`. Ảnh phải sáng (luma trung bình ≥ 50).

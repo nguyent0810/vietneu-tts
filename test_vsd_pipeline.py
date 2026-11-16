@@ -181,3 +181,14 @@ def test_cli_expected_outcome_json_and_zero_exit(monkeypatch, capsys):
     monkeypatch.setattr(p, "next_render", lambda _timeout: p.EXIT_EMPTY)
     assert p.main(["next-render"]) == 0
     assert json.loads(capsys.readouterr().out) == {"code": "no_work", "result": p.EXIT_EMPTY}
+
+
+def test_qa_render_reads_studio_job_dir(tmp_path, monkeypatch):
+    import studio
+    assert p.JOBS == studio.JOBS
+    monkeypatch.setattr(p, "JOBS", tmp_path / "jobs")
+    (tmp_path / "jobs" / "a").mkdir(parents=True)
+    (tmp_path / "jobs" / "a" / "qa.json").write_text(json.dumps({"lint": {"ok": True}, "hook": {"ok": False}}))
+    mp4 = tmp_path / "a.mp4"; mp4.write_bytes(b"x")
+    with pytest.raises(RuntimeError, match="studio QA failed"):
+        p.qa_render({"id": "a"}, mp4)

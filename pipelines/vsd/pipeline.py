@@ -21,6 +21,7 @@ QUEUED = BASE / "queue"
 STATES = ("ready", "rendering", "rendered", "uploading", "uploaded", "failed")
 LOG = BASE / "logs" / "vsd_pipeline.jsonl"
 LEDGER = BASE / "uploaded.json"
+JOBS = ROOT / "hyperframes_short" / "jobs"   # = studio.JOBS: nơi studio ghi qa.json
 MAX_UPLOADS_24H = 24
 MIN_LEAD = timedelta(minutes=20)
 DEFAULT_SLOTS = ("05:00", "12:00")
@@ -195,7 +196,7 @@ def _duration_probe(mp4: Path) -> tuple[float, bool]:
 def qa_render(spec: dict, mp4: Path) -> None:
     if not mp4.is_file() or mp4.stat().st_size <= 0:
         raise RuntimeError(f"render file missing/empty: {mp4}")
-    report = _json(ROOT / "hyperframes_short" / "studio" / "jobs" / spec["id"] / "qa.json", {})
+    report = _json(JOBS / spec["id"] / "qa.json", {})
     # Studio's --qa may report individual checks; every explicit check must pass.
     checks = [v for v in report.values() if isinstance(v, dict) and "ok" in v]
     if not checks or any(v.get("ok") is not True for v in checks):
