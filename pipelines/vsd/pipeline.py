@@ -30,6 +30,9 @@ EXIT_DEFERRED = 30
 RENDER_TIMEOUT_MARGIN = 300
 UPLOAD_SAFETY_WINDOW = timedelta(minutes=30)
 MAX_ATTEMPTS = 2
+# search.list có hạn mức RIÊNG 100 lượt/ngày/project; quét sâu kênh tốn nhiều trang. 16/11 lô 9 bài đăng liền
+# (mỗi bài quét 2 lần) làm cạn hạn mức -> bài thứ 9 fail. Quét một lần, dùng lại trong REMOTE_TTL.
+REMOTE_TTL = timedelta(hours=float(os.environ.get("VSD_REMOTE_TTL_HOURS", "6")))
 
 
 def _state_dir(state: str) -> Path:
@@ -291,12 +294,20 @@ def uploads_last_24h(now: datetime | None = None) -> int:
     return sum(1 for e in upload_ledger() if _recent(e.get("uploaded_at"), now))
 
 
+def _remote_cache_path() -> Path:
+    return BASE / "remote_cache.json"
+
+
 def list_channel_uploads(credentials: str) -> list[dict]:
     """Recent channel uploads including private scheduled videos."""
     import hf_coverage
     import youtube_catalog
     ids, _, _ = hf_coverage.discover_ids(credentials)
-    ids |= hf_coverage.discover_ids_deep(credentials, known=ids)
+    # known = playlist + sổ đăng + lần quét trước: video private hẹn giờ playlist bỏ sót vẫn "đã biết"
+    # -> search.list dừng sau 2 trang không có ID mới, thay vì quét trọn kênh mỗi lần.
+    known = set(ids) | {e["video_id"] for e in upload_ledger() if e.get("video_id")}
+    known |= {r["id"] for r in (_json(_remote_cache_path(), {}).get("rows") or []) if r.get("id")}
+    ids |= hf_coverage.discover_ids_deep(credentials, known=known)
     rows = []
     ordered = sorted(ids)
     for offset in range(0, len(ordered), 50):
@@ -310,8 +321,24 @@ def list_channel_uploads(credentials: str) -> list[dict]:
     return rows
 
 
+def remote_snapshot(credentials: str, force: bool = False) -> list[dict]:
+    """Danh sách video của kênh, quét thật tối đa một lần mỗi REMOTE_TTL (cache ở BASE/remote_cache.json).
+    Video Oracle vừa đăng sau lần quét đã có trong sổ uploaded.json, nên đếm 24 giờ và khung giờ vẫn đủ."""
+    now = now_utc()
+    cache = _json(_remote_cache_path(), {})
+    try:
+        fresh = now - datetime.fromisoformat(cache["at"]) < REMOTE_TTL and isinstance(cache.get("rows"), list)
+    except (KeyError, TypeError, ValueError):
+        fresh = False
+    if fresh and not force:
+        return cache["rows"]
+    rows = list_channel_uploads(credentials)
+    _atomic_json(_remote_cache_path(), {"at": now.isoformat(), "rows": rows})
+    return rows
+
+
 def _remote_uploads(credentials: str) -> list[dict]:
-    return list_channel_uploads(credentials)
+    return remote_snapshot(credentials)
 
 
 def _remote_time(row: dict) -> str | None:
@@ -339,6 +366,7 @@ def _reconcile_intents(credentials: str) -> bool:
     intents = sorted(_state_dir("uploading").glob("*.json"))
     if not intents:
         return True
+    _remote_cache_path().unlink(missing_ok=True)   # đăng chưa rõ kết quả: phải quét mới, không dùng cache
     try:
         rows = _remote_uploads(credentials)
     except Exception as exc:
@@ -390,10 +418,19 @@ def _recent(value: str | None, now: datetime) -> bool:
 
 
 def resolve_occupied(credentials: str) -> set[str]:
+    """Khung giờ đã có video: lấy từ remote_snapshot (không quét search.list lần nữa) + sổ uploaded.json.
+    Video private không hẹn giờ không chiếm khung (như hf_coverage.slots_taken)."""
     if os.environ.get("VSD_DISABLE_OCCUPIED_SLOTS") == "1":
         return set()
-    import hf_coverage
-    return hf_coverage.occupied_slots(credentials)
+    occupied = set()
+    for row in remote_snapshot(credentials):
+        if row.get("privacy") == "private" and not row.get("publish_at"):
+            continue
+        when = row.get("publish_at") or row.get("published_at")
+        if when:
+            occupied.add(parse_slot(when).isoformat(timespec="minutes")[:16])
+    occupied |= {parse_slot(e["publish_at"]).isoformat(timespec="minutes")[:16] for e in upload_ledger() if e.get("publish_at")}
+    return occupied
 
 
 def upload_short(*args, **kwargs):
