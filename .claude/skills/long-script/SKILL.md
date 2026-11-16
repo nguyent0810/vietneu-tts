@@ -33,6 +33,8 @@ Tốc độ đọc đo được trên 30 bản trụ: **185 tiếng/phút kể c
 - Phần kinh/luật không chép (nội tâm, im lặng, không khí): KỂ thành cảnh — tiếng thở, bàn tay, ánh sáng, câu hỏi tu từ cho người nghe. Không viết "kinh không chép ông nghĩ gì" (đúng văn bản nhưng khô). Nội tâm người có tên mở bằng một chữ nhẹ ("có lẽ", "biết đâu") hoặc câu hỏi tu từ; không khí kể thẳng.
 - Chi tiết chú giải/truyền thuyết: MỘT câu khung đặt đúng chỗ ("Các bậc chú giải về sau kể tiếp phần kinh bỏ trống."), rồi kể liền như phim, không lặp "chú giải kể".
 - Câu phỏng dựng (cảnh, nội tâm, thoại ngắn của nhân vật lịch sử đã mất) ghi số dòng vào `research/<pilot>/pd_<id>.json`, rồi `tools/long/media_map.py apply --pd` gắn nhãn PHỎNG DỰNG lên ảnh câu ấy.
+- Một câu một dòng TRỌN VẸN: không cắt câu giữa chừng thành hai dòng (dòng kết thúc dấu phẩy) — TTS nghỉ sai chỗ, nghe cụt. Lint `cau_tach_doi`. Muốn ngắt nhịp thì viết hai câu trọn.
+- Câu đỉnh cảm xúc: kết bằng hai nhịp — một câu ngắn để lặng, một câu dài ngân ở chữ mở ("Người cha ấy đã đi xa. / Còn lời xin thứ tha, ông chưa kịp nói."), tránh kết cụt bằng một chữ khép ("…xin một lời tha.").
 - Lằn ranh giữ nguyên: BUD không gán cho Đức Phật lời không có trong kinh; FS số liệu sinh bằng code; không bịa lời trích THẬT, con số, phán quyết; người còn sống không dựng lời.
 - Ví dụ (L_bud_axathe 16/11) — khô: "Luật tạng không chép ông nghĩ gì. / Kinh chỉ chép lời ông, và việc ông làm." → kể: "Cả điện im phăng phắc. / Chỉ còn tiếng thở của hai cha con. / Bàn tay ông nâng chiếc mũ miện lên, rồi đặt xuống. / Là thương con? Là mệt mỏi? Hay là một nỗi đau không còn lời?"
 

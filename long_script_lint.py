@@ -928,6 +928,10 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     long_s = [(i, v, s) for i, s, v, _, _ in sents if v > 35]
     for i, v, s in long_s:
         add(ERROR, "cau_dai", f"dòng {i}: câu {v} tiếng đọc (> 35) -- tách ở dấu hai chấm / 'mà là': {s[:70]}")
+    # Câu bị tách đôi giữa chừng (dòng kết thúc dấu phẩy): TTS nghỉ sai chỗ, nghe cụt (PO 16/11, L_bud_axathe 21 chỗ).
+    for i, x in enumerate(script, 1):
+        if not is_heading(x) and plain(x).rstrip().endswith(","):
+            add(WARN, "cau_tach_doi", f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- gộp với dòng sau thành một câu: {x[:60]}")
     long_l = [i for i, x in enumerate(script, 1) if not is_heading(x) and syllables(x) > 35]
     short_share = buckets["<=6"] / n
     if kind != "night" and short_share < 1 / 8:
