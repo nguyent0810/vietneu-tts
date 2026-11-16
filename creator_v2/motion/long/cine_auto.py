@@ -19,11 +19,15 @@ class Director:
         self.panos = existing_panos
         self.pano_duration = pano_duration
         self.total_duration = total_duration
+        self.history = []
 
     def apply(self, scenes, imgs, offset=0, context='', ambience=()):
         context = (context + ' ' + json.dumps(ambience, ensure_ascii=False)).lower()
         for s in scenes:
             typ = s.get('type')
+            start = offset + s.get('t0', 0)
+            end = offset + s.get('t1', s.get('t0', 0))
+            recent = {kind for a, b, kind in self.history if b > start - 120 and a < end}
             if typ in IMAGE_TYPES:
                 n = self.image_index
                 self.image_index += 1
@@ -42,14 +46,15 @@ class Director:
                     self.pano_duration += duration
                 if typ == 'photo' and offset + s.get('t0', 0) < 120 and 'frame' not in s and 'layout' not in s:
                     s['frame'] = False
-                if 'cam' not in s and n % 3 != 2:
+                # 1/3 ảnh đứng yên để nghỉ mắt (đợt 1); chỉ cho chuyển động khi cửa sổ 120 s còn thiếu kiểu.
+                if 'cam' not in s and (n % 3 != 2 or len(recent) < 3):
                     choices = ('push_in', 'pull_out') if typ == 'pano' else CAMS
                     cam = choices[self.cam_index % len(choices)]
-                    for step in range(len(choices)):
-                        candidate = choices[(self.cam_index + step) % len(choices)]
-                        if candidate != self.last_cam and candidate != self.last_image_cam:
-                            cam = candidate
-                            break
+                    ordered = [choices[(self.cam_index + step) % len(choices)] for step in range(len(choices))]
+                    valid = [c for c in ordered if c != self.last_cam and c != self.last_image_cam]
+                    if valid:
+                        # Ưu tiên kiểu chưa có trong 120 s gần nhất, còn lại giữ vòng xoay đợt 1.
+                        cam = next((c for c in valid if c not in recent), valid[0])
                     s['cam'] = cam
                     self.cam_index += 1
                 if s.get('cam'):
@@ -70,8 +75,36 @@ class Director:
                 self.last_cam = s['cam']
             elif s.get('cam'):
                 self.last_cam = s['cam']
+            kind = motion_kind(s)
+            if kind and end > start:
+                self.history.append((start, end, kind))
             self.index += 1
         return scenes
+
+
+def motion_kind(scene):
+    typ = scene.get('type')
+    if typ == 'broll' or scene.get('vid'):
+        return 'video'
+    if typ == 'pano':
+        return 'pano'
+    if typ in IMAGE_TYPES or (typ in {'kinetic', 'slam', 'question'} and scene.get('bg')):
+        return scene.get('cam')
+    return None
+
+
+def window_stats(scenes, duration=None, step=10):
+    """Complete 120-second windows at 10-second intervals, using scene overlap."""
+    duration = max((s.get('t1', 0) for s in scenes), default=0) if duration is None else duration
+    windows = []
+    start = 0
+    while start + 120 <= duration + 1e-9:
+        kinds = {motion_kind(s) for s in scenes
+                 if s.get('t0', 0) < start + 120 and s.get('t1', 0) > start}
+        kinds.discard(None)
+        windows.append((start, len(kinds)))
+        start += step
+    return {'total': len(windows), 'under_3': sum(n < 3 for _, n in windows)}
 
 
 def distribution(scenes):
@@ -86,4 +119,5 @@ def distribution(scenes):
         last = cam
     return {'images': len(images), 'cams': dict(cams), 'cam_pct': 100 * sum(cams.values()) / max(1, len(images)),
             'fx_pct': 100 * sum(bool(s.get('fx')) for s in images) / max(1, len(images)),
-            'pano_pct': 100 * sum(s.get('type') == 'pano' for s in scenes) / max(1, len(scenes)), 'longest_run': longest}
+            'pano_pct': 100 * sum(s.get('type') == 'pano' for s in scenes) / max(1, len(scenes)), 'longest_run': longest,
+            'windows': window_stats(scenes)}

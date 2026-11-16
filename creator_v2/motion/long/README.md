@@ -14,6 +14,11 @@ Long mới chủ ý tắt `opening_gate` phải dùng `--allow-opening` khi ch�
 
 `cine_auto` chọn máy quay, hiệu ứng và chuyển cảnh theo seed; không ghi đè `cam`, `fx`, `frame`, `layout`, `transition_in` đã khai. Ảnh `photo`, `print`, `split` nhận chuyển động; nền ảnh của `kinetic`, `slam`, `question` có chuyển động chậm. B-roll chỉ nhận `cam: "push_in"` hoặc `"pull_out"` khi khai tay (scale tối đa 1.06). Ảnh `photo` rộng ít nhất 2:1 với `stops` đã neo hợp lệ có thể chuyển thành `pano`, trong giới hạn sáu cảnh và 25% thời lượng. Builder in tỷ lệ và cảnh báo nếu tỷ lệ ảnh có `cam` dưới 50%; cần xem nhịp thật, nhất là đoạn có ít ảnh.
 
+
+Bộ chọn ưu tiên camera ảnh khác hai kiểu `push_in`/`pan` của nền chữ để tăng đa dạng trong các đoạn ít ảnh. Bảng `cine windows before/after` đếm các cửa sổ đủ 120 giây, bắt đầu cách nhau 10 giây trên trục thời gian toàn bài; tính camera ảnh và nền chữ, `pano` và `video` mỗi loại là một kiểu. Cảnh chỉ cần giao với cửa sổ là được tính. Nếu còn cửa sổ dưới ba kiểu, builder cảnh báo: có thể không đạt khi thiếu ảnh, video hoặc lựa chọn bị khóa bởi khai báo tay. Các camera nền chữ chỉ được phép `push_in` hoặc `pan`.
+
+Khi dựng `html chNN`, các chương trước chương được chọn vẫn được lập cảnh và chạy director trong bộ nhớ để khôi phục trạng thái, không ghi composition hay trộn âm thanh của chúng. Vì vậy cần có `timing.json` và `voice.wav` của các chương trước; bảng cửa sổ phản ánh phần đã xử lý đến chương được chọn. Khi không bật `cine_auto`, nhánh dựng chương cũ không thay đổi.
+
 Âm thanh Long mới dùng gain nhạc cơ sở 0.17, sidechain threshold 0.05, ratio 4 và ambience tăng 15 dB. Gain nhạc khai ở từng đoạn được nhân theo tỷ lệ 0.17/0.12; có thể đặt `mix_levels` theo kênh trong spec, ví dụ `"mix_levels": {"CL": {"gain": 0.2, "threshold": 0.06, "ratio": 3.5, "ambience_db": 15}}`. Thẻ chương nhả sidechain; khoảng lặng cho compressor hồi lại; `question` vẫn hạ nhạc. Sau `mix`, bộ đo lưu mức RMS các đoạn có cả giọng lẫn nhạc, gắn hash của `mix.wav`. `final` của topic mới chặn khi số đo thiếu, cũ, hoặc nhạc nhỏ hơn giọng trên 18 dB. Không có nhạc thì bỏ qua cổng này. Topic legacy giữ mức trộn cũ.
 
 Anh em ngang của `motion/stier/` (Short dọc). Cùng ngôn ngữ hình: hồ sơ lưu trữ, tư liệu thật, một màu nhấn. Khác ở ba điểm:

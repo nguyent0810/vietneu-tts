@@ -1141,6 +1141,7 @@ def do_html(topic, only=None, allow_opening=False):
     # auto-conversion cannot push the complete film above the duration floor.
     director = cine_auto.Director(topic, sum(durs.values()), existing_panos, 20 * existing_panos)
     cine_scenes = []
+    cine_before = []
     from collections import Counter
     import kinetic_style
     text_counts = (Counter(), Counter())
@@ -1164,9 +1165,10 @@ def do_html(topic, only=None, allow_opening=False):
                                   "bbox": g["bbox"], "pins": g["pins"]})["_geo"]
     (od / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
     vdur = {}
-    for name, ch in chs:
+    for chapter_index, (name, ch) in enumerate(chs):
         d = durs[name]
-        if only and name not in only:
+        selected = not only or name in only
+        if not selected and (not spec.get('cine_auto') or not any(n in only for n, _ in chs[chapter_index + 1:])):
             cine_offset += d
             continue
         t = json.loads((od / name / "timing.json").read_text(encoding="utf-8"))
@@ -1174,9 +1176,14 @@ def do_html(topic, only=None, allow_opening=False):
         scenes = plan(ch, lines, d)
         if spec.get('cine_auto'):
             amb = [e for e in spec.get('ambience') or [] if isinstance(e, dict) and (not e.get('chapter') or LAMB.chapter_name(e['chapter']) == name)]
+            import copy
+            before = copy.deepcopy(scenes)
             director.apply(scenes, imgs, cine_offset, ' '.join(line_text(x) for x in ch.get('lines', [])), amb)
-            cine_scenes.extend(scenes)
+            for source, target in ((before, cine_before), (scenes, cine_scenes)):
+                target.extend([{**s, 't0': s['t0'] + cine_offset, 't1': s['t1'] + cine_offset} for s in source])
         cine_offset += d
+        if not selected:
+            continue
         if spec.get("kinetic_auto", not is_legacy_topic(topic)):
             fx_dist, type_dist = kinetic_style.apply(topic, name, scenes, ch.get("scenes", []), lines,
                                                      spec.get("look") or "classic")
@@ -1272,6 +1279,9 @@ def do_html(topic, only=None, allow_opening=False):
         print(f"{name}: {len(scenes)} cảnh, {len(vids)} clip, {d:.1f}s -> {comp.name}", flush=True)
         if spec.get('cine_auto'):
             print('  cine:', json.dumps(cine_auto.distribution(cine_scenes), ensure_ascii=False), flush=True)
+            print('  cine windows before/after:', json.dumps({'before': cine_auto.window_stats(cine_before), 'after': cine_auto.window_stats(cine_scenes)}), flush=True)
+            if cine_auto.window_stats(cine_scenes)['under_3']:
+                print('  ! WARNING cửa sổ 120s có dưới 3 kiểu chuyển động; cần rà cảnh và lựa chọn ghi tay', flush=True)
             warning = floor.cine_warning(cine_scenes)
             if warning:
                 print('  ! WARNING ' + warning, flush=True)
