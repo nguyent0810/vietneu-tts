@@ -11,7 +11,7 @@
 Quy ước đọc file:
 - Mỗi dòng là một câu đọc.
 - `‖` ở cuối dòng là chỗ ngừng dài.
-- `{pd}` ở cuối dòng: câu thuộc cảnh PHỎNG DỰNG (dựng từ dòng thời gian có nguồn, báo trước bằng "hãy hình dung" hoặc "có lẽ"). Lead gắn nhãn PHỎNG DỰNG trên hình. `{beat: ...}` là nhịp hình.
+- `{pd}` ở cuối dòng: câu thuộc cảnh PHỎNG DỰNG (dựng từ dòng thời gian có nguồn, kể trực tiếp, gắn nhãn PHỎNG DỰNG trên hình). Lead gắn nhãn PHỎNG DỰNG trên hình. `{beat: ...}` là nhịp hình.
 - `»` là lời trích, đọc bằng giọng trích. Nhãn chữ in hoa trong ngoặc vuông ở cuối dòng đánh dấu câu có thật, đã dịch sang tiếng Việt. Nguyên văn nằm trong factcheck.md.
 - Cảnh phỏng dựng chỉ có người vô danh, đồ vật, ánh sáng, không gian. Không có lời thoại hay cảm xúc bịa cho người còn sống. Người còn sống chỉ xuất hiện qua dữ kiện có nguồn, kèm "theo ...". Giả thuyết luôn được gọi là giả thuyết.
 - Không mô tả cách chế hay cách tiến hành vụ tấn công. Không kể thương tích chi tiết.
@@ -32,7 +32,7 @@ Tên Nhật viết không dấu gạch ngang; cách đọc nằm ở bảng phi�
 Vợ ông nằm hôn mê vì khí độc, còn người bị nghi ngờ lại chính là ông.
 Chín tháng sau, thứ khí độc cùng loại ấy xuất hiện ở Tokyo, trong những toa tàu đông nhất nước Nhật. ‖
 Vì sao cả nước Nhật nhìn nhầm chỗ, và cái giá của lần nhìn nhầm ấy là gì? ‖ {beat: câu hỏi hậu quả}
-Hãy hình dung một toa tàu điện ngầm sáng thứ Hai, ngày 20 tháng 3 năm 1995. {pd}
+Sáng thứ Hai, ngày 20 tháng 3 năm 1995, một toa tàu điện ngầm Tokyo chật người. {pd}
 Mùi áo khoác còn ẩm hơi lạnh, tiếng giày trên sàn, những tờ báo gấp làm tư. {pd}
 Có lẽ chẳng ai trong toa nghĩ gì ngoài một tuần làm việc vừa bắt đầu. ‖ {pd}
 Khoảng 8 giờ sáng, trên năm chuyến tàu, khí sarin bắt đầu lan ra. {beat: năm chuyến tàu}
@@ -44,7 +44,7 @@ Ai đã nhìn sang chỗ khác, và vì sao? Hãy ở lại, tôi sẽ kể từ
 
 ## CH01 · LỘ TRÌNH: Ba khoản nợ thời gian
 
-Hãy hình dung một tấm bảng treo trên tường một đồn cảnh sát, với ba khoản nợ chưa ai trả.
+Trên tường một đồn cảnh sát treo một tấm bảng, ghi ba khoản nợ chưa ai trả.
 Giữa đêm 27 tháng 6 năm 1994 và sáng 20 tháng 3 năm 1995, ba khoản nợ ấy cứ dày lên. ‖
 Khoản thứ nhất là một cái tên: vì sao cảnh sát chọn ông Kono, người có vợ đang nằm viện?
 Khoản thứ hai là cây cối chết ở chân núi Phú Sĩ, và một mẫu đất. {beat: dấu vết phía núi Phú Sĩ}
@@ -55,7 +55,7 @@ Cái tôi có là một chuỗi quyết định, và mỗi quyết định có l
 Tôi dựa vào báo cáo của Nippon.com, bản tin AP nhân 30 năm vụ tàu điện, bản tin về phán quyết năm 2004 và các trang bách khoa.
 Có những nơi lớn tôi chưa mở được, như bản án gốc, nên chỗ nào chỉ nghe lại qua người khác, tôi sẽ nói thẳng. {beat: giới hạn của hồ sơ}
 Trong video này có hai loại câu mà tôi sẽ gọi tên rõ: điều có dẫn chứng, và điều tôi suy đoán.
-Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, sẽ được báo trước bằng chữ "hãy hình dung" hoặc "có lẽ".
+Những cảnh tôi dựng lại, như một toa tàu hay một căn phòng, sẽ được gắn nhãn PHỎNG DỰNG trên hình.
 Chúng là phỏng dựng để bạn thấy được không khí, không phải ảnh chụp, và không có lời của người thật nào trong đó. ‖
 Ngay cả con số người chết cũng có ba cách đếm, và tôi sẽ nói lý do khi đến đúng chỗ.
 Video này dài khoảng nửa tiếng, vì chín tháng từ Matsumoto đến Kamikuishiki không kể được trong năm phút. ‖
@@ -70,7 +70,7 @@ Hãy bắt đầu từ đêm đầu tiên, ở một thành phố có tòa lâu 
 Matsumoto là một thành phố nhỏ ở tỉnh Nagano, nằm giữa vùng núi.
 Du khách nhớ đến nó vì tòa lâu đài đen soi bóng xuống hào nước.
 Đêm 27 tháng 6 năm 1994, người ta nhớ đến thành phố này vì một lý do khác. ‖
-Hãy hình dung một khu nhà yên tĩnh vào cuối tháng sáu. {pd}
+Cuối tháng sáu, một khu nhà yên tĩnh. {pd}
 Đèn đường vàng nhạt, côn trùng đêm hè kêu rả rích sau những bức tường thấp. {pd}
 Có lẽ nhiều nhà để cửa sổ mở cho mát, như bao đêm hè khác ở Nhật. {pd}
 Không có gì cho thấy đêm ấy sẽ khác mọi đêm. ‖ {pd}
@@ -78,10 +78,10 @@ Khoảng 10 giờ 40 phút tối, một đám khí độc được thả ra gầ
 Về sau, tòa án kết luận kẻ đứng sau là giáo phái Aum Shinrikyo.
 Nhưng đêm ấy, cảnh sát chưa biết gì cả.
 Lúc 11 giờ 30, họ nhận báo cáo khẩn từ nhân viên cấp cứu: nhiều người đang được đưa vào bệnh viện. ‖
-Hãy hình dung ánh đèn đỏ của xe cấp cứu, từ xa chỉ là một vệt sáng nhấp nháy ở cuối con phố nhỏ. {pd}
+Ánh đèn đỏ của xe cấp cứu hiện lên từ xa, chỉ là một vệt sáng nhấp nháy ở cuối con phố nhỏ. {pd}
 Sáng hôm sau, người ta thấy cá chết, chim chết, chó chết quanh khu vực.
 Máy sắc ký khí khối phổ cho thấy chất độc là sarin. {beat: xác định chất độc}
-Theo một trang bách khoa, kế hoạch ban đầu của nhóm là thả khí ngay tại tòa án thành phố, nhưng họ đến sau giờ đóng cửa.
+Kế hoạch ban đầu của nhóm là thả khí ngay tại tòa án thành phố, nhưng họ đến sau giờ đóng cửa.
 Họ chuyển sang một tòa nhà ba tầng, nơi các thẩm phán của thành phố sinh sống.
 Mục tiêu là những thẩm phán sắp xử một vụ tranh chấp đất mà Aum có khả năng thua. {beat: mục tiêu là các thẩm phán}
 Cư dân Matsumoto từng làm ông Asahara tức giận, vì họ phản đối kế hoạch mở một văn phòng và một nhà máy của ông ở phía nam thành phố.
@@ -93,7 +93,7 @@ Số người bị thương thì các nguồn ghi khác nhau, từ 144 người 
 Có chỗ ghi 274 người được điều trị, có chỗ lại tách ra: 58 người nhập viện và 253 người khám ngoại trú.
 Gần như tất cả nằm trong bán kính khoảng 150 mét quanh tâm điểm. {beat: phạm vi nhỏ, hậu quả lớn}
 Tôi không kể tên hay bệnh tình của ai trong số họ, vì nhiều người vẫn còn sống, và nhiều gia đình vẫn còn đó. ‖
-Hãy hình dung phòng điều tra sáng hôm sau, một tấm bản đồ khu nhà trải trên bàn, một vòng tròn bút đỏ quanh nơi khí độc lan tới. {pd}
+Sáng hôm sau, trong phòng điều tra, một tấm bản đồ khu nhà trải trên bàn, một vòng tròn bút đỏ quanh nơi khí độc lan tới. {pd}
 Có lẽ câu hỏi nằm trên mọi gương mặt trong phòng: ai ở khu này đã làm chuyện đó? {pd}
 Người gọi cuộc cấp cứu đầu tiên là một cư dân sống ngay cạnh đó. {beat: bước ngoặt sang người bị nghi}
 Chính người ấy sẽ sớm trở thành mục tiêu của câu hỏi. ‖
@@ -102,20 +102,20 @@ Chính người ấy sẽ sớm trở thành mục tiêu của câu hỏi. ‖
 
 ## CH03 · NGƯỜI GỌI CẤP CỨU: Hai thân phận một lúc
 
-Theo báo cáo, ông Yoshiyuki Kono làm nghề bán máy móc.
+Ông Yoshiyuki Kono làm nghề bán máy móc.
 Ông sống ngay cạnh bãi đất nơi chiếc xe chở khí độc đã đỗ.
 Khi vợ ông, bà Sumiko, gục xuống, ông là người gọi cấp cứu đầu tiên. ‖
 Bà rơi vào hôn mê, với tổn thương não nặng.
 Ông cũng phải nằm viện khoảng một tháng. {beat: nạn nhân và người bị nghi cùng một người}
 Cùng một lúc, ông là người có vợ nằm hôn mê, và là người bị cảnh sát nhìn như nghi phạm. ‖
 Cảnh sát Nagano coi nhà ông là điểm khí độc phát ra.
-Theo báo cáo, họ xem ông vừa là nạn nhân, vừa là nghi phạm.
+Họ xem ông vừa là nạn nhân, vừa là nghi phạm.
 Không có cáo buộc chính thức nào từng được đưa ra với ông. {beat: không bao giờ bị buộc tội}
 Dù vậy, trong chín tháng, việc thiếu một kết luận chính thức cũng không bảo vệ được ông. ‖
 Tôi không biết ông nghĩ gì trong những tuần ấy, và tôi sẽ không dựng lời cho ông.
 Hồ sơ chỉ cho tôi dữ kiện: ông gọi cấp cứu, ông nằm viện, và nhà ông bị coi là nơi bắt đầu. ‖
 Còn ở phía bên kia, trong phòng điều tra, mọi thứ có thể nhìn thấy bằng mắt thường. {beat: phía bên kia bàn}
-Hãy hình dung đêm thứ hai của cuộc điều tra, cà phê nguội trong những chiếc cốc giấy. {pd}
+Đêm thứ hai của cuộc điều tra, cà phê nguội trong những chiếc cốc giấy. {pd}
 Có lẽ trên bàn có nhiều giả thuyết hơn bằng chứng. {pd}
 Một chất độc thần kinh giữa khu dân cư, hàng trăm người nhập viện, và báo chí hỏi từng giờ. {pd}
 Có lẽ ở căn phòng ấy, câu trả lời gần nhất nghe cũng là câu trả lời đáng tin nhất. ‖ {pd}
@@ -131,14 +131,14 @@ Mà câu trả lời thật nằm rất xa: ở chân một ngọn núi, và c�
 
 ## CH04 · TRONG NHÀ ÔNG: Khoảng 20 loại hóa chất
 
-Theo một trang bách khoa, cảnh sát tìm thấy trong nhà ông khoảng 20 loại hóa chất.
+Cảnh sát tìm thấy trong nhà ông khoảng 20 loại hóa chất.
 Chúng được mua để rửa ảnh và làm gốm, cùng với một số thuốc trừ sâu.
 Về sau, người ta xác định rằng không thể điều chế sarin từ những thứ ấy. {beat: kết luận đảo ngược}
 Nhưng điều đó chỉ được biết sau, rất lâu sau. ‖
 Ngày 28 tháng 6 năm 1994, báo Asahi đăng ý kiến của nhà sử học Keiichi Tsuneishi.
 Ông viết rằng sarin có thể làm từ một loại thuốc trừ sâu.
 Ngày 4 tháng 7, ông viết thêm một bài nữa. {beat: lời giải thích nghe có lý}
-Hãy hình dung một bàn biên tập vào buổi chiều ấy, nơi một bài viết nghe rất khoa học vừa được duyệt. {pd}
+Một bàn biên tập vào buổi chiều ấy, nơi một bài viết nghe rất khoa học vừa được duyệt. {pd}
 Tôi không biết ai đã ngồi ở đó, và tôi không gán lỗi cho một cái tên nào. {pd}
 Có lẽ với người duyệt bài, đó là một lời giải thích kịp lúc, từ một học giả có tên tuổi. ‖ {pd}
 Về sau, điều đó bị coi là sai.
@@ -153,7 +153,6 @@ Hãy nhớ ông chưa bao giờ bị buộc tội.
 Ông không bị bắt, không bị đưa ra tòa.
 Ông bị xử ở những nơi khác: trên mặt báo, ở khu phố, trong những bức thư. {beat: phiên tòa dư luận}
 Một người có thể thua một vụ án mà không có vụ án nào. ‖
-Tôi không có thêm tài liệu nào về những ngày ấy trong nhà ông, nên tôi dừng ở đây.
 Điều tôi thấy rõ là sai lầm ấy không đến từ một kẻ ác.
 Nó đến từ một chuỗi người bình thường, mỗi người nghe một lời, tin một lời, rồi chuyển tiếp đi. ‖
 Trong lúc ấy, ở một nơi khác, có người bắt đầu nhìn về một hướng hoàn toàn khác. ‖
@@ -165,9 +164,9 @@ Trong lúc ấy, ở một nơi khác, có người bắt đầu nhìn về mộ
 Ở tỉnh Kanagawa, cảnh sát đang lần theo một vụ mất tích cũ.
 Cuối năm 1989, luật sư Tsutsumi Sakamoto, vợ và con trai nhỏ của ông biến mất khỏi nhà.
 Ba người ấy về sau được tìm thấy đã chết. {beat: vụ án nằm im từ 1989}
-Hãy hình dung một chiếc bàn trong văn phòng cảnh sát Kanagawa, một chồng hồ sơ đã ngả màu, ngọn đèn bàn bật muộn. {pd}
+Trên một chiếc bàn trong văn phòng cảnh sát Kanagawa, một chồng hồ sơ đã ngả màu, ngọn đèn bàn bật muộn. {pd}
 Có lẽ có một điều tra viên đã dừng bút ở một chữ trên trang giấy: sarin. ‖ {pd}
-Theo báo cáo, một bản tin của giáo phái Aum, phát hành trước vụ Matsumoto, đã nhắc đến chất ấy.
+Một bản tin của giáo phái Aum, phát hành trước vụ Matsumoto, đã nhắc đến chất ấy.
 Một công ty có liên quan đến Aum cũng đã mua hóa chất có thể dùng để làm ra loại khí này. ‖
 Ông Takashi Kakimi lúc ấy là cục trưởng Cục Hình sự của Cơ quan Cảnh sát Quốc gia.
 Theo ông, đó là lúc cơ quan này nhận ra Aum nguy hiểm đến mức nào. {beat: nhận ra Aum}
@@ -179,7 +178,7 @@ Ba mảnh của cùng một bức tranh, nằm ở ba văn phòng khác nhau. {b
 Chỉ có cảnh sát ba tỉnh Nagano, Yamanashi và Kanagawa có thẩm quyền với Aum.
 Chưa có vụ nào liên quan đến giáo phái xảy ra ở Tokyo.
 Vì thế Cơ quan Cảnh sát Quốc gia không thể dễ dàng đưa các điều tra viên giỏi của Tokyo vào cuộc. ‖
-Theo cùng nhận định ấy, cảnh sát mỗi tỉnh làm việc riêng, ít nói chuyện với nhau.
+Cảnh sát mỗi tỉnh làm việc riêng, ít nói chuyện với nhau.
 Hệ thống kiểu ấy không hỏng vì một người lười.
 Nó chậm vì mỗi tầng đều cẩn thận. {beat: cái chậm của sự cẩn thận}
 Ông Yusaku Takino viết bài điểm sách đăng trên Nippon.com.
@@ -213,7 +212,7 @@ Tòa án về sau xác định ông Asahara là người chủ mưu vụ này.
 Nhưng vào năm 1994, vụ án vẫn chưa có lời giải. {beat: vụ án chưa có lời giải}
 Trụ sở chính của họ nằm ở Kamikuishiki, một ngôi làng dưới chân núi Phú Sĩ.
 Ở đó có một loạt tòa nhà, người ta gọi là Satyan.
-Hãy hình dung một con đường núi lúc sáng sớm, sương phủ kín sườn dốc. {pd}
+Một con đường núi lúc sáng sớm, sương phủ kín sườn dốc. {pd}
 Cuối đường, những mái nhà thấp hiện ra mờ mờ, không một bóng người. {pd}
 Có lẽ một người đi ngang qua sẽ nghĩ đó chỉ là một khu xưởng nào đó, rồi đi tiếp. ‖ {pd}
 Trong vụ tìm kiếm sau này, cảnh sát đã vào chính khu này.
@@ -234,7 +233,7 @@ Nhưng mẫu đất không phải là lệnh khám xét.
 Cảnh sát quyết định rằng đột nhập vào nhà máy ấy có thể đe dọa tính mạng chính các sĩ quan.
 Họ cần đồ bảo hộ của Cục Phòng vệ.
 Họ cần bàn bạc với Viện Công tố. {beat: những thứ phải có trước khi vào}
-Hãy hình dung phòng họp ở Tokyo vào một chiều cuối năm, hơi sưởi khô, tấm rèm kéo kín. {pd}
+Phòng họp ở Tokyo vào một chiều cuối năm, hơi sưởi khô, tấm rèm kéo kín. {pd}
 Trên bàn có hai chồng giấy: một chồng là kết quả giám định, một chồng là những điều kiện phải có trước khi bước vào. {pd}
 Có lẽ không ai trong phòng nói to điều mà ai cũng đang nghĩ. ‖ {pd}
 Một khu nhà máy mà nghi là có khí độc không phải nơi người ta xông vào rồi hỏi sau.
@@ -261,12 +260,12 @@ Bạn sẽ chốt ngày nào? ‖ {beat: câu hỏi đặt cho người nghe}
 
 ## CH08 · THÁNG HAI: Một cái tên trên lệnh khám xét
 
-Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, theo hồ sơ về giáo phái, có ba người bị nhắm đến bằng một loại chất độc khác.
-Trong số đó, một người mất sau khoảng mười ngày. {beat: những vụ khác}
+Trước đó, trong tháng 12 năm 1994 và tháng 1 năm 1995, có ba người bị nhắm đến bằng một loại chất độc khác.
+Trong số đó, một người đã qua đời. {beat: những vụ khác}
 Tôi không nêu tên họ, vì họ không phải nhân vật của câu chuyện này. {beat: những vụ tấn công khác}
-Tháng 2 năm 1995, theo hồ sơ về sau, Aum bắt cóc một người ở Tokyo.
-Ông Kiyoshi Kariya, 69 tuổi, là anh trai của một người từng ở trong giáo phái.
-Ông bị đưa đi và về sau chết ở khu Kamikuishiki. ‖
+Tháng 2 năm 1995, Aum bắt cóc một người ở Tokyo.
+Ông Kiyoshi Kariya, một công chứng viên ngoài sáu mươi tuổi, là anh trai của một người từng ở trong giáo phái.
+Ông bị đưa đi từ ngày 28 tháng 2 và về sau chết ở khu Kamikuishiki. ‖
 Với cảnh sát, đây là điều trước đây còn thiếu: một vụ án hình sự ngay giữa Tokyo.
 Trước đó, mọi dấu vết đều nằm ở Nagano, Yamanashi và Kanagawa.
 Giờ thì Tokyo có hồ sơ của riêng mình. {beat: hồ sơ về đến Tokyo}
@@ -275,8 +274,8 @@ Trang tiếng Nhật về vụ tàu điện ghi thêm một mốc.
 Ngày 17 tháng 3, việc khám xét được chốt, và cảnh sát đề nghị Cục Phòng vệ hỗ trợ cùng lúc.
 Trang tiếng Anh nói khác một chút: ngày 22 tháng 3 đã được ấn định từ trước, nhưng đoạn đó không dẫn nguồn. {beat: hai bản không khớp từng ngày}
 Vì vậy tôi chỉ giữ lại điều cả hai cùng nói: ngày khám xét là 22 tháng 3. ‖
-Hãy hình dung một tờ lịch tháng 3 năm 1995 treo trong một văn phòng, và một vòng tròn bút đỏ quanh một ngày thứ Tư. {pd}
-Chỉ có hai ô trống nằm giữa vòng tròn ấy và buổi sáng thứ Hai. ‖ {pd}
+Trên tường một văn phòng treo tờ lịch tháng 3 năm 1995, và một vòng tròn bút đỏ quanh một ngày thứ Tư. {pd}
+Giữa vòng tròn ấy và buổi sáng thứ Hai chỉ có đúng một ô trống: ngày thứ Ba. ‖ {pd}
 Còn lại là hai ngày. {beat: hai ngày}
 Vì sao Aum chọn đúng khoảng thời gian ấy?
 Ông Kakimi cho rằng giáo phái ra tay khi biết cuộc khám xét sắp đến, và vụ tàu điện là một cách đánh lạc hướng.
@@ -308,8 +307,8 @@ Nó rơi xuống một buổi sáng thứ Hai, trong những toa tàu đông nh�
 ## CH09 · SÁNG 20 THÁNG 3: Tám giờ mười phút
 
 Sáng thứ Hai, 20 tháng 3 năm 1995, thành phố Tokyo đang đi làm.
-Hãy hình dung một sân ga giờ cao điểm, nhìn từ phía sau những hàng người đang chờ tàu. {pd}
-Có người cúi xuống điện thoại cầm tay, có người nhìn đồng hồ ga, có người ngáp, như mọi sáng thứ Hai. ‖ {pd}
+Một sân ga giờ cao điểm, nhìn từ phía sau những hàng người đang chờ tàu. {pd}
+Có người cúi xuống tờ báo, có người nhìn đồng hồ ga, có người ngáp, như mọi sáng thứ Hai. ‖ {pd}
 Khoảng 8 giờ sáng, trên năm chuyến tàu thuộc ba tuyến, chuyện xảy ra. {beat: năm chuyến tàu}
 Ba tuyến ấy là Marunouchi, Hibiya và Chiyoda.
 Cả ba cùng đi qua ga Kasumigaseki.
@@ -321,13 +320,12 @@ Trên tuyến Hibiya, một hành khách bấm nút dừng khẩn cấp lúc 8 g
 Con tàu vẫn chạy tiếp đến ga Tsukiji, nơi những hành khách loạng choạng bước ra sân ga.
 Chiếc tàu ấy sau đó bị đưa ra khỏi hoạt động. {beat: nút dừng khẩn cấp}
 Trên tuyến Chiyoda, hai nhân viên nhà ga ở ga Kasumigaseki đã dọn những vật lạ để lại trên tàu, và cả hai đã mất.
-Hãy hình dung bạn là một nhân viên ga sáng hôm ấy. {pd}
-Bạn thấy một vật lạ trên sàn tàu, và việc của bạn là giữ sân ga sạch và an toàn. {pd}
+Sáng hôm ấy, một nhân viên ga thấy một vật lạ trên sàn tàu. {pd}
+Việc của người ấy là giữ sân ga sạch và an toàn. {pd}
 Họ không biết mình đang cầm thứ gì.
 Họ chỉ làm điều mà một người làm nghề đường sắt sẽ làm: dọn thứ lạ khỏi sân ga. ‖
 Lúc 8 giờ 35 phút, toàn bộ tuyến Hibiya bị đóng và hành khách được sơ tán. {beat: đóng tuyến Hibiya}
-Trên tuyến Marunouchi, một chuyến tàu được sơ tán và lục soát ở ga cuối Ikebukuro lúc 8 giờ 30 phút.
-Nhân viên không tìm ra thứ gì.
+Trên tuyến Marunouchi, một chuyến tàu về đến ga cuối Ikebukuro lúc 8 giờ 30 phút.
 Hành khách của chuyến ấy đã báo cho nhân viên ở ga Korakuen, và đến 9 giờ 27 phút tàu mới được đưa ra khỏi hoạt động ở ga Kokkai-gijidomae. {beat: chuyến tàu bị lục soát muộn}
 Từng quyết định như vậy đều ngắn, và đều thật.
 Không ai trong số họ có tờ giấy hướng dẫn cho một ngày như hôm nay. ‖
@@ -337,7 +335,7 @@ Cuộc gọi báo rằng có một vụ nổ. ‖
 Hãy dừng ở từ ấy: một vụ nổ.
 Không ai nói đến khí độc.
 Không ai nghĩ đến loại chất mà chín tháng trước đã làm cả một khu nhà ở Matsumoto hôn mê. {beat: sai chẩn đoán đầu tiên}
-Vì tin là vụ nổ, hơn 30 cảnh sát đã vào hiện trường và bị ảnh hưởng bởi chất độc.
+Vì tin là vụ nổ, nhiều cảnh sát đã vào hiện trường và bị ảnh hưởng bởi chất độc.
 Đó không phải lỗi của một người nào.
 Đó là một cái tên sai gắn lên một sự kiện, trong những phút đầu tiên. ‖
 Trên đường phố gần ga Tsukiji, bệnh viện St. Luke's nhận nhiều bệnh nhân nhất.
@@ -352,7 +350,7 @@ Phòng giám định của cảnh sát xác định sarin trước 10 giờ 30 p
 Nhưng nhiều bệnh viện đã điều trị theo hướng chất độc thần kinh trước khi có báo cáo ấy. ‖
 Hãy nhớ lại Matsumoto.
 Chín tháng trước, một nhóm bác sĩ ở đó đã phải nhận ra một chất độc mà họ chưa từng gặp.
-Theo một trang bách khoa, phòng giám định và cảnh sát cũng đã rút bài học từ vụ ấy. {beat: Matsumoto và Tokyo đặt cạnh nhau}
+Phòng giám định và cảnh sát cũng đã rút bài học từ vụ ấy. {beat: Matsumoto và Tokyo đặt cạnh nhau}
 Đặt hai vụ cạnh nhau, ta thấy một khoảng cách rất lớn về quy mô.
 Matsumoto có tám người chết, và từ 144 đến hơn 500 người bị thương.
 Tokyo có từ 12 đến 14 người chết, và con số bị thương tính bằng nghìn.
@@ -360,19 +358,19 @@ Cái giống nhau là loại chất độc, cái khác là nơi nó được th�
 Ở Tokyo, kinh nghiệm ấy trở thành một thứ có thể sao chép.
 Một bác sĩ tên Nobuo Yanagisawa từng chữa cho các nạn nhân Matsumoto.
 Ông chia sẻ kinh nghiệm ấy với các bệnh viện ở Tokyo. {beat: Matsumoto cứu người}
-Hãy hình dung một hành lang bệnh viện, những chiếc ghế dài kín người, một bác sĩ bước nhanh qua. {pd}
+Một hành lang bệnh viện, những chiếc ghế dài kín người, một bác sĩ bước nhanh qua. {pd}
 Có lẽ ở đâu đó trong tòa nhà, một người nhớ lại điều mình từng nghe về một đêm hè ở Matsumoto. ‖ {pd}
 Đó là một điều ít được nhắc đến: hồ sơ của vụ đầu tiên không chỉ chứa sai lầm.
 Nó cũng chứa những người đã học được điều gì đó, và truyền lại. ‖
-Theo trang tiếng Nhật, khoảng hai tiếng sau, nhiều bệnh viện nhận ra đây là sarin và bắt đầu dùng thuốc giải.
+Khoảng hai tiếng sau, nhiều bệnh viện nhận ra đây là sarin và bắt đầu dùng thuốc giải.
 Có những người đã đi làm dù chưa khỏe hẳn, vì chưa biết mình đã tiếp xúc với thứ gì.
 Thuốc giải ở Tokyo không đủ.
 Người ta chuyển thuốc từ các bệnh viện vùng nông thôn lên bằng tàu hỏa. {beat: thuốc đi bằng tàu}
 Lúc 12 giờ 50, thống đốc Tokyo đề nghị Lực lượng Phòng vệ giúp sức.
-Khoảng 1.800 cảnh sát cơ động tham gia cuộc điều tra, một trong những vụ điều tra lớn nhất lịch sử Nhật Bản. ‖
+Cảnh sát Tokyo cùng các tỉnh lân cận huy động khoảng 1.800 cảnh sát cơ động. ‖
 278 bệnh viện đã tiếp nhận 5.510 bệnh nhân.
 Còn tổng số người chết thì lại là chuyện của ba cách đếm.
-Theo trang tiếng Nhật, tòa án xác định 12 người, chính quyền xác định 13 người, và nếu tính cả một người chết muộn thì là 14. {beat: ba cách đếm}
+Tòa án xác định 12 người, chính quyền xác định 13 người, và nếu tính cả một người chết muộn thì là 14. {beat: ba cách đếm}
 Cho đến năm 2008, chỉ 12 người được chính thức công nhận là đã chết.
 Rồi một khảo sát của cảnh sát tỉnh năm 2008 gán thêm một người, mất vào ngày hôm sau, cho sarin.
 Một nạn nhân mất ngày 10 tháng 3 năm 2020, sau nhiều năm nằm liệt, và được tính là người thứ 14.
@@ -390,14 +388,14 @@ Và nhiều hơn mọi thứ mà một hệ thống chậm có thể bù lại. 
 
 ## CH11 · HAI NGÀY SAU: Ngày khám xét đến muộn
 
-Hãy hình dung cổng khu Kamikuishiki sáng ngày 22 tháng 3, sương nhẹ, những chiếc xe cảnh sát dừng thành hàng dài. {pd}
+Cổng khu Kamikuishiki sáng ngày 22 tháng 3, sương nhẹ, những chiếc xe cảnh sát dừng thành hàng dài. {pd}
 Có lẽ điều đầu tiên người ta cảm nhận được là sự vắng lặng. ‖ {pd}
 Ngày 22 tháng 3 năm 1995, đúng ngày đã chốt, cảnh sát vào khu Kamikuishiki.
 Họ cũng khám xét 25 cơ sở của Aum trên toàn quốc. {beat: ngày khám xét}
 Các thành viên ở lại phản đối bằng tay không, không có chống cự vũ trang.
 Nhưng thủ lĩnh Shoko Asahara, các nhân vật cấp cao và những nhà khoa học của giáo phái đã rời đi.
 Chưa ai bị bắt ở đó. ‖
-Theo trang tiểu sử ông Asahara, trong các cuộc khám xét tháng 3 năm 1995, cảnh sát thấy thuốc nổ, vật liệu hóa học và một chiếc trực thăng Mi-17 của Nga.
+Trong các cuộc khám xét tháng 3 năm 1995, cảnh sát thấy thuốc nổ, vật liệu hóa học và một chiếc trực thăng Mi-17 của Nga.
 Một giáo phái bắt đầu từ lớp yoga đã có cả máy bay trực thăng. {beat: một khu căn cứ chứ không phải một nhà thờ}
 Ngày 8 tháng 4, cảnh sát bắt một thành viên cấp cao.
 Lý do ghi trên giấy: trộm một chiếc xe đạp bỏ không.
@@ -416,7 +414,7 @@ Tôi không dám đoán cảm xúc của ông.
 Tôi chỉ thuật lại những gì ông đã nói. ‖
 Trong mùa hè năm 1995, hơn 200 thành viên của giáo phái bị bắt.
 Chuyện Matsumoto, vốn chưa ai gọi tên, bắt đầu được kể lại với một cái tên: Aum. ‖
-Một lá thư nặc danh gửi cảnh sát sau vụ Matsumoto, theo một trang bách khoa, từng viết rằng Matsumoto chắc chắn là một thí nghiệm.
+Một lá thư nặc danh gửi cảnh sát sau vụ Matsumoto từng viết rằng Matsumoto chắc chắn là một thí nghiệm.
 Lá thư ấy có từ sớm.
 Còn chuyện nó được xử lý ra sao thì tôi chưa tìm được tài liệu nào kể rõ. {beat: lá thư không rõ số phận}
 Giả thuyết của tôi: nếu lá thư ấy đúng, thì lần ở Matsumoto là một lần thử, và không ai ngoài giáo phái biết mình đang chứng kiến một lần thử.
@@ -426,11 +424,11 @@ Tôi không có bằng chứng cho điều đó, và tôi chỉ nêu nó như m�
 
 ## CH12 · PHÁN QUYẾT: Tám năm trên ghế bị cáo
 
-Hãy hình dung một phòng xử án ở Tokyo trước giờ mở phiên, những hàng ghế trống, ánh sáng nhạt, một chiếc bàn dài. {pd}
+Một phòng xử án ở Tokyo trước giờ mở phiên, những hàng ghế trống, ánh sáng nhạt, một chiếc bàn dài. {pd}
 Có lẽ sau ngần ấy năm, căn phòng chỉ còn chờ một câu. ‖ {pd}
 Phiên xử ông Asahara kéo dài khoảng tám năm.
 Ngày 27 tháng 2 năm 2004, thẩm phán Shoji Ogawa của Tòa án quận Tokyo tuyên án tử hình. {beat: bản án}
-Theo trang tiểu sử ông, ông bị kết tội ở 13 trong 17 tội danh, bốn tội danh còn lại bị bỏ.
+Ông bị kết tội ở 13 trong 17 tội danh, bốn tội danh còn lại bị bỏ.
 Trang ấy ghi phiên xử kéo dài hơn bảy năm, còn bản tin Al Jazeera ghi tám năm.
 Hai con số khác nhau nhưng cùng chỉ một điều: một phiên tòa rất dài. ‖
 Ông bị kết tội ra lệnh giết luật sư Sakamoto cùng gia đình, âm mưu vụ Matsumoto và âm mưu vụ tàu điện năm 1995.
@@ -442,7 +440,7 @@ Thẩm phán nói về những hành vi ấy.
 Trong vụ này, 189 thành viên bị truy tố.
 13 người nhận án tử hình, 5 người chung thân và 80 người án tù. {beat: số người bị kết án}
 87 người được hưởng án treo, hai người bị phạt tiền, và một người được tuyên trắng án.
-Hai người cuối cùng còn đang bỏ trốn bị bắt vào tháng 5 và tháng 6 năm 2012. ‖
+Hai người cuối cùng còn đang bỏ trốn bị bắt vào tháng 6 năm 2012. ‖
 Ngày 6 tháng 7 năm 2018, ông Asahara và sáu người khác bị hành quyết.
 Ngày 26 tháng 7, sáu người còn lại cũng vậy. ‖
 Với những người sống sót, các bản án không làm câu chuyện đóng lại.
@@ -459,19 +457,16 @@ Theo ông, cuộc điều tra ấy đã không nối được giáo phái với 
 Lời xin lỗi của một tổ chức và sự thật về một cuộc điều tra là hai chuyện khác nhau. {beat: xin lỗi và sự thật}
 Có một chi tiết nữa về dư luận thời ấy: học giả Hiromi Shimada từng gợi ý rằng Aum có thể vô tội.
 Về sau ông xin lỗi và từ chức, theo trang về ông.
-Cũng có một nhóm người Mỹ sang Nhật bằng tiền của Aum và đặt nghi vấn về bằng chứng sarin.
-Dư luận thời ấy không chỉ sai về ông Kono, mà còn ngả về nhiều phía khác nhau. {beat: dư luận ngả về nhiều phía}
+Dư luận thời ấy không chỉ sai về ông Kono, mà còn có cả những người nghiêng về phía Aum. {beat: dư luận ngả về nhiều phía}
 Một nhóm tách ra, gọi là Hikari no Wa, ra đời năm 2007.
-Nhiều năm nay, cả hai nằm dưới sự giám sát của chính quyền Nhật, lúc nới lúc siết.
-Năm 2017, một tòa án ở Tokyo bãi bỏ việc giám sát Hikari no Wa.
-Năm 2019, tòa án cấp cao ở Tokyo lại khôi phục việc giám sát ấy. ‖
+Nhiều năm nay, cả hai nằm dưới sự giám sát của chính quyền Nhật, lúc nới lúc siết. ‖
 
 ---
 
 ## CH13 · KẾT: Những người còn lại
 
 Bà Sumiko Kono mất ngày 5 tháng 8 năm 2008, sau 14 năm hôn mê, thọ 60 tuổi.
-Bà để lại chồng, một con trai và hai con gái. ‖
+Bà để lại chồng và các con. ‖
 Với ông Kono, theo lời ông kể với báo chí, câu chuyện đã khép lại với cái chết của bà.
 Chín tháng bị nghi, mười bốn năm bên một người vợ chưa tỉnh.
 Tôi không biết ông nghĩ gì trong những năm ấy, và tôi sẽ không giả vờ biết. ‖
@@ -497,7 +492,7 @@ Cái tên đã trả muộn, bằng những lời xin lỗi không giống nhau.
 Mẫu đất đã trả, nhưng không đổi thành ngày khám xét.
 Ngày trên lịch thì vẫn thiếu hai ngày. {beat: kết toán ba khoản nợ}
 Một thành phố chín tháng sau mới thấy giá của khoản nợ ấy. ‖
-Hãy hình dung một bó hoa trắng đặt trên một bậc thềm, không tên, không dòng chữ nào. {pd}
+Một bó hoa trắng đặt trên một bậc thềm, không tên, không dòng chữ nào. {pd}
 Có lẽ đó là cách nhớ ít lời nhất, và cũng là cách khó quên nhất. ‖ {pd}
 Còn những gì ta chắc chắn thì không nhiều. {beat: điều chắc chắn}
 Năm 1997, nhà văn Haruki Murakami xuất bản cuốn Underground, kể lại câu chuyện của những người sống sót.
