@@ -46,6 +46,10 @@ def test_prepare_credit_and_sidecar(monkeypatch, tmp_path):
     (tmp_path / "credits.json").write_text(json.dumps(credits), encoding="utf-8")
     line = pdvideo.credit_lines(tmp_path)[0]
     assert all(x in line for x in ("Film", "Wikimedia Commons", "Public domain", row["page"]))
+    # nền video cho cảnh chữ (còn giữ "vid" cho các cổng): pd vẫn được chuẩn bị, nhãn do người gọi đặt
+    path2, label2 = pdvideo.prepare({"type": "kinetic", "vid": "900001", "pd": ref, "dur": 8, "label": "TƯ LIỆU 1935"},
+                                    tmp_path, credits)
+    assert path2 == path and label2 == "TƯ LIỆU 1935"
 
 
 def test_legacy_scene_and_floor():

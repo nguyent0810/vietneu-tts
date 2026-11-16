@@ -50,8 +50,11 @@
    "type": "date",
    "day": "SINH RA Ở TÔ CHÂU",
    "date": "1868",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900006"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900006",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   },
   {
    "type": "photo",
@@ -164,8 +167,11 @@
      "acc": true
     }
    ],
-   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
-   "vid": "900002"
+   "illus": "PHỎNG DỰNG · TƯ LIỆU 1935",
+   "vid": "900002",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 110,
+   "dur": 12
   },
   {
    "type": "quote",
@@ -325,7 +331,7 @@
    "move": "out",
    "focus": [
     0.5,
-    0.4
+    0.62
    ]
   },
   {

@@ -92,8 +92,11 @@
    "at": 4,
    "day": "MỘT TIẾNG SÚNG · ĐÚNG BA NĂM SAU VỤ BOM",
    "date": "14.08.1940",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
+   "illus": "THƯỢNG HẢI 1937 · TƯ LIỆU",
+   "vid": "900008",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1157,
+   "dur": 10
   },
   {
    "type": "kinetic",
@@ -153,8 +156,11 @@
      "sm": true
     }
    ],
-   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
-   "vid": "900002"
+   "illus": "PHỎNG DỰNG · THƯỢNG HẢI 1937 · TƯ LIỆU",
+   "vid": "900002",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 1167,
+   "dur": 12
   },
   {
    "type": "date",

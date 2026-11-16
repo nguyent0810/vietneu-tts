@@ -566,6 +566,45 @@ if __name__ == '__main__':
     clip_used = gan_clip()
     gan_nen()
     chia_nen()
+    # Lead 16/11 (#278): 8 clip AI 9000xx trùng y hệt với Long Địch Nhân Kiệt (cung Đường, mái tuyết) -> HKV dùng phim tư liệu
+    # phạm vi công cộng về Thượng Hải/Trung Hoa thập niên 1930. Clip chiến tranh 1937 chỉ ở ch11; bản đồ tô giới ở ch02/07/13.
+    OCC = 'commons:File:Old Chinese cities in 1935 中國城市.webm'
+    BOC = 'commons:File:Why We Fight- The Battle of China.webm'
+    PDC = {
+        'pho35': dict(pd=OCC, start=110, dur=12, label='TƯ LIỆU 1935'),
+        'cho35': dict(pd=OCC, start=282, dur=10, label='TƯ LIỆU 1935'),
+        'dong30': dict(pd=BOC, start=345, dur=13, label='TƯ LIỆU THẬP NIÊN 1930'),
+        'aodai30': dict(pd=BOC, start=580, dur=12, label='TƯ LIỆU THẬP NIÊN 1930'),
+        'togioi': dict(pd=BOC, start=1135, dur=12, label='TÔ GIỚI THƯỢNG HẢI · PHIM TƯ LIỆU 1944'),
+        'linh37': dict(pd=BOC, start=1157, dur=10, label='THƯỢNG HẢI 1937 · TƯ LIỆU'),
+        'cau37': dict(pd=BOC, start=1167, dur=12, label='THƯỢNG HẢI 1937 · TƯ LIỆU'),
+        'xe37': dict(pd=BOC, start=1187, dur=10, label='THƯỢNG HẢI 1937 · TƯ LIỆU'),
+    }
+    PHO = ['pho35', 'cho35', 'dong30', 'aodai30']
+    POOL = {'ch02': ['togioi'] + PHO, 'ch07': ['togioi'] + PHO, 'ch11': ['linh37', 'cau37', 'xe37'],
+            'ch13': ['togioi', 'cau37'] + PHO}
+    pd_used = Counter()
+    for ch, v in CH.items():
+        prev = None
+        for s in v['scenes']:
+            if not s.get('vid'):
+                continue
+            pool = [k for k in POOL.get(ch, PHO) if k != prev]
+            k = min(pool, key=lambda x: (pd_used[x], POOL.get(ch, PHO).index(x)))
+            pd_used[k] += 1
+            prev = k
+            # giữ 'vid' (build_long ưu tiên 'pd'); các cổng floor/opening vẫn nhận cảnh có video nền
+            s.pop('ms', None)
+            s.update({x: y for x, y in PDC[k].items() if x != 'label' or s['type'] == 'broll'})
+            # tư liệu thật, không còn là minh họa AI: bỏ "MINH HỌA CHUNG", giữ "PHỎNG DỰNG" (lời kể dựng lại)
+            ill = [x.strip() for x in str(s.get('illus') or '').split('·') if x.strip() and x.strip() != 'MINH HỌA CHUNG']
+            s['illus'] = ' · '.join(ill + [PDC[k]['label']])
+    print('pd:', dict(pd_used))
+    # Lead 16/11 QA img_sheet: ảnh dọc, người đứng ở 45–85% chiều cao; focus 0.4 chỉ ra cột đèn
+    for v in CH.values():
+        for s in v['scenes']:
+            if 'sikh' in (s.get('img'), s.get('bg')):
+                s['focus'] = [0.5, 0.62]
     print('clip:', dict(clip_used), '· cảnh vid:', sum(clip_used.values()), '· tổng cảnh:', sum(len(v['scenes']) for v in CH.values()))
     errs = kiem_pd()
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))

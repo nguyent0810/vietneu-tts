@@ -245,7 +245,11 @@
     }
    ],
    "bg": "sikh",
-   "illus": "PHỎNG DỰNG"
+   "illus": "PHỎNG DỰNG",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "counter",
@@ -317,8 +321,11 @@
    "type": "question",
    "at": 24,
    "text": "GHI LẠI RA SAO\nNGAY LÚC ẤY?",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900002",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   }
  ],
  "hud": {

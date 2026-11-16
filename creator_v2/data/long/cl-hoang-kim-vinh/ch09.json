@@ -52,8 +52,11 @@
    "type": "date",
    "day": "MỘT CUỐN SÁCH · RA ĐỜI",
    "date": "1930",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900002",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 110,
+   "dur": 12
   },
   {
    "type": "file",
@@ -125,8 +128,11 @@
    "at": 6,
    "text": "BIẾN MỘT VỤ\nTHẢM SÁT",
    "sub": "THÀNH CHIẾN CÔNG HIỂN HÁCH",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900004",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 282,
+   "dur": 10
   },
   {
    "type": "quote",
@@ -180,8 +186,11 @@
    "at": 10,
    "text": "SỰ THẬT NẰM",
    "sub": "Ở HAI MỤC KHÁC",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900007",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 345,
+   "dur": 13
   },
   {
    "type": "kinetic",

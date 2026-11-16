@@ -44,8 +44,12 @@
  "scenes": [
   {
    "type": "broll",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900003"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900003",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 110,
+   "dur": 12,
+   "label": "TƯ LIỆU 1935"
   },
   {
    "type": "photo",
@@ -104,8 +108,11 @@
    "at": 5,
    "day": "HAI TỜ BÁO ĐĂNG BẢN TỰ THÚ",
    "date": "20.05.1951",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900007"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900007",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 282,
+   "dur": 10
   },
   {
    "type": "quote",
@@ -152,8 +159,11 @@
      "acc": true
     }
    ],
-   "illus": "PHỎNG DỰNG",
-   "vid": "900001"
+   "illus": "PHỎNG DỰNG · TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900001",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 345,
+   "dur": 13
   },
   {
    "type": "photo",

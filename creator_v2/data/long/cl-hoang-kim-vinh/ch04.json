@@ -32,8 +32,11 @@
    "type": "date",
    "day": "NHỮNG NĂM 1920 · NGOÀI NĂM MƯƠI TUỔI",
    "date": "1920",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900001",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 282,
+   "dur": 10
   },
   {
    "type": "kinetic",
@@ -111,7 +114,11 @@
    "k": "KHÁN GIẢ ĐÊM ẤY",
    "name": "LƯ TIỂU GIA",
    "desc": "Con trai Lư Vĩnh Tường · quân phiệt phái An Huy",
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "org",
@@ -191,7 +198,11 @@
     }
    ],
    "bg": "sikh",
-   "illus": "PHỎNG DỰNG"
+   "illus": "PHỎNG DỰNG",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "slam",

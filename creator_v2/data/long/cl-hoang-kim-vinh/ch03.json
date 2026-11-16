@@ -44,8 +44,11 @@
      "acc": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "illus": "TƯ LIỆU THẬP NIÊN 1930",
+   "vid": "900004",
+   "pd": "commons:File:Why We Fight- The Battle of China.webm",
+   "start": 580,
+   "dur": 12
   },
   {
    "type": "ledger",
@@ -390,7 +393,11 @@
    "at": 24,
    "text": "NGAI VÀNG",
    "sub": "VỮNG NHƯ BÀN THẠCH",
-   "bg": "sikh"
+   "bg": "sikh",
+   "focus": [
+    0.5,
+    0.62
+   ]
   },
   {
    "type": "kinetic",
@@ -410,8 +417,11 @@
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
+   "illus": "TƯ LIỆU 1935",
+   "vid": "900008",
+   "pd": "commons:File:Old Chinese cities in 1935 中國城市.webm",
+   "start": 110,
+   "dur": 12
   }
  ],
  "hud": {
