@@ -173,6 +173,7 @@ Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Khô
 - Thẻ chương: `sub` nêu một nghịch lý/bi kịch nhỏ của chương nếu kịch bản đã có ý đó; không thêm chữ ngoài kịch bản.
 
 **Cửa sổ sốc (chủ kênh 15/11/2026):** Short dồn sốc / kịch tính / nghịch lý vào **3 giây đầu**; Long dồn vào **40 giây đầu** (cold open). Phần còn lại giữ nhịp kể bình thường.
+- Long: O9–O11 cảnh báo hình mở thiếu chuyển động, thẻ chữ trước 10 giây và ba câu đầu thiếu câu hỏi, câu móc hoặc nghịch lý; người duyệt quyết định.
 - Short: câu đầu ≤ 9 từ nêu nghịch lý hoặc bi kịch, kèm hình mạnh nhất ngay khung 0; câu hỏi hậu quả trước giây 3; không chữ trần, không logo kênh mở đầu.
 - Long: trong 40 giây đầu mỗi cảnh là hình động hoặc hình mạnh (cắt 3–5 giây), tối thiểu 3 lần "đập" thị giác (slam/quote lớn, counter đối lập, câu hỏi).
 - **Thứ tự ưu tiên hình cho cửa sổ sốc:** clip/video thật có giấy phép → đồ hoạ AI minh hoạ chung (không mặt người rõ, không mô phỏng người/sự kiện thật, tag `minh_hoa_chung`, nhãn MINH HỌA như phụ đề phim; tạo qua `scripts/ai_img_request.py`) → ảnh tư liệu có chuyển động máy (đẩy/kéo/xoay) → motion graphic (bản đồ, đồng hồ, counter). Không ảnh bạo lực thật.
