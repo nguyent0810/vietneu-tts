@@ -13,15 +13,15 @@
 ## CH00 · Cây chổi trước Đại Thế Giới
 
 Mùa đông năm 1951, trong đợt dọn dẹp lớn ở Đại Thế Giới, một ông già ngoài tám mươi tuổi cầm chổi quét tầng một. {beat: cú sốc mùa đông 1951}
-Hãy hình dung người xem dừng chân, nhận ra gương mặt rỗ mà cả thành phố từng biết. {pd}
+Người xem dừng chân, nhận ra gương mặt rỗ mà cả thành phố từng biết. {pd}
 Đó là Hoàng Kim Vinh, một trong những ông trùm của Bến Thượng Hải. ‖
 Người từng giữ ghế đốc sát trưởng ở sở cảnh sát tô giới Pháp giờ đứng giữa mùa đông với một cây chổi.
 Làm sao một viên đốc sát trưởng lại kết thúc cuộc đời bên một cây chổi?
 Ngày 20 tháng 5 năm 1951, hai tờ Văn Hối Báo và Tân Văn Báo cùng đăng bản tự thú của ông. {beat: bản tự thú 20/5/1951}
 » Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân. [TRÍCH DỊCH]
 Đó là lời thú tội của người từng là trùm thế giới ngầm Thượng Hải. ‖
-Hãy hình dung những cơn gió mùa đông thổi buốt qua sảnh lớn của Đại Thế Giới. {pd}
-Hãy hình dung tiếng chổi quét chạm vào sàn gạch đá hoa từng đón bước chân của khách ăn chơi. {pd}
+Gió mùa đông thổi buốt qua sảnh lớn của Đại Thế Giới. {pd}
+Tiếng chổi quét chạm vào sàn gạch đá hoa từng đón bước chân của khách ăn chơi. {pd}
 Từng có trong tay súng đạn của sở bắt và thuốc phiện của giang hồ.
 Nhưng đến cuối đời, thứ còn lại trong tay chỉ là một cây chổi.
 Tòa nhà giải trí tự xưng số một Viễn Đông từng là biểu tượng của tiền tài và danh vọng.
@@ -48,7 +48,7 @@ Tàu buôn ngoại quốc chen chúc cùng thuyền nan bản xứ trên dòng s
 Đó là nơi cơ hội và cạm bẫy luôn song hành trên từng tấc đất.
 Năm 1884, khi mười sáu tuổi, ông vào học việc ở tiệm đóng khung tranh Tụy Hoa Đường, gần miếu Thành Hoàng. {beat: học việc 1884}
 Đó là công việc đòi hỏi sự tỉ mỉ và kiên nhẫn.
-Hãy hình dung mùi giấy dó, mực nho và hồ dán thoang thoảng trong con ngõ nhỏ gần miếu Thành Hoàng. {pd}
+Mùi giấy dó, mực nho và hồ dán thoang thoảng trong con ngõ nhỏ gần miếu Thành Hoàng. {pd}
 » Thuở đầu ông theo nghề giấy quạt, thư họa. [TRÍCH DỊCH]
 Những chiếc quạt giấy xòe ra dưới ánh nắng, những bức tranh thủy mặc được bồi cẩn thận từng lớp hồ.
 Nhưng nghề giấy mực êm đềm ấy không giữ chân ông được lâu.
@@ -63,8 +63,8 @@ Năm 1892, khi tròn hai mươi bốn tuổi, ông đưa ra quyết định bư�
 Chiếc áo cảnh sát của chính quyền thực dân mở ra một chân trời hoàn toàn mới.
 Theo Wikipedia tiếng Anh, sau một lần cãi cọ với sĩ quan Pháp, ông từng bỏ về Tô Châu một thời gian. {beat: mâu thuẫn ban đầu}
 Rồi ông được gọi trở lại làm việc trong sở bắt.
-Có lẽ người Pháp, dù có súng ống và tòa án, vẫn xa lạ với những con ngõ và tiếng nói của cư dân bản địa. {pd}
-Hãy hình dung những con ngõ tối tăm quanh Lão Bắc Môn, nơi chỉ người bản địa mới thuộc từng ngóc ngách. {pd}
+Người Pháp, dù có súng ống và tòa án, vẫn xa lạ với những con ngõ và tiếng nói của cư dân bản địa. {pd}
+Những con ngõ tối tăm quanh Lão Bắc Môn chỉ người bản địa mới thuộc từng ngóc ngách. {pd}
 Có lẽ ông sớm nhận ra người Pháp cần mình, và học cách biến điều ấy thành quyền lực riêng. {pd}
 Nhưng làm sao một thám viên bình thường leo lên nấc cao nhất của giới thám tử người Hoa? ‖
 
@@ -73,7 +73,7 @@ Nhưng làm sao một thám viên bình thường leo lên nấc cao nhất củ
 Tô giới Pháp không ngừng mở rộng diện tích qua từng giai đoạn. {beat: tô giới bành trướng}
 Từ sáu mươi sáu hécta ban đầu, vùng đất này tăng gấp đôi vào năm 1900, rồi mở rộng gấp mười lăm lần vào năm 1914.
 Năm 1914, việc mở rộng có sự chấp thuận của chính quyền Viên Thế Khải, đổi lại việc Pháp hứa trục xuất những người làm cách mạng khỏi vùng mình quản.
-Có lẽ đất rộng ra, trộm cướp và mâu thuẫn băng nhóm cũng nhiều theo. {pd}
+Đất rộng ra, trộm cướp và mâu thuẫn băng nhóm cũng nhiều theo. {pd}
 Ở sở bắt, muốn lên cao thì phải lập công.
 Hoàng Kim Vinh đã làm điều đó bằng một cú liều mạng.
 Trong vụ cướp lớn ở Thái Hồ, ông phụng mệnh đến Tô Châu, đích thân đi bắt tên đầu sỏ hung hãn, khó bắt. {beat: vụ án Thái Hồ}
@@ -84,7 +84,7 @@ Cú nhảy liều lĩnh khiến chân ông bị chấn thương nặng.
 Vết thương ấy theo ông lâu về sau: đến năm 1930, hễ trời mưa gió lạnh là chân vẫn đau.
 Một bài báo phổ thông kể giai thoại rằng ông tự dàn cảnh các vụ cướp rồi tự mình ra tay bắt, nhưng bài ấy không dẫn nguồn. {beat: giai thoại phá án}
 Vì vậy chuyện ấy chỉ nên nghe như một giai thoại.
-Có lẽ từ đó người Pháp nể người thám tử mặt rỗ hơn. {pd}
+Từ đó người Pháp nể người thám tử mặt rỗ hơn. {pd}
 Năm 1911, khi Cách mạng Tân Hợi lật đổ nhà Thanh, ông lo giữ yên địa phương. {beat: bảo vệ an ninh Tân Hợi}
 » Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình. [TRÍCH DỊCH]
 Một đời tổng thống họ Lê còn đặc cách phong ông hàm thượng tá bộ binh.
@@ -94,8 +94,8 @@ Năm 1900, ông cưới bà Lâm Quế Sinh, người sau này quản một ph�
 Từ đó ông dựng nên một cơ chế quyền lực hai mặt ngay giữa tô giới.
 Mỗi ngày ông mở một phiên xử riêng, quyết định kẻ phạm tội có bị giao cho cảnh sát hay không. {beat: phiên xử riêng mỗi ngày}
 Ông cũng ban những cái gọi là ân huệ cho kẻ phạm tội.
-Hãy hình dung tiếng chuông xe điện leng keng trên những đại lộ mới mở của tô giới Pháp. {pd}
-Hãy hình dung khói thuốc lượn lờ trong một căn phòng kín, nơi một cái gật đầu của ông định đoạt số phận kẻ phạm tội. {pd}
+Tiếng chuông xe điện leng keng vang trên những đại lộ mới mở của tô giới Pháp. {pd}
+Khói thuốc lượn lờ trong căn phòng kín, nơi một cái gật đầu của ông định đoạt số phận kẻ phạm tội. {pd}
 Ông lên vị trí thám tử người Hoa cấp cao nhất của sở bắt tô giới Pháp, rồi chức đốc sát trưởng. {beat: lên đốc sát trưởng}
 Hoàng Kim Vinh biến chiếc huy hiệu cảnh sát thành tấm bình phong cho các hoạt động phi pháp.
 Nhưng thứ lợi nhuận khổng lồ nuôi sống cả bộ máy ấy thực sự sinh ra từ đâu? ‖
@@ -123,8 +123,8 @@ Sang thập niên 1920, Trương Khiếu Lâm, người Chiết Giang, cũng đ�
 Dù thao túng đường dây lớn, Hoàng Kim Vinh lúc này vẫn chưa chính thức gia nhập Thanh bang. {beat: đứng ngoài Thanh bang}
 Ông chọn đứng bên ngoài để bảo trợ bằng chiếc huy hiệu cảnh sát, để đàn em trực tiếp điều hành mạng lưới.
 Hoàng giữ chiếc ghế cảnh sát, Đỗ lo thuốc phiện và cờ bạc, Trương cùng chung đường dây. {beat: ba trụ cột quyền lực}
-Hãy hình dung làn khói ngai ngái đặc quánh bốc lên từ những chiếc tẩu thuốc phiện trong góc tối. {pd}
-Có lẽ những đồng bạc hoa xòe đếm lách cách trên bàn gỗ là thứ gắn kết những kẻ trong bóng tối lại với nhau. {pd}
+Làn khói ngai ngái đặc quánh bốc lên từ những chiếc tẩu thuốc phiện trong góc tối. {pd}
+Những đồng bạc hoa xòe đếm lách cách trên bàn gỗ gắn kết những kẻ trong bóng tối lại với nhau. {pd}
 Bạn có thể thấy một sự kết hợp đáng sợ giữa quyền lực thực dân và bạo lực giang hồ.
 Lúc ấy, ngai vàng của Hoàng Kim Vinh trông vững như bàn thạch.
 Nhưng khi quyền lực và tiền bạc lên đến đỉnh điểm, sự ngạo mạn bắt đầu đẩy ông trùm vào một cạm bẫy chết người. ‖
@@ -135,15 +135,15 @@ Bước sang thập niên 1920, Hoàng Kim Vinh đã ngoài năm mươi tuổi, 
 Khi một kẻ có quá nhiều quyền uy mà không ai kiềm chế, kẻ đó rất dễ tự tay phá hủy chính mình.
 Năm 1922, ông cưới Lộ Lan Xuân, một cô đào hát. {beat: cưới Lộ Lan Xuân 1922}
 Bà là một ca sĩ sân khấu.
-Hãy hình dung mỗi đêm bà hát, đàn em của ông ngồi kín hàng ghế đầu, vỗ tay thật to. {pd}
+Mỗi đêm bà hát, đàn em của ông ngồi kín hàng ghế đầu, vỗ tay thật to. {pd}
 Rồi đến năm 1924, một đêm bà hát trên sân khấu, mọi chuyện đổ vỡ. {beat: đêm định mệnh 1924}
 Hôm ấy, trong khán giả có Lư Tiểu Gia.
 Cậu là con trai Lư Vĩnh Tường, một quân phiệt phái An Huy.
 Theo một bản kể, Lư Tiểu Gia la ó đến mức cô đào phải rời sân khấu.
 Bản khác lại nói cậu tìm cách theo đuổi bà.
 Hoàng Kim Vinh lập tức sai thuộc hạ đánh Lư Tiểu Gia một trận dữ dội. {beat: đánh Lư Tiểu Gia}
-Hãy hình dung ánh đèn rực rỡ và tiếng đàn sáo bỗng chốc im bặt giữa khán phòng rạp hát. {pd}
-Hãy hình dung cảnh tượng hỗn loạn trong rạp hát cùng tiếng la hét của khán giả. {pd}
+Tiếng đàn sáo bỗng im bặt giữa cả khán phòng rạp hát. {pd}
+Ánh đèn vẫn rực rỡ, nhưng tiếng la hét của khán giả đã nuốt chửng cảnh hỗn loạn. {pd}
 Công tử nhà quân phiệt bị đánh công khai, ngay trước mắt đám đông.
 Có lẽ Hoàng Kim Vinh tưởng mình vừa dạy cho một công tử ngổ ngáo một bài học. {pd}
 Nhưng ông trùm đã hoàn toàn mù quáng trước thực tế chính trị của thời cuộc. {beat: cái giá của sự mù quáng}
@@ -154,16 +154,16 @@ Cơn thịnh nộ của gia tộc họ Lư đang chuẩn bị giáng xuống đ�
 ## CH05 · Người bị bắt giữ
 
 Hôm sau, người của Lư Tiểu Gia bắt Hoàng Kim Vinh. {beat: Lư gia trả đũa}
-Hãy hình dung Lư Vĩnh Tường nổi giận khi nghe tin con trai bị đánh giữa đám đông. {pd}
+Lư Vĩnh Tường nổi giận khi nghe tin con trai bị đánh giữa đám đông. {pd}
 Quân đồn trú Thượng Hải giữ ông lại. {beat: bắt giam Hoàng Kim Vinh}
 Ông bị giam trong tay quân đội. {beat: giam giữ trong tay quân đội}
 Hãy hình dung sự hoang mang của người từng ngồi ghế cao xét xử kẻ khác, giờ ngồi trong một gian giam của quân đội. {pd}
-Hãy hình dung những cơn gió bấc thổi qua song sắt lạnh buốt nơi doanh trại quân đội. {pd}
+Gió bấc thổi qua song sắt lạnh buốt nơi doanh trại quân đội. {pd}
 Nhưng đòn nặng còn đến từ phía người Pháp, những ông chủ ông đã phục vụ hơn ba mươi năm. {beat: cảnh sát Pháp cho thôi việc}
 Theo Wikipedia, sở cảnh sát Pháp cho ông thôi việc năm 1924.
-Có lẽ người Pháp không muốn dính vào xung đột với phe quân phiệt. {pd}
+Người Pháp không muốn dính vào xung đột với phe quân phiệt. {pd}
 Wikipedia gắn việc ấy với chuyện ông công khai đánh con trai quân phiệt Lư Vĩnh Tường.
-Hãy hình dung chiếc bàn làm việc của viên đốc sát trưởng ở bốt Mạch Lan bỗng chốc trống trơn. {pd}
+Chiếc bàn làm việc của viên đốc sát trưởng ở bốt Mạch Lan bỗng chốc trống trơn. {pd}
 Còn cuốn sách năm 1930 chép khác: mùa đông năm Giáp Tý, ông tự xin nghỉ vì vết thương cũ ở chân. {beat: sách 1930 chép tự xin nghỉ}
 » Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát. [TRÍCH DỊCH]
 » Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp. [TRÍCH DỊCH]
@@ -183,8 +183,8 @@ Nhưng mũi giải cứu quyết định lại nằm ở Thượng Hải, dướ
 Đỗ chọn một con đường khác: tiền.
 Theo hồi ức mà Wikipedia dẫn lại, Đỗ vận động giới buôn thuốc phiện góp hơn một triệu đồng. {beat: Đỗ Nguyệt Sanh gom tiền chuộc}
 Số tiền ấy được kể là để lo cho Hà Phong Lâm, hộ quân sứ trấn giữ Thượng Hải.
-Hãy hình dung những chuyến tàu xuôi ngược nối liền Thượng Hải và Hàng Châu trong sương sớm. {pd}
-Hãy hình dung những chiếc rương tiền bạc được chuyển giao bí mật trong đêm tối. {pd}
+Những chuyến tàu xuôi ngược nối liền Thượng Hải và Hàng Châu chạy trong sương sớm. {pd}
+Những chiếc rương tiền bạc được chuyển giao bí mật trong đêm tối. {pd}
 Rồi Hoàng Kim Vinh được thả. {beat: Hoàng Kim Vinh thoát chết}
 Theo Wikipedia, ngoại giao và tiền bạc của Đỗ đã cứu được người thầy, và từ đó vị thế của Đỗ lên nhanh.
 Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Trương Khiếu Lâm kết nghĩa anh em. {beat: kết nghĩa Ba Đại Hanh}
@@ -209,12 +209,12 @@ Sau biến cố năm 1924, Hoàng Kim Vinh chính thức chia tay sở cảnh s�
 Không còn chiếc huy hiệu đốc sát trưởng cài trên ngực áo, ông già mặt rỗ chọn cách rút lui về hậu trường.
 Ông mua đất ở Tào Hà Kính để dựng từ đường họ Hoàng.
 Sách năm 1930 chép ông mua đất dựng từ đường để ghi nhớ công ơn tổ tiên.
-Hãy hình dung quanh từ đường là một khu vườn với hòn non bộ, hồ sen và những hàng cây. {pd}
+Quanh từ đường là một khu vườn với hòn non bộ, hồ sen và những hàng cây. {pd}
 Khu vườn tĩnh mịch ấy ngày nay chính là công viên Quế Lâm nổi tiếng giữa lòng Thượng Hải. {beat: dựng vườn Tào Hà Kính}
 Ông còn bỏ vốn riêng lập Trường Nghĩa Vụ Kim Vinh.
 Trường dạy miễn phí cho con em nhà nghèo.
 Hơn một nghìn học trò đã học xong ở ngôi trường mang tên ông. {beat: trường Kim Vinh một nghìn học sinh}
-Hãy hình dung tiếng ê a học bài của những đứa trẻ nghèo vang lên bên ngoài bức tường hoa viên. {pd}
+Tiếng ê a học bài của những đứa trẻ nghèo vang lên bên ngoài bức tường hoa viên. {pd}
 Có lẽ việc mở trường làm từ thiện vừa để tích đức, vừa làm tấm bình phong che mắt người đời. {pd}
 Trông bề ngoài, Hoàng Kim Vinh giống như một bậc hưu quan đã rũ sạch bụi trần, an vui tuổi già bên cây cỏ và làm việc thiện.
 Nhưng ông không rời hẳn cuộc chơi.
@@ -246,7 +246,7 @@ Trong bữa tối ấy, ông bị siết cổ chết, rồi bị chôn nông.
 Rạng sáng ngày 12 tháng 4, cuộc tấn công bắt đầu. {beat: thảm sát 12/4/1927}
 Quân của Bạch Sùng Hy chiếm trụ sở Tổng công hội.
 Các nhóm Thanh bang có vũ trang đánh các tổ chức công nhân ở Áp Bắc, Nam Thị và Phố Đông.
-Hãy hình dung tiếng súng nổ rát và tiếng chân chạy dồn dập trong các ngõ hẹp Áp Bắc. {pd}
+Tiếng súng nổ rát và tiếng chân chạy dồn dập vang khắp các ngõ hẹp Áp Bắc. {pd}
 Ở Tổng công hội và Thương vụ Ấn thư quán, hơn ba trăm người chết và bị thương. {beat: hàng trăm người ngã xuống}
 Ngày hôm sau, khi công nhân bãi công phản đối, lại có thêm khoảng một trăm người ngã xuống.
 Số nạn nhân chung cuộc chưa ai xác định chính xác, nhưng tính bằng hàng nghìn.
@@ -277,7 +277,7 @@ Và ở mục của Trương Khiếu Lâm, đêm ấy hiện ra không che đậ
 Ba mục sách viết về ba người anh em kết nghĩa, nhưng cho thấy hai bộ mặt đối lập.
 Một mục tô vẽ một nhà hảo tâm mẫu mực, trong khi hai mục kia kể về một đêm huyết chiến.
 Mục của Hoàng chỉ cho người đọc xem một nửa câu chuyện.
-Hãy hình dung người đọc thời ấy giở từng trang sách và nhận ra sự mâu thuẫn đến rợn người. {pd}
+Người đọc thời ấy giở từng trang sách và nhận ra sự mâu thuẫn đến rợn người. {pd}
 Nhưng giấy mực không bao giờ có thể che giấu được những tội ác đã khắc sâu vào lòng lịch sử.
 Sang năm sau, ông thâu tóm một cơ ngơi lừng danh của chốn ăn chơi Thượng Hải. ‖
 
@@ -299,8 +299,8 @@ Cao hơn nữa có trường bắn, bàn fan-tan, ghế xoa bóp và sàn nhảy
 Rồi đến người kể chuyện, hộp xem lén, mặt nạ, mê cung gương và đền thần.
 Tầng cuối có người đi dây, bàn mạt chược, pháo và bà mối.
 Đại Thế Giới biến Hoàng Kim Vinh thành chủ nhân của chốn ăn chơi tự xưng số một Viễn Đông.
-Hãy hình dung ánh đèn neon rực rỡ từ ngọn tháp cao soi rọi xuống dòng người nườm nượp qua lại giữa ngã tư. {pd}
-Hãy hình dung tiếng cười nói huyên náo lẫn tiếng nhạc xập xình vang lên suốt ngày đêm. {pd}
+Ánh đèn neon rực rỡ từ ngọn tháp cao soi rọi xuống dòng người nườm nượp qua lại giữa ngã tư. {pd}
+Tiếng cười nói huyên náo lẫn tiếng nhạc xập xình vang lên suốt ngày đêm. {pd}
 Mười hai tấm gương méo từ Hà Lan biến đổi mọi hình dáng, phản chiếu cả sự phù phiếm của một thời đại.
 Khách ăn chơi mải mê trong những trò đỏ đen mà không hề hay biết tai họa chiến tranh đang đến gần.
 Nhưng tòa lâu đài của sự trụy lạc ấy đã phải chứng kiến một thảm kịch đẫm máu vào mùa hè năm 1937.
@@ -322,7 +322,7 @@ Ngày 14 tháng 8 năm 1940, đúng ba năm sau vụ ném bom Đại Thế Giớ
 Trương Khiếu Lâm bị bắn chết tại nhà riêng trên đường Hoa Cách Niết.
 Các nguồn tôi đọc không nói ai đã bắn.
 Còn Hoàng Kim Vinh, theo lời kể, giả vờ lú lẫn để khỏi làm việc cho người Nhật.
-Hãy hình dung ông trùm quyền lực năm xưa nằm co ro trên chiếc ghế mây trong góc phòng tối, vờ như một kẻ lẩm cẩm sắp gần đất xa trời. {pd}
+Ông trùm quyền lực năm xưa nằm co ro trên chiếc ghế mây trong góc phòng tối, vờ như một kẻ lẩm cẩm sắp gần đất xa trời. {pd}
 Đến tháng 12 năm 1941, quân Nhật tràn vào chiếm đóng Tô giới Quốc tế.
 Đến ngày 30 tháng 7 năm 1943, chính quyền Vichy bàn giao toàn bộ tô giới Pháp cho chính quyền Uông Tinh Vệ. {beat: bàn giao tô giới 1943}
 Vùng nhượng địa chấm dứt sau gần một thế kỷ tồn tại.
@@ -346,15 +346,15 @@ Lúc ấy nước này có hơn hai mươi triệu người nghiện, khoảng b
 Từ tháng 12 năm 1950, Chiến dịch trấn áp phản cách mạng bước vào giai đoạn quy mô lớn.
 Hoàng Kim Vinh bị đem ra làm gương trong chiến dịch ấy. {beat: đưa Hoàng ra làm gương}
 Ngày 7 tháng 5 năm 1951, Hoàng Kim Vinh viết bản tự thú. {beat: viết bản tự thú 7/5/1951}
-Hãy hình dung bàn tay già run run trên trang giấy. {pd}
+Bàn tay già run run trên trang giấy, và ông tự nhủ: viết đi, viết cho xong. {pd}
 Ngày 20 tháng 5 năm 1951, bản tự thú được đăng trên Văn Hối Báo và Tân Văn Báo.
 Hai nguồn cùng dẫn lại một câu trong bản tự thú:
 » Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân. [TRÍCH DỊCH]
-Hãy hình dung những tờ báo in chữ chì được chuyền tay nhau trên các góc phố Thượng Hải buổi sáng hôm ấy. {pd}
+Những tờ báo in chữ chì được chuyền tay nhau trên các góc phố Thượng Hải buổi sáng hôm ấy. {pd}
 Rồi đến mùa đông năm ấy.
 Trong đợt dọn dẹp lớn ở Đại Thế Giới, ông quét tầng một. {beat: quét tầng một Đại Thế Giới mùa đông 1951}
 Nơi ấy từng là cơ ngơi của chính ông.
-Hãy hình dung ông lom khom quét, giữa ánh nhìn của người xem. {pd}
+Ông lom khom quét giữa ánh nhìn của người xem, và nói khẽ: làm sao tôi lại thành ra thế này. {pd}
 Theo một chuyên mục lưu trữ, người xem bảo nhau rằng đời thật sự đã đổi.
 Một trang bách khoa còn kể có ảnh ông quét đường trước cổng được đăng báo, nhưng chưa ai dẫn được nguồn.
 Ngày 20 tháng 6 năm 1953, Hoàng Kim Vinh mất ở Thượng Hải vì bệnh, thọ tám mươi tư hay tám mươi lăm tuổi tùy nguồn. {beat: Hoàng Kim Vinh mất 20/6/1953}
