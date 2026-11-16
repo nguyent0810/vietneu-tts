@@ -1,321 +1,89 @@
 {
- "title": "Tam Hâm và cậu học trò",
+ "title": "Cuộc giải cứu và sự đảo vai",
  "lines": [
   {
-   "t": "Đỗ Nguyệt Sanh sinh năm 1888 ở Phố Đông.",
+   "t": "Trong lúc bị giam, Hoàng Kim Vinh chỉ còn biết trông chờ vào những người anh em giang hồ bên ngoài.",
    "p": 0.8
   },
-  "Bách khoa tiếng Trung ghi rằng cậu vào tô giới Pháp, làm việc vặt trong nhà Hoàng Kim Vinh.",
-  "Bà Lâm Quế Sinh để mắt đến cậu và hết lòng nâng đỡ.",
-  "Theo Wikipedia tiếng Anh, Hoàng giao Đỗ quản một số điểm bán thuốc phiện.",
-  "Năm 1918, ba người lập một công ty.",
-  "Theo bách khoa tiếng Trung, đó là Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Kim Đình Tôn.",
-  "Công ty ấy mang tên Tam Hâm.",
-  "Thực ra, trang về Hoàng Kim Vinh viết rằng công ty ấy lũng đoạn việc buôn thuốc phiện.",
-  "Trang ấy ghi thời gian là thập niên 1920 và thêm cả Trương Khiếu Lâm vào danh sách.",
-  "Vậy là các trang bách khoa lệch nhau về người và về năm.",
-  {
-   "t": "Điều không lệch là cái tên Tam Hâm, và việc nó dính đến thuốc phiện.",
-   "p": 1.0
-  },
-  "Người thầy ngồi ở ghế cảnh sát.",
-  "Người học trò được giao việc trong mạng lưới thuốc phiện.",
-  "Theo Wikipedia tiếng Anh, Hoàng khi ấy chưa phải là thành viên Thanh bang.",
-  {
-   "t": "Đỗ vẫn làm việc cho ông, như một người thi hành chuyện cờ bạc và thuốc phiện.",
-   "p": 1.0
-  },
-  "Bạn thấy chỗ lạ không?",
-  "Một người bị nhiều tài liệu gọi là ông trùm Thanh bang lại chưa phải thành viên của nó.",
-  "Wikipedia tiếng Anh nói ông chính thức vào băng năm 1927.",
-  {
-   "t": "Ta sẽ gặp lại năm ấy ở chương tám.",
-   "p": 1.0
-  },
-  "Cũng trong cuốn sách năm 1930, mục của Đỗ Nguyệt Sanh mở bằng một câu khác hẳn.",
-  {
-   "t": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
-   "q": 1,
-   "tr": 1
-  },
-  "Mục ấy liệt kê những chức ông giữ.",
-  "Ông làm chủ tịch hội liên hiệp giới thương nhân tô giới Pháp, ủy viên người Hoa của hội đồng tô giới, và chủ tịch một ngân hàng.",
-  "Nó không nhắc Tam Hâm và không nhắc thuốc phiện.",
-  "Mục của Trương Khiếu Lâm nhắc ông Hoàng và ông Đỗ ngay chỗ ông bắt đầu quen biết họ.",
+  "Hai hướng cứu ông được mở ra, một ở Hàng Châu, một ở Thượng Hải.",
+  "Hướng thứ nhất do Trương Khiếu Lâm đảm nhận.",
+  "Ông lên Hàng Châu gặp Lư Vĩnh Tường, xin cho Hoàng Kim Vinh.",
+  "Nhưng mũi giải cứu quyết định lại nằm ở Thượng Hải, dưới sự điều hành của Đỗ Nguyệt Sanh.",
+  "Đỗ chọn một con đường khác: tiền.",
+  "Theo hồi ức mà Wikipedia dẫn lại, Đỗ vận động giới buôn thuốc phiện góp hơn một triệu đồng.",
+  "Số tiền ấy được kể là để lo cho Hà Phong Lâm, hộ quân sứ trấn giữ Thượng Hải.",
+  "Hãy hình dung những chuyến tàu xuôi ngược nối liền Thượng Hải và Hàng Châu trong sương sớm.",
+  "Hãy hình dung những chiếc rương tiền bạc được chuyển giao bí mật trong đêm tối.",
+  "Rồi Hoàng Kim Vinh được thả.",
+  "Theo Wikipedia, ngoại giao và tiền bạc của Đỗ đã cứu được người thầy, và từ đó vị thế của Đỗ lên nhanh.",
+  "Hoàng Kim Vinh, Đỗ Nguyệt Sanh và Trương Khiếu Lâm kết nghĩa anh em.",
+  "Về sau họ được gọi chung là Ba Đại Hanh của Thượng Hải.",
+  "Sách năm 1930 ghi Trương Khiếu Lâm tên Trương Dần, người Từ Khê, Chiết Giang; Wikipedia ghi ông sinh năm 1877.",
   {
    "t": "Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.",
    "q": 1,
    "tr": 1
   },
+  "Cuốn sách ấy cũng ca ngợi tính cách của Đỗ Nguyệt Sanh:",
   {
-   "t": "Cuốn sách tự nó dựng nên tình anh em ba người, bằng những câu rất đẹp.",
-   "p": 1.0
+   "t": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
+   "q": 1,
+   "tr": 1
   },
-  "Còn bây giờ, câu chuyện rẽ sang một nhà hát.",
+  "Người dân truyền miệng một câu tóm lược từng người:",
+  "Hoàng Kim Vinh yêu tiền, Trương Khiếu Lâm giỏi đánh, Đỗ Nguyệt Sanh biết làm người.",
+  "Nhưng đằng sau những lời tụng xưng hào nhoáng là một cuộc chuyển giao quyền lực âm thầm nhưng quyết liệt.",
+  "Hoàng Kim Vinh mất chức trong sở cảnh sát, danh tiếng tổn hại sau vụ bắt giữ.",
+  "Ngược lại, Đỗ Nguyệt Sanh vừa cứu được thầy, vừa lên nhanh sau đó.",
+  "Đỗ giờ điều hành việc buôn thuốc phiện của tô giới Pháp, với sự ngầm ủng hộ của cảnh sát và chính quyền thuộc địa.",
+  "Người học trò ngày nào đã đứng cao hơn người thầy.",
+  "Cán cân quyền lực trong thế giới ngầm Thượng Hải bắt đầu nghiêng hẳn về người học trò trẻ tuổi.",
   {
-   "t": "Chuyện xảy ra ở đó sẽ dẫn tới việc người thám tử bị bắt.",
+   "t": "Còn người thầy lừng lẫy một thời sẽ làm gì khi quyền bính đã tuột khỏi tầm tay?",
    "p": 1.0
   }
  ],
  "scenes": [
   {
-   "type": "date",
-   "at": 0,
-   "day": "ĐỖ NGUYỆT SANH · SINH Ở PHỐ ĐÔNG",
-   "date": "1888",
-   "bg": "jinling"
-  },
-  {
    "type": "kinetic",
-   "at": 1,
    "items": [
     {
-     "text": "CẬU VÀO TÔ GIỚI PHÁP",
-     "at": 1,
+     "text": "CHỈ CÒN BIẾT\nTRÔNG CHỜ",
+     "at": 0,
      "acc": true
     },
     {
-     "text": "LÀM VIỆC VẶT TRONG NHÀ ÔNG",
+     "text": "NHỮNG NGƯỜI ANH EM GIANG HỒ",
      "at": [
-      1,
-      "làm"
+      0,
+      "những"
      ],
      "sm": true
     }
    ],
-   "bg": "rueconsul"
-  },
-  {
-   "type": "kinetic",
-   "at": 2,
-   "items": [
-    {
-     "text": "BÀ LÂM QUẾ SINH\nĐỂ MẮT ĐẾN CẬU",
-     "at": 2,
-     "acc": true
-    }
-   ],
-   "bg": "nanking2"
-  },
-  {
-   "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "HOÀNG GIAO ĐỖ QUẢN\nMỘT SỐ ĐIỂM BÁN",
-     "at": 3,
-     "acc": true
-    }
-   ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
-  },
-  {
-   "type": "ledger",
-   "at": 4,
-   "title": "THEO BÁCH KHOA TIẾNG TRUNG · 1918",
-   "rows": [
-    {
-     "k": "NĂM",
-     "v": "1918",
-     "at": 4
-    },
-    {
-     "k": "NGƯỜI 1",
-     "v": "HOÀNG KIM VINH",
-     "at": 4
-    },
-    {
-     "k": "NGƯỜI 2",
-     "v": "ĐỖ NGUYỆT SANH",
-     "at": 4
-    },
-    {
-     "k": "NGƯỜI 3",
-     "v": "KIM ĐÌNH TÔN",
-     "at": 4
-    }
-   ],
-   "bg": "police_anam"
-  },
-  {
-   "type": "slam",
-   "at": 6,
-   "text": "TAM HÂM",
-   "sub": "TÊN CỦA CÔNG TY",
-   "bg": "nanking1"
-  },
-  {
-   "type": "org",
-   "at": 8,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "CÔNG TY TAM HÂM",
-     "s": "HAI TRANG, HAI BẢN",
-     "cls": "top",
-     "at": 8
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "BẢN THỨ NHẤT",
-     "s": "1918 · BA NGƯỜI",
-     "at": 8
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "BẢN THỨ HAI",
-     "s": "THẬP NIÊN 1920 · THÊM TRƯƠNG KHIẾU LÂM",
-     "at": 8
-    }
-   ],
-   "bg": "bund90"
-  },
-  {
-   "type": "kinetic",
-   "at": 9,
-   "items": [
-    {
-     "text": "LỆCH VỀ NGƯỜI\nVÀ VỀ NĂM",
-     "at": 9,
-     "acc": true
-    }
-   ],
-   "bg": "bund90"
-  },
-  {
-   "type": "slam",
-   "at": 10,
-   "text": "KHÔNG LỆCH:",
-   "sub": "TÊN TAM HÂM · THUỐC PHIỆN",
-   "bg": "opium2"
-  },
-  {
-   "type": "split",
-   "at": 11,
-   "title": "THẦY VÀ TRÒ",
-   "a": {
-    "img": "police_anam",
-    "label": "GHẾ CẢNH SÁT · TÔ GIỚI PHÁP"
-   },
-   "b": {
-    "img": "opium3",
-    "label": "THUỐC PHIỆN · TIỆM HÚT KHOẢNG 1880"
-   }
-  },
-  {
-   "type": "kinetic",
-   "at": 13,
-   "items": [
-    {
-     "text": "HOÀNG KHI ẤY\nCHƯA VÀO THANH BANG",
-     "at": 13,
-     "acc": true
-    }
-   ],
-   "bg": "council"
-  },
-  {
-   "type": "kinetic",
-   "at": 14,
-   "items": [
-    {
-     "text": "ĐỖ VẪN LÀM VIỆC CHO ÔNG",
-     "at": 14,
-     "acc": true
-    },
-    {
-     "text": "CỜ BẠC · THUỐC PHIỆN",
-     "at": [
-      14,
-      "như"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "nanking3"
-  },
-  {
-   "type": "question",
-   "at": 15,
-   "text": "BẠN THẤY CHỖ LẠ KHÔNG?",
-   "bg": "rueconsul"
-  },
-  {
-   "type": "date",
-   "at": 17,
-   "day": "CHÍNH THỨC VÀO BĂNG · THEO WIKIPEDIA",
-   "date": "1927",
-   "bg": "chiang26"
-  },
-  {
-   "type": "file",
-   "at": 19,
-   "k": "SÁCH NĂM 1930",
-   "name": "MỤC CỦA ĐỖ\nNGUYỆT SANH",
-   "desc": "Mở bằng một câu khác hẳn",
-   "bg": "jinling"
-  },
-  {
-   "type": "quote",
-   "at": 20,
-   "text": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
-   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 20,
-   "typeAt": 20,
-   "bg": "police_ic"
-  },
-  {
-   "type": "ledger",
-   "at": 22,
-   "title": "MỤC ĐỖ NGUYỆT SANH · CÁC CHỨC",
-   "rows": [
-    {
-     "k": "GIỚI THƯƠNG NHÂN",
-     "v": "CHỦ TỊCH HỘI LIÊN HIỆP",
-     "at": 22
-    },
-    {
-     "k": "TÔ GIỚI",
-     "v": "ỦY VIÊN NGƯỜI HOA",
-     "at": 22
-    },
-    {
-     "k": "NGÂN HÀNG",
-     "v": "CHỦ TỊCH",
-     "at": 22
-    }
-   ],
-   "bg": "nanking2"
-  },
-  {
-   "type": "slam",
-   "at": 23,
-   "text": "KHÔNG TAM HÂM",
-   "sub": "KHÔNG THUỐC PHIỆN",
    "illus": "MINH HỌA CHUNG",
    "vid": "900008"
   },
   {
-   "type": "quote",
-   "at": 25,
-   "text": "Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.",
-   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 25,
-   "typeAt": 25,
-   "bg": "nanking1"
+   "type": "map",
+   "at": 1,
+   "geo": "jn",
+   "pins": [
+    {
+     "name": "Hàng Châu"
+    },
+    {
+     "name": "Thượng Hải"
+    }
+   ]
   },
   {
    "type": "photo",
-   "at": 26,
+   "at": 2,
    "img": "zhang1",
    "illus": "TRƯƠNG KHIẾU LÂM · THẬP NIÊN 1930",
    "tone": null,
-   "move": null,
+   "move": "in",
    "focus": [
     0.5,
     0.25
@@ -323,21 +91,290 @@
   },
   {
    "type": "kinetic",
-   "at": 27,
+   "at": 4,
    "items": [
     {
-     "text": "RẼ SANG MỘT NHÀ HÁT",
-     "at": 27,
+     "text": "MŨI QUYẾT ĐỊNH\nỞ THƯỢNG HẢI",
+     "at": 4,
+     "acc": true
+    },
+    {
+     "text": "ĐỖ CHỌN TIỀN",
+     "at": [
+      5,
+      "Đỗ"
+     ],
      "acc": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "bg": "bundfc"
+  },
+  {
+   "type": "counter",
+   "at": 6,
+   "suffix": " ĐỒNG",
+   "label": "HỒI ỨC: ĐỖ VẬN ĐỘNG GÓP",
+   "from": 0,
+   "to": 1000000,
+   "prefix": "HƠN ",
+   "bg": "metropole",
+   "srcnote": "THEO HỒI ỨC WIKIPEDIA DẪN LẠI"
+  },
+  {
+   "type": "ledger",
+   "at": 7,
+   "title": "SỐ TIỀN ẤY",
+   "rows": [
+    {
+     "k": "LO CHO",
+     "v": "HÀ PHONG LÂM",
+     "at": 7
+    },
+    {
+     "k": "CHỨC",
+     "v": "HỘ QUÂN SỨ THƯỢNG HẢI",
+     "at": 7
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "TÀU XUÔI NGƯỢC",
+     "at": 8,
+     "acc": true
+    },
+    {
+     "text": "TRONG SƯƠNG SỚM",
+     "at": [
+      8,
+      "trong"
+     ],
+     "sm": true
+    }
+   ],
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "RƯƠNG TIỀN\nGIAO TRONG ĐÊM",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
+   "vid": "900005"
+  },
+  {
+   "type": "slam",
+   "at": 10,
+   "text": "ÔNG ĐƯỢC THẢ",
+   "sub": "ĐỖ LÊN NHANH",
+   "bg": "council"
+  },
+  {
+   "type": "org",
+   "at": 12,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "KẾT NGHĨA",
+     "s": "BA ĐẠI HANH",
+     "cls": "top",
+     "at": 12
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "SINH 1868",
+     "at": 12
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "SINH 1888",
+     "at": 12
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRƯƠNG",
+     "s": "SINH 1877",
+     "at": 12
+    }
+   ],
+   "bg": "fc37"
+  },
+  {
+   "type": "ledger",
+   "at": 14,
+   "title": "TRƯƠNG KHIẾU LÂM · HAI NGUỒN",
+   "rows": [
+    {
+     "k": "TÊN",
+     "v": "TRƯƠNG DẦN",
+     "at": 14
+    },
+    {
+     "k": "QUÊ",
+     "v": "TỪ KHÊ · CHIẾT GIANG",
+     "at": 14
+    },
+    {
+     "k": "SINH",
+     "v": "1877",
+     "at": 14
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "quote",
+   "at": 15,
+   "text": "Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 15,
+   "typeAt": 15,
+   "bg": "nanking1"
+  },
+  {
+   "type": "quote",
+   "at": 16,
+   "text": "Ông hào phóng, trọng nghĩa, giúp người lúc cấp.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 17,
+   "typeAt": [
+    17,
+    "Ông"
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "ledger",
+   "at": 18,
+   "title": "CÂU TRUYỀN MIỆNG",
+   "rows": [
+    {
+     "k": "HOÀNG KIM VINH",
+     "v": "YÊU TIỀN",
+     "at": 18
+    },
+    {
+     "k": "TRƯƠNG KHIẾU LÂM",
+     "v": "GIỎI ĐÁNH",
+     "at": 18
+    },
+    {
+     "k": "ĐỖ NGUYỆT SANH",
+     "v": "BIẾT LÀM NGƯỜI",
+     "at": 18
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "text": "CHUYỂN GIAO\nQUYỀN LỰC",
+   "sub": "ÂM THẦM MÀ QUYẾT LIỆT",
+   "bg": "council"
+  },
+  {
+   "type": "kinetic",
+   "at": 21,
+   "items": [
+    {
+     "text": "HOÀNG MẤT CHỨC",
+     "at": 21,
+     "acc": true
+    },
+    {
+     "text": "DANH TIẾNG TỔN HẠI",
+     "at": [
+      21,
+      "danh"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "ĐỖ VỪA CỨU THẦY",
+   "sub": "VỪA LÊN NHANH",
+   "bg": "metropole"
+  },
+  {
+   "type": "split",
+   "at": 23,
+   "title": "ĐỖ ĐIỀU HÀNH",
+   "a": {
+    "img": "opium3",
+    "label": "THUỐC PHIỆN TÔ GIỚI PHÁP"
+   },
+   "b": {
+    "img": "police_anam",
+    "label": "CẢNH SÁT NGẦM ỦNG HỘ"
+   }
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "HỌC TRÒ",
+   "sub": "CAO HƠN THẦY",
+   "bg": "nanking2"
+  },
+  {
+   "type": "org",
+   "at": 25,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "THẾ GIỚI NGẦM",
+     "s": "CÁN CÂN LỆCH",
+     "cls": "top",
+     "at": 25
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "THẦY",
+     "s": "HOÀNG KIM VINH",
+     "at": 25
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "TRÒ",
+     "s": "ĐỖ NGUYỆT SANH",
+     "at": 25
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "question",
+   "at": 26,
+   "text": "NGƯỜI THẦY\nSẼ LÀM GÌ?",
+   "bg": "rueconsul"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 06",
-  "t": "TAM HÂM VÀ CẬU HỌC TRÒ"
+  "t": "CUỘC GIẢI CỨU VÀ SỰ ĐẢO VAI"
  },
  "bgm": {
   "mood": "mystery",
