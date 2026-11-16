@@ -147,6 +147,24 @@ def new_tts(channel: str, **fields) -> dict:
     return spec
 
 
+def long_narrator(channel: str) -> dict:
+    """Giọng kể Long mới của kênh (tts_ruleset.json -> _long_narrator). Kênh chưa khai thì {}."""
+    data = _load_ruleset_raw().get("_long_narrator") or {}
+    prof = data.get(channel) if isinstance(data, dict) else None
+    return dict(prof) if isinstance(prof, dict) else {}
+
+
+def apply_long_narrator(channel: str, tts: dict) -> dict:
+    """Đè giọng kể của kênh lên tts chép từ plan mẫu. Bỏ `tempos` (đánh số theo câu của kịch bản mẫu,
+    không khớp kịch bản mới). Giữ alt (giọng trích kinh), voice_ta, pause."""
+    prof = long_narrator(channel)
+    if not prof:
+        return tts
+    out = {k: v for k, v in tts.items() if k not in ("tempos", "voice_ke", "donor")}
+    out.update(prof)
+    return out
+
+
 def retry_temps(engine: str, first: float | None = None) -> tuple[float, ...]:
     """Lần thử đầu = first (nếu có); cascade đọc lại = phần còn lại của dãy cũ, bỏ trùng."""
     base = RETRY_V3 if engine == "v3" else RETRY_STD

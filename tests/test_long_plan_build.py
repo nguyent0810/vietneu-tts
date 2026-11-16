@@ -85,3 +85,22 @@ def test_cli_runs_from_repo_root(tmp_path):
     assert r.returncode == 0, r.stderr[-800:]
     row = json.loads(out.read_text(encoding="utf-8"))[0]
     assert [a["chapter"] for a in row["ambience"]] == [1]  # code cũ đếm cả "**Năm tuổi** của anh." -> 2 chương
+
+
+def test_build_new_uses_channel_long_narrator(tmp_path):
+    """PO 16/11: Long BUD/FS mới đọc bằng Thục Đoan dù plan mẫu còn Binh/Thái Sơn; tempos theo câu của mẫu bị bỏ."""
+    script = tmp_path / "script.txt"
+    script.write_text("**Chương Một**\nMở đầu.\nKết lại.\n", encoding="utf-8")
+    for series, old in (("bud", {"voice": "Binh", "engine": "standard", "tempo": 0.91, "tempos": {"5": 0.85},
+                                 "alt": {"voice": "Quang Sơn", "engine": "v3", "lines": [2]}}),
+                        ("fs", {"voice": "Thái Sơn", "engine": "v3", "tempo": 0.96, "donor": "Thanh Bình"})):
+        base = tmp_path / f"base_{series}.json"
+        base.write_text(json.dumps([{"style": "studio_long", "series": series, "lane": "long", "chapters": True,
+                                     "tts": old, "sound": {}}]), encoding="utf-8")
+        out = tmp_path / f"{series}.json"
+        long_plan_build.build_new(script, f"fx_{series}", series, base, out)
+        tts = json.loads(out.read_text(encoding="utf-8"))[0]["tts"]
+        assert (tts["voice"], tts["engine"], tts["style"]) == ("Thục Đoan", "v3", "doc_truyen")
+        assert "tempos" not in tts and "donor" not in tts
+        if series == "bud":
+            assert tts["alt"]["voice"] == "Quang Sơn"   # giọng trích kinh giữ theo mẫu

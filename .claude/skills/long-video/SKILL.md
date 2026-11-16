@@ -18,7 +18,10 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
   → giữa video quay lại cảnh mở → cảnh mạnh ở 3/4 → kết đóng 3 câu hỏi + motif. ≤3 mục mỗi danh sách
   trong lời đọc (bảng dài để trên màn hình: `ledger`). `ledger` chỉ cho bảng ≥ 4 dòng nhiều cột: bảng 2-3 dòng hiện chữ rất nhỏ ở góc (QA F18 06/10) → dùng `list`/`compare`. Câu ≤ 34 âm tiết.
 - Plan: `"chapters": true` → `hf_batch_render` render từng chương (chạy lại được), nối hình, trộn tiếng
-  một lần. `"tts"` (hf_voice, TTS từng câu) + `"sound"` (hf_foley, 4 lớp). **Preset C** (người dùng duyệt):
+  một lần. `"tts"` (hf_voice, TTS từng câu) + `"sound"` (hf_foley, 4 lớp).
+  **Giọng kể Long MỚI (PO 16/11/2026): Thục Đoan** (v3, `doc_truyen`, tempo 0.961 ≈ 175 tiếng/phút) cho cả BUD và FS —
+  `tts_ruleset.json` → `_long_narrator`, `tools/long_plan_build.py` tự đè lên tts của plan mẫu (bỏ `tempos`/`donor` của mẫu, giữ `alt` giọng trích kinh).
+  Đoạn dưới là thiết lập CŨ, chỉ còn đúng cho plan đã render. **Preset C** (người dùng duyệt):
   BUD giọng `Binh` standard tempo 0.91, câu đỉnh 0.85–0.88 (`tempos`), câu kinh `Quang Sơn` v3 (`alt`),
   vang 0.045 / 0.16 s, `voice_eq`, `music_gap` 18, `sfx_peak` .32, amb/drone gap 27. FS giọng `Thái Sơn`
   v3 doc_truyen tempo .96, không vang. Không tăng vang/nhạc/tiếng động nếu chưa hỏi.

@@ -1,5 +1,5 @@
 {
-  "_comment": "Hồ sơ giọng Long đã duyệt 29/10 (task 84/92a, giọng D). Copy temperature/donor/text_mode vào plan tts cho render MỚI. Plan không có các khoá này giữ hành vi cũ: cascade v3 0.8→0.7→0.9→0.6 (standard 1.0→0.9→1.1→0.8), không donor, chữ production, khoá cache cũ. Không tự gắn vào plan đã render / 3 Long #72 (L_bud_14, L_fs_26, L_fs_27).",
+  "_comment": "Hồ sơ giọng Long đã duyệt 29/10 (task 84/92a, giọng D). Copy temperature/donor/text_mode vào plan tts cho render MỚI. Plan không có các khoá này giữ hành vi cũ: cascade v3 0.8→0.7→0.9→0.6 (standard 1.0→0.9→1.1→0.8), không donor, chữ production, khoá cache cũ. Không tự gắn vào plan đã render / 3 Long #72 (L_bud_14, L_fs_26, L_fs_27). 16/11: Long BUD/FS đổi giọng kể sang Thục Đoan (v3) -> temperature 0.8 (bản PO nghe duyệt), FS bỏ donor Thanh Bình (trộn giọng nam vào giọng nữ).",
   "_default_voice_ta": {
     "standard": "Tuyen",
     "v3": "Phạm Tuyên"
@@ -21,49 +21,126 @@
   "_voices": {
     "standard": {
       "nam": [
-        ["Binh", "Thanh Bình (nam miền Bắc, giọng đọc chính)"],
-        ["Tuyen", "Phạm Tuyên (nam miền Bắc, trầm hơn Binh, điềm đạm - mặc định 'ta')"],
-        ["Vinh", "Xuân Vĩnh (nam miền Nam, tự nhiên)"],
-        ["Sơn", "Thái Sơn (nam miền Nam, truyền cảm)"]
+        [
+          "Binh",
+          "Thanh Bình (nam miền Bắc, giọng đọc chính)"
+        ],
+        [
+          "Tuyen",
+          "Phạm Tuyên (nam miền Bắc, trầm hơn Binh, điềm đạm - mặc định 'ta')"
+        ],
+        [
+          "Vinh",
+          "Xuân Vĩnh (nam miền Nam, tự nhiên)"
+        ],
+        [
+          "Sơn",
+          "Thái Sơn (nam miền Nam, truyền cảm)"
+        ]
       ],
       "nu": [
-        ["Doan", "Thục Đoan (nữ miền Nam)"],
-        ["Ly", "Trúc Ly (nữ miền Bắc)"],
-        ["Ngoc", "Bích Ngọc (nữ miền Bắc)"]
+        [
+          "Doan",
+          "Thục Đoan (nữ miền Nam)"
+        ],
+        [
+          "Ly",
+          "Trúc Ly (nữ miền Bắc)"
+        ],
+        [
+          "Ngoc",
+          "Bích Ngọc (nữ miền Bắc)"
+        ]
       ]
     },
     "v3": {
       "nam": [
-        ["Thanh Bình", "Nam · Bắc · Kể chuyện"],
-        ["Phạm Tuyên", "Nam · Bắc · Tự nhiên, trầm ấm (mặc định 'ta' v3)"],
-        ["Thái Sơn", "Nam · Nam · Kể chuyện"],
-        ["Xuân Vĩnh", "Nam · Nam · Tự nhiên"],
-        ["Minh Đức", "Nam · Bắc · Tin tức"],
-        ["Minh Triết", "Nam · Nam · Tin tức"],
-        ["Quang Sơn", "Nam · Trung · Tự nhiên"]
+        [
+          "Thanh Bình",
+          "Nam · Bắc · Kể chuyện"
+        ],
+        [
+          "Phạm Tuyên",
+          "Nam · Bắc · Tự nhiên, trầm ấm (mặc định 'ta' v3)"
+        ],
+        [
+          "Thái Sơn",
+          "Nam · Nam · Kể chuyện"
+        ],
+        [
+          "Xuân Vĩnh",
+          "Nam · Nam · Tự nhiên"
+        ],
+        [
+          "Minh Đức",
+          "Nam · Bắc · Tin tức"
+        ],
+        [
+          "Minh Triết",
+          "Nam · Nam · Tin tức"
+        ],
+        [
+          "Quang Sơn",
+          "Nam · Trung · Tự nhiên"
+        ]
       ],
       "nu": [
-        ["Trúc Ly", "Nữ · Bắc · Tự nhiên"],
-        ["Ngọc Linh", "Nữ · Bắc · Kể chuyện"],
-        ["Đoan Trang", "Nữ · Bắc · Tự nhiên"],
-        ["Mai Anh", "Nữ · Bắc · Tin tức"],
-        ["Thục Đoan", "Nữ · Nam · Kể chuyện"],
-        ["Thùy Dung", "Nữ · Nam · Tin tức"],
-        ["Ngọc Trân", "Nữ · Trung · Tự nhiên"]
+        [
+          "Trúc Ly",
+          "Nữ · Bắc · Tự nhiên"
+        ],
+        [
+          "Ngọc Linh",
+          "Nữ · Bắc · Kể chuyện"
+        ],
+        [
+          "Đoan Trang",
+          "Nữ · Bắc · Tự nhiên"
+        ],
+        [
+          "Mai Anh",
+          "Nữ · Bắc · Tin tức"
+        ],
+        [
+          "Thục Đoan",
+          "Nữ · Nam · Kể chuyện"
+        ],
+        [
+          "Thùy Dung",
+          "Nữ · Nam · Tin tức"
+        ],
+        [
+          "Ngọc Trân",
+          "Nữ · Trung · Tự nhiên"
+        ]
       ]
     }
   },
   "bud": {
-    "temperature": 0.9,
+    "temperature": 0.8,
     "text_mode": "production"
   },
   "fs": {
-    "temperature": 0.7,
-    "donor": "Thanh Bình",
+    "temperature": 0.8,
     "text_mode": "speech"
   },
   "his": {
     "temperature": 0.7,
     "text_mode": "speech"
+  },
+  "_long_narrator": {
+    "_comment": "Giọng kể Long MỚI (PO 16/11/2026 nghe A/B, chọn Thục Đoan cho BUD + FS). tools/long_plan_build.py đè các khoá này lên tts chép từ plan mẫu. alt (giọng trích kinh) giữ theo plan mẫu. Plan cũ không đổi.",
+    "bud": {
+      "voice": "Thục Đoan",
+      "engine": "v3",
+      "style": "doc_truyen",
+      "tempo": 0.961
+    },
+    "fs": {
+      "voice": "Thục Đoan",
+      "engine": "v3",
+      "style": "doc_truyen",
+      "tempo": 0.961
+    }
   }
 }

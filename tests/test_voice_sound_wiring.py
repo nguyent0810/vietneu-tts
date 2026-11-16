@@ -89,8 +89,8 @@ def test_new_plan_wiring_generates_voice_d_and_sound_c():
     }
 
     assert V.uses_new_cache(row_direct["tts"])
-    assert row_direct["tts"]["temperature"] == 0.7
-    assert row_direct["tts"]["donor"] == "Thanh Bình"
+    assert row_direct["tts"]["temperature"] == 0.8   # PO 16/11: giọng kể Thục Đoan, bỏ donor
+    assert "donor" not in row_direct["tts"]
     assert row_direct["tts"]["text_mode"] == "speech"
     assert row_direct["sound"]["preset_long"] == "C"
 
@@ -107,8 +107,8 @@ def test_new_plan_wiring_generates_voice_d_and_sound_c():
     # 1. TTS có đủ 3 khoá giọng D của FS
     tts = wired["tts"]
     assert V.uses_new_cache(tts)
-    assert tts["temperature"] == 0.7
-    assert tts["donor"] == "Thanh Bình"
+    assert tts["temperature"] == 0.8
+    assert "donor" not in tts
     assert tts["text_mode"] == "speech"
     assert tts["voice"] == "Thái Sơn"
 
@@ -178,8 +178,8 @@ def test_wire_plan_row_legacy_and_force_flags():
     }
     res_upg = HBR.wire_plan_row(row2, force=True)
     assert V.uses_new_cache(res_upg["tts"])
-    assert res_upg["tts"]["temperature"] == 0.7
-    assert res_upg["tts"]["donor"] == "Thanh Bình"
+    assert res_upg["tts"]["temperature"] == 0.8
+    assert "donor" not in res_upg["tts"]
     assert res_upg["sound"]["preset_long"] == "C"
 
 
