@@ -144,3 +144,9 @@ Scan nạp GrokBot: chỉ `output/cl_staging/grokbot/*/out/*.png` của lô có 
 ```
 Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`).
 Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).
+
+## Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short)
+- **Mọi Short:** một dòng là một câu TRỌN. Không cắt câu thành hai dòng (dòng kết thúc dấu phẩy, vd "Tháng mười một âm," / "toàn tháng có…") — TTS nghỉ sai chỗ, nghe cụt. Cổng `short_story_issues` chặn từ lịch 29/11.
+- **Làn truyện (lane `truyen`/`tien_than`/`nhan_qua`, `format_subtag` story_…) và ô thử nghiệm (`test_cell`):** tối đa 1 câu rào nguồn ("Luật tạng ghi…", "theo chú giải…"); nguồn để ở dòng chân hình (`source`) và mô tả. Chỗ kinh bỏ trống kể thành cảnh (im lặng, bàn tay, ánh sáng, câu hỏi tu từ). Cảnh phỏng dựng ghi `pd_scenes: [số cảnh]` -> chip PHỎNG DỰNG trên hình (khuôn ai_cards; cổng chặn nếu thiếu chip).
+- **Dạng thắng giữ nguyên** (bảng tra FS, tượng BUD, …): chỉ chịu luật câu trọn.
+- Lằn ranh giữ: không gán lời cho Đức Phật ngoài kinh, không bịa số/lời trích thật.

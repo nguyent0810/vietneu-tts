@@ -34,7 +34,7 @@ $$\text{Short Thắng} = \text{Câu hỏi tìm kiếm / Hook tò mò} + \text{Ch
 |:---:|:---|:---:|:---|:---|
 | 1 | **Bảng tự dò** | 10–15s | Hook câu hỏi tìm kiếm $\rightarrow$ Bảng dữ liệu toàn diện (ô/hàng tự giãn) $\rightarrow$ Khung cuối đứng $\ge 3\text{s}$ + CTA dừng hình để tra cứu | `tuvi_year`, `amlich`, `canchi` |
 | 2 | **Lời Phật 9 giây** | 9–12s | Ảnh tượng Phật thật chuyển động chậm (1.00 $\rightarrow$ 1.04) $\rightarrow$ Câu kinh hiện từng dòng theo giọng $\rightarrow$ Dẫn nguồn *"Pháp Cú, câu X"* $\rightarrow$ Khung cuối đứng $\ge 3\text{s}$ | `hf_sutta.py` (Kinh Pháp Cú) |
-| 3 | **Nhân quả trong kinh** | 75–120s | Mở đầu bằng cảnh cao trào nhất ở câu 1 $\rightarrow$ Lùi lại kể diễn tiến $\rightarrow$ Cú lật nhân quả $\rightarrow$ 1 câu Phật dạy (kèm Pháp Cú liên quan) $\rightarrow$ Câu hỏi chiêm nghiệm | Chú giải Pháp Cú (Burlingame), Jātaka (Cowell); nhãn "theo chú giải / truyền thuyết" |
+| 3 | **Nhân quả trong kinh** | 75–120s | Mở đầu bằng cảnh cao trào nhất ở câu 1 $\rightarrow$ Lùi lại kể diễn tiến $\rightarrow$ Cú lật nhân quả $\rightarrow$ 1 câu Phật dạy (kèm Pháp Cú liên quan) $\rightarrow$ Câu hỏi chiêm nghiệm | Chú giải Pháp Cú (Burlingame), Jātaka (Cowell); một câu khung "chú giải kể tiếp…" rồi kể liền (luật kể cho tai nghe) |
 | 4 | **Biểu tượng – trả lời nhanh** | 12–18s | Ảnh tượng/vật thật làm hero $\rightarrow$ Câu hỏi chi tiết lạ $\rightarrow$ Câu trả lời 1–2 dòng + chú thích spotlight/mũi tên chỉ vào chi tiết | Nhãn *"theo cách giải thích phổ biến"* |
 | 5 | **Chỉ tay / nhân tướng** | 8–12s | Hook tò mò tự kiểm (*"Bạn có đường tâm đạo này không?"*) $\rightarrow$ Sơ đồ bàn tay nét vàng + đèn quét soi vị trí $\rightarrow$ 2–3 thẻ lật giải nghĩa tham khảo | Nhãn tham khảo; không đoán thọ, không nói bệnh tật |
 | 6 | **"N con giáp tháng tới"** | 10–15s | Lưới 12 con giáp (gọi bằng tên chi Tý…Hợi) $\rightarrow$ N ô sáng theo tam hợp/lục hợp với chi tháng $\rightarrow$ Bảng phân tích ngắn, không hứa tiền | Code tính tam hợp/lục hợp từ `canchi.py`, khung *"theo truyền thống"* |
@@ -173,3 +173,9 @@ Mọi short (FS và BUD) trước khi gửi Lead review phải vượt qua 6 c�
 - **Thợ**: Thực thi mã nguồn, dàn layout, trộn âm thanh, dựng tờ ảnh và chạy trọn vẹn bộ kiểm. Báo cáo bằng tiếng Việt $\le 300$ chữ vào `output/cl_staging/grok/reports/<tên task>.md`.
 - **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video.
 - **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md).
+
+## Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short)
+- **Mọi Short:** một dòng là một câu TRỌN. Không cắt câu thành hai dòng (dòng kết thúc dấu phẩy, vd "Tháng mười một âm," / "toàn tháng có…") — TTS nghỉ sai chỗ, nghe cụt. Cổng `short_story_issues` chặn từ lịch 29/11.
+- **Làn truyện (lane `truyen`/`tien_than`/`nhan_qua`, `format_subtag` story_…) và ô thử nghiệm (`test_cell`):** tối đa 1 câu rào nguồn ("Luật tạng ghi…", "theo chú giải…"); nguồn để ở dòng chân hình (`source`) và mô tả. Chỗ kinh bỏ trống kể thành cảnh (im lặng, bàn tay, ánh sáng, câu hỏi tu từ). Cảnh phỏng dựng ghi `pd_scenes: [số cảnh]` -> chip PHỎNG DỰNG trên hình (khuôn ai_cards; cổng chặn nếu thiếu chip).
+- **Dạng thắng giữ nguyên** (bảng tra FS, tượng BUD, …): chỉ chịu luật câu trọn.
+- Lằn ranh giữ: không gán lời cho Đức Phật ngoài kinh, không bịa số/lời trích thật.

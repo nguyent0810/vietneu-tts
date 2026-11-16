@@ -52,6 +52,9 @@ def validate(rows: Iterable[Mapping], html: str | Iterable[str] = ()) -> None:
         if not daily:
             errors.extend("short_v2_issues: " + x for x in hf_batch_render.short_v2_issues(dict(row)))
         errors.extend("short_tone_issues: " + x for x in hf_batch_render.short_tone_issues(dict(row)))
+        errors.extend("short_story_issues: " + x for x in hf_batch_render.short_story_issues(dict(row)))
+        if row.get("pd_scenes") and docs and not any("PHỎNG DỰNG" in d for d in docs):
+            errors.append("pd_scenes: cảnh phỏng dựng phải có chip PHỎNG DỰNG trên hình")
         for hint in hf_batch_render.short_hook_hints(dict(row)):
             print(f"{row.get('id', '<row>')}: short_hook_hints: {hint}")
         if not daily and row.get("series") in ("bud", "fs", "vsd") and (row.get("scenes") or row.get("style") or row.get("media")):
