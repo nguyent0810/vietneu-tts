@@ -68,15 +68,14 @@ S.append(dict(
     scenes=[
         {"device": "hook_slam", "line": 0, "kick": "BÌNH NGÔ ĐẠI CÁO",
          "groups": [{"text": "Lời một người"}, {"text": "NGƯỜI KHÁC VIẾT", "big": True, "at": [0, "người", 2]}], "markAt": [0, "viết"], "allAtStart": True, "ghost": ""},
-        pan("t12_leloi", 1, "", [{"x": .5, "y": .35, "z": 1, "at": [1, "lam"], "note": "Tượng vua Lê Lợi"},
-                                 {"x": .5, "y": .25, "z": 1.6, "at": [1, "minh"]}]),
-        {"device": "source_card", "line": 2, "source": "BÌNH NGÔ ĐẠI CÁO · 1428", "ref": "Nguyễn Trãi",
-         "snippet": "Soạn [[thay lời]] Bình Định Vương Lê Lợi", "hlAt": [2, "thay"], "seal": "1428", "sealAt": [2, "thắng"], "ghost": ""},
-        {"device": "quote", "line": 3, "mode": "karaoke", "source": "BÌNH NGÔ ĐẠI CÁO", "sourceAt": [3, "dân"], "ghost": "平吳"},
-        {"device": "split", "line": 4, "a": {"lab": "TÊN TRONG BÀI CÁO", "val": "NGÔ", "at": [4, "ngô"]},
-         "b": {"lab": "TRIỀU ĐẠI THẬT", "val": "MINH", "at": [5, "minh"]}, "ghost": ""},
-        {"device": "source_card", "line": 6, "source": "MỘT CÁCH GIẢI THÍCH", "ref": "Minh Thái Tổ",
-         "snippet": "Từng xưng [[Ngô Vương]] trước khi lên ngôi", "hlAt": [6, "ngô"], "seal": "CHỮ NGÔ", "sealAt": [6, "lên"], "ghost": ""},
+        {"device": "time_spine", "line": 1, "kick": "KHỞI NGHĨA LAM SƠN",
+         "items": [{"yr": "1428", "label": "Đuổi quân Minh", "at": [1, "minh"]}, {"yr": "Cùng năm", "label": "Nguyễn Trãi soạn cáo", "at": [2, "soạn"]}], "ghost": ""},
+        pan("t12_cao", 3, "", [{"x": .5, "y": .3, "z": 1, "at": [3, "việc"], "note": "Bình Ngô đại cáo · bản chữ Hán"},
+                               {"x": .7, "y": .25, "z": 1.6, "at": [3, "dân"]}]),
+        {"device": "source_card", "line": 4, "source": "TÊN BÀI CÁO", "ref": "Bình Ngô",
+         "snippet": "Gọi giặc [[Ngô]], mà kẻ thù là nhà Minh", "hlAt": [4, "ngô"], "seal": "CHỮ NGÔ", "sealAt": [5, "minh"], "ghost": ""},
+        {"device": "list_build", "line": 6, "title": "Một cách giải thích",
+         "items": [{"text": "Minh Thái Tổ", "sub": "Chu Nguyên Chương", "at": [6, "minh"]}, {"text": "Từng xưng Ngô Vương", "sub": "trước khi lên ngôi", "at": [6, "ngô"]}], "ghost": ""},
         pan("t12_nguyentrai", 7, "", [{"x": .5, "y": .3, "z": 1, "at": [7, "người"], "note": "Chân dung Nguyễn Trãi"},
                                       {"x": .5, "y": .25, "z": 1.5, "at": [7, "hùng"]}]),
         {"device": "close", "line": 8, "q": "Bạn còn thuộc **câu nào** trong Bình Ngô đại cáo?", "markSpan": 2, "ghost": "", "fade": True, "lh": 1.55},
@@ -85,7 +84,7 @@ S.append(dict(
                    description_first_line="Bình Ngô đại cáo do Nguyễn Trãi soạn năm 1428 thay lời Lê Lợi, và vì sao bài cáo gọi quân Minh là giặc Ngô.",
                    hashtags=["#binhngodaicao", "#nguyentrai", *TAGS],
                    sources=["Nguồn: Bình Ngô đại cáo (Nguyễn Trãi, 1428), bản dịch Bùi Kỷ; các giải thích về chữ \"Ngô\" (Chu Nguyên Chương từng được phong Ngô Quốc Công, xưng Ngô Vương)."]
-                   + credit("t12_leloi", "t12_nguyentrai"),
+                   + credit("t12_cao", "t12_nguyentrai"),
                    publish_slot_utc="2026-11-22T11:00:00Z"),
 ))
 
@@ -161,7 +160,7 @@ S.append(dict(
                    publish_slot_utc="2026-11-23T11:00:00Z"),
 ))
 
-HOOK_IMG = {"vsd_l2_vanmieu": "t11_khuevan", "vsd_l2_binhngo": "t12_cao", "vsd_l2_haivan": "t13_hungquan", "vsd_l2_coloa": "t14_den"}
+HOOK_IMG = {"vsd_l2_vanmieu": "t11_khuevan", "vsd_l2_binhngo": "t12_leloi", "vsd_l2_haivan": "t13_hungquan", "vsd_l2_coloa": "t14_den"}
 for s_ in S:
     k = HOOK_IMG[s_["id"]]
     s_["scenes"][0]["img"] = IMG + CRED[k]["path"].split("/")[-1]
