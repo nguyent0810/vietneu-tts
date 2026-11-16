@@ -1,7 +1,7 @@
 """Ghi spec.json (youtube, credits, mix, look...) cho cl-sarin-tokyo-1995. Gọi từ gen_scenes.py sau khi ghi cảnh.
 
 Tác giả/giấy phép lấy từ API Wikimedia Commons ngày 16/11/2026 (bảng CREDITS). Ảnh không có tác giả ghi rõ không dùng.
-Chưa đặt publish_at và approved: Lead quyết định.
+publish_at + approved: Lead đặt 17/11 theo lời chủ kênh 16/11.
 """
 import json
 import urllib.parse
@@ -111,7 +111,7 @@ def apply(CH, chapter_titles, used, IMGS):
         'category': '24', 'playlist': 'Ngoài Đời Thật',
         'chapter_titles': chapter_titles, 'video_credits': credits,
     })
-    yt['publish_at'] = ''
-    spec['approved'] = ''
+    yt['publish_at'] = '2026-12-01T14:00:00Z'   # CL Tue-Thu-Sun; Lead 17/11 chọn slot
+    spec['approved'] = '16/11/2026 — ok sau khi xong moi bai thi schedule upload len nhe'
     path.write_text(json.dumps(spec, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print('spec.json:', len(used_files), 'ảnh có ghi công,', len(SOURCES), 'nguồn')

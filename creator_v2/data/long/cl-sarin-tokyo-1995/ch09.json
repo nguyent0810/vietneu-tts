@@ -136,6 +136,18 @@
    "illus": "ẢNH NGÀY NAY"
   },
   {
+   "type": "photo",
+   "at": 5,
+   "img": "kasu61",
+   "illus": "GA KASUMIGASEKI · ẢNH NGÀY NAY",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
    "type": "slam",
    "at": 6,
    "text": "MƯỜI THÀNH VIÊN",

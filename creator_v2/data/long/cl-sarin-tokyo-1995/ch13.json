@@ -272,11 +272,17 @@
   },
   {
    "type": "kinetic",
-   "at": 13,
+   "at": [
+    13,
+    "về"
+   ],
    "items": [
     {
      "text": "TRANG VỀ ÔNG\nKONO",
-     "at": 13,
+     "at": [
+      13,
+      "về"
+     ],
      "acc": true
     },
     {
@@ -478,16 +484,21 @@
      "text": "CÒN NHỮNG GÌ TA\nCHẮC CHẮN\nTHÌ KHÔNG NHIỀU",
      "at": 29,
      "acc": true
-    },
-    {
-     "text": "1997 · HARUKI MURAKAMI · UNDERGROUND",
-     "at": [
-      30,
-      "năm"
-     ],
-     "sm": true
     }
    ],
+   "bg": "toky113",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "illus": "ẢNH NGÀY NAY"
+  },
+  {
+   "type": "file",
+   "at": [
+    30,
+    "Haruki"
+   ],
+   "k": "NHÀ VĂN · 1997",
+   "name": "HARUKI\nMURAKAMI",
+   "desc": "Cuốn Underground kể lại câu chuyện của các nạn nhân",
    "bg": "toky113",
    "srcnote": "NGUỒN: WIKIPEDIA",
    "illus": "ẢNH NGÀY NAY"

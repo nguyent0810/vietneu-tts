@@ -50,6 +50,9 @@ def test_prepare_credit_and_sidecar(monkeypatch, tmp_path):
     path2, label2 = pdvideo.prepare({"type": "kinetic", "vid": "900001", "pd": ref, "dur": 8, "label": "TƯ LIỆU 1935"},
                                     tmp_path, credits)
     assert path2 == path and label2 == "TƯ LIỆU 1935"
+    credits["pd:other-window"] = dict(next(iter(credits.values())))
+    (tmp_path / "credits.json").write_text(json.dumps(credits), encoding="utf-8")
+    assert len(pdvideo.credit_lines(tmp_path)) == 1
 
 
 def test_legacy_scene_and_floor():

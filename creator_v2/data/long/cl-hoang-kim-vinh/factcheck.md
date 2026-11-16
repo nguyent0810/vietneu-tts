@@ -253,3 +253,4 @@ Các năm dưới đây chỉ xuất hiện trong nhãn ảnh trên màn hình, 
 - 1934 (khoảng): ảnh bến Thượng Hải, ranh giới hai tô giới.
 - 1935: bản đồ Thượng Hải 1935; ảnh cảnh sát Sikh 1935.
 - 1932: bản đồ Thượng Hải 1932 (ảnh Commons, năm ghi trên trang mô tả file; xem video_credits); ảnh người hút thuốc phiện Bắc Kinh 1932.
+- 1935, 1944 (phim tư liệu, Lead 16/11/2026): nền video phạm vi công cộng từ Wikimedia Commons, năm ghi trên trang mô tả file. "Old Chinese cities in 1935" (Cine Art Productions, 1935) và "Why We Fight: The Battle of China" (US National Archives, 1944). Nguồn và giấy phép: `output/long/cl-hoang-kim-vinh/credits.json`, in ở mô tả video.

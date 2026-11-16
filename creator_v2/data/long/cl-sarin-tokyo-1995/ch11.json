@@ -93,8 +93,13 @@
   },
   {
    "type": "kinetic",
-   "at": 4,
+   "at": 3,
    "items": [
+    {
+     "text": "KHÁM XÉT 25 CƠ SỞ",
+     "at": 3,
+     "acc": true
+    },
     {
      "text": "THÀNH VIÊN Ở LẠI",
      "at": 4,
@@ -110,7 +115,8 @@
     }
    ],
    "bg": "prot20",
-   "illus": "ẢNH NGÀY NAY"
+   "illus": "ẢNH NGÀY NAY",
+   "srcnote": "NGUỒN: WIKIPEDIA"
   },
   {
    "type": "slam",

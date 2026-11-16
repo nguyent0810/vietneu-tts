@@ -664,6 +664,37 @@ if __name__ == '__main__':
         for sc_ in v['scenes']:
             if sc_.get('bg') in VERT and 'focus' not in sc_ and sc_.get('bg') != 'dnk_a':
                 sc_['focus'] = [0.5, 0.3]
+    # Lead 17/11 check_scene_durations (timing TTS thật): 12 cảnh ngoài [2.5s, 9s] -> dời mốc / tách cảnh.
+    def _sc(ch, i, typ):
+        x = CH[ch]['scenes'][i]
+        assert x['type'] == typ, (ch, i, x['type'])
+        return x
+    _sc('ch05', 11, 'org')['at'] = 12
+    _sc('ch07', 25, 'question')['at'] = [28, 'biết']
+    _sc('ch08', 7, 'map')['at'] = [7, 'Nagano']   # bản đồ hiện khi bắt đầu đọc tên ba tỉnh
+    t22, t23 = _sc('ch08', 22, 'timeline'), _sc('ch08', 23, 'timeline')
+    it = t22['items'] + t23['items']          # 6/1994, cuối 9, 7/10, 16/11, 1/1/1995, 2/1995, 17/3
+    t22['items'] = [dict(x, at=28) for x in it[:2]]
+    t22b = dict(t22, at=30, items=[dict(x, at=30) for x in it[2:5]])
+    t23['at'] = 32
+    t23['items'] = [dict(x, at=32) for x in it[5:]]
+    CH['ch08']['scenes'].insert(23, t22b)
+    CH['ch09']['scenes'].insert(4, P(5, 'kasu61', 'GA KASUMIGASEKI · ẢNH NGÀY NAY', move='in'))
+    l10 = _sc('ch10', 4, 'ledger')
+    l10b = dict(l10, at=7, rows=[dict(r, at=7) for r in l10['rows'] if r['k'] == 'TOKYO'])
+    l10['rows'] = [r for r in l10['rows'] if r['k'] != 'TOKYO']
+    CH['ch10']['scenes'].insert(5, l10b)
+    k11 = _sc('ch11', 3, 'kinetic'); k11['at'] = 3
+    k11['items'].insert(0, {'text': 'KHÁM XÉT 25 CƠ SỞ', 'at': 3, 'acc': True})
+    d12 = _sc('ch12', 2, 'date'); d12['at'] = 3
+    d12['day'] = 'TUYÊN ÁN ASAHARA · SAU KHOẢNG TÁM NĂM XỬ'
+    CH['ch12']['scenes'].insert(19, CT(23, 5259, ' NGƯỜI', 'ĐÃ NỘP ĐƠN BỒI THƯỜNG · THÁNG 12/2009',
+                                        bg='mar83', srcnote=NG(WK), illus='ẢNH NGÀY NAY'))
+    k13 = _sc('ch13', 13, 'kinetic'); k13['at'] = [13, 'về']; k13['items'][0]['at'] = [13, 'về']
+    k24 = _sc('ch13', 24, 'kinetic'); k24['items'] = k24['items'][:1]
+    CH['ch13']['scenes'].insert(25, FL([30, 'Haruki'], 'NHÀ VĂN · 1997', 'HARUKI MURAKAMI',
+                                       'Cuốn Underground kể lại câu chuyện của các nạn nhân', bg='toky113',
+                                       srcnote=NG(WK), illus='ẢNH NGÀY NAY'))
     errs = kiem_tra_pd(CH)
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))
     errs += [f'ảnh {k} dùng {n} lần (img > 3)' for k, n in img_uses.items() if n > 3]

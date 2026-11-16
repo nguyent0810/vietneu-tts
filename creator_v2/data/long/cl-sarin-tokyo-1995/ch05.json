@@ -217,35 +217,35 @@
   },
   {
    "type": "org",
-   "at": 13,
+   "at": 12,
    "nodes": [
     {
      "id": "r",
      "t": "BA MẢNH",
      "s": "CỦA MỘT BỨC TRANH",
      "cls": "top",
-     "at": 13
+     "at": 12
     },
     {
      "id": "k0",
      "p": "r",
      "t": "NAGANO",
      "s": "MATSUMOTO",
-     "at": 13
+     "at": 12
     },
     {
      "id": "k1",
      "p": "r",
      "t": "YAMANASHI",
      "s": "KAMIKUISHIKI",
-     "at": 13
+     "at": 12
     },
     {
      "id": "k2",
      "p": "r",
      "t": "KANAGAWA",
      "s": "VỤ MẤT TÍCH SAKAMOTO",
-     "at": 13
+     "at": 12
     }
    ],
    "bg": "cas42",

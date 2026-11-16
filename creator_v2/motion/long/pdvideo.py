@@ -72,5 +72,6 @@ def prepare(scene, od, credits):
 def credit_lines(od):
     path = od / "credits.json"
     credits = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    return [f"• {m['title']} — {m['source']} — {m['license']} — {m['page']}"
-            for m in credits.values() if isinstance(m, dict) and m.get("kind") == "pdvideo"]
+    lines = [f"• {m['title']} — {m['source']} — {m['license']} — {m['page']}"
+             for m in credits.values() if isinstance(m, dict) and m.get("kind") == "pdvideo"]
+    return list(dict.fromkeys(lines))   # nhiều đoạn cắt từ cùng một phim: ghi công một lần (HKV 17/11)
