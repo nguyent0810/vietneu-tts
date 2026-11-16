@@ -717,6 +717,11 @@
     const adjustable = hasHypo && ["cards3d", "table", "board", "kinetic"].includes(s.type);
     const content = adjustable ? el("div", "hypo-content", null, d) : d;
     B[s.type](s, content);
+    (s.pd_ranges || []).forEach(([start, end]) => {
+      const chip = el("div", "pd-chip", "PHỎNG DỰNG", d);
+      tl.set(chip, {opacity: 1}, start);
+      tl.set(chip, {opacity: 0}, end);
+    });
 
     if ((s.hypo === true || (typeof s.hypo === "string" && s.hypo.trim())) && (!TH.cls || TH.cls === "theme-ck" || TH.cls === "theme-mim")) {
       const ck = TH.cls === "theme-ck", mim = TH.cls === "theme-mim";

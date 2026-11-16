@@ -44,6 +44,7 @@ import clips  # noqa: E402
 import themes  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from factory.render_lock import render_lock  # noqa: E402
+from motion.long.script_lines import FLOW_SOURCE_TERMS, SOURCE_PATTERN  # noqa: E402
 
 SPECS = ROOT / "data" / "stier" / "specs"
 OUT = ROOT / "output" / "stier"
@@ -301,19 +302,54 @@ def scene_schema_warnings(spec: dict) -> list[str]:
     return warnings + scene_schema_errors(spec, soft=True)
 
 
+EAR_FROM = "2026-11-29"
+PD_MARK = re.compile(r"\s*\{pd\}\s*$", re.I)
+SOURCE_HEDGE = re.compile(r"(?<!\w)(?:theo\s+[^,.!?;:]+|(?:hồ sơ|sử|sách|báo|tài liệu|chuyên mục)\s+(?:ghi|chép|kể|nói|cho biết))(?!\w)", re.I)
+
+
+def ear_applies(spec: dict) -> bool:
+    return not spec.get("publish_at") or str(spec["publish_at"])[:10] >= EAR_FROM
+
+
+def ear_issues(spec: dict) -> tuple[list[str], list[str]]:
+    if not ear_applies(spec):
+        return [], []
+    lines = [PD_MARK.sub("", line).replace("**", "").strip() for line in spec.get("lines", [])]
+    errors = [f"câu {i}: câu bị tách giữa chừng (kết thúc dấu phẩy)" for i, line in enumerate(lines) if line.endswith(",")]
+    hits = [i for i, line in enumerate(lines) if any(term in line.casefold() for term in FLOW_SOURCE_TERMS)
+            or SOURCE_PATTERN.search(line) or SOURCE_HEDGE.search(line)]
+    warnings = []
+    if len(hits) > 1:
+        note = f"{len(hits)} câu rào nguồn (câu {hits}), tối đa 1 câu cho Short truyện"
+        (errors if spec.get("theme") == "case" or spec.get("story") is True or "short_type" in spec or "test_cell" in spec else warnings).append(note)
+    return errors, warnings
+
+
+def prepare_pd(spec: dict) -> dict:
+    """Bỏ dấu khỏi lời đọc, giữ chỉ số câu cho nhãn theo thời gian thực."""
+    if not ear_applies(spec):
+        return spec
+    spec = dict(spec)
+    raw = spec.get("lines", [])
+    spec["_pd_lines"] = [i for i, line in enumerate(raw) if PD_MARK.search(line)]
+    spec["lines"] = [PD_MARK.sub("", line) for line in raw]
+    return spec
+
+
 def spec_preflight_errors(slug: str, spec: dict) -> list[str]:
     """Các cổng tĩnh phải qua trước khi gọi TTS/render.
 
     Hàm này dùng chung cho `build()` và `--preflight`; không tự đặt lại ngưỡng
     của build, mix hay BUD.
     """
-    for warning in hypo_preflight_warnings(spec) + scene_schema_warnings(spec):
+    ear_errors, ear_warnings = ear_issues(spec)
+    for warning in hypo_preflight_warnings(spec) + scene_schema_warnings(spec) + ear_warnings:
         print(f"CẢNH BÁO {slug}: {warning}", flush=True)
     lines_txt = spec["lines"]
     nw = sum(len(line.split()) for line in lines_txt)
     contem = spec.get("profile") == "chiem-nghiem"
     bangtra = spec.get("profile") == "bang-tra"
-    out = scene_schema_errors(spec)
+    out = scene_schema_errors(spec) + ear_errors
     allowed, devices = engine_registry()
     if spec.get("theme") == "bud":
         allowed |= {"hf_" + name for name in devices}
@@ -854,6 +890,12 @@ def plan(spec: dict, lines: list[dict], dur: float) -> list[dict]:
                     em = [k for k, w in enumerate(q["text"].split()) if norm(w) in accs][:2]
                     if em:
                         q["emw"] = em
+    for scene in sc:
+        scene["pd_ranges"] = [[max(scene["t0"], lines[i]["start"]), min(scene["t1"], lines[i]["end"])]
+                              for i in spec.get("_pd_lines", [])
+                              if lines[i]["start"] < scene["t1"] and lines[i]["end"] > scene["t0"]]
+        if not scene["pd_ranges"]:
+            del scene["pd_ranges"]
     assign_beats(sc, spec.get("title", ""), boxed_max=12,      # màn dọc hẹp: con dấu/băng dán chỉ cho dòng thật ngắn
                  pools=pools)
     return sc
@@ -1074,6 +1116,7 @@ def preflight(slug: str, allow_hook: bool = False) -> tuple[list[str], dict]:
         for warning in short_warns:
             print(f"CẢNH BÁO {slug}: {warning}", flush=True)
         errors += short_errors
+    spec = prepare_pd(spec)
     lines, dur = estimated_word_lines(spec["lines"], spec.get("say"))
     if not 25 <= dur <= 40:
         errors.append(f"thời lượng ước lượng {dur:.1f}s ngoài 25-40s (3,3 từ/giây)")
@@ -1097,11 +1140,12 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
         print(f"CẢNH BÁO {slug}: {note}", flush=True)
     od = OUT / slug
     od.mkdir(parents=True, exist_ok=True)
-    lines_txt = spec["lines"]
     bangtra = spec.get("profile") == "bang-tra"      # 22/10/2026: bảng tra dừng hình 10–15 s (A/B từ AI Learning) -- lời đọc ngắn
     errs = spec_preflight_errors(slug, spec)
     if errs:
         raise SystemExit(f"{slug}: " + " | ".join(errs))
+    spec = prepare_pd(spec)          # #441: gỡ {pd} khỏi lời đọc, giữ chỉ số câu cho chip PHỎNG DỰNG
+    lines_txt = spec["lines"]
     # retro 15/10/2026: counter hiện năm "2007" thành "2.007" (dấu phân cách nghìn) -> năm dùng slam/kinetic/timeline.
     # 15/10/2026: counter hiện năm "2007" thành "2.007"; Short Turing (dựng trước luật) đếm 1950 -> 2000 hiện "1.996".
     # 26/10/2026: mọi theme khai "year" cho counter 1000-2100; "year": true thì engine không chấm nghìn (casefile/casewide.js).
