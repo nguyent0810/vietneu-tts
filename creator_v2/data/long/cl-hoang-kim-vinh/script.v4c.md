@@ -31,7 +31,7 @@ Cuốn sách ấy nói ông có công lớn với tô giới Pháp.
 Đặc biệt, trong toàn bộ trang sách vinh danh năm 1930, không có lấy một chữ nào nhắc đến Thanh bang. ‖
 Người đàn ông thật sự là ai giữa hai hình ảnh ấy?
 Một viên cảnh sát mẫn cán vì trật tự, hay một con cáo già thao túng những đường dây đen tối nhất?
-Làm thế nào một người có thể đi dây giữa hai lằn ranh suốt nửa thế kỷ?
+Suốt nửa thế kỷ, ông đi dây giữa hai lằn ranh ấy.
 Quyền lực dựa vào hai phía luôn đòi hỏi một cái giá rất đắt. {beat: cái giá của hai phía}
 Để hiểu vì sao ông trùm phải cầm chổi quét rác ở cuối đời, bạn phải quay về những ngày đầu tiên.
 Đó là khi cậu bé mặt rỗ bước chân vào một Thượng Hải đang đổi thay. ‖

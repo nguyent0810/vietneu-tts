@@ -37,209 +37,221 @@
  ],
  "scenes": [
   {
+   "type": "date",
+   "day": "HÔM SAU · ÔNG BỊ BẮT",
+   "date": "1924",
+   "bg": "council"
+  },
+  {
    "type": "kinetic",
-   "at": 0,
+   "at": 1,
    "items": [
     {
-     "text": "TRƯỚC TAM HÂM",
-     "at": 0,
+     "text": "LƯ VĨNH TƯỜNG\nNỔI GIẬN",
+     "at": 1,
+     "acc": true
+    }
+   ],
+   "bg": "nra",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "slam",
+   "at": 2,
+   "text": "QUÂN ĐỒN TRÚ\nGIỮ ÔNG",
+   "sub": "TRONG TAY QUÂN ĐỘI",
+   "bg": "armored"
+  },
+  {
+   "type": "kinetic",
+   "at": 4,
+   "items": [
+    {
+     "text": "NGƯỜI TỪNG\nXÉT XỬ",
+     "at": 4,
      "acc": true
     },
     {
-     "text": "THỨ HÀNG ẤY: THUỐC PHIỆN",
+     "text": "GIỜ NGỒI TRONG GIAN GIAM",
      "at": [
-      0,
-      "thuốc"
+      4,
+      "giờ"
      ],
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900005"
+   "bg": "police_ic",
+   "illus": "PHỎNG DỰNG"
   },
   {
-   "type": "photo",
-   "at": 1,
-   "img": "opium1",
-   "illus": "NGƯỜI HÚT THUỐC PHIỆN · TRANH NĂM 1858",
-   "tone": null,
-   "move": null,
-   "focus": [
-    0.5,
-    0.4
-   ]
-  },
-  {
-   "type": "date",
-   "at": 2,
-   "day": "CHIẾN TRANH NHA PHIẾN LẦN THỨ NHẤT",
-   "date": "1839 – 1842",
-   "bg": "patna"
-  },
-  {
-   "type": "ledger",
-   "at": 3,
-   "title": "HIỆP ƯỚC NAM KINH",
-   "rows": [
+   "type": "kinetic",
+   "at": 5,
+   "items": [
     {
-     "k": "MỞ",
-     "v": "NĂM CẢNG",
-     "at": 3
-    },
-    {
-     "k": "TRONG ĐÓ",
-     "v": "THƯỢNG HẢI",
-     "at": 3
+     "text": "GIÓ BẤC QUA\nSONG SẮT",
+     "at": 5,
+     "acc": true
     }
    ],
-   "bg": "bund90"
-  },
-  {
-   "type": "photo",
-   "at": 4,
-   "img": "opium3",
-   "illus": "TIỆM HÚT THUỐC PHIỆN · KHOẢNG 1880",
-   "tone": null,
-   "move": null,
-   "focus": [
-    0.5,
-    0.4
-   ]
-  },
-  {
-   "type": "date",
-   "at": 5,
-   "day": "NƯỚC ANH KÝ HIỆP ƯỚC CHẤM DỨT NHẬP KHẨU",
-   "date": "1907",
-   "bg": "opiummap"
-  },
-  {
-   "type": "date",
-   "at": 6,
-   "day": "NHÀ THANH SỤP ĐỔ · THUỐC PHIỆN BÙNG LẠI",
-   "date": "1911",
-   "illus": "MINH HỌA CHUNG",
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
    "vid": "900008"
   },
   {
-   "type": "print",
-   "at": 7,
-   "img": "opiummap",
-   "right": true,
-   "tone": "color",
-   "maxW": 640,
-   "maxH": 720,
-   "caption": "TRUNG QUỐC · SÁCH NĂM 1908",
-   "side": {
-    "k": "BẢN ĐỒ 1908",
-    "h": "NƠI TRỒNG\nTHUỐC PHIỆN",
-    "lines": [
-     {
-      "text": "MỘT BÀI TỔNG QUAN",
-      "at": [
-       7,
-       "bài"
-      ]
-     },
-     {
-      "text": "GIAI ĐOẠN 1928–1937",
-      "at": [
-       7,
-       "viết"
-      ]
-     }
-    ]
-   },
-   "circles": [
-    {
-     "x": 0.4,
-     "y": 0.62,
-     "r": 80,
-     "at": [
-      7,
-      "Một"
-     ]
-    }
+   "type": "photo",
+   "at": 6,
+   "img": "police_anam",
+   "illus": "CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
    ]
+  },
+  {
+   "type": "date",
+   "at": 7,
+   "day": "SỞ CẢNH SÁT PHÁP · CHO THÔI VIỆC",
+   "date": "1924",
+   "bg": "council",
+   "srcnote": "THEO WIKIPEDIA TIẾNG ANH"
   },
   {
    "type": "kinetic",
    "at": 8,
    "items": [
     {
-     "text": "TƯỞNG PHẢN ĐỐI VỀ ĐẠO ĐỨC",
+     "text": "NGƯỜI PHÁP\nNÉ QUÂN PHIỆT",
      "at": 8,
      "acc": true
-    },
-    {
-     "text": "NHIỀU BỘ TRƯỞNG: NGUỒN THU QUÝ",
-     "at": [
-      8,
-      "nhiều"
-     ],
-     "sm": true
     }
    ],
-   "bg": "chiang26"
+   "bg": "sikh",
+   "illus": "PHỎNG DỰNG"
   },
   {
-   "type": "kinetic",
+   "type": "ledger",
    "at": 9,
-   "items": [
+   "title": "WIKIPEDIA TIẾNG ANH",
+   "rows": [
     {
-     "text": "TRONG CÙNG CHÍNH QUYỀN",
-     "at": 9,
-     "acc": true
+     "k": "BỊ CHO THÔI VIỆC",
+     "v": "1924",
+     "at": 9
     },
     {
-     "text": "THÁI ĐỘ KHÔNG GIỐNG NHAU",
-     "at": [
-      9,
-      "thái"
-     ],
-     "sm": true
+     "k": "LÝ DO",
+     "v": "ĐÁNH CON QUÂN PHIỆT",
+     "at": 9
     }
    ],
-   "bg": "nra"
-  },
-  {
-   "type": "slam",
-   "at": 10,
-   "text": "KHÔNG Ở NGƯỜI HÚT",
-   "sub": "MÀ Ở NGƯỜI CẦM CỔNG",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
-  },
-  {
-   "type": "file",
-   "at": 12,
-   "k": "THEO WIKIPEDIA TIẾNG ANH",
-   "name": "ĐỖ NGUYỆT\nSANH",
-   "desc": "Gây dựng tài sản bằng buôn thuốc phiện",
-   "bg": "bund30"
+   "bg": "metropole"
   },
   {
    "type": "photo",
-   "at": 13,
-   "img": "cangku",
-   "illus": "KHO HÀNG HOÀNG KIM VINH · ẢNH NGÀY NAY",
-   "tone": null,
-   "move": null,
+   "at": 10,
+   "img": "rueconsul",
+   "illus": "PHỎNG DỰNG · PHỐ TÔ GIỚI PHÁP, GẦN BỐT MẠCH LAN",
+   "tone": "noir",
+   "move": "out",
    "focus": [
     0.5,
     0.4
    ]
   },
   {
-   "type": "question",
-   "at": 15,
-   "text": "AI ĐANG\nGÕ CỬA NHÀ ÔNG?",
+   "type": "file",
+   "at": 11,
+   "k": "SÁCH NĂM 1930",
+   "name": "CÁCH KỂ KHÁC",
+   "desc": "Mùa đông năm Giáp Tý, tự xin nghỉ",
+   "bg": "fc37"
+  },
+  {
+   "type": "quote",
+   "at": 12,
+   "text": "Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 12,
+   "typeAt": 12,
+   "bg": "bund90"
+  },
+  {
+   "type": "quote",
+   "at": 13,
+   "text": "Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": 13,
    "bg": "jinling"
+  },
+  {
+   "type": "org",
+   "at": 14,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "HAI LỜI CHÉP",
+     "s": "KHÔNG KHỚP",
+     "cls": "top",
+     "at": 14
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "WIKIPEDIA",
+     "s": "BỊ CÁCH CHỨC",
+     "at": 14
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "SÁCH 1930",
+     "s": "TỰ XIN NGHỈ",
+     "at": 14
+    }
+   ],
+   "bg": "rueconsul"
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "AI ĐÚNG?",
+   "sub": "CÁC NGUỒN CHƯA ĐỦ ĐỂ PHÂN XỬ",
+   "bg": "nanking1"
+  },
+  {
+   "type": "slam",
+   "at": 16,
+   "text": "MẤT HUY HIỆU",
+   "sub": "MẤT CẢ TỰ DO",
+   "bg": "police_ic"
+  },
+  {
+   "type": "kinetic",
+   "at": 17,
+   "items": [
+    {
+     "text": "MẠNG SỐNG\nTRONG TAY KẺ THÙ",
+     "at": 17,
+     "acc": true
+    }
+   ],
+   "bg": "sikh"
+  },
+  {
+   "type": "question",
+   "at": 18,
+   "text": "AI ĐỦ SỨC\nGIẢI CỨU ÔNG?",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900005"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 05",
-  "t": "THỨ HÀNG NẰM TRONG KHO"
+  "t": "NGƯỜI BỊ BẮT GIỮ"
  },
  "bgm": {
   "mood": "tense",

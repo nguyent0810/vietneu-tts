@@ -7,9 +7,8 @@ from pathlib import Path
 
 D = Path(__file__).resolve().parent
 
-TITLE = 'HOÀNG KIM VINH Ngoài Đời Thật: Ba Trang Giấy, Một Người'
+TITLE = 'Trùm Bến Thượng Hải: Cuối Đời Tự Thú Và Cầm Chổi Quét Rác'   # phương án 1 đầu script.md
 LOOK = 'classic'
-CHAPTER_ORDER_NOTE = 'Bốn mốc, bốn cách kể: 1924, 1930, 1931, 1951.'
 
 # file Commons -> (tác giả, giấy phép)
 CREDITS = {
@@ -104,15 +103,15 @@ def apply(CH, chapter_titles, used, IMGS):
     yt = spec.setdefault('youtube', {})
     yt.update({
         'titles': [TITLE],
-        'summary': 'Hồ sơ Hoàng Kim Vinh qua bốn mốc 1924, 1930, 1931 và 1951: mỗi mốc là một trang giấy khác nhau kể về cùng một người ở Thượng Hải.',
+        'summary': 'Hồ sơ Hoàng Kim Vinh: từ thám tử người Hoa ở tô giới Pháp lên ông trùm Bến Thượng Hải, và vì sao mùa đông năm 1951 ông cầm chổi quét tầng một Đại Thế Giới sau bản tự thú.',
         'more': [],
         'sources': SOURCES,
         'tags': ['hoàng kim vinh', 'thượng hải', 'thanh bang', 'tô giới pháp', 'đại thế giới', 'lịch sử trung quốc', 'hồ sơ lịch sử'],
         'hashtags': ['HoangKimVinh', 'ThuongHai', 'HoSo'],
-        'category': '24', 'thumb': 't1.jpg', 'publish_at': '2026-11-19T14:00:00Z', 'playlist': 'Ngoài Đời Thật',
+        'category': '24', 'thumb': 't1.jpg', 'publish_at': '2026-11-26T14:00:00Z', 'playlist': 'Ngoài Đời Thật',
         'chapter_titles': chapter_titles, 'video_credits': credits,
     })
-    # Lead 13/11: plan duyệt tối 13/11; slot CL Thứ Năm 19/11 21:00 VN còn trống.
+    # publish_at tạm 26/11 21:00 VN (Lead có thể đổi); `approved` giữ nguyên từ bản trước.
     spec['approved'] = '13/11/2026 — duyet, ban tu dieu phoi theo cach tot nhat nhe, toi di ngu'
     path.write_text(json.dumps(spec, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print('spec.json:', len(used_files), 'ảnh có ghi công,', len(SOURCES), 'nguồn')

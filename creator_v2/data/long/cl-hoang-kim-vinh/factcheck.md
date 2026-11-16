@@ -252,4 +252,4 @@ Các năm dưới đây chỉ xuất hiện trong nhãn ảnh trên màn hình, 
 - 1916: ảnh chân dung Tưởng Giới Thạch.
 - 1934 (khoảng): ảnh bến Thượng Hải, ranh giới hai tô giới.
 - 1935: bản đồ Thượng Hải 1935; ảnh cảnh sát Sikh 1935.
-
+- 1932: bản đồ Thượng Hải 1932 (ảnh Commons, năm ghi trên trang mô tả file; xem video_credits); ảnh người hút thuốc phiện Bắc Kinh 1932.

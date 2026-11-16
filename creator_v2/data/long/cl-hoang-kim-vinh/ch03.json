@@ -36,40 +36,79 @@
  ],
  "scenes": [
   {
-   "type": "org",
-   "at": 0,
-   "nodes": [
+   "type": "kinetic",
+   "items": [
     {
-     "id": "r",
-     "t": "HOÀNG KIM VINH",
-     "s": "HAI BẢN KỂ SONG SONG",
-     "cls": "top",
-     "at": 0
-    },
-    {
-     "id": "k0",
-     "p": "r",
-     "t": "BẢN 1: CHIẾC GHẾ",
-     "s": "THÁM TỬ NGƯỜI HOA",
-     "at": 0
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "BẢN 2: CỬA SAU",
-     "s": "THUỐC PHIỆN · SÒNG BẠC",
-     "at": 0
+     "text": "THUỐC PHIỆN\nDÒNG TIỀN ĐEN",
+     "at": 0,
+     "acc": true
     }
    ],
-   "bg": "police_anam"
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900004"
+  },
+  {
+   "type": "ledger",
+   "at": 1,
+   "title": "HIỆP ƯỚC NAM KINH",
+   "rows": [
+    {
+     "k": "MỞ",
+     "v": "NĂM CẢNG",
+     "at": 1
+    },
+    {
+     "k": "TRONG ĐÓ",
+     "v": "THƯỢNG HẢI",
+     "at": 1
+    }
+   ],
+   "bg": "bund90"
   },
   {
    "type": "photo",
    "at": 2,
-   "img": "council",
-   "illus": "HỘI ĐỒNG TÔ GIỚI PHÁP · 1908",
+   "img": "opium1",
+   "illus": "NGƯỜI HÚT THUỐC PHIỆN · TRANH NĂM 1858",
    "tone": null,
-   "move": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "timeline",
+   "at": 3,
+   "title": null,
+   "items": [
+    {
+     "year": "1907",
+     "text": "ANH KÝ HIỆP ƯỚC CHẤM DỨT NHẬP",
+     "at": 3
+    },
+    {
+     "year": "1911",
+     "text": "THUỐC TRONG NƯỚC BÙNG LẠI",
+     "at": 3
+    }
+   ],
+   "bg": "opiummap"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "SÒNG BẠC VÀ\nTHUỐC PHIỆN",
+   "sub": "SỐNG NHỜ SỰ LÀM NGƠ",
+   "bg": "opium2"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "opium3",
+   "illus": "TIỆM HÚT THUỐC PHIỆN · KHOẢNG 1880",
+   "tone": null,
+   "move": "out",
    "focus": [
     0.5,
     0.4
@@ -77,307 +116,307 @@
   },
   {
    "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "KHÔNG GÁN MỘT NĂM",
-     "at": 3,
-     "acc": true
-    },
-    {
-     "text": "NGUỒN LỆCH NHAU",
-     "at": [
-      3,
-      "nhau"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "police_ic"
-  },
-  {
-   "type": "slam",
-   "at": 4,
-   "text": "CỬA SAU",
-   "sub": "BẢN KỂ THỨ HAI",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900008"
-  },
-  {
-   "type": "ledger",
-   "at": [
-    5,
-    "ông"
-   ],
-   "title": "THEO WIKIPEDIA TIẾNG ANH",
-   "rows": [
-    {
-     "k": "TỔ CHỨC",
-     "v": "BUÔN THUỐC PHIỆN",
-     "at": [
-      5,
-      "ông"
-     ]
-    },
-    {
-     "k": "MỞ",
-     "v": "SÒNG BẠC",
-     "at": [
-      5,
-      "ông"
-     ]
-    },
-    {
-     "k": "BAN ƠN CHO",
-     "v": "TỘI PHẠM",
-     "at": [
-      5,
-      "ông"
-     ]
-    }
-   ],
-   "bg": "opium3"
-  },
-  {
-   "type": "file",
    "at": 6,
-   "k": "THEO WIKIPEDIA TIẾNG ANH",
-   "name": "MỘT PHIÊN\nRIÊNG\nMỖI NGÀY",
-   "desc": "Ông quyết định ai giao cảnh sát, ai được thả",
-   "bg": "sikh"
-  },
-  {
-   "type": "kinetic",
-   "at": 8,
    "items": [
     {
-     "text": "GIAO CẢNH SÁT",
-     "at": 8,
+     "text": "BÀ LÂM QUẾ SINH",
+     "at": 6,
      "acc": true
     },
     {
-     "text": "HAY THẢ?",
+     "text": "QUẢN MỘT PHẦN VIỆC BUÔN",
      "at": [
-      8,
-      "kẻ"
+      6,
+      "quản"
      ],
      "sm": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900001"
+   "bg": "metropole"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "rueconsul",
+   "illus": "PHỎNG DỰNG · TÔ GIỚI PHÁP, THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
   },
   {
    "type": "date",
+   "at": 8,
+   "day": "ĐỖ NGUYỆT SANH · SINH Ở PHỐ ĐÔNG",
+   "date": "1888",
+   "bg": "nanking2"
+  },
+  {
+   "type": "file",
    "at": 9,
-   "day": "CƯỚI BÀ LÂM QUẾ SINH · THEO WIKIPEDIA TIẾNG ANH",
-   "date": "1900",
-   "bg": "jinling"
+   "k": "NGƯỜI THANH NIÊN",
+   "name": "ĐỖ NGUYỆT\nSANH",
+   "desc": "Phố Đông · vào làm trong dinh thự của Hoàng",
+   "bg": "fc37"
   },
   {
    "type": "kinetic",
    "at": 11,
    "items": [
     {
-     "text": "KHÔNG CHỈ LÀ VỢ\nCỦA MỘT THÁM TỬ",
+     "text": "BÀ CHỦ QUÝ CẬU",
      "at": 11,
      "acc": true
+    },
+    {
+     "text": "GIAO VIỆC NGÀY MỘT LỚN",
+     "at": [
+      12,
+      "Từ"
+     ],
+     "sm": true
     }
    ],
-   "bg": "rueconsul"
+   "bg": "nanking2"
   },
   {
-   "type": "kinetic",
-   "at": 12,
-   "items": [
+   "type": "ledger",
+   "at": 13,
+   "title": "TIỆM HÚT THUỐC PHIỆN",
+   "rows": [
     {
-     "text": "GIAI THOẠI:\nÔNG TỰ DÀN CẢNH CƯỚP",
-     "at": 12,
-     "acc": true
+     "k": "CHỦ",
+     "v": "HOÀNG KIM VINH",
+     "at": 13
+    },
+    {
+     "k": "NGƯỜI TRÔNG COI",
+     "v": "ĐỖ NGUYỆT SANH",
+     "at": 13
     }
    ],
-   "bg": "nanking1",
-   "illus": "GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN"
+   "bg": "opium4"
   },
   {
    "type": "kinetic",
    "at": 14,
    "items": [
     {
-     "text": "BÁO TRƯỚC CHO THÁM TỬ PHÁP",
+     "text": "NGƯỜI THỰC THI",
      "at": 14,
      "acc": true
     },
     {
-     "text": "RỒI BẮT ĐÚNG NHỮNG KẺ ẤY",
+     "text": "CỜ BẠC VÀ THUỐC PHIỆN",
      "at": [
       14,
-      "rồi"
+      "cờ"
      ],
      "sm": true
-    }
-   ],
-   "bg": "police_anam",
-   "illus": "GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN"
-  },
-  {
-   "type": "myth",
-   "at": 15,
-   "mythLab": "GIAI THOẠI",
-   "myth": "ÔNG TỰ DÀN CẢNH CƯỚP",
-   "truthLab": "NGUỒN",
-   "truth": "KHÔNG DẪN NGUỒN NÀO",
-   "strikeAt": [
-    15,
-    "không"
-   ],
-   "truthAt": [
-    15,
-    "nguồn"
-   ],
-   "bg": "council"
-  },
-  {
-   "type": "ledger",
-   "at": 16,
-   "title": "NĂM 1913",
-   "rows": [
-    {
-     "k": "PHÁP XIN",
-     "v": "QUYỀN CẢNH SÁT",
-     "at": 16
-    },
-    {
-     "k": "VÀ",
-     "v": "THU THUẾ NGOÀI TÔ GIỚI",
-     "at": 16
-    }
-   ],
-   "bg": "map1933"
-  },
-  {
-   "type": "kinetic",
-   "at": 18,
-   "items": [
-    {
-     "text": "ĐỔI LẠI: TRỤC XUẤT\nNGƯỜI CÁCH MẠNG",
-     "at": 18,
-     "acc": true
     }
    ],
    "bg": "police_ic"
   },
   {
    "type": "date",
-   "at": 19,
-   "day": "THỎA THUẬN ĐƯỢC CÔNG BỐ",
-   "date": "1914",
-   "bg": "map1884"
+   "at": 15,
+   "day": "CÔNG TY TAM HÂM · LẬP",
+   "date": "1918",
+   "bg": "map1933"
   },
   {
-   "type": "photo",
+   "type": "slam",
+   "at": 16,
+   "text": "TAM HÂM",
+   "sub": "LŨNG ĐOẠN THUỐC PHIỆN",
+   "bg": "nanking1"
+  },
+  {
+   "type": "org",
+   "at": 17,
+   "nodes": [
+    {
+     "id": "r",
+     "t": "TAM HÂM",
+     "s": "CÁC NGUỒN LỆCH",
+     "cls": "top",
+     "at": 17
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "HOÀNG KIM VINH",
+     "s": "1918",
+     "at": 17
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỖ NGUYỆT SANH",
+     "s": "1918",
+     "at": 17
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRƯƠNG",
+     "s": "THẬP NIÊN 1920",
+     "at": 17
+    }
+   ],
+   "bg": "council"
+  },
+  {
+   "type": "kinetic",
+   "at": 18,
+   "items": [
+    {
+     "text": "CHƯA VÀO\nTHANH BANG",
+     "at": 18,
+     "acc": true
+    },
+    {
+     "text": "DÙ THAO TÚNG ĐƯỜNG DÂY LỚN",
+     "at": [
+      18,
+      "thao"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_anam"
+  },
+  {
+   "type": "slam",
+   "at": 19,
+   "text": "ĐỨNG BÊN NGOÀI",
+   "sub": "BẢO TRỢ BẰNG HUY HIỆU",
+   "bg": "council"
+  },
+  {
+   "type": "org",
    "at": 20,
-   "img": "rueconsul",
-   "illus": "KHU PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930",
-   "tone": null,
-   "move": null,
-   "focus": [
-    0.5,
-    0.4
-   ]
+   "nodes": [
+    {
+     "id": "r",
+     "t": "BA VAI",
+     "s": "MỘT ĐƯỜNG DÂY",
+     "cls": "top",
+     "at": 20
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "HOÀNG",
+     "s": "GHẾ CẢNH SÁT",
+     "at": 20
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "ĐỖ",
+     "s": "CỜ BẠC · THUỐC",
+     "at": 20
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "TRƯƠNG",
+     "s": "CHUNG ĐƯỜNG",
+     "at": 20
+    }
+   ],
+   "bg": "rueconsul"
   },
   {
    "type": "kinetic",
    "at": 21,
    "items": [
     {
-     "text": "QUEN LUÔN NHỮNG KẺ\nHỌ CÓ NHIỆM VỤ BẮT",
+     "text": "KHÓI ĐẶC QUÁNH",
      "at": 21,
      "acc": true
-    }
-   ],
-   "bg": "sikh"
-  },
-  {
-   "type": "org",
-   "at": 23,
-   "nodes": [
-    {
-     "id": "r",
-     "t": "NGƯỜI CẦM HUY HIỆU",
-     "s": "CẦU NỐI HAI BÊN",
-     "cls": "top",
-     "at": 23
     },
     {
-     "id": "k0",
-     "p": "r",
-     "t": "CẢNH SÁT PHÁP",
-     "s": "HUY HIỆU",
-     "at": 23
-    },
-    {
-     "id": "k1",
-     "p": "r",
-     "t": "THẾ GIỚI NGẦM",
-     "s": "KHU PHỐ",
-     "at": 23
-    }
-   ],
-   "bg": "police_anam"
-  },
-  {
-   "type": "kinetic",
-   "at": 24,
-   "items": [
-    {
-     "text": "BÊN NÀO CŨNG CẦN ANH TA",
-     "at": 24,
-     "acc": true
-    },
-    {
-     "text": "GIAO NGƯỜI PHẠM TỘI CHO CẢNH SÁT HAY KHÔNG?",
+     "text": "TRONG GÓC TỐI",
      "at": [
-      25,
-      "Theo"
+      21,
+      "trong"
      ],
      "sm": true
     }
    ],
-   "bg": "council"
+   "bg": "opium4",
+   "illus": "PHỎNG DỰNG"
   },
   {
-   "type": "question",
-   "at": 26,
-   "text": "AI Ở NGOÀI\nĐỂ KIỂM TRA?",
+   "type": "kinetic",
+   "at": 22,
+   "items": [
+    {
+     "text": "ĐỒNG BẠC HOA",
+     "at": 22,
+     "acc": true
+    },
+    {
+     "text": "LÁCH CÁCH TRÊN BÀN GỖ",
+     "at": [
+      22,
+      "lách"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "coupon",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "split",
+   "at": 23,
+   "title": "HAI LỰC LƯỢNG",
+   "a": {
+    "img": "council",
+    "label": "QUYỀN LỰC THỰC DÂN"
+   },
+   "b": {
+    "img": "opium2",
+    "label": "BẠO LỰC GIANG HỒ"
+   }
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "NGAI VÀNG",
+   "sub": "VỮNG NHƯ BÀN THẠCH",
+   "bg": "sikh"
+  },
+  {
+   "type": "kinetic",
+   "at": 25,
+   "items": [
+    {
+     "text": "NGẠO MẠN",
+     "at": 25,
+     "acc": true
+    },
+    {
+     "text": "ĐẨY ÔNG VÀO CẠM BẪY",
+     "at": [
+      25,
+      "đẩy"
+     ],
+     "sm": true
+    }
+   ],
    "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
-  },
-  {
-   "type": "photo",
-   "at": 27,
-   "img": "jinling",
-   "illus": "PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930",
-   "tone": null,
-   "move": null,
-   "focus": [
-    0.5,
-    0.4
-   ]
-  },
-  {
-   "type": "counter",
-   "at": 28,
-   "suffix": " NĂM",
-   "label": "ĐỖ NGUYỆT SANH TRẺ HƠN ÔNG",
-   "from": 0,
-   "to": 20,
-   "bg": "bund30"
+   "vid": "900008"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 03",
-  "t": "CHIẾC GHẾ CỦA NGƯỜI THÁM TỬ"
+  "t": "ĐẾ CHẾ KHÓI ĐEN"
  },
  "bgm": {
   "mood": "mystery",

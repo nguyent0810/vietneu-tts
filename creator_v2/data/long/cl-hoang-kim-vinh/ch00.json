@@ -33,7 +33,7 @@
   },
   "Người đàn ông thật sự là ai giữa hai hình ảnh ấy?",
   "Một viên cảnh sát mẫn cán vì trật tự, hay một con cáo già thao túng những đường dây đen tối nhất?",
-  "Làm thế nào một người có thể đi dây giữa hai lằn ranh suốt nửa thế kỷ?",
+  "Suốt nửa thế kỷ, ông đi dây giữa hai lằn ranh ấy.",
   "Quyền lực dựa vào hai phía luôn đòi hỏi một cái giá rất đắt.",
   "Để hiểu vì sao ông trùm phải cầm chổi quét rác ở cuối đời, bạn phải quay về những ngày đầu tiên.",
   {
@@ -43,74 +43,124 @@
  ],
  "scenes": [
   {
-   "type": "date",
-   "day": "HAI TỜ BÁO · THƯỢNG HẢI",
-   "date": "20.05.1951",
+   "type": "broll",
    "illus": "MINH HỌA CHUNG",
-   "vid": "900004"
+   "vid": "900003"
+  },
+  {
+   "type": "photo",
+   "at": [
+    0,
+    "Giới"
+   ],
+   "img": "greatworld",
+   "illus": "ĐẠI THẾ GIỚI · ẢNH NGÀY NAY",
+   "tone": "night",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
   },
   {
    "type": "photo",
    "at": 1,
    "img": "huang",
-   "illus": "HOÀNG KIM VINH · THẬP NIÊN 1930",
-   "tone": null,
-   "move": null,
+   "illus": "PHỎNG DỰNG · HOÀNG KIM VINH · THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "in",
    "focus": [
     0.5,
     0.2
    ]
   },
   {
-   "type": "kinetic",
-   "at": 3,
-   "items": [
-    {
-     "text": "ÔNG VIẾT BẢN TỰ THÚ",
-     "at": 3,
-     "acc": true
-    }
-   ],
-   "bg": "nanking3"
+   "type": "slam",
+   "at": 2,
+   "text": "HOÀNG KIM VINH",
+   "sub": "ÔNG TRÙM BẾN THƯỢNG HẢI",
+   "bg": "bund30"
   },
   {
-   "type": "quote",
+   "type": "photo",
+   "at": 3,
+   "img": "council",
+   "illus": "SỞ CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "tone": "noir",
+   "move": "out",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
    "at": 4,
-   "text": "Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.",
-   "by": "BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG",
-   "lbl": "TRÍCH DỊCH",
-   "qline": 4,
-   "typeAt": 4,
-   "bg": "bund30"
+   "text": "ĐỐC SÁT TRƯỞNG\nVÀ MỘT CÂY CHỔI?",
+   "bg": "police_ic"
   },
   {
    "type": "date",
    "at": 5,
-   "day": "MỘT CUỐN SÁCH · MỘT TRANG",
-   "date": "1930",
-   "illus": "MINH HỌA CHUNG",
-   "vid": "900002"
-  },
-  {
-   "type": "question",
-   "at": 7,
-   "text": "NGƯỜI NÀO MỚI LÀ ÔNG?",
-   "bg": "jinling"
-  },
-  {
-   "type": "slam",
-   "at": 8,
-   "text": "KHÔNG MỘT CHỮ",
-   "sub": "VỀ THANH BANG",
+   "day": "HAI TỜ BÁO ĐĂNG BẢN TỰ THÚ",
+   "date": "20.05.1951",
    "illus": "MINH HỌA CHUNG",
    "vid": "900007"
   },
   {
+   "type": "quote",
+   "at": 6,
+   "text": "Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.",
+   "by": "BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 6,
+   "typeAt": 6,
+   "bg": "nanking3"
+  },
+  {
+   "type": "photo",
+   "at": 7,
+   "img": "jinling",
+   "illus": "ĐẠI LỘ EDWARD VII · THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "pan",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 8,
+   "items": [
+    {
+     "text": "GIÓ MÙA ĐÔNG\nQUA SẢNH LỚN",
+     "at": 8,
+     "acc": true
+    }
+   ],
+   "bg": "bundfc",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "kinetic",
+   "at": 9,
+   "items": [
+    {
+     "text": "TIẾNG CHỔI\nTRÊN SÀN ĐÁ HOA",
+     "at": 9,
+     "acc": true
+    }
+   ],
+   "illus": "PHỎNG DỰNG",
+   "vid": "900001"
+  },
+  {
    "type": "photo",
    "at": 10,
-   "img": "bundfc",
-   "illus": "THƯỢNG HẢI · KHOẢNG 1934",
-   "tone": null,
+   "img": "police_anam",
+   "illus": "CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "tone": "noir",
    "move": null,
    "focus": [
     0.5,
@@ -118,22 +168,132 @@
    ]
   },
   {
-   "type": "date",
+   "type": "slam",
    "at": 11,
-   "day": "NĂM ÔNG BỊ BẮT · THEO WIKIPEDIA",
-   "date": "1924",
+   "text": "CHỈ CÒN",
+   "sub": "MỘT CÂY CHỔI",
+   "bg": "nanking2"
+  },
+  {
+   "type": "photo",
+   "at": 12,
+   "img": "metropole",
+   "illus": "THƯỢNG HẢI · NHÀ CAO TẦNG ĐANG XÂY, 1930",
+   "tone": "noir",
+   "move": "pan",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 13,
+   "items": [
+    {
+     "text": "MỌI PHÙ HOA\nKHÉP LẠI",
+     "at": 13,
+     "acc": true
+    },
+    {
+     "text": "BẰNG MỘT CÂY CHỔI",
+     "at": [
+      13,
+      "bằng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "bund30"
+  },
+  {
+   "type": "date",
+   "at": 14,
+   "day": "MỘT CUỐN SÁCH DANH NHÂN",
+   "date": "1930",
+   "bg": "nanking3"
+  },
+  {
+   "type": "slam",
+   "at": 15,
+   "text": "CÔNG LỚN",
+   "sub": "VỚI TÔ GIỚI PHÁP",
    "bg": "council"
   },
   {
+   "type": "slam",
+   "at": 16,
+   "text": "KHÔNG MỘT CHỮ",
+   "sub": "VỀ THANH BANG",
+   "bg": "opium2"
+  },
+  {
    "type": "question",
-   "at": 12,
-   "text": "AI BỎ TIỀN?\nBỎ BAO NHIÊU?",
-   "bg": "police_ic"
+   "at": 17,
+   "text": "NGƯỜI NÀO\nMỚI LÀ ÔNG?",
+   "bg": "jinling"
+  },
+  {
+   "type": "split",
+   "at": 18,
+   "title": "MỘT NGƯỜI, HAI HÌNH ẢNH",
+   "a": {
+    "img": "police_anam",
+    "label": "CẢNH SÁT TÔ GIỚI PHÁP"
+   },
+   "b": {
+    "img": "opium3",
+    "label": "TIỆM THUỐC PHIỆN"
+   }
+  },
+  {
+   "type": "kinetic",
+   "at": 19,
+   "items": [
+    {
+     "text": "ĐI DÂY GIỮA\nHAI LẰN RANH",
+     "at": 19,
+     "acc": true
+    }
+   ],
+   "bg": "bund90"
+  },
+  {
+   "type": "slam",
+   "at": 20,
+   "text": "MỘT CÁI GIÁ",
+   "sub": "RẤT ĐẮT",
+   "bg": "rueconsul"
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "bund90",
+   "illus": "BẾN THƯỢNG HẢI · THẾ KỶ 19",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "map",
+   "at": 22,
+   "geo": "jn",
+   "pins": [
+    {
+     "name": "Tô Châu"
+    },
+    {
+     "name": "Thượng Hải"
+    }
+   ]
   }
  ],
  "hud": {
   "k": "MỞ ĐẦU",
-  "t": "HAI TỜ BÁO, 20/5/1951"
+  "t": "CÂY CHỔI TRƯỚC ĐẠI THẾ GIỚI"
  },
  "bgm": {
   "mood": "tense",

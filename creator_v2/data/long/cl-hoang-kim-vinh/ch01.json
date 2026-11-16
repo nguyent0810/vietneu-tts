@@ -47,206 +47,300 @@
  ],
  "scenes": [
   {
+   "type": "date",
+   "day": "SINH RA Ở TÔ CHÂU",
+   "date": "1868",
+   "illus": "MINH HỌA CHUNG",
+   "vid": "900006"
+  },
+  {
    "type": "photo",
-   "at": 0,
-   "img": "nanking2",
-   "illus": "THƯỢNG HẢI · NHỮNG NĂM 1930",
-   "tone": null,
-   "move": null,
+   "at": 1,
+   "img": "huang",
+   "illus": "HOÀNG KIM VINH · THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "type": "slam",
+   "at": [
+    1,
+    "khiến"
+   ],
+   "text": "HOÀNG RỖ",
+   "sub": "BIỆT DANH TỪ VẾT SẸO ĐẬU MÙA",
+   "bg": "bund90"
+  },
+  {
+   "type": "kinetic",
+   "at": 3,
+   "items": [
+    {
+     "text": "CHA ÔNG LÀ\nVÕ QUAN",
+     "at": 3,
+     "acc": true
+    },
+    {
+     "text": "DỰ BỊ · GIANG TÔ",
+     "at": [
+      3,
+      "từng"
+     ],
+     "sm": true
+    }
+   ],
+   "bg": "police_ic"
+  },
+  {
+   "type": "slam",
+   "at": 4,
+   "text": "MỘT BẢN KHÁC",
+   "sub": "CHA MỞ QUÁN TRÀ",
+   "bg": "rueconsul",
+   "srcnote": "THEO WIKIPEDIA TIẾNG ANH"
+  },
+  {
+   "type": "photo",
+   "at": 5,
+   "img": "bund90",
+   "illus": "PHỎNG DỰNG · BẾN THƯỢNG HẢI THẾ KỶ 19",
+   "tone": "noir",
+   "move": "pan",
    "focus": [
     0.5,
     0.4
    ]
   },
   {
-   "type": "file",
-   "at": 1,
-   "k": "PHIM",
-   "name": "BẾN\nTHƯỢNG HẢI",
-   "desc": "TVB · THÁNG 3/1980",
-   "rows": [
+   "type": "kinetic",
+   "at": 6,
+   "items": [
     {
-     "k": "SỐ TẬP",
-     "v": "25",
-     "at": 1
+     "text": "TÀU NGOẠI QUỐC\nCHEN THUYỀN NAN",
+     "at": 6,
+     "acc": true
     }
    ],
-   "bg": "rueconsul"
-  },
-  {
-   "type": "ledger",
-   "at": 2,
-   "title": "PHIM · VAI DIỄN",
-   "rows": [
-    {
-     "k": "CHÂU NHUẬN PHÁT",
-     "v": "HỨA VĂN CƯỜNG",
-     "at": 2
-    },
-    {
-     "k": "LỮ LƯƠNG VỸ",
-     "v": "ĐINH LỰC",
-     "at": 2
-    }
-   ],
-   "bg": "nanking1"
+   "bg": "map1884",
+   "illus": "PHỎNG DỰNG"
   },
   {
    "type": "slam",
-   "at": 3,
-   "text": "ĐÓ LÀ PHIM",
-   "sub": "KHÔNG PHẢI HỒ SƠ",
-   "bg": "map32"
-  },
-  {
-   "type": "kinetic",
-   "at": 5,
-   "items": [
-    {
-     "text": "NHỮNG BỘ PHIM KHÁC",
-     "at": 5,
-     "acc": true
-    }
-   ],
-   "bg": "metropole"
-  },
-  {
-   "type": "timeline",
-   "at": 6,
-   "title": null,
-   "items": [
-    {
-     "year": "2015",
-     "text": "KIÊU HÙNG · DỰA TRÊN ÔNG",
-     "at": 6
-    },
-    {
-     "year": "2021",
-     "text": "1921 · GỌI THẲNG TÊN",
-     "at": 6
-    }
-   ],
-   "bg": "nanking3"
-  },
-  {
-   "type": "kinetic",
    "at": 7,
-   "items": [
-    {
-     "text": "PHIM 1921 · NĂM 2021",
-     "at": 7,
-     "acc": true
-    },
-    {
-     "text": "gọi thẳng tên ông",
-     "at": [
-      7,
-      "gọi"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "map32"
+   "text": "CƠ HỘI\nVÀ CẠM BẪY",
+   "sub": "CÙNG MỘT TẤC ĐẤT",
+   "bg": "nanking1"
   },
   {
-   "type": "kinetic",
+   "type": "date",
    "at": 8,
-   "items": [
-    {
-     "text": "MỘT PHIM DỰA TRÊN ÔNG",
-     "at": 8,
-     "acc": true
-    },
-    {
-     "text": "MỘT PHIM GỌI TÊN ÔNG",
-     "at": [
-      8,
-      "gọi"
-     ],
-     "sm": true
-    }
-   ],
-   "bg": "bund90"
+   "day": "HỌC VIỆC · TIỆM ĐÓNG KHUNG TRANH",
+   "date": "1884",
+   "bg": "map1884"
   },
   {
    "type": "kinetic",
    "at": 9,
    "items": [
     {
-     "text": "GIẤY TỜ THẬT:\nNHIỀU BẢN",
+     "text": "ĐÒI HỎI\nTỈ MỈ",
      "at": 9,
      "acc": true
     }
    ],
-   "illus": "MINH HỌA CHUNG",
+   "bg": "fc37"
+  },
+  {
+   "type": "kinetic",
+   "at": 10,
+   "items": [
+    {
+     "text": "MÙI GIẤY DÓ\nMỰC NHO, HỒ DÁN",
+     "at": 10,
+     "acc": true
+    }
+   ],
+   "illus": "PHỎNG DỰNG · MINH HỌA CHUNG",
    "vid": "900002"
   },
   {
-   "type": "date",
+   "type": "quote",
    "at": 11,
-   "day": "MỐC 1/4 · ĐÊM BỊ BẮT",
-   "date": "1924",
-   "bg": "council"
+   "text": "Thuở đầu ông theo nghề giấy quạt, thư họa.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 11,
+   "typeAt": 11,
+   "bg": "fc37"
   },
   {
-   "type": "date",
-   "at": 12,
-   "day": "MỐC 2/4 · TRANG SÁCH",
-   "date": "1930",
+   "type": "slam",
+   "at": 13,
+   "text": "NGHỀ GIẤY MỰC",
+   "sub": "KHÔNG GIỮ ÔNG ĐƯỢC LÂU",
    "bg": "nanking2"
   },
   {
-   "type": "date",
-   "at": 13,
-   "day": "MỐC 3/4 · ĐẠI THẾ GIỚI",
-   "date": "1931",
-   "bg": "jinling"
-  },
-  {
-   "type": "date",
+   "type": "photo",
    "at": 14,
-   "day": "MỐC 4/4 · BẢN TỰ THÚ",
-   "date": "1951",
-   "bg": "bundfc"
-  },
-  {
-   "type": "map",
-   "at": 15,
-   "geo": "jn",
-   "pins": [
-    {
-     "name": "Tô Châu"
-    },
-    {
-     "name": "Thượng Hải"
-    }
+   "img": "nanking1",
+   "illus": "PHỎNG DỰNG · PHỐ THƯỢNG HẢI THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
    ]
   },
   {
-   "type": "ledger",
-   "at": 16,
-   "title": "CHỖ CÁC NGUỒN LỆCH",
-   "rows": [
+   "type": "kinetic",
+   "at": 15,
+   "items": [
     {
-     "k": "NGÀY SINH",
-     "v": "14/12 HOẶC 10/5",
-     "at": 16
-    },
-    {
-     "k": "TUỔI KHI MẤT",
-     "v": "84 HOẶC 85",
-     "at": 16
+     "text": "TIỀN TÀI ĐI\nCÙNG QUYỀN LỰC",
+     "at": 15,
+     "acc": true
     }
    ],
+   "bg": "stamp",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "date",
+   "at": 16,
+   "day": "TÔ GIỚI PHÁP · LẬP NGÀY",
+   "date": "06.04.1849",
+   "bg": "map1896"
+  },
+  {
+   "type": "counter",
+   "at": 17,
+   "suffix": " HÉCTA",
+   "label": "TÔ GIỚI PHÁP LÚC MỚI LẬP",
+   "from": 0,
+   "to": 66,
+   "bg": "map1884"
+  },
+  {
+   "type": "photo",
+   "at": 18,
+   "img": "council",
+   "illus": "HỘI ĐỒNG TÔ GIỚI · KHOẢNG 1908",
+   "tone": "sepia",
+   "move": "out",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "counter",
+   "at": 19,
+   "suffix": "",
+   "label": "QUYẾT ĐỊNH BƯỚC NGOẶT",
+   "from": 1868,
+   "to": 1892,
+   "year": true,
+   "bg": "police_ic"
+  },
+  {
+   "type": "quote",
+   "at": 20,
+   "text": "Tuổi đôi mươi, ông bỏ nghề buôn, vào làm ở sở bắt của tô giới Pháp ở Thượng Hải.",
+   "by": "HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 20,
+   "typeAt": 20,
+   "bg": "police_ic"
+  },
+  {
+   "type": "photo",
+   "at": 21,
+   "img": "police_anam",
+   "illus": "CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908",
+   "tone": null,
+   "move": "in",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "slam",
+   "at": 22,
+   "text": "CHIẾC ÁO\nCẢNH SÁT",
+   "sub": "MỞ RA CHÂN TRỜI MỚI",
+   "bg": "metropole"
+  },
+  {
+   "type": "file",
+   "at": 23,
+   "k": "THEO WIKIPEDIA TIẾNG ANH",
+   "name": "BỎ VỀ\nTÔ CHÂU",
+   "desc": "Sau một lần cãi sĩ quan Pháp",
    "bg": "rueconsul"
+  },
+  {
+   "type": "slam",
+   "at": 24,
+   "text": "ĐƯỢC GỌI\nTRỞ LẠI",
+   "sub": "LÀM VIỆC TRONG SỞ BẮT",
+   "bg": "police_ic"
+  },
+  {
+   "type": "photo",
+   "at": 25,
+   "img": "rueconsul",
+   "illus": "PHỎNG DỰNG · PHỐ TÔ GIỚI PHÁP",
+   "tone": "noir",
+   "move": "pan",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "items": [
+    {
+     "text": "NGÕ TỐI\nLÃO BẮC MÔN",
+     "at": 26,
+     "acc": true
+    }
+   ],
+   "bg": "police_ic",
+   "illus": "PHỎNG DỰNG"
+  },
+  {
+   "type": "photo",
+   "at": 27,
+   "img": "sikh",
+   "illus": "PHỎNG DỰNG · CẢNH SÁT TÔ GIỚI · THẬP NIÊN 1930",
+   "tone": "noir",
+   "move": "out",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "type": "question",
+   "at": 28,
+   "text": "LEO ĐẾN ĐỈNH\nBẰNG CÁCH NÀO?",
+   "bg": "fc37"
   }
  ],
  "hud": {
   "k": "CHƯƠNG 01",
-  "t": "BỐN MỐC, BỐN CÁCH KỂ"
+  "t": "ĐỨA TRẺ TÔ CHÂU"
  },
  "bgm": {
-  "mood": "mystery",
+  "mood": "quiet",
   "at": 0,
   "gain": 0.12
  }

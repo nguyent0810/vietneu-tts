@@ -1,4 +1,4 @@
-"""GH-378 bước 4: cảnh biên tập CH00–CH13 cho Long CL "Hoàng Kim Vinh Ngoài Đời Thật".
+"""GH-378 bước 4 (v4): cảnh biên tập CH00–CH13 cho Long CL "Hoàng Kim Vinh Ngoài Đời Thật" theo script.md mới (trục nhân vật + cái giá).
 
 Trục hình: "bốn mốc, bốn cách kể" (1924, 1930, 1931, 1951): thẻ mốc `date` cùng một khuôn "MỐC n/4 · <cách kể>".
 Cảnh so sánh "ba cách kể" dùng `org` (ba cột). Mọi câu [TRÍCH DỊCH] có thẻ `quote` kèm nguồn.
@@ -63,7 +63,7 @@ GEO = {
                     {'name': 'Hồng Kông', 'lon': 114.17, 'lat': 22.32, 'label': 'HỒNG KÔNG'},
                     {'name': 'Tích Chỉ', 'lon': 121.66, 'lat': 25.06, 'label': 'TÍCH CHỈ'}]},
 }
-CLIPS = {'c1': '900001', 'c2': '900002', 'c4': '900004', 'c5': '900005', 'c6': '900006', 'c7': '900007', 'c8': '900008'}
+CLIPS = {'c1': '900001', 'c2': '900002', 'c3': '900003', 'c4': '900004', 'c5': '900005', 'c6': '900006', 'c7': '900007', 'c8': '900008'}
 TD = 'MINH HỌA CHUNG'          # nhãn clip AI chung (không phải tư liệu)
 
 # ---------------------------------------------------------------- helpers (mỗi helper trả một cảnh)
@@ -104,6 +104,11 @@ def K(a, text, *more, **kw):
     a0 = 0 if a is None else _a(a)      # cảnh đầu chương bắt đầu ở 0: mốc dòng 0
     items = [(text, a0, 'acc')] + [(t, _a(m), *fl) for t, m, *fl in more]
     return _fin(sc('kinetic', _a(a), items=kin(*items)), **kw)
+
+
+def B(a, vid, **kw):
+    """Cảnh clip toàn khung (không thẻ chữ): dùng cho cảnh mở đầu và cảnh phỏng dựng."""
+    return _fin(sc('broll', _a(a)), vid=vid, **kw)
 
 
 def S(a, text, sub=None, **kw):
@@ -197,156 +202,193 @@ def FL(a, k, name, desc='', rows=None, **kw):
     return _fin(s, **kw)
 
 
-CH = {}
 
-# ---------------------------------------------------------------- CH00–CH06
-CH['ch00'] = dict(hud={'k': 'MỞ ĐẦU', 't': 'HAI TỜ BÁO, 20/5/1951'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
-    DT(None, 'HAI TỜ BÁO · THƯỢNG HẢI', '20.05.1951', vid='c4'),
-    P(1, 'huang', 'HOÀNG KIM VINH · THẬP NIÊN 1930', focus=[0.5, 0.2]),
-    K(3, 'ÔNG VIẾT BẢN TỰ THÚ', bg='nanking3'),
-    QU(4, 'Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.', 'BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG', bg='bund30'),
-    DT(5, 'MỘT CUỐN SÁCH · MỘT TRANG', '1930', vid='c2'),
-    Q(7, 'NGƯỜI NÀO MỚI LÀ ÔNG?', bg='jinling'),
-    S(8, 'KHÔNG MỘT CHỮ', 'VỀ THANH BANG', vid='c7'),
-    P(10, 'bundfc', 'THƯỢNG HẢI · KHOẢNG 1934'),
-    DT(11, 'NĂM ÔNG BỊ BẮT · THEO WIKIPEDIA', '1924', bg='council'),
-    Q(12, 'AI BỎ TIỀN?\nBỎ BAO NHIÊU?', bg='police_ic'),
+# ---------------------------------------------------------------- CH00–CH06 (v4: lời kể mới, trục nhân vật + cái giá)
+PDL = 'PHỎNG DỰNG'
+PDV = 'PHỎNG DỰNG · MINH HỌA CHUNG'
+
+
+def pd(cap=None):
+    return f'{PDL} · {cap}' if cap else PDL
+
+
+CH = {}
+CH['ch00'] = dict(hud={'k': 'MỞ ĐẦU', 't': 'CÂY CHỔI TRƯỚC ĐẠI THẾ GIỚI'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
+    B(None, ('c3',)),
+    P((0, 'Giới'), 'greatworld', 'ĐẠI THẾ GIỚI · ẢNH NGÀY NAY', tone='night', move='in'),
+    P(1, 'huang', pd('HOÀNG KIM VINH · THẬP NIÊN 1930'), tone='noir', move='in', focus=[0.5, 0.2]),
+    S(2, 'HOÀNG KIM VINH', 'ÔNG TRÙM BẾN THƯỢNG HẢI', bg='bund30'),
+    P(3, 'council', 'SỞ CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908', tone='noir', move='out'),
+    Q(4, 'ĐỐC SÁT TRƯỞNG\nVÀ MỘT CÂY CHỔI?', bg='police_ic'),
+    DT(5, 'HAI TỜ BÁO ĐĂNG BẢN TỰ THÚ', '20.05.1951', vid='c7'),
+    QU(6, 'Nguyện thẳng thắn thú nhận và hối lỗi trước nhân dân.', 'BẢN TỰ THÚ 1951 · THEO WIKIPEDIA TIẾNG TRUNG', bg='nanking3'),
+    P(7, 'jinling', 'ĐẠI LỘ EDWARD VII · THẬP NIÊN 1930', tone='noir', move='pan'),
+    K(8, 'GIÓ MÙA ĐÔNG\nQUA SẢNH LỚN', illus=pd(), bg='bundfc'),
+    K(9, 'TIẾNG CHỔI\nTRÊN SÀN ĐÁ HOA', illus=pd(), vid='c1'),
+    P(10, 'police_anam', 'CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908', tone='noir'),
+    S(11, 'CHỈ CÒN', 'MỘT CÂY CHỔI', bg='nanking2'),
+    P(12, 'metropole', 'THƯỢNG HẢI · NHÀ CAO TẦNG ĐANG XÂY, 1930', tone='noir', move='pan'),
+    K(13, 'MỌI PHÙ HOA\nKHÉP LẠI', ('BẰNG MỘT CÂY CHỔI', (13, 'bằng'), 'sm'), bg='bund30'),
+    DT(14, 'MỘT CUỐN SÁCH DANH NHÂN', '1930', bg='nanking3'),
+    S(15, 'CÔNG LỚN', 'VỚI TÔ GIỚI PHÁP', bg='council'),
+    S(16, 'KHÔNG MỘT CHỮ', 'VỀ THANH BANG', bg='opium2'),
+    Q(17, 'NGƯỜI NÀO\nMỚI LÀ ÔNG?', bg='jinling'),
+    SP(18, 'MỘT NGƯỜI, HAI HÌNH ẢNH', ('police_anam', 'CẢNH SÁT TÔ GIỚI PHÁP'), ('opium3', 'TIỆM THUỐC PHIỆN')),
+    K(19, 'ĐI DÂY GIỮA\nHAI LẰN RANH', bg='bund90'),
+    S(20, 'MỘT CÁI GIÁ', 'RẤT ĐẮT', bg='rueconsul'),
+    P(21, 'bund90', 'BẾN THƯỢNG HẢI · THẾ KỶ 19', tone='noir', move='in'),
+    MP(22, 'jn', ['Tô Châu', 'Thượng Hải']),
 ])
-CH['ch01'] = dict(hud={'k': 'CHƯƠNG 01', 't': 'BỐN MỐC, BỐN CÁCH KỂ'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
-    P(0, 'nanking2', 'THƯỢNG HẢI · NHỮNG NĂM 1930'),
-    FL(1, 'PHIM', 'BẾN THƯỢNG HẢI', 'TVB · THÁNG 3/1980', rows=[('SỐ TẬP', '25')], bg='rueconsul'),
-    LD(2, 'PHIM · VAI DIỄN', [('CHÂU NHUẬN PHÁT', 'HỨA VĂN CƯỜNG'), ('LỮ LƯƠNG VỸ', 'ĐINH LỰC')], bg='nanking1'),
-    S(3, 'ĐÓ LÀ PHIM', 'KHÔNG PHẢI HỒ SƠ', bg='map32'),
-    K(5, 'NHỮNG BỘ PHIM KHÁC', bg='metropole'),
-    TL(6, [('2015', 'KIÊU HÙNG · DỰA TRÊN ÔNG'), ('2021', '1921 · GỌI THẲNG TÊN')], bg='nanking3'),
-    K(7, 'PHIM 1921 · NĂM 2021', ('gọi thẳng tên ông', [7, 'gọi'], 'sm')),
-    K(8, 'MỘT PHIM DỰA TRÊN ÔNG', ('MỘT PHIM GỌI TÊN ÔNG', (8, 'gọi'), 'sm'), bg='bund90'),
-    K(9, 'GIẤY TỜ THẬT:\nNHIỀU BẢN', vid='c2'),
-    DT(11, 'MỐC 1/4 · ĐÊM BỊ BẮT', '1924', bg='council'),
-    DT(12, 'MỐC 2/4 · TRANG SÁCH', '1930', bg='nanking2'),
-    DT(13, 'MỐC 3/4 · ĐẠI THẾ GIỚI', '1931', bg='jinling'),
-    DT(14, 'MỐC 4/4 · BẢN TỰ THÚ', '1951', bg='bundfc'),
-    MP(15, 'jn', ['Tô Châu', 'Thượng Hải']),
-    LD(16, 'CHỖ CÁC NGUỒN LỆCH', [('NGÀY SINH', '14/12 HOẶC 10/5'), ('TUỔI KHI MẤT', '84 HOẶC 85')], bg='rueconsul'),
+CH['ch01'] = dict(hud={'k': 'CHƯƠNG 01', 't': 'ĐỨA TRẺ TÔ CHÂU'}, bgm={'mood': 'quiet', 'at': 0, 'gain': 0.12}, scenes=[
+    DT(None, 'SINH RA Ở TÔ CHÂU', '1868', vid=('c6',)),
+    P(1, 'huang', 'HOÀNG KIM VINH · THẬP NIÊN 1930', tone='noir', move='in', focus=[0.5, 0.2]),
+    S((1, 'khiến'), 'HOÀNG RỖ', 'BIỆT DANH TỪ VẾT SẸO ĐẬU MÙA', bg='bund90'),
+    K(3, 'CHA ÔNG LÀ\nVÕ QUAN', ('DỰ BỊ · GIANG TÔ', (3, 'từng'), 'sm'), bg='police_ic'),
+    S(4, 'MỘT BẢN KHÁC', 'CHA MỞ QUÁN TRÀ', bg='rueconsul', srcnote='THEO WIKIPEDIA TIẾNG ANH'),
+    P(5, 'bund90', pd('BẾN THƯỢNG HẢI THẾ KỶ 19'), tone='noir', move='pan'),
+    K(6, 'TÀU NGOẠI QUỐC\nCHEN THUYỀN NAN', illus=pd(), bg='map1884'),
+    S(7, 'CƠ HỘI\nVÀ CẠM BẪY', 'CÙNG MỘT TẤC ĐẤT', bg='nanking1'),
+    DT(8, 'HỌC VIỆC · TIỆM ĐÓNG KHUNG TRANH', '1884', bg='map1884'),
+    K(9, 'ĐÒI HỎI\nTỈ MỈ', bg='nanking3'),
+    K(10, 'MÙI GIẤY DÓ\nMỰC NHO, HỒ DÁN', illus=PDV, vid=('c2',)),
+    QU(11, 'Thuở đầu ông theo nghề giấy quạt, thư họa.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930', bg='nanking3'),
+    S(13, 'NGHỀ GIẤY MỰC', 'KHÔNG GIỮ ÔNG ĐƯỢC LÂU', bg='nanking2'),
+    P(14, 'nanking1', pd('PHỐ THƯỢNG HẢI THẬP NIÊN 1930'), tone='noir', move='in'),
+    K(15, 'TIỀN TÀI ĐI\nCÙNG QUYỀN LỰC', illus=pd(), bg='stamp'),
+    DT(16, 'TÔ GIỚI PHÁP · LẬP NGÀY', '06.04.1849', bg='map1896'),
+    CT(17, 66, ' HÉCTA', 'TÔ GIỚI PHÁP LÚC MỚI LẬP', bg='map1884'),
+    P(18, 'council', 'HỘI ĐỒNG TÔ GIỚI · KHOẢNG 1908', tone='sepia', move='out'),
+    CT(19, 1892, '', 'QUYẾT ĐỊNH BƯỚC NGOẶT', frm=1868, year=True, bg='police_ic'),
+    QU(20, 'Tuổi đôi mươi, ông bỏ nghề buôn, vào làm ở sở bắt của tô giới Pháp ở Thượng Hải.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930', bg='police_ic'),
+    P(21, 'police_anam', 'CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908', move='in'),
+    S(22, 'CHIẾC ÁO\nCẢNH SÁT', 'MỞ RA CHÂN TRỜI MỚI', bg='bund30'),
+    FL(23, 'THEO WIKIPEDIA TIẾNG ANH', 'BỎ VỀ\nTÔ CHÂU', 'Sau một lần cãi sĩ quan Pháp', bg='rueconsul'),
+    S(24, 'ĐƯỢC GỌI\nTRỞ LẠI', 'LÀM VIỆC TRONG SỞ BẮT', bg='police_ic'),
+    P(25, 'rueconsul', pd('PHỐ TÔ GIỚI PHÁP'), tone='noir', move='pan'),
+    K(26, 'NGÕ TỐI\nLÃO BẮC MÔN', illus=pd(), bg='police_ic'),
+    P(27, 'sikh', pd('CẢNH SÁT TÔ GIỚI · THẬP NIÊN 1930'), tone='noir', move='out'),
+    Q(28, 'LEO ĐẾN ĐỈNH\nBẰNG CÁCH NÀO?', bg='bund30'),
 ])
-CH['ch02'] = dict(hud={'k': 'CHƯƠNG 02', 't': 'ĐỨA TRẺ TÔ CHÂU'}, bgm={'mood': 'quiet', 'at': 0, 'gain': 0.12}, scenes=[
-    DT(None, 'SINH RA Ở TÔ CHÂU', '1868', vid='c6'),
-    MP(2, 'jn', ['Tô Châu', 'Thượng Hải']),
-    OR(4, ('NGƯỜI CHA', 'HAI BẢN KỂ'), [('WIKIPEDIA TIẾNG ANH', 'MỞ MỘT QUÁN TRÀ'), ('SÁCH NĂM 1930', 'VÕ QUAN DỰ BỊ')], bg='jinling'),
-    K((5, 'võ'), 'QUÁN TRÀ', ('VÕ QUAN DỰ BỊ', (6, 'võ'), 'sm'), bg='rueconsul'),
-    S(7, 'CHƯA ĐỦ', 'ĐỂ BIẾT CUỘC ĐỜI NGƯỜI CHA', bg='nanking1'),
-    P(8, 'huang', '"HOÀNG RỖ" · CHÂN DUNG THẬP NIÊN 1930', focus=[0.5, 0.2]),
-    DT(10, 'HỌC VIỆC · TIỆM ĐÓNG KHUNG TRANH', '1884', vid='c2'),
-    QU(12, 'Thuở đầu ông theo nghề giấy quạt, thư họa.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930', bg='nanking3'),
-    QU(14, 'Tuổi đôi mươi, ông bỏ nghề buôn, vào làm ở sở bắt của tô giới Pháp ở Thượng Hải.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930', bg='police_anam'),
-    CT(16, 1892, '', 'HAI BÁCH KHOA: VÀO SỞ BẮT', frm=1868, year=True, bg='council'),
-    LD(17, 'HAI NĂM · HAI NGUỒN', [('1892', 'HAI BÁCH KHOA · 24 TUỔI'), ('1900', 'BÀI BÁO PHỔ THÔNG')], bg='police_ic'),
-    DT(19, 'TÔ GIỚI PHÁP · LẬP NGÀY', '06.04.1849', bg='map1884'),
-    PR(20, 'map1896', 'BẢN ĐỒ 1896', 'BA CÕI\nTHƯỢNG HẢI', [('LUẬT PHÁP', (20, 'luật')), ('CẢNH SÁT PHÁP RIÊNG', (20, 'cảnh'))],
-       cap='THƯỢNG HẢI · SÁCH NĂM 1896', circles=[(0.62, 0.54, 90, (20, 'mảnh'))], tone='color', maxw=1000, maxh=640, right=True),
-    K(21, 'SAU CHIẾN TRANH NHA PHIẾN', ('HIỆP ƯỚC BẤT BÌNH ĐẲNG', (21, 'hiệp'), 'sm'), bg='opium1'),
-    CT(22, 66, ' HÉCTA', 'TÔ GIỚI PHÁP LÚC MỚI LẬP', bg='stamp'),
-    TL(23, [('1849', '66 HÉCTA'), ('1900', 'GẤP ĐÔI'), ('1914', '15 LẦN PHẦN ĐẤT BAN ĐẦU')], bg='map1933'),
-    P(25, 'bund90', 'TÔ GIỚI QUỐC TẾ · BẾN THƯỢNG HẢI THẾ KỶ 19'),
-    DT(26, 'PHÁP RÚT KHỎI HỘI ĐỒNG CHUNG', '1862', bg='council'),
-    OR(27, ('THƯỢNG HẢI', 'BA CÕI'), [('THÀNH PHỐ NGƯỜI HOA', 'LUẬT NHÀ THANH'), ('TÔ GIỚI QUỐC TẾ', 'HỘI ĐỒNG ANH · MỸ'), ('TÔ GIỚI PHÁP', 'CẢNH SÁT PHÁP')], bg='map1884'),
-    P(28, 'bundfc', 'RANH GIỚI HAI TÔ GIỚI · KHOẢNG 1934'),
-    P(29, 'police_anam', 'CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908'),
-    K(30, 'MỘT THÁM TỬ NGƯỜI HOA', vid='c8'),
-    Q(31, 'ÔNG GIỎI ĐẾN MỨC NÀO?', bg='sikh'),
-    FL(33, 'THEO WIKIPEDIA TIẾNG ANH', 'MỜI TRỞ LẠI', 'Sau khi cãi sĩ quan Pháp, bỏ về Tô Châu', bg='rueconsul'),
-    K(34, 'CÁI GIÁ CỦA\nSỰ CẦN THIẾT', bg='sikh'),
+CH['ch02'] = dict(hud={'k': 'CHƯƠNG 02', 't': 'CHIẾC HUY HIỆU HAI MẶT'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
+    K(None, 'TÔ GIỚI PHÁP\nLẤN RỘNG', bg='map1933'),
+    TL(1, [('1849', '66 HÉCTA'), ('1900', 'GẤP ĐÔI'), ('1914', 'GẤP 15 LẦN')], bg='map1884'),
+    DT(2, 'VIÊN THẾ KHẢI CHẤP THUẬN', '1914', bg='council'),
+    K((2, 'đổi'), 'ĐỔI LẠI\nTRỤC XUẤT', ('NGƯỜI LÀM CÁCH MẠNG', (2, 'những'), 'sm'), bg='police_ic'),
+    P(3, 'nanking3', pd('PHỐ TÔ GIỚI THẬP NIÊN 1930'), tone='noir', move='pan'),
+    S(4, 'MUỐN LÊN CAO\nPHẢI LẬP CÔNG', 'MỘT CÚ LIỀU MẠNG', bg='police_anam'),
+    K(6, 'VỤ CƯỚP\nTHÁI HỒ', ('ÔNG PHỤNG MỆNH ĐẾN TÔ CHÂU', (6, 'phụng'), 'sm'), vid=('c6',)),
+    MP(7, 'jn', ['Tô Châu', 'Thượng Hải']),
+    K(8, 'TRÊN NHỮNG\nMÁI NHÀ CỔ', illus=PDV, vid=('c3',)),
+    QU(9, 'Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · 1930', bg='nanking1'),
+    S(10, 'CHÂN ÔNG\nBỊ THƯƠNG NẶNG', 'CÚ NHẢY LIỀU LĨNH', bg='sikh'),
+    CT(11, 1930, '', 'TRỜI MƯA GIÓ: CHÂN VẪN ĐAU', frm=1892, year=True, bg='jinling'),
+    MY(12, 'GIAI THOẠI', 'ÔNG TỰ DÀN CẢNH CƯỚP', 'NGUỒN', 'KHÔNG DẪN NGUỒN NÀO', (12, 'nhưng'), (12, 'không'), bg='council'),
+    K(13, 'CHỈ NÊN NGHE\nNHƯ GIAI THOẠI', bg='police_ic'),
+    K(14, 'NGƯỜI PHÁP NỂ\nTHÁM TỬ MẶT RỖ', illus=pd(), bg='police_anam'),
+    DT(15, 'CÁCH MẠNG TÂN HỢI · LO GIỮ YÊN', '1911', bg='bund90'),
+    QU(16, 'Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', bg='nanking3'),
+    K(17, 'ĐẠI TỔNG THỐNG\nHỌ LÊ', ('HÀM THƯỢNG TÁ BỘ BINH', (17, 'hàm'), 'sm'), bg='council'),
+    TL(18, [('1921', 'HUÂN CHƯƠNG LẦN 1'), ('1924', 'HUÂN CHƯƠNG LẦN 2'), ('1928', 'HUÂN CHƯƠNG LẦN 3')], bg='police_ic'),
+    S(19, 'SAU HUÂN CHƯƠNG', 'MỘT THẾ GIỚI NGẦM', vid=('c4',)),
+    LD(20, 'NĂM 1900', [('CƯỚI', 'LÂM QUẾ SINH'), ('SAU NÀY', 'QUẢN MỘT PHẦN BUÔN THUỐC PHIỆN')], bg='jinling'),
+    K(21, 'MỘT CƠ CHẾ\nHAI MẶT', bg='rueconsul'),
+    FL(22, 'THEO WIKIPEDIA TIẾNG ANH', 'MỘT PHIÊN\nRIÊNG\nMỖI NGÀY', 'Ông quyết định ai giao cảnh sát, ai được thả', bg='sikh'),
+    K(23, 'ÂN HUỆ CHO\nKẺ PHẠM TỘI', bg='police_ic'),
+    PR(24, 'tram37', 'BẢN ĐỒ XE ĐIỆN · 1937', 'XE ĐIỆN\nTRÊN ĐẠI LỘ', [('TIẾNG CHUÔNG LENG KENG', (24, 'tiếng')), ('TÔ GIỚI PHÁP MỞ RỘNG', (24, 'tô'))],
+       cap='THƯỢNG HẢI · TUYẾN XE ĐIỆN 1937', tone='color', maxw=600, maxh=780, right=True, illus=pd('MINH HỌA BẰNG BẢN ĐỒ NĂM 1937')),
+    K(25, 'MỘT CÁI GẬT ĐẦU', ('ĐỊNH ĐOẠT SỐ PHẬN', (25, 'định'), 'sm'), illus=pd(), bg='opium2'),
+    OR(26, ('SỞ BẮT PHÁP', 'NẤC CAO NHẤT'), [('THÁM TỬ', 'NGƯỜI HOA'), ('ĐỐC SÁT', 'TRƯỞNG')], bg='police_anam'),
+    S(27, 'HUY HIỆU', 'THÀNH TẤM BÌNH PHONG', bg='council'),
+    Q(28, 'THỨ LỢI NHUẬN\nSINH TỪ ĐÂU?', vid=('c5',)),
 ])
-CH['ch03'] = dict(hud={'k': 'CHƯƠNG 03', 't': 'CHIẾC GHẾ CỦA NGƯỜI THÁM TỬ'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
-    OR(0, ('HOÀNG KIM VINH', 'HAI BẢN KỂ SONG SONG'), [('BẢN 1: CHIẾC GHẾ', 'THÁM TỬ NGƯỜI HOA'), ('BẢN 2: CỬA SAU', 'THUỐC PHIỆN · SÒNG BẠC')], bg='police_anam'),
-    P(2, 'council', 'HỘI ĐỒNG TÔ GIỚI PHÁP · 1908'),
-    K(3, 'KHÔNG GÁN MỘT NĂM', ('NGUỒN LỆCH NHAU', (3, 'nhau'), 'sm'), bg='police_ic'),
-    S(4, 'CỬA SAU', 'BẢN KỂ THỨ HAI', vid='c8'),
-    LD((5, 'ông'), 'THEO WIKIPEDIA TIẾNG ANH', [('TỔ CHỨC', 'BUÔN THUỐC PHIỆN'), ('MỞ', 'SÒNG BẠC'), ('BAN ƠN CHO', 'TỘI PHẠM')], bg='opium3'),
-    FL(6, 'THEO WIKIPEDIA TIẾNG ANH', 'MỘT PHIÊN\nRIÊNG\nMỖI NGÀY', 'Ông quyết định ai giao cảnh sát, ai được thả', bg='sikh'),
-    K(8, 'GIAO CẢNH SÁT', ('HAY THẢ?', (8, 'kẻ'), 'sm'), vid='c1'),
-    DT(9, 'CƯỚI BÀ LÂM QUẾ SINH · THEO WIKIPEDIA TIẾNG ANH', '1900', bg='jinling'),
-    K(11, 'KHÔNG CHỈ LÀ VỢ\nCỦA MỘT THÁM TỬ', bg='rueconsul'),
-    K(12, 'GIAI THOẠI:\nÔNG TỰ DÀN CẢNH CƯỚP', illus='GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN', bg='nanking1'),
-    K(14, 'BÁO TRƯỚC CHO THÁM TỬ PHÁP', ('RỒI BẮT ĐÚNG NHỮNG KẺ ẤY', (14, 'rồi'), 'sm'), illus='GIAI THOẠI · BÀI BÁO KHÔNG DẪN NGUỒN', bg='police_anam'),
-    MY(15, 'GIAI THOẠI', 'ÔNG TỰ DÀN CẢNH CƯỚP', 'NGUỒN', 'KHÔNG DẪN NGUỒN NÀO', (15, 'không'), (15, 'nguồn'), bg='council'),
-    LD(16, 'NĂM 1913', [('PHÁP XIN', 'QUYỀN CẢNH SÁT'), ('VÀ', 'THU THUẾ NGOÀI TÔ GIỚI')], bg='map1933'),
-    K(18, 'ĐỔI LẠI: TRỤC XUẤT\nNGƯỜI CÁCH MẠNG', bg='police_ic'),
-    DT(19, 'THỎA THUẬN ĐƯỢC CÔNG BỐ', '1914', bg='map1884'),
-    P(20, 'rueconsul', 'KHU PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930'),
-    K(21, 'QUEN LUÔN NHỮNG KẺ\nHỌ CÓ NHIỆM VỤ BẮT', bg='sikh'),
-    OR(23, ('NGƯỜI CẦM HUY HIỆU', 'CẦU NỐI HAI BÊN'), [('CẢNH SÁT PHÁP', 'HUY HIỆU'), ('THẾ GIỚI NGẦM', 'KHU PHỐ')], bg='police_anam'),
-    K(24, 'BÊN NÀO CŨNG CẦN ANH TA', ('GIAO NGƯỜI PHẠM TỘI CHO CẢNH SÁT HAY KHÔNG?', (25, 'Theo'), 'sm'), bg='council'),
-    Q(26, 'AI Ở NGOÀI\nĐỂ KIỂM TRA?', vid='c8'),
-    P(27, 'jinling', 'PHỐ TÔ GIỚI PHÁP · THẬP NIÊN 1930'),
-    CT(28, 20, ' NĂM', 'ĐỖ NGUYỆT SANH TRẺ HƠN ÔNG', bg='bund30'),
+CH['ch03'] = dict(hud={'k': 'CHƯƠNG 03', 't': 'ĐẾ CHẾ KHÓI ĐEN'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
+    K(None, 'THUỐC PHIỆN\nDÒNG TIỀN ĐEN', vid=('c4',)),
+    LD(1, 'HIỆP ƯỚC NAM KINH', [('MỞ', 'NĂM CẢNG'), ('TRONG ĐÓ', 'THƯỢNG HẢI')], bg='bund90'),
+    P(2, 'opium1', 'NGƯỜI HÚT THUỐC PHIỆN · TRANH NĂM 1858', move='in'),
+    TL(3, [('1907', 'ANH KÝ HIỆP ƯỚC CHẤM DỨT NHẬP'), ('1911', 'THUỐC TRONG NƯỚC BÙNG LẠI')], bg='opiummap'),
+    S(4, 'SÒNG BẠC VÀ\nTHUỐC PHIỆN', 'SỐNG NHỜ SỰ LÀM NGƠ', bg='opium2'),
+    P(5, 'opium3', 'TIỆM HÚT THUỐC PHIỆN · KHOẢNG 1880', move='out'),
+    K(6, 'BÀ LÂM QUẾ SINH', ('QUẢN MỘT PHẦN VIỆC BUÔN', (6, 'quản'), 'sm'), bg='jinling'),
+    P(7, 'rueconsul', pd('TÔ GIỚI PHÁP, THẬP NIÊN 1930'), tone='noir', move='in'),
+    DT(8, 'ĐỖ NGUYỆT SANH · SINH Ở PHỐ ĐÔNG', '1888', bg='nanking2'),
+    FL(9, 'NGƯỜI THANH NIÊN', 'ĐỖ NGUYỆT SANH', 'Phố Đông · vào làm trong dinh thự của Hoàng', bg='bund30'),
+    K(11, 'BÀ CHỦ QUÝ CẬU', ('GIAO VIỆC NGÀY MỘT LỚN', (12, 'Từ'), 'sm'), bg='nanking2'),
+    LD(13, 'TIỆM HÚT THUỐC PHIỆN', [('CHỦ', 'HOÀNG KIM VINH'), ('NGƯỜI TRÔNG COI', 'ĐỖ NGUYỆT SANH')], bg='opium4'),
+    K(14, 'NGƯỜI THỰC THI', ('CỜ BẠC VÀ THUỐC PHIỆN', (14, 'cờ'), 'sm'), bg='police_ic'),
+    DT(15, 'CÔNG TY TAM HÂM · LẬP', '1918', bg='map1933'),
+    S(16, 'TAM HÂM', 'LŨNG ĐOẠN THUỐC PHIỆN', bg='nanking1'),
+    OR(17, ('TAM HÂM', 'CÁC NGUỒN LỆCH'), [('HOÀNG KIM VINH', '1918'), ('ĐỖ NGUYỆT SANH', '1918'), ('TRƯƠNG', 'THẬP NIÊN 1920')], bg='council'),
+    K(18, 'CHƯA VÀO\nTHANH BANG', ('DÙ THAO TÚNG ĐƯỜNG DÂY LỚN', (18, 'thao'), 'sm'), bg='police_anam'),
+    S(19, 'ĐỨNG BÊN NGOÀI', 'BẢO TRỢ BẰNG HUY HIỆU', bg='council'),
+    OR(20, ('BA VAI', 'MỘT ĐƯỜNG DÂY'), [('HOÀNG', 'GHẾ CẢNH SÁT'), ('ĐỖ', 'CỜ BẠC · THUỐC'), ('TRƯƠNG', 'CHUNG ĐƯỜNG')], bg='rueconsul'),
+    K(21, 'KHÓI ĐẶC QUÁNH', ('TRONG GÓC TỐI', (21, 'trong'), 'sm'), illus=pd(), bg='opium4'),
+    K(22, 'ĐỒNG BẠC HOA', ('LÁCH CÁCH TRÊN BÀN GỖ', (22, 'lách'), 'sm'), illus=pd(), bg='coupon'),
+    SP(23, 'HAI LỰC LƯỢNG', ('council', 'QUYỀN LỰC THỰC DÂN'), ('opium2', 'BẠO LỰC GIANG HỒ')),
+    S(24, 'NGAI VÀNG', 'VỮNG NHƯ BÀN THẠCH', bg='bund30'),
+    K(25, 'NGẠO MẠN', ('ĐẨY ÔNG VÀO CẠM BẪY', (25, 'đẩy'), 'sm'), vid=('c8',)),
 ])
-CH['ch04'] = dict(hud={'k': 'CHƯƠNG 04', 't': 'MỘT TRANG SÁCH NĂM 1930'}, bgm={'mood': 'quiet', 'at': 0, 'gain': 0.12}, scenes=[
-    DT(0, 'MỐC 2/4 · TRANG SÁCH', '1930', vid='c2'),
-    FL(1, 'SÁCH NĂM 1930', 'HẢI THƯỢNG\nDANH NHÂN\nTRUYỆN', 'Truyện các danh nhân Thượng Hải', bg='nanking3'),
-    OR(3, ('MỘT CUỐN SÁCH', 'BA MỤC RIÊNG'), [('HOÀNG KIM VINH', 'MỘT MỤC'), ('ĐỖ NGUYỆT SANH', 'MỘT MỤC'), ('TRƯƠNG KHIẾU LÂM', 'MỘT MỤC')], bg='nanking2'),
-    K(4, 'MỞ BẰNG GIA THẾ', ('VÀ LÒNG HIẾU THẢO', (4, 'lòng'), 'sm'), bg='jinling'),
-    K(5, 'BĂNG CƯỚP THÁI HỒ', ('ÔNG ĐƯỢC LỆNH ĐẾN ĐẤT TÔ', (5, 'được'), 'sm'), vid='c4'),
-    K(6, 'ĐI BẮT TÊN ĐẦU BỌN', bg='police_anam'),
-    QU(7, 'Tên cướp trèo lên mái nhà, ông cũng trèo lên rồi nhảy xuống, bị thương ở chân.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', bg='rueconsul'),
-    K(8, 'TRỜI MƯA GIÓ LẠNH\nCHÂN ÔNG VẪN ĐAU', bg='sikh'),
-    K(9, 'PHẦN THƯỞNG CỦA NGƯỜI PHÁP', bg='council'),
-    LD(10, 'HUÂN CHƯƠNG NGƯỜI PHÁP', [('VÀNG VÀ BẠC', 'HẠNG NHẤT · HẠNG NHÌ'), ('SỐ LẦN', 'BA LẦN')], bg='police_ic'),
-    TL(11, [('1921', 'MỘT NĂM TRAO'), ('1924', 'MỘT NĂM TRAO KHÁC'), ('1928', 'MỘT NĂM TRAO NỮA')], bg='nanking1'),
-    K(12, 'SÁCH KHÔNG NÓI HUÂN CHƯƠNG NÀO, NĂM NÀO', ('NĂM TÂN HỢI · 1911', (13, 'Tân'), 'sm'), bg='jinling'),
-    QU(14, 'Cách mạng Tân Hợi, ông bảo vệ dân, giữ yên địa phương ngày đêm không nghỉ, khiến Thượng Hải gà chó cũng không giật mình.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', bg='bund90'),
-    K(15, 'ĐẠI TỔNG THỐNG HỌ LÊ', ('HÀM THƯỢNG TÁ BỘ BINH', (15, 'hàm'), 'sm'), bg='council'),
-    QU(16, 'Ông có công lớn nhất với tô giới Pháp, tiếng vang đến tận chính phủ Pháp.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', type_at=(17, 'Ông'), qline=17, bg='nanking3'),
-    K(18, 'TỪ ĐƯỜNG HỌ HOÀNG\nỞ TÀO HÀ KÍNH', bg='map32'),
-    CT(20, 1000, '+', 'HỌC TRÒ · TRƯỜNG MIỄN PHÍ KHI SÁCH IN', bg='nanking2'),
-    K(21, 'TỪ ĐƯỜNG: NHỚ VỀ NGUỒN CỘI', bg='bundfc'),
-    K(22, 'TRƯỜNG KIM VINH', ('TÊN CỦA CHÍNH ÔNG', (22, 'tên'), 'sm'), bg='nanking2'),
-    K(24, 'MỘT NHÀ HẢO TÂM', bg='jinling'),
-    MY(25, 'TRANG SÁCH', 'MỘT NHÀ HẢO TÂM', 'TRONG MỤC ẤY', 'KHÔNG CÓ CHỮ NÀO VỀ THANH BANG', (25, 'Nhưng'), (25, 'không'), bg='nanking1'),
-    K(26, 'KHÔNG BIẾT AI VIẾT', ('KHÔNG BIẾT ÔNG CÓ ĐỌC', (27, 'Ta'), 'sm'), bg='rueconsul'),
-    P(28, 'huang', 'MỌI BẢN CHÂN DUNG ĐỀU BỎ BỚT THỨ GÌ ĐÓ', focus=[0.5, 0.2]),
-    S(30, 'THUỐC PHIỆN', 'KHÔNG CÓ TRONG TRANG ẤY', bg='opium2'),
-    K(31, 'ĐIỀU BỊ BỎ ẤY\nNẰM TRONG MỘT THỨ HÀNG', vid='c5'),
+CH['ch04'] = dict(hud={'k': 'CHƯƠNG 04', 't': 'ĐÒN GHEN Ở NHÀ HÁT'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
+    DT(None, 'NHỮNG NĂM 1920 · NGOÀI NĂM MƯƠI TUỔI', '1920', vid=('c1',)),
+    K((0, 'vừa'), 'VỪA GIỮ GHẾ\nTHÁM TỬ', ('VỪA CẦM ĐẦU ĐƯỜNG DÂY NGẦM', (0, 'cầm'), 'sm'), bg='police_anam'),
+    S(1, 'QUÁ NHIỀU\nQUYỀN UY', 'KHÔNG AI KIỀM CHẾ', bg='council'),
+    LD(2, 'NĂM 1922', [('ÔNG CƯỚI', 'LỘ LAN XUÂN'), ('NGHỀ', 'CÔ ĐÀO HÁT · CA SĨ SÂN KHẤU')], bg='jinling'),
+    P(4, 'nanking2', pd('THƯỢNG HẢI THẬP NIÊN 1930'), tone='noir', move='pan'),
+    DT(5, 'ĐÊM BÀ HÁT · MỌI CHUYỆN ĐỔ VỠ', '1924', bg='council'),
+    FL(6, 'KHÁN GIẢ ĐÊM ẤY', 'LƯ TIỂU GIA', 'Con trai Lư Vĩnh Tường · quân phiệt phái An Huy', bg='sikh'),
+    OR(8, ('ĐÊM ẤY', 'HAI BẢN KỂ'), [('BẢN MỘT', 'LA Ó ĐUỔI BÀ'), ('BẢN KHÁC', 'THEO ĐUỔI BÀ')], bg='nanking1'),
+    S(10, 'MỘT TRẬN ĐÒN', 'THUỘC HẠ ĐÁNH CÔNG TỬ', bg='police_ic'),
+    K(11, 'ĐÈN RỰC RỠ\nBỖNG IM BẶT', illus=pd(), bg='metropole'),
+    P(12, 'armored', pd('THƯỢNG HẢI NĂM 1930'), tone='noir', move='pan'),
+    S(13, 'ĐÁNH CÔNG KHAI', 'TRƯỚC MẮT ĐÁM ĐÔNG', bg='nanking3'),
+    K(14, 'MỘT BÀI HỌC\nCHO CÔNG TỬ', illus=pd(), bg='bund30'),
+    S(15, 'MÙ QUÁNG', 'TRƯỚC THỰC TẾ CHÍNH TRỊ', bg='map1933'),
+    PR(16, 'map32', 'BẢN ĐỒ 1932', 'QUYỀN LỰC\nCHỈ TRONG\nTÔ GIỚI', [('ĐỊA GIỚI TÔ GIỚI PHÁP', (16, 'địa')), ('NGOÀI KIA: QUÂN PHIỆT', (17, 'Còn'))],
+       cap='THƯỢNG HẢI · BẢN ĐỒ 1932', tone='color', maxw=1000, maxh=640, right=True),
+    P(17, 'nra', 'TƯỚNG LĨNH TRUNG HOA · THẬP NIÊN 1920', move='in'),
+    K(18, 'CƠN THỊNH NỘ\nCỦA HỌ LƯ', bg='police_ic'),
 ])
-CH['ch05'] = dict(hud={'k': 'CHƯƠNG 05', 't': 'THỨ HÀNG NẰM TRONG KHO'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
-    K(0, 'TRƯỚC TAM HÂM', ('THỨ HÀNG ẤY: THUỐC PHIỆN', (0, 'thuốc'), 'sm'), vid='c5'),
-    P(1, 'opium1', 'NGƯỜI HÚT THUỐC PHIỆN · TRANH NĂM 1858'),
-    DT(2, 'CHIẾN TRANH NHA PHIẾN LẦN THỨ NHẤT', '1839 – 1842', bg='patna'),
-    LD(3, 'HIỆP ƯỚC NAM KINH', [('MỞ', 'NĂM CẢNG'), ('TRONG ĐÓ', 'THƯỢNG HẢI')], bg='bund90'),
-    P(4, 'opium3', 'TIỆM HÚT THUỐC PHIỆN · KHOẢNG 1880'),
-    DT(5, 'NƯỚC ANH KÝ HIỆP ƯỚC CHẤM DỨT NHẬP KHẨU', '1907', bg='opiummap'),
-    DT(6, 'NHÀ THANH SỤP ĐỔ · THUỐC PHIỆN BÙNG LẠI', '1911', vid='c8'),
-    PR(7, 'opiummap', 'BẢN ĐỒ 1908', 'NƠI TRỒNG\nTHUỐC PHIỆN', [('MỘT BÀI TỔNG QUAN', (7, 'bài')), ('GIAI ĐOẠN 1928–1937', (7, 'viết'))], cap='TRUNG QUỐC · SÁCH NĂM 1908',
-       tone='color', maxw=640, maxh=720, right=True, circles=[(0.4, 0.62, 80, (7, 'Một'))]),
-    K(8, 'TƯỞNG PHẢN ĐỐI VỀ ĐẠO ĐỨC', ('NHIỀU BỘ TRƯỞNG: NGUỒN THU QUÝ', (8, 'nhiều'), 'sm'), bg='chiang26'),
-    K(9, 'TRONG CÙNG CHÍNH QUYỀN', ('THÁI ĐỘ KHÔNG GIỐNG NHAU', (9, 'thái'), 'sm'), bg='nra'),
-    S(10, 'KHÔNG Ở NGƯỜI HÚT', 'MÀ Ở NGƯỜI CẦM CỔNG', vid='c8'),
-    FL(12, 'THEO WIKIPEDIA TIẾNG ANH', 'ĐỖ NGUYỆT SANH', 'Gây dựng tài sản bằng buôn thuốc phiện', bg='bund30'),
-    P(13, 'cangku', 'KHO HÀNG HOÀNG KIM VINH · ẢNH NGÀY NAY'),
-    Q(15, 'AI ĐANG\nGÕ CỬA NHÀ ÔNG?', bg='jinling'),
+CH['ch05'] = dict(hud={'k': 'CHƯƠNG 05', 't': 'NGƯỜI BỊ BẮT GIỮ'}, bgm={'mood': 'tense', 'at': 0, 'gain': 0.12}, scenes=[
+    DT(None, 'HÔM SAU · ÔNG BỊ BẮT', '1924', bg='council'),
+    K(1, 'LƯ VĨNH TƯỜNG\nNỔI GIẬN', illus=pd(), bg='nra'),
+    S(2, 'QUÂN ĐỒN TRÚ\nGIỮ ÔNG', 'TRONG TAY QUÂN ĐỘI', bg='armored'),
+    K(4, 'NGƯỜI TỪNG\nXÉT XỬ', ('GIỜ NGỒI TRONG GIAN GIAM', (4, 'giờ'), 'sm'), illus=pd(), bg='police_ic'),
+    K(5, 'GIÓ BẤC QUA\nSONG SẮT', illus=PDV, vid=('c8',)),
+    P(6, 'police_anam', 'CẢNH SÁT TÔ GIỚI PHÁP · KHOẢNG 1908', tone='noir', move='in'),
+    DT(7, 'SỞ CẢNH SÁT PHÁP · CHO THÔI VIỆC', '1924', bg='council', srcnote='THEO WIKIPEDIA TIẾNG ANH'),
+    K(8, 'NGƯỜI PHÁP\nNÉ QUÂN PHIỆT', illus=pd(), bg='sikh'),
+    LD(9, 'WIKIPEDIA TIẾNG ANH', [('BỊ CHO THÔI VIỆC', '1924'), ('LÝ DO', 'ĐÁNH CON QUÂN PHIỆT')], bg='jinling'),
+    P(10, 'rueconsul', pd('PHỐ TÔ GIỚI PHÁP, GẦN BỐT MẠCH LAN'), tone='noir', move='out'),
+    FL(11, 'SÁCH NĂM 1930', 'CÁCH KỂ KHÁC', 'Mùa đông năm Giáp Tý, tự xin nghỉ', bg='nanking3'),
+    QU(12, 'Mùa đông năm Giáp Tý, vì vết thương chân cũ hễ trời âm u là tái phát, ông quyết xin thôi chức đốc sát.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', bg='nanking3'),
+    QU(13, 'Nhà cầm quyền Pháp một mực giữ lại; ông bất đắc dĩ nhận nghỉ, nhưng sau đó gặp việc vẫn giúp.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC HOÀNG KIM VINH', bg='jinling'),
+    OR(14, ('HAI LỜI CHÉP', 'KHÔNG KHỚP'), [('WIKIPEDIA', 'BỊ CÁCH CHỨC'), ('SÁCH 1930', 'TỰ XIN NGHỈ')], bg='rueconsul'),
+    S(15, 'AI ĐÚNG?', 'CÁC NGUỒN CHƯA ĐỦ ĐỂ PHÂN XỬ', bg='nanking1'),
+    S(16, 'MẤT HUY HIỆU', 'MẤT CẢ TỰ DO', bg='police_ic'),
+    K(17, 'MẠNG SỐNG\nTRONG TAY KẺ THÙ', bg='bund30'),
+    Q(18, 'AI ĐỦ SỨC\nGIẢI CỨU ÔNG?', vid=('c5',)),
 ])
-CH['ch06'] = dict(hud={'k': 'CHƯƠNG 06', 't': 'TAM HÂM VÀ CẬU HỌC TRÒ'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
-    DT(0, 'ĐỖ NGUYỆT SANH · SINH Ở PHỐ ĐÔNG', '1888', bg='jinling'),
-    K(1, 'CẬU VÀO TÔ GIỚI PHÁP', ('LÀM VIỆC VẶT TRONG NHÀ ÔNG', (1, 'làm'), 'sm'), bg='rueconsul'),
-    K(2, 'BÀ LÂM QUẾ SINH\nĐỂ MẮT ĐẾN CẬU', bg='nanking2'),
-    K(3, 'HOÀNG GIAO ĐỖ QUẢN\nMỘT SỐ ĐIỂM BÁN', vid='c5'),
-    LD(4, 'THEO BÁCH KHOA TIẾNG TRUNG · 1918', [('NĂM', '1918'), ('NGƯỜI 1', 'HOÀNG KIM VINH'), ('NGƯỜI 2', 'ĐỖ NGUYỆT SANH'), ('NGƯỜI 3', 'KIM ĐÌNH TÔN')], bg='police_anam'),
-    S(6, 'TAM HÂM', 'TÊN CỦA CÔNG TY', bg='nanking1'),
-    OR(8, ('CÔNG TY TAM HÂM', 'HAI TRANG, HAI BẢN'), [('BẢN THỨ NHẤT', '1918 · BA NGƯỜI'), ('BẢN THỨ HAI', 'THẬP NIÊN 1920 · THÊM TRƯƠNG KHIẾU LÂM')], bg='bund90'),
-    K(9, 'LỆCH VỀ NGƯỜI\nVÀ VỀ NĂM', bg='bund90'),
-    S(10, 'KHÔNG LỆCH:', 'TÊN TAM HÂM · THUỐC PHIỆN', bg='opium2'),
-    SP(11, 'THẦY VÀ TRÒ', ('police_anam', 'GHẾ CẢNH SÁT · TÔ GIỚI PHÁP'), ('opium3', 'THUỐC PHIỆN · TIỆM HÚT KHOẢNG 1880')),
-    K(13, 'HOÀNG KHI ẤY\nCHƯA VÀO THANH BANG', bg='council'),
-    K(14, 'ĐỖ VẪN LÀM VIỆC CHO ÔNG', ('CỜ BẠC · THUỐC PHIỆN', (14, 'như'), 'sm'), bg='nanking3'),
-    Q(15, 'BẠN THẤY CHỖ LẠ KHÔNG?', bg='rueconsul'),
-    DT(17, 'CHÍNH THỨC VÀO BĂNG · THEO WIKIPEDIA', '1927', bg='chiang26'),
-    FL(19, 'SÁCH NĂM 1930', 'MỤC CỦA ĐỖ NGUYỆT SANH', 'Mở bằng một câu khác hẳn', bg='jinling'),
-    QU(20, 'Ông hào phóng, trọng nghĩa, giúp người lúc cấp.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH', bg='police_ic'),
-    LD(22, 'MỤC ĐỖ NGUYỆT SANH · CÁC CHỨC', [('GIỚI THƯƠNG NHÂN', 'CHỦ TỊCH HỘI LIÊN HIỆP'), ('TÔ GIỚI', 'ỦY VIÊN NGƯỜI HOA'), ('NGÂN HÀNG', 'CHỦ TỊCH')], bg='nanking2'),
-    S(23, 'KHÔNG TAM HÂM', 'KHÔNG THUỐC PHIỆN', vid='c8'),
-    QU(25, 'Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM', bg='nanking1'),
-    P(26, 'zhang1', 'TRƯƠNG KHIẾU LÂM · THẬP NIÊN 1930', focus=[0.5, 0.25]),
-    K(27, 'RẼ SANG MỘT NHÀ HÁT', vid='c1'),
+CH['ch06'] = dict(hud={'k': 'CHƯƠNG 06', 't': 'CUỘC GIẢI CỨU VÀ SỰ ĐẢO VAI'}, bgm={'mood': 'mystery', 'at': 0, 'gain': 0.12}, scenes=[
+    K(None, 'CHỈ CÒN BIẾT\nTRÔNG CHỜ', ('NHỮNG NGƯỜI ANH EM GIANG HỒ', (0, 'những'), 'sm'), vid=('c8',)),
+    MP(1, 'jn', ['Hàng Châu', 'Thượng Hải']),
+    P(2, 'zhang1', 'TRƯƠNG KHIẾU LÂM · THẬP NIÊN 1930', move='in', focus=[0.5, 0.25]),
+    K(4, 'MŨI QUYẾT ĐỊNH\nỞ THƯỢNG HẢI', ('ĐỖ CHỌN TIỀN', (5, 'Đỗ'), 'acc'), bg='bundfc'),
+    CT(6, 1000000, ' ĐỒNG', 'HỒI ỨC: ĐỖ VẬN ĐỘNG GÓP', prefix='HƠN ', bg='nanking3', srcnote='THEO HỒI ỨC WIKIPEDIA DẪN LẠI'),
+    LD(7, 'SỐ TIỀN ẤY', [('LO CHO', 'HÀ PHONG LÂM'), ('CHỨC', 'HỘ QUÂN SỨ THƯỢNG HẢI')], bg='police_ic'),
+    K(8, 'TÀU XUÔI NGƯỢC', ('TRONG SƯƠNG SỚM', (8, 'trong'), 'sm'), illus=PDV, vid=('c6',)),
+    K(9, 'RƯƠNG TIỀN\nGIAO TRONG ĐÊM', illus=PDV, vid=('c5',)),
+    S(10, 'ÔNG ĐƯỢC THẢ', 'ĐỖ LÊN NHANH', bg='council'),
+    OR(12, ('KẾT NGHĨA', 'BA ĐẠI HANH'), [('HOÀNG KIM VINH', 'SINH 1868'), ('ĐỖ NGUYỆT SANH', 'SINH 1888'), ('TRƯƠNG', 'SINH 1877')], bg='bund30'),
+    LD(14, 'TRƯƠNG KHIẾU LÂM · HAI NGUỒN', [('TÊN', 'TRƯƠNG DẦN'), ('QUÊ', 'TỪ KHÊ · CHIẾT GIANG'), ('SINH', '1877')], bg='nanking3'),
+    QU(15, 'Rồi ông quen ông Hoàng Cẩm Dung và ông Đỗ Nguyệt Sanh, hai bên mến nhau, gặp nhau đã tiếc là muộn.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC TRƯƠNG KHIẾU LÂM', bg='nanking1'),
+    QU(16, 'Ông hào phóng, trọng nghĩa, giúp người lúc cấp.', 'HẢI THƯỢNG DANH NHÂN TRUYỆN · MỤC ĐỖ NGUYỆT SANH', type_at=(17, 'Ông'), qline=17, bg='police_ic'),
+    LD(18, 'CÂU TRUYỀN MIỆNG', [('HOÀNG KIM VINH', 'YÊU TIỀN'), ('TRƯƠNG KHIẾU LÂM', 'GIỎI ĐÁNH'), ('ĐỖ NGUYỆT SANH', 'BIẾT LÀM NGƯỜI')], bg='bund30'),
+    S(20, 'CHUYỂN GIAO\nQUYỀN LỰC', 'ÂM THẦM MÀ QUYẾT LIỆT', bg='council'),
+    K(21, 'HOÀNG MẤT CHỨC', ('DANH TIẾNG TỔN HẠI', (21, 'danh'), 'sm'), bg='police_anam'),
+    S(22, 'ĐỖ VỪA CỨU THẦY', 'VỪA LÊN NHANH', bg='bund30'),
+    SP(23, 'ĐỖ ĐIỀU HÀNH', ('opium3', 'THUỐC PHIỆN TÔ GIỚI PHÁP'), ('police_anam', 'CẢNH SÁT NGẦM ỦNG HỘ')),
+    S(24, 'HỌC TRÒ', 'CAO HƠN THẦY', bg='nanking2'),
+    OR(25, ('THẾ GIỚI NGẦM', 'CÁN CÂN LỆCH'), [('THẦY', 'HOÀNG KIM VINH'), ('TRÒ', 'ĐỖ NGUYỆT SANH')], bg='rueconsul'),
+    Q(26, 'NGƯỜI THẦY\nSẼ LÀM GÌ?', bg='rueconsul'),
 ])
 
 # ---------------------------------------------------------------- hậu kỳ
@@ -421,8 +463,8 @@ def kiem_tra_moc(name, scenes, lines):
     return errs
 
 
-def gan_clip(limit=5):
-    """Chọn clip cho cảnh có _vid: theo thứ tự ưu tiên, mỗi clip ≤ limit lần (long_gate: round(phút/6) = 5 cho ~29 phút),
+def gan_clip(limit=4):
+    """Chọn clip cho cảnh có _vid: theo thứ tự ưu tiên, mỗi clip ≤ limit lần (long_gate: round(phút/6) = 4 cho ≈26 phút ở 4,1 từ/giây; 5 nếu TTS chậm hơn),
     không lặp clip ở hai cảnh vid liền nhau trong chương và cách chương khác ≥ 1 chương khi còn lựa chọn."""
     used = Counter()
     last_ch = {}
@@ -437,7 +479,10 @@ def gan_clip(limit=5):
             good = [k for k in order if used[k] < limit and k != prev and last_ch.get(k, -9) < n]
             ok = good or [k for k in order if used[k] < limit and k != prev]
             if not ok:
-                s.pop('illus', None)       # hết clip: để gan_nen gán ảnh nền
+                if s['type'] == 'broll':
+                    raise SystemExit(f'{ch}: hết clip cho cảnh broll at={s.get("at")}: giảm số cảnh vid')
+                if s.get('illus') == TD:
+                    s.pop('illus', None)       # hết clip: để gan_nen gán ảnh nền
                 continue
             k = ok[0]
             used[k] += 1
@@ -466,9 +511,50 @@ def gan_nen():
             prev = s.get('bg') or s.get('img')
 
 
-CHAPTER_TITLES = ['HAI TỜ BÁO, 20/5/1951', 'BỐN MỐC, BỐN CÁCH KỂ', 'ĐỨA TRẺ TÔ CHÂU', 'CHIẾC GHẾ CỦA NGƯỜI THÁM TỬ',
-                  'MỘT TRANG SÁCH NĂM 1930', 'THỨ HÀNG NẰM TRONG KHO', 'TAM HÂM VÀ CẬU HỌC TRÒ', 'NGƯỜI ĐÀO HÁT VÀ ĐÊM BỊ BẮT',
-                  'KHU VƯỜN Ở TÀO HÀ KÍNH', 'MÙA XUÂN 1927', 'ĐẠI THẾ GIỚI', 'NGƯỜI Ở LẠI', 'BẢN TỰ THÚ', 'BA TỜ GIẤY, MỘT NGƯỜI']
+GENERIC = ['bund30', 'bundfc', 'bund90', 'jinling', 'nanking1', 'nanking2', 'nanking3', 'rueconsul', 'sikh', 'metropole', 'fc37']
+
+
+def chia_nen():
+    """Nền thẻ chữ chỉ là ảnh phố Thượng Hải mờ phía sau: dàn đều các ảnh phố chung, mỗi ảnh ≤ trần, không trùng cảnh liền trước."""
+    uses = Counter(s['bg'] for v in CH.values() for s in v['scenes'] if s.get('bg') in GENERIC)
+    cap = -(-sum(uses.values()) // len(GENERIC)) + 1
+    for ch, v in CH.items():
+        prev = None
+        for s in v['scenes']:
+            bg = s.get('bg')
+            if ch != 'ch00' and bg in GENERIC and s['type'] in CARD_TYPES:
+                alt = [x for x in GENERIC if x != prev and uses[x] < cap and x != bg]
+                if uses[bg] > cap and alt:
+                    pick = min(alt, key=lambda x: (uses[x], GENERIC.index(x)))
+                    uses[bg] -= 1
+                    uses[pick] += 1
+                    s['bg'] = bg = pick
+            prev = s.get('bg') or s.get('img')
+
+
+CHAPTER_TITLES = ['CÂY CHỔI TRƯỚC ĐẠI THẾ GIỚI', 'ĐỨA TRẺ TÔ CHÂU', 'CHIẾC HUY HIỆU HAI MẶT', 'ĐẾ CHẾ KHÓI ĐEN',
+                  'ĐÒN GHEN Ở NHÀ HÁT', 'NGƯỜI BỊ BẮT GIỮ', 'CUỘC GIẢI CỨU VÀ SỰ ĐẢO VAI', 'KHU VƯỜN ẨN MÌNH',
+                  'MÙA XUÂN ĐẪM MÁU 1927', 'SỰ THẬT DƯỚI TRANG SÁCH 1930', 'LÂU ĐÀI CỦA NHỮNG CÁM DỖ',
+                  'KẺ Ở LẠI THÀNH PHỐ ĐỔ NÁT', 'BẢN TỰ THÚ MÙA XUÂN 1951', 'CÁI GIÁ CỦA HAI BỜ QUYỀN LỰC']
+
+
+def kiem_pd():
+    """Mỗi câu {pd} trong script.md phải nằm trong cảnh có nhãn PHỎNG DỰNG (storytelling-guide §14.3)."""
+    text = (D / 'script.md').read_text(encoding='utf-8')
+    parts = re.split(r'^## CH(\d\d)[^\n]*\n', text, flags=re.M)
+    errs = []
+    for k in range(1, len(parts), 2):
+        name, body = f'ch{parts[k]}', parts[k + 1].split('\n## Ghi chú')[0]
+        lines = [x for x in body.split('\n') if x.strip() and not x.startswith(('---', '**'))]
+        scenes = CH[name]['scenes']
+        starts = [0 if s.get('at') is None else (s['at'] if isinstance(s['at'], int) else s['at'][0]) for s in scenes]
+        for i, ln in enumerate(lines):
+            if '{pd}' in ln:
+                j = max(x for x in range(len(scenes)) if starts[x] <= i)
+                if 'PHỎNG DỰNG' not in str(scenes[j].get('illus') or ''):
+                    errs.append(f'{name}: câu {i} {{pd}} nằm trong cảnh #{j} ({scenes[j]["type"]}) không có nhãn PHỎNG DỰNG')
+    return errs
+
 
 if __name__ == '__main__':
     sys.modules['gen_scenes'] = sys.modules[__name__]
@@ -479,7 +565,9 @@ if __name__ == '__main__':
     CH.update(module.CH)
     clip_used = gan_clip()
     gan_nen()
-    errs = []
+    chia_nen()
+    print('clip:', dict(clip_used), '· cảnh vid:', sum(clip_used.values()), '· tổng cảnh:', sum(len(v['scenes']) for v in CH.values()))
+    errs = kiem_pd()
     img_uses = Counter(s['img'] for v in CH.values() for s in v['scenes'] if s.get('img'))
     errs += [f'ảnh {k} dùng {n} lần (img > 3)' for k, n in img_uses.items() if n > 3]
     errs += [f'scene dùng phím ảnh lạ: {k}' for v in CH.values() for s in v['scenes'] for k in (s.get('img'), s.get('bg')) if k and k not in IMGS]
