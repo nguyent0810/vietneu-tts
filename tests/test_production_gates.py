@@ -39,7 +39,7 @@ def test_long_gate_pass_fixture():
 
 
 def test_long_gate_fail_fixture():
-    row = {"id": "long_bad", "script": ["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008."]}
+    row = {"id": "long_bad", "script": ["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008, 2020, 2032, 2044, 2056 và 2068."]}
     assert any("cau_dai" in issue for issue in long_script_issues(row))
 
 
@@ -49,15 +49,16 @@ def test_long_gate_keeps_existing_warnings_advisory():
 
 
 def test_long_gate_includes_runner_retention_findings_as_warnings():
-    row = {"id": "retention_warn", "script": ["Người kể chuyện đi qua con đường làng trong buổi sớm yên bình." for _ in range(8)]}
+    row = {"id": "retention_warn", "script": ["Người kể chuyện đi qua con đường làng trong buổi sớm yên bình." for _ in range(30)]}
     errors, warnings = long_script_report(row)
     assert errors == []
-    assert warnings
+    assert any("không ngắt nhịp" in message for message in warnings)
+    assert not any("câu ngắn <= 6" in message for message in warnings)
 
 
 def test_long_gate_blocks_retention_error_fixture_before_tts(tmp_path, monkeypatch):
     row = {"id": "retention_error", "lane": "long", "series": "bud",
-           "script": ["Đây là một câu rất dài có nhiều từ được nói liên tục để minh họa lỗi nhịp và vượt quá ba mươi lăm tiếng nhằm kiểm tra cổng retention trước khi hệ thống gọi TTS."]}
+           "script": [" ".join(["lời"] * 71) + "."]}
     monkeypatch.setattr(hf_batch_render, "render_tts", lambda *a, **kw: pytest.fail("TTS must not run"))
     ok, note = hf_batch_render.render_one(row, tmp_path, "draft")
     assert not ok

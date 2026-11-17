@@ -75,7 +75,7 @@ def test_doan_khong_ngat_nhip_khop_runner_tren_plan_that():
 
 @pytest.mark.parametrize("sent", [
     "Rồi tham ái, uể oải, sợ hãi, hoài nghi, và cả danh vọng có được bằng cách sai trái.",
-    "Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008.",
+    "Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008 và 2020.",
     "Ngài đi qua Lâm Tì Ni, Bồ Đề Đạo Tràng, Lộc Uyển, Câu Thi Na và Vương Xá.",
 ])
 def test_bat_liet_ke_4_muc(sent):
@@ -122,9 +122,9 @@ def test_mo_dau_tot_khong_bi_bat():
     assert not c & {"mo_dau_khong_cu_the", "cau2_khong_cu_the", "meta_som", "chuong_dinh_nghia_som", "chua_tra_som"}
 
 
-def test_cau_dai_theo_tieng_doc_la_loi():
-    rep = LL.lint(_row(["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008."]))
-    assert any(lv == LL.ERROR and c == "cau_dai" for lv, c, _ in rep["issues"])
+def test_cau_dai_theo_tieng_doc_la_canh_bao():
+    rep = LL.lint(_row(["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008 và 2020."]))
+    assert any(lv == LL.WARN and c == "cau_dai" for lv, c, _ in rep["issues"])
 
 
 def test_bay_tts():
@@ -155,9 +155,9 @@ def test_ket_chuong_bang_nhu_vay():
 
 
 def test_cau_dai_va_liet_ke_dung_muc():
-    dai = "Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008."
+    dai = "Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008 và 2020."
     rep = LL.lint(_row([dai, "Bạn giữ câu hỏi này không?"]))
-    assert any(lv == LL.ERROR and c == "cau_dai" for lv, c, _ in rep["issues"])
+    assert any(lv == LL.WARN and c == "cau_dai" for lv, c, _ in rep["issues"])
     assert any(lv == LL.WARN and c == "liet_ke" for lv, c, _ in rep["issues"])
 
 
@@ -233,7 +233,7 @@ def test_cli_strict_va_ban_nhap_txt(tmp_path, capsys):
     ok.write_text("Đêm ấy, một người đàn ông ngồi dưới gốc cây.\n**Chương một**\nÔng ngồi đến sáng.\n", encoding="utf-8")
     assert LL.main([str(ok), "--strict"]) == 0
     bad = tmp_path / "bad.json"
-    bad.write_text(json.dumps([{"id": "x", "script": ["Tuổi Tý gồm 1960, 1972, 1984, 1996 và 2008, còn tuổi Sửu gồm 1961."]},
+    bad.write_text(json.dumps([{"id": "x", "script": ["Tuổi Tý gồm 1960, 1972, 1984, 1996 và 2008, còn tuổi Sửu gồm 1961, 1973, 1985, 1997 và 2009."]},
                                {"id": "y", "script": ["Câu."]}], ensure_ascii=False), encoding="utf-8")
     assert LL.main([str(bad), "--only", "x", "--strict"]) == 1
     out = capsys.readouterr().out

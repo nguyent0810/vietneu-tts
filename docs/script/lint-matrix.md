@@ -4,8 +4,8 @@ Chỉ mã HBR/Long lint/hook library/shortbuild được sửa theo task. Không
 
 | Đường gọi | LỖI giữ/thêm | CB/gợi ý và giới hạn |
 |---|---|---|
-| long_script_lint → production_gates.long_script_report | cau_dai, nhieu_chi, ten_con_vat, tts_khoa_dong, tts_van_tay_lech; mới cau_tron theo tts.pause_ctx/ngày merge, markup_leak | Bốn check lookup/tuyển tập hạ CB: giờ từ clock nháp và nghĩa/đoán chương không tất định; nguồn BUD vẫn phải review receipt, không có check sutta tự động trong lint này. |
-| HBR.retention_issues | Không chặn | Giữ các finding; đếm tiếng đọc thay token để khớp cau_dai, night/tra_cuu không quota câu ngắn. |
+| long_script_lint → production_gates.long_script_report | cau_dai >70 tiếng đọc, nhieu_chi, ten_con_vat, tts_khoa_dong, tts_van_tay_lech; mới cau_tron theo tts.pause_ctx/ngày merge, markup_leak | cau_dai 46–70 là CB; bỏ finding it_cau_ngan (078). Bốn check lookup/tuyển tập hạ CB: giờ từ clock nháp và nghĩa/đoán chương không tất định; nguồn BUD vẫn phải review receipt, không có check sutta tự động trong lint này. |
+| HBR.retention_issues | Không chặn | Câu >45 tiếng đọc chỉ CB, không yêu cầu tách vế; bỏ finding quota câu ngắn cho mọi Long (078). Bộ tách câu chung tools/prose_split.py giữ số/viết tắt/ba chấm giữa câu. |
 | library.tools.hook_lint → production_gates → HBR/short_batch_runner | KHUNG_DAU_TRONG giữ kiểm hình | TRUU_TUONG hạ gợi ý; KHONG_DANH_TU_CU_THE đã gợi ý, vẫn in ra khi qua adapter; tool/dữ liệu thiếu vẫn báo lỗi kỹ thuật. |
 | short_v2_issues / short_tone_issues | API tương thích trả rỗng; không còn chặn heuristic | Logic chuyển short_v2_warnings/short_tone_warnings, gọi/in trong HBR và guard. V2 token budget/định nghĩa/câu1/insight/novelty/tone là ước đoán văn phong; không khẳng định duplicate-title là lặp nguyên văn lời. |
 | short_story_issues → HBR/guard | Dòng cuối phẩy, từ29/11; thiếu ngày áp mới; hiểu publish_at/effective_date | Rào nguồn >1 chuyển short_source_warnings, có thể cần khung làm rõ nghĩa; không thêm check BUD phỏng dựng. |
@@ -16,3 +16,6 @@ Chỉ mã HBR/Long lint/hook library/shortbuild được sửa theo task. Không
 | V2 Long script_lines.py (chưa sửa) | Integrity/roadmap/meta legacy | RAO_NGUON/NHIP_DEU/NHAY_MOC/META_NGUOI_KE và beat30s đã CB; guide mới không nhận đây là đồng bộ mọi cổng. |
 
 Chạy `.venv/bin/python long_script_lint.py <plan> --strict`: chỉ exit1 khi có LỖI; exit0 mặc định không chứng minh0 lỗi. Segments/manifest khớp văn bản, giọng, pause mới dùng timing cuối; bước kiểm sau TTS giữ nguyên ở workflow sản xuất.
+
+
+078: văn xuôi → `tools/prose_to_script.py` → plan → Lead đọc thử CH00–01 qua `tools/tts_sample.py` → viết tiếp. Short không đổi. Cổng 120s chưa hỗ trợ cắt ảnh theo từ giữa câu; câu 40 tiếng/13s vẫn bị chặn khi một cảnh tĩnh >4s hoặc động >8s. Không nới cổng, không sửa bridge/Oracle trong ticket này.

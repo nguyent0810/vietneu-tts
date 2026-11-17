@@ -68,12 +68,12 @@ def test_lint_cta_over_two_warns_and_night_is_separate():
 
 
 def test_retention_counts_spoken_years_and_is_advisory():
-    r = row(script=["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996 và 2008."])
-    assert L.tokens(r["script"][0]) < 35 < L.syllables(r["script"][0])
-    assert any("> 35 tiếng" in x for x in H.retention_issues(r))
+    r = row(script=["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008 và 2020."])
+    assert L.tokens(r["script"][0]) < 45 < L.syllables(r["script"][0])
+    assert any("> 45 tiếng" in x for x in H.retention_issues(r))
 
 
-@pytest.mark.parametrize("extra", [{"kind": "night"}, {"format": "tra_cuu"}])
+@pytest.mark.parametrize("extra", [{}, {"kind": "night"}, {"format": "tra_cuu"}])
 def test_retention_no_short_sentence_quota_for_night_or_lookup(extra):
     r = row(script=["Người kể chuyện đứng bên cánh cửa và nhìn ra sân."] * 4, **extra)
     assert not any("câu ngắn <= 6" in x for x in H.retention_issues(r))

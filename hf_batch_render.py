@@ -691,11 +691,10 @@ def short_hook_hints(row: dict) -> list[str]:
 
 
 def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
-    """Video dài, theo sổ tay giữ chân của Youtube_Creator_V2 (motion/long/RETENTION.md), đo trên CÂU NÓI (tách
-    theo . ! ?): câu > 35 tiếng (TTS hụt hơi, người nghe mất mạch); câu ngắn <= 6 tiếng (nhịp đỉnh) ít hơn 1/8
-    số câu; đoạn > 90 giây không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương). Chỉ cảnh báo.
-    Đo 04/10/2026: F10-B14 đạt 2 luật sau, thiếu câu ngắn (F14 1/48, F10 1/43)."""
-    from long_script_lint import syllables
+    """Cảnh báo câu >45 tiếng đọc và đoạn >90s không ngắt nhịp.
+    078: bỏ quota câu ngắn; văn xuôi được đọc nguyên câu, không ép tách vế.
+    """
+    from long_script_lint import sentences, syllables
 
     vis, sents, cur, worst, at = row.get("visuals") or {}, [], 0.0, 0.0, 0
     for i, line in enumerate(row.get("script") or [], 1):
@@ -703,7 +702,7 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
             cur = 0.0
             continue
         t = line.replace("**", "")
-        ss = [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", t) if x.strip()]
+        ss = sentences(t)
         sents += [(i, syllables(x)) for x in ss]
         hit = ("?" in t or re.search(r"\d", t) or any(syllables(x) <= 6 for x in ss)
                or (vis.get(str(i)) or {}).get("type") in ("quote", "ask", "stamp"))
@@ -711,11 +710,8 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
         if cur > worst:
             worst, at = cur, i
     out = []
-    if (long_ := [i for i, n in sents if n > 35]):
-        out.append(f"{len(long_)} câu nói > 35 tiếng (câu {sorted(set(long_))[:6]}) -- tách đôi")
-    punch = sum(n <= 6 for _, n in sents)
-    if row.get("kind") != "night" and row.get("format") != "tra_cuu" and sents and punch < len(sents) / 8:
-        out.append(f"câu ngắn <= 6 tiếng: {punch}/{len(sents)} -- xem lại nhịp theo ý, không đệm câu để đủ tỷ lệ")
+    if (long_ := [i for i, n in sents if n > 45]):
+        out.append(f"{len(long_)} câu nói > 45 tiếng (câu {sorted(set(long_))[:6]}) -- nghe thử nguyên câu")
     if worst > 90:
         out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi/con số/câu ngắn")
     return out

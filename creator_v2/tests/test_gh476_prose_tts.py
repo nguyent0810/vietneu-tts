@@ -48,3 +48,11 @@ def test_no_length_limit(n):
         errors = craft.audio_problems(ch)
     assert not any('vượt' in x for x in errors)
     assert not any('vượt' in str(x.message) for x in found)
+
+
+def test_shared_vietnamese_splitter():
+    from tools.prose_split import split_sentences
+    assert prose.split_sentences is split_sentences
+    text = 'Có 1.800 người ở TP.HCM. Có hoa, lá, v.v. trên bàn... rồi đèn tắt. “Đi thôi!”'
+    assert prose.split_sentences(text) == [
+        'Có 1.800 người ở TP.HCM.', 'Có hoa, lá, v.v. trên bàn... rồi đèn tắt.', '“Đi thôi!”']
