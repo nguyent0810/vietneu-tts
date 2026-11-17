@@ -26,7 +26,9 @@ Code này chuyển từ repo `Youtube_Creator_V2` sang ngày 03/11/2026 (issue #
 
 ## Các cổng tự động (đừng tắt, đừng lách)
 
-- `motion/long/floor.py`: sàn sản xuất. Từ chối `render`, `final`, `publish` khi kịch bản dưới 5.000 âm tiết, dưới 40 ảnh, dưới 30 cảnh b-roll, dưới 14 loại cảnh, kinetic trên 38%, chữ trên nền trống trên 12%, hoặc còn cảnh `auto`. Ngưỡng lấy từ sáu Long đã đăng. **Bị chặn nghĩa là video chưa đạt, không phải cổng sai**: bổ sung tư liệu và kịch bản, đừng hạ ngưỡng.
+- `motion/long/floor.py`: sàn sản xuất. Từ chối `render`, `final`, `publish` khi kịch bản dưới 5.000 âm tiết, dưới 40 ảnh, dưới 30 cảnh b-roll, dưới 14 loại cảnh, kinetic trên 38% / chữ nền trống trên 12% cho Long legacy, hoặc còn cảnh `auto`. Ngưỡng lấy từ sáu Long đã đăng. **Bị chặn nghĩa là video chưa đạt, không phải cổng sai**: bổ sung tư liệu và kịch bản, đừng hạ ngưỡng.
+- **Ngân sách chữ & lặp ảnh (076):** Long mới theo `_legacy_topics.json` (#275) dùng `tools/visual_mix.py`: chữ >12% giây cảnh báo, >15% lỗi; `spec.text_budget_reason` hạ lỗi chữ thành cảnh báo. Kinetic/slam/quote/question là thẻ chữ toàn màn hình kể cả có ảnh/clip nền; date/counter chỉ tính khi nền trống. Chữ khoá overlay trên cảnh ảnh/clip, thẻ chương, bảng tra và đồ hoạ dữ liệu không tính. Ảnh tĩnh >4 lượt cảnh báo, >6 lỗi, crop/camera/layout không đổi danh tính; style #258 tách danh tính. <4 file ảnh khác nhau/phút chỉ cảnh báo. Long cũ/Short chỉ in số của cổng mới; bước `html` in bảng phân bố, ghi rõ khi ước thời lượng. Không đổi cổng 120s đầu.
+- Thiếu hình: tham khảo 8 bậc **clip có phép/PD → AI phỏng tác (§15) → ảnh pano/camera/parallax → đồ hoạ dữ liệu → map/timeline/org → vật thể tư liệu → style #258 → minh hoạ chung**; kiểm kê tư liệu trước khi viết cảnh. Xem `docs/pm/storytelling-guide.md`, mục Ngân sách chữ & lặp ảnh.
 - `motion/variety.py audit`: nhạc nền và look phải khác ba video gần nhất.
 - `motion/long/lint_html.py`, `craft.py`: lỗi con dấu, tiêu đề thẻ, clip HDR, câu quá dài.
 

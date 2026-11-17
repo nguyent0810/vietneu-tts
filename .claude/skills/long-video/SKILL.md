@@ -64,6 +64,7 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
   định kỳ để lấy quẻ mới). Quẻ chưa có: dùng nguyên văn chữ Hán có nguồn, nói rõ là diễn ý.
 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
+
 - Dựng plan Long mới từ script/base: `python tools/long_plan_build.py --script <txt> --id <id> --series bud|fs --base <plan.json> --out <plan.json>`.
 - Có thể truyền `--tables <marker_visuals.json>` để gắn bảng/list theo đúng ghi chú marker trong kịch bản.
 - Bộ số liệu series `tuổi × tháng âm`: `.venv/bin/python tools/fs_month_tuoi.py <chi> --year <năm âm> --month <tháng âm> --out-dir <dir>` tạo `t<tháng>_<chi>_facts.json` và `t<tháng>_<chi>_tables.json`.
@@ -92,6 +93,14 @@ thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú phá
   dọc (chân dung) bridge tự đặt vào khung 16:9 (chân dung giữa, nền mờ hai bên). Một ảnh không dùng hai lần trong
   cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).
   Thay nội dung ảnh local mà giữ tên thì chương có ảnh ấy tự render lại (khoá chương băm nội dung file).
+
+
+### Ngân sách chữ & lặp ảnh (076, 18/11/2026)
+- Kiểm kê ảnh trước khi viết cảnh; thiếu thì tra kho/tạo ảnh thay vì cắt lặp một ảnh.
+- `tools/visual_mix.py` đo **theo giây**, in thêm số cảnh. Long mới: chữ >12% cảnh báo, >15% lỗi; `text_budget_reason` có nội dung hạ lỗi chữ thành cảnh báo. `word`, `quote`, `ask`, chữ khoá nền trống và `list` tính là chữ; thẻ chương, `lookup`/`ledger`, đồ hoạ dữ liệu và chữ phủ ảnh không tính.
+- Cùng file ảnh tĩnh >4 lượt cảnh báo, >6 lỗi; crop/cine/layout không đổi danh tính. Style #258 tách danh tính lặp; ảnh khác nhau/phút vẫn đếm file gốc. <4 ảnh/phút chỉ cảnh báo. Short/bảng tra và Long cũ chỉ in số.
+- Long mới FS/BUD/VSD: `layout_policy: v2` và `day >= 2026-11-18`; thiếu `day` dùng `pause_ctx` ở plan hoặc `tts`. Chưa TTS: ghi rõ **ước** theo runner 185 tiếng/phút, tối thiểu 1s/câu và nghỉ .5s. Cổng 120s đầu giữ nguyên, cổng này không thêm độ dài cảnh cứng.
+- Gợi ý lấp chỗ thiếu hình theo 8 bậc: (1) clip thật/phim PD có giấy phép; (2) ảnh AI phỏng tác theo luật kênh; (3) ảnh tư liệu với pano/camera/parallax; (4) đồ hoạ dữ liệu; (5) bản đồ/timeline/quan hệ; (6) vật thể tư liệu như file/print/book/source/ledger; (7) style woodcut/pencil/film16/blueprint/papercut/oneline; (8) minh hoạ chung. Đây là gợi ý, không phải luật chặn; BUD vẫn theo luật kinh và hình Đức Phật.
 
 ### 4c. Làm giàu cảnh cho plan mới (038)
 Builder gọi `library.tools.plan_enrich.enrich_long_plan(plan, "bud"|"fs")`, sau đó `hf_batch_render.save_plan_rows(out, [plan], channel=..., legacy=False)` để wire giọng/âm, đóng dấu layout v2 và áp gợi ý style. Builder tập cũ (`build_B*`, `build_F*`, `build_p2/p3/p4`) không chạy lại.
