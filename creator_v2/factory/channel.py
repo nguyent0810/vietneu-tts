@@ -170,6 +170,7 @@ class Upload:
     publish_at: str | None          # ISO Z; None chỉ khi unscheduled=True
     category: str | None = None     # None -> mặc định kênh (chỉ cho short)
     thumbnail: Path | None = None
+    ai_faces: bool = False
 
 
 @dataclass(frozen=True)
@@ -585,6 +586,8 @@ class Channel:
         if u.kind == "short" and SHORTS_MARKER.lower() not in description.lower():
             description = f"{description}\n\n{SHORTS_MARKER}".strip()
         status = {"privacyStatus": "private", "selfDeclaredMadeForKids": False}
+        if u.ai_faces:
+            status["containsSyntheticMedia"] = True
         if u.publish_at:
             status["publishAt"] = u.publish_at
         return {

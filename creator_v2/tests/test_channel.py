@@ -59,6 +59,16 @@ def test_upload_lands_private_and_scheduled_never_public(env):
     assert env["yt"].inserts == 1
 
 
+@pytest.mark.parametrize("ai_faces", [True, False])
+def test_upload_synthetic_media_flag(env, ai_faces):
+    result = ch(env).upload(up(env, ai_faces=ai_faces))
+    status = env["yt"].get_video(result.video_id, "status")["status"]
+    if ai_faces:
+        assert status["containsSyntheticMedia"] is True
+    else:
+        assert "containsSyntheticMedia" not in status
+
+
 def test_same_slug_twice_reuses_the_video_and_never_uploads_again(env):
     first = ch(env).upload(up(env))
     again = ch(env).upload(up(env))
