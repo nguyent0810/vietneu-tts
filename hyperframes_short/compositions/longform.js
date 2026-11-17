@@ -124,34 +124,14 @@
   const layouts = {
     // Ảnh tràn khung, tối dần xuống đáy để phụ đề đọc được.
     full: {
-      // Chữ khoá của câu (cụm **đánh dấu**) bật lên góc trên, đúng lúc được đọc.
-      build(inner, ln) {
-        inner.appendChild(el("div", "lf-full-shade"));
-        const hot = (ln.key_parts || []).filter((p) => p.hot).map((p) => p.t).join(" ");
-        if (hot && hot.length <= 34) {
-          const c = el("div", "lf-callout");
-          c.appendChild(el("div", "bar"));
-          const t = el("div", "tx");
-          hot.split(/\s+/).forEach((w) => t.appendChild(el("span", "", w)));
-          c.appendChild(t); inner.appendChild(c);
-        }
-      },
-      enter(tl, inner, ln) {
-        const c = inner.querySelector(".lf-callout"); if (!c) return;
-        const first = (ln.key_parts || []).find((p) => p.hot);
-        const w = first && (ln.words || []).find((x) => x.hot);
-        const t = w ? w.t : ln.start + .4;
-        tl.fromTo(c.querySelector(".bar"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: .35, ease: "power3.out" }, t - .1);
-        tl.fromTo(c.querySelectorAll(".tx span"), { x: 30, opacity: 0 },
-          { x: 0, opacity: 1, duration: .45, ease: "power4.out", stagger: .05 }, t);
-      },
-      enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
+      build(inner) { inner.appendChild(el("div", "lf-full-shade")); },
     },
     // Ảnh bên trái, chữ bên phải -- gương của split.
     split_r: {
       build(inner, ln) {
+        if (!(ln.key_parts || []).some((p) => p.hot)) return;
         const w = el("div", "lf-split lf-split-right card-box");
-        const key = el("div", "lf-split-key", (ln.key_parts || []).map((p) => p.t).join(" "));
+        const key = el("div", "lf-split-key", (ln.key_parts || []).filter((p) => p.hot).map((p) => p.t).join(" "));
         if (key.textContent.length > 26) key.classList.add("long");
         w.appendChild(key); w.appendChild(el("div", "lf-split-rule"));
         inner.appendChild(w);
@@ -190,8 +170,9 @@
     // Ảnh bên phải, ý chính của câu bên trái -- mỗi câu nối tiếp thay chữ.
     split: {
       build(inner, ln) {
+        if (!(ln.key_parts || []).some((p) => p.hot)) return;
         const w = el("div", "lf-split card-box");
-        const key = el("div", "lf-split-key", (ln.key_parts || []).map((p) => p.t).join(" "));
+        const key = el("div", "lf-split-key", (ln.key_parts || []).filter((p) => p.hot).map((p) => p.t).join(" "));
         if (key.textContent.length > 26) key.classList.add("long");
         w.appendChild(key);
         w.appendChild(el("div", "lf-split-rule"));
@@ -1232,26 +1213,7 @@
     },
   };
 
-  // ---- 3) Kính lỏng trên ảnh tràn khung: thẻ chữ khoá bằng kính thay chữ trần ----
-  const fullBase = layouts.full;
-  layouts.full = {
-    build(inner, ln) {
-      ln._fullSkin = ln._fullSkin || pick("fullskin", ["text", "glass"]);
-      fullBase.build(inner, ln);
-      const c = inner.querySelector(".lf-callout");
-      if (c && ln._fullSkin === "glass") c.classList.add("lf-glass");
-    },
-    enter(tl, inner, ln) {
-      fullBase.enter(tl, inner, ln);
-      const c = inner.querySelector(".lf-callout.lf-glass");
-      if (c) {  // tấm kính vào CÙNG lúc chữ khoá được đọc, không để kính rỗng chờ chữ
-        const w = (ln.words || []).find((x) => x.hot), t = (w ? w.t : ln.start + .4) - .15;
-        tl.fromTo(c, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .4, ease: "power3.out" }, t);
-        sheen(tl, c, t + .4);
-      }
-    },
-    enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
-  };
+  // ---- 3) Ảnh full không gắn thêm thẻ chữ; nhấn ý dùng visual beat riêng ----
 
   // ---- 4) Bút dạ quang / nét vẽ tay gắn vào các sơ đồ có sẵn ----
   // Gắn thêm vào một sơ đồ có sẵn: `measure` chạy NGAY SAU khi dựng (lúc chưa có
@@ -2828,7 +2790,8 @@
   const keycard = {
     build(inner, ln, i, ctx) {
       const hot = (ln.key_parts || []).filter((p) => p.hot).map((p) => p.t).join(" ");
-      const key = clean(hot || (ln.key_parts || []).map((p) => p.t).join(" ")).replace(/[.:;,!?]+$/, "");
+      if (!hot) return;
+      const key = clean(hot).replace(/[.:;,!?]+$/, "");
       ln._kc = pick("keycard", KC_VARIANTS());
       const st = el("div", "lf-stage kc kc-" + ln._kc); inner.appendChild(st);
       const bs = blobs(st, 2);
