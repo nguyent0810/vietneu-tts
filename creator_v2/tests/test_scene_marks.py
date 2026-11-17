@@ -91,11 +91,11 @@ def test_anchor_ignores_zoom_and_reads_nested_at():
     assert len(bad) == 1 and "label" in bad[0]
 
 
-def test_audio_craft_catches_long_sentence_and_quy_vi():
+def test_audio_craft_allows_long_sentence_and_catches_quy_vi():
     words = " ".join(["từ"] * 71)
     chs = [{"name": "ch00", "lines": [words + "?", {"t": "Dạ quý vị.", "p": 1.0}, "Bạn thấy không?"]}]
     msgs = craft.audio_problems(chs)
-    assert any("vượt 70" in m for m in msgs)
+    assert not any("vượt" in m for m in msgs)
     assert any("quý vị" in m for m in msgs)
 
 
