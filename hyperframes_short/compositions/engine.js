@@ -339,14 +339,14 @@ window.HF = (function () {
       } else if (ln.media_cont && layoutOf(ln)) {
         s.classList.add("has-media");
         layoutOf(ln).build(inner, ln, i, { rand, V });
-        mediaTag(inner, LINES[ln.media_cont - 1].media);
+        // Nhãn chỉ xuất hiện trên cảnh gốc, không bị lặp lại ở các câu giữ ảnh.
       } else if (ln.media_cont) {
         // Câu nối tiếp của một ảnh đang giữ (video dài): dựng lại ĐÚNG khung
         // đó ở trạng thái đứng yên, không có hoạt cảnh vào. Ảnh vẫn là clip
         // của câu gốc, chạy xuyên suốt bên dưới.
         s.classList.add("has-media");
         (STYLE.buildMediaScene || defaultMediaScene)(inner, ln, i, LINES.length, { rand, V });
-        mediaTag(inner, LINES[ln.media_cont - 1].media);
+        // Nhãn chỉ xuất hiện trên cảnh gốc, không bị lặp lại ở các câu giữ ảnh.
       } else if (KC2 && LONG && LONG.keycard) {
         // Plan "kinetic": thẻ chữ động thế hệ mới thay cảnh chữ khoá đứng yên của style.
         s.classList.add("has-visual");
@@ -434,6 +434,17 @@ window.HF = (function () {
     }
 
     const tl = gsap.timeline({ paused: true });
+    if (LONG_MODE()) {
+      scenes.forEach((scene, i) => {
+        const tag = scene.querySelector(".lf-media-tag");
+        const ln = LINES[i];
+        if (!tag || !ln || !ln.media || !ln.media.tag) return;
+        const t0 = Number(ln.start) || 0;
+        tl.fromTo(tag, { autoAlpha: 0, y: 12 },
+          { autoAlpha: 1, y: 0, duration: .28, ease: "power2.out" }, t0 + .12);
+        tl.to(tag, { autoAlpha: 0, y: -5, duration: .28, ease: "power2.in" }, t0 + 2.22);
+      });
+    }
 
     if (STYLE.ambient) STYLE.ambient(tl, DUR, { rand, V, root });
     if (LONG && LONG.ambient) LONG.ambient(tl, DUR, { rand, V, root, LINES });  // hạt bay, vệt sáng
@@ -712,28 +723,20 @@ window.HF = (function () {
     tl.seek(0);
   }
 
-  // Video dài: nhãn loại tư liệu (TƯ LIỆU / ẢNH MINH HOẠ / VIDEO MINH HOẠ) + dòng ghi nguồn, góc trên phải.
-  // Chỉ dựng khi bridge truyền label (plan video dài); short giữ nguyên như cũ.
+  // Video dài: nhãn nhận diện chỉ dựng khi plan có `media.tag`.
   function mediaTag(inner, m) {
-    if (!LONG_MODE() || !m || !m.label) return;
-    const tag = el("div", "lf-media-tag");
-    tag.appendChild(el("span", "lf-media-label", m.label));
-    if (m.credit) tag.appendChild(el("span", "lf-media-credit", m.credit));
-    inner.appendChild(tag);
+    if (!LONG_MODE() || !m || !m.tag) return;
+    inner.appendChild(el("div", "lf-media-tag", m.tag));
   }
   function LONG_MODE() { return !!window.HF_LONG; }
 
   function defaultMediaScene(inner, ln, i, n) {
     const veil = el("div", "media-veil");
     inner.appendChild(veil);
-    const slug = el("div", "media-slug", "TƯ LIỆU MINH HOẠ");
-    inner.appendChild(slug);
   }
 
   function defaultEnterMedia(tl, inner, ln) {
     tl.fromTo(inner.querySelector(".media-veil"), { opacity: 0 }, { opacity: 1, duration: .5 }, ln.start);
-    const slug = inner.querySelector(".media-slug");
-    if (slug) tl.fromTo(slug, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: .45 }, ln.start + .15);
   }
 
   function defaultTransition(tl, oldS, newS, T) {

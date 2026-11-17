@@ -34,10 +34,12 @@ Không được đè ảnh/figure/sơ đồ khác (bridge chặn). Bước hiệ
 Thẻ chương tự động cho câu in đậm trọn câu: zoom, slam, split, roll, depth, ink.
 Chuyển cảnh tự chọn: push, pushup, zoom, wipe, iris, blurfade (vào thẻ chương = zoom/iris).
 
-## Ảnh / clip — `media: {"<câu>": {kind: image|video, query, reveal?, layout?}}`
-Plan Long mới (`"layout_policy": "v2"`, skill long-video) bỏ trống `layout`/`cine` thì `hyperframes_bridge.assign_layouts_v2` gán. Plan thiếu khoá này giữ `auto_layouts` (chia đều). Tên layout: frame (ô của style), full (+ chữ khoá bật theo lời, da kính hoặc chữ), card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể bằng Vision; không tách được → card3d). Clip video: full / card3d / frame, không gắn cine. `reveal`
+## Ảnh / clip — `media: {"<câu>": {kind: image|video, query, reveal?, layout?, tag?}}`
+Plan Long mới (`"layout_policy": "v2"`, skill long-video) bỏ trống `layout`/`cine` thì `hyperframes_bridge.assign_layouts_v2` gán. Plan thiếu khoá này giữ `auto_layouts` (chia đều). Tên layout: frame (ô của style), full, card3d, split, split_r, polaroid, pinned, **depth** (2.5D: tách chủ thể bằng Vision; không tách được → card3d). Clip video: full / card3d / frame, không gắn cine. `reveal`
 (ink chỉ nền giấy, wipe, iris, rise) — depth bỏ reveal. Ảnh giữ qua các câu sau tới ảnh
 kế / tiêu đề chương / sơ đồ / 22 giây.
+
+**Luật overlay ảnh (PO 16/11, ticket 072):** `full` không tự đè chữ khoá, dù câu có cụm `**đánh dấu**`; cụm chỉ được tô màu trong phụ đề. `split`/`split_r` và thẻ `kc-*` chỉ lấy cụm đánh dấu thật, không lấy 4 chữ đầu. Nếu không có cụm, `split`/`split_r` về `full` + camera; với ảnh khác cũng dùng visual chữ riêng (`word`, `quote`, `stat`…) để làm beat text. Nhãn nhận diện chỉ theo `tag` tường minh trong media, ví dụ `"tag": "Tê-mi-ya · 16 tuổi"`; nhãn lower-third gọn hiện khoảng 2,5 giây rồi mờ, không tự sinh nhãn loại ảnh hay nguồn. Ảnh `layout: "full"` không có `cine`/`pan` tự nhận camera theo id ảnh; không lặp kiểu camera tự gán ở ảnh full kế tiếp. Ảnh rộng ≥ 2:1 dùng `pan`. Camera/pan ghi tay được giữ.
 
 ## Không khí (tự động)
 Hạt bay (bụi vàng nền chàm / cánh hoa nền giấy), vệt sáng ấm mỗi lần sang chương, chùm hạt

@@ -1669,8 +1669,7 @@ def _words_with_timing(line_text: str, start: float, end: float, env=None) -> li
 
 
 def _key_parts(line_text: str, avoid: str | None = None) -> list[dict]:
-    """Cụm **đánh dấu** dài nhất của câu trở thành tiêu điểm trên thẻ hồ sơ
-    giữa khung. Không có cụm nào -> lấy 4 từ đầu, để thẻ không bao giờ rỗng.
+    """Chỉ trả về cụm **đánh dấu** thật; không tự tạo chữ dự phòng.
 
     `avoid` là key của câu TRƯỚC: hai thẻ liên tiếp cùng chữ trông như
     video bị đứng hình, nên nếu trùng thì lấy cụm dài kế tiếp (chỉ khi
@@ -1681,11 +1680,13 @@ def _key_parts(line_text: str, avoid: str | None = None) -> list[dict]:
         marks = distinct or marks
     if marks:
         return [{"t": marks[0].upper(), "hot": True}]
-    # Không có cụm đánh dấu: 4 chữ đầu chỉ làm chữ dự phòng cho thẻ chữ khoá/
-    # bố cục split (cần chữ). hot=False để ảnh tràn khung KHÔNG bật thẻ cụt
-    # kiểu "HAI CHỮ TÝ VÀ" (Lead 12/11, soát L_fs_vt_t11).
-    key = " ".join(_MARKER_RE.sub(r"\1", line_text).split()[:4])
-    return [{"t": key.upper(), "hot": False}]
+    return []
+
+
+def _media_tag(spec: dict | None) -> str | None:
+    """Nhãn nhận diện là opt-in theo media[n].tag; không suy ra từ loại tư liệu."""
+    value = spec.get("tag") if isinstance(spec, dict) else None
+    return value.strip() if isinstance(value, str) and value.strip() else None
 
 
 def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = None,
@@ -1713,7 +1714,7 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
     lines, prev_key = [], None
     for idx, (raw, seg) in enumerate(zip(raw_lines, segments), start=1):
         parts = _key_parts(raw, avoid=prev_key)
-        prev_key = parts[0]["t"]
+        prev_key = parts[0]["t"] if parts else None
         lines.append({
             "sentence_id": idx,
             "start": round(float(seg["start"]), 3),
@@ -1828,6 +1829,8 @@ def _layout_spec(media: dict, sid: int) -> dict:
 def _layout_is_clip(spec: dict) -> bool:
     """kind trống coi là video, đúng như auto_layouts v1. pdvideo là clip: không gắn cine."""
     kind = (spec.get("kind") or "video").lower()
+    if kind == "local":  # local có thể là clip (.mp4/.mov/.webm): cine chỉ dành cho ảnh tĩnh
+        return Path(str(spec.get("path") or "")).suffix.lower() in (".mp4", ".mov", ".webm", ".m4v")
     return kind in ("video", "pdvideo")
 
 
@@ -1990,7 +1993,9 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
             "hand_cine": _layout_handwritten_cine(spec),
             "portrait": _spec_portrait(spec),
             "ctx": _layout_context(spec, sentence, decision if isinstance(decision, dict) else {}),
-            "layout": "", "cine": None, "auto": False,
+            "layout": "", "cine": None,
+            "pan": spec.get("pan") if isinstance(spec.get("pan"), dict) else None,
+            "auto": False,
         })
     gcount = {"full": 0, "depth": 0, "framed": 0}
     gtarget = {"full": LAYOUT_V2_FULL, "depth": LAYOUT_V2_DEPTH, "framed": LAYOUT_V2_FRAMED}
@@ -2053,7 +2058,7 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
             if it["hand_cine"]:
                 raw_cine = it["spec"].get("cine")
                 it["cine"] = raw_cine if isinstance(raw_cine, dict) else None
-            elif it["layout"] == "full":
+            elif it["layout"] == "full" and not it["pan"]:
                 cstep += 1
                 cams = [name for name in _LAYOUT_CAM_TARGET if name != last_cam] or list(_LAYOUT_CAM_TARGET)
                 cbonus = {"push_in": 0.55} if it["ctx"] == "emotion" and "push_in" in cams else {}
@@ -2071,6 +2076,49 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
                     cine["grade"] = "warm"
                 it["cine"] = parse_cine(cine, where=f"layout v2 câu {it['sid']}")
                 last_cam = cam
+        # Bố cục split cần cụm đánh dấu thật. Không có thì dùng ảnh tràn viền.
+        if it["image"] and it["layout"] in ("split", "split_r") and not _MARKER_RE.search(it["sentence"]):
+            it["layout"] = "full"
+        # Mọi ảnh full phải có máy quay. Plan ghi tay cine/pan được giữ nguyên.
+        # Metadata tỷ lệ có thể nằm ngay trong plan hoặc trong file local.
+        if it["image"] and it["layout"] == "full" and not it["cine"] and not it["pan"]:
+            w, h = it["spec"].get("w", it["spec"].get("width")), it["spec"].get("h", it["spec"].get("height"))
+            try:
+                wide = int(w) >= 2 * int(h) > 0
+            except (TypeError, ValueError):
+                wide = False
+                pth = it["spec"].get("path") or it["spec"].get("file")
+                if pth:
+                    for root in (PROJECT_ROOT, REPO_ROOT):
+                        p = Path(pth) if Path(pth).is_absolute() else root / pth
+                        if p.is_file():
+                            try:
+                                with Image.open(p) as im:
+                                    wide = im.width >= 2 * im.height
+                            except Exception:
+                                pass
+                            break
+            if wide:
+                it["pan"] = {"axis": "h", "dir": rng.choice(("ltr", "rtl")),
+                             "stops": [{"line": it["sid"], "x": 0.62, "zoom": 1.04}],
+                             "transition_in": "cut"}
+                last_cam = "pan"
+            else:
+                cstep += 1
+                cams = [name for name in _LAYOUT_CAM_TARGET if name != last_cam] or list(_LAYOUT_CAM_TARGET)
+                cbonus = {"push_in": 0.55} if it["ctx"] == "emotion" and "push_in" in cams else {}
+                cam = _deficit_pick(ccount, _LAYOUT_CAM_TARGET, cams, cstep, rng, cbonus)
+                ccount[cam] = ccount.get(cam, 0) + 1
+                fx: list[str] = []
+                if series in ("bud", "fs") and cstep % 3 == 0:
+                    fx = [_LAYOUT_FX_BUD_FS[(cstep // 3 - 1) % len(_LAYOUT_FX_BUD_FS)]]
+                cine = {"cam": cam, "depth": False, "fx": fx,
+                        "intensity": _LAYOUT_INTENSITY[(cstep - 1) % len(_LAYOUT_INTENSITY)],
+                        "transition_in": "cut"}
+                if it["ctx"] == "emotion":
+                    cine["grade"] = "warm"
+                it["cine"] = parse_cine(cine, where=f"layout v2 câu {it['sid']}")
+                last_cam = cam
         if it["layout"] in LAYOUT_FRAMED:
             recent_frame_types.append(it["layout"])
         else:
@@ -2081,7 +2129,7 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
     _layout_pan_zoom_gate(items)
     _repair_layout_windows(items, script, visuals, figures, starts)
     return {it["sid"]: {"layout": it["layout"], "cine": it["cine"], "auto": it["auto"], "t": it["t"],
-                        "image": it["image"]} for it in items}
+                        "image": it["image"], "pan": it.get("pan")} for it in items}
 
 
 def _repair_layout_windows(items: list[dict], script: list, visuals: dict | None,
@@ -2482,7 +2530,8 @@ def load_channel_typography(channel_or_series: str, opts: dict | None = None) ->
 
 
 def _layout_v2_payload(chosen: dict[int, dict]) -> dict[str, dict]:
-    return {str(sid): {"layout": c.get("layout") or "", "cine": c.get("cine")} for sid, c in chosen.items()}
+    return {str(sid): {"layout": c.get("layout") or "", "cine": c.get("cine"), "pan": c.get("pan")}
+            for sid, c in chosen.items()}
 
 
 def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | None,
@@ -2518,6 +2567,8 @@ def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | Non
             auto[sid] = str(choice["layout"]).lower()
         if isinstance(choice.get("cine"), dict):
             cines[sid] = choice["cine"]
+        if isinstance(choice.get("pan"), dict):
+            cines[sid] = {"_auto_pan": choice["pan"]}
     return auto, cines
 
 
@@ -2657,9 +2708,33 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f"câu {line['sentence_id']}: ảnh/clip trùng hệt câu {seen_assets[digest]} "
                 f"(query {used_query!r}) -- đổi query cho một trong hai câu")
         seen_assets[digest] = line["sentence_id"]
+        candidate_layout = str(spec.get("layout") or auto.get(line["sentence_id"]) or "").lower()
+        if candidate_layout == "frame":
+            candidate_layout = ""
+        if (style in LONG_STYLES and candidate_layout == "full" and not spec.get("cine") and not spec.get("pan")
+                and asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")):
+            try:
+                with Image.open(asset) as im:
+                    if im.width >= 2 * im.height:
+                        import random  # noqa: PLC0415
+                        pan_rng = random.Random(f"layout-pan|{opts.get('layout_seed') or output.stem}|{line['sentence_id']}")
+                        cine_by_sid[line["sentence_id"]] = {"_auto_pan": {
+                            "axis": "h", "dir": pan_rng.choice(("ltr", "rtl")),
+                            "stops": [{"line": line["sentence_id"], "x": 0.62, "zoom": 1.04}],
+                            "transition_in": "cut",
+                        }}
+            except Exception:
+                pass
         cine_raw = spec.get("cine")
-        if cine_raw is None and not str(spec.get("layout") or "").strip():
-            cine_raw = cine_by_sid.get(line["sentence_id"])
+        if cine_raw is None:
+            cine_choice = cine_by_sid.get(line["sentence_id"])
+            if isinstance(cine_choice, dict) and "_auto_pan" not in cine_choice:
+                cine_raw = cine_choice
+        pan_raw = spec.get("pan")
+        if not pan_raw:
+            cine_choice = cine_by_sid.get(line["sentence_id"])
+            if isinstance(cine_choice, dict):
+                pan_raw = cine_choice.get("_auto_pan")
         cine = parse_cine(cine_raw, where=f"câu {line['sentence_id']}")
         if cine is not None:
             if style not in LONG_STYLES:
@@ -2668,7 +2743,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if asset.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
                 raise HyperFramesError(
                     f"câu {line['sentence_id']}: cine chỉ dùng cho ảnh tĩnh, không phải {asset.name!r}")
-        pan = parse_pan(spec.get("pan"), where=f"câu {line['sentence_id']}")
+        pan = parse_pan(pan_raw, where=f"câu {line['sentence_id']}")
         if pan is not None:
             if style not in LONG_STYLES:
                 raise HyperFramesError(
@@ -2775,6 +2850,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 f'{style_attr}></video>')
         media_credits.append(credit)
         line["media"] = {"query": used_query, "reveal": (spec.get("reveal") or ""), "layout": layout}
+        tag = _media_tag(spec)
+        if tag:
+            line["media"]["tag"] = tag
         if asset.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             line["media"]["src"] = f"assets/{asset.name}"     # skin studio_long: nền / ô ảnh cho thẻ chữ khoá kế sau
         copy_motion(line["media"], spec, iw, ih)
@@ -2831,11 +2909,6 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             line["media"]["layers"] = layers
             if pan:
                 pan["layers"] = layers
-        if spec.get("label") is not False and (spec.get("label") or spec.get("tagged")):
-            k = (spec.get("kind") or "video").lower()
-            line["media"]["label"] = spec.get("label") if isinstance(spec.get("label"), str) else (
-                "TƯ LIỆU" if k in ("commons", "museum", "openverse", "ext", "pdvideo") else "ẢNH MINH HOẠ" if k == "image" else "VIDEO MINH HOẠ")
-            line["media"]["credit"] = (spec.get("credit") or _short_credit(credit, k))[:90]
         if last_idx > li or m_end > line["end"]:
             line["media_end"] = m_end
             for cont in lines[li + 1:last_idx + 1]:
