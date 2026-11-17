@@ -142,16 +142,30 @@ def is_legacy_topic(topic):
     return topic in json.loads(path.read_text(encoding='utf-8')) if path.exists() else False
 
 
-def gate(chs, allow_repeat: bool = False) -> list[str]:
+def gate(chs, allow_repeat: bool = False, spec: dict | None = None) -> list[str]:
     """Lỗi CHẶN của factory.integrity trên toàn kịch bản (rỗng = qua). allow_repeat: câu lặp chỉ còn là cảnh báo.
     Kèm cụm lộ trình rập khuôn (CLICHES) — không có cờ bỏ qua: đổi hình thức lộ trình (RETENTION.md)."""
     if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
     from factory import integrity
+    publish_at = str((spec or {}).get("youtube", {}).get("publish_at") or "")[:10]
+    new_plan = bool(publish_at and publish_at >= "2026-11-18")
+    markup = re.compile(r'https?://|www\.|"\w+"\s*:|\{[^{}]*\}|\[PAUSE(?:\b[^\]]*)?\]|\*\*|__|`|(?<!\w)\*[^*\n]+\*|(?<!\w)_[^_\n]+_|^\s*(?:#{1,6}\s|[-*+]\s)|\[[^\]]+\]\([^)]*\)', re.I)
+    markup_errors = []
     out = [f"ROADMAP_CLICHE [{c['name']}] «{t}»" for c in chs for x in c["lines"]
            for t in [x if isinstance(x, str) else x["t"]] if any(p.search(t) for p in CLICHES)]
     for c in chs:
         lines = [x if isinstance(x, str) else x["t"] for x in c["lines"]]
+        for i, line in enumerate(lines):
+            if markup.search(line):
+                markup_errors.append(f"MARKUP_LEAK [{c['name']}] câu {i}: {line}")
+            clean = re.sub(r"\{[^{}]*\}|\[TRÍCH DỊCH\]|\[DIỄN Ý\]|\*\*", "", line, flags=re.I).strip()
+            if clean.rstrip('"”’»\')').rstrip().endswith(","):
+                note = f"CAU_TRON [{c['name']}] câu {i}: {line}"
+                if new_plan:
+                    out.append(note)
+                else:
+                    warnings.warn(note, stacklevel=2)
         out.extend(f"META_LEAK [{c['name']}] «{t}»" for t in lines if _meta_leak(t))
         source_count = sum(len(SOURCE_PATTERN.findall(t)) for t in lines)
         if source_count > 1:
@@ -162,7 +176,7 @@ def gate(chs, allow_repeat: bool = False) -> list[str]:
         if f.blocking and not (allow_repeat and f.code == "INT_REPEATED_SENTENCE"):
             where = next((c["name"] for c in chs for x in c["lines"] if f.span.strip() in (x if isinstance(x, str) else x["t"])), "?")
             out.append(f"{f.code} [{where}] «{f.span.strip()}»")
-    return out
+    return out + markup_errors
 
 
 def parse(md: str):
@@ -228,7 +242,9 @@ if __name__ == "__main__":
     if not is_legacy_topic(topic):
         for note in beat_warnings(chs):
             warnings.warn(note, stacklevel=1)
-    bad = gate(chs, allow_repeat="--allow-repeat-line" in sys.argv)
+    spec_path = sd / "spec.json"
+    spec = json.loads(spec_path.read_text(encoding="utf-8")) if spec_path.exists() else {}
+    bad = gate(chs, allow_repeat="--allow-repeat-line" in sys.argv, spec=spec)
     if bad:      # dừng TRƯỚC khi ghi chNN.json -> không có gì để TTS đọc nhầm
         raise SystemExit("integrity: kịch bản chưa qua cổng (sửa script.md rồi chạy lại):\n  " + "\n  ".join(bad)
                          + "\n(câu lặp cố ý: thêm --allow-repeat-line)")

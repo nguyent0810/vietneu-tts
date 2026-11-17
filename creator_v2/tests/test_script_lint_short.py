@@ -88,21 +88,21 @@ def new_spec(**patch):
 
 def test_new_hook_kind_gate():
     for kind in ("bi_kich", "nghich_ly", "dong_ho"):
-        assert not any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[0])
+        assert not any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[1])
     for kind in (None, "khac"):
-        assert any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[0])
+        assert any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[1])
 
 
 def test_new_first_sentence_gate():
-    assert not any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 8]))[0])
-    assert any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 9]))[0])
+    assert not any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 8]))[1])
+    assert any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 9]))[1])
 
 
 def test_new_question_window_gate():
     for lines in (["Cửa đã khóa?"], ["Cửa đã khóa.", "Vì sao vậy?"] , [" ".join(["từ"] * 9) + " ai?"]):
-        assert not any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[0])
+        assert not any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[1])
     for lines in (["Cửa đã khóa."], [" ".join(["từ"] * 10) + " ai?"], [" ".join(["từ"] * 11) + "?"]):
-        assert any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[0])
+        assert any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[1])
 
 
 def test_new_opening_visual_gate():
@@ -125,3 +125,11 @@ def test_new_rules_warn_for_old_or_missing_publish_date():
         assert errors == []
         for rule in ("hook_kind", "câu 1:", "câu hỏi 3 giây", "cảnh mở:", "tiêu đề:"):
             assert any(rule in w for w in warns)
+
+
+def test_hook_heuristics_never_block_after_075b():
+    """#471 (chủ kênh 17/11, chuẩn 075b): hook_kind, câu 1 > 9 từ, câu hỏi 3 giây chỉ là cảnh báo."""
+    spec = new_spec(hook_kind=None, lines=["Một " + "từ " * 12 + "dài mà không hỏi gì cả."])
+    errors, warns = SL.short_retention(spec)
+    assert not any(k in e for e in errors for k in ("hook_kind", "câu 1:", "câu hỏi 3 giây"))
+    assert any("hook_kind" in w for w in warns)

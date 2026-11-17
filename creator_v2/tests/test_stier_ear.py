@@ -13,7 +13,8 @@ def test_comma_all_and_date_boundary():
     row = spec(["Một câu, {pd}", "Câu sau."], publish_at="2026-11-29T05:00:00Z")
     assert any("tách giữa chừng" in x for x in B.ear_issues(row)[0])
     row["publish_at"] = "2026-11-28T23:59:00Z"
-    assert B.ear_issues(row) == ([], [])
+    errors, warnings = B.ear_issues(row)   # #471: Short cũ trước 29/11 chỉ cảnh báo câu tách
+    assert not errors and any("tách giữa chừng" in x for x in warnings)
     del row["publish_at"]
     assert B.ear_issues(row)[0]
 

@@ -312,13 +312,13 @@ def ear_applies(spec: dict) -> bool:
 
 
 def ear_issues(spec: dict) -> tuple[list[str], list[str]]:
-    if not ear_applies(spec):
-        return [], []
     lines = [PD_MARK.sub("", line).replace("**", "").strip() for line in spec.get("lines", [])]
-    errors = [f"câu {i}: câu bị tách giữa chừng (kết thúc dấu phẩy)" for i, line in enumerate(lines) if line.endswith(",")]
+    commas = [f"câu {i}: câu bị tách giữa chừng (kết thúc dấu phẩy)" for i, line in enumerate(lines) if line.rstrip('"”’»\')').rstrip().endswith(",")]
+    errors, warnings = (commas, []) if ear_applies(spec) else ([], commas)
+    if not ear_applies(spec):
+        return errors, warnings
     hits = [i for i, line in enumerate(lines) if any(term in line.casefold() for term in FLOW_SOURCE_TERMS)
             or SOURCE_PATTERN.search(line) or SOURCE_HEDGE.search(line)]
-    warnings = []
     if len(hits) > 1:
         note = f"{len(hits)} câu rào nguồn (câu {hits}), tối đa 1 câu cho Short truyện"
         (errors if spec.get("theme") == "case" or spec.get("story") is True or "short_type" in spec or "test_cell" in spec else warnings).append(note)
