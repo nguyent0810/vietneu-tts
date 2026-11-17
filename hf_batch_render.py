@@ -969,6 +969,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
 
 
 FPS = 30
+CHAPTER_LEAD_FRAMES = 6  # 0.2 s: stable chapter headroom for pause_ctx plans
 
 
 def _engine_sig() -> str:
@@ -991,16 +992,28 @@ def _remap_at(spec, shift: int):
     return spec
 
 
-def chapter_spans(lines: list[str], segs: list[dict], total: float) -> list[tuple[int, int, float, float]]:
+def chapter_spans(lines: list[str], segs: list[dict], total: float,
+                  pause_ctx: bool = False) -> list[tuple[int, int, float, float]]:
     """[(câu đầu, câu sau cuối, giây đầu, giây cuối)] -- cắt ở tiêu đề chương (câu in đậm trọn câu),
     mốc cắt nằm giữa khoảng lặng trước tiêu đề và ĐÚNG khung hình (1/30 s) để nối không lệch tiếng."""
     heads = [i for i, l in enumerate(lines) if i and l.startswith("**") and l.endswith("**") and l.count("**") == 2]
     firsts = [0] + heads
     out = []
+
+    def cut_before(index: int) -> float:
+        title_start = float(segs[index]["start"])
+        old_midpoint = round((segs[index - 1]["end"] + title_start) / 2 * FPS) / FPS
+        on_frame = abs(title_start * FPS - round(title_start * FPS)) <= 0.02
+        if pause_ctx and on_frame:
+            available = max(0.0, title_start - float(segs[index - 1]["end"]))
+            lead_frames = min(CHAPTER_LEAD_FRAMES, int(available * FPS / 2 + 1e-9))
+            return (round(title_start * FPS) - lead_frames) / FPS if lead_frames else old_midpoint
+        return old_midpoint
+
     for c, a in enumerate(firsts):
         b = firsts[c + 1] if c + 1 < len(firsts) else len(lines)
-        t0 = 0.0 if a == 0 else round((segs[a - 1]["end"] + segs[a]["start"]) / 2 * FPS) / FPS
-        t1 = (round((segs[b - 1]["end"] + segs[b]["start"]) / 2 * FPS) / FPS) if b < len(lines) else int(total * FPS) / FPS
+        t0 = cut_before(a) if a else 0.0
+        t1 = cut_before(b) if b < len(lines) else int(total * FPS) / FPS
         out.append((a, b, t0, t1))
     return out
 
@@ -1944,15 +1957,34 @@ def _local_sig(spec: dict) -> str:
     return hashlib.sha1(p.read_bytes()).hexdigest()[:16]
 
 
+def chapter_render_opts(t0: float, seg_total: float, **kwargs) -> dict:
+    """Build bridge options while retaining whole-video time context."""
+    return {**kwargs, "seg_off": t0, "seg_total": seg_total}
+
+
 def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str,
-                layout_sig: str | None = None) -> str:
-    """Băm đầu vào một chương (câu a+1..b): đổi chữ/sơ đồ/ảnh (cả nội dung file local)/khung giờ/engine thì render lại."""
+                layout_sig: str | None = None, segments: list[dict] | None = None,
+                chapter_base: int = 0, seg_total: float = 0) -> str:
+    """Băm nội dung chương theo thời gian cục bộ, không theo vị trí trong toàn video."""
     subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
             for kind in ("media", "visuals")}
     for v in subs["media"].values():
         if isinstance(v, dict) and v.get("kind") == "local":
             v["_sig"] = _local_sig(v)
-    return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t0, 3), round(t1, 3), quality, _engine_sig()]
+    relative_segments = None
+    if segments is not None:
+        chunk = segments[a:b]
+        if chunk and all("s0" in s and "s1" in s for s in chunk):
+            base_sample = round(t0 * 48000)   # t0 là bội số khung 1/30s -> số mẫu nguyên chính xác
+            relative_segments = [[int(s["s0"]) - base_sample, int(s["s1"]) - base_sample] for s in chunk]
+        else:
+            relative_segments = [[round(float(s["start"]) - t0, 3), round(float(s["end"]) - t0, 3)]
+                                 for s in chunk]
+    # Layout v2 xét 120s đầu video; engine xét cổng mở đầu/O9 trong 40s.
+    frame_position = round(t0, 3) if t0 < 120 else "≥120"
+    return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t1 - t0, 3), relative_segments,
+                                   chapter_base, frame_position,
+                                   quality, _engine_sig()]
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
                                    + ([{"theme": row["theme"]}] if row.get("theme") else [])
@@ -1975,7 +2007,8 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
     audio, sr = sf.read(wav, dtype="float32")
     cdir = out_dir / f"{rid}_chapters"
     cdir.mkdir(exist_ok=True)
-    spans = chapter_spans(lines, segs, total)
+    spans = chapter_spans(lines, segs, total,
+                          pause_ctx=bool((man.get("tts") or {}).get("pause_ctx", False)))
     rep, bad = pacing(row, segs)
     print(f"    nhịp hình: {rep}", flush=True)
     for x in bad:
@@ -1999,7 +2032,9 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 {str(int(sid) - a): {"layout": choice.get("layout") or "", "cine": choice.get("cine")}
                  for sid, choice in layout_chosen.items() if a < int(sid) <= b},
                 sort_keys=True, ensure_ascii=False)
-        key = chapter_key(row, a, b, t0, t1, quality, layout_sig=layout_sig)
+        base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
+        key = chapter_key(row, a, b, t0, t1, quality, layout_sig=layout_sig, segments=segs,
+                          chapter_base=base, seg_total=total)
         if classify_mp4(mp4) == "ok" and meta.exists():
             m0 = json.loads(meta.read_text(encoding="utf-8"))
             if m0.get("input_sha1") == key:
@@ -2024,9 +2059,9 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                 side = cdir / f"{name}.{kind}.json"
                 side.write_text(json.dumps(sub, ensure_ascii=False), encoding="utf-8")
                 cmd += [flag, str(side)]
-        base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
-        opts = {"video_only": True, "seg_off": t0, "seg_total": total, "chapter_base": base, "kinetic": bool(row.get("kinetic")), "wordts": bool(row.get("wordts")),
-                "theme": row.get("theme"), "silence": [x - a for x in silence if a < x <= b]}
+        opts = chapter_render_opts(t0, total, video_only=True, chapter_base=base,
+                kinetic=bool(row.get("kinetic")), wordts=bool(row.get("wordts")),
+                theme=row.get("theme"), silence=[x - a for x in silence if a < x <= b])
         if row.get("subs"):
             opts["subs"] = row["subs"]
         if row.get("caps"):

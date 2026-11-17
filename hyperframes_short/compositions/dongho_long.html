@@ -40,8 +40,6 @@
   #edge { box-shadow: inset 0 0 200px rgba(130,100,50,.32); }
   #kicker { color: #3a2a1a; } #badge { color: var(--accent); } #footer { color: #2b2018; }
   #kicker-row .bar { background: var(--accent); box-shadow: none; }
-  .progress { height: 5px; opacity: .8; box-shadow: none;
-              background: linear-gradient(90deg, #b8322a 0 33.3%, #e2a92b 33.3% 66.6%, #2f6b4f 66.6% 100%); background-size: 60px 5px; }
   .dh-wrap { position: absolute; left: 240px; right: 240px; top: 170px; height: 640px;
              display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
   .dh-key { font-weight: 800; font-size: 96px; line-height: 1.12; color: #1f1a14; letter-spacing: -.01em; }
@@ -81,7 +79,6 @@
   <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
   <div id="badge"></div>
   <div id="footer"></div>
-  <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
 <script src="./longform.js"></script>
@@ -109,8 +106,6 @@ window.HF_STYLE = {
     tl.fromTo(newS, { opacity: 0, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: .8, ease: "power2.out" }, T + .15);
   },
   ambient(tl, DUR, ctx) {
-    const V = (ctx && ctx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
-    tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
     // giấy điệp lấp lánh rất chậm

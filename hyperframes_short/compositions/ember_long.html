@@ -28,7 +28,6 @@
   /* ===== THAN HỒNG: đêm than ấm, lửa âm ỉ dưới đáy, đốm tro bay lên chậm =====
      Skin thứ ba của kênh Phật Giáo (luân phiên với giấy mực và trăng thiền). */
   #capzone { bottom: 64px; }
-  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 20px var(--accent); }
   #bed { background: radial-gradient(130% 90% at 50% 110%, #4e2012 0%, #26110b 42%, #110807 100%); }
   #glow { position: absolute; left: 160px; right: 160px; bottom: -260px; height: 520px; border-radius: 50%; filter: blur(70px);
           background: radial-gradient(ellipse at 50% 50%, rgba(240,130,60,.42), rgba(240,130,60,0) 70%); }
@@ -63,7 +62,6 @@
   <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
   <div id="badge"></div>
   <div id="footer"></div>
-  <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
 <script src="./longform.js"></script>
@@ -94,8 +92,6 @@ window.HF_STYLE = {
     tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .6, ease: "power1.out" }, T + .2);
   },
   ambient(tl, DUR, ctx) {
-    const V = (ctx && ctx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
-    tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
     // lửa âm ỉ thở chậm; đốm tro bay lên rồi tắt

@@ -48,7 +48,6 @@
   #badge { color: var(--accent); font-family: var(--font-mono); }
   #footer { color: var(--soft-text); font-family: var(--font-mono); }
   #kicker-row .bar { background: var(--accent); box-shadow: none; }
-  .progress { height: 6px; background: var(--accent); opacity: .9; box-shadow: none; }
   /* phụ đề: dải giấy (đọc được trên ảnh, trên nửa màu đậm của split, trên nền) */
   #capzone.skin-studio .cap, #capzone.skin-studio-still .cap {
     font-family: var(--font-body); font-weight: 600; font-size: 44px; line-height: 1.38; color: var(--ink); text-shadow: none;
@@ -92,7 +91,6 @@
   <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
   <div id="badge"></div>
   <div id="footer"></div>
-  <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
 <script src="./longform.js"></script>
@@ -150,8 +148,6 @@
       tl.set(newS, { filter: "none" }, T + .15 + .55 * SPD);
     },
     ambient(tl, DUR, cx) {
-      const V = (cx && cx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
-      tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
       tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
       tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
       tl.fromTo("#bloom", { opacity: .75 }, { opacity: 1, duration: 7, yoyo: true, repeat: Math.max(0, Math.floor(DUR / 7) - 1), ease: "sine.inOut" }, 0);

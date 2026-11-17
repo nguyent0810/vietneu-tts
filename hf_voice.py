@@ -41,6 +41,7 @@ import tts_lexicon
 ROOT = Path(__file__).parent
 CACHE = ROOT / "chunks_cache" / "voice_lines"
 SR = 48000
+CHAPTER_FRAME_SAMPLES = SR // 30
 VERSION = "1"
 # Đổi phiên bản trọng số model (hoặc ghi chú bất kỳ làm cũ cache) mà không đụng code: đặt VIENEU_MODEL_TAG.
 # Không đặt = khoá cache y hệt trước đây, cache hiện có còn dùng được.
@@ -397,6 +398,7 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
     CACHE.mkdir(parents=True, exist_ok=True)
     eng = None
     parts, segs, t = [], [], 0.0
+    sample_cursor = 0
     qa_failed: list[dict] = []
     use_level = bool(spec.get("level", False))
     pause_ctx = bool(spec.get("pause_ctx", False))
@@ -455,7 +457,11 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
             if peak > 0.98:
                 a = (a * (0.98 / peak)).astype("float32")
         a = fade(a, SR)
-        seg = {"start": round(t, 3), "end": round(t + len(a) / SR, 3), "text": text, "voice": voice}
+        seg_start = sample_cursor / SR if pause_ctx else t
+        seg_end = (sample_cursor + len(a)) / SR if pause_ctx else t + len(a) / SR
+        seg = {"start": round(seg_start, 3), "end": round(seg_end, 3), "text": text, "voice": voice}
+        if pause_ctx:  # mốc theo mẫu: khoá cache chương so khớp chính xác, không dính sai số làm tròn ms
+            seg["s0"], seg["s1"] = sample_cursor, sample_cursor + len(a)
         if role:
             seg["role"] = role
         if spoken != text:
@@ -464,8 +470,20 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
         is_second_voice = (i in alt_lines) or (role == "ta")
         gap = pauses.get(i, default_pause(line, base, is_second_voice, pause_ctx=pause_ctx,
                                           previous_line=lines[i - 2] if i > 1 else None)) if i < len(lines) else 0.6
-        parts += [a, np.zeros(int(gap * SR), dtype="float32")]
-        t += len(a) / SR + gap
+        gap_samples = int(gap * SR)
+        next_line = lines[i] if i < len(lines) else ""
+        is_chapter_title = (i < len(lines) and i + 1 > 1 and next_line.startswith("**")
+                            and next_line.endswith("**") and next_line.count("**") == 2)
+        if pause_ctx and is_chapter_title:
+            # Round in samples, not accumulated seconds: prior audio length is integral
+            # samples, so every chapter title lands on an exact 30 fps boundary.
+            gap_samples += (-(sample_cursor + len(a) + gap_samples)) % CHAPTER_FRAME_SAMPLES
+        parts += [a, np.zeros(gap_samples, dtype="float32")]
+        if pause_ctx:
+            sample_cursor += len(a) + gap_samples
+            t = sample_cursor / SR
+        else:
+            t += len(a) / SR + gap
     audio = np.concatenate(parts)
     out_wav.parent.mkdir(parents=True, exist_ok=True)
     sf.write(out_wav, audio, SR)

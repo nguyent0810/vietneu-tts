@@ -206,6 +206,30 @@ def test_synth_manifest_assigns_segments_and_roles(tmp_path):
     assert manifest["voices_summary"] == {"ke": 2, "ta": 1}
 
 
+def test_pause_ctx_aligns_chapter_titles_to_video_frames(tmp_path, monkeypatch):
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    lines = ["Câu đầu.", "Câu thường.", "**Chương hai**", "Câu sau."]
+    # Odd sample count catches implementations that align on rounded seconds.
+    mock_audio = np.zeros(10003, dtype="float32")
+    with patch.object(V.Voices, "say", return_value=(mock_audio, None)):
+        manifest = V.synth(lines, {"voice": "Binh", "engine": "standard", "pause": 0.3,
+                                   "pause_ctx": True}, tmp_path / "aligned.wav")
+    title_start = manifest["segments"][2]["start"]
+    assert abs(title_start * 30 - round(title_start * 30)) <= 0.02
+    # The first ordinary line retains the configured 0.3s gap.
+    assert manifest["segments"][1]["start"] == round(10003 / V.SR + int(0.3 * V.SR) / V.SR, 3)
+
+
+def test_pause_ctx_off_does_not_align_titles(tmp_path, monkeypatch):
+    monkeypatch.setattr(V, "CACHE", tmp_path / "cache")
+    lines = ["Câu đầu.", "**Chương hai**", "Câu sau."]
+    mock_audio = np.zeros(10003, dtype="float32")
+    with patch.object(V.Voices, "say", return_value=(mock_audio, None)):
+        manifest = V.synth(lines, {"voice": "Binh", "engine": "standard", "pause": 0.3},
+                           tmp_path / "legacy.wav")
+    assert manifest["segments"][1]["start"] == round(10003 / V.SR + 0.3, 3)
+
+
 def test_synth_manifest_records_default_voice_ta_when_none(tmp_path):
     lines = ["Đêm ở Vương Xá.", "Ta vẫn còn là người phải học."]
     spec = {
