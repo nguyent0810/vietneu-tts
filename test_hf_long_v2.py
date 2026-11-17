@@ -21,6 +21,23 @@ def test_default_pause_heading_and_question():
     assert V.default_pause("Câu thường.", .35) == .35
 
 
+def test_default_pause_punctuation_and_peak_context():
+    base = .5
+    assert V.default_pause("Vế còn tiếp,", base, pause_ctx=True) == .2
+    assert V.default_pause("Vế còn tiếp;", base, pause_ctx=True) == .2
+    assert V.default_pause("Vế còn tiếp", base, pause_ctx=True) == .2
+    assert V.default_pause("Câu kết.", base, pause_ctx=True) == base
+    assert V.default_pause("Câu kết!", base, pause_ctx=True) == base
+    assert V.default_pause("Đó là lời đáp.", base, pause_ctx=True,
+                           previous_line="Một câu kể dài có nhiều hơn sáu tiếng.") == .8
+    assert V.default_pause("Đây là một câu kết dài hơn sáu tiếng.", base, pause_ctx=True,
+                           previous_line="Một câu kể dài có nhiều hơn sáu tiếng.") == base
+    # Plan cũ không bật pause_ctx vẫn giữ chính xác hành vi cũ.
+    assert V.default_pause("Vế còn tiếp,", base) == base
+    assert V.default_pause("Đó là lời đáp.", base,
+                           previous_line="Một câu kể dài có nhiều hơn sáu tiếng.") == base
+
+
 def test_trim_keeps_speech_drops_silence():
     sr = 48000
     a = np.concatenate([np.zeros(sr), np.sin(np.arange(sr) / 10) * .5, np.zeros(sr)]).astype("float32")

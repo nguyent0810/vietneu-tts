@@ -117,14 +117,17 @@
     }
   },
   "bud": {
+    "pause_ctx": true,
     "temperature": 0.8,
     "text_mode": "production"
   },
   "fs": {
+    "pause_ctx": true,
     "temperature": 0.8,
     "text_mode": "speech"
   },
   "his": {
+    "pause_ctx": true,
     "temperature": 0.7,
     "text_mode": "speech"
   },
