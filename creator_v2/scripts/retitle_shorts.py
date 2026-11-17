@@ -16,6 +16,7 @@ import datetime as dt
 import json
 import sqlite3
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,9 +85,13 @@ def main() -> int:
                 ("title", "description", "tags", "categoryId", "defaultLanguage", "defaultAudioLanguage") if k in sn}}
         body["snippet"]["title"] = new
         api.update_video("snippet", body)
-        after = api.get_video(r["video_id"], "snippet,status")
-        ok = after["snippet"]["title"] == new and after["status"].get("publishAt") == st["publishAt"] \
-            and after["status"].get("privacyStatus") == "private"
+        for wait in (0, 3, 10, 30):  # đọc ngay sau khi ghi có thể còn bản cũ (17/11: 2/18 lần)
+            time.sleep(wait)
+            after = api.get_video(r["video_id"], "snippet,status")
+            ok = after["snippet"]["title"] == new and after["status"].get("publishAt") == st["publishAt"] \
+                and after["status"].get("privacyStatus") == "private"
+            if ok:
+                break
         LOG.parent.mkdir(parents=True, exist_ok=True)
         with LOG.open("a", encoding="utf-8") as f:
             f.write(json.dumps({"at": now, "channel": r["channel"], "slug": r["slug"], "video_id": r["video_id"],
