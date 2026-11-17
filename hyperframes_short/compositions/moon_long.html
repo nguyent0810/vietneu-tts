@@ -28,7 +28,6 @@
   /* ===== TRĂNG THIỀN: đêm xanh ngọc, vầng trăng cao, sương trôi =====
      Skin thứ hai của kênh Phật Giáo (luân phiên với giấy mực). */
   #capzone { bottom: 64px; }
-  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 22px var(--accent); }
   #bed { background: radial-gradient(120% 85% at 70% 20%, #1c4a4e 0%, #0b2a2e 45%, #041416 100%); }
   #moon { position: absolute; left: 1480px; top: 90px; width: 230px; height: 230px; border-radius: 50%;
           background: radial-gradient(circle at 42% 40%, #fbf6e3 0%, #e7dfbf 60%, #c9c19a 100%); box-shadow: 0 0 110px 26px rgba(240,232,200,.22); opacity: .55; }
@@ -58,7 +57,6 @@
   <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
   <div id="badge"></div>
   <div id="footer"></div>
-  <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
 <script src="./longform.js"></script>
@@ -101,9 +99,6 @@ window.HF_STYLE = {
     tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .6, ease: "power1.out" }, T + .2);
   },
   ambient(tl, DUR, ctx) {
-    // Render theo chương: thanh tiến trình chạy theo CẢ video (seg_off / seg_total), không reset mỗi chương.
-    const V = (ctx && ctx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
-    tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
     // Trăng thiền: trăng trôi rất chậm, sương lững lờ.

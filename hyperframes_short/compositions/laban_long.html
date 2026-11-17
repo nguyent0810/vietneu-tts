@@ -31,7 +31,6 @@
      phải bảo đảm độ chính xác của từng ký hiệu (sơ đồ thật lấy từ thư viện
      biểu tượng đã vẽ theo dữ liệu tra cứu). */
   #capzone { bottom: 250px; }
-  .progress { height: 4px; background: var(--accent); opacity: .7; box-shadow: 0 0 22px var(--accent); }
   #bed { background: radial-gradient(120% 80% at 50% 40%, #16204a 0%, #0b1130 48%, #060919 100%); }
   #rings { position: absolute; left: 40px; top: 300px; width: 1000px; height: 1000px; opacity: .2; }
   .grain { opacity: .12; }
@@ -72,7 +71,6 @@
   <div id="kicker-row"><div class="bar"></div><div id="kicker"></div></div>
   <div id="badge"></div>
   <div id="footer"></div>
-  <div class="progress" id="progress"></div>
 </div>
 <script src="./engine.js"></script>
 <script src="./longform.js"></script>
@@ -121,9 +119,6 @@ window.HF_STYLE = {
     tl.fromTo(newS, { opacity: 0 }, { opacity: 1, duration: .6, ease: "power1.out" }, T + .2);
   },
   ambient(tl, DUR, ctx) {
-    // Render theo chương: thanh tiến trình chạy theo CẢ video (seg_off / seg_total), không reset mỗi chương.
-    const V = (ctx && ctx.V) || {}, TOT = Number(V.seg_total) || DUR, OFF = Number(V.seg_off) || 0;
-    tl.fromTo("#progress", { width: 1920 * OFF / TOT }, { width: 1920 * Math.min(1, (OFF + DUR) / TOT), duration: DUR, ease: "none" }, 0);
     tl.fromTo("#kicker-row", { opacity: 0 }, { opacity: 1, duration: 1.0 }, 0);
     tl.fromTo("#badge", { opacity: 0 }, { opacity: .9, duration: 1.0 }, .3);
     // La bàn quay rất chậm: cảm giác đang dò hướng, không phải bánh xe quay.
