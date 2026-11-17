@@ -22,10 +22,11 @@ def test_hook_gate_pass_fixtures(row):
     assert hook_lint_issues(row) == []
 
 
-def test_hook_gate_fail_fixture():
+def test_abstract_hook_gate_is_advisory(capsys):
     row = {"id": "bad", "title": "Chánh niệm có phải là mặc kệ ngày mai?",
            "script": ["Chánh niệm có phải là mặc kệ ngày mai?"]}
-    assert hook_lint_issues(row)
+    assert hook_lint_issues(row) == []
+    assert "CẢNH BÁO hook: TRUU_TUONG" in capsys.readouterr().out
 
 
 def test_hook_gate_missing_tool_is_explicit(tmp_path):
@@ -71,7 +72,7 @@ def test_long_gate_missing_tool_is_explicit(tmp_path):
 
 @pytest.mark.parametrize("row", [
     {"id": "short_bad", "series": "bud", "style": "plain", "script": ["Chánh niệm có phải là mặc kệ ngày mai?"],
-     "title": "Chánh niệm có phải là mặc kệ ngày mai?"},
+     "title": "Chánh niệm có phải là mặc kệ ngày mai?", "visuals": {"1": {"type": "word", "text": "CHỮ"}}},
     {"id": "long_bad", "series": "bud", "style": "plain", "lane": "long", "script": []},
 ])
 def test_hf_batch_render_stops_before_tts_on_gate_failure(row, tmp_path, monkeypatch):
@@ -98,7 +99,7 @@ def test_short_batch_runner_stops_before_tts_on_hook_failure(tmp_path, monkeypat
 
 
 def test_hf_batch_render_allow_override_logs(tmp_path, capsys):
-    row = {"id": "override", "series": "bud", "title": "Chánh niệm có phải là mặc kệ ngày mai?", "script": []}
+    row = {"id": "override", "series": "bud", "title": "Chánh niệm có phải là mặc kệ ngày mai?", "script": [], "visuals": {"1": {"type": "word", "text": "CHỮ"}}}
     ok, note = hf_batch_render.render_one(row, tmp_path, "draft", allow_lint_fail=True)
     assert ok and "không có kịch bản" in note
     assert "--allow-lint-fail bỏ qua hook_lint" in capsys.readouterr().out

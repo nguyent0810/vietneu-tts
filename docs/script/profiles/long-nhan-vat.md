@@ -1,0 +1,3 @@
+# Long nhân vật HBR — phần khác lõi
+Quyết định22/10: một người thật/một hành trình, ≥30 phút, 12–16 thẻ chương. Mỏ neo tên người/địa danh quen; cold open có thời điểm hoặc địa điểm có nguồn. Hai–ba câu hỏi lớn trong90s, hẹn đúng chương trả; đây là lộ trình, không thêm lần thứ hai. Sau hẹn vẫn có câu cảnh cụ thể trước90s, chưa cần trả câu hẹn. Không áp hạn mức “ba câu hỏi/năm tập”.
+Plan `format: nhan_vat`, `protagonist`, `questions`, `answers`; schema/mẫu ở formats.md §7. Lint NHAN_VAT/SO_CHUONG/THOI_LUONG/CAU_HOI_HEN_CHUONG giữ CB. Dùng [Long chuẩn](long-standard.md) cho phần còn lại và hồ sơ kênh cho nguồn/alt.

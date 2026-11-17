@@ -30,9 +30,7 @@ Mọi công cụ hỗ trợ nằm trong `tools/long_packaging/`.
 
 ## 2. Nguyên tắc Tiêu đề & Thumbnail
 
-1. **Tiêu đề phải là một câu hỏi có đáp án thật trong video:**
-   - Ngắn hơn chưa chắc hút hơn. Tiêu đề hay khơi gợi tò mò nhưng nội dung phải trả lời trọn vẹn.
-   - Ví dụ thắng: *"Thiền Hơi Thở Cho Người Mới: Càng Cố Tĩnh Tâm, Càng Nhiều Suy Nghĩ?"* (có nguyên chương "Khi tâm chạy đi" giải đáp).
+1. **Lời hứa:** theo [audio-script §4](../../../docs/script/audio-script.md#4-lời-hứa-và-tiến-triển); chỉ đúng câu trả trong script, công cụ khớp từ không thay đọc nghĩa.
 2. **Khuôn tên mỏ neo:**
    - Dạng: `[MỎ NEO VIẾT HOA] Ngoài Đời Thật: [Nhân vật / Vấn đề] — [Câu hỏi nghịch lý]?`
    - Ví dụ: `TRẠNG TRÌNH Ngoài Đời Thật: Ai Đã Viết Những Lời Sấm Mang Tên Ông?`
@@ -40,9 +38,7 @@ Mọi công cụ hỗ trợ nằm trong `tools/long_packaging/`.
    - Ưu tiên **2–5 từ**, tối đa 8 từ khi cần nói rõ nghịch lý (PO 03/11).
    - Đọc hiểu trong 1–2 giây trên màn hình điện thoại ở kích thước thu nhỏ (168 px).
    - Nền AI không chữ (mặt cận, chừa khoảng trống) + chữ tự đặt bằng `tools/long/thumb_cb.py`.
-4. **Giới hạn an toàn & đạo đức kênh:**
-   - **FS:** Tuyệt đối không hứa số tiền cụ thể, không "chắc chắn giàu", trúng số, khuyên vay vốn/đầu tư, bán bùa ngải.
-   - **BUD:** Lời Đức Phật chỉ dùng khi đã đối chiếu nguyên văn kinh điển (`hf_sutta.py`). Không gán chi tiết ngoài kinh.
+4. **Luật lời theo kênh:** [FS](../../../docs/script/profiles/fs.md), [BUD](../../../docs/script/profiles/bud.md). Không viết lại một bộ luật nguồn/hứa tiền trong skill đóng gói.
 
 ---
 
@@ -70,7 +66,7 @@ flowchart TD
      ```bash
      .venv/bin/python tools/long_packaging/promise_check.py <plan.json> --only <id> --question "<câu hỏi>"
      ```
-   - **Quy tắc:** Phần trả lời trong `script[]` phải đạt $\ge 3$ câu. Nếu $< 3$ câu, công cụ báo `CẢNH BÁO: phần trả lời quá mỏng` $\rightarrow$ Phải viết bổ sung kịch bản hoặc đổi câu hỏi.
+   - **Tín hiệu công cụ (CB):** Phần trả lời trong `script[]` đếm được $\ge 3$ câu. Nếu $< 3$ câu, công cụ báo `CẢNH BÁO: phần trả lời quá mỏng` $\rightarrow$ Đọc lại nghĩa; bổ sung/đổi câu hỏi khi lời chưa trả, không đệm câu cho đủ ba.
 4. **Chọn 2 bản vào chung kết để PO duyệt:** Lấy 2 phương án tốt nhất kèm thiết kế thumbnail tương ứng.
 5. **Chạy A/B bằng Test & Compare trên YouTube Studio:** Đưa 2–3 phương án vào tính năng thử nghiệm chính thức của YouTube.
 6. **Ghi sổ A/B:**

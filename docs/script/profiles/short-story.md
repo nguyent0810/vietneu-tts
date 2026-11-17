@@ -1,0 +1,3 @@
+# Short kể — phần khác lõi
+Thường20–60s, một ý tự đủ, câu trọn, mở cụ thể, tiến triển và callback theo truyện. BUD nhân quả75–120s là nhánh hiện có, không ép về v2 21–27s. Gợi ý tối đa một câu rào nguồn cho truyện/test_cell, nguồn lên chân hình/mô tả; không cắt khung làm thay chân trị. `pd_scenes`/chip giữ hợp đồng hình đã có, không thêm lint phỏng dựng.
+BUD/FS giữ giọng kênh. V2 MIM/CK/CL: 3s đầu/câu đầu chín từ là chỉ đạo profile từ PO15/11; mức preflight legacy còn riêng, xem lint-matrix. Hook có nghĩa/câu2 cụ thể/callback là người soát, không coi regex là chất lượng. Short mời Long vẫn trả ít nhất một thông tin.

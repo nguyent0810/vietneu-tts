@@ -1,0 +1,97 @@
+[
+  {
+    "plan": "plan_L_bud_axathe.json",
+    "sha256": "dbac319e7c4eeba07197e3d89ed3589e896a9578bf65db0490bfc83b84c3f256",
+    "counts": {
+      "GỢI Ý": 7,
+      "CẢNH BÁO": 3
+    },
+    "issues": [
+      [
+        "GỢI Ý",
+        "chuong_ngan",
+        "trung vị chương 1.05 phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc gộp, giữ tiêu đề phụ trên màn hình"
+      ],
+      [
+        "GỢI Ý",
+        "mo_cau_lap",
+        "8 câu mở bằng 'nhà vua'"
+      ],
+      [
+        "GỢI Ý",
+        "mo_cau_lap",
+        "7 câu mở bằng 'một người'"
+      ],
+      [
+        "GỢI Ý",
+        "tu_lap",
+        "dòng 30-34: 'nghe Phật' lặp 3 lần trong 5 dòng"
+      ],
+      [
+        "GỢI Ý",
+        "tu_lap",
+        "dòng 98-102: 'cỗ xe' lặp 3 lần trong 5 dòng"
+      ],
+      [
+        "GỢI Ý",
+        "tu_lap",
+        "dòng 158-162: 'ô cửa' lặp 3 lần trong 5 dòng"
+      ],
+      [
+        "GỢI Ý",
+        "tu_lap",
+        "dòng 228-232: 'nhà vua' lặp 3 lần trong 5 dòng"
+      ],
+      [
+        "CẢNH BÁO",
+        "truu_tuong_lien",
+        "6 câu liền không cụ thể (tới dòng 108) -- chèn ví dụ, con số, cảnh, câu hỏi"
+      ],
+      [
+        "CẢNH BÁO",
+        "mo_dau_khong_cu_the",
+        "câu 1 không cụ thể (neutral): Một vị vua đã giết cha mình."
+      ],
+      [
+        "CẢNH BÁO",
+        "cold_open_dai",
+        "chương mở dài 88 giây (> 60; giây thật (L_bud_axathe.json))"
+      ]
+    ]
+  },
+  {
+    "plan": "plan_L_fs_cmp_9091.json",
+    "sha256": "9033d18418bfcf965125d6c5550235045a112aea06817f0c71e9c8a4382d34a8",
+    "counts": {
+      "GỢI Ý": 2,
+      "CẢNH BÁO": 3
+    },
+    "issues": [
+      [
+        "GỢI Ý",
+        "chuong_ngan",
+        "trung vị chương 0.95 phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc gộp, giữ tiêu đề phụ trên màn hình"
+      ],
+      [
+        "GỢI Ý",
+        "mo_cau_lap",
+        "6 câu mở bằng 'đây là'"
+      ],
+      [
+        "CẢNH BÁO",
+        "truu_tuong_lien",
+        "5 câu liền không cụ thể (tới dòng 42) -- chèn ví dụ, con số, cảnh, câu hỏi"
+      ],
+      [
+        "CẢNH BÁO",
+        "cold_open_dai",
+        "chương mở dài 63 giây (> 60; giây thật (L_fs_cmp_9091.json))"
+      ],
+      [
+        "CẢNH BÁO",
+        "mo_cau_soc",
+        "10 giây đầu (dòng 1-3) chưa có câu sốc / nghịch lý / câu hỏi"
+      ]
+    ]
+  }
+]

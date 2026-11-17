@@ -1,0 +1,10 @@
+........s........................................................s...... [ 35%]
+........................................................................ [ 71%]
+......ss..................................................               [100%]
+=============================== warnings summary ===============================
+cl_risk_gate.py:924
+  /Users/nguyenthanhtung/Documents/Local AI/Vietneu-TTS/output/worktrees/wt_ascript/cl_risk_gate.py:924: SyntaxWarning: invalid escape sequence '\d'
+    chặn. FIX round 2: ranh giới chỉ cấm CHỮ SỐ liền kề (`(?<!\d)`) vẫn lọt
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+198 passed, 6 skipped, 1033 deselected, 1 warning in 5.68s

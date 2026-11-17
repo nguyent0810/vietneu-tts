@@ -823,4 +823,4 @@ def test_mo_dau_pano_hoac_cine_tinh_la_hinh_dong():
 def test_cau_tach_doi_ket_thuc_dau_phay_bi_bao():
     row = {"id": "x", "script": ["Ở đó, Đức Phật đang ngồi,", "cùng một nghìn hai trăm năm mươi vị tăng.", "Bạn nghe được không?"]}
     rep = LL.lint(row)
-    assert "cau_tach_doi" in str(rep)
+    assert any(lv == LL.WARN and code == "cau_tron" for lv, code, _ in rep["issues"])

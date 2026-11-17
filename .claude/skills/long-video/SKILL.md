@@ -13,10 +13,7 @@ Mọi thứ nằm ở `output/cl_staging/long/` (gitignored): `plan_long_w40.jso
 > 2–3 câu hỏi hẹn chương (docs/adr/0001, skill long-script §0 và formats.md §7); luật giữ chân 21/10 (docs/adr/0002).
 - Mẫu: `output/cl_staging/long/build_B1.py` (Phật giáo) và `build_F1.py` + `canchi.py` (Phong Thuỷ):
   kịch bản viết bằng Python (`say()/vis()/head()`), số liệu can chi / nạp âm / tuổi âm SINH bằng code.
-- Kiến trúc giữ chân (rút từ V2 `motion/long/RETENTION.md`): cold open dừng ở đỉnh → thẻ chương →
-  lộ trình 3 câu hỏi → chương 3–6 phút (móc → bối cảnh → leo thang → đỉnh + lặng → bài học → câu nối)
-  → giữa video quay lại cảnh mở → cảnh mạnh ở 3/4 → kết đóng 3 câu hỏi + motif. ≤3 mục mỗi danh sách
-  trong lời đọc (bảng dài để trên màn hình: `ledger`). `ledger` chỉ cho bảng ≥ 4 dòng nhiều cột: bảng 2-3 dòng hiện chữ rất nhỏ ở góc (QA F18 06/10) → dùng `list`/`compare`. Câu ≤ 34 âm tiết.
+- Lời đọc theo [chuẩn chung](../../../docs/script/audio-script.md), [Long chuẩn](../../../docs/script/profiles/long-standard.md)/[nhân vật](../../../docs/script/profiles/long-nhan-vat.md). Khung chương3–6 phút/câu34 tiếng cũ đã thay theo PO21–22/10; xem phụ lục075b. Bảng≥4 dòng nhiều cột dùng `ledger`; bảng2–3 dòng dùng `list`/`compare` để đọc rõ.
 - Plan: `"chapters": true` → `hf_batch_render` render từng chương (chạy lại được), nối hình, trộn tiếng
   một lần. `"tts"` (hf_voice, TTS từng câu) + `"sound"` (hf_foley, 4 lớp).
   **Giọng kể Long MỚI (PO 16/11/2026): Thục Đoan** (v3, `doc_truyen`, tempo 0.961 ≈ 175 tiếng/phút) cho cả BUD và FS —
@@ -53,31 +50,7 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
 - **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng,
   4 format, 10 luật rút từ đường giữ chân B3/B5/F1/F3/F4/F6). Soát trước TTS:
   `python long_script_lint.py output/cl_staging/long/plan_long_wNN.json --only <id>` (gọi lại `retention_issues`).
-- Một dòng = một câu. Câu in đậm TRỌN câu (`**...**`) = tiêu đề chương → thẻ chương
-  + mốc trong mô tả. Cụm `**đánh dấu**` giữa câu = chữ khoá (dạ quang, callout, chữ động).
-- Hook có tên chiến lược (counterintuitive, stakes…) trong 3–5 câu đầu; thesis ở beat 2;
-  hứa reward ở đầu, TRẢ ở cuối; mỗi chương kết bằng một câu mở sang chương sau.
-- TTS đọc lồng khi liệt kê ≥4 tên liền nhau → tách câu, tối đa 3 tên.
-- Câu vụn nhiều mảnh cụt ("Hỏa là đỏ, cam. Thổ là vàng đất, nâu.") có lần làm TTS hỏng
-  liên tục (short f31_f) → viết thành câu liền ("Hỏa ứng với đỏ và cam, ...").
-- **FS: gọi con giáp bằng tên chi** (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu,
-  Tuất, Hợi), không "tuổi Lợn/Dê". Runner chặn (`zodiac_naming_errors`).
-- Framing: FS "được xem là / theo truyền thống", có lời "kiến thức truyền thống để tham khảo".
-  BUD: lời Phật chỉ gán khi có kinh (vd DN 16, Pháp Cú câu n); hình ảnh không từ kinh
-  thì nói "một hình ảnh quen thuộc trong truyền thống Phật giáo".
-
-### Checklist giữ chân (mượn RETENTION.md của Youtube_Creator_V2, 04/10/2026)
-Runner in `!! giữ chân:` (retention_issues, chỉ cảnh báo) — đo trên CÂU NÓI, không phải dòng:
-- Câu nói 12–18 tiếng, **không câu nào > 35 tiếng** (TTS hụt hơi). Tách ở dấu hai chấm / "mà là".
-  Lời kinh giữ nguyên nhịp tụng được, nhưng đừng để dài quá 2 câu.
-- **Câu ngắn ≤ 6 tiếng ~1 câu mỗi 4–6 câu**: câu đỉnh sau phán định ĐÚNG/SAI, sau khoảnh khắc cảm xúc
-  ("Bà khóc.", "Tầng ấy vẫn ở đó."). Đo 04/10: F10–B14 chỉ 1/10–1/48 → điểm yếu chính.
-- Không quá 90 giây liền không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương).
-- Liệt kê trong lời đọc tối đa 3 mục, mục thứ ba bất ngờ nhất; phần còn lại lên màn hình.
-- Cold open bằng cảnh cụ thể, câu hỏi chưa trả lời; lộ trình 3 điều trong 1 phút đầu.
-- ~50%: re-hook (quay lại cảnh mở, đóng một vòng, mở vòng lớn hơn); ~75%: cảnh mạnh thứ hai.
-- ≥ 3 vòng mở được đóng ở chương sau; motif xuất hiện ≥ 3 lần (đầu, giữa, kết).
-- Kết chương bằng câu cầu nối, KHÔNG bằng câu tóm tắt. Kết video: callback + một câu hỏi thật.
+- DSL dòng/heading/chữ khoá ở [line-rules](../long-script/references/line-rules.md). Luật nguồn, nhịp, payoff, cách đọc tên/số ở chuẩn chung và hồ sơ; `retention_issues` chỉ cảnh báo. Không lấy checklist cũ làm cổng văn phong thứ hai.
 
 ## 3. Soát sự thật (bắt buộc, trước khi plan)
 - Can chi, nạp âm, quan hệ (xung/hình/hại/phá/tam hợp/lục hợp) tra tay theo bảng chuẩn,
@@ -101,7 +74,7 @@ thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú phá
 `motion-library`. Plan Long mới ghi `"layout_policy": "v2"` (`hf_batch_render.save_plan_rows` gọi `wire_plan_row` và ghi sẵn lúc tạo plan mới). Ảnh/clip không ghi `layout` hay `cine` thì `hyperframes_bridge.assign_layouts_v2` gán: full kèm cine khoảng 55–65%, depth khoảng 10%, nhóm có khung (frame, card3d, polaroid, pinned, split, split_r) khoảng 25–35%; 120 giây đầu chỉ full+cine hoặc depth. Plan thiếu khoá này giữ `auto_layouts` (chia đều 8 kiểu). Ghi tay `layout` hoặc `cine` thì giữ đúng giá trị đó.
 - Bộ style bổ sung (#258): `save_plan_rows` ghi 1–3 cảnh vào `visuals` của id Long mới (`lane: "long"` hoặc `style` kết thúc `_long`), kênh đã biết. Id đã có trên đĩa giữ nguyên `visuals`. Người viết xoá hoặc viết lại được. `"style_suggest": false` thì không đề xuất.
   Kênh được dùng: BUD `papercut` / `oneline` / `woodcut` (`tone: "paper"`); FS `woodcut` (`tone: "dark"`) / `blueprint` / `papercut`; Văn Sử Địa `film16` / `blueprint` / `papercut` / `pencil`; CL `film16` / `pencil` / `woodcut`. Field từng type nằm ở skill `motion-library`, mục #258.
-  Chỗ đặt, sau giây 40 (chưa có TTS thì 185 tiếng/phút): thẻ chương (câu `**...**` trọn), mặt bằng hoặc bản đồ, năm 3–4 chữ số, dòng tư liệu. Tối đa 3 cảnh, giữa hai cảnh style có ít nhất một câu thường. Máy đánh dấu `"suggested": true` và `"role"`. Chữ trên thẻ là cụt của câu — viết lại thành tiêu đề.
+  Chỗ đặt, sau giây 40 (chưa có TTS thì ước theo bảng giọng trong docs/script/voice-rates.md): thẻ chương (câu `**...**` trọn), mặt bằng hoặc bản đồ, năm 3–4 chữ số, dòng tư liệu. Tối đa 3 cảnh, giữa hai cảnh style có ít nhất một câu thường. Máy đánh dấu `"suggested": true` và `"role"`. Chữ trên thẻ là cụt của câu — viết lại thành tiêu đề.
   Ví dụ FS, người viết giữ hoặc sửa:
   ```json
   "41": {"type": "woodcut", "text": "Cổng thành · còn đứng", "motif": "gate", "tone": "dark", "steps": [{"at": 41, "word": "cổng"}], "suggested": true, "role": "thẻ chương"}
@@ -114,7 +87,7 @@ thumbnail, playlists[{title, description?}], hold?, layout_policy?` — cú phá
 - Ảnh local chỉ được nằm trong `output/cl_staging/long/research/ai_media/` hoặc `output/cl_staging/grokbot/`. Ảnh ở chỗ khác, ví dụ `plans_*/<id>/assets/img/`, thì bước dựng chương báo lỗi "media local phải là file trong…". Vì vậy ticket ảnh Long phải ghi thẳng ảnh vào `output/cl_staging/long/research/ai_media/<id>/` (Lead 12/11).
 - **Overlay ảnh (PO 16/11, ticket 072):** ảnh full không tự phủ chữ khoá, kể cả câu có `**cụm đánh dấu**`; cụm này chỉ tô màu trong phụ đề. Muốn nhấn ý, thêm cảnh beat text/kinetic riêng bằng visual có sẵn trong `motion-library`. Plan ghi `media[n].tag` mới hiện nhãn lower-third (tên + tuổi/chức danh), tối đa khoảng 2,5 giây; bỏ trống thì không có nhãn. `split`/`split_r` chỉ hiện cụm đánh dấu thật; câu không có cụm tự về `full` + camera. Ảnh `full` không có `cine`/`pan` tự nhận chuyển động xác định theo id ảnh; ảnh ngang ≥ 2:1 dùng `pan`, camera tự gán không lặp ở ảnh kế.
 - **10 giây đầu (PO 15/11):** dòng 1 dùng clip `.mp4` (Flow/stock), `pan` (pano), `cine` hoặc `layout: "depth"`; không chữ khoá, không thẻ chữ. Lint `mo_*` cảnh báo.
-- PO 17/11: trong 120 giây đầu, ảnh/clip có chuyển động ≤ 8 giây, cảnh tĩnh ≤ 4 giây; mục tiêu 3–8 giây/ảnh, đổi ảnh ở ý mới (`pace_gate_issues`). Viết sẵn câu ngắn theo `long-script/references/writer-brief.md` §120 GIÂY ĐẦU, không tách câu máy móc.
+- PO 17/11: trong 120 giây đầu, ảnh/clip có chuyển động ≤ 8 giây, cảnh tĩnh ≤ 4 giây; mục tiêu 3–8 giây/ảnh, đổi ảnh ở ý mới (`pace_gate_issues`). Viết câu trọn theo nhịp ý, xem `long-script/references/writer-brief.md` §120 GIÂY ĐẦU, không ép độ dài câu theo nhịp hình.
 - Ảnh/clip AI đã tải về: `{"kind": "local", "path": "output/cl_staging/long/research/ai_media/..."}`. Ảnh
   dọc (chân dung) bridge tự đặt vào khung 16:9 (chân dung giữa, nền mờ hai bên). Một ảnh không dùng hai lần trong
   cùng chương (bridge chặn trùng byte): lần hai thêm `"crop": [fx, fy]` (khung cắt cận 72%, chân dung để fy = 0).

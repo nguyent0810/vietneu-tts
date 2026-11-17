@@ -3,14 +3,13 @@
 import re
 from collections.abc import Iterable, Mapping
 
+from audio_script_rules import SHORT_WIN_PROFILE, short_audio_profile
+
 
 class GuardError(ValueError):
     """Raised when a short violates a production invariant."""
 
 
-# Dạng lịch hằng ngày (bảng ngày ~10 giây) cố ý ngắn, mở bằng bảng: miễn cổng
-# công thức v2 và cổng mở, vẫn giữ cổng tên con giáp / giọng (PO duyệt 13/11).
-DAILY_STYLES = frozenset({"daytable"})
 
 _CREDIT = re.compile(r"\b(?:credit|credits|generated\s+by|made\s+with|chatgpt|grokbot|midjourney|stable\s+diffusion|openai|google\s+flow|ảnh\s+minh\s+hoạ\s+ai)\b", re.I)
 
@@ -45,19 +44,21 @@ def validate(rows: Iterable[Mapping], html: str | Iterable[str] = ()) -> None:
             continue
         errors = []
         script = row.get("script") or []
+        errors.extend("integrity_issues: " + x for x in hf_batch_render.integrity_issues(dict(row)))
         if row.get("series") == "fs":
             errors.extend("zodiac_naming_errors: " + x for x in hf_batch_render.zodiac_naming_errors(script))
         errors.extend("crowded_chi_lines: " + x for x in hf_batch_render.crowded_chi_lines(script))
-        daily = row.get("style") in DAILY_STYLES
-        if not daily:
-            errors.extend("short_v2_issues: " + x for x in hf_batch_render.short_v2_issues(dict(row)))
-        errors.extend("short_tone_issues: " + x for x in hf_batch_render.short_tone_issues(dict(row)))
+        lookup_profile = short_audio_profile(dict(row)) == SHORT_WIN_PROFILE
+        for hint in (hf_batch_render.short_v2_warnings(dict(row))
+                     + hf_batch_render.short_tone_warnings(dict(row))
+                     + hf_batch_render.short_source_warnings(dict(row))):
+            print(f"{row.get('id', '<row>')}: CẢNH BÁO: {hint}")
         errors.extend("short_story_issues: " + x for x in hf_batch_render.short_story_issues(dict(row)))
         if row.get("pd_scenes") and docs and not any("PHỎNG DỰNG" in d for d in docs):
             errors.append("pd_scenes: cảnh phỏng dựng phải có chip PHỎNG DỰNG trên hình")
         for hint in hf_batch_render.short_hook_hints(dict(row)):
             print(f"{row.get('id', '<row>')}: short_hook_hints: {hint}")
-        if not daily and row.get("series") in ("bud", "fs", "vsd") and (row.get("scenes") or row.get("style") or row.get("media")):
+        if not lookup_profile and row.get("series") in ("bud", "fs", "vsd") and (row.get("scenes") or row.get("style") or row.get("media")):
             errors.extend("hook_errors: " + x for x in studio.hook_errors(dict(row)))
         if errors:
             raise GuardError(f"{row.get('id', '<row>')}: " + " | ".join(errors))

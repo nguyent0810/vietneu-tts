@@ -1,0 +1,26 @@
+[
+  {
+    "plan": "plan_L_bud_axathe.json",
+    "sha256": "dbac319e7c4eeba07197e3d89ed3589e896a9578bf65db0490bfc83b84c3f256",
+    "before": {
+      "exit": 0,
+      "summary": "-- 0 lỗi, 3 cảnh báo, 7 gợi ý"
+    },
+    "after": {
+      "exit": 0,
+      "summary": "-- 0 lỗi, 3 cảnh báo, 7 gợi ý"
+    }
+  },
+  {
+    "plan": "plan_L_fs_cmp_9091.json",
+    "sha256": "9033d18418bfcf965125d6c5550235045a112aea06817f0c71e9c8a4382d34a8",
+    "before": {
+      "exit": 0,
+      "summary": "-- 0 lỗi, 3 cảnh báo, 2 gợi ý"
+    },
+    "after": {
+      "exit": 0,
+      "summary": "-- 0 lỗi, 3 cảnh báo, 2 gợi ý"
+    }
+  }
+]

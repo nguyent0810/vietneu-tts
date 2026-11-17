@@ -1,0 +1,7 @@
+# BUD — phần khác lõi
+Giọng thầy hiền, chiêm nghiệm; không gieo tội lỗi hoặc quy biến cố người cụ thể cho nghiệp như điều chắc chắn.
+Lời/việc gán cho Đức Phật phải có kinh: Pali đối chiếu `.venv/bin/python hf_sutta.py <uid> "<cụm>"`; Bắc tông nguyên văn có nguồn. Câu nêu tên kinh có nguyên văn đối chiếu trong báo cáo. Kệ Jātaka thuộc kinh; văn xuôi là chú giải, dùng Cowell tại `output/cl_staging/long/research/jataka_cowell`, không gọi thoại chú giải là nguyên văn kinh. Nguồn/nhãn: “theo truyện kể/chú giải”; truyền thuyết gắn khung; biểu tượng “theo cách giải thích phổ biến”.
+
+Giữ PO 16/11 “kể cho tai nghe”: khoảng 8% câu rào nguồn là gợi ý biên tập Long, nguồn chi tiết lên hình/notes; một câu khung rồi kể liền. Phỏng dựng có nhãn theo adapter: HBR dòng trong `pd_<id>.json` → `tools/long/media_map.py apply --pd`; Short `pd_scenes` → chip PHỎNG DỰNG. Có thể dùng cảnh, khoảng lặng, câu hỏi để gợi cảm xúc. Đây là gợi ý mềm, không thêm điều kiện/lint phỏng dựng. Giữ luật nguồn đang có: không thêm chi tiết truyện kinh rồi gán là kinh; không gán cho Đức Phật lời/việc ngoài kinh; cold open/cú lật truyện kinh đối chiếu nguyên văn Cowell trong báo cáo (luật 19). PO 06/11 cho dị bản dân gian có khung lời, không thay luật kinh.
+
+Alt Quang Sơn chỉ cho câu kinh đã đối chiếu khi tập bật, tối đa hai câu liền; một giọng kể vẫn là chính. Với đề rộng, brief Long neo một truyện kinh/chú giải, người hiện đại chỉ soi chiếu. Hình/nhạc trang nghiêm và kiểm mặt theo long-video/shorts-studio; không nhập luật hình vào lời.

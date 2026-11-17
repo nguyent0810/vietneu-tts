@@ -27,6 +27,9 @@ def hook_lint_issues(row: dict, *, root: Path = ROOT) -> list[str]:
         raise FileNotFoundError(f"Thiếu dữ liệu cho cổng hook_lint: {terms_path}")
     hit = module.lint_row(row, module.load_terms(terms_path))
     blockers = module.blocking_flags(hit["flags"])
+    for flag in hit["flags"]:
+        if flag not in blockers:
+            print(f"{row.get('id', '<row>')}: CẢNH BÁO hook: {flag}")
     return [f"{flag} ({', '.join(hit['where'].get(flag, []))})" for flag in blockers]
 
 

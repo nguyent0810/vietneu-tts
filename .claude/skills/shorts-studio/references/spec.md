@@ -51,8 +51,8 @@ mp4 + `.render.json` (theme, engine, bgm, ghi nguồn) ở `out`.
 Stay đi cùng view (short ≥ 100 view, 28 ngày): r khoảng 0,52 (BUD), khoảng 0,51 (FS). Giây đầu quyết định người xem có ở lại.
 
 - Khung đầu phải có vật, người, hành động hoặc năm sinh nhìn thấy được.
-- Tiêu đề phải chứa danh từ cụ thể: vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, hoặc ngày.
-- Cấm khuôn "X có phải là Y?" khi X là khái niệm trừu tượng (chánh niệm, buông bỏ, vô thường, từ bi, trung đạo, nhân quả, thái cực, ngũ hành, …). "Có phải là" vẫn được khi X nhìn thấy được, như địa ngục.
+- Gợi ý tiêu đề chứa danh từ cụ thể: vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, hoặc ngày.
+- Cảnh báo biên tập khuôn "X có phải là Y?" khi X là khái niệm trừu tượng (chánh niệm, buông bỏ, vô thường, từ bi, trung đạo, nhân quả, thái cực, ngũ hành, …). "Có phải là" vẫn được khi X nhìn thấy được, như địa ngục.
 
 Đạt:
 
@@ -71,8 +71,8 @@ Không đạt (stay 9–15%):
 Kiểm plan trước khi chốt:
 
 ```bash
-.venv/bin/python output/cl_staging/scoreboard/hook_lint.py <plan.json>
-.venv/bin/python output/cl_staging/scoreboard/hook_lint.py --unpublished
+.venv/bin/python library/tools/hook_lint.py <plan.json>
+.venv/bin/python library/tools/hook_lint.py --unpublished
 ```
 
-Danh sách từ nằm ở `output/cl_staging/scoreboard/hook_terms.json` (Lead sửa file này). Cờ: `TRUU_TUONG`, `KHONG_DANH_TU_CU_THE`, `KHUNG_DAU_TRONG`. Exit 1 khi có cờ.
+Nguồn runtime: `library/tools/hook_lint.py`, dữ liệu `library/tools/hook_terms.json`. `TRUU_TUONG`/`KHONG_DANH_TU_CU_THE` chỉ gợi ý; chỉ `KHUNG_DAU_TRONG` chặn hình cũ (exit1). Chuẩn lời và profile: [audio-script §8–9](../../../../docs/script/audio-script.md#8-chọn-hồ-sơ-chỉ-đọc-phần-khác-lõi).

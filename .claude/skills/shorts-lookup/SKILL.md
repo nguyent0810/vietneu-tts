@@ -135,18 +135,8 @@ Toàn bộ thành phần đồ họa phải nằm trong vùng hiển thị an to
 
 ---
 
-## 8. Luật kênh & Đạo đức nội dung
-
-### Phong Thủy (FS)
-- **Tên Chi**: Gọi chuẩn tên chi (*Tý, Sửu, Dần... Hợi*), tuyệt đối không dùng "Mèo/Lợn/Dê". Tối đa 3 tên chi mỗi câu.
-- **Tính toán thuần bằng code**: 100% số liệu lấy từ `output/cl_staging/long/tuvi_year.py`, `canchi.py`, `amlich.py`. Không dùng thư viện ngoài cho trực/thần/nạp âm; không gõ tay số liệu.
-- **Khung pháp lý**: Luôn gắn khung *"theo truyền thống / tham khảo"*. Không dọa nạt, không hứa tiền.
-
-### Phật Giáo (BUD)
-- **Đối chiếu kinh điển**: Lời Phật chỉ trích dẫn khi đã kiểm bằng `.venv/bin/python hf_sutta.py` (Pali) hoặc có văn bản nguồn rõ ràng (Bắc tông). Dán nguyên văn đối chiếu vào báo cáo.
-- **Truyện Jātaka**: Theo bản dịch Cowell (`output/cl_staging/long/research/jataka_cowell/`). Truyền thuyết/chú giải phải gắn nhãn *"theo chú giải / truyền thuyết"*.
-- **Ý nghĩa biểu tượng**: Gắn nhãn *"theo cách giải thích phổ biến"*.
-- **Mỹ thuật tôn nghiêm**: Tuân thủ Luật 17 (ảnh thật tượng Phật/phù điêu CC0, cấm vẽ mặt Phật bằng code/hoạt hình, ảnh AI có mặt Phật được dùng từ 23/10 nếu không méo, không đồ hiện đại trong truyện cổ, không người phương Tây, không tôn giáo khác).
+## 8. Luật lời và hồ sơ
+[Audio-script §2–7](../../../docs/script/audio-script.md#2-hợp-đồng-giao-lời), [FS lookup](../../../docs/script/profiles/fs-lookup.md), [Short thắng9–18s](../../../docs/script/profiles/short-win-9-18.md), [BUD](../../../docs/script/profiles/bud.md)/[FS](../../../docs/script/profiles/fs.md) là nguồn chuẩn. Không lặp luật nguồn/tên chi/ngân sách ở đây. Hình BUD vẫn trang nghiêm theo luật17 (ảnh thật/AI mặt không méo, không hoạt hình, không đồ hiện đại/tôn giáo khác/người phương Tây trong truyện cổ); FS người Việt/Á Đông. Dàn hàng/ô tự giãn theo số mục; QA ở mục9.
 
 ---
 
@@ -174,8 +164,5 @@ Mọi short (FS và BUD) trước khi gửi Lead review phải vượt qua 6 c�
 - **Lead**: Review độc lập chất lượng hiển thị, đối chiếu số liệu nguồn, duyệt và thực hiện lệnh render/đăng video.
 - **Luật làm việc của Thợ**: Xem chi tiết 18 điều luật tại [worker_rules.md](file://references/worker_rules.md).
 
-## Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short)
-- **Mọi Short:** một dòng là một câu TRỌN. Không cắt câu thành hai dòng (dòng kết thúc dấu phẩy, vd "Tháng mười một âm," / "toàn tháng có…") — TTS nghỉ sai chỗ, nghe cụt. Cổng `short_story_issues` chặn từ lịch 29/11.
-- **Làn truyện (lane `truyen`/`tien_than`/`nhan_qua`, `format_subtag` story_…) và ô thử nghiệm (`test_cell`):** tối đa 1 câu rào nguồn ("Luật tạng ghi…", "theo chú giải…"); nguồn để ở dòng chân hình (`source`) và mô tả. Chỗ kinh bỏ trống kể thành cảnh (im lặng, bàn tay, ánh sáng, câu hỏi tu từ). Cảnh phỏng dựng ghi `pd_scenes: [số cảnh]` -> chip PHỎNG DỰNG trên hình (khuôn ai_cards; cổng chặn nếu thiếu chip).
-- **Dạng thắng giữ nguyên** (bảng tra FS, tượng BUD, …): chỉ chịu luật câu trọn.
-- Lằn ranh giữ: không gán lời cho Đức Phật ngoài kinh, không bịa số/lời trích thật.
+## Adapter câu đọc
+Theo [lõi §9](../../../docs/script/audio-script.md#9-adapter-và-mức-kiểm) và hồ sơ Short thắng; chọn profile dùng lại, không xin miễn từng lần. `pd_scenes`/chip theo shorts-studio; rào nguồn là gợi ý, giữ khung làm rõ nghĩa. Quy trình hình/mix/kiểm ở trên không đổi.
