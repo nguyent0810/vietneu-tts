@@ -215,7 +215,7 @@ def test_ngu_canh_uu_tien_full_push_va_split():
     neu_push = sum(c["cine"]["cam"] == "push_in" for c in neu_full) / len(neu_full)
     assert emo_push > neu_push
 
-    compare_script = ["Trái lại, vế này khác với vế kia."] * 40
+    compare_script = ["Trái lại, **vế này** khác với vế kia."] * 40   # split cần cụm đánh dấu (072)
     cmp_ = HB.assign_layouts_v2(media, "ctx", script=compare_script, segments=segments, series="fs")
     cmp_split = sum(c["layout"] in ("split", "split_r") for c in cmp_.values() if c["image"])
     neu_split = sum(c["layout"] in ("split", "split_r") for c in neu.values() if c["image"])

@@ -178,7 +178,7 @@ def chap(tmp_path, monkeypatch):
         "id": rid, "series": "bud", "style": "lacquer_long", "lane": "long",
         "script": ["Xin chào."], "chapters": True, "badge": "",
     }
-    monkeypatch.setattr(HBR, "chapter_spans", lambda lines, segs, total: [(0, 1, 0.0, 4.0)])
+    monkeypatch.setattr(HBR, "chapter_spans", lambda lines, segs, total, **_k: [(0, 1, 0.0, 4.0)])
     monkeypatch.setattr(HBR, "chapter_key", lambda *_a, **_k: "abc")
     monkeypatch.setattr(HBR, "pacing", lambda _row, _segs: ({}, []))
     monkeypatch.setattr(HBR, "long_pool", lambda _row: None)

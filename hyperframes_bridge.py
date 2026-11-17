@@ -2020,7 +2020,8 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
         elif not it["image"]:
             clip_step += 1
             opening = it["t"] < LAYOUT_V2_OPENING_S
-            allowed = ["full"] if opening or last_layout in LAYOUT_FRAMED else ["full", "card3d", "frame"]
+            allowed = ["full"] if opening or last_layout in LAYOUT_FRAMED else [
+                "full", *[k for k in ("card3d", "frame") if k not in recent_frame_types[-5:]]]   # cửa sổ 6 ảnh không lặp kiểu khung
             it["layout"] = _deficit_pick(clip_count, clip_target, allowed, clip_step, rng)
             clip_count[it["layout"]] = clip_count.get(it["layout"], 0) + 1
             it["auto"] = True
@@ -2041,8 +2042,12 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
                 group = _deficit_pick(gcount, gtarget, allowed, gstep, rng, bonus, overflow_ok=False)
             if group == "framed":
                 blocked = set(recent_frame_types[-5:])
-                pool = [name for name in LAYOUT_FRAMED if name not in blocked] or [
-                    name for name in LAYOUT_FRAMED if name != (recent_frame_types[-1] if recent_frame_types else "")]
+                # split cần cụm **đánh dấu** (072): câu không có thì loại khỏi pool ngay, khỏi đổi sang full sau
+                # (đổi sau làm lệch suất khung và lặp kiểu trong cửa sổ 6 ảnh).
+                kinds = [name for name in LAYOUT_FRAMED
+                         if _MARKER_RE.search(it["sentence"]) or name not in ("split", "split_r")]
+                pool = [name for name in kinds if name not in blocked] or [
+                    name for name in kinds if name != (recent_frame_types[-1] if recent_frame_types else "")]
                 pref = set(_FRAME_PREF.get(it["ctx"], ()))
                 if it["portrait"]:
                     pref = set(pref) | {"pinned", "polaroid", "frame"}
