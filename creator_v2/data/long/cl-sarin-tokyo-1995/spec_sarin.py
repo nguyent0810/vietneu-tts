@@ -9,7 +9,8 @@ from pathlib import Path
 
 D = Path(__file__).resolve().parent
 
-TITLES = ['Gọi Cấp Cứu Cho Vợ, Bị Báo Chí Gọi Là Người Khí Độc',
+TITLES = ['Gọi Cấp Cứu Cho Vợ, Bị Nghi Là Kẻ Thả Sarin',   # 17/11 chủ kênh: tiêu đề/thumbnail phải có 'Sarin'
+          'Gọi Cấp Cứu Cho Vợ, Bị Báo Chí Gọi Là Người Khí Độc',
           'Cảnh Sát Có Cặn Sarin Từ Trước, Tokyo Vẫn Bị Đánh Úp',
           'Chín Tháng Sau Matsumoto, Vì Sao Tokyo Vẫn Bị Sarin?']
 TITLE = TITLES[0]
