@@ -13,7 +13,7 @@ TITLES = ['Gọi Cấp Cứu Cho Vợ, Bị Báo Chí Gọi Là Người Khí Đ
           'Cảnh Sát Có Cặn Sarin Từ Trước, Tokyo Vẫn Bị Đánh Úp',
           'Chín Tháng Sau Matsumoto, Vì Sao Tokyo Vẫn Bị Sarin?']
 TITLE = TITLES[0]
-LOOK = 'steel'      # CL gần đây: rose (Địch Nhân Kiệt), classic (Hoàng Kim Vinh), sulfur (Đông Lang), jade (Lưu Gù); steel chưa dùng cho CL từ Capone
+LOOK = 'amber'      # 17/11: steel trùng Mata Hari (29/11, ngay trước) -> variety chặn final; amber dùng lần cuối ở Hòa Thân 15/11
 
 CREDITS = {
     'File:130608 Matsumoto Castle Matsumoto Nagano pref Japan02bs4.jpg': ('663highland', 'CC BY 2.5'),

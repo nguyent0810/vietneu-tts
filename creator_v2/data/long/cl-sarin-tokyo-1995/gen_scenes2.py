@@ -19,7 +19,7 @@ CH['ch07'] = dict(hud={'k': 'CHƯƠNG 07', 't': 'MỘT MẪU ĐẤT'}, bgm={'moo
     K(13, 'GIÁM ĐỐC CƠ QUAN CẢNH SÁT QUỐC GIA', ('HỌP VỚI CÁC CÁN BỘ CẤP CAO', (13, 'họp'), 'sm'), bg='toky113'),
     S((13, 'nhưng'), 'KHÔNG CHỐT ĐƯỢC\nNGÀY KHÁM XÉT', 'NĂM 1994 HẾT MÀ CHƯA CÓ NGÀY NÀO', bg='kasu61'),
     DT(15, 'BÁO YOMIURI ĐĂNG BÀI ĐẦU TIÊN', '1/1/1995', bg='ai09', illus=MC, srcnote=NG(WK)),
-    S(16, 'SARIN · KAMIKUISHIKI', 'LẦN ĐẦU CÔNG CHÚNG ĐỌC HAI TỪ ĐI LIỀN NHAU', bg='kofu41'),
+    S(16, 'KAMIKUISHIKI', 'SARIN · LẦN ĐẦU CÔNG CHÚNG ĐỌC HAI TỪ ĐI LIỀN NHAU', bg='kofu41'),
     K(17, 'TÔI CHƯA ĐỌC ĐƯỢC BẢN GỐC', ('CHỈ DỰA VÀO TRANG TIẾNG NHẬT', (17, 'nên'), 'sm'), bg='ai09', illus=MC),
     S(18, 'HẾT BÍ MẬT\nCỦA CẢNH SÁT', 'CÂU CHUYỆN ĐÃ ĐẾN TAY CÔNG CHÚNG', bg='kofu41'),
     CT(19, 6, ' TUẦN', 'TRÔI QUA GIỮA 16/11 VÀ NGÀY BÀI BÁO RA', prefix='HƠN ', bg='ai12', illus=MC),
