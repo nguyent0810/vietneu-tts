@@ -73,16 +73,16 @@ def test_ruleset_has_approved_d_values_and_new_tts_merges():
     r = V.load_ruleset()
     assert r["bud"]["temperature"] == 0.8 and r["bud"]["text_mode"] == "production"  # Thục Đoan t0,8 (PO 16/11, #449)
     assert "donor" not in r["bud"]
-    assert r["fs"]["temperature"] == 0.7 and r["fs"]["donor"] == "Thanh Bình"
+    assert r["fs"]["temperature"] == 0.8 and "donor" not in r["fs"]  # #449: Thục Đoan, bỏ donor nam
     assert r["fs"]["text_mode"] == "speech"
     assert r["his"]["temperature"] == 0.7 and r["his"]["text_mode"] == "speech"
     assert "donor" not in r["his"]
     spec = V.new_tts("fs", voice="Thái Sơn", style="doc_truyen", tempo=0.96)
-    assert spec["donor"] == "Thanh Bình" and spec["voice"] == "Thái Sơn"
+    assert "donor" not in spec and spec["voice"] == "Thái Sơn" and spec["temperature"] == 0.8
     assert spec["pause_ctx"] is True
     assert V.apply_long_narrator("unknown", {"voice": "Binh"})["pause_ctx"] is True
-    locked = V.new_tts("fs", voice="Thái Sơn", temperature=0.8)  # fields sau đè ruleset
-    assert locked["temperature"] == 0.8
+    locked = V.new_tts("fs", voice="Thái Sơn", temperature=0.6)  # fields sau đè ruleset
+    assert locked["temperature"] == 0.6
 
 
 def test_hf_voice_source_has_no_channel_hardcode():
