@@ -17,3 +17,15 @@ Giọng thuần = tổng(end−start); cả nghỉ = tổng(start kế−start),
 **Thục Đoan: chưa có segments trong tập đường dẫn đã quét; 175 tiếng/phút trong PO16/11 là mốc cấu hình cũ, không phải đo mới của075b.** Tiếng là ước cách đọc của bộ đếm (số/tên có sai số), không phải phiên âm nghe tay. Mẫu Long khác độ dài câu, không cam kết tốc độ Short.
 
 Danh sách tệp, SHA256, TTS và số tổng: [receipt](../research/075b/voice-rates.json). Chỉ đo lời trong manifest, không chứng minh plan hiện tại khớp audio. Giữ185 mặc định nháp tương thích; writer chọn --rate theo giọng, không thay hàng loạt bằng175.
+
+## Giọng V2 (creator_v2 MIM/CK/CL) — đo 17/11/2026 từ `output/long/<topic>/chNN/timing.json`
+
+Đếm tiếng bằng tách âm tiết/chữ số trên `spoken` (không qua `long_script_lint.syllables`, sai số nhỏ với số/tên). Giọng thuần = tổng(end−start); cả nghỉ = end cuối mỗi chương. vieneu 3.8.3, v3 Turbo, CPU/ONNX.
+
+| Kênh / giọng Long | Số Long đo | Tiếng/phút thuần | Tiếng/phút cả nghỉ |
+|---|---:|---:|---:|
+| CL — Anh Khôi (= Thiện Minh) | 8 | 226–253 (trung vị ~247) | 200–229 (trung vị ~210) |
+| MIM — giọng Long MIM | 28 | 231–273 (~248) | 207–238 (~219) |
+| CK — giọng Long CK | 31 | 235–261 (~248) | 205–235 (~219) |
+
+Ngân sách: Long CL 25–30 phút ≈ 5.300–6.300 tiếng; Sarin 6.403 tiếng → 30,9 phút (207 tiếng/phút cả nghỉ).
