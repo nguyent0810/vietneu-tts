@@ -1683,6 +1683,148 @@ def _key_parts(line_text: str, avoid: str | None = None) -> list[dict]:
     return []
 
 
+def _cut_token(text: str) -> str:
+    import unicodedata
+    return re.sub(r"[^\w]", "", unicodedata.normalize("NFC", text).casefold())
+
+
+def segment_words(text: str, seg: dict, env=None) -> tuple[list[dict], str]:
+    """Reuse manifest/karaoke timestamps; otherwise estimate by spoken syllables.
+
+    Manifest word times are absolute seconds, like segment start/end. Never
+    silently replace supplied timestamps with character-length interpolation.
+    """
+    tokens = _words_with_timing(text, float(seg["start"]), float(seg["end"]))
+    supplied = seg.get("words")
+    if supplied:
+        import math
+        if len(supplied) != len(tokens):
+            raise HyperFramesError("timing từ không khớp số token kịch bản")
+        for token, word in zip(tokens, supplied):
+            if _cut_token(str(word.get("w", word.get("word", "")))) != _cut_token(token["w"]):
+                raise HyperFramesError(f"timing từ không khớp kịch bản: {token['w']!r}")
+            t = float(word.get("t", word.get("start")))
+            d = float(word["d"]) if "d" in word else float(word["end"]) - t
+            if not (math.isfinite(t) and math.isfinite(d) and float(seg["start"]) <= t < float(seg["end"]) and d >= 0):
+                raise HyperFramesError("timing từ nằm ngoài câu hoặc âm")
+            token.update(t=t, d=d)
+        if any(b["t"] < a["t"] for a, b in zip(tokens, tokens[1:])):
+            raise HyperFramesError("timing từ không tăng dần")
+        return tokens, seg.get("word_timing_source") or "manifest"
+    if env is not None:
+        return _words_with_timing(text, float(seg["start"]), float(seg["end"]), env), "hf_align"
+    import hf_align
+    times = hf_align._proportional(float(seg["start"]), float(seg["end"]),
+                                  [hf_align.token_weight(w["w"]) for w in tokens])
+    for token, (t, d) in zip(tokens, times):
+        token.update(t=t, d=d)
+    return tokens, "estimated_syllables"
+
+
+def timed_plan_lines(script: list, segments: list, figures: dict | None = None) -> list[dict]:
+    if len(script) != len(segments):
+        raise HyperFramesError("số segments không khớp script")
+    lines = []
+    for sid, (text, seg) in enumerate(zip(script, segments), 1):
+        words, source = segment_words(text, seg)
+        lines.append({"sentence_id": sid, "start": seg["start"], "end": seg["end"],
+                      "words": words, "word_timing_source": source,
+                      "key_parts": _key_parts(text),
+                      "heading": text.startswith("**") and text.endswith("**") and text.count("**") == 2,
+                      "figure": _layout_spec(figures or {}, sid)})
+    return lines
+
+
+def expand_media_cuts(lines: list[dict], media: dict) -> tuple[list[dict], dict]:
+    """Compile word cuts to ordinary engine scenes. No narration/plan mutation.
+
+    sentence_id stays contiguous for the engine; source_sentence_id is the plan
+    line for diagnostics. Only the final shot can hold into following lines.
+    """
+    import copy
+    if not any(isinstance(m, dict) and m.get("cuts") is not None for m in media.values()):
+        return copy.deepcopy(lines), copy.deepcopy(media)
+    out, expanded, first, last = [], {}, {}, {}
+    for line in lines:
+        source = line["sentence_id"]
+        spec = _layout_spec(media, source)
+        cuts = spec.get("cuts", [])
+        if not isinstance(cuts, list):
+            raise HyperFramesError(f"câu {source}: cuts phải là danh sách")
+        if cuts and line.get("heading"):
+            raise HyperFramesError(f"câu {source}: không đặt cuts trên tiêu đề chương")
+        words = line.get("words") or []
+        indices, bounds, specs = [0], [float(line["start"])], [{k: v for k, v in spec.items() if k != "cuts"}]
+        previous = -1
+        for number, cut in enumerate(cuts, 1):
+            if not isinstance(cut, dict) or not isinstance(cut.get("at"), str) or not cut["at"].strip():
+                raise HyperFramesError(f"câu {source} cuts[{number}]: at phải là từ/cụm từ")
+            if "cuts" in cut:
+                raise HyperFramesError(f"câu {source}: không lồng cuts")
+            wanted = [_cut_token(w) for w in cut["at"].split()]
+            if not all(wanted):
+                raise HyperFramesError(f"câu {source} cuts[{number}]: at thiếu từ có nghĩa")
+            said = [_cut_token(w["w"]) for w in words]
+            hit = next((j for j in range(previous + 1, len(words) - len(wanted) + 1)
+                        if said[j:j + len(wanted)] == wanted), None)
+            if hit is None:
+                raise HyperFramesError(f"câu {source} cuts[{number}]: không tìm thấy {cut['at']!r} sau mốc trước")
+            at = float(words[hit]["t"])
+            if not bounds[-1] < at < float(line["end"]):
+                raise HyperFramesError(f"câu {source} cuts[{number}]: mốc phải tăng và nằm trong câu")
+            previous = hit
+            indices.append(hit)
+            bounds.append(at)
+            specs.append({k: v for k, v in cut.items() if k != "at"})
+        first[source] = len(out) + 1
+        for shot, shot_spec in enumerate(specs):
+            ln = copy.deepcopy(line)
+            sid = len(out) + 1
+            ln.update(sentence_id=sid, source_sentence_id=source, shot_index=shot,
+                      start=bounds[shot], end=bounds[shot + 1] if shot < len(cuts) else line["end"])
+            if cuts:
+                ln["word_cut"] = True
+                ln["words"] = copy.deepcopy(words[indices[shot]:indices[shot + 1] if shot < len(cuts) else len(words)])
+                # Captions keep the complete original sentence, even as its images change.
+                ln["caption_words"] = copy.deepcopy(words)
+                ln["caption_start"], ln["caption_end"] = line["start"], line["end"]
+                ln["caption_cont"] = shot > 0
+                if shot:
+                    ln.pop("visual", None)
+                    if line.get("visual"):
+                        ln["visual_cont"] = source
+            out.append(ln)
+            if spec:
+                expanded[str(sid)] = copy.deepcopy(shot_spec)
+        last[source] = len(out)
+
+    def remap(value):
+        if isinstance(value, list):
+            return [remap(v) for v in value]
+        if isinstance(value, dict):
+            return {k: ((last if k == "until" else first).get(v, v)
+                        if k in ("at", "until", "line") and isinstance(v, int) else remap(v))
+                    for k, v in value.items()}
+        return value
+    for ln in out:
+        for key in ("visual_cont", "media_cont"):
+            if key in ln:
+                ln[key] = first.get(ln[key], ln[key])
+        if "visual" in ln:
+            ln["visual"] = remap(ln["visual"])
+        spec = expanded.get(str(ln["sentence_id"]))
+        if spec:
+            pan = spec.get("pan") or {}
+            if ln.get("word_cut") and any(s.get("line") != ln["source_sentence_id"] for s in pan.get("stops", [])):
+                raise HyperFramesError("cuts: pan.stops phải ở cùng câu, không giữ pan qua shot kế")
+            spec = remap(spec)
+            if ln.get("word_cut") and spec.get("pan"):
+                for stop in spec["pan"].get("stops", []):
+                    stop["line"] = ln["sentence_id"]
+            expanded[str(ln["sentence_id"])] = spec
+    return out, expanded
+
+
 def _media_tag(spec: dict | None) -> str | None:
     """Nhãn nhận diện là opt-in theo media[n].tag; không suy ra từ loại tư liệu."""
     value = spec.get("tag") if isinstance(spec, dict) else None
@@ -1705,7 +1847,7 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
     figures = figures or {}
     figure_labels = figure_labels or {}
     env = None
-    if align_audio is not None and Path(align_audio).is_file():
+    if align_audio is not None and Path(align_audio).is_file() and not all(seg.get("words") for seg in segments):
         try:
             import hf_align  # noqa: PLC0415
             env = hf_align.energy_envelope(align_audio)
@@ -1715,12 +1857,15 @@ def build_lines(script_path: Path, manifest_path: Path, figures: dict | None = N
     for idx, (raw, seg) in enumerate(zip(raw_lines, segments), start=1):
         parts = _key_parts(raw, avoid=prev_key)
         prev_key = parts[0]["t"] if parts else None
+        words, word_source = segment_words(raw, seg, env) if (seg.get("words") or env is not None) else (
+            _words_with_timing(raw, float(seg["start"]), float(seg["end"])), "estimated_characters")
         lines.append({
             "sentence_id": idx,
-            "start": round(float(seg["start"]), 3),
-            "end": round(float(seg["end"]), 3),
+            "start": float(seg["start"]) if seg.get("words") else round(float(seg["start"]), 3),
+            "end": float(seg["end"]) if seg.get("words") else round(float(seg["end"]), 3),
             "key_parts": parts,
-            "words": _words_with_timing(raw, float(seg["start"]), float(seg["end"]), env),
+            "words": words,
+            "word_timing_source": word_source,
             # Câu in đậm TRỌN câu là tiêu đề chương (video dài) -- ảnh không
             # được giữ tràn qua nó.
             "heading": raw.startswith("**") and raw.endswith("**") and raw.count("**") == 2,
@@ -1974,6 +2119,31 @@ def assign_layouts_v2(media: dict, seed: str, *, script: list | None = None,
     import random  # noqa: PLC0415
     media = media or {}
     script = list(script or [])
+    if any(isinstance(m, dict) and m.get("cuts") is not None for m in media.values()):
+        if not segments:
+            starts = _sentence_starts(script, None)
+            segments = [{"start": t, "end": t + max(.8, len(script[i].split()) / LAYOUT_WORDS_PER_SEC)}
+                        for i, t in enumerate(starts)]
+        lines = timed_plan_lines(script, segments, figures)
+        apply_visuals(lines, visuals or {}, media)
+        shots, shot_media = expand_media_cuts(lines, media)
+        chosen = assign_layouts_v2(
+            shot_media, seed, script=[" ".join(w["w"] for w in ln["words"]) for ln in shots],
+            visuals={str(ln["sentence_id"]): ln["visual"] for ln in shots if ln.get("visual")},
+            segments=shots, series=series,
+            scene_decision={str(ln["sentence_id"]): (scene_decision or {}).get(str(ln["source_sentence_id"]), {}) for ln in shots},
+            figures={str(ln["sentence_id"]): ln.get("figure", {}) for ln in shots})
+        grouped = {}
+        for ln in shots:
+            if str(ln["sentence_id"]) not in shot_media:
+                continue
+            choice = chosen.get(ln["sentence_id"], {})
+            source = ln["source_sentence_id"]
+            if ln["shot_index"] == 0:
+                grouped[source] = dict(choice)
+            else:
+                grouped.setdefault(source, {}).setdefault("cuts", []).append(choice)
+        return grouped
     starts = _sentence_starts(script, segments)
     decisions = scene_decision or {}
     figures = figures or {}
@@ -2257,7 +2427,8 @@ def _choice_is_image(sid, choice: dict, media: dict | None) -> bool:
 
 def layout_report(chosen: dict[int, dict], media: dict | None = None) -> str:
     """Một dòng phân bố để Lead soát. Phần trăm tính trên ảnh (không tính clip)."""
-    images = [c for sid, c in chosen.items() if isinstance(c, dict) and _choice_is_image(sid, c, media)]
+    images = [c for sid, choice in chosen.items() if isinstance(choice, dict)
+              for c in [choice, *choice.get("cuts", [])] if _choice_is_image(sid, c, media)]
     n = len(images)
     if n == 0:
         return "bố cục: 0 ảnh; full 0% (cine 0%), depth 0%, khung 0%; cam: —"
@@ -2289,7 +2460,8 @@ def layout_v2_problems(chosen: dict[int, dict], *, script: list | None = None,
                        visuals: dict | None = None, segments: list | None = None,
                        figures: dict | None = None) -> list[str]:
     """Lỗi luật v2 trên kết quả đã gán. Tỉ lệ chỉ tính ảnh tự gán."""
-    images = [c for c in chosen.values() if c.get("image")]
+    ordered = [c for sid in sorted(chosen) for c in [chosen[sid], *chosen[sid].get("cuts", [])]]
+    images = [c for c in ordered if c.get("image")]
     auto = [c for c in images if c.get("auto")]
     out = []
     n = len(auto)
@@ -2307,7 +2479,6 @@ def layout_v2_problems(chosen: dict[int, dict], *, script: list | None = None,
         if c.get("t", 0) < LAYOUT_V2_OPENING_S and c.get("layout") in LAYOUT_FRAMED:
             out.append(f"120s đầu có khung ở ảnh t={c.get('t')}")
             break
-    ordered = [chosen[sid] for sid in sorted(chosen)]
     run_full_cam: list[str] = []
     prev_cam = ""
     prev_framed = False
@@ -2342,10 +2513,9 @@ def layout_v2_problems(chosen: dict[int, dict], *, script: list | None = None,
     starts = _sentence_starts(script, segments)
     duration = max([0.0, *starts, *[float(c.get("t") or 0) for c in ordered]])
     items = []
-    by_sid = {sid: c for sid, c in chosen.items()}
-    for sid in sorted(by_sid):
-        items.append({"t": by_sid[sid].get("t", 0.0), "layout": by_sid[sid].get("layout") or "",
-                      "image": by_sid[sid].get("image"), "auto": by_sid[sid].get("auto"), "sid": sid})
+    for sid, c in enumerate(ordered, 1):
+        items.append({"t": c.get("t", 0.0), "layout": c.get("layout") or "",
+                      "image": c.get("image"), "auto": c.get("auto"), "sid": sid})
     for t0, _have in _short_windows(items, list(script or []), visuals, figures, starts, duration + 0.01):
         out.append(f"cửa sổ {t0:.0f}s thiếu 3 loại cảnh")
         break
@@ -2451,7 +2621,7 @@ def visual_mix_image_ref(spec: dict) -> str | None:
     static media. Unknown media without a file extension is not guessed static.
     """
     from urllib.parse import urlsplit
-    ref = spec.get("path") or spec.get("ref") or spec.get("src") or spec.get("url")
+    ref = spec.get("path") or spec.get("ref") or spec.get("src") or spec.get("url") or spec.get("file")
     if not ref:
         return None
     ref = str(ref)
@@ -2554,12 +2724,14 @@ def load_channel_typography(channel_or_series: str, opts: dict | None = None) ->
 
 
 def _layout_v2_payload(chosen: dict[int, dict]) -> dict[str, dict]:
-    return {str(sid): {"layout": c.get("layout") or "", "cine": c.get("cine"), "pan": c.get("pan")}
+    return {str(sid): {"layout": c.get("layout") or "", "cine": c.get("cine"), "pan": c.get("pan"),
+                       **({"cuts": c["cuts"]} if c.get("cuts") else {})}
             for sid, c in chosen.items()}
 
 
 def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | None,
-                            script: Path, manifest: Path, visuals: dict | None, series: str) -> tuple[dict[int, str], dict[int, dict]]:
+                            script: Path, manifest: Path, visuals: dict | None, series: str,
+                            lines: list | None = None) -> tuple[dict[int, str], dict[int, dict]]:
     """v1: auto_layouts như cũ. v2: map truyền sẵn (cả video) hoặc tính tại đây."""
     opts = opts or {}
     if style not in LONG_STYLES:
@@ -2571,6 +2743,10 @@ def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | Non
             segments = json.loads(Path(manifest).read_text(encoding="utf-8")).get("segments") or []
         except (OSError, json.JSONDecodeError):
             segments = []
+        if lines is not None:
+            raw = [" ".join(w["w"] for w in ln["words"]) for ln in lines]
+            segments = lines
+            visuals = {str(ln["sentence_id"]): ln["visual"] for ln in lines if ln.get("visual")}
         shift = float(opts.get("seg_off") or 0)
         if shift and segments:
             segments = [{"start": float(s.get("start") or 0) + shift, "end": float(s.get("end") or 0) + shift} for s in segments]
@@ -2582,6 +2758,18 @@ def _resolve_render_layouts(media: dict, seed: str, style: str, opts: dict | Non
         preset = _layout_v2_payload(chosen)
     if preset is None:
         return auto_layouts(media or {}, seed), {}
+    if lines is not None and any("source_sentence_id" in ln for ln in lines):
+        expanded = {}
+        for ln in lines:
+            choice = _layout_spec(preset, ln.get("source_sentence_id", ln["sentence_id"]))
+            index = ln.get("shot_index", 0)
+            if index:
+                cuts = choice.get("cuts", [])
+                choice = cuts[index - 1] if index <= len(cuts) else {}
+            expanded[str(ln["sentence_id"])] = choice
+        # A locally computed preset already uses expanded scene ids.
+        if opts.get("layout_v2") is not None:
+            preset = expanded
     auto, cines = {}, {}
     for key, choice in preset.items():
         if not str(key).isdigit() or not isinstance(choice, dict):
@@ -2633,7 +2821,8 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     preset = SERIES_PRESETS[series]
     # Video dài: mốc từ bám âm thanh thật (chữ động, dạ quang, ghim bản đồ bám theo).
     lines = build_lines(script, manifest, figures, figure_labels,
-                        align_audio=wav if (lane == "long" or visuals) else None)
+                        align_audio=wav if (lane == "long" or visuals or any(
+                            isinstance(m, dict) and m.get("cuts") for m in (media or {}).values())) else None)
 
     media_tags: list[str] = []
     media_credits: list[str] = []
@@ -2707,11 +2896,25 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             if ln.get("heading"):
                 chap += 1
                 ln["chapter_no"] = chap
+    if any(isinstance(m, dict) and m.get("cuts") for m in (media or {}).values()):
+        if style not in LONG_STYLES:
+            raise HyperFramesError("media.cuts cần style video dài")
+        raw_script = [s.strip() for s in script.read_text(encoding="utf-8").splitlines() if s.strip()]
+        for ln in lines:
+            if _layout_spec(media, ln["sentence_id"]).get("cuts") and ln.get("word_timing_source") == "estimated_characters":
+                ln["words"], ln["word_timing_source"] = segment_words(
+                    raw_script[ln["sentence_id"] - 1], ln)
+        lines, media = expand_media_cuts(lines, media)
+        for ln in lines:
+            if ln.get("word_cut") and ln.get("shot_index") == 0:
+                print(f"cuts câu {ln['source_sentence_id']}: timing {ln['word_timing_source']}"
+                      + (" (ƯỚC theo tiếng đọc)" if ln["word_timing_source"].startswith("estimated") else ""), file=sys.stderr)
     if hold_media is None:
         hold_media = lane == "long"
     holds = media_holds(lines, {int(k) for k in (media or {})}, media_specs=media) if hold_media else {}
     auto, cine_by_sid = _resolve_render_layouts(
-        media or {}, output.stem, style, opts, script, manifest, visuals, series)
+        media or {}, output.stem, style, opts, script, manifest, visuals, series,
+        lines=lines if any(ln.get("word_cut") for ln in lines) else None)
     for li, line in enumerate(lines):
         spec = (media or {}).get(str(line["sentence_id"])) or (media or {}).get(line["sentence_id"])
         if not spec:
@@ -2727,11 +2930,14 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         # một tấm nhà sư cho cả "alms round" lẫn "alms bowl", và video ra hai
         # màn liền nhau giống hệt mà không lỗi nào nổ. Chặn ở đây, nói rõ câu nào.
         digest = hashlib.sha1(asset.read_bytes()).hexdigest()
+        shot_label = f"câu {line.get('source_sentence_id', line['sentence_id'])}"
+        if line.get("word_cut"):
+            shot_label += f" shot {line['shot_index']}"
         if digest in seen_assets:
             raise HyperFramesError(
-                f"câu {line['sentence_id']}: ảnh/clip trùng hệt câu {seen_assets[digest]} "
+                f"{shot_label}: ảnh/clip trùng hệt {seen_assets[digest]} "
                 f"(query {used_query!r}) -- đổi query cho một trong hai câu")
-        seen_assets[digest] = line["sentence_id"]
+        seen_assets[digest] = shot_label
         candidate_layout = str(spec.get("layout") or auto.get(line["sentence_id"]) or "").lower()
         if candidate_layout == "frame":
             candidate_layout = ""
@@ -2759,6 +2965,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
             cine_choice = cine_by_sid.get(line["sentence_id"])
             if isinstance(cine_choice, dict):
                 pan_raw = cine_choice.get("_auto_pan")
+                if pan_raw and line.get("source_sentence_id"):
+                    import copy
+                    pan_raw = copy.deepcopy(pan_raw)
+                    for stop in pan_raw.get("stops", []):
+                        stop["line"] = line["sentence_id"]
         cine = parse_cine(cine_raw, where=f"câu {line['sentence_id']}")
         if cine is not None:
             if style not in LONG_STYLES:
@@ -2843,7 +3054,7 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         next_has_cine = isinstance(next_spec, dict) and (next_spec.get("cine") is not None or next_spec.get("pan") is not None)
         if last_idx + 1 < len(lines):
             m_end = max(m_end, lines[last_idx + 1]["start"])
-        dur = round(max(1.0, m_end - line["start"]), 2)
+        dur = round(max(0.001 if line.get("word_cut") else 1.0, m_end - line["start"]), 3)
         dur_media = round(dur + 0.6, 2)
         sid = line["sentence_id"]
         # Chỉ thẻ media trần. Mọi lớp trang trí (khung, nhãn, quầng, hạt) do
@@ -2996,6 +3207,11 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     comp_path = comp_dir / f".render_{uid}.html"
     comp_path.write_text(comp_src, encoding="utf-8")
 
+    if opts.get("prepare_only"):
+        return {"prepared": True, "composition": str(comp_path), "variables": str(vars_path),
+                "duration_s": duration, "n_lines": len(lines),
+                "media_credits": [c for c in media_credits + visual_credits if c]}
+
     output.parent.mkdir(parents=True, exist_ok=True)
     if os.environ.get("HF_QA"):
         # Soát trước khi render (hf_qa): runtime, bố cục, tương phản WCAG ở giữa
@@ -3035,7 +3251,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
         vars_path.unlink(missing_ok=True)
         comp_path.unlink(missing_ok=True)
 
-    silence = {int(x) for x in (opts.get("silence") or [])}
+    silent_sources = {int(x) for x in (opts.get("silence") or [])}
+    silence = {ln["sentence_id"] for ln in lines
+               if ln.get("source_sentence_id", ln["sentence_id"]) in silent_sources}
     quiet = [(float(ln["start"]) - .15, float(ln["end"]) + .35) for ln in lines if ln["sentence_id"] in silence]
     if opts.get("video_only"):
         # Render theo chương: chỉ hình; tiếng trộn MỘT lần cho cả video (hf_batch_render).

@@ -274,7 +274,7 @@ window.HF = (function () {
     const setText = (id, t) => { const n = document.getElementById(id); if (n) n.textContent = t || ""; };
     setText("kicker", V.kicker); setText("badge", V.badge); setText("footer", V.footer);
 
-    // --- scene: 1 câu narration = 1 cảnh, cảnh đầu hiện sẵn, còn lại opacity 0 ---
+    // Bridge compiles media.cuts into shots; source_sentence_id keeps narration identity.
     const stage = document.getElementById("stage");
     // Video dài (longform.js): bố cục ảnh khác ô mặc định, sơ đồ, thẻ chương.
     // Style không nạp longform.js thì LONG = null và mọi thứ như cũ.
@@ -368,7 +368,7 @@ window.HF = (function () {
     const NO_CHAP_CAP = !!(LONG && capzone.classList.contains("skin-ink"));
     const caps = LINES.map((ln) => {
       const cap = el("div", "cap");
-      (NO_CHAP_CAP && ln.chapter_no ? [] : (ln.words || [])).forEach(w => {
+      (ln.caption_cont || (NO_CHAP_CAP && ln.chapter_no) ? [] : (ln.caption_words || ln.words || [])).forEach(w => {
         const span = el("span", "w" + (w.hot ? " hot" : ""), w.w);
         const on = el("span", "on", w.w);
         span.appendChild(on);
@@ -380,7 +380,7 @@ window.HF = (function () {
       // 04/10/2026: mở rộng cho MỌI câu dài của video dài -- thẻ trích kinh/sơ đồ cũng đứng trên phụ đề
       // (câu kinh 60 chữ thành 5 dòng phụ đề, đè thẻ trích ở B13).
       if (LONG) {
-        const n = (ln.words || []).reduce((a, w) => a + String(w.w).length + 1, 0);
+        const n = (ln.caption_words || ln.words || []).reduce((a, w) => a + String(w.w).length + 1, 0);
         if (n > 290) cap.classList.add("cap-dense3");
         else if (n > 225) cap.classList.add("cap-dense2");
         else if (n > 165) cap.classList.add("cap-dense");
@@ -396,14 +396,15 @@ window.HF = (function () {
     if (CHUNK) {
       capzone.classList.add("caps-chunk");
       LINES.forEach((ln) => {
+        if (ln.caption_cont) return;
         if (ln.visual && ln.visual.type === "ask") return;
         // Chữ trồi: thẻ đã hiện từng từ đúng lúc đọc, phụ đề cụm sẽ lặp lại chữ.
         if (ln.visual && ln.visual.type === "quote" && ln.visual.variant === "rise") return;
         if ((LONG || NO_CHAP_CAP) && ln.chapter_no) return;
-        const ws = ln.words || [];
+        const ws = ln.caption_words || ln.words || [];
         if (!ws.length) return;
         if (isLong) {
-          const lchunks = splitLongChunks(ws, ln.end);
+          const lchunks = splitLongChunks(ws, ln.caption_end || ln.end);
           lchunks.forEach((c) => chunks.push(c));
         } else {
           let cur = [];
@@ -553,8 +554,11 @@ window.HF = (function () {
           const animEnd = nextLn ? nextLn.start : (ln.media_end || ln.end);
           tl.fromTo(clip, { scale: 1.0, xPercent: 0 },
             { scale: kb, xPercent: kbx,
-              duration: Math.max(1, animEnd - ln.start), ease: "none" }, ln.start);
+              duration: Math.max(ln.word_cut ? .001 : 1, animEnd - ln.start), ease: "none" }, ln.start);
         }
+        // One owner camera runs through its hold. Continuations must not write
+        // scale/x/y on top of that tween (including the final shot of cuts).
+        if (clip) clip._hfCameraOwned = true;
         if (visualOf(ln) && isOverlay(ln)) {
           visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
         } else if (lay) { if (lay.enter) lay.enter(tl, inner, ln, i, { rand, V, clip }); }
@@ -562,7 +566,8 @@ window.HF = (function () {
       } else if (visualOf(ln)) {
         visualOf(ln).enter(tl, inner, ln, { rand, V, LINES, i, until: untilOf(i) });
         if (isOverlay(ln) && ln.media_cont && (segOff + (Number(ln.start) || 0)) < 40 && LONG && LONG.holdCameraMove) {
-          LONG.holdCameraMove(tl, clipOfGroup(i), ln, i, { rand, V, LINES });
+          const heldClip = clipOfGroup(i);
+          if (heldClip && !heldClip._hfCameraOwned) LONG.holdCameraMove(tl, heldClip, ln, i, { rand, V, LINES });
         }
       } else if (ln.visual_cont) {
         // sơ đồ gốc tự chạy các bước của nó
@@ -572,7 +577,8 @@ window.HF = (function () {
         const lay2 = layoutOf(ln);
         if (lay2 && lay2.enterCont) lay2.enterCont(tl, inner, ln);
         if ((segOff + (Number(ln.start) || 0)) < 40 && LONG && LONG.holdCameraMove) {
-          LONG.holdCameraMove(tl, clipOfGroup(i), ln, i, { rand, V, LINES });
+          const heldClip = clipOfGroup(i);
+          if (heldClip && !heldClip._hfCameraOwned) LONG.holdCameraMove(tl, heldClip, ln, i, { rand, V, LINES });
         }
       } else if (KC2 && LONG && LONG.keycard && inner._kc) {
         LONG.keycard.enter(tl, inner, ln, { rand, V, LINES, i, until: ln.end });
@@ -589,7 +595,8 @@ window.HF = (function () {
         const nx = LINES[i + 1];
         // Khoảng nghỉ có chủ đích (video dài, hf_voice) thuộc về câu VỪA nói: giữ cảnh
         // qua khoảng lặng, chuyển ngay trước câu sau. Nghỉ ngắn (short) giữ như cũ.
-        const T = nx.start - ln.end > 0.25 ? nx.start - 0.34 : Math.max(ln.start + 0.2, ln.end - 0.34);
+        const T = nx.word_cut && nx.shot_index > 0 ? nx.start
+          : nx.start - ln.end > 0.25 ? nx.start - 0.34 : Math.max(ln.start + 0.2, ln.end - 0.34);
         const vg = ln.visual_cont || (ln.visual && ln.sentence_id);
         if (nx.visual_cont && nx.visual_cont === vg) {
           // cùng một sơ đồ: không chuyển cảnh
@@ -609,13 +616,15 @@ window.HF = (function () {
       // Phụ đề + karaoke theo timing thật của TTS (chế độ cụm chữ / câu hỏi lặng: bỏ qua)
       const cap = caps[i];
       // Câu trích đánh máy / chữ trồi: thẻ đã mang trọn câu -> phụ đề lặp lại và đè đáy thẻ.
-      if (CHUNK || (ln.visual && (ln.visual.type === "ask" || (ln.visual.type === "quote" && (ln.visual.variant === "type" || ln.visual.variant === "rise"))))) return;
-      tl.fromTo(cap, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, ln.start);
-      if (i < LINES.length - 1) {
-        const gap = LINES[i + 1].start - ln.end;   // nghỉ dài: phụ đề ở lại qua khoảng lặng như cảnh
-        tl.to(cap, { opacity: 0, duration: 0.14, ease: "power1.in" }, gap > 0.6 ? LINES[i + 1].start - 0.1 : ln.end - 0.1);
+      if (ln.caption_cont || CHUNK || (ln.visual && (ln.visual.type === "ask" || (ln.visual.type === "quote" && (ln.visual.variant === "type" || ln.visual.variant === "rise"))))) return;
+      tl.fromTo(cap, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, ln.caption_start ?? ln.start);
+      const nextCaption = LINES.slice(i + 1).find((l) => !l.caption_cont);
+      const captionEnd = ln.caption_end ?? ln.end;
+      if (nextCaption) {
+        const gap = nextCaption.start - captionEnd;
+        tl.to(cap, { opacity: 0, duration: 0.14, ease: "power1.in" }, gap > 0.6 ? nextCaption.start - 0.1 : captionEnd - 0.1);
       }
-      (ln.words || []).forEach((w, k) => {
+      (ln.caption_words || ln.words || []).forEach((w, k) => {
         const on = cap.children[k] && cap.children[k].querySelector(".on");
         if (!on) return;
         tl.set(on, { opacity: 1 }, w.t);
@@ -664,7 +673,7 @@ window.HF = (function () {
     const lastLn = LINES[LINES.length - 1];
     const last = lastLn && lastLn.visual_cont ? scenes[lastLn.visual_cont - 1] : scenes[scenes.length - 1];
     if (last) tl.to(last, { opacity: 0, duration: 0.5, ease: "power2.in" }, Math.max(0, DUR - 0.5));
-    const lastCap = caps[caps.length - 1];
+    const lastCap = caps[LINES.findLastIndex((ln) => !ln.caption_cont)];
     if (lastCap) tl.to(lastCap, { opacity: 0, duration: 0.4, ease: "power2.in" }, Math.max(0, DUR - 0.45));
 
     addAudio(root, "narration", V.narration, 1, null, DUR);

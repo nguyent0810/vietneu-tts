@@ -21,11 +21,25 @@ Giao script + notes nguồn/điểm chưa chắc + kênh/khuôn/engine + cấu h
 **Lõi 5.** Lời mở khớp điều tiêu đề hứa và có câu trả cụ thể. Mỗi đoạn thêm diễn biến, lý do, chứng cứ hoặc hệ quả; Short tự có giá trị. Bảng tra trả sớm, truyện trả theo diễn tiến. Chỉ đúng câu đáp khi tự soát; khớp từ khoá không chứng minh đã trả lời.
 
 ## 5. Nhịp câu và khoảng lặng
-**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS/VSD: không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. TTS đọc nguyên câu, không tách vế ở phẩy/hai chấm để chiều ngưỡng. Mốc 12–18 tiếng và câu ngắn ≤6 mỗi 4–6 câu chỉ là gợi ý nghề; bỏ quota câu ngắn khỏi finding của lint/retention (078).
+**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS/VSD: không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. TTS đọc nguyên câu, không tách vế ở phẩy/hai chấm để chiều ngưỡng. Mốc 12–18 tiếng và câu ngắn ≤6 mỗi 4–6 câu chỉ là gợi ý nghề; bỏ quota câu ngắn khỏi finding của lint/retention (078). Nhịp hình lập riêng bằng các shot trong câu (`cuts`, dưới đây).
 
 Quy trình 078: người kể viết văn xuôi tự do (`prose.md`, `## Tên chương`) → `.venv/bin/python tools/prose_to_script.py prose.md script.txt` (không đổi chữ; tiêu đề thành **thẻ chương**, mỗi câu một dòng; `#` tiêu đề tài liệu không đọc) → dựng plan bằng `tools/long_plan_build.py --script` → Lead đọc thử CH00–01 bằng `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` → viết tiếp. Adapter in số câu/tiếng đọc/câu dài nhất mỗi chương và chạy lint; không sửa lời để chữa finding. Nguồn/hướng hình/nhãn phỏng dựng vẫn ghi ở notes riêng, không đưa marker V2 `{pd}` vào lời HBR. MP3 loudnorm −16 ở `output/cl_staging/long/tts_test/<id>/CHnn.mp3`; WAV/manifest/cache riêng ở `_work/CHnn`, không ghi cache/out sản xuất. CH00 là đoạn mở không heading, hoặc thẻ chương đầu nếu script bắt đầu bằng heading; thẻ được đọc như sản xuất.
 
-PO 17/11 bỏ ép câu mười tiếng/ba giây trong hai phút mở. Cổng HÌNH giữ nguyên: 120 giây đầu ảnh/clip động ≤8s, cảnh tĩnh ≤4s; chữ nền trống ≤1,5s. Lập hình theo ý và kiểm timing thật ở workflow hình; không sửa code pace_gate/hf_qa để giải quyết lời. Hiện bridge chỉ có `pan.stops=[{"line": 1, "x": 0.0}, {"line": 2, "x": 1.0, "at": "end"}]` (line tăng dần, `at` là start/end), không có đổi ảnh ở mốc từ giữa một dòng. Câu 40 tiếng/13s vẫn vượt cổng 4s tĩnh/8s động; pan không tự miễn trừ. Chờ Lead quyết phương án engine, không cắt vế lời để chữa cổng.
+PO 17/11 bỏ ép câu mười tiếng/ba giây trong hai phút mở. Cổng HÌNH giữ nguyên: 120 giây đầu ảnh/clip động ≤8s, cảnh tĩnh ≤4s; chữ nền trống ≤1,5s. Lập hình theo ý và kiểm timing thật ở workflow hình; không sửa code pace_gate/hf_qa để giải quyết lời. Câu dài trong 120 giây đầu thì đổi ảnh/clip giữa câu bằng `cuts` (dưới đây), không cắt vế lời để chữa cổng; pan không tự miễn trừ.
+
+Bridge hỗ trợ đổi ảnh/clip ở mốc từ bằng `media["<dòng>"].cuts`:
+```json
+"media": {"7": {"kind": "image", "query": "Vietnam mountain", "cuts": [
+  {"at": "bên sông", "kind": "image", "query": "Vietnam river"},
+  {"at": "trở về", "kind": "video", "query": "Vietnam village"}
+]}}
+```
+Ảnh đầu giữ tới từ “bên sông”, shot tiếp tới “trở về”; shot cuối có thể giữ qua câu sau.
+Mỗi cut là media độc lập; `at` khớp từ/cụm từ lần đầu sau mốc trước trong chính dòng ấy,
+không phân biệt hoa/thường/dấu câu, giữ dấu tiếng Việt. Mốc dùng timestamp từ thật đã có
+cho karaoke (`segments[].words` hoặc `hf_align`), thiếu thì ghi rõ **ước theo tiếng đọc**.
+Không chia theo tỷ lệ ký tự. Cổng giữ ngưỡng cũ, đo thời lượng từng shot; phụ đề/lời kể
+vẫn nguyên câu. Chi tiết crop/cine/layout và ví dụ ở skill `motion-library`/`long-video` §4.
 
 ## 6. Sự thật, diễn giải và phỏng dựng
 **Lõi 7.** Sự thật cứng/lời trích truy được nguồn; giữ mức chắc chắn làm đổi nghĩa. Nguồn chi tiết ở notes/hình/mô tả; bớt rào nguồn lặp không có nghĩa bỏ khung truyền thống hay lời khai.

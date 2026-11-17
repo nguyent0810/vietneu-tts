@@ -39,6 +39,24 @@ Plan Long mới (`"layout_policy": "v2"`, skill long-video) bỏ trống `layout
 (ink chỉ nền giấy, wipe, iris, rise) — depth bỏ reveal. Ảnh giữ qua các câu sau tới ảnh
 kế / tiêu đề chương / sơ đồ / 22 giây.
 
+**Đổi media theo từ ngay trong một câu (079):** thêm `cuts` vào media gốc:
+```json
+{"kind": "image", "query": "Vietnam old citadel", "cuts": [
+  {"at": "bên sông", "kind": "image", "query": "Vietnam river", "layout": "full", "cine": {"cam": "pan_left"}},
+  {"at": "trở về", "kind": "video", "query": "Vietnam village landscape"}
+]}
+```
+Mỗi cut khai báo media đầy đủ (mọi kind/path/query/crop/layout/cine thông thường), không
+kế thừa ảnh trước. `at` khớp từ/cụm từ có dấu, không phân biệt hoa/thường/dấu câu, lấy lần
+đầu sau mốc trước; mốc thiếu/trùng/đảo bị chặn. Không lồng cuts hoặc gắn lên thẻ chương.
+Bridge lấy đúng timestamp karaoke/manifest, chuyển bằng transition mặc định, giữ phụ đề
+nguyên câu; thiếu timing thì ghi **ƯỚC theo số tiếng đọc**, kể cả số viết bằng chữ số.
+Các shot có phần tử media riêng, camera dừng tại biên shot, không chồng tween trên cùng
+thuộc tính. Chỉ shot cuối được giữ qua dòng sau. Layout v2 gán từng shot, layout/cine ghi
+tay giữ nguyên; kiểm trùng byte và crop giống ảnh thường. `pan.stops` của shot chỉ trỏ
+chính dòng gốc, không kéo pan xuyên shot kế. `hf_media_sheet.py plan` hiện cả các cut.
+Cổng hình 120s đầu đo từng shot với cùng ngưỡng ≤4s tĩnh / ≤8s động.
+
 **Luật overlay ảnh (PO 16/11, ticket 072):** `full` không tự đè chữ khoá, dù câu có cụm `**đánh dấu**`; cụm chỉ được tô màu trong phụ đề. `split`/`split_r` và thẻ `kc-*` chỉ lấy cụm đánh dấu thật, không lấy 4 chữ đầu. Nếu không có cụm, `split`/`split_r` về `full` + camera; với ảnh khác cũng dùng visual chữ riêng (`word`, `quote`, `stat`…) để làm beat text. Nhãn nhận diện chỉ theo `tag` tường minh trong media, ví dụ `"tag": "Tê-mi-ya · 16 tuổi"`; nhãn lower-third gọn hiện khoảng 2,5 giây rồi mờ, không tự sinh nhãn loại ảnh hay nguồn. Ảnh `layout: "full"` không có `cine`/`pan` tự nhận camera theo id ảnh; không lặp kiểu camera tự gán ở ảnh full kế tiếp. Ảnh rộng ≥ 2:1 dùng `pan`. Camera/pan ghi tay được giữ.
 
 ## Không khí (tự động)
