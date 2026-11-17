@@ -51,7 +51,8 @@ def main() -> int:
     mode.add_argument("--images-only", action="store_true")
     mode.add_argument("--videos-only", action="store_true")
     ap.add_argument("--faces", action="store_true",
-                    help="nhân vật VÍ DỤ GIẢ ĐỊNH (người hư cấu, CK 27/10/2026): được vẽ rõ mặt, giữ đúng hồ sơ nhân vật trong prompt_file")
+                    help="vẽ rõ mặt, giữ đúng 'Hồ sơ nhân vật' trong prompt_file: nhân vật giả định (CK 27/10/2026) "
+                         "hoặc nhân vật lịch sử phỏng tác theo tư liệu (storytelling-guide §15, 17/11/2026)")
     a = ap.parse_args()
     prompts = ROOT / "data" / "long" / a.topic / "ai_prompts.md"
     out = ROOT / "motion" / "hf" / "assets" / "long" / a.topic / "img" / "ai"
@@ -84,7 +85,7 @@ def main() -> int:
     requests = [
         ("generate_images", missing(images, out),
          "Mỗi ảnh 16:9 cỡ 1920x1080, phong cách tranh minh hoạ, không chữ, không số, không logo, "
-         + ("nhân vật là người hư cấu: vẽ rõ mặt, mọi ảnh giữ cùng một gương mặt theo 'Hồ sơ nhân vật' trong file. "
+         + ("vẽ rõ mặt nhân vật, mọi ảnh giữ cùng một gương mặt theo 'Hồ sơ nhân vật' trong file (nếu có ảnh tham chiếu ghi trong file thì bám sát nét mặt đó), phong cách tranh, không giống ảnh chụp. "
             if a.faces else "không thấy rõ mặt người (người chỉ vẽ nghiêng quay đi hoặc từ phía sau). ")),
         ("generate_videos", missing(videos, video_out), "Tạo clip theo mô tả trong prompt_file. "),
     ]
