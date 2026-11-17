@@ -23,7 +23,7 @@ def test_script_lint_sentence_one_over_14_is_error():
     assert SL.short_retention(spec(lines=[" ".join(["từ"] * 14), "Máy chạy."]))[0] == []
     errors, warns = SL.short_retention(spec(lines=[" ".join(["từ"] * 15), "Máy chạy."]))
     assert errors and "15 từ" in errors[0]
-    assert warns == []
+    assert not any("định nghĩa" in w or "trừu tượng" in w for w in warns)
 
 
 def test_script_lint_sentence_two_definition_is_warning():
@@ -76,3 +76,52 @@ def test_script_lint_preflight_respects_allow_hook(tmp_path, monkeypatch, capsys
     out = capsys.readouterr().out
     assert not any("> 14" in error for error in errors)
     assert "định nghĩa" not in out and "trừu tượng" not in out
+
+
+def new_spec(**patch):
+    base = dict(publish_at="2026-12-01T09:00:00", hook_kind="bi_kich",
+                lines=["Vì sao cửa khóa?", "Một người đứng bên ngoài."],
+                scenes=[{"type": "photo"}], title="Cánh cửa khóa")
+    base.update(patch)
+    return spec(**base)
+
+
+def test_new_hook_kind_gate():
+    for kind in ("bi_kich", "nghich_ly", "dong_ho"):
+        assert not any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[0])
+    for kind in (None, "khac"):
+        assert any("hook_kind" in e for e in SL.short_retention(new_spec(hook_kind=kind))[0])
+
+
+def test_new_first_sentence_gate():
+    assert not any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 8]))[0])
+    assert any("câu 1:" in e for e in SL.short_retention(new_spec(lines=["Sao " + "từ " * 9]))[0])
+
+
+def test_new_question_window_gate():
+    for lines in (["Cửa đã khóa?"], ["Cửa đã khóa.", "Vì sao vậy?"] , [" ".join(["từ"] * 9) + " ai?"]):
+        assert not any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[0])
+    for lines in (["Cửa đã khóa."], [" ".join(["từ"] * 10) + " ai?"], [" ".join(["từ"] * 11) + "?"]):
+        assert any("câu hỏi 3 giây" in e for e in SL.short_retention(new_spec(lines=lines))[0])
+
+
+def test_new_opening_visual_gate():
+    for scene in ({"type": "photo"}, {"type": "counter"}, {"type": "kinetic", "bg": "x"}):
+        assert not any("cảnh mở:" in e for e in SL.short_retention(new_spec(scenes=[scene]))[0])
+    for scene in ({"type": "kinetic"}, {"type": "logo", "img": "x"}, {"type": "kicker"}):
+        assert any("cảnh mở:" in e for e in SL.short_retention(new_spec(scenes=[scene]))[0])
+    assert any("cảnh mở:" in e for e in SL.short_retention(new_spec(scenes=[]))[0])
+
+
+def test_new_title_length_gate():
+    assert not any("tiêu đề:" in e for e in SL.short_retention(new_spec(title="x" * 60))[0])
+    assert any("tiêu đề:" in e for e in SL.short_retention(new_spec(title="x" * 61))[0])
+
+
+def test_new_rules_warn_for_old_or_missing_publish_date():
+    for date in ("2026-11-20", None):
+        errors, warns = SL.short_retention(new_spec(publish_at=date, hook_kind=None,
+            lines=[" ".join(["từ"] * 10)], scenes=[{"type": "kinetic"}], title="x" * 61))
+        assert errors == []
+        for rule in ("hook_kind", "câu 1:", "câu hỏi 3 giây", "cảnh mở:", "tiêu đề:"):
+            assert any(rule in w for w in warns)
