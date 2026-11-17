@@ -91,3 +91,48 @@ def test_all_long_styles_keep_later_chapter_key_when_prior_chapter_grows():
 def test_chapter_bridge_opts_keep_whole_video_timing():
     opts = R.chapter_render_opts(137.25, 902.5, video_only=True)
     assert opts == {"video_only": True, "seg_off": 137.25, "seg_total": 902.5}
+
+
+def test_pause_ctx_chapter_titles_use_fixed_frame_lead_and_retain_later_keys():
+    row = {"script": ["**Ch 1**", "Câu 1", "**Ch 2**", "Câu 2", "**Ch 3**", "Câu 3"],
+           "style": "vhs"}
+    # Titles are frame aligned, and the same chapter-local timings survive an
+    # earlier chapter expansion that is not an integer number of video frames.
+    base = [
+        {"start": 0, "end": 1}, {"start": 1, "end": 129.1},
+        {"start": 130, "end": 131}, {"start": 131, "end": 259.1},
+        {"start": 260, "end": 261}, {"start": 261, "end": 263},
+    ]
+    moved = [dict(s) for s in base]
+    moved[1]["end"] += 0.4137
+    # The following pause rounds the next title start up to a frame boundary.
+    import math
+    new_title_start = math.ceil((moved[1]["end"] + 0.9) * 30) / 30
+    shift = new_title_start - 130
+    for s in moved[2:]:
+        s["start"] += shift
+        s["end"] += shift
+    spans = R.chapter_spans(row["script"], base, 400, pause_ctx=True)
+    moved_spans = R.chapter_spans(row["script"], moved, 400 + shift, pause_ctx=True)
+    assert R.chapter_key(row, 0, 2, *spans[0][2:], "looks", segments=base) != R.chapter_key(
+        row, 0, 2, *moved_spans[0][2:], "looks", segments=moved)
+    for index, end in ((2, 4), (4, 6)):
+        chapter_index = 1 if index == 2 else 2
+        t0, t1 = spans[chapter_index][2:]
+        mt0, mt1 = moved_spans[chapter_index][2:]
+        assert R.chapter_key(row, index, end, t0, t1, "looks", segments=base,
+                             chapter_base=1) == R.chapter_key(row, index, end, mt0, mt1,
+                                                             "looks", segments=moved, chapter_base=1)
+
+
+def test_chapter_spans_keep_legacy_midpoint_without_pause_ctx():
+    lines = ["Câu mở.", "**Chương hai**", "Câu cuối."]
+    segs = [{"start": 0, "end": 1}, {"start": 2, "end": 3}, {"start": 4, "end": 5}]
+    expected = round((1 + 2) / 2 * 30) / 30
+    assert R.chapter_spans(lines, segs, 5, pause_ctx=False)[1][2] == expected
+
+
+def test_pause_ctx_span_uses_fixed_lead_when_title_is_frame_aligned():
+    lines = ["Câu mở.", "**Chương hai**", "Câu cuối."]
+    segs = [{"start": 0, "end": 1}, {"start": 2, "end": 3}, {"start": 4, "end": 5}]
+    assert R.chapter_spans(lines, segs, 5, pause_ctx=True)[1][2] == 1.8
