@@ -57,7 +57,8 @@ def clean(line: str) -> str:
     return line.replace("**", "").strip()
 
 
-def default_pause(line: str, base: float, is_alt: bool = False, pause_ctx: bool = False) -> float:
+def default_pause(line: str, base: float, is_alt: bool = False, pause_ctx: bool = False,
+                  previous_line: str | None = None) -> float:
     t = clean(line)
     if line.startswith("**") and line.endswith("**"):
         return max(base, 0.9)                  # tiêu đề chương: để thẻ chương thở
@@ -68,6 +69,14 @@ def default_pause(line: str, base: float, is_alt: bool = False, pause_ctx: bool 
             return max(base, 0.7)              # câu trích kinh / giọng thứ hai: để lời kinh lắng
         if t.endswith(":") or t.endswith("…"):
             return max(base, 0.5)              # câu dẫn vào thoại / liệt kê: ngắt trước phần theo sau
+        tail = t.rstrip('"”’»)]\' ')  # câu kết bằng ngoặc kép/ngoặc đơn vẫn là câu trọn
+        if tail.endswith((",", ";")) or not tail[-1:].endswith((".", "!", "?", ":", "…")):
+            return max(0.15, base * 0.4)         # vế còn tiếp: nghỉ ngắn
+        if tail.endswith(".") and previous_line and not previous_line.strip().startswith("**"):
+            previous = clean(previous_line)
+            words = len(previous.split())
+            if len(t.split()) <= 6 and words > 6:
+                return base + 0.3               # câu ngắn sau câu dài: nhấn nhịp đỉnh
     return base
 
 
@@ -142,7 +151,7 @@ def load_ruleset() -> dict:
 
 def new_tts(channel: str, **fields) -> dict:
     """Spec tts cho render MỚI: ruleset kênh + voice/tempo/pause... Plan cũ không gọi hàm này."""
-    spec = dict(load_ruleset().get(channel) or {})
+    spec = {"pause_ctx": True, **(load_ruleset().get(channel) or {})}
     spec.update(fields)
     return spec
 
@@ -158,9 +167,10 @@ def apply_long_narrator(channel: str, tts: dict) -> dict:
     """Đè giọng kể của kênh lên tts chép từ plan mẫu. Bỏ `tempos` (đánh số theo câu của kịch bản mẫu,
     không khớp kịch bản mới). Giữ alt (giọng trích kinh), voice_ta, pause."""
     prof = long_narrator(channel)
-    if not prof:
-        return tts
     out = {k: v for k, v in tts.items() if k not in ("tempos", "voice_ke", "donor")}
+    out.setdefault("pause_ctx", True)
+    if not prof:
+        return out
     out.update(prof)
     return out
 
@@ -452,7 +462,8 @@ def synth(lines: list[str], spec: dict, out_wav: Path) -> dict:
             seg["spoken"] = spoken
         segs.append(seg)
         is_second_voice = (i in alt_lines) or (role == "ta")
-        gap = pauses.get(i, default_pause(line, base, is_second_voice, pause_ctx=pause_ctx)) if i < len(lines) else 0.6
+        gap = pauses.get(i, default_pause(line, base, is_second_voice, pause_ctx=pause_ctx,
+                                          previous_line=lines[i - 2] if i > 1 else None)) if i < len(lines) else 0.6
         parts += [a, np.zeros(int(gap * SR), dtype="float32")]
         t += len(a) / SR + gap
     audio = np.concatenate(parts)

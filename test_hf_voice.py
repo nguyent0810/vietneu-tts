@@ -79,6 +79,8 @@ def test_ruleset_has_approved_d_values_and_new_tts_merges():
     assert "donor" not in r["his"]
     spec = V.new_tts("fs", voice="Thái Sơn", style="doc_truyen", tempo=0.96)
     assert spec["donor"] == "Thanh Bình" and spec["voice"] == "Thái Sơn"
+    assert spec["pause_ctx"] is True
+    assert V.apply_long_narrator("unknown", {"voice": "Binh"})["pause_ctx"] is True
     locked = V.new_tts("fs", voice="Thái Sơn", temperature=0.8)  # fields sau đè ruleset
     assert locked["temperature"] == 0.8
 
