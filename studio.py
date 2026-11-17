@@ -330,6 +330,19 @@ def mix_audio(job: Path, silent: Path, wav: Path, events, th, dur, out: Path, ri
     return bgm, gain
 
 
+RENDER_TIMEOUT_MIN = 1800       # giây
+RENDER_SEC_PER_VIDEO_SEC = 90   # Oracle 2 nhân: Short 33 s render ~16 phút, 41 s quá 30 phút (17/11) -> chừa ~2x
+
+
+def render_timeout(dur: float) -> int:
+    """Timeout render theo thời lượng video (trước đây cứng 1800 s -> Short > ~40 s chết trên Oracle).
+    STUDIO_RENDER_TIMEOUT (giây) đè nếu đặt."""
+    env = os.environ.get("STUDIO_RENDER_TIMEOUT")
+    if env:
+        return int(float(env))
+    return max(RENDER_TIMEOUT_MIN, int(dur * RENDER_SEC_PER_VIDEO_SEC))
+
+
 def hf(job: Path, args: str, timeout=1800) -> subprocess.CompletedProcess:
     browser_path = os.environ.get("HYPERFRAMES_BROWSER_PATH")
     b_env = f'export HYPERFRAMES_BROWSER_PATH={shlex.quote(browser_path)}; ' if browser_path else ''
@@ -724,7 +737,7 @@ def build(spec_path: Path, render: bool, do_qa: bool, strict: bool, use_ledger: 
             print(f"  bỏ qua render do vi phạm (--strict-hook): {' | '.join(hook_errs)}")
         else:
             silent = job / "silent.mp4"
-            p = hf(job, f'render . --output "{silent}" --quality looks --fps 30 --quiet')
+            p = hf(job, f'render . --output "{silent}" --quality looks --fps 30 --quiet', render_timeout(dur))
             if p.returncode != 0 or not silent.exists():
                 raise SystemExit((p.stdout + p.stderr)[-3000:])
             bgm, gain = mix_audio(job, silent, wav, sfx_events(scenes, windows, th, dur), th, dur, out, rid)
