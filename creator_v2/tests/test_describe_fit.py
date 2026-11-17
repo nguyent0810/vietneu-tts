@@ -6,6 +6,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "motion" / "long"))
 import describe as D  # noqa: E402
 
 
+def test_ai_faces_notice_before_sources_and_not_duplicated():
+    base = ["summary", "sources", D.SRC_SLOT]
+    assert D.add_ai_faces_notice(base, [], False) == base
+    lines = D.add_ai_faces_notice(base, [], True)
+    assert lines.index(D.AI_FACES_NOTICE) < lines.index("sources")
+    assert D.add_ai_faces_notice(lines, [], True) == lines
+    assert D.add_ai_faces_notice(base, [D.AI_FACES_NOTICE], True) == base
+
+
+def test_mim_description_includes_ai_faces_notice():
+    spec = {"channel": "MIM", "imgs": {}, "ai_faces": True}
+    lines = D.mim_lines(spec, {"summary": "summary", "sources": []}, [], set(), set(), [], Path("."))
+    assert lines.count(D.AI_FACES_NOTICE) == 1
+    assert lines.index(D.AI_FACES_NOTICE) < next(i for i, line in enumerate(lines) if "NGUỒN" in line)
+
+
 def test_fit_keeps_all_sources_when_they_fit():
     src = ["CafeF 29/01/2026 — Tên bài: https://a.vn/x"]
     assert D.fit_sources(src, 1000) == src

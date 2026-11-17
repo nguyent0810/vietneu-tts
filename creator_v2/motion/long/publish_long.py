@@ -199,7 +199,8 @@ def main():
                     slug=f"long-{topic}", video=od / "final.mp4", title=chosen_title(spec),
                     description=(od / "description.txt").read_text(encoding="utf-8"),
                     tags=tuple(y["tags"]), kind="long", publish_at=publish_at,
-                    category=y.get("category", "24"), thumbnail=thumb)
+                    category=y.get("category", "24"), thumbnail=thumb,
+                    ai_faces=spec.get("ai_faces") is True)
                 up = upload_when_free(chan, u) if wait else chan.upload(u)
             except P.PublishError as e:
                 # PacingHold / UploadInterrupted: chạy lại lệnh này là đủ (nối

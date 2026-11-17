@@ -100,10 +100,22 @@ def mim_lines(spec, meta, chapters, used, vids, music, od):
         L += ["", "🎵 NHẠC NỀN"]
     L += music_credit(music)
     L += ["", FOOTER.get(ch, ""), "", " ".join("#" + x for x in meta.get("hashtags", []))]
+    L = add_ai_faces_notice(L, meta.get("sources", []), spec.get("ai_faces") is True)
     return sources_for_description(L, meta.get("sources", []))
 
 
 SRC_SLOT = object()
+AI_FACES_NOTICE = "Một số hình là phỏng dựng bằng AI dựa trên tư liệu."
+
+
+def add_ai_faces_notice(lines, sources, enabled):
+    """Đặt thông báo trước nguồn và tính vào ngân sách mô tả."""
+    if not enabled or any(AI_FACES_NOTICE in str(x) for x in [*lines, *sources]):
+        return lines
+    index = lines.index(SRC_SLOT)
+    return lines[:index - 1] + [AI_FACES_NOTICE, ""] + lines[index - 1:]
+
+
 DESC_CAP = 5000   # YouTube: mô tả tối đa 5.000 byte; chỉ rút nguồn khi thực sự vượt ngưỡng
 
 
@@ -242,6 +254,7 @@ def main(topic, shrink=0):
     if mim:
         lines = mim_lines(spec, meta, chapters, used, vids, music, od)
     else:
+        lines = add_ai_faces_notice(lines, meta.get("sources", []), spec.get("ai_faces") is True)
         lines = sources_for_description(lines, meta.get("sources", []), LIMIT)
     text = "\n".join(lines).strip() + "\n"
     if not mim and len(text.encode("utf-8")) > LIMIT and shrink < 8:
