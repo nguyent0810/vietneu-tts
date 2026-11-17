@@ -957,10 +957,10 @@ def scene_gate(chs) -> None:
         raise SystemExit("lint cảnh (sửa gen_scenes.py rồi chạy lại):\n  " + "\n  ".join(bad))
 
 
-def integrity_gate(chs, allow_repeat: bool = False) -> None:
+def integrity_gate(chs, allow_repeat: bool = False, spec: dict | None = None) -> None:
     """Cổng toàn vẹn TRƯỚC TTS (retro 2 mục 16) — cùng luật với motion/long/script_lines.py, cho cả chNN.json sửa tay."""
     import script_lines
-    bad = script_lines.gate([{"name": n, "lines": c["lines"]} for n, c in chs], allow_repeat)
+    bad = script_lines.gate([{"name": n, "lines": c["lines"]} for n, c in chs], allow_repeat, spec)
     if bad:
         raise SystemExit("integrity: lời đọc chưa qua cổng, chưa đọc câu nào:\n  " + "\n  ".join(bad)
                          + "\n(câu lặp cố ý: thêm --allow-repeat-line)")
@@ -1815,7 +1815,11 @@ if __name__ == "__main__":
     topic, cmd, *rest = sys.argv[1:]
     only = [x for x in rest if not x.startswith("--")] or None
     if cmd in ("tts", "takes"):     # cổng toàn vẹn trước MỌI lần gọi TTS (retro 2 mục 16)
-        integrity_gate(load(topic)[1], allow_repeat="--allow-repeat-line" in rest)
+        spec, chs, _ = load(topic)
+        integrity_gate(chs, allow_repeat="--allow-repeat-line" in rest, spec=spec)
+    if cmd == "html":
+        spec, chs, _ = load(topic)
+        integrity_gate(chs, allow_repeat="--allow-repeat-line" in rest, spec=spec)
     if cmd in ("tts", "takes", "html"):      # mốc cảnh trùng thẻ chương: báo mọi chương TRƯỚC khi tốn TTS/tải ảnh (retro 3 mục 13)
         scene_gate([(n, c) for n, c in load(topic)[1] if not only or n in only])
     if cmd == "tts":

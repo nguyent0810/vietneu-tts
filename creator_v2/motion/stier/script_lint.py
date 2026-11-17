@@ -253,11 +253,13 @@ def short_retention(spec: dict) -> tuple[list[str], list[str]]:
     title = str(spec.get("title") or "")
     # YYYY-MM-DD là tiền tố của timestamp ISO.
     publish_at = str(spec.get("publish_at") or "")
+    # #471 (chủ kênh 17/11, chuẩn 075b): hook_kind / câu 1 ≤ 9 từ / câu hỏi 3 giây là gợi ý (CB);
+    # chỉ còn chặn tiêu đề > 60 ký tự và cảnh mở chữ trần/logo (hợp đồng hình) từ lịch 01/12.
     bad = errors if re.match(r"^\d{4}-\d{2}-\d{2}(?:$|[T ])", publish_at) and publish_at[:10] >= "2026-12-01" else warns
     if spec.get("hook_kind") not in {"bi_kich", "nghich_ly", "dong_ho"}:
-        bad.append("hook_kind: cần bi_kich, nghich_ly hoặc dong_ho")
+        warns.append("hook_kind: nên khai bi_kich, nghich_ly hoặc dong_ho")
     if lines and len(words(lines[0])) > 9:
-        bad.append(f"câu 1: {len(words(lines[0]))} từ (> 9)")
+        warns.append(f"câu 1: {len(words(lines[0]))} từ (> 9)")
     # Xét dấu hỏi sau tối đa 10 từ.
     opening = nfc(" ".join(lines))
     tokens = list(re.finditer(r"[\wÀ-ỹ]+", opening))
@@ -265,7 +267,7 @@ def short_retention(spec: dict) -> tuple[list[str], list[str]]:
     window = opening[:end].lower()
     question = "?" in window or any(re.search(rf"(?<!\w){re.escape(mark)}(?!\w)", window) for mark in QUESTION_WORDS)
     if not question:
-        bad.append("câu hỏi 3 giây: thiếu câu hỏi hoặc từ hỏi trong 10 từ đầu")
+        warns.append("câu hỏi 3 giây: thiếu câu hỏi hoặc từ hỏi trong 10 từ đầu")
     scenes = spec.get("scenes") or []
     scene = scenes[0] if scenes and isinstance(scenes[0], dict) else {}
     ty = scene.get("type", "")
