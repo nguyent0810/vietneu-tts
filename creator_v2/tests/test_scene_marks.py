@@ -92,10 +92,10 @@ def test_anchor_ignores_zoom_and_reads_nested_at():
 
 
 def test_audio_craft_catches_long_sentence_and_quy_vi():
-    words = " ".join(["từ"] * 36)
+    words = " ".join(["từ"] * 71)
     chs = [{"name": "ch00", "lines": [words + "?", {"t": "Dạ quý vị.", "p": 1.0}, "Bạn thấy không?"]}]
     msgs = craft.audio_problems(chs)
-    assert any("vượt 35" in m for m in msgs)
+    assert any("vượt 70" in m for m in msgs)
     assert any("quý vị" in m for m in msgs)
 
 
