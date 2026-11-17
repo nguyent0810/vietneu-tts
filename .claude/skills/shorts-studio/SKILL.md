@@ -156,7 +156,7 @@ Builder của ba kênh này là `creator_v2/motion/stier/build.py`, không phả
 - **Spec khai `hook_kind`**: `bi_kich` (người + mất mát/kết cục), `nghich_ly` (điều người xem tin ngược với hồ sơ) hoặc `dong_ho` (mốc thời gian + khoản mất; CK: khoản tiền + tình huống thua thiệt). Đổi dạng giữa các Short liền nhau trong kênh.
 - **Câu 1 ≤ 9 từ**, thì hiện tại, nêu đúng nghịch lý/bi kịch đó. Không chào, không giới thiệu chủ đề.
 - **Câu hỏi hậu quả trước giây 3** (điều tiêu đề hứa và Short trả lời).
-- **Khung 0 là hình mạnh nhất của bài** (clip có giấy phép > đồ họa AI minh họa chung `minh_hoa_chung` có nhãn MINH HỌA > ảnh tư liệu có chuyển động máy > motion graphic). Không chữ trần, không logo/kicker kênh mở đầu, không ảnh bạo lực thật, không AI mô phỏng người thật.
+- **Khung 0 là hình mạnh nhất của bài** (clip có giấy phép > ảnh AI phỏng tác nhân vật/cảnh có nhãn PHỎNG DỰNG theo storytelling-guide §15 > ảnh tư liệu có chuyển động máy > đồ họa AI minh họa chung `minh_hoa_chung` có nhãn MINH HỌA > motion graphic). Không chữ trần, không logo/kicker kênh mở đầu, không ảnh bạo lực thật, không ảnh AI rõ mặt người còn sống.
 - **Tiêu đề ≤ 60 ký tự** đặt bi kịch, nghịch lý hoặc đồng hồ lên đầu. Chỉ dùng sự kiện có trong lời đọc và nguồn của bài; sử "không ghi" thì không viết "không hề". Dấu hỏi chỉ khi Short trả lời.
 - **Cổng tự động**: `short_retention()` trong `creator_v2/motion/stier/script_lint.py`, chạy ở `build.py --preflight`. Short hẹn từ 01/12/2026 vi phạm là LỖI; Short cũ hơn chỉ cảnh báo. Không lách bằng `--allow-hook` cho đợt mới.
 - **Đợt đầu theo luật này**: dựng 1 Short mẫu mỗi kênh cho chủ kênh duyệt rồi mới làm cả loạt.

@@ -169,14 +169,14 @@ Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Khô
 - Giây 0–5: thả người xem vào đúng khoảnh khắc bi kịch/nghịch lý, thì hiện tại, kèm **hình mạnh nhất của video** (không chữ trần).
 - Trước giây 8: câu hỏi hậu quả mà tiêu đề hứa.
 - Trước giây 15: một bằng chứng/diễn biến có nguồn đặt đối lập với câu mở.
-- Hình: tông tối, cắt 3–5 giây, slam/quote lớn cho câu then chốt; không ảnh bạo lực thật, không AI mô phỏng người thật.
+- Hình: tông tối, cắt 3–5 giây, slam/quote lớn cho câu then chốt; không ảnh bạo lực thật. Ảnh AI nhân vật rõ mặt theo §15.
 - Thẻ chương: `sub` nêu một nghịch lý/bi kịch nhỏ của chương nếu kịch bản đã có ý đó; không thêm chữ ngoài kịch bản.
 
 **Cửa sổ sốc (chủ kênh 15/11/2026):** Short dồn sốc / kịch tính / nghịch lý vào **3 giây đầu**; Long dồn vào **40 giây đầu** (cold open). Phần còn lại giữ nhịp kể bình thường.
 - Long: O9–O11 cảnh báo hình mở thiếu chuyển động, thẻ chữ trước 10 giây và ba câu đầu thiếu câu hỏi, câu móc hoặc nghịch lý; người duyệt quyết định.
 - Short: câu đầu ≤ 9 từ nêu nghịch lý hoặc bi kịch, kèm hình mạnh nhất ngay khung 0; câu hỏi hậu quả trước giây 3; không chữ trần, không logo kênh mở đầu.
 - Long: trong 40 giây đầu mỗi cảnh là hình động hoặc hình mạnh (cắt 3–5 giây), tối thiểu 3 lần "đập" thị giác (slam/quote lớn, counter đối lập, câu hỏi).
-- **Thứ tự ưu tiên hình cho cửa sổ sốc:** clip/video thật có giấy phép → đồ hoạ AI minh hoạ chung (không mặt người rõ, không mô phỏng người/sự kiện thật, tag `minh_hoa_chung`, nhãn MINH HỌA như phụ đề phim; tạo qua `scripts/ai_img_request.py`) → ảnh tư liệu có chuyển động máy (đẩy/kéo/xoay) → motion graphic (bản đồ, đồng hồ, counter). Không ảnh bạo lực thật.
+- **Thứ tự ưu tiên hình cho cửa sổ sốc (sửa 17/11):** clip/video thật có giấy phép → ảnh AI phỏng tác nhân vật/cảnh theo §15 (nhãn PHỎNG DỰNG) → ảnh tư liệu có chuyển động máy (đẩy/kéo/xoay) → đồ hoạ AI minh hoạ chung (tag `minh_hoa_chung`, nhãn MINH HỌA) → motion graphic (bản đồ, đồng hồ, counter). Ảnh AI tạo qua `scripts/ai_img_request.py`. Không ảnh bạo lực thật.
 
 **Thumbnail** khớp tiêu đề: một mặt/vật thể + ≤ 4 chữ nêu đúng bi kịch hoặc nghịch lý.
 
@@ -200,3 +200,14 @@ Chủ kênh: "tôi không muốn nguồn là trục kể"; xếp hạng hiện t
    - Giới hạn duy nhất ngoài tư liệu: không bịa lời nói, nội tâm hay cảm xúc cụ thể của người thật còn sống.
 10. **§13 luật 2 và 6** ("nói giới hạn nguồn", "không kể hộ động cơ") chỉ còn là gợi ý giọng văn cho người kể, không phải lý do để người soát cắt câu.
 
+## 15. Hình phỏng tác nhân vật (chủ kênh 17/11/2026, cả MIM, CK, CL)
+
+Chủ kênh: "cho phép phỏng tác hình ảnh nhân vật rõ mặt dựa theo tư liệu để làm cho video sinh động, nghệ thuật hơn, bỏ rule không rõ mặt người". Mục này đè lên mọi chỗ khác trong file cấm "AI mô phỏng người thật" hoặc đòi "không rõ mặt".
+
+1. **Được làm:** ảnh AI nhân vật rõ mặt và cảnh dựng lại các diễn biến có trong kịch bản (vượt ngục, phiên tòa, cuộc gặp, căn phòng làm việc…), dùng cho Long, Short và thumbnail.
+2. **Dựa theo tư liệu:** mặt theo chân dung có nguồn (ghi file Commons làm tham chiếu trong prompt; tả tuổi đúng năm của cảnh, trang phục và bối cảnh đúng thời). Cảnh chỉ dựng điều câu kể đã có trong `factcheck.md`; không thêm chi tiết đổi nghĩa (vết thương, vũ khí, đồ vật, người có mặt mà nguồn không ghi). Không có chân dung thì tả theo mô tả trong nguồn và giữ một gương mặt nhất quán suốt video.
+3. **Phong cách tranh rõ ràng:** sơn dầu điện ảnh, khắc đồng, màu nước tối… để không ai lẫn với ảnh chụp hay giấy tờ thật. Không làm giả ảnh chụp, bản án, chữ ký, trang báo.
+4. **Nhãn:** chip PHỎNG DỰNG trên khung (như cảnh `{pd}`); mô tả video ghi một dòng "Một số hình là phỏng dựng bằng AI dựa trên tư liệu".
+5. **Khai khi đăng:** bật khai báo nội dung chỉnh sửa/tổng hợp của YouTube (`status.containsSyntheticMedia`) cho video có ảnh loại này; luật AI Việt Nam cũng đòi gắn nhãn nội dung AI mô phỏng người thật.
+6. **Giới hạn giữ lại:** người còn sống (và người mất gần đây có thân nhân còn sống) không có ảnh AI rõ mặt: dùng thẻ chữ hoặc ảnh tự do. Không ảnh AI cảnh bạo lực, thi thể, nạn nhân. Không đặt nhân vật vào hành vi xấu mà nguồn không ghi.
+7. **Kho:** ảnh đạt lưu vào `library/tools/assets.py` với tag `phong_tac` + tên nhân vật, để giữ khuôn mặt nhất quán giữa các cảnh và các video sau. Lead soát bằng mắt từng ảnh trước khi nạp.
