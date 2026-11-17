@@ -46,7 +46,7 @@ Không nhất thiết biết kinh sách hay tử vi. Gọi người nghe là "b�
 - Trả vòng nào thì mở vòng mới ngay câu sau.
 
 ## 120 GIÂY ĐẦU: CÂU NGẮN (cổng nhịp chặn render)
-`hf_batch_render.pace_gate_issues` chặn render khi trong 120 giây đầu có cảnh dài quá 4,0 giây. Hình chỉ đổi được giữa hai câu.
+PO 17/11: ảnh/clip có chuyển động (cine, pan, clip video, hoặc ảnh full bridge tự gán camera) được tối đa 8,0 giây; cảnh tĩnh tối đa 4,0 giây. Mục tiêu 3–8 giây/ảnh, đổi ảnh ở ý mới. Chữ trên nền trống liên tục vẫn tối đa 1,5 giây. Hình chỉ đổi được giữa hai câu.
 Vì vậy 120 giây đầu (khoảng 40–55 câu) phải viết sẵn bằng câu ngắn:
 - Mỗi câu ≤ khoảng 10 tiếng đọc, khoảng 3 giây. Câu trích dài thì tách lời dẫn ra câu riêng: `Bậc Đạo Sư hỏi Kỳ-bà:` / `"Trong tu viện còn vị tỳ kheo nào không?"`.
 - Năm số đọc rất dài ("hai nghìn không trăm hai mươi sáu"): đưa năm ra câu riêng, hoặc nói "năm mới", "năm sau" khi nghĩa đã rõ.
@@ -54,7 +54,7 @@ Vì vậy 120 giây đầu (khoảng 40–55 câu) phải viết sẵn bằng c�
   Ngày 12/11, ba Long phải viết lại vì lỗi này.
 - Mỗi câu trong 120 giây đầu cần một hình riêng hợp nghĩa. Người viết ghi gợi ý hình theo từng câu trong `source_notes`.
 - Trong 120 giây đầu không dùng thẻ chữ trên nền trống (`word`), không dùng cảnh style (woodcut…).
-- Kiểm trước khi giao bằng `pace_gate_issues(row, segs)` và `opening_gate(row, segs)`, ước tính 178–185 tiếng/phút. Sau TTS thì kiểm lại bằng `segments` thật. Giọng thật chậm hơn thì câu có thể vượt 4 giây; nhanh hơn thì mốc 120 giây lấn sang các câu phía sau.
+- Kiểm trước khi giao bằng `pace_gate_issues(row, segs)` và `opening_gate(row, segs)`, ước tính 178–185 tiếng/phút. Sau TTS thì kiểm lại bằng `segments` thật. Cảnh tĩnh có thể vượt 4 giây và sẽ bị chặn; mốc 120 giây lấn theo thời lượng segment thực tế.
 
 ## LUẬT CÂU CHO TTS (`line-rules.md`)
 - Mỗi câu ≤ 35 tiếng **đọc** (chữ số đếm theo cách đọc).
