@@ -927,10 +927,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     for v in syl_s:
         buckets["<=6" if v <= 6 else "7-11" if v <= 11 else "12-18" if v <= 18 else "19-25" if v <= 25
                 else "26-35" if v <= 35 else ">35"] += 1
-    long_s = [(i, v, s) for i, s, v, _, _ in sents if v > 45]
-    for i, v, s in long_s:
-        add(ERROR if v > 70 else WARN, "cau_dai",
-            f"dòng {i}: câu {v} tiếng đọc (> {70 if v > 70 else 45}) -- nghe thử nguyên câu: {s[:70]}")
+    # PO 17/11: không cảnh báo, không chặn độ dài câu -- người viết tự do, nghe thử bằng tai (chỉ còn số thống kê).
     for i, x in enumerate(script, 1):
         if not is_heading(x) and comma_ending(plain(x)):
             add(ERROR if new_audio_plan(row) else WARN, "cau_tron",

@@ -65,22 +65,19 @@ def test_adapter_preserves_tokens_and_builder_input(tmp_path, capsys):
 
 def test_adapter_reports_lint_error_without_rewriting(tmp_path, capsys):
     md = tmp_path / 'prose.md'
-    md.write_text('## Mở\n' + 'lời ' * 71 + '.', encoding='utf-8')
+    md.write_text('## Mở\nTý, Sửu, Dần và Mão cùng xuất hiện trong một đêm.', encoding='utf-8')
     script = tmp_path / 'out.txt'
     assert prose.main([str(md), str(script)]) == 1
-    assert 'cau_dai' in capsys.readouterr().out
+    assert 'nhieu_chi' in capsys.readouterr().out
     assert script.read_text(encoding='utf-8') == prose.convert(md.read_text(encoding='utf-8'))
 
 
-@pytest.mark.parametrize('count, level', [(35, None), (45, None), (46, lint.WARN),
-                                         (70, lint.WARN), (71, lint.ERROR)])
-def test_long_sentence_thresholds(count, level):
+@pytest.mark.parametrize('count', [35, 46, 71, 150])
+def test_long_sentence_has_no_length_finding(count):
+    # PO 17/11: bỏ cả cảnh báo lẫn chặn độ dài câu, người viết tự do
     row = {'id': 'sample', 'script': [' '.join(['lời'] * count) + '.']}
-    found = [lv for lv, code, _ in lint.lint(row)['issues'] if code == 'cau_dai']
-    assert found == ([] if level is None else [level])
-    retention = hbr.retention_issues(row)
-    assert any('> 45 tiếng' in text for text in retention) == (count > 45)
-    assert not any('tách đôi' in text for text in retention)
+    assert not [c for _, c, _ in lint.lint(row)['issues'] if c == 'cau_dai']
+    assert not any('tiếng' in text and 'câu nói' in text for text in hbr.retention_issues(row))
 
 
 def test_no_short_sentence_quota():

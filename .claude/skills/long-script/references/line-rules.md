@@ -3,12 +3,12 @@
 [Chuẩn lời §2–7](../../../../docs/script/audio-script.md#2-hợp-đồng-giao-lời), [Long chuẩn](../../../../docs/script/profiles/long-standard.md), [BUD](../../../../docs/script/profiles/bud.md), [FS](../../../../docs/script/profiles/fs.md) sở hữu luật; file này chỉ giữ cách đọc và DSL. Ngân sách theo [bảng giọng](../../../../docs/script/voice-rates.md).
 
 ## 1. Dòng và nhịp
-TTS đọc từng `say()`, rồi nghỉ theo cấu hình. Người kể viết văn xuôi tự do → `tools/prose_to_script.py` tách ở dấu kết câu → một dòng/câu trọn, TTS đọc nguyên câu, không tách vế ở phẩy/chấm phẩy/hai chấm. Long BUD/FS/VSD: 46–70 tiếng đọc CB, >70 LỖI theo `long_script_lint.syllables` (số đọc ra chữ). Không quota câu ngắn trong finding; nhịp ngắn/12–18 tiếng là gợi ý. Dựng plan, Lead nghe CH00–01 qua `tools/tts_sample.py <plan> --only <id> --chapters 0 1`, rồi mới viết tiếp. Trong120s đầu, viết câu theo ý; cổng hình vẫn động≤8s/tĩnh≤4s, chữ nền trống≤1,5s. Không lấy nhịp hình làm độ dài câu.
+TTS đọc từng `say()`, rồi nghỉ theo cấu hình. Người kể viết văn xuôi tự do → `tools/prose_to_script.py` tách ở dấu kết câu → một dòng/câu trọn, TTS đọc nguyên câu, không tách vế ở phẩy/chấm phẩy/hai chấm. Long BUD/FS/VSD không giới hạn độ dài câu: máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. Không quota câu ngắn trong finding; nhịp ngắn/12–18 tiếng là gợi ý. Dựng plan, Lead nghe CH00–01 qua `tools/tts_sample.py <plan> --only <id> --chapters 0 1`, rồi mới viết tiếp. Trong120s đầu, viết câu theo ý; cổng hình vẫn động≤8s/tĩnh≤4s, chữ nền trống≤1,5s. Không lấy nhịp hình làm độ dài câu.
 
 ## 2. Cách VieNeu đọc — phép đo phonemize_text 14/10/2026
 | Viết | Đọc ra | Dùng? |
 |---|---|---|
-| `1983`, `2027`, `2008` | một nghìn chín trăm tám mươi ba / hai nghìn không trăm hai mươi bảy / ... lẻ tám | được, nên 1–2 năm/câu, tối đa 3 mục và ≤70 tiếng đọc (46–70 cần nghe thử) |
+| `1983`, `2027`, `2008` | một nghìn chín trăm tám mươi ba / hai nghìn không trăm hai mươi bảy / ... lẻ tám | được, nên 1–2 năm/câu, tối đa 3 mục |
 | `1.068 m`, `2.500 năm`, `1,5 triệu` | một nghìn không trăm sáu mươi tám mét / hai nghìn năm trăm / một phẩy năm | được |
 | `12/7/2025`, `23:00`, `3/4`, `50%` | mười hai tháng bảy năm... / hai mươi ba giờ không phút / ba trên bốn / năm mươi phần trăm | được nhưng nên viết chữ |
 | `thế kỷ VIII`, `Chương II` | thế kỷ tám / chương hai | được |

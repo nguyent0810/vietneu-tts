@@ -4,8 +4,8 @@ Chỉ mã HBR/Long lint/hook library/shortbuild được sửa theo task. Không
 
 | Đường gọi | LỖI giữ/thêm | CB/gợi ý và giới hạn |
 |---|---|---|
-| long_script_lint → production_gates.long_script_report | cau_dai >70 tiếng đọc, nhieu_chi, ten_con_vat, tts_khoa_dong, tts_van_tay_lech; mới cau_tron theo tts.pause_ctx/ngày merge, markup_leak | cau_dai 46–70 là CB; bỏ finding it_cau_ngan (078). Bốn check lookup/tuyển tập hạ CB: giờ từ clock nháp và nghĩa/đoán chương không tất định; nguồn BUD vẫn phải review receipt, không có check sutta tự động trong lint này. |
-| HBR.retention_issues | Không chặn | Câu >45 tiếng đọc chỉ CB, không yêu cầu tách vế; bỏ finding quota câu ngắn cho mọi Long (078). Bộ tách câu chung tools/prose_split.py giữ số/viết tắt/ba chấm giữa câu. |
+| long_script_lint → production_gates.long_script_report | nhieu_chi, ten_con_vat, tts_khoa_dong, tts_van_tay_lech; mới cau_tron theo tts.pause_ctx/ngày merge, markup_leak | Độ dài câu: không đo (PO 17/11); bỏ finding it_cau_ngan (078). Bốn check lookup/tuyển tập hạ CB: giờ từ clock nháp và nghĩa/đoán chương không tất định; nguồn BUD vẫn phải review receipt, không có check sutta tự động trong lint này. |
+| HBR.retention_issues | Không chặn | Không đo độ dài câu (PO 17/11); bỏ finding quota câu ngắn cho mọi Long (078). Bộ tách câu chung tools/prose_split.py giữ số/viết tắt/ba chấm giữa câu. |
 | library.tools.hook_lint → production_gates → HBR/short_batch_runner | KHUNG_DAU_TRONG giữ kiểm hình | TRUU_TUONG hạ gợi ý; KHONG_DANH_TU_CU_THE đã gợi ý, vẫn in ra khi qua adapter; tool/dữ liệu thiếu vẫn báo lỗi kỹ thuật. |
 | short_v2_issues / short_tone_issues | API tương thích trả rỗng; không còn chặn heuristic | Logic chuyển short_v2_warnings/short_tone_warnings, gọi/in trong HBR và guard. V2 token budget/định nghĩa/câu1/insight/novelty/tone là ước đoán văn phong; không khẳng định duplicate-title là lặp nguyên văn lời. |
 | short_story_issues → HBR/guard | Dòng cuối phẩy, từ29/11; thiếu ngày áp mới; hiểu publish_at/effective_date | Rào nguồn >1 chuyển short_source_warnings, có thể cần khung làm rõ nghĩa; không thêm check BUD phỏng dựng. |

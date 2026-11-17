@@ -603,8 +603,6 @@ def short_v2_warnings(row: dict) -> list[str]:
     lo, hi = SHORT_V2_SYLLABLES[row["series"]]
     if not lo <= n <= hi:
         out.append(f"{n} tiếng -- cần {lo}-{hi} (ước lượng token cho profile v2; xem bảng tốc độ giọng, không phải thời lượng đo)")
-    if len(script[0].split()) > 22 if script else False:
-        out.append(f"câu 1 dài {len(script[0].split())} tiếng -- móc câu <= 22 tiếng")
     if not row.get("insight"):
         out.append("thiếu `insight` (câu trả lời một câu, dòng đầu mô tả)")
     if not row.get("novelty_ok"):   # đã soát tay thấy khác chủ đề -> ghi lý do vào novelty_ok
@@ -691,29 +689,25 @@ def short_hook_hints(row: dict) -> list[str]:
 
 
 def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
-    """Cảnh báo câu >45 tiếng đọc và đoạn >90s không ngắt nhịp.
-    078: bỏ quota câu ngắn; văn xuôi được đọc nguyên câu, không ép tách vế.
-    """
+    """Cảnh báo đoạn >90s không ngắt nhịp. Không đo độ dài câu (PO 17/11: bỏ cả cảnh báo lẫn chặn),
+    không quota câu ngắn; văn xuôi được đọc nguyên câu."""
     from long_script_lint import sentences, syllables
 
-    vis, sents, cur, worst, at = row.get("visuals") or {}, [], 0.0, 0.0, 0
+    vis, cur, worst, at = row.get("visuals") or {}, 0.0, 0.0, 0
     for i, line in enumerate(row.get("script") or [], 1):
         if line.startswith("**") and line.endswith("**"):
             cur = 0.0
             continue
         t = line.replace("**", "")
         ss = sentences(t)
-        sents += [(i, syllables(x)) for x in ss]
         hit = ("?" in t or re.search(r"\d", t) or any(syllables(x) <= 6 for x in ss)
                or (vis.get(str(i)) or {}).get("type") in ("quote", "ask", "stamp"))
         cur = 0.0 if hit else cur + syllables(t) / rate
         if cur > worst:
             worst, at = cur, i
     out = []
-    if (long_ := [i for i, n in sents if n > 45]):
-        out.append(f"{len(long_)} câu nói > 45 tiếng (câu {sorted(set(long_))[:6]}) -- nghe thử nguyên câu")
     if worst > 90:
-        out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi/con số/câu ngắn")
+        out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi, con số hoặc một điểm lặng")
     return out
 
 

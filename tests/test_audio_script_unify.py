@@ -69,8 +69,8 @@ def test_lint_cta_over_two_warns_and_night_is_separate():
 
 def test_retention_counts_spoken_years_and_is_advisory():
     r = row(script=["Tuổi Tý gồm những người sinh năm âm lịch 1960, 1972, 1984, 1996, 2008 và 2020."])
-    assert L.tokens(r["script"][0]) < 45 < L.syllables(r["script"][0])
-    assert any("> 45 tiếng" in x for x in H.retention_issues(r))
+    assert L.tokens(r["script"][0]) < 35 < L.syllables(r["script"][0])
+    assert not any("câu nói" in x for x in H.retention_issues(r))   # PO 17/11: không đo độ dài câu
 
 
 @pytest.mark.parametrize("extra", [{}, {"kind": "night"}, {"format": "tra_cuu"}])

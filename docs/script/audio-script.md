@@ -21,7 +21,7 @@ Giao script + notes nguồn/điểm chưa chắc + kênh/khuôn/engine + cấu h
 **Lõi 5.** Lời mở khớp điều tiêu đề hứa và có câu trả cụ thể. Mỗi đoạn thêm diễn biến, lý do, chứng cứ hoặc hệ quả; Short tự có giá trị. Bảng tra trả sớm, truyện trả theo diễn tiến. Chỉ đúng câu đáp khi tự soát; khớp từ khoá không chứng minh đã trả lời.
 
 ## 5. Nhịp câu và khoảng lặng
-**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS/VSD: câu 46–70 tiếng đọc chỉ CẢNH BÁO, trên 70 mới LỖI, đo bằng `long_script_lint.syllables` (số được đọc ra chữ). TTS đọc nguyên câu, không tách vế ở phẩy/hai chấm để chiều ngưỡng. Mốc 12–18 tiếng và câu ngắn ≤6 mỗi 4–6 câu chỉ là gợi ý nghề; bỏ quota câu ngắn khỏi finding của lint/retention (078).
+**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS/VSD: không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. TTS đọc nguyên câu, không tách vế ở phẩy/hai chấm để chiều ngưỡng. Mốc 12–18 tiếng và câu ngắn ≤6 mỗi 4–6 câu chỉ là gợi ý nghề; bỏ quota câu ngắn khỏi finding của lint/retention (078).
 
 Quy trình 078: người kể viết văn xuôi tự do (`prose.md`, `## Tên chương`) → `.venv/bin/python tools/prose_to_script.py prose.md script.txt` (không đổi chữ; tiêu đề thành **thẻ chương**, mỗi câu một dòng; `#` tiêu đề tài liệu không đọc) → dựng plan bằng `tools/long_plan_build.py --script` → Lead đọc thử CH00–01 bằng `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` → viết tiếp. Adapter in số câu/tiếng đọc/câu dài nhất mỗi chương và chạy lint; không sửa lời để chữa finding. Nguồn/hướng hình/nhãn phỏng dựng vẫn ghi ở notes riêng, không đưa marker V2 `{pd}` vào lời HBR. MP3 loudnorm −16 ở `output/cl_staging/long/tts_test/<id>/CHnn.mp3`; WAV/manifest/cache riêng ở `_work/CHnn`, không ghi cache/out sản xuất. CH00 là đoạn mở không heading, hoặc thẻ chương đầu nếu script bắt đầu bằng heading; thẻ được đọc như sản xuất.
 
@@ -61,7 +61,6 @@ Danh mục audio chặn của đường HBR/shortbuild: **10 nhóm**, không tí
 
 | Nhóm | Scope |
 |---|---|
-| `cau_dai` | Long >70 tiếng đọc/câu LỖI; 46–70 CẢNH BÁO |
 | `nhieu_chi` | ≥4 tên chi/dòng; giữ kiểm hiện có |
 | `ten_con_vat` | Gọi tuổi FS bằng tên con vật |
 | `tts_khoa_dong` | Override pause/tempo trỏ sai dòng |

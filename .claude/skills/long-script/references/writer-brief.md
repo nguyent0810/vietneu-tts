@@ -10,7 +10,7 @@ Plan duyệt `<path>` · nghiên cứu `<path>` · beat sheet `<path>` · ngày 
 Dữ kiện quan trọng `<3–5 ý>` · điểm chưa chắc `<...>` · phạm vi phỏng dựng theo hồ sơ `<...>`.
 
 ## VĂN XUÔI VÀ ĐỌC THỬ (078)
-Viết văn xuôi tự do, trước hết CH00–01: `prose.md`, chương `## …`. Chạy `.venv/bin/python tools/prose_to_script.py prose.md script.txt` rồi dựng plan bằng `tools/long_plan_build.py --script`. Lead đọc thử `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` trước khi viết tiếp. Đọc nguyên câu, không tách vế; 46–70 tiếng đọc CB, >70 LỖI, đếm số đọc ra chữ. Không có quota câu ngắn trong finding; nhịp 12–18 tiếng/câu ngắn chỉ gợi ý. Không đổi luật nội dung/nguồn/cold open của hồ sơ.
+Viết văn xuôi tự do, trước hết CH00–01: `prose.md`, chương `## …`. Chạy `.venv/bin/python tools/prose_to_script.py prose.md script.txt` rồi dựng plan bằng `tools/long_plan_build.py --script`. Lead đọc thử `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` trước khi viết tiếp. Đọc nguyên câu, không tách vế; không giới hạn độ dài câu, máy không cảnh báo hay chặn (PO 17/11). Không có quota câu ngắn trong finding; nhịp 12–18 tiếng/câu ngắn chỉ gợi ý. Không đổi luật nội dung/nguồn/cold open của hồ sơ.
 
 ## 120 GIÂY ĐẦU: CÂU TRỌN, NHỊP HÌNH RIÊNG
 PO17/11: ảnh/clip động≤8s, tĩnh≤4s, chữ nền trống≤1,5s; mục tiêu3–8s/ảnh, đổi ở ý mới. Bỏ ép mười tiếng/ba giây mỗi câu; viết theo nhịp ý, không tách cụm từ/năm thành mảnh cụt. Hình theo gợi ý ý/cảnh trong notes, workflow hình hiện tại quyết cách gắn; không bắt một ảnh mới vì một câu mới trong luật audio.
