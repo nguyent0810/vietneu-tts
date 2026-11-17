@@ -13,7 +13,7 @@ Plan `format: "tra_cuu"` (PO duyệt 05/11, #138): bảng tóm tắt trên màn 
 không hứa "bảng ở cuối" (`hua_bang_cuoi`).
 Plan `format: "tuyen_tap"` (PO duyệt 05/11, #138): truyện 1 bắt đầu trước giây 60 (`tuyen_tap_truyen1_muon`),
 không chương lý thuyết/dẫn nhập trước truyện 1 (`tuyen_tap_ly_thuyet_truoc_truyen1`).
-Đoạn "không ngắt nhịp" dùng ĐÚNG định nghĩa của retention_issues (test đảm bảo hai bên ra cùng một con số).
+Các heuristic lookup/tuyển tập/nhịp chỉ CẢNH BÁO theo 075b; ngưỡng hiện hành ở docs/script/audio-script.md.
 
 Usage:
     python long_script_lint.py output/cl_staging/long/plan_long_w41.json --only L_bud_05
@@ -35,6 +35,7 @@ import statistics
 import sys
 from pathlib import Path
 
+from audio_script_rules import comma_ending, markup_leaks, new_audio_plan
 import hf_batch_render as HBR
 import tts_lexicon
 
@@ -769,13 +770,13 @@ def tra_cuu_issues(
                 last_title = table_visuals[-1][2].get("title") or table_visuals[-1][2].get("type")
                 lookup_note = f"; bảng '{last_title}' ở dòng {table_visuals[-1][0]}: ~{table_visuals[-1][1]:.0f}s"
             out.append((
-                ERROR,
+                ERROR,  # Lead 17/11: giữ chặn — luật PO 05/11, đo tất định theo loại visual bảng
                 "tra_cuu_bang_muon",
                 f"không có bảng tóm tắt/tra cứu nào trên màn hình trong 45 giây đầu (bảng đầu tiên '{first_title}' ở dòng {first_line}: {first_time:.1f}s > 45s{lookup_note}) -- Long tra cứu cần có bảng tóm tắt trên màn hình trong 45 giây đầu",
             ))
         else:
             out.append((
-                ERROR,
+                ERROR,  # Lead 17/11: giữ chặn — luật PO 05/11, đo tất định theo loại visual bảng
                 "tra_cuu_bang_muon",
                 "không có bảng tóm tắt/tra cứu nào trên màn hình ('lookup', 'ledger', 'years') -- Long tra cứu cần có bảng tóm tắt trên màn hình trong 45 giây đầu",
             ))
@@ -786,7 +787,7 @@ def tra_cuu_issues(
         if hit_text:
             matched_indices.add(idx)
             out.append((
-                ERROR,
+                WARN,
                 "hua_bang_cuoi",
                 f"dòng {i}: câu hứa bảng ở cuối ('{hit_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
             ))
@@ -797,7 +798,7 @@ def tra_cuu_issues(
             if hit_pair_text:
                 matched_indices.add(idx)
                 out.append((
-                    ERROR,
+                    WARN,
                     "hua_bang_cuoi",
                     f"dòng {i}: câu hứa bảng ở cuối ('{hit_pair_text}') -- Long tra cứu không hứa 'bảng ở cuối', cần hiện bảng tóm tắt ngay 45 giây đầu",
                 ))
@@ -858,14 +859,14 @@ def tuyen_tap_issues(
 
     if t_story1 >= 60.0:
         out.append((
-            ERROR,
+            WARN,
             "tuyen_tap_truyen1_muon",
             f"truyện 1 ({story_label}) bắt đầu ở giây {t_story1:.1f} (≥ 60s) -- Long tuyển tập cần bắt đầu truyện 1 trước giây 60",
         ))
 
     for c_before in heading_chaps[:cutoff_idx]:
         out.append((
-            ERROR,
+            WARN,
             "tuyen_tap_ly_thuyet_truoc_truyen1",
             f"chương '{c_before['tiêu đề']}' ở giây {c_before['giây'][0]} là chương lý thuyết/dẫn nhập trước truyện 1 -- Long tuyển tập không có chương lý thuyết trước truyện 1",
         ))
@@ -928,14 +929,16 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     long_s = [(i, v, s) for i, s, v, _, _ in sents if v > 35]
     for i, v, s in long_s:
         add(ERROR, "cau_dai", f"dòng {i}: câu {v} tiếng đọc (> 35) -- tách ở dấu hai chấm / 'mà là': {s[:70]}")
-    # Câu bị tách đôi giữa chừng (dòng kết thúc dấu phẩy): TTS nghỉ sai chỗ, nghe cụt (PO 16/11, L_bud_axathe 21 chỗ).
     for i, x in enumerate(script, 1):
-        if not is_heading(x) and plain(x).rstrip().endswith(","):
-            add(WARN, "cau_tach_doi", f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- gộp với dòng sau thành một câu: {x[:60]}")
+        if not is_heading(x) and comma_ending(plain(x)):
+            add(ERROR if new_audio_plan(row) else WARN, "cau_tron",
+                f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- viết câu trọn: {x[:60]}")
+    for i, x in markup_leaks(script, row.get("silence") or []):
+        add(ERROR, "markup_leak", f"dòng {i}: ký hiệu kỹ thuật lọt vào lời đọc: {x[:60]}")
     long_l = [i for i, x in enumerate(script, 1) if not is_heading(x) and syllables(x) > 35]
     short_share = buckets["<=6"] / n
-    if kind != "night" and short_share < 1 / 8:
-        add(WARN, "it_cau_ngan", f"câu <= 6 tiếng chỉ {buckets['<=6']}/{n} ({short_share:.0%}) -- cần >= 1/8, tốt nhất 1/6-1/4 "
+    if kind != "night" and fmt != "tra_cuu" and short_share < 1 / 8:
+        add(WARN, "it_cau_ngan", f"câu <= 6 tiếng chỉ {buckets['<=6']}/{n} ({short_share:.0%}) -- chỉ số tham khảo; xem lại nhịp theo ý, không đệm câu "
             "(câu đỉnh sau khoảnh khắc, phán định ĐÚNG/SAI)")
 
     # 2. đoạn không ngắt nhịp (định nghĩa runner)
@@ -1141,8 +1144,8 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     for i, t in ctas:
         if total and t < total * 0.85 and t > 60:
             add(INFO, "cta_giua", f"dòng {i}: lời gọi đăng ký ở {t / total:.0%} -- đặt sau lần trả vòng cuối")
-    if len(ctas) > 3:
-        add(WARN, "cta_nhieu", f"{len(ctas)} câu gọi đăng ký/bình luận (> 3)")
+    if kind != "night" and len(ctas) > 2:
+        add(WARN, "cta_nhieu", f"{len(ctas)} câu gọi đăng ký/bình luận (> 2; xem lại loại CTA, không chặn)")
 
     # 11. bẫy TTS
     # hf_voice tự chạy tts_lexicon.apply trước khi đọc (trừ khi tts.lexicon=false): chỉ cảnh báo phần lexicon KHÔNG sửa được
@@ -1168,7 +1171,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         if p.count(":") >= 2 and re.search(r"(?i)\b(hỏi|thưa|đáp|nói|bảo)\b.*:.*\b(hỏi|thưa|đáp|nói|bảo)\b.*:", p):
             add(INFO, "hai_luot_thoai", f"dòng {i}: hai lượt thoại trong một dòng -- tách dòng để có nghỉ giữa hai người")
 
-    runner = HBR.retention_issues(row)
+    runner = HBR.retention_issues({**row, "kind": kind})
     stats = {
         "id": row.get("id"), "format": fmt, "thời gian": time_src, "phút": round(total / 60, 1), "dòng": len(script), "câu nói": len(sents),
         "tiếng (đọc)": sum(syl_s),

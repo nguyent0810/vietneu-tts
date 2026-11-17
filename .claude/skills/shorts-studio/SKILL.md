@@ -66,15 +66,8 @@ Toàn bộ bố cục dọc 9:16 phải tuân thủ nghiêm ngặt các mốc t�
 - Cung hoàng đạo phương Tây (lệch tệp khán giả).
 - Giọng dọa nạt (*"hậu họa"*, *"tai ương"*) hoặc hứa tiền bạc (*"giàu ngầm"*).
 
-### Hook 1 giây
-
-Giây đầu phải nhìn thấy vật, người, hành động hoặc năm sinh. Tiêu đề phải có danh từ cụ thể (vật chùa, bộ phận tượng, hành động của tăng, năm sinh, tên chi, ngày). Cấm khuôn "X có phải là Y?" khi X là khái niệm trừu tượng.
-
-Đạt: "Vì sao nhà sư cạo tóc?" (53%), "Địa ngục có phải là bản án vĩnh viễn?" (51%), "1984, 1985: mệnh Hải Trung Kim" (63%).
-
-Không đạt: "Chánh niệm có phải là mặc kệ ngày mai?" (13%), "Thương con có phải là làm hết cho con?" (11%), "Thái cực sinh lưỡng nghi nghĩa là gì?" (11%), "Phong thủy, Tử Vi, Bát Tự có phải là một?" (14%).
-
-Ví dụ đầy đủ và lệnh kiểm: [references/spec.md](references/spec.md).
+### Lời đọc và hook
+[Chuẩn §2–7](../../../docs/script/audio-script.md#2-hợp-đồng-giao-lời), [Short kể](../../../docs/script/profiles/short-story.md), [Short thắng9–18s](../../../docs/script/profiles/short-win-9-18.md) sở hữu luật lời/ngân sách; [BUD](../../../docs/script/profiles/bud.md)/[FS](../../../docs/script/profiles/fs.md) sở hữu nguồn/giọng. Hook trừu tượng/danh từ cụ thể là gợi ý; khung đầu vẫn kiểm hình hiện có. Ví dụ số liệu ở [spec](references/spec.md); không coi tương quan stay là lệnh cấm cách hỏi.
 
 ---
 
@@ -145,11 +138,8 @@ Scan nạp GrokBot: chỉ `output/cl_staging/grokbot/*/out/*.png` của lô có 
 Mẫu spec tham khảo: `examples/demo_fs_sinhcon.json` (`tet-poster`), `demo_bud_batchanhdao.json` (`saffron`).
 Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://references/themes.md), [qa.md](file://references/qa.md), [devices.md](file://references/devices.md), [spec.md](file://references/spec.md).
 
-## Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short)
-- **Mọi Short:** một dòng là một câu TRỌN. Không cắt câu thành hai dòng (dòng kết thúc dấu phẩy, vd "Tháng mười một âm," / "toàn tháng có…") — TTS nghỉ sai chỗ, nghe cụt. Cổng `short_story_issues` chặn từ lịch 29/11.
-- **Làn truyện (lane `truyen`/`tien_than`/`nhan_qua`, `format_subtag` story_…) và ô thử nghiệm (`test_cell`):** tối đa 1 câu rào nguồn ("Luật tạng ghi…", "theo chú giải…"); nguồn để ở dòng chân hình (`source`) và mô tả. Chỗ kinh bỏ trống kể thành cảnh (im lặng, bàn tay, ánh sáng, câu hỏi tu từ). Cảnh phỏng dựng ghi `pd_scenes: [số cảnh]` -> chip PHỎNG DỰNG trên hình (khuôn ai_cards; cổng chặn nếu thiếu chip).
-- **Dạng thắng giữ nguyên** (bảng tra FS, tượng BUD, …): chỉ chịu luật câu trọn.
-- Lằn ranh giữ: không gán lời cho Đức Phật ngoài kinh, không bịa số/lời trích thật.
+## Adapter lời Short
+Câu trọn/hiệu lực theo [lõi §9](../../../docs/script/audio-script.md#9-adapter-và-mức-kiểm). Truyện/test_cell dùng [Short kể](../../../docs/script/profiles/short-story.md), ngân sách riêng dạng thắng dùng `audio_profile: short_win_9_18` (daytable tự chọn). `pd_scenes` → chip PHỎNG DỰNG của ai_cards giữ nguyên; không thêm lint phỏng dựng. Lời/nguồn tách theo lõi, cách tạo hình vẫn ở skill này.
 
 ## Short MIM / CK / CL: cửa sổ sốc 3 giây (chủ kênh 15/11 và 17/11/2026, #454)
 Builder của ba kênh này là `creator_v2/motion/stier/build.py`, không phải `studio.py`. Quy tắc gốc: `creator_v2/docs/pm/storytelling-guide.md`, mục "Tiêu đề và mở đầu kiểu survival". Chỉ đổi lớp đóng gói và 3 giây đầu; thân bài giữ cách kể hiện tại.
@@ -158,6 +148,6 @@ Builder của ba kênh này là `creator_v2/motion/stier/build.py`, không phả
 - **Câu hỏi hậu quả trước giây 3** (điều tiêu đề hứa và Short trả lời).
 - **Khung 0 là hình mạnh nhất của bài** (clip có giấy phép > ảnh AI phỏng tác nhân vật/cảnh có nhãn PHỎNG DỰNG theo storytelling-guide §15 > ảnh tư liệu có chuyển động máy > đồ họa AI minh họa chung `minh_hoa_chung` có nhãn MINH HỌA > motion graphic). Không chữ trần, không logo/kicker kênh mở đầu, không ảnh bạo lực thật, không ảnh AI rõ mặt người còn sống.
 - **Tiêu đề ≤ 60 ký tự** đặt bi kịch, nghịch lý hoặc đồng hồ lên đầu. Chỉ dùng sự kiện có trong lời đọc và nguồn của bài; sử "không ghi" thì không viết "không hề". Dấu hỏi chỉ khi Short trả lời.
-- **Cổng tự động**: `short_retention()` trong `creator_v2/motion/stier/script_lint.py`, chạy ở `build.py --preflight`. Short hẹn từ 01/12/2026 vi phạm là LỖI; Short cũ hơn chỉ cảnh báo. Không lách bằng `--allow-hook` cho đợt mới.
+- **Cổng tự động**: `short_retention()` trong `creator_v2/motion/stier/script_lint.py`, chạy ở `build.py --preflight`. Hàm short_retention đổi mức từ01/12, nhưng hook_errors/retention_hook_lint của builder có đường chặn riêng theo rules; xem ma trận chuẩn, không suy trước01/12 chắc chắn qua. Các heuristic V2 chưa được đổi code trong075b. Không lách bằng `--allow-hook` cho đợt mới.
 - **Đợt đầu theo luật này**: dựng 1 Short mẫu mỗi kênh cho chủ kênh duyệt rồi mới làm cả loạt.
 - **Đo**: so CTR và % xem tiếp ở giây 3 với baseline 28 ngày tháng 11 của kênh; nhật ký đổi tiêu đề ở `creator_v2/output/retitle/applied.jsonl`.

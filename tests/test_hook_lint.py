@@ -141,8 +141,8 @@ def test_cli_exit_code(tmp_path):
     assert ok.returncode == 0
     assert "TỔNG: 3 bài, dính cờ chặn 0" in ok.stdout
     failed = subprocess.run([sys.executable, str(MODULE), str(bad)], capture_output=True, text=True)
-    assert failed.returncode == 1
-    assert "TỔNG: 5 bài, dính cờ chặn 5" in failed.stdout
+    assert failed.returncode == 0
+    assert "TỔNG: 5 bài, dính cờ chặn 0" in failed.stdout
     assert "TRUU_TUONG" in failed.stdout
 
 

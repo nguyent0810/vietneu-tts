@@ -1,0 +1,33 @@
+== L_bud_axathe · 12.7 phút · 295 dòng · 286 câu · 2247 tiếng · giây thật (L_bud_axathe.json)
+tiếng/câu {'p10': 4, 'trung vị': 7, 'p90': 12, 'max': 24}  tiếng/dòng {'trung vị': 7, 'p90': 12, 'max': 24, 'dòng > 35': 0}
+phân bố câu {'<=6': 110, '7-11': 146, '12-18': 24, '19-25': 6, '26-35': 0, '>35': 0}  · câu ngắn 110/286 (38%)
+đoạn không ngắt dài nhất ~28 giây (dòng 185-191) · cụ thể:trừu tượng 130 : 0 (45% : 0%)
+loại câu {'neutral': 127, 'concrete': 68, 'story': 62, 'question': 27, 'meta': 2}
+mở/trả vòng 4 / 3 · mở ở % [11, 26, 46, 76] · trả ở % [10, 61, 86]
+chương:
+    0:00   1.5 phút  dòng 1-41  (mở đầu)
+    1:28   0.8 phút  dòng 42-63  Năm ước nguyện
+    2:16   0.9 phút  dòng 64-85  Cả khu rừng trúc
+    3:12   1.1 phút  dòng 86-108  Người thầy của hoàng tử
+    4:15   0.9 phút  dòng 109-133  Con dao trên đùi
+    5:13   0.9 phút  dòng 134-155  Chiếc ngai nhường lại
+    6:10   1.0 phút  dòng 156-177  Khung cửa nhìn Linh Thứu
+    7:08   1.2 phút  dòng 178-201  Đêm rằm vườn xoài
+    8:21   1.2 phút  dòng 202-227  Hồ nước im lặng
+    9:34   1.1 phút  dòng 228-250  Lời sám hối
+   10:40   1.1 phút  dòng 251-275  Ngay tại chỗ ngồi ấy
+   11:47   0.9 phút  dòng 276-295  Điều bạn mang theo
+cụm lặp nhiều nhất: nhà vua ×10, Tăng đoàn ×9, giết cha ×8, Nhà vua ×8, Đức Phật ×6, nghe Phật ×6
+câu mở hay dùng: nhà vua ×8, một người ×7, có lẽ ×5, kỳ bà ×4, không cần ×4
+runner (hf_batch_render.retention_issues): đạt
+-- 0 lỗi, 3 cảnh báo, 7 gợi ý
+[CẢNH BÁO] truu_tuong_lien: 6 câu liền không cụ thể (tới dòng 108) -- chèn ví dụ, con số, cảnh, câu hỏi
+[CẢNH BÁO] mo_dau_khong_cu_the: câu 1 không cụ thể (neutral): Một vị vua đã giết cha mình.
+[CẢNH BÁO] cold_open_dai: chương mở dài 88 giây (> 60; giây thật (L_bud_axathe.json))
+[GỢI Ý] chuong_ngan: trung vị chương 1.05 phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc gộp, giữ tiêu đề phụ trên màn hình
+[GỢI Ý] mo_cau_lap: 8 câu mở bằng 'nhà vua'
+[GỢI Ý] mo_cau_lap: 7 câu mở bằng 'một người'
+[GỢI Ý] tu_lap: dòng 30-34: 'nghe Phật' lặp 3 lần trong 5 dòng
+[GỢI Ý] tu_lap: dòng 98-102: 'cỗ xe' lặp 3 lần trong 5 dòng
+[GỢI Ý] tu_lap: dòng 158-162: 'ô cửa' lặp 3 lần trong 5 dòng
+[GỢI Ý] tu_lap: dòng 228-232: 'nhà vua' lặp 3 lần trong 5 dòng

@@ -1,10 +1,6 @@
 # Luật nào lấy từ đâu
 
-Không có skill "viết kịch bản" sẵn trên chợ skill; skill này chưng cất các nguồn dưới đây + số liệu của kênh. Khi hai nguồn
-mâu thuẫn, **số liệu kênh thắng** (evidence.md), rồi quyết định người dùng 21/10/2026
-(`output/cl_staging/long/phan_tich_long_2026-10-21.md`: giữ Long ~30 phút, cold open ≤ 60 giây, 12–14 chương khoảng 2 phút),
-rồi quyết định 22/10/2026 (Long ≥ 30 phút, khuôn nhân vật — formats.md §7).
-`long-video` §0 còn câu chương 3–6 phút từ trước ngày ấy.
+Nguồn lịch sử và phép đo dưới đây giữ để truy nguyên; luật hiện hành ở [audio-script](../../../../docs/script/audio-script.md) và [phụ lục X01–X20](../../../../docs/script/conflicts-075b.md). Thứ tự xử lý theo lõi §1: PO/user đúng phạm vi trước dữ liệu quan sát. Số185 và quota/chương bên dưới là mốc cũ, không mặc định ghi đè bảng giọng/profile mới.
 
 | Nguồn | Lấy gì | Đổi gì cho BUD/FS + TTS tiếng Việt |
 |---|---|---|

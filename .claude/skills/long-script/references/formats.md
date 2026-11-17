@@ -1,7 +1,7 @@
 # Khung vĩ mô, bốn format, và khuôn nhân vật
 
 Bản trụ FS và BUD là **khoảng 30 phút** (quyết định 21/10/2026). Đêm nghe 90 phút là ngoại lệ, lint `--kind night`.
-185 tiếng/phút kể cả nghỉ → 30 phút ≈ 5.500 tiếng, khoảng 220–330 dòng `say()`.
+Ngân sách theo [bảng giọng](../../../../docs/script/voice-rates.md); số dòng phụ thuộc nhịp câu, không cố định theo tốc độ chung. Các bảng dưới là mẫu cấu trúc; luật lời lấy từ chuẩn chung và hồ sơ, không nhân bản cổng.
 
 ## 1. Plan.md duyệt trước khi viết lời
 
@@ -109,7 +109,7 @@ Khung A2 (~30'): 0:00 khủng hoảng truyện 1 (≤ 60 giây) -> lộ trình m
 |---|---|---|
 | 0:00 | cold open ≤ 60 giây | một người tuổi X (nhân vật minh hoạ, ghi rõ), thì hiện tại, trước một quyết định năm 2027; dừng khi hậu quả chưa xảy ra |
 | ≤ 0:30 | chạm người xem | gọi năm sinh và tên chi |
-| ≤ 1:15 | lộ trình | một trong 6 hình thức, khác tập liền trước; bảng tra nam nữ ở cuối là vòng lớn |
+| ≤ 1:15 | lộ trình | một trong 6 hình thức, khác tập liền trước; bảng tra nam/nữ tóm tắt trong45s đầu; bảng cuối chỉ tổng hợp thêm |
 | ~2' | Bạn là ai trong vòng 60 năm | can chi, nạp âm, mỗi khái niệm ≤ 2 câu kèm ý nghĩa ngay (không chương lý thuyết) |
 | ~6' | Năm 2027 gặp tuổi X thế nào | quan hệ Thái Tuế, sao hạn **nam và nữ trong cùng chương** ("Nếu bạn là nữ, ...") |
 | ~10' | Từng giai đoạn đời | tuổi trẻ / trung niên / hậu vận theo tuổi âm tính bằng code; mỗi giai đoạn một chương khoảng 2 phút |
@@ -177,7 +177,7 @@ Sau câu hỏi hẹn, vẫn một câu cảnh cụ thể trong 90 giây đầu (
 - Cold open = các dòng **trước** thẻ `**...**` đầu tiên. Không tính vào 12–16.
 - Chương N = thẻ thứ N theo thứ tự. Chương 1 là thẻ đầu. Không đọc số trong tiêu đề, không dùng số La Mã ("chương II" không được tính).
 - Viết "chương sáu" hoặc "chương 6".
-- 90 giây đầu và thời lượng dùng đồng hồ của lint: giây thật nếu có `out/<id>.json` khớp số dòng; không thì số token ÷ 185 mỗi phút.
+- 90 giây đầu và thời lượng dùng đồng hồ của lint: giây thật nếu có `out/<id>.json` khớp số dòng; không thì ước lượng nháp token/rate (mặc định185, --rate theo bảng giọng); cùng số dòng chưa đủ chứng minh manifest khớp bản lời.
 - `protagonist` là đúng cụm tên trong lời đọc. Cụm ấy phải có trong cold open và trong ít nhất 70% số thẻ.
 
 ```json

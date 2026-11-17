@@ -12,13 +12,13 @@ def _row(script):
     }
 
 
-def test_validate_blocks_short_v2_violation():
-    with pytest.raises(GuardError, match="short_v2_issues"):
-        validate([_row(["Mở đầu ngắn.", "Định nghĩa là một thuật ngữ."])])
+def test_validate_warns_short_v2_style(capsys):
+    validate([_row(["Mở đầu ngắn.", "Định nghĩa là một thuật ngữ."])])
+    assert "CẢNH BÁO" in capsys.readouterr().out
 
 
 def test_validate_accepts_valid_v2_row():
-    script = ["Một câu mở đầu nhẹ nhàng."] + ["Lắng nghe câu chuyện và thử nhìn lại điều mình đang trải qua hôm nay." for _ in range(6)]
+    script = ["Một câu mở đầu nhẹ nhàng."] + [f"Lắng nghe câu chuyện thứ {i} và thử nhìn lại điều mình đang trải qua hôm nay." for i in range(6)]
     validate([_row(script)])
 
 
@@ -49,10 +49,11 @@ def test_cau_tach_doi_bi_chan_o_moi_short():
     assert any("tách giữa chừng" in x for x in H.short_story_issues(row))
 
 
-def test_short_truyen_rao_nguon_qua_1_cau_bi_chan():
+def test_short_truyen_rao_nguon_qua_1_cau_chi_canh_bao():
     import hf_batch_render as H
     row = _story(["Luật tạng ghi, vua hỏi con.", "Chú giải kể, vua bị giam.", "Ông nhìn ra cửa sổ."])
-    assert any("rào nguồn" in x for x in H.short_story_issues(row))
+    assert H.short_story_issues(row) == []
+    assert any("rào nguồn" in x for x in H.short_source_warnings(row))
     row = _story(["Luật tạng ghi, vua hỏi con.", "Ông nhìn ra cửa sổ."])
     assert H.short_story_issues(row) == []
 

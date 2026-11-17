@@ -1,0 +1,2 @@
+# Đêm nghe BUD — phần khác lõi
+Ngoại lệ90 phút, 10–12 chương7–9 phút; mở êm, một câu lộ trình, không móc gắt/sốc. `--kind night` bỏ quota câu ngắn/rehook của standard; khoảng nhịp dài hơn theo adapter. CTA có thể ở phút2 theo khuôn hiện có, không ép sau85% bài. Preset đêm legacy: tempo0,85–0,88/pause1,2–2,0s; mười phút cuối chậm dần/lặp tâm từ theo formats.md §5; ngân sách dựa giọng cùng cấu hình, không nhân tốc độ kể nhanh. Giữ nguồn BUD.

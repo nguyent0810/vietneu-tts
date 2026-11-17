@@ -7,7 +7,7 @@ Cờ:
   KHONG_DANH_TU_CU_THE  tiêu đề không có danh từ cụ thể (vật, hành động, năm, chi, ngày)
   KHUNG_DAU_TRONG       khung đầu chỉ có chữ, không có ảnh hay sơ đồ vật
 
-Danh sách từ: hook_terms.json cạnh file này. Exit 1 khi có cờ.
+Danh sách từ: hook_terms.json cạnh file này. Chỉ KHUNG_DAU_TRONG chặn; các cờ lời là gợi ý.
 
     .venv/bin/python output/cl_staging/scoreboard/hook_lint.py plan.json
     .venv/bin/python output/cl_staging/scoreboard/hook_lint.py --unpublished
@@ -111,8 +111,8 @@ def matched_concepts(text: str, terms: dict) -> list[str]:
 
 
 def blocking_flags(flags: list[str]) -> list[str]:
-    """Only abstract question and empty opening frame block; noun specificity is advisory."""
-    return [flag for flag in flags if flag in {"TRUU_TUONG", "KHUNG_DAU_TRONG"}]
+    """Only the existing opening-frame check blocks; wording flags are advisory."""
+    return [flag for flag in flags if flag == "KHUNG_DAU_TRONG"]
 
 
 def first_sentence(row: dict) -> str:

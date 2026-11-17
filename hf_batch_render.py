@@ -31,6 +31,9 @@ from pathlib import Path
 from final_mix_lock import FinalMixLockTimeout, final_mix_lock
 from final_mix_lock import available_gb as mix_available_gb, fmt_gb as mix_fmt_gb, log as mix_log
 
+from audio_script_rules import (SHORT_WIN_PROFILE, comma_ending, effective_date,
+                                short_audio_profile)
+
 PROJECT_ROOT = Path(__file__).parent
 # Giọng suy ra từ topic của kênh (topic_voices.json), không hardcode: kênh
 # Phật giáo dùng giọng khác kênh Hình Sự.
@@ -542,7 +545,7 @@ def reveal_issues(row: dict) -> list[str]:
 # Công thức short v2 (đánh giá 28 ngày tới 03/10/2026, hf_shorts_report.py): short nào cũng dừng ở ~900-1.000 view
 # (vòng thử của feed Shorts); bài bứt lên là bài xem hết > 90%. Bài yếu rơi người xem ở 20-50% thời lượng, đúng câu 2
 # khi câu 2 là định nghĩa/thuật ngữ ("Nhà Phật gọi đó là tập khí", "Thái cực sinh lưỡng nghi"). Bài < 20 giây
-# (FS) chỉ trung vị 122 view; 21-27 giây tốt nhất. Áp cho short lên lịch từ ngày dưới (short cũ đã đăng hết).
+# (FS) chỉ trung vị122 view trong cohort đó; 21–27s là profile v2, không áp dạng thắng9–18s (PO17/11).
 SHORT_V2_FROM = "2026-11-14"
 # Giọng FS đọc chậm hơn: f40 102 tiếng = 33 giây; BUD b44 99 tiếng = 28 giây.
 SHORT_V2_SYLLABLES = {"bud": (80, 102), "fs": (68, 88)}
@@ -585,10 +588,11 @@ def integrity_issues(row: dict) -> list[str]:
     return out
 
 
-def short_v2_issues(row: dict) -> list[str]:
-    """Lỗi công thức short v2 (chặn render): câu 2 là định nghĩa, độ dài lệch SHORT_V2_SYLLABLES (~21-27 giây;
+def short_v2_warnings(row: dict) -> list[str]:
+    """Gợi ý công thức short v2 (075b: không chặn): câu 2 là định nghĩa, độ dài lệch SHORT_V2_SYLLABLES (~21-27 giây;
     b28_c 101 tiếng = 26 giây, short Phase D ~63 tiếng = 17 giây), thiếu `insight` (dòng đầu mô tả)."""
-    if row.get("lane") == "long" or row.get("series") not in ("bud", "fs") or row.get("day", "") < SHORT_V2_FROM:
+    if (row.get("lane") == "long" or short_audio_profile(row) == SHORT_WIN_PROFILE
+            or row.get("series") not in ("bud", "fs") or effective_date(row) < SHORT_V2_FROM):
         return []
     script = [x.replace("**", "") for x in row.get("script") or []]
     out = []
@@ -598,7 +602,7 @@ def short_v2_issues(row: dict) -> list[str]:
     n = sum(len(x.split()) for i, x in enumerate(script, 1) if i not in mute)
     lo, hi = SHORT_V2_SYLLABLES[row["series"]]
     if not lo <= n <= hi:
-        out.append(f"{n} tiếng -- cần {lo}-{hi} (~21-27 giây; < 20 giây không được feed đẩy)")
+        out.append(f"{n} tiếng -- cần {lo}-{hi} (ước lượng token cho profile v2; xem bảng tốc độ giọng, không phải thời lượng đo)")
     if len(script[0].split()) > 22 if script else False:
         out.append(f"câu 1 dài {len(script[0].split())} tiếng -- móc câu <= 22 tiếng")
     if not row.get("insight"):
@@ -610,20 +614,30 @@ def short_v2_issues(row: dict) -> list[str]:
     return out
 
 
+def short_v2_issues(row: dict) -> list[str]:
+    """Compatibility API: budget/style heuristics are warnings, never blockers."""
+    return []
+
+
 # Short v3 (06/10/2026, bài học kênh CL của V2: short "neo" vào vụ án có tên riêng hồi từ 0 lên ~1.000 view trong vài giờ),
 # nhưng GIỮ HỒN RIÊNG: BUD hiền, chữa lành, có kinh; FS kiến thức truyền thống để tham khảo, thực tế. Không giật gân.
 SHORT_V3_FROM = "2026-11-18"
 SENSATIONAL = re.compile(r"(?i)chấn động|rợn người|rùng mình|sốc|kinh hoàng|tiền về ồ ạt|tiền vàng|giàu to|giàu bất ngờ|đổi đời|"
-                         r"phát tài lớn|trúng lớn|tiên tri|tận thế|đại họa|xui tận mạng|quỷ dữ|vận đen")
+                         r"trúng lớn|tiên tri|tận thế|đại họa|xui tận mạng|quỷ dữ|vận đen")
 SUTTA_CITE = re.compile(r"(?i)\b(trung bộ|trường bộ|tương ưng|tăng chi|pháp cú|kinh tập|tiểu tụng|phật tự thuyết|trưởng lão)\b")
 
 
-def short_tone_issues(row: dict) -> list[str]:
-    """CHẶN: lời lẽ giật gân trong tiêu đề/kịch bản short BUD/FS (từ lịch SHORT_V3_FROM)."""
+def short_tone_warnings(row: dict) -> list[str]:
+    """CẢNH BÁO: regex gợi ý lời lẽ giật gân trong tiêu đề/kịch bản short BUD/FS (từ lịch SHORT_V3_FROM)."""
     if row.get("lane") == "long" or row.get("series") not in ("bud", "fs") or row.get("day", "") < SHORT_V3_FROM:
         return []
     text = " ".join([row.get("title", "")] + list(row.get("script") or [])).replace("**", "")
     return [f"giật gân '{m}' -- không hợp hồn kênh" for m in dict.fromkeys(SENSATIONAL.findall(text))]
+
+
+def short_tone_issues(row: dict) -> list[str]:
+    """Compatibility API: regex cannot decide a promise or its context."""
+    return []
 
 
 # Kể cho tai nghe (PO 16/11/2026, áp từ Long sang Short): câu trọn một dòng; làn truyện / ô thử nghiệm rào nguồn tối đa 1 câu,
@@ -640,18 +654,24 @@ def is_story_short(row: dict) -> bool:
 
 
 def short_story_issues(row: dict) -> list[str]:
-    """CHẶN: câu bị tách đôi (dòng kết thúc dấu phẩy) ở mọi short; short truyện rào nguồn > 1 câu."""
-    if row.get("lane") == "long" or row.get("day", "") < SHORT_STORY_FROM:
+    """CHẶN câu kết bằng dấu phẩy; rào nguồn được nhắc riêng, không chặn."""
+    if row.get("lane") == "long" or (effective_date(row) and effective_date(row) < SHORT_STORY_FROM):
         return []
     script = [x.replace("**", "").strip() for x in row.get("script") or []]
     out = [f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- gộp với dòng sau, TTS nghỉ sai chỗ nghe cụt"
-           for i, x in enumerate(script, 1) if x.endswith(",")]
+           for i, x in enumerate(script, 1) if i not in (row.get("silence") or []) and comma_ending(x)]
+    return out
+
+
+def short_source_warnings(row: dict) -> list[str]:
+    if row.get("lane") == "long" or (effective_date(row) and effective_date(row) < SHORT_STORY_FROM):
+        return []
+    script = row.get("script") or []
     if is_story_short(row) or row.get("test_cell"):
         hedges = [i for i, x in enumerate(script, 1) if SOURCE_HEDGE.search(x)]
         if len(hedges) > 1:
-            out.append(f"{len(hedges)} câu rào nguồn (dòng {hedges}) -- short truyện tối đa 1; nguồn để ở dòng chân hình/mô tả, "
-                       "chỗ kinh bỏ trống thì kể thành cảnh")
-    return out
+            return [f"{len(hedges)} câu rào nguồn (dòng {hedges}) -- cân nhắc một câu khung; giữ khung làm rõ nghĩa"]
+    return []
 
 
 def short_hook_hints(row: dict) -> list[str]:
@@ -675,6 +695,8 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
     theo . ! ?): câu > 35 tiếng (TTS hụt hơi, người nghe mất mạch); câu ngắn <= 6 tiếng (nhịp đỉnh) ít hơn 1/8
     số câu; đoạn > 90 giây không ngắt nhịp (câu hỏi, con số, câu ngắn, trích kinh, thẻ chương). Chỉ cảnh báo.
     Đo 04/10/2026: F10-B14 đạt 2 luật sau, thiếu câu ngắn (F14 1/48, F10 1/43)."""
+    from long_script_lint import syllables
+
     vis, sents, cur, worst, at = row.get("visuals") or {}, [], 0.0, 0.0, 0
     for i, line in enumerate(row.get("script") or [], 1):
         if line.startswith("**") and line.endswith("**"):
@@ -682,18 +704,18 @@ def retention_issues(row: dict, rate: float = 185 / 60) -> list[str]:
             continue
         t = line.replace("**", "")
         ss = [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", t) if x.strip()]
-        sents += [(i, len(x.split())) for x in ss]
-        hit = ("?" in t or re.search(r"\d", t) or any(len(x.split()) <= 6 for x in ss)
+        sents += [(i, syllables(x)) for x in ss]
+        hit = ("?" in t or re.search(r"\d", t) or any(syllables(x) <= 6 for x in ss)
                or (vis.get(str(i)) or {}).get("type") in ("quote", "ask", "stamp"))
-        cur = 0.0 if hit else cur + len(t.split()) / rate
+        cur = 0.0 if hit else cur + syllables(t) / rate
         if cur > worst:
             worst, at = cur, i
     out = []
     if (long_ := [i for i, n in sents if n > 35]):
         out.append(f"{len(long_)} câu nói > 35 tiếng (câu {sorted(set(long_))[:6]}) -- tách đôi")
     punch = sum(n <= 6 for _, n in sents)
-    if sents and punch < len(sents) / 8:
-        out.append(f"câu ngắn <= 6 tiếng: {punch}/{len(sents)} -- nên ~1 câu mỗi 4-6 câu (câu đỉnh, tách dòng)")
+    if row.get("kind") != "night" and row.get("format") != "tra_cuu" and sents and punch < len(sents) / 8:
+        out.append(f"câu ngắn <= 6 tiếng: {punch}/{len(sents)} -- xem lại nhịp theo ý, không đệm câu để đủ tỷ lệ")
     if worst > 90:
         out.append(f"~{worst:.0f} giây liền không ngắt nhịp (tới câu {at}) -- chèn câu hỏi/con số/câu ngắn")
     return out
@@ -840,10 +862,8 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
         return False, "gọi con giáp bằng tên con vật (phải dùng tên chi): " + " | ".join(bad[:3])
     if (bad_text := integrity_issues(row)):
         return False, "toàn vẹn văn bản: " + " | ".join(bad_text[:3])
-    if (v2 := short_v2_issues(row)):
-        return False, "công thức short v2: " + " | ".join(v2)
-    if (tone := short_tone_issues(row)):
-        return False, "hồn kênh: " + " | ".join(tone)
+    for w in short_v2_warnings(row) + short_tone_warnings(row) + short_source_warnings(row):
+        print(f"    !! lời short: {w}", flush=True)
     if (story := short_story_issues(row)):
         return False, "kể cho tai nghe: " + " | ".join(story)
     for w in short_hook_hints(row):

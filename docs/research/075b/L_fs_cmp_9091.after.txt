@@ -1,0 +1,22 @@
+== L_fs_cmp_9091 · 6.0 phút · 131 dòng · 126 câu · 1069 tiếng · giây thật (L_fs_cmp_9091.json)
+tiếng/câu {'p10': 5, 'trung vị': 8, 'p90': 12, 'max': 21}  tiếng/dòng {'trung vị': 8, 'p90': 12, 'max': 21, 'dòng > 35': 0}
+phân bố câu {'<=6': 32, '7-11': 78, '12-18': 14, '19-25': 2, '26-35': 0, '>35': 0}  · câu ngắn 32/126 (25%)
+đoạn không ngắt dài nhất ~38 giây (dòng 99-110) · cụ thể:trừu tượng 76 : 5 (60% : 4%)
+loại câu {'concrete': 74, 'neutral': 37, 'question': 6, 'abstract': 5, 'story': 2, 'meta': 2}
+mở/trả vòng 1 / 0 · mở ở % [73] · trả ở % []
+chương:
+    0:00   1.1 phút  dòng 1-24  (mở đầu)
+    1:04   0.9 phút  dòng 25-44  Vòng một: lục hợp hay năm tuổi
+    1:58   0.7 phút  dòng 45-61  Vòng hai: cùng mệnh gặp năm
+    2:41   1.0 phút  dòng 62-81  Vòng ba: sao hạn nam và nữ
+    3:39   1.4 phút  dòng 82-111  Vòng bốn: làm nhà, cưới, sinh con
+    5:04   1.0 phút  dòng 112-131  Ghi điểm và câu hỏi cho bạn
+cụm lặp nhiều nhất: Canh Ngọ ×16, Tân Mùi ×11, lục hợp ×6, truyền thống ×4, Tam Tai ×4, Kim Lâu ×4
+câu mở hay dùng: đây là ×6, nghĩa là ×3, có người ×3, dân gian ×3, vòng này ×3
+runner (hf_batch_render.retention_issues): đạt
+-- 0 lỗi, 3 cảnh báo, 2 gợi ý
+[CẢNH BÁO] truu_tuong_lien: 5 câu liền không cụ thể (tới dòng 42) -- chèn ví dụ, con số, cảnh, câu hỏi
+[CẢNH BÁO] cold_open_dai: chương mở dài 63 giây (> 60; giây thật (L_fs_cmp_9091.json))
+[CẢNH BÁO] mo_cau_soc: 10 giây đầu (dòng 1-3) chưa có câu sốc / nghịch lý / câu hỏi
+[GỢI Ý] chuong_ngan: trung vị chương 0.95 phút (< 2): thẻ chương dày cắt mạch kể -- cân nhắc gộp, giữ tiêu đề phụ trên màn hình
+[GỢI Ý] mo_cau_lap: 6 câu mở bằng 'đây là'

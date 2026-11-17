@@ -1,0 +1,2 @@
+# CK — phần khác lõi
+Giọng ấm, thực tế; lựa chọn và cái giá của một người/hộ/khoản tiền. Số làm tròn cho tai, hình giữ phép tính/đơn vị. Số và nhân vật giả định nhận diện rõ; nhãn VÍ DỤ GIẢ ĐỊNH phải đọc rõ ở khung 360px. Mô tả: “Nội dung giáo dục, không phải tư vấn đầu tư.” Không hứa lợi nhuận, không nói nên mua/bán; không nêu tên ngân hàng thương mại, công ty chứng khoán, hãng xe, mã cổ phiếu theo AGENTS hiện hành. Áp [V2 phỏng dựng](v2-narrative.md); không nhập quyền tài lộc truyền thống FS sang dự báo tài chính CK.
