@@ -40,11 +40,11 @@ def test_sample_with_fake_engine():
     assert len(audio) == 15 + round(3.55 * sample.speak.SAMPLE_RATE)
 
 
-@pytest.mark.parametrize('n,blocked,warned', [(45, False, False), (46, False, True), (70, False, True), (71, True, False)])
-def test_length_thresholds(n, blocked, warned):
+@pytest.mark.parametrize('n', [45, 71, 120])
+def test_no_length_limit(n):
     ch = [{'name': 'ch00', 'lines': [{'t': 'bạn ' * (n-1) + '?', 'p': 1.0}]}]
     with warnings.catch_warnings(record=True) as found:
         warnings.simplefilter('always')
         errors = craft.audio_problems(ch)
-    assert any('vượt 70' in x for x in errors) == blocked
-    assert any('vượt 45' in str(x.message) for x in found) == warned
+    assert not any('vượt' in x for x in errors)
+    assert not any('vượt' in str(x.message) for x in found)

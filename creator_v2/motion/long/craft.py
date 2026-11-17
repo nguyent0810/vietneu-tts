@@ -6,7 +6,6 @@ Chỉ chạy khi spec ghi ``"craft": true`` (video mới). Video đã đăng kh�
 from __future__ import annotations
 
 import re
-import warnings
 
 _INTERRUPT = {
     "slam", "question", "counter", "date", "quote", "file", "photo", "map",
@@ -21,7 +20,7 @@ def _text(line) -> str:
 
 
 def audio_problems(chapters) -> list[str]:
-    """Chặn câu quá 70 tiếng, cảnh báo trên 45 và kiểm tra nhịp kể."""
+    """Kiểm tra nhịp kể; không giới hạn độ dài câu (chủ kênh 17/11/2026, #476)."""
     out: list[str] = []
     blob = []
     long_pause = False
@@ -30,11 +29,6 @@ def audio_problems(chapters) -> list[str]:
         for i, line in enumerate(ch["lines"]):
             t = _text(line)
             blob.append(t)
-            n = len(t.split())
-            if n > 70:
-                out.append(f"{ch['name']} câu {i}: {n} âm tiết, vượt 70")
-            elif n > 45:
-                warnings.warn(f"{ch['name']} câu {i}: {n} âm tiết, vượt 45", stacklevel=2)
             if "quý vị" in t.lower():
                 out.append(f"{ch['name']} câu {i}: đang gọi 'quý vị', hãy gọi 'bạn'")
             if _LIST.match(t):
