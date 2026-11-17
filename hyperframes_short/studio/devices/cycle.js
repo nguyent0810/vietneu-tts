@@ -40,7 +40,7 @@ HFS.device("wheel", {
     const place = () => { gsap.set(h.tilt, { rotationX: sp.tilt }); gsap.set(h.disc, { rotation: sp.a });
       h.labels.forEach((L) => L.g.setAttribute("transform", `translate(${L.lx},${L.ly}) rotate(${-sp.a})`)); };
     place();
-    c.tl.fromTo(sp, { a: sp.a, tilt: 52 }, { a: a1, tilt: 52, duration: c.S(2.0), ease: "power4.out", onUpdate: place, immediateRender: false }, t0);
+    c.tl.fromTo(sp, { a: sp.a }, { a: a1, duration: c.S(2.0), ease: "power4.out", onUpdate: place, immediateRender: false }, t0);
     const tl2 = t0 + c.S(1.7);
     c.tl.set(h.wedges[h.idx], { attr: { style: "fill:var(--accent);stroke:var(--ink)" } }, tl2);
     c.tl.set(h.labels[h.idx].t, { attr: { style: "font-family:var(--font-body);fill:var(--on-accent,#fff)" } }, tl2);

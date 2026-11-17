@@ -1102,6 +1102,10 @@
       const S = inner._lf, G = S.G, t0 = ln.start, span = Math.max(2, ctx.until - t0);
       // khung hình camera: zoom 1 = cả ảnh nền vừa khung; tâm bị kẹp để ảnh luôn phủ kín khung
       const keys = G.cams.map((c, k) => ({ ...c, t: k ? when(ctx, c, t0 + k * 3) : t0, dur: c.dur || 2.4 }));
+      // Mốc tăng dần và mỗi cú máy xong trước mốc sau: mốc k+1 tới khi cú máy k chưa xong thì camAt nhảy từ giữa
+      // đường thẳng về khung V[k] (giật một khung). Kẹp thời lượng thay vì để hai đoạn chồng (17/11).
+      keys.forEach((c, k) => { if (k) c.t = Math.max(c.t, keys[k - 1].t + .5); });
+      keys.forEach((c, k) => { if (k + 1 < keys.length) c.dur = Math.max(.4, Math.min(c.dur, keys[k + 1].t - c.t)); });
       const view = (c) => {
         const s = Math.max(1, c.zoom || 1) * 1920 / G.W, hw = 960 / s, hh = 540 / s;
         const x = Math.min(G.W - hw, Math.max(hw, c.x)), y = Math.min(G.H - hh, Math.max(hh, c.y));
@@ -2885,13 +2889,19 @@
       const camAt = (x, y, z) => ({ x: S.F.W / 2 - x * S.w * z, y: S.F.H / 2 - y * S.h * z, scale: z });
       tl.set(S.cam, { transformOrigin: "0 0" }, 0);
       const z0 = 1.0;
-      tl.fromTo(S.cam, camAt(.5, .5, z0 * 1.08), { ...camAt(.5, .5, z0), duration: 2.2, ease: "power2.out" }, t0 - .2);
+      // Mọi tween camera nối đuôi, không chồng giờ (hai tween cùng giành x/y/scale -> ảnh trượt rồi giật một khung,
+      // lỗi pan_tour Quét nhà 17/11). Cú máy tới ghi chú j bắt đầu ở t-.7, dài MV; ghi chú sau cách ít nhất MV+.1.
+      const MV = 1.1, times = [];
+      let prev = t0 + 1.2;
+      S.notes.forEach((N) => { const t = Math.max(prev + (times.length ? MV + .1 : .6), when(ctx, N.n, prev + 2)); times.push(t); prev = t; });
+      const firstMove = times.length ? times[0] - .7 : Infinity, entry = Math.min(2.2, firstMove - (t0 - .2));
+      if (entry >= .3) tl.fromTo(S.cam, camAt(.5, .5, z0 * 1.08), { ...camAt(.5, .5, z0), duration: entry, ease: "power2.out" }, t0 - .2);
+      else tl.set(S.cam, camAt(.5, .5, z0), t0 - .2);
       tl.fromTo(S.img, { opacity: 0, filter: "brightness(.6)" }, { opacity: 1, filter: "brightness(1)", duration: 1.2 }, t0 - .2);
       tl.fromTo(S.plate, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6 }, t0 + .6);
-      let prev = t0 + 1.2;
       S.notes.forEach((N, j) => {
-        const n = N.n, t = Math.max(prev + .6, when(ctx, n, prev + 2)), z = n.z || 1.7;
-        tl.to(S.cam, { ...camAt(n.x, n.y, z), duration: 1.1, ease: "power3.inOut" }, t - .7);
+        const n = N.n, t = times[j], z = n.z || 1.7;
+        tl.to(S.cam, { ...camAt(n.x, n.y, z), duration: MV, ease: "power3.inOut" }, t - .7);
         tl.to(S.vig, { opacity: 1, duration: .6 }, t - .5);
         if (j) tl.to(S.notes[j - 1].g, { opacity: 0, duration: .3 }, t - .7);
         tl.fromTo(N.g.querySelector(".dot"), { scale: 0 }, { scale: 1, duration: .3, ease: "expo.out" }, t + .35);
