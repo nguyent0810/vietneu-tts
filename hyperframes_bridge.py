@@ -2439,6 +2439,25 @@ def apply_visuals(lines: list[dict], visuals: dict, media: dict) -> None:
         raise HyperFramesError(issue)
 
 
+def visual_mix_image_ref(spec: dict) -> str | None:
+    """Static identity only: ignore framing; exclude video/unknown stock clips.
+
+    Commons/museum/ext/openverse image refs and local image paths are known
+    static media. Unknown media without a file extension is not guessed static.
+    """
+    from urllib.parse import urlsplit
+    ref = spec.get("path") or spec.get("ref") or spec.get("src") or spec.get("url")
+    if not ref:
+        return None
+    ref = str(ref)
+    ext = Path(urlsplit(ref).path).suffix.lower()
+    if ext in {".mp4", ".webm", ".mov", ".mkv", ".avi", ".m4v", ".ogv", ".gif"} or spec.get("kind") == "pdvideo":
+        return None
+    if ext in {".jpg", ".jpeg", ".png", ".webp", ".svg", ".tif", ".tiff", ".avif", ".bmp"} or spec.get("kind") in {"commons", "museum", "openverse", "image"}:
+        return ref
+    return None
+
+
 def media_holds(
     lines: list[dict],
     media_ids: set[int],

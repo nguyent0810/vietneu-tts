@@ -100,3 +100,12 @@ Chủ kênh: "cho phép phỏng tác hình ảnh nhân vật rõ mặt dựa the
 5. **Khai khi đăng:** bật khai báo nội dung chỉnh sửa/tổng hợp của YouTube (`status.containsSyntheticMedia`) cho video có ảnh loại này; luật AI Việt Nam cũng đòi gắn nhãn nội dung AI mô phỏng người thật.
 6. **Giới hạn giữ lại:** người còn sống (và người mất gần đây có thân nhân còn sống) không có ảnh AI rõ mặt: dùng thẻ chữ hoặc ảnh tự do. Không ảnh AI cảnh bạo lực, thi thể, nạn nhân. Không đặt nhân vật vào hành vi xấu mà nguồn không ghi.
 7. **Kho:** ảnh đạt lưu vào `library/tools/assets.py` với tag `phong_tac` + tên nhân vật, để giữ khuôn mặt nhất quán giữa các cảnh và các video sau. Lead soát bằng mắt từng ảnh trước khi nạp.
+
+
+## Ngân sách chữ & lặp ảnh (076, 18/11/2026)
+
+`floor.py` dùng `tools/visual_mix.py` chung 5 kênh, đo theo **giây**, in bảng phân bố và số cảnh ở bước `html`. Long mới theo danh sách legacy `_legacy_topics.json` hiện có (#275): chữ >12% cảnh báo, >15% lỗi; `spec.text_budget_reason` có nội dung hạ lỗi chữ thành cảnh báo. Chữ gồm kinetic/slam/quote/question kể cả có ảnh/clip nền và date/counter **nền trống**; chữ khoá overlay trên cảnh ảnh/clip không tính. Thẻ chương, bảng tra, ledger và đồ hoạ dữ liệu không tính. MAX_KINETIC 38% và tỷ lệ nền trống cũ chỉ giữ cho legacy; các cổng khác giữ nguyên.
+
+Một file ảnh tĩnh >4 lượt cảnh báo, >6 lỗi; đổi crop/camera/layout vẫn là cùng ảnh, đổi style #258 là danh tính lặp khác. Số file ảnh khác nhau <4/phút chỉ cảnh báo; style không tăng số file gốc. Long cũ và Short chỉ in số của cổng mới. Ưu tiên TTS và neo chữ đã align; thiếu TTS thì in rõ ước 215 tiếng/phút + khoảng nghỉ `line_pause` (.32/.45/.6s hoặc `p`) và TAIL .9s/chương của runner; thiếu align thì nội suy neo chữ và ghi rõ. Không thêm trần độ dài cảnh, không đổi cổng 120s đầu.
+
+Kiểm kê tư liệu trước khi viết cảnh. Khi thiếu hình, tham khảo 8 bậc: (1) clip thật có phép/phim PD; (2) ảnh AI phỏng tác theo §15, nhân vật lịch sử đã mất; (3) ảnh tư liệu giữ bằng pano/camera/parallax; (4) đồ hoạ dữ liệu bars/heat/waterfall/stack/counter/units/candles; (5) map/timeline/org; (6) file/print/book/source/ledger; (7) woodcut/pencil/film16/blueprint/papercut/oneline; (8) minh hoạ chung. Đây là gợi ý; giữ luật nội dung và giấy phép từng kênh.

@@ -923,6 +923,12 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     if row.get("chapters"):
         return render_chapters(row, out_dir, quality, txt, wav, bgm)
     layout_chosen = None
+    if _is_long_row(row):  # Short: không đo (lead 17/11) — tránh lỗi segments/visual Short làm hỏng render
+        mix_segs = None
+        if wav.with_suffix(".json").is_file():
+            mix_segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8")).get("segments")
+        if mix_bad := visual_mix_check(row, mix_segs):
+            return False, "; ".join(mix_bad)
     if row.get("lane") == "long" and wav.with_suffix(".json").is_file():
         segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
         rep, bad = pacing(row, segs)
@@ -1093,6 +1099,91 @@ def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dic
     if (ln.get("figure") or {}).get("type", "none") != "none":
         return "figure"
     return "chữ khoá"
+
+
+def visual_mix_is_new(row: dict) -> bool:
+    from tools.visual_mix import VISUAL_MIX_SINCE
+    if row.get("layout_policy") != "v2":
+        return False
+    day = row.get("day")
+    if day:
+        return str(day)[:10] >= VISUAL_MIX_SINCE
+    return bool(row.get("pause_ctx") or (row.get("tts") or {}).get("pause_ctx"))
+
+
+def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
+    """Probe-compatible seconds/holds. Without TTS: runner's 185 tiếng/min + .5s gaps.
+
+    Hold continuations are merged, but two separately declared uses of the same
+    file remain two scenes, even when adjacent. Crop/layout/cine do not alter ref.
+    """
+    import copy
+    import hyperframes_bridge as HB
+    script = row.get("script") or []
+    if segs is None:
+        segs, t = [], 0.0
+        for text in script:
+            duration = max(1.0, len(text.replace("**", "").split()) / 185 * 60)
+            segs.append({"start": t, "end": t + duration})
+            t += duration + 0.5
+    if len(segs) != len(script):
+        raise ValueError("visual_mix: số segments không khớp script")
+    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
+              "heading": text.startswith("**") and text.endswith("**") and text.count("**") == 2,
+              "figure": (row.get("figures") or {}).get(str(i + 1), {})}
+             for i, text in enumerate(script)]
+    media = {str(k): v for k, v in (row.get("media") or {}).items()}
+    HB.apply_visuals(lines, copy.deepcopy(row.get("visuals") or {}), media)
+    holds = HB.media_holds(lines, {int(k) for k in media})
+    owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
+    scenes, previous_token = [], None
+    for i, line in enumerate(lines):
+        kind = _plan_line_kind(i, line, lines, media, owner)
+        visual_sid = line.get("visual_cont", i + 1)
+        visual = lines[visual_sid - 1].get("visual") or {}
+        media_sid = owner.get(i, i) + 1
+        spec = media.get(str(media_sid)) or {}
+        visible_media = (str(i + 1) in media or i in owner) and (
+            not visual or HB.is_overlay_visual(visual)) and not line.get("heading")
+        ref = None
+        if visible_media:
+            ref = HB.visual_mix_image_ref(spec)
+            token = ("media", media_sid)
+        elif visual:
+            token = ("visual", visual_sid)
+        else:
+            token = ("line", i)
+        scene = {"kind": kind, "t0": line["start"],
+                 "t1": segs[i + 1]["start"] if i + 1 < len(lines) else segs[i]["end"],
+                 "image": ref, "style": visual.get("type") if visual.get("type") in HB.STYLE_VISUAL_TYPES else None}
+        if scenes and token == previous_token and kind == scenes[-1]["kind"]:
+            scenes[-1]["t1"] = scene["t1"]
+        else:
+            scenes.append(scene)
+        previous_token = token
+    return scenes
+
+
+def _is_long_row(row: dict) -> bool:
+    return row.get("lane") == "long" or str(row.get("style", "")).endswith("_long")
+
+
+def visual_mix_check(row: dict, segs: list[dict] | None = None) -> list[str]:
+    """Print the shared report; return only blocking findings. Lỗi đo không bao giờ chặn render."""
+    from tools import visual_mix
+    try:
+        metrics = visual_mix.measure(visual_mix_scenes(row, segs))
+    except Exception as exc:  # noqa: BLE001 — cổng đo, không được làm hỏng render
+        print(f"    !! visual_mix: không đo được ({exc})", flush=True)
+        return []
+    print("    visual_mix" + (" (ước: 185 tiếng/phút + nghỉ .5s)" if segs is None else " (TTS)")
+          + ":\n" + visual_mix.format_table(metrics), flush=True)
+    findings = visual_mix.issues(metrics, is_new=visual_mix_is_new(row),
+                                is_long=_is_long_row(row),
+                                reason=row.get("text_budget_reason"))
+    for level, message in findings:
+        print(f"    visual_mix {level}: {message}", flush=True)
+    return [f"visual_mix: {message}" for level, message in findings if level == "ERROR"]
 
 
 def _pan_stop_lines(media: dict) -> set[int]:
@@ -2031,11 +2122,12 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
                           pause_ctx=bool((man.get("tts") or {}).get("pause_ctx", False)))
     rep, bad = pacing(row, segs)
     print(f"    nhịp hình: {rep}", flush=True)
+    bad.extend(visual_mix_check(row, segs))
     for x in bad:
         print(f"    !! nhịp hình: {x}", flush=True)
     for x in rep.get("sàn") or []:
         print(f"    !! sàn (cảnh báo, không chặn): {x}", flush=True)
-    if bad and (row.get("pacing") == "strict" or any(x.startswith("120s đầu:") for x in bad)):
+    if bad and (row.get("pacing") == "strict" or any(x.startswith(("120s đầu:", "visual_mix:")) for x in bad)):
         return False, "nhịp hình chưa đạt: " + "; ".join(bad)
     silence = [int(x) for x in row.get("silence") or []]
     credits, parts = [], []

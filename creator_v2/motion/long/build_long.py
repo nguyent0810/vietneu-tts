@@ -1830,6 +1830,7 @@ if __name__ == "__main__":
             print("  ! variety:", x)
         _spec, _chs, _ = load(topic)
         print("  floor:", floor.report(_chs))
+        print(floor.visual_mix_report(_chs, topic), flush=True)
         for x in floor.problems(_chs, _spec["channel"], topic, bool(_spec.get("idcards"))):
             print("  ! floor:", x)
     elif cmd == "render":
