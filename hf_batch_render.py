@@ -1025,10 +1025,11 @@ _NAKED_KINDS = {"chữ khoá", "card", "quote", "ask", "word", "stamp", "stat", 
 # Ảnh/tư liệu mỗi lần một hình khác: không tính là "3 cảnh cùng loại".
 _RUN_OK = {*PHOTO_LABELS, "chương", "photo", "museum", "napam", "doc", "relic"}
 
-# Cổng nhịp cắt 120s đầu (010): mọi cảnh <= 4.0s, chữ trên nền trống liên tục <= 1.5s.
+# Cổng nhịp cắt 120s đầu: ảnh/clip có chuyển động ≤ 8s; cảnh tĩnh ≤ 4s.
 # Cờ plan `pace_gate: off` để tắt cho Long cũ. Sau 120s giữ luật cũ.
 PACE_GATE_S = 120.0
-PACE_GATE_MAX_SHOT = 4.0
+PACE_MAX_MOVING = 8.0
+PACE_MAX_STATIC = 4.0
 PACE_GATE_MAX_NAKED = 1.5
 
 
@@ -1073,7 +1074,7 @@ def _pan_stop_lines(media: dict) -> set[int]:
 
 
 def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
-    """Cổng nhịp cắt 120s đầu: MỌI cảnh <= 4,0s và chữ trên nền trống liên tục <= 1,5s (mức ERROR)."""
+    """Cổng nhịp 120s đầu: cảnh động ≤ 8s, tĩnh ≤ 4s; nền trống liên tục ≤ 1,5s."""
     if not _pace_gate_on(row):
         return []
     import hyperframes_bridge as HB  # noqa: PLC0415
@@ -1081,34 +1082,52 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
     lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
               "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
     media = row.get("media") or {}
+    auto_layouts = (HB.assign_layouts_v2(
+        media, row.get("id") or "video", script=script, visuals=row.get("visuals") or {},
+        segments=segs, series=row.get("series"), scene_decision=row.get("scene_decision") or {},
+        figures=row.get("figures") or {}) if row.get("layout_policy") == "v2" else {})
     HB.apply_visuals(lines, row.get("visuals") or {}, media)
     holds = HB.media_holds(lines, {int(k) for k in media})
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
     pan_cuts = _pan_stop_lines(media)
-    shots, shot_kinds, starts, prev, cur, t_first = [], [], [], None, 0.0, 0.0
+    shots, shot_kinds, shot_moving, starts, prev, prev_moving, cur, t_first = [], [], [], [], None, None, 0.0, 0.0
     for i, ln in enumerate(lines):
         d = (segs[i + 1]["start"] if i + 1 < n else segs[i]["end"]) - ln["start"]
         k = _plan_line_kind(i, ln, lines, media, owner)
+        media_sid = owner.get(i, i) + 1
+        spec = media.get(str(media_sid), media.get(media_sid, {}))
+        if not isinstance(spec, dict):
+            spec = {}
+        auto_cine = (auto_layouts.get(media_sid) or {}).get("cine")
+        # dòng không có ảnh/clip (thẻ chữ, sơ đồ) là cảnh tĩnh: _layout_is_clip({}) mặc định "video" nên phải chặn
+        moving = bool(spec) and not ln.get("visual") and (
+            HB._layout_is_clip(spec) or isinstance(spec.get("pan"), dict)
+            or spec.get("cine") is not None or auto_cine is not None)
         is_cont = bool(ln.get("visual_cont") or (i in owner and (owner[i] == i - 1 or owner[i] == owner.get(i - 1))))
         if i in owner and ln["sentence_id"] in pan_cuts:
             is_cont = False   # điểm dừng pan = máy đổi khung (028), tính là nhịp cắt
-        if not is_cont or k != prev:
+        if not is_cont or k != prev or moving != prev_moving:
             if prev is not None:
                 shots.append(cur)
                 shot_kinds.append(prev)
+                shot_moving.append(prev_moving)
                 starts.append(t_first)
             cur, t_first = 0.0, ln["start"]
         cur += d
         prev = k
+        prev_moving = moving
     if prev is not None:
         shots.append(cur)
         shot_kinds.append(prev)
+        shot_moving.append(prev_moving)
         starts.append(t_first)
     errs = []
-    for sec_len, k, t0 in zip(shots, shot_kinds, starts):
-        if t0 < PACE_GATE_S and sec_len > PACE_GATE_MAX_SHOT + 1e-6:
+    for sec_len, k, moving, t0 in zip(shots, shot_kinds, shot_moving, starts):
+        limit = PACE_MAX_MOVING if moving else PACE_MAX_STATIC
+        if t0 < PACE_GATE_S and sec_len > limit + 1e-6:
             sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
-            errs.append(f"120s đầu: cảnh '{k}' dài {sec_len:.1f}s từ câu {sid} (> {PACE_GATE_MAX_SHOT:.1f}s)")
+            state = "có chuyển động" if moving else "tĩnh"
+            errs.append(f"120s đầu: cảnh '{k}' {state} dài {sec_len:.1f}s từ câu {sid} (> {limit:.1f}s)")
     naked_run, naked_sid = 0.0, None
     for i, ln in enumerate(lines):
         if ln["start"] >= PACE_GATE_S:
