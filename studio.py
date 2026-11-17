@@ -590,6 +590,14 @@ def qa(job: Path, dur: float, windows, mp4: Path | None, hook_errs: list[str] | 
         for f in frames:
             f.unlink(missing_ok=True)
         rep["sheet"] = str(sheet)
+        # Cú giật một khung trong cảnh (hai tween giành cùng thuộc tính; Quét nhà 17/11). Bỏ vùng phụ đề, bỏ quanh mốc seam.
+        try:
+            sys.path.insert(0, str(ROOT / "tools"))
+            import frame_jumps  # noqa: PLC0415
+            jumps = frame_jumps.spikes(frame_jumps.frame_diffs(str(mp4), (0.06, 0.75)), cuts=[a for a, _b in windows])
+            rep["jumps"] = {"ok": not jumps, "at": jumps}
+        except Exception as exc:  # QA phụ: không đo được thì ghi lại, không chặn
+            rep["jumps"] = {"ok": None, "error": str(exc)[:200]}
     plan_f = job / "plan.json"
     h_warn = list(hook_errs) if hook_errs is not None else []
     if not h_warn and plan_f.exists():
@@ -604,8 +612,10 @@ def qa(job: Path, dur: float, windows, mp4: Path | None, hook_errs: list[str] | 
 
 
 def qa_ok(rep: dict) -> bool:
-    """QA đạt khi lint và check đều báo ok là True; thiếu/không đọc được (raw) tính là không đạt."""
-    return (rep.get("lint") or {}).get("ok") is True and (rep.get("check") or {}).get("ok") is True
+    """QA đạt khi lint và check đều báo ok là True; thiếu/không đọc được (raw) tính là không đạt.
+    Có đo giật khung (`jumps`, cần mp4) mà thấy giật thì cũng không đạt."""
+    return ((rep.get("lint") or {}).get("ok") is True and (rep.get("check") or {}).get("ok") is True
+            and (rep.get("jumps") or {}).get("ok") is not False)
 
 
 def qa_gate(job: Path, dur: float, windows, mp4: Path | None, strict: bool,
@@ -615,6 +625,8 @@ def qa_gate(job: Path, dur: float, windows, mp4: Path | None, strict: bool,
     print("  QA:", json.dumps({k: v for k, v in rep.items() if k != "sheet"}, ensure_ascii=False)[:600])
     if rep.get("sheet"):
         print("  bảng khung:", rep["sheet"])
+    if (rep.get("jumps") or {}).get("at"):
+        print(f"  !! giật khung trong cảnh ở giây {rep['jumps']['at']} -- xem lại tween camera/thiết bị", flush=True)
     if strict and not qa_ok(rep):
         print("  LỖI (--strict): QA lint/check không đạt", flush=True)
         return False

@@ -103,6 +103,7 @@ Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/com
    - Đo khoảng trống dọc ($gap \le 250\text{px}$) và độ phủ ngang an toàn ($cover \ge 85\%$).
    - Soát hiển thị ở $1080\times 1920$ và $168\text{px}$ (thumbnail mobile đọc rõ tiêu đề và tên hàng).
    - Dựng tờ ảnh tại 4 mốc: 25%, 50%, 75%, cuối.
+   - **Giật khung trong cảnh** (17/11, lỗi Quét nhà): `--qa` có mp4 thì `tools/frame_jumps.py` đo mọi khung, bỏ quanh seam; thấy giật thì `qa.json` `jumps.ok=false` (`--strict` chặn). Tờ ảnh tĩnh không thấy loại lỗi này. Viết device mới: mọi tween cùng thuộc tính của cùng phần tử phải nối đuôi, không chồng giờ (xem `tour.js`, test `tests/test_studio_pan_tour.py`).
    - **Mở xem và mô tả thật từng ảnh (Luật 15 & 17)**: Nhìn tận mắt, mô tả thật những gì thấy vào báo cáo.
    - Hook: `hook_lint.py` trên plan, exit 0 (cờ và danh sách từ trong `references/spec.md`).
    - **Cổng 3 giây đầu (#253)**: Tự động chạy trong `studio.py` (áp cho BUD, FS, VSD) kiểm tra:

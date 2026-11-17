@@ -49,18 +49,28 @@ HFS.device("pan_tour", {
     return { cam, stops, base: pose({ x: .5, y: .5, z: 1 }) };
   },
   enter(c, h, t0, s) {
-    const tl = c.tl, END = c.dur || t0 + 8, mv = c.S(1.5);
+    const tl = c.tl, END = c.dur || t0 + 8, MV = c.S(1.5), GAP = .8;
     tl.set(h.cam, { x: h.base.tx, y: h.base.ty, scale: 1 }, 0);
-    tl.fromTo(h.cam, { scale: 1.04 }, { scale: 1, duration: c.S(1.2), ease: c.E.entry, immediateRender: false }, t0);
-    const times = h.stops.map((p, k) => Math.max(t0 + .4 + k * .2, c.t(s.stops[k].at, t0 + 1 + k * 2.5)));
+    // Mốc điểm dừng tăng dần, cách nhau >= GAP. Mọi tween của camera phải NỐI ĐUÔI, không chồng giờ:
+    // hai tween cùng giành `scale` thì ảnh trượt mà không phóng rồi giật một khung (Quét nhà NIj0goKjNtc, 17/11).
+    const times = [];
+    h.stops.forEach((p, k) => times.push(Math.max(k ? times[k - 1] + GAP : t0 + .4, c.t(s.stops[k].at, t0 + 1 + k * 2.5))));
+    const first = times.length ? times[0] : END, entry = Math.min(c.S(1.2), first - t0);
+    if (entry >= .3) tl.fromTo(h.cam, { scale: 1.04 }, { scale: 1, duration: entry, ease: c.E.entry, immediateRender: false }, t0);
     h.stops.forEach((p, k) => {
       const ta = times[k], next = k + 1 < times.length ? times[k + 1] : END, P = p.P;
+      // điểm dừng sát nhau thì cú máy ngắn lại (<= nửa khoảng) để còn chỗ đứng cho vòng + nhãn
+      const mv = Math.min(MV, Math.max(.35, (next - ta) * .5));
       tl.to(h.cam, { x: P.tx, y: P.ty, scale: P.z, duration: mv, ease: c.E.move }, ta);
-      // trôi rất chậm quanh chi tiết cho tới điểm dừng sau (giữ chi tiết ở chỗ cũ trên màn hình)
-      const z2 = P.z * 1.035, hold = Math.max(.3, next - (ta + mv) - .05);
-      tl.to(h.cam, { x: P.sx - P.px * z2, y: P.sy - P.py * z2, scale: z2, duration: hold, ease: "none" }, ta + mv);
-      if (p.ring) { c.draw(p.ring, ta + mv - .1, .6); tl.to(p.ring, { opacity: 0, duration: .25 }, Math.max(ta + mv + .6, next - .1)); }
-      if (p.note) { c.reveal(p.note, ta + mv + .2, { x: -24, y: 0, d: .4 }); tl.to(p.note, { autoAlpha: 0, duration: .25 }, Math.max(ta + mv + .8, next - .1)); }
+      // trôi rất chậm quanh chi tiết cho tới điểm dừng sau (giữ chi tiết ở chỗ cũ trên màn hình); hết chỗ thì thôi trôi
+      const z2 = P.z * 1.035, hold = next - (ta + mv) - .05;
+      if (hold >= .2) tl.to(h.cam, { x: P.sx - P.px * z2, y: P.sy - P.py * z2, scale: z2, duration: hold, ease: "none" }, ta + mv);
+      // vòng + nhãn nằm ngoài camera: chỉ hiện khi camera đứng đủ lâu, và tắt TRƯỚC cú máy sau (không bị bỏ lại khi ảnh đã trượt)
+      // (nhãn dựng sẵn hiện từ đầu: không đủ chỗ thì PHẢI tắt hẳn, không chỉ bỏ qua reveal)
+      if (next - (ta + mv) >= .6) {
+        if (p.ring) { c.draw(p.ring, ta + mv - .1, .5); tl.to(p.ring, { opacity: 0, duration: .2 }, Math.max(ta + mv + .4, next - .25)); }
+        if (p.note) { c.reveal(p.note, ta + mv + .1, { x: -24, y: 0, d: .35 }); tl.to(p.note, { autoAlpha: 0, duration: .2 }, Math.max(ta + mv + .5, next - .25)); }
+      } else if (p.note) tl.set(p.note, { autoAlpha: 0 }, 0);
     });
   },
 });

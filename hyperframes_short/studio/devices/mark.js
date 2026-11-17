@@ -9,17 +9,20 @@ HFS.device("stamp", {
         .st-kick{position:absolute;left:150px;top:180px;font-size:28px;color:var(--accent)}
         .st-big{position:absolute;left:140px;top:240px;font-size:260px;line-height:1.05;white-space:nowrap}`,
   build(c, s, st) {
-    if (s.han) c.el("div", "st-han", c.esc(s.han), st);
-    c.el("div", "st-kick mono", c.esc(s.kick || ""), st);
-    const big = c.el("div", "st-big disp", c.esc(s.big || ""), st);
-    const seals = (s.stamps || []).map((p) => { const e = c.el("div", "seal", c.esc(p.text), st); e.style.left = p.x + "px"; e.style.top = p.y + "px"; return e; });
-    return { big, seals, st };
+    // Rung khi đóng dấu đặt trên lớp con `shk`, KHÔNG trên .stage: chuyển cảnh (seam) cũng tween x/y của .stage,
+    // dấu rơi sát đầu/cuối cảnh thì hai tween giành x -> giật (17/11).
+    const shk = c.el("div", "", null, st); shk.style.cssText = "position:absolute;inset:0";
+    if (s.han) c.el("div", "st-han", c.esc(s.han), shk);
+    c.el("div", "st-kick mono", c.esc(s.kick || ""), shk);
+    const big = c.el("div", "st-big disp", c.esc(s.big || ""), shk);
+    const seals = (s.stamps || []).map((p) => { const e = c.el("div", "seal", c.esc(p.text), shk); e.style.left = p.x + "px"; e.style.top = p.y + "px"; return e; });
+    return { big, seals, st, shk };
   },
   enter(c, h, t0, s) {
     c.reveal(h.big, t0 + .05, { x: -90, y: 0, d: .45 });
     (s.stamps || []).forEach((p, k) => { const ts = c.t(p.at, t0 + 1 + k); c.stamp(h.seals[k], ts, p.rot || -6);
       c.burst(h.st, p.x + 160, p.y + 50, ts + .04, "st" + t0 + k, 10);
-      c.tl.fromTo(h.st, { x: 0 }, { x: 8, duration: .05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, ts + .02); });
+      c.tl.fromTo(h.shk, { x: 0 }, { x: 8, duration: .05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, ts + .02); });
   },
 });
 
