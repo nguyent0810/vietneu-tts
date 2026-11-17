@@ -57,8 +57,9 @@ def plain(line: str) -> str:
 
 
 def sentences(text: str) -> list[str]:
-    """Tách câu y như retention_issues: theo . ! ?"""
-    return [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", text) if x.strip()]
+    """Cùng bộ tách câu với adapter văn xuôi và retention_issues."""
+    from tools.prose_split import split_sentences
+    return split_sentences(text)
 
 
 _DIG = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"]
@@ -926,20 +927,16 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     for v in syl_s:
         buckets["<=6" if v <= 6 else "7-11" if v <= 11 else "12-18" if v <= 18 else "19-25" if v <= 25
                 else "26-35" if v <= 35 else ">35"] += 1
-    long_s = [(i, v, s) for i, s, v, _, _ in sents if v > 35]
-    for i, v, s in long_s:
-        add(ERROR, "cau_dai", f"dòng {i}: câu {v} tiếng đọc (> 35) -- tách ở dấu hai chấm / 'mà là': {s[:70]}")
+    # PO 17/11: không cảnh báo, không chặn độ dài câu -- người viết tự do, nghe thử bằng tai (chỉ còn số thống kê).
     for i, x in enumerate(script, 1):
         if not is_heading(x) and comma_ending(plain(x)):
             add(ERROR if new_audio_plan(row) else WARN, "cau_tron",
                 f"dòng {i}: câu bị tách giữa chừng (kết thúc dấu phẩy) -- viết câu trọn: {x[:60]}")
     for i, x in markup_leaks(script, row.get("silence") or []):
         add(ERROR, "markup_leak", f"dòng {i}: ký hiệu kỹ thuật lọt vào lời đọc: {x[:60]}")
-    long_l = [i for i, x in enumerate(script, 1) if not is_heading(x) and syllables(x) > 35]
+    long_l = [i for i, x in enumerate(script, 1) if not is_heading(x) and syllables(x) > 45]
     short_share = buckets["<=6"] / n
-    if kind != "night" and fmt != "tra_cuu" and short_share < 1 / 8:
-        add(WARN, "it_cau_ngan", f"câu <= 6 tiếng chỉ {buckets['<=6']}/{n} ({short_share:.0%}) -- chỉ số tham khảo; xem lại nhịp theo ý, không đệm câu "
-            "(câu đỉnh sau khoảnh khắc, phán định ĐÚNG/SAI)")
+    # 078: bỏ finding it_cau_ngan; chỉ giữ phân bố thống kê, không quota nhịp.
 
     # 2. đoạn không ngắt nhịp (định nghĩa runner)
     stretches = beat_stretches(row, rate)
@@ -1178,7 +1175,7 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         "tiếng/câu": {"p10": pct(syl_s, .1), "trung vị": int(statistics.median(syl_s)) if syl_s else 0,
                       "p90": pct(syl_s, .9), "max": max(syl_s or [0])},
         "tiếng/dòng": {"trung vị": int(statistics.median(syl_l)) if syl_l else 0, "p90": pct(syl_l, .9),
-                       "max": max(syl_l or [0]), "dòng > 35": len(long_l)},
+                       "max": max(syl_l or [0]), "dòng > 45": len(long_l)},
         "phân bố câu": {k: buckets[k] for k in ("<=6", "7-11", "12-18", "19-25", "26-35", ">35")},
         "câu ngắn <= 6": f"{buckets['<=6']}/{n} ({short_share:.0%})",
         "đoạn không ngắt dài nhất": (f"~{stretches[0][0]:.0f} giây (dòng {stretches[0][1]}-{stretches[0][2]})"

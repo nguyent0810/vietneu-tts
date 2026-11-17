@@ -10,88 +10,38 @@ sys.path.insert(0, str(ROOT / "motion" / "long"))
 import script_lines
 
 CHAPTER = re.compile(r"^## CH\d\d · .+$")
-ABBR = {"tp", "st", "m", "mr", "mrs", "ms", "dr", "pgs", "ts", "gs"}
-CLOSERS = '"”’»\')]}‖'
-
-
-def split_sentences(text):
-    """Giữ dấu chấm trong số, tên và các viết tắt thường gặp."""
-    out, start, i = [], 0, 0
-    while i < len(text):
-        c = text[i]
-        if c not in '.!?…':
-            i += 1
-            continue
-        if c == '.':
-            if i + 1 < len(text) and not text[i + 1].isspace() and text[i + 1] not in CLOSERS:
-                i += 1
-                continue
-            m = re.search(r"([\w]+)$", text[:i], re.UNICODE)
-            word = m.group(1) if m else ''
-            if word.casefold() in ABBR or (len(word) == 1 and word.isalpha()):
-                i += 1
-                continue
-        end = i + 1
-        while end < len(text) and text[end] in '.!?…' + CLOSERS:
-            end += 1
-        # Nhãn lời trích và nghỉ dài thuộc câu trước.
-        suffix = re.match(r'\s*(?:\[TRÍCH DỊCH\])?(?:\s*‖)?', text[end:])
-        if suffix and suffix.group().strip():
-            end += suffix.end()
-        if end == len(text) or text[end].isspace():
-            out.append(text[start:end].strip())
-            start = end
-        i = end
-    if text[start:].strip():
-        out.append(text[start:].strip())
-    return out
+# Append the root as in motion/long/floor.py (#076), preserving V2 imports.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.append(str(_REPO_ROOT))
+from tools.prose_split import PDSplitter, split_sentences
 
 
 def convert(md):
     lines = md.splitlines(keepends=True)
     out, paragraph = [], []
     in_chapter = False
-    pd = False
+    splitter = PDSplitter()
 
     def flush():
-        nonlocal pd
         if not paragraph:
             return
         text = ' '.join(x.strip() for x in paragraph)
         paragraph.clear()
-        # Marker phải nằm tại ranh giới câu.
-        tokens = re.split(r'(\[/?PD\])', text)
-        buffer = ''
-        for token in tokens:
-            if token in ('[PD]', '[/PD]'):
-                if buffer.strip():
-                    if token == '[PD]' and not buffer.rstrip().endswith(tuple('.!?…' + CLOSERS)):
-                        raise ValueError('Marker PD phải nằm ở ranh giới câu')
-                    if token == '[/PD]' and not buffer.rstrip().endswith(tuple('.!?…' + CLOSERS)):
-                        raise ValueError('Marker PD phải nằm ở ranh giới câu')
-                    for sent in split_sentences(buffer):
-                        out.append(sent + (' {pd}' if pd else '') + '\n')
-                    buffer = ''
-                if (token == '[PD]') == pd:
-                    raise ValueError('Marker PD lồng nhau hoặc đóng khi chưa mở')
-                pd = token == '[PD]'
-            else:
-                buffer += token
-        if buffer.strip():
-            for sent in split_sentences(buffer):
-                out.append(sent + (' {pd}' if pd else '') + '\n')
+        for sent, pd in splitter.feed(text):
+            out.append(sent + (' {pd}' if pd else '') + '\n')
 
     for raw in lines:
         s = raw.strip()
         if CHAPTER.match(s):
             flush()
-            if pd:
+            if splitter.pd:
                 raise ValueError('Marker PD chưa đóng trước chương mới')
             in_chapter = True
             out.append(raw)
         elif in_chapter and s.startswith('## '):
             flush()
-            if pd:
+            if splitter.pd:
                 raise ValueError('Marker PD chưa đóng trước phần cuối')
             in_chapter = False
             out.append(raw)
@@ -107,8 +57,7 @@ def convert(md):
         else:
             paragraph.append(raw)
     flush()
-    if pd:
-        raise ValueError('Marker PD chưa đóng')
+    splitter.finish()
     return ''.join(out)
 
 

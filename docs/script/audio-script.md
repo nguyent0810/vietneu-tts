@@ -21,9 +21,11 @@ Giao script + notes nguồn/điểm chưa chắc + kênh/khuôn/engine + cấu h
 **Lõi 5.** Lời mở khớp điều tiêu đề hứa và có câu trả cụ thể. Mỗi đoạn thêm diễn biến, lý do, chứng cứ hoặc hệ quả; Short tự có giá trị. Bảng tra trả sớm, truyện trả theo diễn tiến. Chỉ đúng câu đáp khi tự soát; khớp từ khoá không chứng minh đã trả lời.
 
 ## 5. Nhịp câu và khoảng lặng
-**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS giữ trần 35 tiếng đọc/câu; một dòng nhiều câu chỉ được gợi ý sửa, không tự gộp 45 tiếng.
+**Lõi 6.** Độ dài câu đi theo ý, lặng đi theo điểm đọng. Xen nhịp; nghe cả đoạn để phát hiện chuỗi vụn hay đều, không đệm câu cho đủ quota. Long BUD/FS/VSD: không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. TTS đọc nguyên câu, không tách vế ở phẩy/hai chấm để chiều ngưỡng. Mốc 12–18 tiếng và câu ngắn ≤6 mỗi 4–6 câu chỉ là gợi ý nghề; bỏ quota câu ngắn khỏi finding của lint/retention (078).
 
-PO 17/11 bỏ ép câu mười tiếng/ba giây trong hai phút mở. Cổng HÌNH giữ nguyên: 120 giây đầu ảnh/clip động ≤8s, cảnh tĩnh ≤4s; chữ nền trống ≤1,5s. Lập hình theo ý và kiểm timing thật ở workflow hình; không sửa code pace_gate/hf_qa để giải quyết lời.
+Quy trình 078: người kể viết văn xuôi tự do (`prose.md`, `## Tên chương`) → `.venv/bin/python tools/prose_to_script.py prose.md script.txt` (không đổi chữ; tiêu đề thành **thẻ chương**, mỗi câu một dòng; `#` tiêu đề tài liệu không đọc) → dựng plan bằng `tools/long_plan_build.py --script` → Lead đọc thử CH00–01 bằng `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` → viết tiếp. Adapter in số câu/tiếng đọc/câu dài nhất mỗi chương và chạy lint; không sửa lời để chữa finding. Nguồn/hướng hình/nhãn phỏng dựng vẫn ghi ở notes riêng, không đưa marker V2 `{pd}` vào lời HBR. MP3 loudnorm −16 ở `output/cl_staging/long/tts_test/<id>/CHnn.mp3`; WAV/manifest/cache riêng ở `_work/CHnn`, không ghi cache/out sản xuất. CH00 là đoạn mở không heading, hoặc thẻ chương đầu nếu script bắt đầu bằng heading; thẻ được đọc như sản xuất.
+
+PO 17/11 bỏ ép câu mười tiếng/ba giây trong hai phút mở. Cổng HÌNH giữ nguyên: 120 giây đầu ảnh/clip động ≤8s, cảnh tĩnh ≤4s; chữ nền trống ≤1,5s. Lập hình theo ý và kiểm timing thật ở workflow hình; không sửa code pace_gate/hf_qa để giải quyết lời. Hiện bridge chỉ có `pan.stops=[{"line": 1, "x": 0.0}, {"line": 2, "x": 1.0, "at": "end"}]` (line tăng dần, `at` là start/end), không có đổi ảnh ở mốc từ giữa một dòng. Câu 40 tiếng/13s vẫn vượt cổng 4s tĩnh/8s động; pan không tự miễn trừ. Chờ Lead quyết phương án engine, không cắt vế lời để chữa cổng.
 
 ## 6. Sự thật, diễn giải và phỏng dựng
 **Lõi 7.** Sự thật cứng/lời trích truy được nguồn; giữ mức chắc chắn làm đổi nghĩa. Nguồn chi tiết ở notes/hình/mô tả; bớt rào nguồn lặp không có nghĩa bỏ khung truyền thống hay lời khai.
@@ -59,7 +61,6 @@ Danh mục audio chặn của đường HBR/shortbuild: **10 nhóm**, không tí
 
 | Nhóm | Scope |
 |---|---|
-| `cau_dai` | Long >35 tiếng đọc/câu |
 | `nhieu_chi` | ≥4 tên chi/dòng; giữ kiểm hiện có |
 | `ten_con_vat` | Gọi tuổi FS bằng tên con vật |
 | `tts_khoa_dong` | Override pause/tempo trỏ sai dòng |
@@ -70,7 +71,7 @@ Danh mục audio chặn của đường HBR/shortbuild: **10 nhóm**, không tí
 | Nguồn BUD thiếu | Guard BUD hiện có; không coi có URL là lời Phật đã đúng kinh |
 | Toàn vẹn lời hiện có | `voices` sai số lượng/nhãn và ký hiệu kỹ thuật sót trong integrity |
 
-Long lookup/tuyển tập, quota nhịp, rào nguồn, CTA, hook trừu tượng, ngân sách token v2/định nghĩa/insight/novelty, tone regex đều **CB/gợi ý**, không chặn văn phong. Hook `KHUNG_DAU_TRONG` là kiểm hình cũ, vẫn giữ; studio/pace_gate/hf_qa không đổi. Nguồn kinh vẫn do người kiểm với receipt, không tạo suy luận máy mới. V2 có preflight legacy riêng, xem [ma trận](lint-matrix.md); không tuyên bố đã đồng bộ code engine chưa được giao.
+Quota câu ngắn không còn in finding. Long lookup/tuyển tập, gợi ý nhịp, rào nguồn, CTA, hook trừu tượng, ngân sách token v2/định nghĩa/insight/novelty, tone regex đều **CB/gợi ý**, không chặn văn phong. Hook `KHUNG_DAU_TRONG` là kiểm hình cũ, vẫn giữ; studio/pace_gate/hf_qa không đổi. Nguồn kinh vẫn do người kiểm với receipt, không tạo suy luận máy mới. V2 có preflight legacy riêng, xem [ma trận](lint-matrix.md); không tuyên bố đã đồng bộ code engine chưa được giao.
 
 ## 10. Bằng chứng và lịch sử
 [075a](../research/2026-11-17-audio-script-research.md) phân biệt ĐO/QS/PO/KT/GT; số stay/retention cũ không chứng minh nhân quả. [Phụ lục X01–X20](conflicts-075b.md) ghi từng lựa chọn và luật cũ được thay, không xoá lịch sử. Pilot sau review giữ nguồn/giọng, chỉ đổi cách viết; so cùng kênh/khuôn/tuổi video/traffic. Không gọi lint xanh là tăng retention.

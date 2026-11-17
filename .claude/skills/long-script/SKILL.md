@@ -35,8 +35,9 @@ Mở bằng hình (PO15/11) giữ ở long-video §4: 10 giây đầu clip/pano/
    bước ngoặt / trả / bài học / cầu nối), kỹ thuật có tên, cảm xúc, vòng mở/trả, chi tiết giác quan, câu kết là câu móc.
    Dòng nhịp: `cảnh-HỎI-trả-chương-chuyện-ĐỈNH-lặng-cầu nối…`. *Cổng*: xoá hết dòng bằng chứng mà thông điệp vẫn đứng;
    xoá dòng thông điệp mà video vẫn "chạy" nghĩa là nó chỉ là bản liệt kê (story-spine §2).
-5. **Viết từng dòng.** Giao người viết (Sonnet hoặc thợ) thì dán `references/writer-brief.md` đã điền: cách kể, ba lớp nguồn / diễn giải / hư cấu, bàn giao `source_notes_<id>.md`, phiếu tám mục của lõi §7. Luật dòng theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
-   bẫy TTS). Truyện: `references/story.md` (mẫu kể trung thành nguồn, nhãn truyền thuyết).
+5. **Viết văn xuôi tự do, đọc thử rồi mới viết tiếp.** Giao người viết (Sonnet hoặc thợ) thì dán `references/writer-brief.md` đã điền: cách kể, ba lớp nguồn / diễn giải / hư cấu, bàn giao `source_notes_<id>.md`, phiếu tám mục của lõi §7. Luật dòng theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
+   bẫy TTS). Viết trước CH00–01 trong `prose.md`, tiêu đề `## …`; chạy `.venv/bin/python tools/prose_to_script.py prose.md script.txt` → dựng plan qua `tools/long_plan_build.py --script` → Lead đọc thử `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` → viết tiếp. TTS nguyên câu, không tách vế; Long BUD/FS/VSD không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. Bỏ quota câu ngắn khỏi lint/retention, chỉ còn gợi ý nhịp. Cổng hình giữ nguyên; bridge chưa có đổi ảnh ở mốc từ giữa dòng (xem lõi §5).
+   Truyện: `references/story.md` (mẫu kể trung thành nguồn, nhãn truyền thuyết).
 6. **Tự soát bằng lint** — 0 LỖI, mỗi CẢNH BÁO sửa hoặc ghi lý do trong docstring:
    ```bash
    .venv/bin/python long_script_lint.py nhap.txt                       # bản nháp: mỗi dòng một dòng say(), **tiêu đề chương**
