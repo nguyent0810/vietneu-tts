@@ -87,22 +87,22 @@ def _short(script, **kw):
     return {"id": "t", "series": "bud", "lane": "niem", "day": "2026-11-20", "insight": "x", "novelty_ok": "test", "script": script, **kw}
 
 
-def test_short_v2_blocks_definition_in_line_two():
+def test_short_v2_warns_definition_in_line_two():
     """Bài yếu rơi người xem ở câu 2 khi câu 2 là định nghĩa (b30_e: "Nhà Phật gọi đó là tập khí")."""
     hook = "Hứa với mình sẽ không cáu nữa, vậy mà chuyện cũ lặp lại, ta vẫn phản ứng y hệt như lần trước đó."
     filler = ["một hai ba bốn năm sáu bảy tám chín mười mười một mười hai mười ba mười bốn mười lăm mười sáu"] * 3
-    bad = runner.short_v2_issues(_short([hook, "Nhà Phật gọi đó là tập khí: nếp cũ thành đường mòn trong tâm."] + filler))
+    bad = runner.short_v2_warnings(_short([hook, "Nhà Phật gọi đó là tập khí: nếp cũ thành đường mòn trong tâm."] + filler))
     assert any("câu 2" in x for x in bad)
-    ok = runner.short_v2_issues(_short([hook, "Người kia có khi đã ngủ yên, còn mình thì nằm thức kể lại chuyện ấy."] + filler))
+    ok = runner.short_v2_warnings(_short([hook, "Người kia có khi đã ngủ yên, còn mình thì nằm thức kể lại chuyện ấy."] + filler))
     assert not any("câu 2" in x for x in ok)
 
 
 def test_short_v2_length_ignores_silent_ask_and_old_rows():
     words = ["ba " * 20] * 4                      # 80 tiếng đọc
-    assert runner.short_v2_issues(_short(words + ["hỏi " * 30], silence=[5])) == []
-    assert any("tiếng" in x for x in runner.short_v2_issues(_short(words[:2])))
-    assert runner.short_v2_issues(_short(words[:1], day="2026-11-01")) == []   # short cũ (trước v2) không chặn
-    assert any("insight" in x for x in runner.short_v2_issues(_short(words, insight="")))
+    assert runner.short_v2_warnings(_short(words + ["hỏi " * 30], silence=[5])) == []
+    assert any("tiếng" in x for x in runner.short_v2_warnings(_short(words[:2])))
+    assert runner.short_v2_warnings(_short(words[:1], day="2026-11-01")) == []   # short cũ (trước v2) không chặn
+    assert any("insight" in x for x in runner.short_v2_warnings(_short(words, insight="")))
 
 
 def test_integrity_blocks_markup_and_short_repeats():
@@ -114,14 +114,14 @@ def test_integrity_blocks_markup_and_short_repeats():
     assert any("ngoặc" in x for x in runner.integrity_issues({"lane": "long", "script": ["Câu [chú thích] sót."]}))
 
 
-def test_short_v3_tone_blocks_sensational_and_hints_anchor():
+def test_short_v3_tone_warns_sensational_and_hints_anchor():
     import hf_batch_render as R
     base = {"lane": "tuong", "series": "fs", "day": "2026-11-20", "title": "Lọ hoa bàn thờ: trái hay phải?",
             "script": ["Lọ hoa bàn thờ nhà bạn đang ở **bên nào**?"], "anchor": "lọ hoa bàn thờ"}
-    assert R.short_tone_issues(base) == [] and R.short_hook_hints(base) == []
-    assert R.short_tone_issues(dict(base, title="Tiền về ồ ạt nhờ lọ hoa"))
+    assert R.short_tone_warnings(base) == [] and R.short_hook_hints(base) == []
+    assert R.short_tone_warnings(dict(base, title="Tiền về ồ ạt nhờ lọ hoa"))
     assert R.short_hook_hints(dict(base, anchor=None))
-    assert R.short_tone_issues(dict(base, day="2026-11-10", title="Chấn động")) == []   # lịch cũ không xét
+    assert R.short_tone_warnings(dict(base, day="2026-11-10", title="Chấn động")) == []   # lịch cũ không xét
 
 
 def test_long_lint_flags_missing_and_mismatched_tts_line_keys():
@@ -152,3 +152,9 @@ def test_plan_cu_thieu_layout_policy_render_v1():
         media, row["id"], row["style"], {}, Path("x"), Path("x"), {}, "bud")
     assert cines == {}
     assert auto == HB.auto_layouts(media, row["id"])
+
+
+def test_short_v2_and_tone_no_longer_block_075b():
+    """075b (PO 17/11): công thức v2 và regex giật gân chỉ cảnh báo, không chặn render."""
+    row = {"lane": "tuong", "series": "fs", "day": "2026-11-20", "title": "Chấn động", "script": ["ba"]}
+    assert runner.short_v2_issues(row) == [] and runner.short_tone_issues(row) == []

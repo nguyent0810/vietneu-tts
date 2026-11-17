@@ -71,7 +71,7 @@ def test_mix_donor_keeps_emb_swaps_codes():
 
 def test_ruleset_has_approved_d_values_and_new_tts_merges():
     r = V.load_ruleset()
-    assert r["bud"]["temperature"] == 0.9 and r["bud"]["text_mode"] == "production"
+    assert r["bud"]["temperature"] == 0.8 and r["bud"]["text_mode"] == "production"  # Thục Đoan t0,8 (PO 16/11, #449)
     assert "donor" not in r["bud"]
     assert r["fs"]["temperature"] == 0.7 and r["fs"]["donor"] == "Thanh Bình"
     assert r["fs"]["text_mode"] == "speech"

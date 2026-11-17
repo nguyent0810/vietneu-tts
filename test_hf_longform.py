@@ -148,7 +148,7 @@ def test_chu_tach_tung_tu_khong_dinh_lien():
     css = (COMP / "longform.css").read_text(encoding="utf-8")
     js = (COMP / "longform.js").read_text(encoding="utf-8")
     assert ".lf-word { display: inline-block; margin-right:" in css
-    assert ".lf-callout .tx span { display: inline-block; margin-right:" in css
+    # .lf-callout (chữ khoá tự sinh) đã bỏ ở 072 (#452)
     assert 'wd + " "' not in js and 'w + " "' not in js
 
 
