@@ -163,6 +163,7 @@ Chỉ đổi **lớp đóng gói và phút đầu**; thân bài giữ cách kể
 - **Bi kịch / cái giá:** người + mất mát hoặc kết cục. Ví dụ: "Trùm Bến Thượng Hải: Cuối Đời Phải Tự Thú Và Quét Rác?"
 - **Nghịch lý:** điều người xem tin ngược với hồ sơ. Ví dụ: "Sử Không Ghi Ông Gù: Lưu Dung 80 Tuổi Kê Biên Nhà Hòa Thân"
 - **Đồng hồ / tình thế ngặt:** mốc thời gian + khoản mất. Ví dụ: "20 Phút Mất 6,3 Tỷ Đô: Đêm Kho Tiền Số Binance Bị Rút Cạn"; CK: khoản tiền + tình huống thất bại ("Có 10 Triệu, Lệnh Mua Đầu Tiên Bị Từ Chối Hai Lần: Vì Sao?").
+**Từ khoá chủ đề bắt buộc (chủ kênh 17/11/2026, Sarin):** tiêu đề VÀ chữ thumbnail phải có từ người xem gõ để tìm vụ này (tên vụ, tên nhân vật, chất/địa danh chính: "Sarin", "Hòa Thân"…). Nghịch lý không có từ khoá thì người lướt không biết video nói về gì. Cảnh báo "Từ khóa tiêu đề chưa nói trước 20s" của `opening_gate` không được bỏ qua.
 Mục 5 `plan.md` phải có ít nhất một phương án theo mẫu này. Không dùng chữ khẳng định quá nguồn (vd "không hề gù" khi sử chỉ "không ghi"); dấu hỏi dùng cho điều Long trả lời.
 
 **Cold open (≤ 60 giây):**
