@@ -1213,8 +1213,10 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
         for q in lp["items"]:
             q["at"] = round(loop_main + 0.02, 3); q["fx"] = "hold"
         scenes.append(lp)
-    if th["sound"] == "music" and not any((themes.MUSIC_DIR / f).exists() for f in themes.tracks(th)):
-        raise SystemExit(f"không có file nhạc nền nào trong {themes.MUSIC_DIR} -- kiểm tra trước khi render")
+    if th["sound"] == "music":
+        explicit_music, default_music = themes.available_music(spec, th)
+        if not explicit_music and not default_music:
+            raise SystemExit(f"không có file nhạc nền hợp mood trong {themes.MUSIC_DIR} -- kiểm tra trước khi render")
     look_cls, look = "", None
     if spec.get("mix"):   # thư viện look: mỗi Short một cách trình bày, xoay theo sổ (motion/stier/looks.py)
         import looks
@@ -1299,9 +1301,7 @@ def build(slug: str, render: bool = True, draft: bool = False) -> Path:
     music = []
     if th["sound"] == "music":
         # spec ghi "music" (BUD: bud_variety chọn) -> dùng đúng bài đó; không ghi -> như cũ (lâu chưa dùng nhất)
-        track = (spec["music"] if spec.get("music") in themes.tracks(th) and (themes.MUSIC_DIR / spec["music"]).exists()
-                 else themes.pick_track(slug, [f for f in themes.tracks(th) if (themes.MUSIC_DIR / f).exists()],
-                                        th.get("ledger", themes.MUSIC_LEDGER)))
+        track = themes.select_music(spec, th, slug)
         quiet = [(s["t0"], s["t1"]) for s in scenes if s["type"] == "question"]
         # spec "music_gain" / "music_duck": nhạc nền nghe được hơn cho Short kiểu mới (12/10/2026: đo -40 LUFS sau khi nén,
         # thấp hơn giọng 20 dB -> gần như không nghe thấy trên loa điện thoại). Không ghi -> mặc định theme như cũ.

@@ -81,6 +81,62 @@ CK_TRACKS = {   # thư viện RIÊNG kênh CK (06/10/2026) -- không dùng chung
 }
 CK_MUSIC_LEDGER = ROOT / "data" / "variety" / "ck_music.json"
 
+# GH-463: nhãn biên tập theo tên + feel Incompetech; Lead đo mật độ nhịp/độ sáng phổ 17/11 khớp (upbeat = nhịp dày nhất).
+MIM_MOODS = {
+    "bit_shift.mp3": "tense",
+    "digital_lemonade.mp3": "upbeat",
+    "inspired.mp3": "wonder",
+    "chill_wave.mp3": "calm",
+    "hyperfun.mp3": "upbeat",
+    "ouroboros.mp3": "tense",
+    "hackbeat.mp3": "upbeat",
+    "equatorial_complex.mp3": "tense",
+    "late_night_radio.mp3": "light",
+    "wallpaper.mp3": "upbeat",
+    "ice_flow.mp3": "calm",
+    "investigations.mp3": "tense",
+    "deliberate_thought.mp3": "calm",
+    "voxel_revolution.mp3": "upbeat",
+    "space_jazz.mp3": "jazz",
+    "ultralounge.mp3": "jazz",
+    "blip_stream.mp3": "wonder",
+    "pixelland.mp3": "upbeat",
+    "electrodoodle.mp3": "upbeat",
+    "getting_it_done.mp3": "upbeat",
+    "newer_wave.mp3": "upbeat",
+    "cool_vibes.mp3": "jazz",
+    "funkorama.mp3": "upbeat",
+    "montauk_point.mp3": "calm",
+}
+CK_MOODS = {
+    "local_forecast_elevator.mp3": "jazz",
+    "lobby_time.mp3": "jazz",
+    "easy_lemon.mp3": "light",
+    "daily_beetle.mp3": "upbeat",
+    "carefree.mp3": "upbeat",
+    "backbay_lounge.mp3": "jazz",
+    "wholesome.mp3": "light",
+    "dreamer.mp3": "calm",
+    "airport_lounge.mp3": "jazz",
+    "bossa_antigua.mp3": "jazz",
+    "george_street_shuffle.mp3": "jazz",
+    "sidewalk_shade.mp3": "light",
+    "somewhere_sunny.mp3": "light",
+    "marty_gots_a_plan.mp3": "light",
+    "carpe_diem.mp3": "light",
+    "life_of_riley.mp3": "upbeat",
+    "pamgaea.mp3": "wonder",
+    "sincerely.mp3": "calm",
+    "thinking_music.mp3": "tense",
+    "hep_cats.mp3": "jazz",
+    "faster_does_it.mp3": "upbeat",
+    "bass_walker.mp3": "jazz",
+    "apero_hour.mp3": "jazz",
+    "opportunity_walks.mp3": "light",
+    "no_frills_salsa.mp3": "upbeat",
+    "onion_capers.mp3": "upbeat",
+}
+
 # Kênh Phật Giáo (BUD, 09/10/2026): Short TikTok/YT "chữa lành" -- nhạc MacLeod chậm, ấm, đã có sẵn trong output/music/.
 # Sổ chọn nhạc riêng (data/variety/bud_music.json) -> không xoay vòng chung với MIM/CK.
 # 09/10/2026: mở rộng thành 9 bài chậm/êm cho hệ thống đa dạng (motion/stier/bud_variety.py chọn bài theo format).
@@ -111,6 +167,8 @@ THEMES = {
         "accent": "#22d3ee",
         "sound": "music",
         "music_gain": 0.16,
+        "music_moods": MIM_MOODS,
+        "allowed_music_moods": frozenset({"calm", "tense", "wonder"}),
         # Beat Text kiểu công nghệ (docs/channels/mind-in-the-machine/2026-10-06-stier-design.md):
         # - dòng lớn được đọc trọn -> "sync" (từng chữ hiện đúng lúc đọc, beatfx.apply_sync);
         #   còn lại MỖI DÒNG MỘT KIỂU: rise/blur/slice/flicker.
@@ -136,6 +194,9 @@ THEMES = {
         "sound": "music",
         "music_gain": 0.14,             # nhạc thấp hơn MIM một chút: lời + số là chính
         "tracks": CK_TRACKS,
+        "music_moods": CK_MOODS,
+        # CK (Lead 17/11, đo mật độ nhịp): jazz lounge nhẹ hợp tài chính; chỉ bỏ upbeat.
+        "allowed_music_moods": frozenset({"calm", "tense", "wonder", "light", "jazz"}),
         "ledger": CK_MUSIC_LEDGER,
         "pools": {"N": ["rise", "blur", "slice"], "A": ["marker", "outline"],
                   "S": ["rise", "blur"], "D": ["scramble", "rise"],
@@ -215,6 +276,24 @@ def music_filter(gain: float, quiet: list[tuple[float, float]], duck_ratio: floa
 def tracks(th: dict) -> dict:
     """Bài nhạc của một theme (mặc định: bộ MIM, như trước khi có theme "ck")."""
     return th.get("tracks", MIM_TRACKS)
+
+
+def available_music(spec: dict, th: dict) -> tuple[str | None, list[str]]:
+    """Bài chỉ định hợp lệ và pool mặc định có file, đã lọc mood theo kênh."""
+    available = [f for f in tracks(th) if (MUSIC_DIR / f).exists()]
+    explicit = spec.get("music") if spec.get("music") in available else None
+    if "music_moods" in th:
+        available = [f for f in available if th["music_moods"].get(f) in th["allowed_music_moods"]]
+    return explicit, available
+
+
+def select_music(spec: dict, th: dict, slug: str) -> str:
+    explicit, pool = available_music(spec, th)
+    if explicit:
+        return explicit
+    if not pool:
+        raise SystemExit(f"không có file nhạc nền hợp mood trong {MUSIC_DIR} -- kiểm tra trước khi render")
+    return pick_track(slug, pool, th.get("ledger", MUSIC_LEDGER))
 
 
 def music_credit(file: str) -> str:
