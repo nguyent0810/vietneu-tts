@@ -182,6 +182,11 @@ def contemplative(spec, L, cum, bad, W):
 
 # Short MIM / CK / CL (theme "case" = kênh CL). Gọi từ build.py --preflight; --allow-hook bỏ qua.
 SHORT_THEMES = {"mim", "ck", "case"}
+HOOK_VISUAL_TYPES = {"photo", "split", "counter", "hero", "doc", "evidence", "mug", "file", "crowd", "map",
+                     "chart", "cards3d", "board"}
+HOOK_VISUAL_KEYS = ("img", "bg", "vid", "clip")
+# Không có "ai" (trùng "AI" của MIM) và "sao" trơn (trùng "ngôi sao"): câu hỏi kiểu đó phải có dấu "?".
+QUESTION_WORDS = ("vì sao", "tại sao", "làm sao", "điều gì", "chuyện gì", "bao nhiêu", "thế nào")
 DEFINE_MARKS = ("được gọi là", "nghĩa là", "là một")
 _TITLE_NUM = set("""một hai ba bốn năm sáu bảy tám chín mười mươi trăm nghìn ngàn triệu tỷ tỉ mốt tư lăm rưỡi phẩy""".split())
 _GENERIC_LATIN = {"web", "app", "video", "clip", "link", "online", "email", "internet", "wifi"}
@@ -246,6 +251,28 @@ def short_retention(spec: dict) -> tuple[list[str], list[str]]:
                 warns.append(f"câu 2 là câu định nghĩa ({mark!r})")
                 break
     title = str(spec.get("title") or "")
+    # YYYY-MM-DD là tiền tố của timestamp ISO.
+    publish_at = str(spec.get("publish_at") or "")
+    bad = errors if re.match(r"^\d{4}-\d{2}-\d{2}(?:$|[T ])", publish_at) and publish_at[:10] >= "2026-12-01" else warns
+    if spec.get("hook_kind") not in {"bi_kich", "nghich_ly", "dong_ho"}:
+        bad.append("hook_kind: cần bi_kich, nghich_ly hoặc dong_ho")
+    if lines and len(words(lines[0])) > 9:
+        bad.append(f"câu 1: {len(words(lines[0]))} từ (> 9)")
+    # Xét dấu hỏi sau tối đa 10 từ.
+    opening = nfc(" ".join(lines))
+    tokens = list(re.finditer(r"[\wÀ-ỹ]+", opening))
+    end = tokens[10].start() if len(tokens) > 10 else len(opening)
+    window = opening[:end].lower()
+    question = "?" in window or any(re.search(rf"(?<!\w){re.escape(mark)}(?!\w)", window) for mark in QUESTION_WORDS)
+    if not question:
+        bad.append("câu hỏi 3 giây: thiếu câu hỏi hoặc từ hỏi trong 10 từ đầu")
+    scenes = spec.get("scenes") or []
+    scene = scenes[0] if scenes and isinstance(scenes[0], dict) else {}
+    ty = scene.get("type", "")
+    if ty in {"logo", "kicker"} or not (ty in HOOK_VISUAL_TYPES or any(scene.get(k) for k in HOOK_VISUAL_KEYS)):
+        bad.append("cảnh mở: cần hình, không dùng logo/kicker hoặc chữ trần")
+    if len(title) > 60:
+        bad.append(f"tiêu đề: {len(title)} ký tự (> 60)")
     if _abstract_question(title):
         warns.append("tiêu đề kết thúc bằng câu hỏi trừu tượng, không có số hay tên riêng")
     return errors, warns

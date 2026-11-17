@@ -150,3 +150,14 @@ Chi tiết kỹ thuật sâu xem tại `references/`: [themes.md](file://referen
 - **Làn truyện (lane `truyen`/`tien_than`/`nhan_qua`, `format_subtag` story_…) và ô thử nghiệm (`test_cell`):** tối đa 1 câu rào nguồn ("Luật tạng ghi…", "theo chú giải…"); nguồn để ở dòng chân hình (`source`) và mô tả. Chỗ kinh bỏ trống kể thành cảnh (im lặng, bàn tay, ánh sáng, câu hỏi tu từ). Cảnh phỏng dựng ghi `pd_scenes: [số cảnh]` -> chip PHỎNG DỰNG trên hình (khuôn ai_cards; cổng chặn nếu thiếu chip).
 - **Dạng thắng giữ nguyên** (bảng tra FS, tượng BUD, …): chỉ chịu luật câu trọn.
 - Lằn ranh giữ: không gán lời cho Đức Phật ngoài kinh, không bịa số/lời trích thật.
+
+## Short MIM / CK / CL: cửa sổ sốc 3 giây (chủ kênh 15/11 và 17/11/2026, #454)
+Builder của ba kênh này là `creator_v2/motion/stier/build.py`, không phải `studio.py`. Quy tắc gốc: `creator_v2/docs/pm/storytelling-guide.md`, mục "Tiêu đề và mở đầu kiểu survival". Chỉ đổi lớp đóng gói và 3 giây đầu; thân bài giữ cách kể hiện tại.
+- **Spec khai `hook_kind`**: `bi_kich` (người + mất mát/kết cục), `nghich_ly` (điều người xem tin ngược với hồ sơ) hoặc `dong_ho` (mốc thời gian + khoản mất; CK: khoản tiền + tình huống thua thiệt). Đổi dạng giữa các Short liền nhau trong kênh.
+- **Câu 1 ≤ 9 từ**, thì hiện tại, nêu đúng nghịch lý/bi kịch đó. Không chào, không giới thiệu chủ đề.
+- **Câu hỏi hậu quả trước giây 3** (điều tiêu đề hứa và Short trả lời).
+- **Khung 0 là hình mạnh nhất của bài** (clip có giấy phép > đồ họa AI minh họa chung `minh_hoa_chung` có nhãn MINH HỌA > ảnh tư liệu có chuyển động máy > motion graphic). Không chữ trần, không logo/kicker kênh mở đầu, không ảnh bạo lực thật, không AI mô phỏng người thật.
+- **Tiêu đề ≤ 60 ký tự** đặt bi kịch, nghịch lý hoặc đồng hồ lên đầu. Chỉ dùng sự kiện có trong lời đọc và nguồn của bài; sử "không ghi" thì không viết "không hề". Dấu hỏi chỉ khi Short trả lời.
+- **Cổng tự động**: `short_retention()` trong `creator_v2/motion/stier/script_lint.py`, chạy ở `build.py --preflight`. Short hẹn từ 01/12/2026 vi phạm là LỖI; Short cũ hơn chỉ cảnh báo. Không lách bằng `--allow-hook` cho đợt mới.
+- **Đợt đầu theo luật này**: dựng 1 Short mẫu mỗi kênh cho chủ kênh duyệt rồi mới làm cả loạt.
+- **Đo**: so CTR và % xem tiếp ở giây 3 với baseline 28 ngày tháng 11 của kênh; nhật ký đổi tiêu đề ở `creator_v2/output/retitle/applied.jsonl`.

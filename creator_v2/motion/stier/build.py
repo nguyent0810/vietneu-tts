@@ -993,9 +993,7 @@ HOOK_MAX_WORDS = 9          # lời mở tối đa 9 từ
 HOOK_TEXT_LATEST = 0.5      # chữ đầu tiên hiện chậm nhất 0,5 s
 # Cảnh mở có hình/đồ hoạ sẵn. Cảnh chỉ có chữ (kinetic, slam, question, quote, timeline, ledger, date, calendar,
 # clock, table, source) chỉ qua khi có img/bg/vid/clip.
-HOOK_VISUAL_TYPES = {"photo", "split", "counter", "hero", "doc", "evidence", "mug", "file", "crowd", "map",
-                     "chart", "cards3d", "board"}
-HOOK_VISUAL_KEYS = ("img", "bg", "vid", "clip")
+from script_lint import HOOK_VISUAL_TYPES, HOOK_VISUAL_KEYS
 # Chữ nằm trên màn hình ở t=0: kicker + sub của spec (engine vẽ #kicker ở MỌI theme) hoặc trường chữ của cảnh mở.
 HOOK_TEXT_KEYS = ("head", "title", "text", "label", "name", "desc", "date", "prefix", "suffix", "sub", "k", "tag",
                   "items", "rows", "bars", "to")
