@@ -1,0 +1,64 @@
+{
+  "cwd": "output/worktrees/wt_mix",
+  "tests": [
+    {
+      "command": ".venv/bin/python -m pytest tests/test_visual_mix_audit.py -q",
+      "exit_code": 0,
+      "summary": "16 passed in 0.05s",
+      "counts": {
+        "passed": 16
+      }
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/ -q",
+      "exit_code": 1,
+      "summary": "9 failed, 1343 passed, 28 skipped, 3 warnings in 69.94s (0:01:09)",
+      "counts": {
+        "failed": 9,
+        "passed": 1343,
+        "skipped": 28,
+        "warnings": 3
+      },
+      "failed_tests": [
+        "tests/test_hf_qa_contrast.py::test_e2e_nen_nga_bi_chan - RuntimeError:...",
+        "tests/test_hf_qa_contrast.py::test_e2e_nen_do_dat - RuntimeError: hype...",
+        "tests/test_hf_qa_contrast.py::test_e2e_font_du_phong_khong_chan_phep_do",
+        "tests/test_hf_qa_overflow.py::test_e2e_bat_tieu_de_vang_tran - Runtime...",
+        "tests/test_hf_qa_overflow.py::test_e2e_bat_luoi_5_cot_tran - RuntimeEr...",
+        "tests/test_hf_qa_overflow.py::test_e2e_ban_da_sua_dat - RuntimeError: ...",
+        "tests/test_hf_qa_scenes.py::test_real_fixture_phu_de_bi_de - RuntimeEr...",
+        "tests/test_hf_qa_scenes.py::test_real_fixture_phan_tu_bi_cat_boi_cha_overflow_khong_bao",
+        "tests/test_hf_qa_scenes.py::test_real_fixture_stacking_context_dao_thu_tu_dung_lop"
+      ],
+      "environment_errors": [
+        "Error: Failed to launch the browser process:  Code: null",
+        "hyperframes check không chạy được cho ctr_font.html: npm error code EPERM",
+        "hyperframes check không chạy được cho ctr_ivory.html: npm error code EPERM",
+        "hyperframes check không chạy được cho ctr_red.html: npm error code EPERM",
+        "hyperframes inspect không chạy được cho ovf_grid.html: npm error code EPERM",
+        "hyperframes inspect không chạy được cho ovf_ok.html: npm error code EPERM",
+        "hyperframes inspect không chạy được cho ovf_title.html: npm error code EPERM"
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q test_*.py",
+      "exit_code": 0,
+      "summary": "1324 passed, 40 skipped in 70.12s (0:01:10)",
+      "counts": {
+        "passed": 1324,
+        "skipped": 40
+      },
+      "failed_tests": [],
+      "environment_errors": []
+    }
+  ],
+  "modified_code_sha256": {
+    "tools/visual_mix_audit.py": "277e9c03d90cc0dfafb98864b27bc84d0c8127b530c028a0f05aedaeb3840fb5",
+    "tests/test_visual_mix_audit.py": "a30a629466055bfe28682d0d49d8174223815abcdd6c6d7b4c0fdf4a7f4b1d42"
+  },
+  "audit_command": ".venv/bin/python tools/visual_mix_audit.py --long --short --out docs/research/2026-11-18-visual-mix-fsbud-vsd.json",
+  "audit_exit_code": 0,
+  "issue467_command": "gh issue view 467 --repo nguyent0810/vietneu-tts",
+  "issue467_result": "HTTP 401: Requires authentication",
+  "note": "No render or YouTube commands. Test failures: npm cache EPERM and browser launch in sandbox. No gate changes."
+}
