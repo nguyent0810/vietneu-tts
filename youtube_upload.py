@@ -43,6 +43,15 @@ MAX_RETRIES_PER_CHUNK = 5
 RETRY_BACKOFF_BASE_S = 2.0
 SCHEDULE_MIN_LEAD = timedelta(minutes=15)  # ràng buộc cứng của YouTube
 SCHEDULE_MAX_LEAD = timedelta(days=180)
+AI_FACES_NOTICE = "Một số hình là phỏng dựng bằng AI dựa trên tư liệu."
+
+
+def synthetic_media_description(description: str, ai_faces: bool = False) -> str:
+    """Khi khai ai_faces, giữ đúng một thông báo ở dòng cuối; mô tả cũ giữ nguyên."""
+    if ai_faces is not True:
+        return description
+    text = description.replace(AI_FACES_NOTICE, "").rstrip()
+    return f"{text}\n{AI_FACES_NOTICE}" if text else AI_FACES_NOTICE
 
 
 class YouTubeUploadError(RuntimeError):
@@ -125,6 +134,7 @@ class VideoMetadata:
     # Ngôn ngữ tiêu đề + âm thanh (snippet.defaultLanguage/defaultAudioLanguage). None = không khai báo như cũ.
     # Short BUD/FS từng thiếu ("vi") -- 07/10/2026, YouTube dùng nó để chọn khán giả thử đầu tiên.
     language: str | None = None
+    contains_synthetic_media: bool | None = None
 
     def validate_schedule(self) -> None:
         if not self.publish_at:
@@ -144,6 +154,8 @@ class VideoMetadata:
             # YouTube tự chuyển sang public đúng giờ -- không phải mình tự canh gọi lại.
             status["privacyStatus"] = "private"
             status["publishAt"] = self.publish_at
+        if self.contains_synthetic_media is not None:
+            status["containsSyntheticMedia"] = self.contains_synthetic_media
         snippet = {"title": self.title, "description": self.description, "tags": self.tags, "categoryId": self.category_id}
         if self.language:
             snippet["defaultLanguage"] = self.language
@@ -373,6 +385,7 @@ def update_video(
     category_id: str | None = None,
     privacy_status: str | None = None,
     publish_at: str | None = None,
+    contains_synthetic_media: bool | None = None,
 ) -> dict:
     """Sửa metadata/lịch đăng của video ĐÃ upload. Chỉ field nào truyền vào
     (khác None) mới bị đổi -- các field còn lại giữ nguyên giá trị hiện có
@@ -396,6 +409,8 @@ def update_video(
     if publish_at is not None:
         status["privacyStatus"] = "private"  # ràng buộc bắt buộc của API, giống lúc tạo mới
         status["publishAt"] = publish_at
+    if contains_synthetic_media is not None:
+        status["containsSyntheticMedia"] = contains_synthetic_media
 
     body = json.dumps({"id": video_id, "snippet": snippet, "status": status}).encode("utf-8")
     req = urllib.request.Request(
