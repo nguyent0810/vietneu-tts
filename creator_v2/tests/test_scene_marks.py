@@ -107,6 +107,16 @@ def test_audio_craft_wants_question_you_and_pause():
     assert "nghỉ dài" in msgs
 
 
+def test_question_after_eight_long_sentences_within_90s_ok():
+    lines = [" ".join(["từ"] * 30) + "." for _ in range(10)] + ["Vì sao bạn nghe tiếp?", {"t": "Hết.", "p": 1.0}]
+    assert not any("câu hỏi" in m for m in craft.audio_problems([{"name": "ch00", "lines": lines}]))
+
+
+def test_question_after_90s_fails():
+    lines = [" ".join(["từ"] * 40) + "." for _ in range(10)] + ["Vì sao bạn nghe tiếp?", {"t": "Hết.", "p": 1.0}]
+    assert any("câu hỏi" in m for m in craft.audio_problems([{"name": "ch00", "lines": lines}]))
+
+
 def test_list_over_three_fails():
     lines = ["Một là tàu.", "Hai là sông.", "Ba là cầu.", "Bốn là chợ.", {"t": "Bạn thấy không?", "p": 1.0}]
     msgs = craft.audio_problems([{"name": "ch00", "lines": lines}])

@@ -19,6 +19,21 @@ def _text(line) -> str:
     return line if isinstance(line, str) else line.get("t", "")
 
 
+OPEN_Q_LINES = 8
+OPEN_Q_WORDS = 330   # ~90 giây ở 215 tiếng/phút: câu không giới hạn độ dài thì 8 câu có thể dài gấp đôi (#476)
+
+
+def _early_question(lines) -> bool:
+    """Câu hỏi đầu tiên nằm trong 8 câu đầu, hoặc trong khoảng 330 tiếng đầu (~90 giây)."""
+    words = 0
+    for i, line in enumerate(lines):
+        t = _text(line)
+        if "?" in t:
+            return i < OPEN_Q_LINES or words < OPEN_Q_WORDS
+        words += len(t.split())
+    return False
+
+
 def audio_problems(chapters) -> list[str]:
     """Kiểm tra nhịp kể; không giới hạn độ dài câu (chủ kênh 17/11/2026, #476)."""
     out: list[str] = []
@@ -40,9 +55,8 @@ def audio_problems(chapters) -> list[str]:
             if isinstance(line, dict) and float(line.get("p") or 0) >= 0.9:
                 long_pause = True
     if chapters:
-        head = " ".join(_text(x) for x in chapters[0]["lines"][:8])
-        if "?" not in head:
-            out.append(f"{chapters[0]['name']}: 8 câu đầu chưa có câu hỏi")
+        if not _early_question(chapters[0]["lines"]):
+            out.append(f"{chapters[0]['name']}: chưa có câu hỏi trong {OPEN_Q_LINES} câu hay ~90 giây đầu")
         if "bạn" not in " ".join(blob).lower():
             out.append("cả kịch bản không gọi 'bạn'")
         if not long_pause:
