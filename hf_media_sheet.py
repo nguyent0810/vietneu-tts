@@ -46,6 +46,10 @@ def preview(spec: dict, domain: str) -> tuple[Image.Image | None, str]:
     import hyperframes_bridge as HB  # noqa: PLC0415
     kind = (spec.get("kind") or "video").lower()
     try:
+        if kind == "local":
+            local, _, credit, _ = HB.resolve_media(spec, 1, "media_sheet", domain, orientation="landscape")
+            im = Image.open(local).convert("RGB") if local.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"} else frame_of(local)
+            return im, "LOCAL · " + (credit or Path(spec["path"]).name)
         if kind == "commons":
             import hf_commons  # noqa: PLC0415
             p, credit = hf_commons.fetch(spec["file"], allow_by=bool(spec.get("by")), page=spec.get("page"))
@@ -113,9 +117,11 @@ def plan_sheet(plan: Path, rid: str, out: Path | None = None) -> Path:
     domain = "BUD" if row.get("series") == "bud" else "FS"
     items = []
     for k, spec in sorted(row.get("media", {}).items(), key=lambda x: int(x[0])):
-        im, note = preview(spec, domain)
-        items.append((f"#{k}", im, note))
-        print(f"#{k:>4} {note}")
+        for index, shot in enumerate([spec, *spec.get("cuts", [])]):
+            im, note = preview(shot, domain)
+            label = f"#{k}" + (f" cut{index} @{shot['at']}" if index else "")
+            items.append((label, im, note))
+            print(f"{label} {note}")
     return sheet(items, out or plan.parent / "out" / f"{rid}_media_sheet.jpg")
 
 

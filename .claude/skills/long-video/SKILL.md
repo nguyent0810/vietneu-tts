@@ -65,6 +65,28 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
 
 ## 4. Plan (một phần tử trong `plan_long_w40.json`)
 
+**Đổi ảnh/clip giữa câu (`media.cuts`, 079):** một dòng lời kể có thể mang nhiều shot;
+không cần cắt câu để qua cổng hình. Ảnh đầu dùng spec ngoài, mỗi cut là media độc lập:
+```json
+"media": {"12": {"kind": "local", "path": "output/cl_staging/long/research/ai_media/flow/citadel.jpg",
+  "cuts": [
+    {"at": "bên kia", "kind": "image", "query": "Vietnam ancient river", "layout": "full"},
+    {"at": "trở về", "kind": "video", "query": "Vietnam mountain landscape"}
+  ]}}
+```
+`at` là từ/cụm từ trong **chính câu 12**, bỏ khác biệt hoa/thường/dấu câu, tìm lần đầu
+sau mốc trước (giữ dấu tiếng Việt). Mốc phải tăng, ở trong câu; sai mốc thì dừng.
+Cut không kế thừa path/query/layout/cine của ảnh đầu. Mỗi shot đi qua crop, chặn trùng byte
+trong chương và layout v2 như media thường; chỉ shot cuối giữ qua câu kế. Không dùng cuts
+trên thẻ chương, không lồng cuts; `pan.stops` trong dòng có cuts chỉ trỏ chính dòng đó.
+Timing ưu tiên `segments[].words` (`w/t/d` hoặc `word/start/end`, giây tuyệt đối), rồi
+`hf_align` từ audio như karaoke. Thiếu timing/audio: **ƯỚC theo tiếng đọc**, có tính số
+đọc thành nhiều tiếng; không nội suy theo độ dài ký tự. Runner và bridge dùng cùng mốc;
+tách chương trừ cùng offset cho segment và từng từ. Phụ đề vẫn nguyên câu.
+Cổng 120 giây giữ ngưỡng tĩnh ≤4s / động ≤8s, đo từng shot. Kiểm bằng timing TTS thật.
+Preview kỹ thuật: `hyperframes_bridge.render(..., opts={"prepare_only": True})` chỉ sinh
+HTML/variables, không gọi renderer; dùng ảnh local đã duyệt và so khung trước/sau cut.
+
 - Dựng plan Long mới từ script/base: `python tools/long_plan_build.py --script <txt> --id <id> --series bud|fs --base <plan.json> --out <plan.json>`.
 - Có thể truyền `--tables <marker_visuals.json>` để gắn bảng/list theo đúng ghi chú marker trong kịch bản.
 - Bộ số liệu series `tuổi × tháng âm`: `.venv/bin/python tools/fs_month_tuoi.py <chi> --year <năm âm> --month <tháng âm> --out-dir <dir>` tạo `t<tháng>_<chi>_facts.json` và `t<tháng>_<chi>_tables.json`.

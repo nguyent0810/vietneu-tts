@@ -86,6 +86,7 @@
   }
 
   const OVERLAY_OK = { ask: 1, timeline: 1, stat: 1, list: 1 };
+  const cameraSpan = (ln, end, minimum = 1) => Math.max(ln.word_cut ? .001 : minimum, end - ln.start);
   function applyOverlay(st, ln) {
     const v = ln && ln.visual;
     if (!st || !v || !v.overlay || !OVERLAY_OK[v.type]) return false;
@@ -152,8 +153,9 @@
       build() {},
       motion(tl, clip, ln, mEnd) {
         const s = ln.sentence_id % 2 ? 1 : -1;
-        tl.fromTo(clip, { y: -120, rotation: -9 * s, scale: 1.08 }, { y: 0, rotation: -3 * s, scale: 1, duration: .9, ease: "power3.out" }, ln.start);
-        tl.to(clip, { rotation: -1.5 * s, y: -10, duration: Math.max(1, mEnd - ln.start - .9), ease: "sine.inOut" }, ln.start + .9);
+        const span = cameraSpan(ln, mEnd), enter = ln.word_cut ? Math.min(.9, span * .5) : .9;
+        tl.fromTo(clip, { y: -120, rotation: -9 * s, scale: 1.08 }, { y: 0, rotation: -3 * s, scale: 1, duration: enter, ease: "power3.out" }, ln.start);
+        tl.to(clip, { rotation: -1.5 * s, y: -10, duration: Math.max(.001, span - enter), ease: "sine.inOut" }, ln.start + enter);
         return true;
       },
     },
@@ -163,7 +165,7 @@
       motion(tl, clip, ln, mEnd) {
         const s = ln.sentence_id % 2 ? 1 : -1;
         tl.fromTo(clip, { rotationY: -16 * s, rotationX: 7, scale: .93, transformPerspective: 1900 },
-          { rotationY: -4 * s, rotationX: 2, scale: 1, duration: Math.max(1, mEnd - ln.start), ease: "sine.inOut" }, ln.start);
+          { rotationY: -4 * s, rotationX: 2, scale: 1, duration: cameraSpan(ln, mEnd), ease: "sine.inOut" }, ln.start);
         return true;
       },
     },
@@ -186,7 +188,7 @@
       enterCont(tl, inner, ln) { this.enter(tl, inner, ln); },
       motion(tl, clip, ln, mEnd) {
         tl.fromTo(clip, { rotationY: -10, scale: 1, transformPerspective: 1900 },
-          { rotationY: -3, scale: 1.04, duration: Math.max(1, mEnd - ln.start), ease: "sine.inOut" }, ln.start);
+          { rotationY: -3, scale: 1.04, duration: cameraSpan(ln, mEnd), ease: "sine.inOut" }, ln.start);
         return true;
       },
     },
@@ -718,7 +720,10 @@
       : np ? ["blurfade", "push", "pushup", "zoom", "wipe"]
       : ["blurfade", "push", "pushup", "zoom", "wipe", "iris"];
     const k = pick("transition", kinds);
-    const clip = ctx.oldClip;
+    // Word-cut media already has a camera tween ending at the cut. Transition
+    // the scene wrapper; media opacity is handled by its own handoff. Moving
+    // the old clip here would extend its camera past the next shot boundary.
+    const clip = ctx.oldLn && ctx.oldLn.word_cut ? null : ctx.oldClip;
     const fgClip = clip && clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;  // lớp chủ thể 2.5D
     if (k === "push" || k === "pushup") {  // cut-the-curve: hai bên cùng hướng, cắt ở đỉnh tốc độ
       const ax = k === "push" ? "x" : "y", d = 230;
@@ -886,8 +891,8 @@
     motion(tl, clip, ln, mEnd) {
       const s = ln.sentence_id % 2 ? 1 : -1;
       gsap.set(clip, { rotation: -2.4 * s });
-      tl.fromTo(clip, { y: -160 }, { y: 0, duration: .5, ease: twos(.5) }, ln.start);
-      tl.fromTo(clip, { scale: 1 }, { scale: 1.035, duration: Math.max(1, mEnd - ln.start), ease: "none" }, ln.start);
+      tl.fromTo(clip, { y: -160 }, { y: 0, duration: Math.min(.5, cameraSpan(ln, mEnd)), ease: twos(.5) }, ln.start);
+      tl.fromTo(clip, { scale: 1 }, { scale: 1.035, duration: cameraSpan(ln, mEnd), ease: "none" }, ln.start);
       return true;
     },
   };
@@ -898,7 +903,7 @@
     build(inner) { inner.appendChild(el("div", "lf-full-shade")); },
     motion(tl, clip, ln, mEnd) {
       const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
-      const d = Math.max(1, mEnd - ln.start), s = ln.sentence_id % 2 ? 1 : -1;
+      const d = cameraSpan(ln, mEnd), s = ln.sentence_id % 2 ? 1 : -1;
       // Chênh tốc độ giữa hai lớp là thứ tạo chiều sâu: nền 1.06 -> 1.11,
       // chủ thể 1.07 -> 1.20 và dạt ngang gấp gần ba lần.
       tl.fromTo(clip, { scale: 1.06, x: 0 }, { scale: 1.11, x: -18 * s, duration: d, ease: "none" }, ln.start);
@@ -4121,7 +4126,7 @@
     const dir = ln.sentence_id % 2 ? 1 : -1;
     shots.forEach((sh, i) => {
       const t1 = shots[i + 1] ? shots[i + 1].t : mEnd;
-      const dur = Math.max(0.35, t1 - sh.t);
+      const dur = Math.max(ln.word_cut ? .001 : .35, t1 - sh.t);
       if (sh.preset === "parallax") {
         parallaxSegment(tl, clip, sh.t, sh.t + Math.min(dur, 18), dir, i === 0);
         return;
@@ -4405,7 +4410,7 @@
     const c = (ln.media && ln.media.cine) || null;
     if (!c) return false;
     const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
-    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const t0 = ln.start, t1 = t0 + cameraSpan(ln, mEnd || ln.end, .8), dur = t1 - t0;
     const kInt = motionClamp(c.intensity != null ? Number(c.intensity) : 0.75, 0, 1);
     const eff = 0.35 + 0.65 * kInt;
     const dir = ln.sentence_id % 2 ? 1 : -1;
@@ -4481,7 +4486,7 @@
           { scale: 1.135, xPercent: 1.0 * dir * eff, yPercent: -3.4 * eff, duration: dur, ease: "sine.inOut" }, t0);
       }
     } else if (cam === "rack_focus") {
-      const dPull = Math.min(2.4, Math.max(0.9, dur * 0.45));
+      const dPull = Math.min(dur, 2.4, Math.max(0.9, dur * 0.45));
       const fExtra = combinedFilter ? " " + combinedFilter : "";
       tl.fromTo(clip, { scale: 1.04, xPercent: 0, yPercent: 0 },
         { scale: 1.09, xPercent: 0.4 * dir * eff, yPercent: -0.5 * eff, duration: dur, ease: "sine.inOut" }, t0);
@@ -4573,7 +4578,7 @@
     const p = (ln.media && ln.media.pan) || null;
     if (!p) return false;
     const fg = clip.dataset.fg ? document.getElementById(clip.dataset.fg) : null;
-    const t0 = ln.start, t1 = Math.max(t0 + 0.8, mEnd || ln.end), dur = t1 - t0;
+    const t0 = ln.start, t1 = t0 + cameraSpan(ln, mEnd || ln.end, .8), dur = t1 - t0;
     const kInt = motionClamp(p.intensity != null ? Number(p.intensity) : 0.75, 0, 1);
     const eff = 0.35 + 0.65 * kInt;
 

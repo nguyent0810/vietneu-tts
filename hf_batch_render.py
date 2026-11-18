@@ -171,7 +171,9 @@ def layout_v2_opts(opts: dict, row: dict, chosen: dict, shift: int = 0,
     for sid, choice in chosen.items():
         if lo is not None and not (lo < int(sid) <= hi):
             continue
-        payload[str(int(sid) - shift)] = {"layout": choice.get("layout") or "", "cine": choice.get("cine")}
+        payload[str(int(sid) - shift)] = {"layout": choice.get("layout") or "", "cine": choice.get("cine"),
+                                          "pan": choice.get("pan"),
+                                          **({"cuts": choice["cuts"]} if choice.get("cuts") else {})}
     out["layout_v2"] = payload
     return out
 
@@ -917,10 +919,13 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
         mix_segs = None
         if wav.with_suffix(".json").is_file():
             mix_segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8")).get("segments")
+            if mix_segs:
+                mix_segs = _cut_aligned_segments(row, mix_segs, wav)
         if mix_bad := visual_mix_check(row, mix_segs):
             return False, "; ".join(mix_bad)
     if row.get("lane") == "long" and wav.with_suffix(".json").is_file():
         segs = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))["segments"]
+        segs = _cut_aligned_segments(row, segs, wav)
         rep, bad = pacing(row, segs)
         print(f"    nhịp hình: {rep}", flush=True)
         for x in bad:
@@ -1002,7 +1007,7 @@ def _engine_sig() -> str:
 def _remap_at(spec, shift: int):
     """Đổi số câu tuyệt đối (at/until) trong một sơ đồ sang số câu trong chương."""
     if isinstance(spec, dict):
-        return {k: (v - shift if k in ("at", "until") and isinstance(v, int) else _remap_at(v, shift)) for k, v in spec.items()}
+        return {k: (v - shift if k in ("at", "until", "line") and isinstance(v, int) else _remap_at(v, shift)) for k, v in spec.items()}
     if isinstance(spec, list):
         return [_remap_at(x, shift) for x in spec]
     return spec
@@ -1081,11 +1086,11 @@ def _plan_line_kind(i: int, ln: dict, lines: list[dict], media: dict, owner: dic
     if vspec:
         if HB.is_overlay_visual(vspec) and has_media:
             oid = str(owner[i] + 1) if i in owner else (str(i + 1) if (str(i + 1) in media or (i + 1) in media) else i + 1)
-            return media_label(media.get(oid))
+            return media_label(media.get(oid, media.get(int(oid))))
         return vspec.get("type", "visual")
     if has_media:
         oid = str(owner[i] + 1) if i in owner else (str(i + 1) if (str(i + 1) in media or (i + 1) in media) else i + 1)
-        return media_label(media.get(oid))
+        return media_label(media.get(oid, media.get(int(oid))))
     if (ln.get("figure") or {}).get("type", "none") != "none":
         return "figure"
     return "chữ khoá"
@@ -1101,13 +1106,55 @@ def visual_mix_is_new(row: dict) -> bool:
     return bool(row.get("pause_ctx") or (row.get("tts") or {}).get("pause_ctx"))
 
 
+def _shot_plan(row: dict, segs: list[dict]) -> tuple[list[dict], dict]:
+    """Same shot compilation as the render bridge; preserve original line ids."""
+    import copy
+    import hyperframes_bridge as HB
+    lines = HB.timed_plan_lines(row.get("script") or [], segs, row.get("figures"))
+    media = {str(k): v for k, v in (row.get("media") or {}).items()}
+    HB.apply_visuals(lines, copy.deepcopy(row.get("visuals") or {}), media)
+    return HB.expand_media_cuts(lines, media)
+
+
+def _cut_aligned_segments(row: dict, segs: list[dict], wav: Path) -> list[dict]:
+    """Use the very same hf_align karaoke clock in gates and chapter renders."""
+    if not any(m.get("cuts") for m in (row.get("media") or {}).values()):
+        return segs
+    if all(seg.get("words") for seg in segs):
+        return segs
+    import hyperframes_bridge as HB
+    import hf_align
+    try:
+        env = hf_align.energy_envelope(wav)
+    except Exception as exc:
+        print(f"    cuts: ƯỚC theo tiếng đọc, không đọc được audio ({exc})", flush=True)
+        env = None
+    out = []
+    for text, seg in zip(row["script"], segs):
+        words, source = HB.segment_words(text, seg, env)
+        out.append(dict(seg, words=words, word_timing_source=source))
+    return out
+
+
+def _shift_word_segment(seg: dict, offset: float) -> dict:
+    import copy
+    shifted = copy.deepcopy(seg)
+    shifted.update(start=seg["start"] - offset, end=seg["end"] - offset)
+    if not seg.get("words"):
+        shifted.update(start=round(shifted["start"], 3), end=round(shifted["end"], 3))
+    for word in shifted.get("words") or []:
+        for key in ("t", "start", "end"):
+            if key in word:
+                word[key] -= offset
+    return shifted
+
+
 def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
     """Probe-compatible seconds/holds. Without TTS: runner's 185 tiếng/min + .5s gaps.
 
     Hold continuations are merged, but two separately declared uses of the same
     file remain two scenes, even when adjacent. Crop/layout/cine do not alter ref.
     """
-    import copy
     import hyperframes_bridge as HB
     script = row.get("script") or []
     if segs is None:
@@ -1118,13 +1165,8 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
             t += duration + 0.5
     if len(segs) != len(script):
         raise ValueError("visual_mix: số segments không khớp script")
-    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
-              "heading": text.startswith("**") and text.endswith("**") and text.count("**") == 2,
-              "figure": (row.get("figures") or {}).get(str(i + 1), {})}
-             for i, text in enumerate(script)]
-    media = {str(k): v for k, v in (row.get("media") or {}).items()}
-    HB.apply_visuals(lines, copy.deepcopy(row.get("visuals") or {}), media)
-    holds = HB.media_holds(lines, {int(k) for k in media})
+    lines, media = _shot_plan(row, segs)
+    holds = HB.media_holds(lines, {int(k) for k in media}, media_specs=media)
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
     scenes, previous_token = [], None
     for i, line in enumerate(lines):
@@ -1144,7 +1186,7 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
         else:
             token = ("line", i)
         scene = {"kind": kind, "t0": line["start"],
-                 "t1": segs[i + 1]["start"] if i + 1 < len(lines) else segs[i]["end"],
+                 "t1": lines[i + 1]["start"] if i + 1 < len(lines) else line["end"],
                  "image": ref, "style": visual.get("type") if visual.get("type") in HB.STYLE_VISUAL_TYPES else None}
         if scenes and token == previous_token and kind == scenes[-1]["kind"]:
             scenes[-1]["t1"] = scene["t1"]
@@ -1166,7 +1208,10 @@ def visual_mix_check(row: dict, segs: list[dict] | None = None) -> list[str]:
     except Exception as exc:  # noqa: BLE001 — cổng đo, không được làm hỏng render
         print(f"    !! visual_mix: không đo được ({exc})", flush=True)
         return []
-    print("    visual_mix" + (" (ước: 185 tiếng/phút + nghỉ .5s)" if segs is None else " (TTS)")
+    cut_estimate = bool(segs is not None and any(m.get("cuts") for m in (row.get("media") or {}).values())
+                        and any(not s.get("words") for s in segs))
+    print("    visual_mix" + (" (ước: 185 tiếng/phút + nghỉ .5s)" if segs is None
+                             else " (TTS; cuts ƯỚC theo tiếng đọc)" if cut_estimate else " (TTS)")
           + ":\n" + visual_mix.format_table(metrics), flush=True)
     findings = visual_mix.issues(metrics, is_new=visual_mix_is_new(row),
                                 is_long=_is_long_row(row),
@@ -1192,16 +1237,22 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
     if not _pace_gate_on(row):
         return []
     import hyperframes_bridge as HB  # noqa: PLC0415
-    script, n = row["script"], len(row["script"])
-    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
-              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
+    script = row["script"]
     media = row.get("media") or {}
     auto_layouts = (HB.assign_layouts_v2(
         media, row.get("id") or "video", script=script, visuals=row.get("visuals") or {},
         segments=segs, series=row.get("series"), scene_decision=row.get("scene_decision") or {},
         figures=row.get("figures") or {}) if row.get("layout_policy") == "v2" else {})
-    HB.apply_visuals(lines, row.get("visuals") or {}, media)
-    holds = HB.media_holds(lines, {int(k) for k in media})
+    lines, media = _shot_plan(row, segs)
+    if any(ln.get("word_cut") for ln in lines):
+        flat_choices = {}
+        for ln in lines:
+            choice = auto_layouts.get(ln["source_sentence_id"], {})
+            index = ln["shot_index"]
+            flat_choices[ln["sentence_id"]] = choice if index == 0 else (choice.get("cuts") or [{}] * index)[index - 1]
+        auto_layouts = flat_choices
+    segs, n = lines, len(lines)
+    holds = HB.media_holds(lines, {int(k) for k in media}, media_specs=media)
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}
     pan_cuts = _pan_stop_lines(media)
     shots, shot_kinds, shot_moving, starts, prev, prev_moving, cur, t_first = [], [], [], [], None, None, 0.0, 0.0
@@ -1239,9 +1290,16 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
     for sec_len, k, moving, t0 in zip(shots, shot_kinds, shot_moving, starts):
         limit = PACE_MAX_MOVING if moving else PACE_MAX_STATIC
         if t0 < PACE_GATE_S and sec_len > limit + 1e-6:
-            sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
+            shot = next(ln for ln in lines if ln["start"] >= t0 - 1e-6)
+            sid = shot.get("source_sentence_id", shot["sentence_id"])
             state = "có chuyển động" if moving else "tĩnh"
             errs.append(f"120s đầu: cảnh '{k}' {state} dài {sec_len:.1f}s từ câu {sid} (> {limit:.1f}s)")
+            candidates = [w for ln in lines if ln.get("source_sentence_id", ln["sentence_id"]) == sid
+                          for w in ln.get("words", []) if t0 + .1 < w["t"] < t0 + sec_len]
+            if candidates:
+                target = t0 + limit - .25
+                word = min(candidates, key=lambda w: abs(w["t"] - target))
+                errs[-1] += f"; thêm `cuts` ở từ {word['w']!r} (timing {shot.get('word_timing_source', 'ước')})"
     naked_run, naked_sid = 0.0, None
     for i, ln in enumerate(lines):
         if ln["start"] >= PACE_GATE_S:
@@ -1301,12 +1359,10 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     `rep["sàn"]` là cảnh báo sàn (14 loại, chữ nền trống ≤ 12%, 3 cảnh liền) — không nằm trong danh sách chặn."""
     import collections  # noqa: PLC0415
     import hyperframes_bridge as HB  # noqa: PLC0415
-    script, n = row["script"], len(row["script"])
-    lines = [{"sentence_id": i + 1, "start": segs[i]["start"], "end": segs[i]["end"], "words": [],
-              "heading": script[i].startswith("**") and script[i].endswith("**") and script[i].count("**") == 2} for i in range(n)]
-    media = row.get("media") or {}
-    HB.apply_visuals(lines, row.get("visuals") or {}, media)
-    holds = HB.media_holds(lines, {int(k) for k in media})
+    original_segs = segs
+    lines, media = _shot_plan(row, segs)
+    segs, n = lines, len(lines)
+    holds = HB.media_holds(lines, {int(k) for k in media}, media_specs=media)
     owner = {k: i for i, j in holds.items() for k in range(i + 1, j + 1)}   # dòng ảnh còn hiện -> dòng mang ảnh
     sec, shots, shot_kinds, prev, cur = collections.Counter(), [], [], None, 0.0
     starts, t_first = [], 0.0             # giây bắt đầu của từng cảnh
@@ -1346,12 +1402,13 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
     reasons = {int(k): v for k, v in (row.get("slow_hold") or {}).items()}
     for sec_len, t0 in zip(shots, starts):
         if sec_len > 25:
-            sid = next(ln["sentence_id"] for ln in lines if ln["start"] >= t0 - 1e-6)
+            shot = next(ln for ln in lines if ln["start"] >= t0 - 1e-6)
+            sid = shot.get("source_sentence_id", shot["sentence_id"])
             if sid not in reasons:
                 bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- chèn nhịp cắt, "
                            f"hoặc ghi lý do: \"slow_hold\": {{\"{sid}\": \"...\"}}")
-    bad.extend(pace_gate_issues(row, segs))
-    o_errs, o_warns = opening_gate(row, segs)
+    bad.extend(pace_gate_issues(row, original_segs))
+    o_errs, o_warns = opening_gate(row, original_segs)
     bad.extend(o_errs)
     san.extend(o_warns)
     return rep, bad
@@ -1739,17 +1796,28 @@ def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | s
 
     # O3: ≥ 8 hình khác nhau trong 0–40 s
     unique_images = set()
+    opening_shots = (_shot_plan(row, segs)[0] if any(
+        isinstance(m, dict) and m.get("cuts") for m in media.values()) else [])
     for i, ln in enumerate(lines):
         if ln["start"] >= OPENING_GATE_S:
             break
         sid = ln["sentence_id"]
         m = media.get(str(sid)) or media.get(sid)
         if m:
-            if isinstance(m, dict):
-                sig = m.get("path") or m.get("src") or m.get("ref") or m.get("query") or m.get("prompt") or str(m)
-            else:
-                sig = str(m)
-            unique_images.add(sig)
+            shots = [m]
+            if isinstance(m, dict) and m.get("cuts"):
+                # Count only word cuts which actually begin inside the opening.
+                shots = []
+                for shot in opening_shots:
+                    if shot.get("source_sentence_id") == sid and shot["start"] < OPENING_GATE_S:
+                        idx = shot["shot_index"]
+                        shots.append(m if idx == 0 else m["cuts"][idx - 1])
+            for shot in shots:
+                if isinstance(shot, dict):
+                    sig = shot.get("path") or shot.get("src") or shot.get("ref") or shot.get("file") or shot.get("query") or shot.get("prompt") or str(shot)
+                else:
+                    sig = str(shot)
+                unique_images.add(sig)
     if len(unique_images) < OPENING_GATE_MIN_IMAGES:
         errs.append(f"O3: 0–40s chỉ có {len(unique_images)} hình khác nhau (yêu cầu ≥ {OPENING_GATE_MIN_IMAGES} hình khác nhau)")
 
@@ -1765,9 +1833,10 @@ def opening_gate(row: dict, segs: list[dict] | None = None, video_path: Path | s
 
     # O5: cấm ảnh ref nhân vật (/refs/, REF_) làm hình
     for k, spec in media.items():
-        ref_hit = _check_ref_asset(spec)
-        if ref_hit:
-            errs.append(f"O5: media câu {k} dùng ảnh ref nhân vật (\x27{ref_hit}\x27) -- cấm ảnh ref (/refs/, REF_) làm hình")
+        for shot in [spec, *(spec.get("cuts", []) if isinstance(spec, dict) else [])]:
+            ref_hit = _check_ref_asset(shot)
+            if ref_hit:
+                errs.append(f"O5: media câu {k} dùng ảnh ref nhân vật (\x27{ref_hit}\x27) -- cấm ảnh ref (/refs/, REF_) làm hình")
 
     # O6: cảnh báo lời meta ("video này", "chương N", "đăng ký") trong 0–40 s
     for i, ln in enumerate(lines):
@@ -2070,8 +2139,10 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str,
     subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
             for kind in ("media", "visuals")}
     for v in subs["media"].values():
-        if isinstance(v, dict) and v.get("kind") == "local":
-            v["_sig"] = _local_sig(v)
+        if isinstance(v, dict):
+            for shot in [v, *v.get("cuts", [])]:
+                if shot.get("kind") == "local":
+                    shot["_sig"] = _local_sig(shot)
     relative_segments = None
     if segments is not None:
         chunk = segments[a:b]
@@ -2083,9 +2154,14 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str,
                                  for s in chunk]
     # Layout v2 xét 120s đầu video; engine xét cổng mở đầu/O9 trong 40s.
     frame_position = round(t0, 3) if t0 < 120 else "≥120"
+    cut_clock = None
+    if segments and any(v.get("cuts") for v in (row.get("media") or {}).values()):
+        cut_clock = [[round(float(w.get("t", w.get("start", 0))) - t0, 6)
+                      for w in s.get("words", [])] for s in segments[a:b]]
     return hashlib.sha1(json.dumps([row["script"][a:b], subs, row["style"], round(t1 - t0, 3), relative_segments,
                                    chapter_base, frame_position,
                                    quality, _engine_sig()]
+                                   + ([{"cut_clock": cut_clock}] if cut_clock is not None else [])
                                    + ([True] if row.get("kinetic") else [])
                                    + ([{"kicker": row["kicker"]}] if row.get("kicker") else [])
                                    + ([{"theme": row["theme"]}] if row.get("theme") else [])
@@ -2100,7 +2176,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
     rid = row["id"]
     lines = row["script"]
     man = json.loads(wav.with_suffix(".json").read_text(encoding="utf-8"))
-    segs, total = man["segments"], float(man["duration_s"])
+    segs, total = _cut_aligned_segments(row, man["segments"], wav), float(man["duration_s"])
     layout_chosen = layout_v2_choices(row, segs)
     if layout_chosen is not None:
         import hyperframes_bridge as HB  # noqa: PLC0415
@@ -2131,7 +2207,8 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         layout_sig = None
         if layout_chosen is not None:
             layout_sig = json.dumps(
-                {str(int(sid) - a): {"layout": choice.get("layout") or "", "cine": choice.get("cine")}
+                {str(int(sid) - a): {"layout": choice.get("layout") or "", "cine": choice.get("cine"),
+                                    "pan": choice.get("pan"), "cuts": choice.get("cuts", [])}
                  for sid, choice in layout_chosen.items() if a < int(sid) <= b},
                 sort_keys=True, ensure_ascii=False)
         base = sum(1 for l in lines[:a] if l.startswith("**") and l.endswith("**") and l.count("**") == 2)
@@ -2148,7 +2225,7 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         ctxt.write_text("\n".join(lines[a:b]) + "\n", encoding="utf-8")
         sf.write(cwav, audio[int(round(t0 * sr)):int(round(t1 * sr))], sr)
         cman = dict(man, duration_s=round(t1 - t0, 4), output_file=cwav.name,
-                    segments=[dict(sg, start=round(sg["start"] - t0, 3), end=round(sg["end"] - t0, 3)) for sg in segs[a:b]])
+                    segments=[_shift_word_segment(sg, t0) for sg in segs[a:b]])
         cwav.with_suffix(".json").write_text(json.dumps(cman, ensure_ascii=False), encoding="utf-8")
         cmd = [sys.executable, "hyperframes_bridge.py", "--script", str(ctxt), "--wav", str(cwav), "--series", row["series"],
                "--style", row["style"], "--badge", row.get("badge", ""), "--footer", FOOTER[row["series"]],
