@@ -496,7 +496,7 @@ def _next_upload_locked(dry_run: bool = False, use_coverage: bool = True) -> int
         _atomic_json(intent_path, intent)
         path.unlink(missing_ok=True)
         video_id = upload_short(str(mp4), title, description, [*packaging.get("hashtags", []), marker], publish.isoformat().replace("+00:00", "Z"), creds,
-                                language="vi", channel="vsd", lane=item.get("lane"))
+                                language="vi", channel="vsd", lane=item.get("lane"), ai_faces=item.get("ai_faces") is True)
         ledger.append({"id": item_id, "video_id": video_id, "uploaded_at": now_utc().isoformat(), "publish_at": publish.isoformat(), "path": str(mp4)})
         _atomic_json(LEDGER, ledger)
         transition(intent_path, "uploaded")

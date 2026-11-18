@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT)); os.chdir(ROOT)
 import certifi
 os.environ.setdefault("SSL_CERT_FILE", certifi.where())
 from short_upload import upload_short
-from youtube_upload import QuotaExceededError
+from youtube_upload import QuotaExceededError, synthetic_media_description
 
 # YouTube từ chối publishAt đã qua; sát quá thì video có thể lên trước khi
 # kịp xử lý xong. Khung nào gần hơn mức này thì để lại, không đăng.
@@ -120,7 +120,8 @@ def description(r: dict) -> str:
     if not r.get("insight"):
         parts.append("#Shorts")
     # YouTube từ chối mô tả có < > (400 invalidDescription, lô thay 26/10: "->" trong dòng nguồn làm trống khung vài phút).
-    return "\n\n".join(parts).replace("->", "→").replace("<", "‹").replace(">", "›")
+    desc = "\n\n".join(parts).replace("->", "→").replace("<", "‹").replace(">", "›")
+    return synthetic_media_description(desc, r.get("ai_faces") is True)
 
 
 def main() -> int:
@@ -198,7 +199,7 @@ def main() -> int:
         if not args.confirm:
             continue
         try:
-            vid = upload_short(str(mp4), r["title"], description(r), r["tags"] + r.get("tags_vi", []), publish_at, CREDS, language="vi", channel="fs", lane=r.get("lane"))
+            vid = upload_short(str(mp4), r["title"], description(r), r["tags"] + r.get("tags_vi", []), publish_at, CREDS, language="vi", channel="fs", lane=r.get("lane"), ai_faces=r.get("ai_faces") is True)
         except QuotaExceededError:
             left = [x["id"] for x in rows if x["id"] not in ledger]
             print(f"\nHẾT QUOTA YouTube hôm nay -- dừng. Còn {len(left)} bài chờ: {', '.join(left)}")

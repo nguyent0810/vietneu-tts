@@ -184,6 +184,11 @@ soát bản 168 px, so tờ đối thủ. Cũ: `hf_long_thumbnail.make(...)` (2 
 Không trùng ảnh hero trong cùng series. Kiểm lời hứa bằng `python tools/long_packaging/promise_check.py <plan>`.
 
 ## 8. Đăng
+Video có ảnh AI phỏng dựng người/nhân vật rõ mặt: đặt `"ai_faces": true` trên phần tử plan Long
+(`output/cl_staging/long/plan_long_*.json`). Uploader khai `status.containsSyntheticMedia: true`
+và thêm đúng một dòng cuối mô tả: "Một số hình là phỏng dựng bằng AI dựa trên tư liệu."
+Không có khoá thì giữ hành vi cũ; không in credit/AI lên hình.
+
 `tools/publish/upload_long.py --only <id> --confirm`: riêng tư + hẹn giờ, dò sâu khung giờ (search.list
 cộng dồn), mục lục chương có mốc, ghi nguồn ảnh + nhạc đúng track đã trộn, gắn thumbnail,
 thêm playlist (công khai, idempotent). Mỗi kênh một API project, quota riêng; hết quota

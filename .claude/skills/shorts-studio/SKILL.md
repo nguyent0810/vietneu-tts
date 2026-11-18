@@ -115,6 +115,14 @@ Lead đã cài sẵn các khối registry vào thư mục `hyperframes_short/com
 
 ---
 
+## Đăng
+
+Short có ảnh AI phỏng dựng người/nhân vật rõ mặt: đặt `"ai_faces": true` trên dòng plan BUD/FS;
+VSD đặt ở cấp gốc spec `output/cl_staging/vsd/specs/*.json` (giữ khoá khi đưa vào queue).
+Uploader khai `status.containsSyntheticMedia: true` và thêm đúng một dòng cuối mô tả:
+"Một số hình là phỏng dựng bằng AI dựa trên tư liệu." Không có khoá thì giữ hành vi cũ;
+credit/AI chỉ ở mô tả, không in lên hình.
+
 ## Tra kho trước khi tạo ảnh
 
 Ảnh AI tạo khi thiếu ảnh thật phải được lưu và lần sau tra kho dùng lại (`library/tools/assets.py`).

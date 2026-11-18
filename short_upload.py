@@ -11,13 +11,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from youtube_upload import VideoMetadata, upload_video  # noqa: E402
+from youtube_upload import VideoMetadata, synthetic_media_description, upload_video  # noqa: E402
 
 
 def upload_short(video_path: str, title: str, description: str, tags: list[str],
                   publish_at: str, credentials_path: str, language: str | None = None,
                   channel: str | None = None, lane: str | None = None,
-                  allow_retire: bool = False) -> str:
+                  allow_retire: bool = False, ai_faces: bool = False) -> str:
     """Trả về video_id. category_id=22 (People & Blogs) giống Long -- nhất
     quán với cách kênh đã phân loại nội dung trước đây."""
     if channel and lane:
@@ -27,8 +27,9 @@ def upload_short(video_path: str, title: str, description: str, tags: list[str],
         missing = "channel" if not channel else "lane"
         print(f"CẢNH BÁO: upload_short thiếu {missing}; bỏ qua kiểm tra retire lane (caller cũ cần cập nhật).")
     metadata = VideoMetadata(
-        title=title, description=description, tags=tags,
+        title=title, description=synthetic_media_description(description, ai_faces), tags=tags,
         category_id="22", privacy_status="private", publish_at=publish_at, language=language,
+        contains_synthetic_media=True if ai_faces is True else None,
     )
     result = upload_video(video_path, metadata, credentials_path)
     return result["id"]

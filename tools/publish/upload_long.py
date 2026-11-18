@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT)); os.chdir(ROOT)
 import certifi
 os.environ.setdefault("SSL_CERT_FILE", certifi.where())
-from youtube_upload import QuotaExceededError, VideoMetadata, upload_video, upload_thumbnail
+from youtube_upload import QuotaExceededError, VideoMetadata, synthetic_media_description, upload_video, upload_thumbnail
 import hf_coverage
 
 HERE = ROOT / "output/cl_staging/long"
@@ -141,6 +141,17 @@ def credits(rid: str, compact: bool = False) -> str:
     return "Hình ảnh trong video:\n" + "\n".join(parts) if parts else ""
 
 
+AI_MEDIA_DIRS = ("output/cl_staging/long/research/ai_media/", "output/cl_staging/grokbot/")
+
+
+def ai_media_missing_flag(row: dict) -> bool:
+    """Plan dùng ảnh/clip local từ kho AI (kể cả trong `cuts`) mà chưa khai `ai_faces` -> nhắc, không chặn."""
+    if "ai_faces" in row:
+        return False
+    blob = json.dumps(row.get("media") or {}, ensure_ascii=False)
+    return any(d in blob for d in AI_MEDIA_DIRS)
+
+
 def description(row: dict) -> str:
     """SEO (học từ V2 motion/long/describe.py): 2 dòng đầu chứa từ khoá (YouTube chỉ hiện chừng ấy
     trước "xem thêm"), mục lục chương, phần tóm tắt giá trị (bảng 12 tuổi...), link xem tiếp, nguồn.
@@ -161,10 +172,10 @@ def description(row: dict) -> str:
         parts.append(c)
     parts.append(music_line(row))
     parts.append(seo.get("hashtags") or ch["hashtags"])
-    out = "\n\n".join(parts)
+    out = synthetic_media_description("\n\n".join(parts), row.get("ai_faces") is True)
     if len(out.encode("utf-8")) > 5000 and c:      # thử bản ghi nguồn gọn trước khi dừng
         parts[parts.index(c)] = credits(row["id"], compact=True)
-        out = "\n\n".join(parts)
+        out = synthetic_media_description("\n\n".join(parts), row.get("ai_faces") is True)
     if len(out.encode("utf-8")) > 5000:
         raise SystemExit(f"Mô tả {row['id']} dài {len(out.encode('utf-8'))} byte > 5000 -- rút gọn seo.summary/credits")
     return out
@@ -249,6 +260,8 @@ def main() -> int:
         if len(r["title"]) > 100 or "<" in r["title"] or ">" in r["title"]:   # YouTube: <= 100 ký tự, không < >
             raise SystemExit(f"Tiêu đề {r['id']} dài {len(r['title'])} ký tự (> 100) hoặc có < > -- rút gọn")
         desc = description(r)
+        if ai_media_missing_flag(r):
+            print(f"       nhắc: {r['id']} có ảnh/clip từ kho AI mà chưa khai \"ai_faces\" -- ảnh có mặt người/nhân vật thì đặt true, không thì false")
         # Ticket 69: soát SEO trước khi đăng (keyword đầu tiêu đề/mô tả/lời 30 giây đầu, chương, hashtag, tag, thumbnail).
         sys.path.insert(0, str(ROOT))
         import seo_check  # noqa: PLC0415
@@ -269,7 +282,8 @@ def main() -> int:
         if not args.confirm:
             continue
         meta = VideoMetadata(title=r["title"], description=desc, tags=r["tags"], category_id="22",
-                             privacy_status="private", publish_at=publish_at, language="vi")
+                             privacy_status="private", publish_at=publish_at, language="vi",
+                             contains_synthetic_media=True if r.get("ai_faces") is True else None)
         try:
             vid = upload_video(str(mp4), meta, creds)["id"]
         except QuotaExceededError:
