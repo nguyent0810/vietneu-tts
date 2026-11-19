@@ -35,7 +35,7 @@ Mở bằng hình (PO15/11) giữ ở long-video §4: 10 giây đầu clip/pano/
    bước ngoặt / trả / bài học / cầu nối), kỹ thuật có tên, cảm xúc, vòng mở/trả, chi tiết giác quan, câu kết là câu móc.
    Dòng nhịp: `cảnh-HỎI-trả-chương-chuyện-ĐỈNH-lặng-cầu nối…`. *Cổng*: xoá hết dòng bằng chứng mà thông điệp vẫn đứng;
    xoá dòng thông điệp mà video vẫn "chạy" nghĩa là nó chỉ là bản liệt kê (story-spine §2).
-5. **Viết văn xuôi tự do, đọc thử rồi mới viết tiếp.** Giao người viết (Sonnet hoặc thợ) thì dán `references/writer-brief.md` đã điền: cách kể, ba lớp nguồn / diễn giải / hư cấu, bàn giao `source_notes_<id>.md`, phiếu tám mục của lõi §7. Luật dòng theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
+5. **Viết văn xuôi tự do, đọc thử rồi mới viết tiếp.** Người viết nháp mặc định (PO 19/11/2026, PR #500): **Gemini web Neon · thinking High** qua `creator_v2/.venv/bin/python creator_v2/scripts/gemini_chat.py ask <prompt.md> --out prose.md` (login một lần; viết tiếp các chương bằng `--chat <url>` in ra ở lần đầu). Prompt theo `references/gemini-prompt.md`. Không dùng Auto (bỏ ý bắt buộc), không gửi qua Browsentic, không dùng tool Flow "Viết lời đọc" cho FS/BUD. Lead biên tập cuối mọi bản nháp (câu ngầm, cắt sáo ngữ và tính từ dồn, mô-típ, soát từng con số): chất lượng ra ở khâu này. Gemini hết lượt thì giao Sonnet, dán `references/writer-brief.md` đã điền: cách kể, ba lớp nguồn / diễn giải / hư cấu, bàn giao `source_notes_<id>.md`, phiếu tám mục của lõi §7. Luật dòng theo `references/line-rules.md` (độ dài, số, nhịp, chữ khoá, thoại, giác quan, ngôi thứ hai,
    bẫy TTS). Viết trước CH00–01 trong `prose.md`, tiêu đề `## …`; chạy `.venv/bin/python tools/prose_to_script.py prose.md script.txt` → dựng plan qua `tools/long_plan_build.py --script` → Lead đọc thử `.venv/bin/python tools/tts_sample.py <plan.json> --only <id> --chapters 0 1` → viết tiếp. TTS nguyên câu, không tách vế; Long BUD/FS/VSD không giới hạn độ dài câu, máy không cảnh báo, không chặn (PO 17/11); câu dài thì nghe thử bằng tai. Bỏ quota câu ngắn khỏi lint/retention, chỉ còn gợi ý nhịp. Cổng hình giữ nguyên; bridge chưa có đổi ảnh ở mốc từ giữa dòng (xem lõi §5).
    Truyện: `references/story.md` (mẫu kể trung thành nguồn, nhãn truyền thuyết).
 6. **Tự soát bằng lint** — 0 LỖI, mỗi CẢNH BÁO sửa hoặc ghi lý do trong docstring:
@@ -64,6 +64,7 @@ Mở bằng hình (PO15/11) giữ ở long-video §4: 10 giây đầu clip/pano/
 
 ## 3. Tài liệu
 - `references/evidence.md` — đường giữ chân B3, B5, F1, F3, F4, F6 khớp với câu đang đọc: chỗ rơi, chỗ giữ, số liệu, giới hạn mẫu.
+- `references/gemini-prompt.md` — khuôn prompt gửi Gemini (`gemini_chat.py`), tách chỉ dẫn khỏi chữ đọc.
 - `references/writer-brief.md` — mẫu brief giao người viết lời (#266): cách kể, ba lớp nội dung, bàn giao, tự kiểm.
 - `references/line-rules.md` — luật từng dòng cho TTS VieNeu (bảng cách đọc đo bằng `phonemize_text`).
 - `references/formats.md` — khuôn plan.md, khung 30 phút (Đêm nghe 90 phút), 4 format, khuôn nhân vật §7, beat sheet mẫu.
