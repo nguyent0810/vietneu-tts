@@ -1,0 +1,40 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import viet_loi as V  # noqa: E402
+
+BODY = " ".join(["chữ"] * 50) + "."
+
+
+def test_outline_chapters_from_ch_lines_or_line_count():
+    assert V.outline_chapters("CH00 (~1 phút): mở\nCH01 · A\n\nCH08 · Kết\n") == ["CH00", "CH01", "CH08"]
+    assert V.outline_chapters("Mở đầu\nChương một\nChương hai\n") == ["CH00", "CH01", "CH02"]
+
+
+def test_missing_chapters_counts_empty_placeholder():
+    got = f"## CH00 · A\n\n{BODY}\n\n## CH01 · B\n\n(Chưa có nội dung)\n"
+    assert V.missing_chapters(got, ["CH00", "CH01", "CH02"]) == ["CH01", "CH02"]
+
+
+def test_chapters_split_and_merge_order():
+    a = f"## CH01 · B\n\n{BODY}\n"
+    b = f"Đây là phần tiếp.\n\n## CH02 · C\n\n{BODY}\n\n## CH03 · D\n\n{BODY}\n"
+    ch = {**V.chapters(b), **V.chapters(a)}
+    assert sorted(ch) == ["CH01", "CH02", "CH03"]
+    assert "Đây là phần tiếp" not in "".join(ch.values())
+
+
+def test_headings_without_hashes_are_normalized():
+    got = f"CH00 · Bản án\n\n{BODY}\n\n**CH01** · Arras\n\n{BODY}\n\n### CH2 - Giấy giả\n\n{BODY}\n"
+    assert sorted(V.chapters(got)) == ["CH00", "CH01", "CH02"]
+    assert V.chapters(got)["CH01"].startswith("## CH01 · Arras")
+    assert V.missing_chapters(got, ["CH00", "CH01", "CH02"]) == []
+
+
+def test_every_channel_has_profile():
+    for c in ("CL", "MIM", "CK", "FS", "BUD"):
+        text = V.instructions(c)
+        assert f"Hồ sơ kênh {c}:" in text and "Giới hạn cứng" in text
+    p = V.first_prompt("CL", ["h", "d", "g", "CH00 · a\nCH01 · b"])
+    assert p.count("=====") == 10 and "Chỉ viết CH00 và CH01" in p
