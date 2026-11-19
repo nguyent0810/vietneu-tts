@@ -1,11 +1,13 @@
 """Chạy tool Google Flow "Viết lời đọc" bằng Playwright, không tốn token LLM (#497).
 
     python scripts/flow_viet_loi.py login                      # mở Chrome hồ sơ riêng, chủ kênh đăng nhập Google một lần
+    python scripts/flow_viet_loi.py find                       # tìm tool trong các project mới nhất, lưu link
     python scripts/flow_viet_loi.py probe                      # dò giao diện tool -> output/flow/probe/
     python scripts/flow_viet_loi.py run CL vidocq <thư-mục-input> [--phase ch00-01|full] [--title "..."]
 
 - Link tool: `--url`, hoặc biến môi trường `FLOW_VIET_LOI_URL`, hoặc `output/flow/config.json` {"url": "..."}.
-  Không ghi link vào repo (repo public).
+  Không có link (máy mới) hoặc link hỏng: script tự vào các project mới nhất, mở trang Tools, bấm
+  "Viết lời đọc" và lưu link vào config.json. Không ghi link vào repo (repo public).
 - Hồ sơ Chrome riêng ở `%LOCALAPPDATA%/creator_v2/flow_profile` (ngoài repo). Không in cookie, không ghi log phiên đăng nhập.
 - Thư mục input chứa 4 file theo thứ tự tên: hồ sơ truyện, bảng dữ kiện, giọng mẫu, dàn chương
   (mẫu: `output/test_pack_viet_loi/1_ho_so_truyen.md` … `4_dan_chuong.txt`).
@@ -43,15 +45,57 @@ TAB_RESULT = re.compile(r"kết quả", re.I)
 TAB_INPUT = re.compile(r"màn hình nhập", re.I)
 BTN_DOWNLOAD = re.compile(r"tải về|tải xuống|download", re.I)
 WRITE_TIMEOUT = 45 * 60
+HOME = "https://flow.google.com/"
+TOOL_NAME = re.compile(r"viết lời đọc", re.I)
 
 
-def tool_url(arg: str | None) -> str:
+def tool_url(arg: str | None) -> str | None:
     url = arg or os.environ.get("FLOW_VIET_LOI_URL")
     if not url and CONFIG.is_file():
         url = json.loads(CONFIG.read_text(encoding="utf-8")).get("url")
-    if not url:
-        raise SystemExit("thiếu link tool: --url, FLOW_VIET_LOI_URL hoặc output/flow/config.json")
-    return url
+    return url or None
+
+
+def find_tool(page, max_projects: int = 6) -> str:
+    """Không có link: vào trang chủ Flow, xét các project mới nhất, mở trang Tools và bấm "Viết lời đọc".
+    Link tìm được lưu vào output/flow/config.json (gitignored) để lần sau mở thẳng."""
+    page.goto(HOME)
+    pause(12)
+    ids = list(dict.fromkeys(re.findall(r"/project/([0-9a-f-]{36})", page.content())))
+    if not ids:
+        raise SystemExit("trang chủ Flow không có project nào (chưa đăng nhập? chạy lệnh login)")
+    for pid in ids[:max_projects]:
+        page.goto(f"{HOME}project/{pid}/tools")
+        pause(10)
+        hit = page.get_by_text(TOOL_NAME)
+        if not hit.count():
+            continue
+        hit.last.click()
+        t0 = time.time()
+        while "/tool/" not in page.url and time.time() - t0 < 30:
+            pause(1)
+        if "/tool/" in page.url:
+            url = page.url.split("?")[0]
+            CONFIG.parent.mkdir(parents=True, exist_ok=True)
+            CONFIG.write_text(json.dumps({"url": url}), encoding="utf-8")
+            print(f"đã tìm thấy tool trong project {pid[:8]}…, lưu link vào {CONFIG.relative_to(ROOT)}")
+            return url
+    raise SystemExit(f"không thấy tool \"Viết lời đọc\" trong {min(len(ids), max_projects)} project mới nhất")
+
+
+def open_tool(page, arg: str | None):
+    """Mở tool và trả frame giao diện. Link lưu sẵn mà hỏng (tool bị dựng lại) thì tự tìm lại."""
+    url = tool_url(arg)
+    if url:
+        page.goto(url)
+        try:
+            return applet(page, timeout=60)
+        except SystemExit:
+            if arg:
+                raise
+            print("link đã lưu không mở được tool, tìm lại trong các project mới nhất…")
+    find_tool(page)
+    return applet(page)
 
 
 def browser(p, headless: bool = False):
@@ -86,13 +130,23 @@ def cmd_login(a) -> int:
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
         ctx, page = browser(p)
-        page.goto(tool_url(a.url) if (a.url or os.environ.get("FLOW_VIET_LOI_URL") or CONFIG.is_file())
-                  else "https://flow.google.com/")
-        print("Đăng nhập Google trong cửa sổ Chrome vừa mở, mở được tool thì đóng cửa sổ.")
+        page.goto(tool_url(a.url) or HOME)
+        print("Đăng nhập Google trong cửa sổ Chrome vừa mở, vào được trang chủ Flow thì đóng cửa sổ.")
         try:
             page.wait_for_event("close", timeout=0)
         except Exception:
             pass
+        ctx.close()
+    return 0
+
+
+def cmd_find(a) -> int:
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        ctx, page = browser(p, headless=a.headless)
+        find_tool(page)
+        applet(page)
+        print("mở được giao diện tool")
         ctx.close()
     return 0
 
@@ -102,8 +156,7 @@ def cmd_probe(a) -> int:
     PROBE.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         ctx, page = browser(p)
-        page.goto(tool_url(a.url))
-        fr = applet(page)
+        fr = open_tool(page, a.url)
         pause(3)
         page.screenshot(path=str(PROBE / "page.png"))
         info = {"frames": [f.url.split("?")[0] for f in page.frames], "applet": fr.url.split("?")[0]}
@@ -198,8 +251,7 @@ def cmd_run(a) -> int:
     texts = [f.read_text(encoding="utf-8") for f in files[:4]]
     with sync_playwright() as p:
         ctx, page = browser(p, headless=a.headless)
-        page.goto(tool_url(a.url))
-        fr = applet(page)
+        fr = open_tool(page, a.url)
         pause(3)
         try:
             fr.get_by_role("button", name=TAB_INPUT).first.click()
@@ -240,9 +292,10 @@ def main() -> int:
     utf8_console()
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("login", "probe", "run"):
+    for name in ("login", "find", "probe", "run"):
         s = sub.add_parser(name)
         s.add_argument("--url")
+    sub.choices["find"].add_argument("--headless", action="store_true")
     r = sub.choices["run"]
     r.add_argument("channel")
     r.add_argument("slug", help="đề tài không dấu, vd vidocq")
@@ -251,7 +304,7 @@ def main() -> int:
     r.add_argument("--title", help="tên đề tài hiện trong tool (mặc định = slug)")
     r.add_argument("--headless", action="store_true")
     a = ap.parse_args()
-    return {"login": cmd_login, "probe": cmd_probe, "run": cmd_run}[a.cmd](a)
+    return {"login": cmd_login, "find": cmd_find, "probe": cmd_probe, "run": cmd_run}[a.cmd](a)
 
 
 if __name__ == "__main__":
