@@ -81,7 +81,8 @@ def first_prompt(channel: str, texts: list[str]) -> str:
 
 def rest_prompt(batch: list[str], last: str) -> str:
     return (f"Viết tiếp {', '.join(batch)} theo dàn chương, nối liền mạch sau {last} và giữ đúng giọng các chương "
-            "đã viết. Cùng mọi luật và định dạng như trên. Chỉ trả về các chương này.\n")
+            "đã viết. Cùng mọi luật và định dạng như trên; số đọc như người nói, làm tròn tự nhiên, "
+            "không đọc phần lẻ thập phân. Chỉ trả về các chương này.\n")
 
 
 def ask(prompt: str, out: Path, chat: str | None, a) -> str:
