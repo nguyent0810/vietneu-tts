@@ -7,6 +7,7 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 - Mọi model chép nguyên chữ ghi chú của brief vào lời ("nghịch lý này là lộ trình"). Vì vậy brief chia hai khối: **CHỈ DẪN** (không bao giờ đọc thành lời) và **CHI TIẾT ĐƯỢC DÙNG** (được kể lại bằng lời của người viết).
 - Câu bắt buộc phải có (câu chạm người xem, câu khung dân gian) ghi ở mục riêng, nói rõ "được diễn đạt lại".
 - Chỉ cho ra đúng số chương được hỏi; mỗi chương chỉ viết ý của dòng dàn chương của nó.
+- Lượt L02 (20/11): khuôn cũ mượn thẻ [PD] và dấu nghỉ ‖ của luồng CL (creator_v2). Luồng BUD/FS (`hf_voice`, `tools/prose_to_script.py`) không hiểu hai ký hiệu ấy: giọng đọc đọc ra chữ, và `[/PD] [PD]` làm nhiều câu dính thành một dòng. Tiêu đề "CH00 · …" cũng bị đọc. Định dạng dưới đây theo đúng L01: phần mở không tiêu đề, chương là câu hỏi `## …`.
 
 ---
 
@@ -17,15 +18,13 @@ Lời được giọng AI đọc nguyên văn, nên viết cho tai nghe: dựng 
 QUAN TRỌNG: khối CHỈ DẪN dưới đây là ghi chú cho bạn, KHÔNG được chép chữ nào của nó vào lời đọc (ví dụ không viết "nghịch lý này là lộ trình", "cung chuyển", "mô-típ"). Chỉ dùng ý.
 
 Định dạng trả về (chỉ trả văn bản, không lời dẫn):
-## CH00 · Tên phần mở đầu
+Đoạn văn xuôi của phần mở đầu, KHÔNG có tiêu đề…
+
+## <Câu khán giả gõ tìm của CH01>
 
 Đoạn văn xuôi…
-
-## CH01 · Tên chương
-
-Đoạn văn xuôi…
-- Câu dựng lại cảnh không có tư liệu: bao bằng [PD]…[/PD].
-- Nghỉ dài sau một câu: thêm " ‖" ngay sau dấu kết câu (trước [/PD] nếu câu nằm trong thẻ).
+- Tiêu đề chương chỉ là câu hỏi người xem gõ tìm, không ghi "CH01", không dấu "·": tiêu đề được đọc thành tiếng.
+- Không thẻ, không ký hiệu ([PD], ‖, *, #, ngoặc vuông): giọng đọc đọc mọi ký tự.
 - Không in đậm, in nghiêng, gạch đầu dòng hay ghi chú.
 
 NHIỆM VỤ: chỉ viết <CH00 và CH01> (dài khoảng <1> và <2> phút đọc, ~185 tiếng/phút). Mỗi chương chỉ viết đúng ý dòng dàn chương của nó, kết bằng một câu móc sang chương sau (không răn dạy, không tóm tắt).
