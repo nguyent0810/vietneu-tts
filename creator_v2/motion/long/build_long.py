@@ -53,6 +53,7 @@ import floor  # noqa: E402
 import branch_gate  # noqa: E402
 import long_output as LO  # noqa: E402  (ghi nguyên tử + manifest final, GH-170)
 import lint_html  # noqa: E402
+import factcheck_lint  # noqa: E402
 import sfx_long  # noqa: E402
 import long_ambience as LAMB  # noqa: E402  (spec "ambience": lớp nền không gian dưới giọng + nhạc, trộn ở final)
 import chartdata  # noqa: E402
@@ -1335,6 +1336,9 @@ def do_html(topic, only=None, allow_opening=False):
         if only:
             print("  ! WARNING text totals cover selected chapters only", flush=True)
 
+    for issue in factcheck_lint.lint(topic):
+        print(f"  ! factcheck: {issue}", flush=True)
+
 
 def bgm_items(ch, lines, dur) -> list[dict]:
     """bgm: một dict (cả chương) hoặc danh sách đoạn {file, at (giây trong file), gain, start, end (mốc lời), fin, fout}."""
@@ -1610,8 +1614,18 @@ def do_render(topic, only=None, draft=False, force=False, allow_opening=False):
         print(f"{name}: {out.name} ({time.time() - t0:.0f}s)", flush=True)
 
 
+def _refuse_factcheck(topic, rest):
+    if "--draft" in rest or "--allow-factcheck" in rest:
+        return
+    issues = factcheck_lint.lint(topic)
+    if issues:
+        raise SystemExit("factcheck:\n  " + "\n  ".join(issues)
+                         + f"\nThêm nguồn vào data/long/{topic}/factcheck.md hoặc chạy với --allow-factcheck")
+
+
 def cmd_render(topic, only=None, rest=()):
     """`render`: lint màn trống đầu cảnh TRƯỚC khi xếp hàng render (retro 1 mục 4 lặp ở retro 2 mục 2: chặn bằng máy)."""
+    _refuse_factcheck(topic, rest)
     late = late_report(topic, only)
     if late and "--allow-late" not in rest:
         raise SystemExit("màn trống đầu cảnh (phần tử đầu tiên > %.1fs, cảnh không nền):\n  " % LATE_MAX + "\n  ".join(late)
@@ -1677,9 +1691,10 @@ def _write_final_commit(od: Path) -> None:
         "final.commit")
 
 
-def do_final(topic, check_variety=False, allow_repeat=False):
+def do_final(topic, check_variety=False, allow_repeat=False, rest=()):
     """Một lượt final có manifest (GH-170): `running` trước, `ok` chỉ sau khi final + phụ đề đã công bố.
     Thất bại để final cũ nguyên nhưng manifest `failed`: publish_long/qa_mark từ chối."""
+    _refuse_factcheck(topic, rest)
     with render_lock(f"long {topic} final"):     # cùng khoá với render chương
         branch_gate.refuse(ROOT)     # từ chối trước khi bắt đầu thì chưa động tới manifest/final cũ
         _refuse_unreviewed_sheets(topic)
@@ -1841,4 +1856,4 @@ if __name__ == "__main__":
     elif cmd == "pick":
         do_pick(topic)
     elif cmd == "final":
-        do_final(topic, check_variety=True, allow_repeat="--allow-repeat" in rest)   # manifest lượt + final nguyên tử (GH-170)
+        do_final(topic, check_variety=True, allow_repeat="--allow-repeat" in rest, rest=rest)   # manifest lượt + final nguyên tử (GH-170)
