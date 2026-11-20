@@ -15,7 +15,15 @@ def failed_factcheck(monkeypatch):
         calls.append(topic)
         return ["missing source 2020"]
     monkeypatch.setattr(B.factcheck_lint, "lint", lint)
+    monkeypatch.setattr(B, "_has_factcheck", lambda topic: True)
     return calls
+
+
+def test_render_without_factcheck_file_only_warns(monkeypatch, capsys):
+    monkeypatch.setattr(B, "_has_factcheck", lambda topic: False)
+    monkeypatch.setattr(B.factcheck_lint, "lint", lambda topic: pytest.fail("lint must not run"))
+    B._refuse_factcheck("topic", ())
+    assert "factcheck" in capsys.readouterr().out
 
 
 def test_render_blocks_before_rendering(failed_factcheck, monkeypatch):

@@ -1614,8 +1614,15 @@ def do_render(topic, only=None, draft=False, force=False, allow_opening=False):
         print(f"{name}: {out.name} ({time.time() - t0:.0f}s)", flush=True)
 
 
+def _has_factcheck(topic) -> bool:
+    return (factcheck_lint.ROOT / "data" / "long" / topic / "factcheck.md").exists()
+
+
 def _refuse_factcheck(topic, rest):
     if "--draft" in rest or "--allow-factcheck" in rest:
+        return
+    if not _has_factcheck(topic):
+        print(f"  ! factcheck: chưa có data/long/{topic}/factcheck.md (publish sẽ chặn)", flush=True)
         return
     issues = factcheck_lint.lint(topic)
     if issues:
