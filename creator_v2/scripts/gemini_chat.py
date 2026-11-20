@@ -21,6 +21,8 @@ import sys
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 PROFILE = Path(os.environ.get("GEMINI_PROFILE") or Path.home() / "creator_v2" / "gemini_profile")
 HOME = "https://gemini.google.com/app"
 INPUT = "rich-textarea div[contenteditable=true]"
@@ -154,6 +156,8 @@ def cmd_ask(a) -> int:
 
 
 def main() -> int:
+    from factory.console import utf8_console
+    utf8_console()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("login").set_defaults(fn=cmd_login)
