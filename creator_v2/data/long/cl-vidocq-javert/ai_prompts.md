@@ -76,3 +76,55 @@ Tranh sơn dầu điện ảnh Pháp thế kỷ 19, ánh sáng chiaroscuro kiể
 ## ai_16.png — THUMB: hai nửa một con người
 - Prompt (tiếng Anh): cinematic 19th-century French oil painting, dramatic poster composition. A single close-up face of Vidocq around 40 (same face as refs/ref_vidocq_deveria.jpg) split vertically down the middle: the left half wears a red convict's cap with an iron collar at the neck in cold shadow, the right half wears a black top hat and white high collar of a police chief in warm candlelight. Intense direct gaze at the viewer, deep red-black background with faint chain shapes. Painterly, high contrast, large empty dark area on the right for big title text.
 - Khung: 16:9, 1920x1080
+
+## ai_17.png — CH01 · dòng 0: đêm giông Arras 1775, tiệm bánh
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A violent summer thunderstorm over the tiled roofs of Arras, northern France, 1775, lightning flashing behind crooked gables; below, one warm window of a prosperous bakery glows with oven light and a hint of flour dust in the air. Wide shot from the street, wet cobblestones reflecting amber light, painterly, deep blue storm sky, empty dark sky for titles. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_18.png — CH01 · dòng 10: cậu bé 14 tuổi trốn nhà ra Ostende
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting, night. A 14-year-old boy (Vidocq, curly dark hair, broad jaw as in refs/ref_vidocq_deveria.jpg but a child), clutching a cloth bag, runs along a dark country road toward the distant lights of a harbour town, a heavy moon behind clouds, wind in his coat. Low three-quarter shot from behind, painterly, deep indigo and amber, large dark area left for titles. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_19.png — CH01 · dòng 25: giả lệnh thả trong buồng giam Lille
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting, chiaroscuro. A cell in the Lille prison, 1795: Vidocq at 20 (same face as refs/ref_vidocq_deveria.jpg, younger, dark curls) writes carefully with a quill on a sheet of paper by a single candle while a gaunt fellow prisoner watches over his shoulder, the paper's writing unreadable. Warm candle on both faces, stone walls in shadow, painterly, amber and umber. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_20.png — CH02 · dòng 3: buồng giam Tour Saint-Pierre / Douai
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A cramped damp prison cell in Douai, 1796: water glistening on a stone floor, a mouse near a crust of dry bread, young Vidocq (21, same face as the Devéria portrait, younger) sitting against the wall, head turned to a thin shaft of grey light from a barred slit. Painterly, cold slate and amber, dark empty upper-left for titles. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_21.png — CH03 · dòng 9: chuồng ngựa ven đường, hơn 100 tù nằm đè nhau
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting, night. The inside of a roadside stable in winter 1797, more than a hundred convicts in grey coats lying packed together on rotting straw, chains faintly visible, one lantern hanging from a beam, steam of breath in cold air, a young Vidocq (same face as the Devéria portrait) awake at the front staring at the ceiling. Painterly, warm lantern against cold blue-grey, no injuries. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_22.png — CH04 · dòng 4: gác xép Arras, trốn lính hiến binh
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A cramped attic in Arras, 1800: a broad-shouldered Vidocq (25, same face as refs/ref_vidocq_deveria.jpg) crouches in the corner under a sloped ceiling, one finger to his lips, his old mother beside him with a candle, listening to heavy boots on the street below visible through a small dormer window. Painterly, candle and blue dusk, amber and umber. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_23.png — CH04 · dòng 27: nhảy qua cửa sổ xuống sông Scarpe
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting, night. Vidocq (30, same face as the Devéria portrait) leaps headfirst from an unbarred prison window into the dark river Scarpe, a hat thrown across the water behind him as a decoy, two guards silhouetted at the window with lanterns, water ripples catching lantern light. Dramatic low angle, painterly, deep indigo and amber, no weapons pointed at anyone. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_24.png — CH05 · dòng 29: màn truy đuổi dàn dựng trong đêm Paris
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting, night. Paris 1811: gendarmes with torches and lanterns rush through narrow lanes in a staged manhunt, while in a dark side alley Vidocq (36, top hat, long coat, same face as refs/ref_vidocq_deveria.jpg) stands calm and half-smiling, watching them pass. Rain-slick cobblestones, amber torchlight against blue night, painterly. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_25.png — CH09 · dòng 7: chiến lũy Paris 5–6/6/1832, Vidocq dẫn mật vụ
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A barricade in a narrow Paris street, June 1832, built of overturned carts and paving stones under church-bell smoke; Vidocq (57, grey curls, long coat, same face as the Devéria portrait) leads a few plain-clothes agents along a side wall toward it, hand raised to halt them; insurgents silhouetted on the barricade, no blood, no one aiming at anyone. Painterly, smoky amber and slate. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_26.png — CH10 · dòng 12: cảnh sát đột kích văn phòng Galerie Vivienne 1837
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. Paris, 28 November 1837: police agents in dark coats and top hats pour into the private inquiry office in the glass-roofed Galerie Vivienne, opening drawers and carrying armfuls of papers (unreadable), Vidocq (62, grey curls, same face as the Devéria portrait) stands at his desk with arms crossed, jaw set. Gas-lit arcade glow through the window, painterly, warm interior vs cool arcade light. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_27.png — CH11 · dòng 4: Edgar Allan Poe và Dupin
+- Prompt (tiếng Anh): cinematic 19th-century American oil painting, night. A young Edgar Allan Poe (thin, dark hair, high forehead, black coat) writes at a candlelit desk in a book-lined room; behind him, faint and ghostly, the silhouette of a thoughtful man in a long coat studying a map, as if his invented detective. Painterly, deep blue and amber, empty dark area for titles. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_28.png — CH08 · dòng 9: nhà máy giấy Saint-Mandé thuê cựu tù
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A small paper mill at Saint-Mandé near Paris, 1828: workers in rough clothes (former convicts, no chains) stacking sheets and hauling reels in a bright workshop, Vidocq (53, shirtsleeves, same face as the Devéria portrait) showing a young worker how to hold a frame. Warm daylight through large windows, painterly, hopeful amber and green-grey. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080
+
+## ai_29.png — CH12 · dòng 3: Vidocq già liệt chân sau dịch tả 1854
+- Prompt (tiếng Anh): cinematic 19th-century French oil painting. A modest room on rue Saint-Pierre-Popincourt, Paris, 1855: Vidocq at 80 (white curls, thin, same face as the Devéria portrait, very old) sits in a wheeled chair by a window with a blanket over his legs, a walking stick leaning unused against the wall, watching rain on the glass. Calm, melancholic, no deathbed scene. Painterly, soft amber and grey. No readable text, no gore, no blood, no injuries.
+- Khung: 16:9, 1920x1080

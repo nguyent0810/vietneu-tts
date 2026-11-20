@@ -2013,6 +2013,356 @@
    ],
    "duration_s": 157.8,
    "channel": "CK"
+  },
+  "incredulity": {
+   "file": "incredulity.mp3",
+   "title": "Incredulity",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "incantation": {
+   "file": "incantation.mp3",
+   "title": "Incantation",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "echoes": {
+   "file": "echoes.mp3",
+   "title": "Echoes",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "mystery"
+   ]
+  },
+  "shadows_and_dust": {
+   "file": "shadows_and_dust.mp3",
+   "title": "Shadows and Dust",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "within_our_nature": {
+   "file": "within_our_nature.mp3",
+   "title": "Within Our Nature",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "a_kind_of_hope": {
+   "file": "a_kind_of_hope.mp3",
+   "title": "A Kind Of Hope",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "permafrost": {
+   "file": "permafrost.mp3",
+   "title": "Permafrost",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "last_and_first_light": {
+   "file": "last_and_first_light.mp3",
+   "title": "Last and First Light",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "quiet",
+    "sad"
+   ]
+  },
+  "in_search_of_solitude": {
+   "file": "in_search_of_solitude.mp3",
+   "title": "In Search Of Solitude",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "quiet"
+   ]
+  },
+  "decoherence": {
+   "file": "decoherence.mp3",
+   "title": "Decoherence",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "dark"
+   ]
+  },
+  "aurora": {
+   "file": "aurora.mp3",
+   "title": "Aurora",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "falling_together": {
+   "file": "falling_together.mp3",
+   "title": "Falling Together",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "beyond_these_walls": {
+   "file": "beyond_these_walls.mp3",
+   "title": "Beyond These Walls",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "quiet"
+   ]
+  },
+  "this_too_shall_pass": {
+   "file": "this_too_shall_pass.mp3",
+   "title": "This Too Shall Pass",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "solace": {
+   "file": "solace.mp3",
+   "title": "Solace",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "signal_to_noise": {
+   "file": "signal_to_noise.mp3",
+   "title": "Signal to Noise",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "sad"
+   ]
+  },
+  "reverie": {
+   "file": "reverie.mp3",
+   "title": "Reverie",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "quiet",
+    "calm"
+   ]
+  },
+  "ephemera": {
+   "file": "ephemera.mp3",
+   "title": "Ephemera",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "quiet"
+   ]
+  },
+  "absolution": {
+   "file": "absolution.mp3",
+   "title": "Absolution",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "machina": {
+   "file": "machina.mp3",
+   "title": "Machina",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "tense"
+   ]
+  },
+  "undertow": {
+   "file": "undertow.mp3",
+   "title": "Undertow",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "borealis": {
+   "file": "borealis.mp3",
+   "title": "Borealis",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "quiet"
+   ]
+  },
+  "monomyth_the_distant_sun": {
+   "file": "monomyth_the_distant_sun.mp3",
+   "title": "Monomyth - The Distant Sun",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "monomyth_the_vision": {
+   "file": "monomyth_the_vision.mp3",
+   "title": "Monomyth - The Vision",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "monomyth_the_spaces_between": {
+   "file": "monomyth_the_spaces_between.mp3",
+   "title": "Monomyth - The Spaces Between",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "dark"
+   ]
+  },
+  "monomyth_the_fall": {
+   "file": "monomyth_the_fall.mp3",
+   "title": "Monomyth - The Fall",
+   "author": "Scott Buckley",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "ossuary_1_a_beginning": {
+   "file": "ossuary_1_a_beginning.mp3",
+   "title": "Ossuary 1 - A Beginning",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "quiet"
+   ]
+  },
+  "ossuary_5_rest": {
+   "file": "ossuary_5_rest.mp3",
+   "title": "Ossuary 5 - Rest",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "quiet"
+   ]
+  },
+  "long_note_three": {
+   "file": "long_note_three.mp3",
+   "title": "Long Note Three",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "tense",
+    "mystery"
+   ]
+  },
+  "metaphysik": {
+   "file": "metaphysik.mp3",
+   "title": "Metaphysik",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "wounded": {
+   "file": "wounded.mp3",
+   "title": "Wounded",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "dark"
+   ]
+  },
+  "aftermath": {
+   "file": "aftermath.mp3",
+   "title": "Aftermath",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "dark",
+    "mystery"
+   ]
+  },
+  "cryptic_sorrow": {
+   "file": "cryptic_sorrow.mp3",
+   "title": "Cryptic Sorrow",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "dark"
+   ]
+  },
+  "sad_trio": {
+   "file": "sad_trio.mp3",
+   "title": "Sad Trio",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "sad",
+    "quiet"
+   ]
+  },
+  "distant_tension": {
+   "file": "distant_tension.mp3",
+   "title": "Distant Tension",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "tense",
+    "mystery"
+   ]
   }
  }
 }

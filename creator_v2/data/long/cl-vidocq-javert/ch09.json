@@ -1,0 +1,242 @@
+{
+ "title": "Trận Bão Tháng Sáu Và Cánh Cửa Khép Lại",
+ "lines": [
+  {
+   "t": "Sau cuộc Cách mạng Tháng Bảy năm 1830 lật đổ ngai vàng Charles X, Paris lại rơi vào vòng xoáy hỗn loạn.",
+   "p": 0.8
+  },
+  "Dịch bệnh tả bùng phát cướp đi sinh mạng của hàng chục ngàn người, đói nghèo lan tràn, và các phong trào nổi dậy của quần chúng chực chờ bùng nổ như một thùng thuốc súng.",
+  "Trong cơn bối rối tột cùng, Tổng trấn Cảnh sát mới của Paris, Henri Gisquet, hiểu rằng không ai có thể kiểm soát các ngõ ngách nổi loạn của kinh đô tốt hơn Vidocq.",
+  "Ngày 31 tháng 3 năm 1832, lệnh triệu hồi được ban bố: Vidocq một lần nữa bước trở lại chiếc ghế chỉ huy lực lượng Sûreté.",
+  "Lần trở lại này ngắn ngủi nhưng đẫm máu.",
+  "Ngày 5 tháng 6 năm 1832, tang lễ của Tướng Lamarque — một vị tướng được dân chúng tôn sùng — bùng nổ thành một cuộc khởi nghĩa vũ trang quy mô lớn chống lại nền Quân chủ Tháng Bảy.",
+  "Hàng ngàn sinh viên, công nhân và thợ thuyền dựng chiến lũy khắp các khu phố cổ Paris.",
+  "Giữa làn khói súng mịt mù và tiếng chuông báo động dồn dập vang lên từ các tháp chuông nhà thờ, Vidocq đích thân dẫn đầu các mật vụ Sûreté xông pha vào các hẻm phố hiểm trở, đối đầu trực diện với những mũi súng của quân khởi nghĩa trên các chiến lũy.",
+  "Cuộc nổi dậy bị dập tắt trong bể máu, nhưng phương pháp trấn áp tàn bạo và sự hiện diện của đội quân cựu tù Sûreté một lần nữa trở thành tâm điểm của bão táp dư luận.",
+  "Phe đối lập chỉ trích kịch liệt việc chính quyền sử dụng những kẻ có tiền án để đàn áp người dân.",
+  "Nghiêm trọng hơn, các đối thủ trong ngành cảnh sát lại chớp thời cơ tung ra những đòn hiểm: một mật vụ dưới quyền Vidocq bị bắt và kết án tù vì dính líu đến một vụ trộm, kéo theo những cáo buộc dai dẳng rằng Vidocq dung túng tội phạm.",
+  "Hiểu rằng mình chỉ là một công cụ tạm thời được lôi ra dùng trong lúc lâm nguy rồi sẽ bị vứt bỏ, Vidocq không chờ đợi một đòn thanh trừng mới.",
+  "Ngày 15 tháng 11 năm 1832, ông đệ đơn từ chức lần thứ hai, lấy lý do người vợ Fleuride đang lâm bệnh nặng cần người chăm sóc.",
+  "Lần này, sự ra đi của ông đánh dấu dấu chấm hết cho một kỷ nguyên.",
+  "Ngay sau khi Vidocq rời đi, chính quyền Paris lập tức giải thể toàn bộ lực lượng Sûreté cũ.",
+  "Họ tái tổ chức lại đơn vị an ninh từ đầu, với một điều luật sắt đá được ban hành: nghiêm cấm vĩnh viễn không bao giờ tuyển mộ bất kỳ ai từng mang tiền án tiền sự vào hàng ngũ cảnh sát.",
+  "Kỷ nguyên dùng kẻ trộm để bắt kẻ trộm chính thức khép lại.",
+  {
+   "t": "Cánh cửa của bộ máy công quyền vĩnh viễn đóng sập trước mặt Eugène-François Vidocq.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "9",
+   "k": "CHƯƠNG 09",
+   "title": "TRẬN BÃO\nTHÁNG SÁU",
+   "sub": "PARIS · 1832",
+   "titleAt": [
+    0,
+    "Sau"
+   ],
+   "bg": "nuits214",
+   "at": null
+  },
+  {
+   "type": "broll",
+   "at": 1,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198013"
+  },
+  {
+   "type": "photo",
+   "img": "refuge215",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "pull_out",
+   "at": [
+    1,
+    "tràn"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 2,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "32540543"
+  },
+  {
+   "type": "photo",
+   "img": "pont155",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "tone": "bw",
+   "cam": "tilt_up",
+   "at": [
+    2,
+    "thể"
+   ]
+  },
+  {
+   "type": "date",
+   "day": "31 THÁNG 3 · NĂM",
+   "date": "1832",
+   "bg": "vcn2",
+   "at": 3,
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "date",
+   "day": "5 THÁNG 6 · NĂM",
+   "date": "1832",
+   "bg": "plan102",
+   "illus": "BẢN ĐỒ · PARIS THẾ KỶ 19",
+   "at": 4,
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "broll",
+   "at": [
+    5,
+    "được"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198005"
+  },
+  {
+   "type": "photo",
+   "img": "rue209",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "dolly",
+   "at": 6
+  },
+  {
+   "type": "photo",
+   "img": "ai25",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "fx": "fog",
+   "at": 7
+  },
+  {
+   "type": "photo",
+   "img": "ai25",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "dolly",
+   "at": [
+    7,
+    "mật"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198011"
+  },
+  {
+   "type": "photo",
+   "img": "bal206",
+   "illus": "MINH HỌA · TRANH CHÂM BIẾM DAUMIER",
+   "cam": "pan",
+   "at": [
+    8,
+    "thành"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "ref216",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "tilt_up",
+   "at": 10
+  },
+  {
+   "type": "broll",
+   "at": [
+    10,
+    "kết"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198014"
+  },
+  {
+   "type": "date",
+   "day": "15 THÁNG 11 · NĂM",
+   "date": "1832",
+   "bg": "vcn1",
+   "at": [
+    11,
+    "một"
+   ],
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 12,
+   "vid": "12550702"
+  },
+  {
+   "type": "ledger",
+   "title": "SAU KHI VIDOCQ RỜI ĐI",
+   "rows": [
+    {
+     "k": "SÛRETÉ CŨ",
+     "v": "BỊ GIẢI THỂ",
+     "at": 13
+    },
+    {
+     "k": "LUẬT MỚI",
+     "v": "CẤM TUYỂN NGƯỜI TỪNG CÓ TIỀN ÁN",
+     "at": 13
+    }
+   ],
+   "bg": "conc220",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "bfer2",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "dolly",
+   "at": 14
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KỶ NGUYÊN DÙNG\nKẺ TRỘM\nBẮT KẺ TRỘM KHÉP\nLẠI",
+     "at": 15,
+     "acc": true
+    }
+   ],
+   "bg": "vrijk",
+   "at": 15
+  },
+  {
+   "type": "photo",
+   "img": "marville",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "pull_out",
+   "at": [
+    15,
+    "bất"
+   ]
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 17,
+   "vid": "18360083"
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 09",
+  "t": "TRẬN BÃO THÁNG SÁU"
+ },
+ "bgm": {
+  "mood": "dark",
+  "at": 0,
+  "gain": 0.12
+ }
+}
