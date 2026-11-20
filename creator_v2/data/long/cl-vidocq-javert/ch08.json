@@ -1,0 +1,289 @@
+{
+ "title": "Rũ Áo Từ Quan Và Tiếng Vang Châu Lục",
+ "lines": [
+  {
+   "t": "Mùa hè năm 1827, sức chịu đựng của Vidocq chạm đáy.",
+   "p": 0.8
+  },
+  "Sau hai lần liên tiếp bị Marc Duplessis khiển trách vô căn cứ, người đàn ông năm mươi mốt tuổi hiểu rằng mình không thể tiếp tục cúi đầu trước những kẻ đạo đức giả nơi hành lang quyền lực.",
+  "Ngày 20 tháng 6 năm 1827, Vidocq đặt bút viết lá thư từ chức chấn động gửi thẳng lên cấp trên:",
+  {
+   "t": "Mười tám năm nay tôi phục vụ cảnh sát một cách xuất sắc.",
+   "q": 1
+  },
+  "Tôi chưa từng nhận một lời khiển trách nào từ các vị tiền nhiệm của ngài.",
+  "... tôi xin được ngài nhận cho đơn từ chức.",
+  "Lời từ chức đanh thép khép lại gần hai thập kỷ tung hoành của huyền thoại Sûreté.",
+  "Chiếc ghế chỉ huy được bàn giao lại cho Coco Lacour — một cựu tù nhân khác do chính Vidocq dìu dắt.",
+  "Vidocq thu dọn hành lý rời khỏi Tổng nha Cảnh sát.",
+  "Ông dồn tiền mua một khu đất tại Saint-Mandé, mở một nhà máy sản xuất giấy và thuê chính những cựu tù nhân vừa mãn hạn vào làm việc để giúp họ hoàn lương.",
+  "Đầu năm 1830, ông tìm thấy bến đỗ bình yên bên người vợ Fleuride Maniez.",
+  "Nhưng thế giới không chịu để người đàn ông ấy yên nghỉ.",
+  "Tháng 12 năm 1828, bộ hồi ký bốn tập mang tên Hồi ký Vidocq — Mémoires de Vidocq — chính thức phát hành tại Paris.",
+  "Mặc dù có sự tham gia chắp bút của những người viết thuê như L'Héritier de l'Ain và Morice, cuốn sách vẫn mang trọn vẹn linh hồn, sự sắc bén và cuộc đời giông bão của chính Eugène-François Vidocq.",
+  "Đó là một quả bom nổ tung giữa lòng châu Âu thế kỷ mười chín.",
+  "Lần đầu tiên trong lịch sử, những bí mật đen tối nhất của thế giới ngầm ngục tù, những màn vượt ngục không tưởng, những thủ đoạn cải trang thần sầu và góc khuất nhơ bẩn của cỗ máy quyền lực được phơi bày trần trụi dưới ánh sáng.",
+  "Hơn năm mươi ngàn bản sách được bán sạch chỉ trong năm đầu tiên — một con số kỷ lục chưa từng thấy trong ngành xuất bản thời bấy giờ.",
+  "Cuốn hồi ký nhanh chóng được dịch sang tiếng Anh, tái bản khắp châu Âu và trở thành nguồn cảm hứng cho hàng loạt vở kịch ăn khách biểu diễn suốt nhiều tháng liền tại các nhà hát ở London.",
+  "Từ một kẻ bị xích cổ nơi đáy cùng xã hội, cái tên Vidocq bỗng chốc trở thành một biểu tượng văn hóa toàn cầu, một tượng đài thám tử được hàng triệu người say mê ngưỡng mộ.",
+  "Nhưng tiếng vỗ tay của công chúng lại kéo theo những tiếng gầm gừ giận dữ của kẻ thù.",
+  "Những cuốn sách nặc danh thi nhau xuất bản nhằm bóc trần, phỉ báng Vidocq, kết tội ông là kẻ phản bội đồng đảng, kẻ bán linh hồn cho cảnh sát để kiếm chác danh vọng.",
+  "Cùng lúc đó, cuộc khủng hoảng kinh tế khiến nhà máy giấy tại Saint-Mandé rơi vào cảnh phá sản.",
+  {
+   "t": "Giữa lúc số phận tưởng chừng lại đẩy ông vào ngõ cụt, một cơn địa chấn chính trị mới lại làm rung chuyển Paris.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "8",
+   "k": "CHƯƠNG 08",
+   "title": "RŨ ÁO\nTỪ QUAN",
+   "sub": "THÁNG 6/1827 · HỒI KÝ 1828",
+   "titleAt": [
+    0,
+    "Mùa"
+   ],
+   "bg": "auto115",
+   "at": null
+  },
+  {
+   "type": "photo",
+   "img": "vgr",
+   "cam": "pull_out",
+   "at": [
+    1,
+    "ông"
+   ]
+  },
+  {
+   "type": "date",
+   "day": "20 THÁNG 6 · NĂM",
+   "date": "1827",
+   "bg": "auto115",
+   "illus": "MINH HỌA · THƯ TỪ THẾ KỶ 19",
+   "at": 2,
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "quote",
+   "text": "Mười tám năm nay tôi phục vụ cảnh sát một cách xuất sắc.",
+   "by": "THƯ TỪ CHỨC",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 3,
+   "typeAt": 3,
+   "bg": "vcrop",
+   "at": 3
+  },
+  {
+   "type": "photo",
+   "img": "vmem",
+   "illus": "MINH HỌA · TƯ LIỆU THẾ KỶ 19",
+   "cam": "push_in",
+   "at": 4
+  },
+  {
+   "type": "photo",
+   "img": "vbm",
+   "cam": "dolly",
+   "at": 6
+  },
+  {
+   "type": "photo",
+   "img": "stmande",
+   "illus": "ẢNH NGÀY NAY · SAINT-MANDÉ",
+   "cam": "push_in",
+   "at": 7
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "3999371"
+  },
+  {
+   "type": "photo",
+   "img": "ai28",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "fx": "dust",
+   "at": 9
+  },
+  {
+   "type": "photo",
+   "img": "ai28",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.72,
+    0.45
+   ],
+   "cam": "dolly",
+   "at": [
+    9,
+    "thuê"
+   ]
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 10,
+   "vid": "10425839"
+  },
+  {
+   "type": "photo",
+   "img": "ai11",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "dolly",
+   "fx": "dust",
+   "at": 12
+  },
+  {
+   "type": "photo",
+   "img": "vmem",
+   "cam": "pull_out",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "vpost",
+   "cam": "dolly",
+   "at": [
+    13,
+    "Morice"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "vpost",
+   "cam": "push_in",
+   "at": 14
+  },
+  {
+   "type": "broll",
+   "at": [
+    15,
+    "đen"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "12550702"
+  },
+  {
+   "type": "counter",
+   "suffix": " BẢN",
+   "label": "BÁN TRONG NĂM ĐẦU TIÊN",
+   "from": 0,
+   "to": 50000,
+   "prefix": "HƠN ",
+   "bg": "vmem",
+   "illus": "HỒI KÝ VIDOCQ · 1828",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "at": [
+    15,
+    "góc"
+   ]
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 16,
+   "vid": "8720604"
+  },
+  {
+   "type": "photo",
+   "img": "daum0",
+   "illus": "MINH HỌA · SÂN KHẤU PARIS THẾ KỶ 19",
+   "cam": "pan",
+   "at": 17
+  },
+  {
+   "type": "photo",
+   "img": "vpost",
+   "cam": "dolly",
+   "at": [
+    17,
+    "ăn"
+   ]
+  },
+  {
+   "type": "timeline",
+   "title": null,
+   "items": [
+    {
+     "year": "1828",
+     "text": "HỒI KÝ RA MẮT TẠI PARIS",
+     "at": [
+      18,
+      "tên"
+     ]
+    },
+    {
+     "year": "NĂM ĐẦU",
+     "text": "HƠN 50.000 BẢN",
+     "at": [
+      18,
+      "tên"
+     ]
+    },
+    {
+     "year": "SAU ĐÓ",
+     "text": "DỊCH SANG TIẾNG ANH",
+     "at": [
+      18,
+      "tên"
+     ]
+    }
+   ],
+   "bg": "daum0",
+   "illus": "MINH HỌA · SÂN KHẤU PARIS THẾ KỶ 19",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "at": [
+    18,
+    "tên"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "bal204",
+   "illus": "MINH HỌA · TRANH CHÂM BIẾM DAUMIER",
+   "cam": "pan",
+   "at": 19
+  },
+  {
+   "type": "photo",
+   "img": "bal205",
+   "illus": "MINH HỌA · TRANH CHÂM BIẾM DAUMIER",
+   "cam": "tilt_up",
+   "at": [
+    20,
+    "nhằm"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "stmande",
+   "illus": "ẢNH NGÀY NAY · SAINT-MANDÉ",
+   "cam": "push_in",
+   "at": 21
+  },
+  {
+   "type": "photo",
+   "img": "plan102",
+   "illus": "BẢN ĐỒ · PARIS THẾ KỶ 19",
+   "cam": "pan",
+   "at": 22
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 08",
+  "t": "RŨ ÁO TỪ QUAN"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
+}

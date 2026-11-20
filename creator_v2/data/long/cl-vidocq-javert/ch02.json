@@ -1,0 +1,248 @@
+{
+ "title": "Vành Móng Ngựa Và Chiếc Vé Xuống Địa Ngục",
+ "lines": [
+  {
+   "t": "Tiếng chỉ điểm của đám bạn tù ở Lille như một đòn giáng chí mạng.",
+   "p": 0.8
+  },
+  "Trong mắt pháp luật của thời Đốc chính hỗn loạn, không có chỗ cho những lời thanh minh vô tội.",
+  "Một gã cựu binh ngỗ ngược, từng đào ngũ, từng vào tù ra tội vì ẩu đả, nay lại dính vào một vụ làm giả giấy tờ công quyền để thả phạm nhân — công lý thời bấy giờ không cần thêm bất kỳ bằng chứng nào để khép lại số phận của gã.",
+  "Những tháng ngày sau đó là chuỗi ngày đày ải qua các buồng giam tối tăm, ẩm mốc của ngục Tour Saint-Pierre rồi ngục Douai, nơi sàn đá nhầy nhụa nước bẩn và chuột bọ rúc rỉa từng vụn bánh khô.",
+  "Vụ án bị trì hoãn hết tháng này qua tháng khác, gặm nhấm từng chút kiên nhẫn cuối cùng của gã trai trẻ.",
+  "Và rồi, ngày định mệnh cũng đến vào một buổi chiều buốt giá cuối tháng Mười Hai năm 1796.",
+  "Tòa án Douai mở phiên xét xử.",
+  "Đứng cạnh Vidocq trước vành móng ngựa là César Herbaux — kẻ cùng bị cáo buộc nhúng tay vào việc giả mạo con dấu.",
+  "Không khí trong phòng xử đặc quánh mùi nến sáp cháy dở và sự thù địch của bồi thẩm đoàn.",
+  "Mọi lời khai phủ nhận, mọi nỗ lực biện hộ của Vidocq đều chìm nghỉm trước định kiến lạnh lùng của tòa án.",
+  "Họ tuyên gã phạm tội cố ý làm giả giấy tờ với mưu đồ phạm pháp.",
+  "Tiếng búa gỗ gõ cắc một tiếng khô khốc trên bàn thẩm phán.",
+  "Bản án tám năm khổ sai giáng xuống như một nhát rìu chặt đứt tuổi hai mươi mốt của gã trai tiệm bánh Arras.",
+  "Tám năm đày ải nơi các hầm tàu ngục tối, nơi mạng người rẻ hơn một mắt xích rỉ sét!",
+  "Nhưng giữa lúc tuyệt vọng nhất, thứ bản năng hoang dã của Vidocq lại trỗi dậy kỳ lạ.",
+  "Người ta chờ đợi một sự suy sụp, những giọt nước mắt van xin, hay ít nhất là một lá đơn kháng cáo để trì hoãn ngày thi hành án.",
+  "Nhưng Vidocq lạnh lùng quay lưng.",
+  "Kháng cáo ư?",
+  "Kháng cáo với những thủ tục rườm rà của tòa án chỉ giam chân gã thêm vài tháng mục rữa trong bốn bức tường đá vô vọng này.",
+  "Gã cần bước ra ngoài.",
+  "Gã cần bị tống lên đường đi đày.",
+  {
+   "t": "Bởi chỉ trên con đường thiên lý dài hàng trăm dặm ấy, giữa sự sơ hở của những toán lính áp giải mệt mỏi, cơ hội để bẻ gãy gông cùm mới thực sự mở ra.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "2",
+   "k": "CHƯƠNG 02",
+   "title": "VÀNH MÓNG NGỰA\nVÀ CHIẾC VÉ",
+   "sub": "DOUAI · THÁNG 12/1796",
+   "titleAt": [
+    0,
+    "Tiếng"
+   ],
+   "bg": "conc225",
+   "at": null
+  },
+  {
+   "type": "photo",
+   "img": "cour118",
+   "illus": "MINH HỌA · PHIÊN TÒA PHÁP THẾ KỶ 19",
+   "cam": "pan",
+   "at": 1
+  },
+  {
+   "type": "file",
+   "k": "HỒ SƠ · LILLE 1795",
+   "name": "VIDOCQ",
+   "desc": "CỰU BINH · ĐÀO NGŨ · ẨU ĐẢ",
+   "rows": [
+    {
+     "k": "TỘI MỚI",
+     "v": "LÀM GIẢ CÔNG VĂN",
+     "at": 2
+    },
+    {
+     "k": "BẰNG CHỨNG",
+     "v": "KHÔNG CẦN THÊM",
+     "at": 2
+    }
+   ],
+   "img": "brx",
+   "tone": "sepia",
+   "at": 2
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": [
+    2,
+    "để"
+   ],
+   "vid": "198011"
+  },
+  {
+   "type": "photo",
+   "img": "ai20",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": 3
+  },
+  {
+   "type": "photo",
+   "img": "ai20",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.3,
+    0.5
+   ],
+   "cam": "dolly",
+   "at": [
+    3,
+    "Tour"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "douai124",
+   "illus": "BẢN ĐỒ · DOUAI THẾ KỶ 18",
+   "cam": "pan",
+   "at": 4
+  },
+  {
+   "type": "date",
+   "day": "TÒA ÁN DOUAI MỞ PHIÊN · CUỐI THÁNG 12",
+   "date": "1796",
+   "bg": "douai124",
+   "illus": "BẢN ĐỒ · DOUAI",
+   "at": 5,
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "broll",
+   "at": 7,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198015"
+  },
+  {
+   "type": "print",
+   "img": "cr43",
+   "right": false,
+   "side": {
+    "k": "HỒI KÝ · 1829",
+    "h": "HAI BỊ CÁO",
+    "lines": [
+     {
+      "text": "VIDOCQ",
+      "at": 8
+     },
+     {
+      "text": "CÉSAR HERBAUX",
+      "at": 8
+     }
+    ]
+   },
+   "caption": "MINH HỌA · HỒI KÝ VIDOCQ, 1829",
+   "at": 8
+  },
+  {
+   "type": "photo",
+   "img": "bdep2",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "push_in",
+   "at": 9
+  },
+  {
+   "type": "photo",
+   "img": "palais114",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "dolly",
+   "at": 10
+  },
+  {
+   "type": "counter",
+   "suffix": " NĂM",
+   "label": "KHỔ SAI · TUỔI HAI MƯƠI MỐT",
+   "from": 0,
+   "to": 8,
+   "bg": "tbazar",
+   "illus": "TRANH · KHỔ SAI THẾ KỶ 19",
+   "at": 12
+  },
+  {
+   "type": "photo",
+   "img": "gal35",
+   "illus": "TRANH · TÙ KHỔ SAI THẾ KỶ 19",
+   "cam": "pull_out",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "bser2",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "pan",
+   "at": 14
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 15,
+   "vid": "198014"
+  },
+  {
+   "type": "kinetic",
+   "items": [
+    {
+     "text": "KHÁNG CÁO Ư?",
+     "at": 16,
+     "acc": true
+    },
+    {
+     "text": "CHỈ GIAM CHÂN THÊM VÀI THÁNG",
+     "at": 16,
+     "sm": true
+    }
+   ],
+   "bg": "conc227",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "at": 16
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": [
+    18,
+    "vài"
+   ],
+   "vid": "18360083"
+  },
+  {
+   "type": "photo",
+   "img": "road52",
+   "illus": "MINH HỌA · ĐƯỜNG QUA NƯỚC PHÁP",
+   "cam": "tilt_up",
+   "at": 21
+  },
+  {
+   "type": "photo",
+   "img": "chain22",
+   "illus": "TRANH · ĐOÀN TÙ KHỔ SAI TOULON",
+   "cam": "push_in",
+   "at": [
+    21,
+    "toán"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 02",
+  "t": "VÀNH MÓNG NGỰA"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
+}

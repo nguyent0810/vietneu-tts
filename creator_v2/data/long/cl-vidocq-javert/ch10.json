@@ -1,0 +1,343 @@
+{
+ "title": "Thám Tử Đầu Tiên Trong Vòng Vây Thù Địch",
+ "lines": [
+  {
+   "t": "Bị bộ máy nhà nước hất cẳng, nhưng năng lượng và bộ óc phá án của Vidocq thì không luật lệ nào có thể dập tắt.",
+   "p": 0.8
+  },
+  "Nếu chính quyền không cho phép ông làm cảnh sát, ông sẽ tự tạo ra một đế chế điều tra của riêng mình.",
+  "Ngay sau khi rời khỏi Sûreté, giữa trung tâm thương mại Galerie Vivienne tráng lệ bậc nhất Paris, Vidocq cho treo tấm biển bằng đồng thu hút mọi ánh nhìn: \"Văn phòng Cung cấp Thông tin Thương mại\" — Le Bureau des Renseignements.",
+  "Đó chính là khoảnh khắc khai sinh ra công ty thám tử tư nhân đầu tiên trong lịch sử nhân loại!",
+  "Với hàng chục điều tra viên dưới quyền, văn phòng của Vidocq nhanh chóng trở thành một địa chỉ quyền lực song hành cùng cảnh sát công quyền.",
+  "Giới thương nhân đổ xô đến nhờ ông điều tra những vụ lừa đảo thương mại, truy tìm con nợ bỏ trốn; các gia đình quý tộc tìm đến ông để thẩm tra tung tích những kẻ mạo danh gia tài hay các vụ ngoại tình kín đáo.",
+  "Với mạng lưới chân rết phủ rộng khắp nước Pháp và kho dữ liệu tội phạm vô giá, Vidocq giải quyết những vụ án mà cảnh sát nhà nước bó tay chịu trói.",
+  "Danh tiếng và sự giàu có lại một lần nữa tìm đến với người đàn ông không bao giờ chịu khuất phục.",
+  "Thế nhưng, sự ngạo nghễ của một \"đế chế thám tử tư nhân\" nằm ngoài vòng kiểm soát của nhà nước, lại do một cựu tù khổ sai cầm đầu, là một chiếc gai nhức nhối chọc thẳng vào mắt chính quyền.",
+  "Cảnh sát Paris không thể chấp nhận việc dân chúng tin tưởng một văn phòng tư nhân hơn là các đồn cảnh sát chính quy.",
+  "Họ quyết định giáng một đòn chí mạng để đè bẹp Vidocq.",
+  "Ngày 28 tháng 11 năm 1837, một lực lượng cảnh sát hùng hậu bất ngờ đột kích vào trụ sở Galerie Vivienne.",
+  "Họ xông vào các gian phòng làm việc, lục tung từng ngăn kéo gỗ, niêm phong và tịch thu hơn ba ngàn năm trăm hồ sơ mật ghi chép thông tin điều tra của khách hàng.",
+  "Vidocq bị còng tay lôi đi trước sự chứng kiến của đám đông phố thị.",
+  "Ông bị ném vào nhà tù Sainte-Pélagie, trải qua mùa Giáng sinh và Năm mới sau song sắt với ba tội danh nặng nề: lừa đảo chiếm đoạt tiền, mua chuộc công chức và mạo nhận quyền lực nhà nước.",
+  "Phiên tòa xét xử ông trở thành tâm điểm của báo giới châu Âu.",
+  "Nhưng giữa vòng vây pháp lý nghẹt thở, gã cựu tù khổ sai năm xưa một lần nữa chứng minh bản lĩnh thép: ông tự đứng ra bào chữa, vạch trần sự ghen ăn tức ở và âm mưu triệt hạ bẩn thỉu của bộ máy cảnh sát chính quyền.",
+  "Tháng Hai năm 1838, trước những lập luận đanh thép của ông, thẩm phán buộc phải tuyên bố bác bỏ toàn bộ các cáo buộc và trả tự do cho Vidocq.",
+  "Dù vậy, cuộc chiến với nhà nước không dừng lại ở đó.",
+  "Những vụ bắt bớ, những cuộc khám xét và các phiên tòa dai dẳng tiếp theo trong suốt thập niên 1840 đã bào mòn sức khỏe và bóp nghẹt tài chính của văn phòng thám tử.",
+  {
+   "t": "Vidocq có thể chiến thắng từng phiên tòa, nhưng ông không thể đánh bại được sự kiên nhẫn lạnh lùng của cả một bộ máy thể chế đang quyết tâm xóa sổ ông.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "10",
+   "k": "CHƯƠNG 10",
+   "title": "THÁM TỬ ĐẦU TIÊN\nTRONG VÒNG VÂY",
+   "sub": "GALERIE VIVIENNE · 1833–1838",
+   "titleAt": [
+    0,
+    "Bị"
+   ],
+   "bg": "palais114",
+   "at": null
+  },
+  {
+   "type": "photo",
+   "img": "ai12",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": 1
+  },
+  {
+   "type": "file",
+   "k": "LE BUREAU DES\nRENSEIGNEMENTS",
+   "name": "GALERIE\nVIVIENNE",
+   "desc": "VĂN PHÒNG THÔNG TIN THƯƠNG MẠI",
+   "rows": [
+    {
+     "k": "KHAI SINH",
+     "v": "CÔNG TY THÁM TỬ TƯ ĐẦU TIÊN",
+     "at": 2
+    }
+   ],
+   "bg": "rue208",
+   "at": 2
+  },
+  {
+   "type": "photo",
+   "img": "ai12",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.75,
+    0.5
+   ],
+   "cam": "dolly",
+   "at": [
+    2,
+    "tấm"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 3,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "32540543"
+  },
+  {
+   "type": "photo",
+   "img": "nuits214",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "tilt_up",
+   "at": 4
+  },
+  {
+   "type": "broll",
+   "at": 5,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198011"
+  },
+  {
+   "type": "photo",
+   "img": "auto115",
+   "illus": "MINH HỌA · TƯ LIỆU THẾ KỶ 19",
+   "cam": "dolly",
+   "at": [
+    5,
+    "tộc"
+   ]
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": [
+    6,
+    "rộng"
+   ],
+   "vid": "12123574"
+  },
+  {
+   "type": "photo",
+   "img": "plan102",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "pull_out",
+   "at": 7
+  },
+  {
+   "type": "broll",
+   "at": [
+    8,
+    "chế"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198014"
+  },
+  {
+   "type": "photo",
+   "img": "bal206",
+   "illus": "MINH HỌA · TRANH CHÂM BIẾM DAUMIER",
+   "cam": "tilt_up",
+   "at": [
+    8,
+    "thẳng"
+   ]
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": 10,
+   "vid": "10425839"
+  },
+  {
+   "type": "photo",
+   "img": "bdep2",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "push_in",
+   "at": 11
+  },
+  {
+   "type": "photo",
+   "img": "ai26",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.55,
+    0.5
+   ],
+   "cam": "dolly",
+   "fx": "dust",
+   "at": 12
+  },
+  {
+   "type": "photo",
+   "img": "ai26",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": [
+    12,
+    "thu"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "bser2",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "dolly",
+   "at": 13
+  },
+  {
+   "type": "broll",
+   "at": 14,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "18360083"
+  },
+  {
+   "type": "ledger",
+   "title": "BA TỘI DANH",
+   "rows": [
+    {
+     "k": "LỪA ĐẢO",
+     "v": "CHIẾM ĐOẠT TIỀN",
+     "at": [
+      14,
+      "nặng"
+     ]
+    },
+    {
+     "k": "MUA CHUỘC",
+     "v": "CÔNG CHỨC",
+     "at": [
+      14,
+      "nặng"
+     ]
+    },
+    {
+     "k": "MẠO NHẬN",
+     "v": "QUYỀN LỰC NHÀ NƯỚC",
+     "at": [
+      14,
+      "nặng"
+     ]
+    }
+   ],
+   "bg": "ai13",
+   "illus": "PHỎNG DỰNG",
+   "at": [
+    14,
+    "nặng"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "cour118",
+   "illus": "MINH HỌA · PHIÊN TÒA PHÁP THẾ KỶ 19",
+   "cam": "pan",
+   "at": 15
+  },
+  {
+   "type": "print",
+   "img": "vcn1",
+   "right": false,
+   "side": {
+    "k": "PHIÊN TÒA · 1838",
+    "h": "TỰ BÀO CHỮA",
+    "lines": [
+     {
+      "text": "VẠCH TRẦN ÂM MƯU",
+      "at": [
+       16,
+       "tù"
+      ]
+     },
+     {
+      "text": "CỦA BỘ MÁY CẢNH SÁT",
+      "at": [
+       16,
+       "tù"
+      ]
+     }
+    ]
+   },
+   "caption": "VIDOCQ",
+   "at": [
+    16,
+    "tù"
+   ]
+  },
+  {
+   "type": "date",
+   "day": "THÁNG 2 · TUYÊN VÔ TỘI · NĂM",
+   "date": "1838",
+   "bg": "cour118",
+   "illus": "MINH HỌA · PHIÊN TÒA PHÁP THẾ KỶ 19",
+   "at": [
+    16,
+    "tức"
+   ],
+   "srcnote": "NGUỒN: WIKIPEDIA · HỒI KÝ VIDOCQ"
+  },
+  {
+   "type": "photo",
+   "img": "cr41",
+   "illus": "MINH HỌA · HỒI KÝ VIDOCQ, 1829",
+   "cam": "tilt_up",
+   "at": 17
+  },
+  {
+   "type": "photo",
+   "img": "refuge215",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "push_in",
+   "at": 18
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": [
+    19,
+    "theo"
+   ],
+   "vid": "30117908"
+  },
+  {
+   "type": "photo",
+   "img": "vgr",
+   "cam": "dolly",
+   "kin": [
+    {
+     "text": "THẮNG TỪNG PHIÊN TÒA",
+     "at": [
+      20,
+      "phiên"
+     ],
+     "acc": true
+    },
+    {
+     "text": "THUA CẢ BỘ MÁY",
+     "at": [
+      20,
+      "phiên"
+     ],
+     "sm": true
+    }
+   ],
+   "at": [
+    20,
+    "phiên"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 10",
+  "t": "THÁM TỬ ĐẦU TIÊN"
+ },
+ "bgm": {
+  "mood": "mystery",
+  "at": 0,
+  "gain": 0.12
+ }
+}

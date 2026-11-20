@@ -1,0 +1,194 @@
+{
+ "title": "Bản Án Mùa Đông Và Kẻ Hai Mặt",
+ "lines": [
+  "Mùa đông năm 1796, hơi lạnh từ những bức tường đá ẩm mục của tòa án Douai phả ra buốt thấu xương.",
+  "Dưới ánh nến leo lét, tiếng xiềng sắt cọ xuống sàn gỗ ken két trong bầu không khí đặc quánh mùi mồ hôi và tuyệt vọng.",
+  "Tiếng búa thẩm phán giáng xuống, khép lại tuổi trẻ của gã thanh niên hai mươi mốt tuổi bằng một bản án lạnh lùng:",
+  {
+   "t": "Tuyên François Vidocq và César Herbaux chịu hình phạt khổ sai tám năm.",
+   "q": 1
+  },
+  "Tám năm khổ sai chỉ vì một tờ giấy ra tù làm giả!",
+  "Thế nhưng, kẻ đứng trước vành móng ngựa không hề run rẩy, cũng chẳng thèm kháng cáo.",
+  "Kháng cáo chỉ làm gã chôn chân thêm vài tháng trong ngục tối... còn trong đầu gã, kế hoạch bẻ xích trốn dọc đường đi đày đã sớm thành hình.",
+  "Nhưng nghịch lý kỳ dị nhất của lịch sử tội phạm Pháp lại bắt đầu từ chính bản án ấy.",
+  "Mười lăm năm sau, vào cuối năm 1811, chính gã tù từng bẻ khóa trốn khỏi địa ngục trần gian Toulon lại bước vào hành lang quyền lực để ngầm điều hành lực lượng mật vụ Paris, trước khi chính thức nắm trọn quyền bính vào cuối năm 1812.",
+  "Cuộc đời hai mặt của Eugène-François Vidocq dữ dội đến mức đại văn hào Victor Hugo phải xé đôi hình bóng ông trong Những người khốn khổ: vừa là gã tù khổ sai Jean Valjean bẻ xiềng vươn lên từ bùn nhơ, vừa là thanh tra Javert lạnh lùng như đá cẩm thạch, truy đuổi bóng tối đến hơi thở cuối cùng.",
+  {
+   "t": "Vì sao kinh đô ánh sáng Paris lại dám đặt sinh mạng mình vào tay một tên tội phạm vượt ngục, và cái giá phải trả cho bản giao kèo với quỷ dữ ấy đắt đến mức nào?",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "photo",
+   "img": "ai01",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "fx": "candle_flicker",
+   "at": null
+  },
+  {
+   "type": "photo",
+   "img": "ai01",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.78,
+    0.45
+   ],
+   "cam": "dolly",
+   "at": 1
+  },
+  {
+   "type": "broll",
+   "illus": "PHỎNG DỰNG",
+   "at": 2,
+   "vid": "30117908"
+  },
+  {
+   "type": "quote",
+   "text": "Tuyên François Vidocq và César Herbaux chịu hình phạt khổ sai tám năm.",
+   "by": "THẨM PHÁN TÒA DOUAI",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 3,
+   "typeAt": 3,
+   "bg": "ai01",
+   "illus": "PHỎNG DỰNG",
+   "at": 3
+  },
+  {
+   "type": "file",
+   "k": "BẢN ÁN · DOUAI",
+   "name": "VIDOCQ",
+   "desc": "MỘT TỜ GIẤY RA TÙ LÀM GIẢ",
+   "rows": [
+    {
+     "k": "TỘI",
+     "v": "LÀM GIẢ GIẤY RA TÙ",
+     "at": 4
+    },
+    {
+     "k": "ÁN",
+     "v": "TÁM NĂM KHỔ SAI",
+     "at": 4
+    },
+    {
+     "k": "TUỔI",
+     "v": "HAI MƯƠI MỐT",
+     "at": 4
+    }
+   ],
+   "img": "vcard",
+   "tone": "sepia",
+   "at": 4
+  },
+  {
+   "type": "photo",
+   "img": "tbag",
+   "illus": "MINH HỌA · NHÀ GIAM PHÁP THẾ KỶ 19",
+   "cam": "push_in",
+   "at": 6
+  },
+  {
+   "type": "slam",
+   "text": "NGHỊCH LÝ",
+   "sub": "BẮT ĐẦU TỪ CHÍNH BẢN ÁN ẤY",
+   "bg": "vlit",
+   "at": 7
+  },
+  {
+   "type": "timeline",
+   "title": null,
+   "items": [
+    {
+     "year": "1796",
+     "text": "BẢN ÁN KHỔ SAI",
+     "at": 8
+    },
+    {
+     "year": "CUỐI 1811",
+     "text": "VÀO HÀNH LANG QUYỀN LỰC",
+     "at": 8
+    },
+    {
+     "year": "CUỐI 1812",
+     "text": "NẮM TRỌN QUYỀN BÍNH",
+     "at": 8
+    }
+   ],
+   "bg": "tport",
+   "srcnote": "NGUỒN: WIKIPEDIA",
+   "at": 8
+  },
+  {
+   "type": "broll",
+   "illus": "MINH HỌA CHUNG",
+   "at": [
+    8,
+    "hành"
+   ],
+   "vid": "198015"
+  },
+  {
+   "type": "photo",
+   "img": "valj16",
+   "illus": "TRANH MINH HỌA · JEAN VALJEAN",
+   "cam": "pull_out",
+   "at": 9
+  },
+  {
+   "type": "split",
+   "title": "MỘT CON NGƯỜI",
+   "a": {
+    "img": "valj16",
+    "label": "JEAN VALJEAN"
+   },
+   "b": {
+    "img": "jav13",
+    "label": "JAVERT"
+   },
+   "bg": "vlit",
+   "at": [
+    9,
+    "ông"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "ai16",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": [
+    9,
+    "nhơ"
+   ]
+  },
+  {
+   "type": "question",
+   "text": "VÌ SAO PARIS DÁM GIAO MẠNG SỐNG\nCHO MỘT TÊN VƯỢT NGỤC?",
+   "bg": "vdev",
+   "at": 10
+  },
+  {
+   "type": "photo",
+   "img": "vdev",
+   "cam": "dolly",
+   "at": [
+    10,
+    "vượt"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "MỞ ĐẦU",
+  "t": "BẢN ÁN MÙA ĐÔNG"
+ },
+ "bgm": {
+  "mood": "tense",
+  "at": 0,
+  "gain": 0.12
+ }
+}

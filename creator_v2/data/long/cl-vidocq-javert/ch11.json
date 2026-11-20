@@ -1,0 +1,362 @@
+{
+ "title": "Hai Nửa Linh Hồn Dưới Ngòi Bút Đại Thi Hào",
+ "lines": [
+  {
+   "t": "Trong lúc chính quyền nước Pháp tìm mọi cách bóp nghẹt và xóa bỏ sự hiện diện của Vidocq ngoài đời thực, thì ở một thế giới khác — thế giới của nghệ thuật và văn chương bất tử — người đàn ông ấy lại được tôn vinh như một vị thần hộ mệnh của thời đại mới.",
+   "p": 0.8
+  },
+  "Người đầu tiên nhìn thấy tầm vóc phi thường của Vidocq là Honoré de Balzac.",
+  "Ngay từ những năm 1820, Balzac đã tìm đến kết bạn với Vidocq, mê mẩn lắng nghe từng câu chuyện vượt ngục, từng phân tích tâm lý sâu cay về mặt tối của xã hội Paris từ miệng vị cựu thủ lĩnh Sûreté.",
+  "Từ những cuộc trò chuyện thâu đêm ấy, ngòi bút thiên tài của Balzac đã thai nghén nên nhân vật Vautrin — một trong những tượng đài văn học đồ sộ nhất của bộ Tấn trò đời: một gã tù khổ sai trốn trại đầy quyền năng ma quái, kẻ nhìn thấu tim đen của giới quý tộc thượng lưu, và cuối cùng bước lên nắm quyền chỉ huy lực lượng an ninh cảnh sát.",
+  "Xa hơn nữa, bên kia bờ Đại Tây Dương, một nhà văn trẻ người Mỹ tên là Edgar Allan Poe khi đọc những mẩu chuyện về phương pháp suy luận và trí tuệ phá án của Vidocq đã được truyền cảm hứng để sáng tạo nên nhân vật thám tử C. Auguste Dupin — nhân vật đặt viên gạch đầu tiên khai sinh ra toàn bộ thể loại tiểu thuyết trinh thám hiện đại của thế giới.",
+  "Thế nhưng, đỉnh cao của sự thấu cảm và bất tử hóa Vidocq phải thuộc về đại văn hào Victor Hugo.",
+  "Hugo không chỉ nhìn thấy ở Vidocq một tay thám tử tài ba hay một tên tội phạm hoàn lương.",
+  "Bằng đôi mắt thấu thị của một bậc kỳ tài, Hugo nhìn thấy trong con người Vidocq toàn bộ bi kịch xé lòng của thân phận con người giữa hai bờ thiện ác, giữa bùn lầy tội lỗi và khát vọng cứu chuộc của linh hồn.",
+  "Và thế là, trong kiệt tác Những người khốn khổ, Victor Hugo đã làm một việc chưa từng có tiền lệ: ông xé đôi cuộc đời và nhân cách của Eugène-François Vidocq thành hai nhân vật bất hủ đối đầu sinh tử với nhau suốt đời.",
+  "Một nửa của Vidocq hóa thân thành Jean Valjean — gã tù khổ sai mang số hiệu 24601 của trại Toulon năm xưa, kẻ bị xã hội đày ải vì một mẩu bánh mì, mang trong mình sức mạnh thể xác phi thường và đôi tay từng bẻ gãy gông cùm.",
+  "Đó là nửa phần đời Vidocq vượt lên từ đáy bùn nhơ, nâng bổng cỗ xe đè người để cứu một mạng sống, lấy tình thương vô điều kiện để rửa sạch vết nhơ của xiềng xích.",
+  "Và nửa còn lại của Vidocq, nghiệt ngã thay, lại chính là thanh tra Javert — gã cảnh sát sinh ra từ bóng tối ngục tù, tôn thờ luật pháp đến mức mù quáng và tàn nhẫn, một cỗ máy săn người lạnh lùng đuổi theo con mồi đến tận cùng chân trời góc biển.",
+  "Để khắc họa sự tàn khốc đầy ám ảnh của Javert, Victor Hugo đã đặt bút viết một câu định mệnh:",
+  {
+   "t": "Một tên chỉ điểm bằng đá cẩm thạch, Brutus trong Vidocq.",
+   "q": 1
+  },
+  "Jean Valjean và Javert — kẻ trốn chạy và kẻ săn lùng, lòng trắc ẩn bao la và sự công minh tàn nhẫn — thực chất không phải là hai con người xa lạ.",
+  {
+   "t": "Họ chính là hai nửa linh hồn bị xé rách của Eugène-François Vidocq, hai bản ngã ngày đêm cào xé, giằng xé dữ dội trong lồng ngực của người đàn ông từng vừa là tội phạm bị truy nã gắt gao nhất, vừa là viên cảnh sát trưởng quyền lực nhất nước Pháp.",
+   "p": 1.0
+  }
+ ],
+ "scenes": [
+  {
+   "type": "chapter",
+   "no": "11",
+   "k": "CHƯƠNG 11",
+   "title": "HAI NỬA\nLINH HỒN",
+   "sub": "BALZAC · POE · VICTOR HUGO",
+   "titleAt": [
+    0,
+    "Trong"
+   ],
+   "bg": "hugo187",
+   "at": null
+  },
+  {
+   "type": "photo",
+   "img": "livret",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "pull_out",
+   "at": [
+    0,
+    "ngoài"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    0,
+    "người"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "10425839"
+  },
+  {
+   "type": "photo",
+   "img": "balz1",
+   "cam": "push_in",
+   "at": 1
+  },
+  {
+   "type": "photo",
+   "img": "balz159",
+   "cam": "dolly",
+   "at": 2
+  },
+  {
+   "type": "photo",
+   "img": "balz161",
+   "cam": "dolly",
+   "at": [
+    2,
+    "về"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "balz32",
+   "illus": "MINH HỌA · VAUTRIN · BALZAC",
+   "cam": "pan",
+   "at": [
+    3,
+    "ngòi"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": [
+    3,
+    "nhất"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "4765799"
+  },
+  {
+   "type": "photo",
+   "img": "hugo186",
+   "cam": "dolly",
+   "at": [
+    3,
+    "đen"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "ai27",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": 4
+  },
+  {
+   "type": "broll",
+   "at": [
+    4,
+    "Poe"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "32540543"
+  },
+  {
+   "type": "org",
+   "nodes": [
+    {
+     "id": "r",
+     "t": "VIDOCQ",
+     "s": "MỘT NGƯỜI · BA TÁC PHẨM",
+     "cls": "top",
+     "at": [
+      4,
+      "được"
+     ]
+    },
+    {
+     "id": "k0",
+     "p": "r",
+     "t": "VAUTRIN",
+     "s": "BALZAC",
+     "at": [
+      4,
+      "được"
+     ]
+    },
+    {
+     "id": "k1",
+     "p": "r",
+     "t": "DUPIN",
+     "s": "EDGAR ALLAN POE",
+     "at": [
+      4,
+      "được"
+     ]
+    },
+    {
+     "id": "k2",
+     "p": "r",
+     "t": "VALJEAN · JAVERT",
+     "s": "VICTOR HUGO",
+     "at": [
+      4,
+      "được"
+     ]
+    }
+   ],
+   "bg": "vpost",
+   "at": [
+    4,
+    "được"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "pont155",
+   "illus": "MINH HỌA · PARIS THẾ KỶ 19",
+   "cam": "push_in",
+   "at": [
+    4,
+    "gạch"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "hugo187",
+   "cam": "push_in",
+   "at": 5
+  },
+  {
+   "type": "photo",
+   "img": "ai14",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "dolly",
+   "fx": "candle_flicker",
+   "at": [
+    6,
+    "tay"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "hugo185",
+   "cam": "pull_out",
+   "at": [
+    7,
+    "toàn"
+   ]
+  },
+  {
+   "type": "broll",
+   "at": 8,
+   "illus": "MINH HỌA CHUNG",
+   "vid": "198014"
+  },
+  {
+   "type": "split",
+   "title": "MỘT NGƯỜI · HAI NỬA",
+   "a": {
+    "img": "valj16",
+    "label": "JEAN VALJEAN"
+   },
+   "b": {
+    "img": "jav13",
+    "label": "JAVERT"
+   },
+   "bg": "vlit",
+   "at": [
+    8,
+    "nhân"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "madel",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "pull_out",
+   "at": [
+    9,
+    "Valjean"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "jav85",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "pan",
+   "at": [
+    9,
+    "trong"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "vjdeath",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "tilt_up",
+   "at": [
+    10,
+    "bùn"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "jav13",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "push_in",
+   "at": 11
+  },
+  {
+   "type": "broll",
+   "at": [
+    11,
+    "sát"
+   ],
+   "illus": "MINH HỌA CHUNG",
+   "vid": "12123574"
+  },
+  {
+   "type": "photo",
+   "img": "jav92",
+   "illus": "MINH HỌA · NHỮNG NGƯỜI KHỐN KHỔ",
+   "cam": "pull_out",
+   "at": [
+    11,
+    "một"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "hugo194",
+   "cam": "push_in",
+   "at": 12
+  },
+  {
+   "type": "quote",
+   "text": "Một tên chỉ điểm bằng đá cẩm thạch, Brutus trong Vidocq.",
+   "by": "VICTOR HUGO",
+   "lbl": "TRÍCH DỊCH",
+   "qline": 13,
+   "typeAt": 13,
+   "bg": "hugo184",
+   "at": 13
+  },
+  {
+   "type": "photo",
+   "img": "ai14",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "focus": [
+    0.7,
+    0.5
+   ],
+   "cam": "pull_out",
+   "at": 14
+  },
+  {
+   "type": "photo",
+   "img": "ai16",
+   "illus": "PHỎNG DỰNG",
+   "tone": "color",
+   "cam": "push_in",
+   "at": [
+    14,
+    "nhẫn"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "hugo195",
+   "cam": "dolly",
+   "at": [
+    15,
+    "của"
+   ]
+  },
+  {
+   "type": "photo",
+   "img": "hugo184",
+   "cam": "pull_out",
+   "at": [
+    15,
+    "từng"
+   ]
+  }
+ ],
+ "hud": {
+  "k": "CHƯƠNG 11",
+  "t": "HAI NỬA LINH HỒN"
+ },
+ "bgm": {
+  "mood": "sad",
+  "at": 0,
+  "gain": 0.12
+ }
+}
