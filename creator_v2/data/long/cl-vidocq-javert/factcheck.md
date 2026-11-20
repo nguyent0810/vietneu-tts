@@ -252,3 +252,12 @@ Mã nguồn:
 7. Lập văn phòng: cuối 1832 (W2) hay 1833 (W1).
 8. Sainte-Pélagie và thời gian tù 1837-38; 1842-43 chỉ ở W1.
 9. Vai Morice (nhà xuất bản dự định hay người viết thuê) và chức vụ Henry.
+
+## Số phụ trên hình (soát trước khi đăng, 20/11)
+
+| Số | Chỗ dùng | Nguồn | Mức |
+|---|---|---|---|
+| 1786 | Nhãn bản đồ CH01 "LILLE · DOUAI 1786" | Năm của bản đồ Commons "File:Lille Douai Louvain Bruxelles Paris 1786.JPG" (Shepherd, PD) | TÊN TƯ LIỆU |
+| 19 | Nhãn "MINH HỌA · NHÀ GIAM/CẢNG BIỂN PHÁP THẾ KỶ 19" | Bối cảnh đời Vidocq 1775–1857 (W1) | BỐI CẢNH |
+| 800 | CH07 thẻ "HƠN 800 VỤ BẮT GIỮ … NĂM 1817" | Làm tròn xuống 811 (W1; M31 772 + 39) | LÀM TRÒN, an toàn với cả hai dị bản |
+| 24601 | CH11 số hiệu tù Jean Valjean ở Toulon | Les Misérables (Hugo 1862), en.wikipedia.org/wiki/Jean_Valjean | TIỂU THUYẾT, lời đọc nói rõ là nhân vật |
