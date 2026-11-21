@@ -28,17 +28,12 @@ CACHE_TTL = 600
 # - content: lời Việt, kể truyện -> Opus medium.
 # 06/11 đo thật: 1 lượt Sonnet 23 phút ăn hết 100% pool Claude 5 giờ + 56% tuần -> Claude chỉ dùng
 #   cho content và khi pool khác cạn; code chuyển sang Argon (pool tuần riêng, rộng).
-ROUTES = {
-    "media": [("gemini-3.8-flash-high", "high"), ("gemini-4-argon-medium", "medium"), ("claude-sonnet-5-5-medium", "medium")],
-    "code_fix": [("gemini-4-argon-high", "high"), ("gemini-3.8-flash-high", "high"), ("claude-sonnet-5-5-high", "high")],
-    "code_small": [("gemini-4-argon-high", "high"), ("gemini-3.8-flash-high", "high"), ("claude-sonnet-5-5-high", "high")],
-    "code_shared": [("gemini-4-argon-high", "high"), ("claude-opus-5-5-high", "high"), ("gemini-3.8-flash-high", "high")],
-    "code": [("gemini-4-argon-high", "high"), ("claude-opus-5-5-high", "high"), ("gemini-3.8-flash-high", "high")],
-    "research": [("gemini-4-argon-high", "high"), ("gemini-3.8-flash-high", "high"), ("claude-opus-5-5-medium", "medium")],
-    "review": [("gemini-4-argon-high", "high"), ("gemini-3.8-flash-high", "high"), ("claude-opus-5-5-medium", "medium")],
-    "content": [("claude-opus-5-5-medium", "medium"), ("gemini-4-argon-high", "high"), ("gemini-3.8-flash-high", "high")],
-    "default": [("gemini-3.8-flash-high", "high"), ("gemini-4-argon-medium", "medium"), ("claude-sonnet-5-5-medium", "medium")],
-}
+# 21/11: `agy models` chỉ còn gemini-3.8-flash-{high,medium,low}, claude-sonnet-4-6,
+#   claude-opus-4-6-thinking, gpt-oss-120b-medium. Argon và Claude 5.5 đã gỡ; hai model Claude
+#   từ chối cờ --effort mà loop_v5 luôn truyền -> tạm chỉ định tuyến Flash (nhận --effort).
+FLASH = ("gemini-3.8-flash-high", "high")
+ROUTES = {kind: [FLASH] for kind in (
+    "media", "code_fix", "code_small", "code_shared", "code", "research", "review", "content", "default")}
 # Ngưỡng tối thiểu (%) để dùng pool; Opus tốn nhiều nên giữ dự trữ cao hơn.
 MIN_5H, MIN_WEEK, MIN_WEEK_OPUS = 15, 20, 40
 
