@@ -140,6 +140,14 @@ Builder gọi `library.tools.plan_enrich.enrich_long_plan(plan, "bud"|"fs")`, sa
 
 ## 5. Xem trước ảnh TRƯỚC khi render
 
+- **Hình động thật (PO 20/11, 090):** chọn 4–6 cảnh quan trọng (mở đầu, quanh 50%, quanh 75%) làm clip/pano.
+  Câu 1 nên là clip hoặc pano; 40 giây đầu cần ít nhất một clip/pano hoặc visual có chuyển động riêng.
+  Ảnh tĩnh chỉ có `cine`/push_in/`depth` không đạt kiểm tra mới `mo_40s_an_tuong`; `mo_hinh_tinh` cũ vẫn chấp nhận máy quay trên ảnh.
+- Nguồn clip: tìm nguồn công cộng trước (`hf_pdvideo.py`, `hf_extmedia.py`, Commons) nếu đúng nội dung.
+  Không có thì dùng Flow image-to-video, **chỉ model Omni 1.2 Flash** (PO 20/11): chạy trong `creator_v2/`
+  `python -m webauto flow generate --mode video --model "Omni 1.2" --image <ảnh AI> ...`.
+  Chọn độ dài 3–15 giây bằng thanh kéo trong Flow, theo nội dung; pano ảnh lia cũng đạt, không bắt buộc video.
+
 > **Không in credit lên hình (PO 04/11/2026):** không ghi "ảnh minh hoạ AI", tên công cụ/bot, tên tác giả ảnh, giấy phép lên video. Credit chỉ ở mô tả. Dòng nguồn kinh/sử ngắn là nội dung thì được giữ.
 - Tìm ứng viên đúng chủ đề: `python hf_media_sheet.py find "wiki:vi:Chùa Bút Tháp" --by` lấy ảnh nằm trong một bài
   Wikipedia (vi/en, chỉ file Commons giấy phép tự do) — chùa, di tích, phong tục Việt ra sát hơn tìm từ khoá.
@@ -159,6 +167,10 @@ cho tuổi Sửu (dùng trâu nước), cây "sala" là cây đầu lân (không
 thể về cùng một ảnh → bridge chặn trùng.
 
 ## 6. Render + soát
+
+- Trước render, xem bảng `visual_mix`: `video_share` = giây clip + pano / tổng giây; in riêng số clip và pano.
+  Chỉ Long mới theo `visual_mix_is_new`, dài ≥10 phút: cảnh báo khi dưới 10% hoặc dưới 1 cảnh clip/pano mỗi 3 phút.
+  Hai cảnh báo này không chặn render; nguồn công cộng và AI được đo như nhau. Không đổi ngưỡng chữ/lặp ảnh hay độ dài câu.
 ```
 .venv/bin/python hf_batch_render.py output/cl_staging/long --only <id> --quality looks
 ```

@@ -1156,6 +1156,7 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
     file remain two scenes, even when adjacent. Crop/layout/cine do not alter ref.
     """
     import hyperframes_bridge as HB
+    from tools.visual_mix import media_motion_kind
     script = row.get("script") or []
     if segs is None:
         segs, t = [], 0.0
@@ -1187,6 +1188,7 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
             token = ("line", i)
         scene = {"kind": kind, "t0": line["start"],
                  "t1": lines[i + 1]["start"] if i + 1 < len(lines) else line["end"],
+                 "motion": media_motion_kind(spec) if visible_media else None,
                  "image": ref, "style": visual.get("type") if visual.get("type") in HB.STYLE_VISUAL_TYPES else None}
         if scenes and token == previous_token and kind == scenes[-1]["kind"]:
             scenes[-1]["t1"] = scene["t1"]

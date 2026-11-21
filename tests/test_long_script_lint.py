@@ -825,3 +825,58 @@ def test_cau_tach_doi_ket_thuc_dau_phay_bi_bao():
     row = {"id": "x", "script": ["Ở đó, Đức Phật đang ngồi,", "cùng một nghìn hai trăm năm mươi vị tăng.", "Bạn nghe được không?"]}
     rep = LL.lint(row)
     assert any(lv == LL.WARN and code == "cau_tron" for lv, code, _ in rep["issues"])
+
+
+@pytest.mark.parametrize("camera", [{"cine": {"cam": "push_in"}}, {"cine": "push"},
+                                    {"layout": "depth"}, {"camera": {"orbit": True}}])
+def test_open40_l01_camera_on_stills_warns_but_old_check_passes(camera):
+    row = {"script": ["Vì sao cánh cửa vẫn đóng?", "Anh đứng trước sân."],
+           "media": {str(i): {"kind": "local", "path": f"a{i}.jpg", **camera} for i in (1, 2)}}
+    rep = LL.lint(row)
+    assert "mo_hinh_tinh" not in codes(rep)
+    assert {"mo_40s_an_tuong", "mo_cau1_clip_pano"} <= codes(rep)
+    assert all(level == LL.WARN for level, code, _ in rep["issues"]
+               if code in {"mo_40s_an_tuong", "mo_cau1_clip_pano"})
+
+
+@pytest.mark.parametrize("media", [{"kind": "local", "path": "open.mp4"},
+                                   {"kind": "local", "path": "Open Rock.MOV"},
+                                   {"kind": "commons", "ref": "File:Rock.webm"},
+                                   {"kind": "pdvideo", "ref": "ia:rock"},
+                                   {"kind": "local", "path": "wide.jpg", "pan": {"dir": "ltr"}}])
+def test_open40_bud26_clip_or_pano_in_first_line_passes(media):
+    row = {"script": ["Vì sao người giết cha lại tìm đến Phật?"], "media": {"1": media}}
+    assert not {"mo_40s_an_tuong", "mo_cau1_clip_pano"} & set(_codes_open(row))
+
+
+@pytest.mark.parametrize("visual", [False, True])
+@pytest.mark.parametrize("start,warns", [(20, False), (39.99, False), (40, True), (45, True)])
+def test_open40_pano_at_20_seconds_and_window_boundary(visual, start, warns):
+    row = {"script": ["Vì sao cánh cửa vẫn đóng?", "Anh đứng trước sân."],
+           "media": {"1": {"kind": "local", "path": "a.jpg", "cine": {"cam": "push_in"}}}}
+    if visual:
+        row["visuals"] = {"2": {"type": "pano"}}
+    else:
+        row["media"]["2"] = {"kind": "local", "path": "wide.jpg", "pan": {"dir": "ltr"}}
+    findings = LL.opening_visual_issues(row, row["script"], [(0, start), (start, start + 10)])
+    assert ("mo_40s_an_tuong" in {code for code, _ in findings}) is warns
+    assert "mo_cau1_clip_pano" in {code for code, _ in findings}
+
+
+def test_open40_intrinsic_motion_visual_passes_and_empty_script_is_safe():
+    row = {"script": ["Vì sao cánh cửa vẫn đóng?"], "visuals": {"1": {"type": "shadow"}}}
+    assert "mo_40s_an_tuong" not in _codes_open(row)
+    assert LL.opening_visual_issues({}, [], []) == []
+
+
+def test_open40_uses_real_timing(tmp_path):
+    row = {"id": "open40", "script": ["Vì sao?", "Anh bước đi."],
+           "media": {"1": {"kind": "local", "path": "a.jpg", "cine": "push"},
+                     "2": {"kind": "local", "path": "walk.mp4"}}}
+    plan = tmp_path / "plan.json"
+    (tmp_path / "out").mkdir()
+    manifest = tmp_path / "out/open40.json"
+    for start, warns in [(20, False), (41, True)]:
+        manifest.write_text(json.dumps({"segments": [{"start": 0, "end": start},
+                                                      {"start": start, "end": start + 10}]}))
+        assert ("mo_40s_an_tuong" in codes(LL.lint(row, plan))) is warns
