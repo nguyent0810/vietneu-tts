@@ -165,6 +165,7 @@ PARADOX_MARK = re.compile(r"(?i)(\bnhưng\b|vậy mà|thế mà|không ngờ|ng�
 # Mở đầu bằng hình (PO 15/11/2026): giây đầu là clip / pano / ảnh có chuyển động máy quay hoặc hiệu ứng bắt mắt,
 # câu nói đầu là sốc / nghịch lý; KHÔNG ném chữ khoá hay thẻ chữ lên màn hình ngay.
 OPEN_VISUAL_S = 10
+OPEN_MOTION_S = 40  # PO 20/11: clip/pano hoặc visual có chuyển động riêng; cine/depth không đủ.
 VIDEO_EXT = (".mp4", ".mov", ".webm")
 MOTION_VISUALS = {"pano", "studio", "shadow", "map", "footsteps", "breath", "hexagram", "luoshu",
                   "woodcut", "papercut", "oneline", "film16", "blueprint", "pencil", "shader"}
@@ -393,6 +394,7 @@ def opening_visual_issues(row: dict, script: list[str], times: list[tuple[float,
     out: list[tuple[str, str]] = []
     if not script:
         return out
+    from tools.visual_mix import media_motion_kind
     open_s = float(row.get("open_visual_s", OPEN_VISUAL_S))
     media, visuals = row.get("media") or {}, row.get("visuals") or {}
     early = [i for i, (a, _b) in enumerate(times[:len(script)], 1) if a < open_s] or [1]
@@ -401,6 +403,17 @@ def opening_visual_issues(row: dict, script: list[str], times: list[tuple[float,
     if not (_media_moves(media.get(str(first))) or v1.get("type") in MOTION_VISUALS):
         out.append(("mo_hinh_tinh", f"dòng {first} mở bằng ảnh tĩnh / không hình -- PO 15/11: mở bằng clip, pano, "
                     "ảnh có máy quay (cine/depth) hoặc hiệu ứng bắt mắt"))
+    # Khác mo_hinh_tinh (chấp nhận máy quay trên ảnh): đòi chuyển động riêng trong 40s.
+    motion_early = [i for i, (a, b) in enumerate(times[:len(script)], 1) if a < OPEN_MOTION_S and b > 0]
+    if not any(media_motion_kind(media.get(str(i)), video_ext=VIDEO_EXT)
+               or (visuals.get(str(i)) or {}).get("type") in MOTION_VISUALS for i in motion_early):
+        out.append(("mo_40s_an_tuong", f"{OPEN_MOTION_S} giây đầu chưa có clip/pano hoặc visual có chuyển động riêng "
+                    "-- ảnh tĩnh chỉ có cine/push_in/depth không tính; khác mo_hinh_tinh (chấp nhận máy quay trên ảnh)"))
+    m1 = media.get(str(first))
+    if (_media_moves(m1) and not media_motion_kind(m1, video_ext=VIDEO_EXT)
+            and v1.get("type") not in MOTION_VISUALS):
+        out.append(("mo_cau1_clip_pano", f"dòng {first}: ảnh tĩnh chỉ có máy quay cine/depth "
+                    "-- nên mở bằng clip hoặc pano; giữ ảnh này để chuyển tiếp"))
     for i in early:
         v = visuals.get(str(i))
         if isinstance(v, dict) and v.get("type") in TEXT_VISUALS:

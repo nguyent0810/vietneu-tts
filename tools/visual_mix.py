@@ -11,6 +11,7 @@ from __future__ import annotations
 import math
 import os
 from collections import Counter
+from urllib.parse import urlsplit
 
 VISUAL_MIX_SINCE = "2026-11-18"
 TEXT_WARN = 0.12
@@ -18,6 +19,10 @@ TEXT_ERROR = 0.15
 REPEAT_WARN = 4
 REPEAT_ERROR = 6
 MIN_IMAGES_PER_MINUTE = 4.0
+VIDEO_EXT = (".mp4", ".mov", ".webm", ".m4v", ".mkv", ".avi", ".ogv")
+MIN_VIDEO_SHARE = 0.10
+VIDEO_FLOOR_MIN_SECONDS = 600
+SECONDS_PER_VIDEO_SCENE = 180
 TEXT_KINDS = frozenset({"kinetic", "slam", "quote", "question", "date", "counter",
                         "word", "ask", "chữ khoá", "list"})
 # These are full-screen text treatments even with decorative photo/video beds.
@@ -25,10 +30,26 @@ TEXT_KINDS = frozenset({"kinetic", "slam", "quote", "question", "date", "counter
 FULLSCREEN_TEXT_KINDS = frozenset({"kinetic", "slam", "quote", "question"})
 
 
+def media_motion_kind(spec, *, video_ext=VIDEO_EXT) -> str | None:
+    """Clip or panorama, independent of source. Still-image cine/depth is neither."""
+    if not isinstance(spec, dict):
+        return None
+    kind = str(spec.get("kind") or "").lower()
+    refs = (spec.get(k) for k in ("path", "url", "file", "src", "ref"))
+    if kind in {"clip", "video", "pexels_video", "flow", "pdvideo"} or any(
+        os.path.splitext(urlsplit(str(ref)).path)[1].lower() in video_ext for ref in refs if ref
+    ):
+        return "video"
+    if isinstance(spec.get("pan"), dict) or kind == "pano" or spec.get("type") == "pano":
+        return "pano"
+    return None
+
+
 def measure(scenes) -> dict:
     seconds, counts, repeats = Counter(), Counter(), Counter()
     images = set()
     text_seconds = 0.0
+    video_seconds, clip_count, pano_count = 0.0, 0, 0
     for scene in scenes:
         t0, t1 = float(scene["t0"]), float(scene["t1"])
         if not math.isfinite(t0) or not math.isfinite(t1) or t1 < t0:
@@ -39,6 +60,11 @@ def measure(scenes) -> dict:
         duration = t1 - t0
         seconds[kind] += duration
         counts[kind] += 1
+        motion = scene.get("motion") or kind
+        if motion in {"video", "clip", "pano"}:
+            video_seconds += duration
+            clip_count += motion in {"video", "clip"}
+            pano_count += motion == "pano"
         refs = {os.path.normpath(str(ref)) if "://" not in str(ref) else str(ref)
                 for ref in [scene.get("image"), *(scene.get("images") or [])] if ref}
         images.update(refs)
@@ -52,6 +78,8 @@ def measure(scenes) -> dict:
                              "share": seconds[k] / total if total else 0.0}
                         for k in sorted(seconds, key=lambda k: (-seconds[k], k))},
             "text_seconds": text_seconds, "text_share": text_seconds / total if total else 0.0,
+            "video_seconds": video_seconds, "video_share": video_seconds / total if total else 0.0,
+            "clip_count": clip_count, "pano_count": pano_count,
             "unique_images": len(images),
             "images_per_minute": len(images) * 60 / total if total else 0.0,
             "max_repeat": max(repeats.values(), default=0),
@@ -75,6 +103,14 @@ def issues(metrics, *, is_new, is_long, reason=None) -> list[tuple[str, str]]:
                     f"ảnh tĩnh lặp tối đa {repeat} lần (cảnh báo > {REPEAT_WARN}, lỗi > {REPEAT_ERROR})"))
     if metrics["images_per_minute"] < MIN_IMAGES_PER_MINUTE:
         out.append(("WARN", f"{metrics['images_per_minute']:.2f} ảnh khác nhau/phút (< {MIN_IMAGES_PER_MINUTE:g})"))
+    if metrics["seconds"] >= VIDEO_FLOOR_MIN_SECONDS:
+        if metrics["video_share"] < MIN_VIDEO_SHARE:
+            out.append(("WARN", f"video_share {metrics['video_share']:.2%} clip + pano (< {MIN_VIDEO_SHARE:.0%})"))
+        count = metrics["clip_count"] + metrics["pano_count"]
+        required = math.ceil(metrics["seconds"] / SECONDS_PER_VIDEO_SCENE)
+        if count < required:
+            out.append(("WARN", f"clip/pano {count} cảnh / {metrics['seconds'] / 60:.2f} phút "
+                        f"(< {required} cảnh; ít nhất 1 cảnh mỗi 3 phút)"))
     return out
 
 
@@ -85,4 +121,6 @@ def format_table(metrics) -> str:
     rows.append(f"TỔNG | {metrics['seconds']:.2f} | {'100%' if metrics['seconds'] else '0%'} | {metrics['scenes']}")
     rows.append(f"Chữ {metrics['text_share']:.2%}; ảnh lặp max {metrics['max_repeat']}; "
                 f"{metrics['unique_images']} ảnh khác nhau; {metrics['images_per_minute']:.2f} ảnh/phút")
+    rows.append(f"video_share {metrics['video_share']:.2%} ({metrics['video_seconds']:.2f}s clip + pano); "
+                f"clip {metrics['clip_count']} cảnh; pano {metrics['pano_count']} cảnh")
     return "\n".join(rows)
