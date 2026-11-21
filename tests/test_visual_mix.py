@@ -234,3 +234,13 @@ def test_video_measurement_word_cuts_and_signed_url():
     assert metrics["video_seconds"] == 6
     assert metrics["video_share"] == .6
     assert metrics["clip_count"] == 1
+
+
+def test_parallax_counts_in_video_share():
+    row = {"script": ["Một.", "Hai.", "Ba."],
+           "media": {"1": {"kind": "local", "path": "a.jpg", "layout": "depth"},
+                     "2": {"kind": "local", "path": "b.jpg", "cine": {"cam": "push_in"}},
+                     "3": {"kind": "local", "path": "c.jpg", "cine": {"cam": "dolly_parallax"}}}}
+    metrics = VM.measure(HBR.visual_mix_scenes(row, _segments(3)))
+    assert metrics["parallax_count"] == 2 and metrics["clip_count"] == 0 and metrics["pano_count"] == 0
+    assert metrics["video_share"] == pytest.approx(2 / 3)
