@@ -31,7 +31,7 @@ FULLSCREEN_TEXT_KINDS = frozenset({"kinetic", "slam", "quote", "question"})
 
 
 def media_motion_kind(spec, *, video_ext=VIDEO_EXT) -> str | None:
-    """Clip or panorama, independent of source. Still-image cine/depth is neither."""
+    """Clip, panorama or depth parallax, independent of source. Plain push_in/zoom is none."""
     if not isinstance(spec, dict):
         return None
     kind = str(spec.get("kind") or "").lower()
@@ -42,6 +42,13 @@ def media_motion_kind(spec, *, video_ext=VIDEO_EXT) -> str | None:
         return "video"
     if isinstance(spec.get("pan"), dict) or kind == "pano" or spec.get("type") == "pano":
         return "pano"
+    # PO 21/11: hiệu ứng chiều sâu (parallax 2.5D) đạt như ảnh lia, miễn có chất nghệ thuật.
+    cine = spec.get("cine") if isinstance(spec.get("cine"), dict) else {}
+    shots = spec.get("shots") if isinstance(spec.get("shots"), list) else []
+    if (spec.get("layout") == "depth" or spec.get("layers") or cine.get("depth") is True
+            or cine.get("cam") == "dolly_parallax" or spec.get("preset") == "parallax"
+            or any(isinstance(s, dict) and s.get("preset") == "parallax" for s in shots)):
+        return "parallax"
     return None
 
 
@@ -49,7 +56,7 @@ def measure(scenes) -> dict:
     seconds, counts, repeats = Counter(), Counter(), Counter()
     images = set()
     text_seconds = 0.0
-    video_seconds, clip_count, pano_count = 0.0, 0, 0
+    video_seconds, clip_count, pano_count, parallax_count = 0.0, 0, 0, 0
     for scene in scenes:
         t0, t1 = float(scene["t0"]), float(scene["t1"])
         if not math.isfinite(t0) or not math.isfinite(t1) or t1 < t0:
@@ -61,10 +68,11 @@ def measure(scenes) -> dict:
         seconds[kind] += duration
         counts[kind] += 1
         motion = scene.get("motion") or kind
-        if motion in {"video", "clip", "pano"}:
+        if motion in {"video", "clip", "pano", "parallax"}:
             video_seconds += duration
             clip_count += motion in {"video", "clip"}
             pano_count += motion == "pano"
+            parallax_count += motion == "parallax"
         refs = {os.path.normpath(str(ref)) if "://" not in str(ref) else str(ref)
                 for ref in [scene.get("image"), *(scene.get("images") or [])] if ref}
         images.update(refs)
@@ -79,7 +87,7 @@ def measure(scenes) -> dict:
                         for k in sorted(seconds, key=lambda k: (-seconds[k], k))},
             "text_seconds": text_seconds, "text_share": text_seconds / total if total else 0.0,
             "video_seconds": video_seconds, "video_share": video_seconds / total if total else 0.0,
-            "clip_count": clip_count, "pano_count": pano_count,
+            "clip_count": clip_count, "pano_count": pano_count, "parallax_count": parallax_count,
             "unique_images": len(images),
             "images_per_minute": len(images) * 60 / total if total else 0.0,
             "max_repeat": max(repeats.values(), default=0),
@@ -105,11 +113,11 @@ def issues(metrics, *, is_new, is_long, reason=None) -> list[tuple[str, str]]:
         out.append(("WARN", f"{metrics['images_per_minute']:.2f} ảnh khác nhau/phút (< {MIN_IMAGES_PER_MINUTE:g})"))
     if metrics["seconds"] >= VIDEO_FLOOR_MIN_SECONDS:
         if metrics["video_share"] < MIN_VIDEO_SHARE:
-            out.append(("WARN", f"video_share {metrics['video_share']:.2%} clip + pano (< {MIN_VIDEO_SHARE:.0%})"))
-        count = metrics["clip_count"] + metrics["pano_count"]
+            out.append(("WARN", f"video_share {metrics['video_share']:.2%} clip + pano + parallax (< {MIN_VIDEO_SHARE:.0%})"))
+        count = metrics["clip_count"] + metrics["pano_count"] + metrics.get("parallax_count", 0)
         required = math.ceil(metrics["seconds"] / SECONDS_PER_VIDEO_SCENE)
         if count < required:
-            out.append(("WARN", f"clip/pano {count} cảnh / {metrics['seconds'] / 60:.2f} phút "
+            out.append(("WARN", f"clip/pano/parallax {count} cảnh / {metrics['seconds'] / 60:.2f} phút "
                         f"(< {required} cảnh; ít nhất 1 cảnh mỗi 3 phút)"))
     return out
 
@@ -121,6 +129,7 @@ def format_table(metrics) -> str:
     rows.append(f"TỔNG | {metrics['seconds']:.2f} | {'100%' if metrics['seconds'] else '0%'} | {metrics['scenes']}")
     rows.append(f"Chữ {metrics['text_share']:.2%}; ảnh lặp max {metrics['max_repeat']}; "
                 f"{metrics['unique_images']} ảnh khác nhau; {metrics['images_per_minute']:.2f} ảnh/phút")
-    rows.append(f"video_share {metrics['video_share']:.2%} ({metrics['video_seconds']:.2f}s clip + pano); "
-                f"clip {metrics['clip_count']} cảnh; pano {metrics['pano_count']} cảnh")
+    rows.append(f"video_share {metrics['video_share']:.2%} ({metrics['video_seconds']:.2f}s clip + pano + parallax); "
+                f"clip {metrics['clip_count']} cảnh; pano {metrics['pano_count']} cảnh; "
+                f"parallax {metrics.get('parallax_count', 0)} cảnh")
     return "\n".join(rows)

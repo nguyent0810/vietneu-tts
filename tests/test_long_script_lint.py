@@ -828,7 +828,7 @@ def test_cau_tach_doi_ket_thuc_dau_phay_bi_bao():
 
 
 @pytest.mark.parametrize("camera", [{"cine": {"cam": "push_in"}}, {"cine": "push"},
-                                    {"layout": "depth"}, {"camera": {"orbit": True}}])
+                                    {"camera": {"orbit": True}}])
 def test_open40_l01_camera_on_stills_warns_but_old_check_passes(camera):
     row = {"script": ["Vì sao cánh cửa vẫn đóng?", "Anh đứng trước sân."],
            "media": {str(i): {"kind": "local", "path": f"a{i}.jpg", **camera} for i in (1, 2)}}
@@ -880,3 +880,12 @@ def test_open40_uses_real_timing(tmp_path):
         manifest.write_text(json.dumps({"segments": [{"start": 0, "end": start},
                                                       {"start": start, "end": start + 10}]}))
         assert ("mo_40s_an_tuong" in codes(LL.lint(row, plan))) is warns
+
+
+@pytest.mark.parametrize("parallax", [{"layout": "depth"}, {"cine": {"cam": "dolly_parallax"}},
+                                      {"cine": {"cam": "push_in", "depth": True}}, {"preset": "parallax"},
+                                      {"shots": [{"at": 0, "preset": "parallax"}]}, {"layers": ["fg.png", "bg.png"]}])
+def test_open40_depth_parallax_counts_like_pano(parallax):
+    """PO 21/11: hiệu ứng chiều sâu đạt như ảnh lia."""
+    row = {"script": ["Vì sao cánh cửa vẫn đóng?"], "media": {"1": {"kind": "local", "path": "a.jpg", **parallax}}}
+    assert not {"mo_40s_an_tuong", "mo_cau1_clip_pano"} & set(_codes_open(row))
