@@ -17,13 +17,13 @@ import time
 from pathlib import Path
 
 from . import auth
-from .common import default_out, parse_prompts, profile_dir
+from .common import default_out, parse_prompts, profile_dir, slug
 
 FLOW_URL = "https://flow.google.com/"
 EDITOR = "flow-rich-text-editor div[role=textbox]"
 GENERATE = "flow-generate-icon-button button"
 SETTINGS = "button[aria-label='Settings trigger']"
-DEFAULT_MODEL = {"image": "Nano Banana Pro", "video": "Omni 1.1 Flash"}
+DEFAULT_MODEL = {"image": "Nano Banana Pro", "video": "Omni 1.2 Flash"}
 NEW_PROJECT = re.compile("Dự án mới|New project")
 VIDEO_DONE = "flow-video-tile img[alt='Generated video thumbnail']"
 VIDEO_FAILED = "failed to generate"
@@ -114,7 +114,87 @@ def new_project(page, headless=False):
     page.wait_for_selector(EDITOR, timeout=30000)
 
 
-def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=None):
+def validate_duration(duration, has_slider=True):
+    """Validate video duration.
+    For slider models (Omni 1.2 Flash): 3 < d <= 15 (integer 4..15).
+    For radio models (Omni 1.1 Flash): integer > 0 (typically 4, 6, 8, 10).
+    """
+    if not isinstance(duration, int):
+        try:
+            duration = int(duration)
+        except (ValueError, TypeError):
+            raise ValueError(f"duration must be an integer, got {duration!r}")
+    if has_slider:
+        if not (3 < duration <= 15):
+            raise ValueError(f"duration for slider models must be 4..15 seconds (3 < d <= 15), got {duration}")
+    else:
+        if duration <= 0:
+            raise ValueError(f"duration must be positive, got {duration}")
+    return duration
+
+
+def estimate_credits(model_name, duration=8):
+    """Estimated Flow credits for generating one clip."""
+    m = (model_name or "").lower()
+    if "1.2" in m or "12" in m:
+        d = duration if duration is not None else 8
+        if d <= 10:
+            return d * 3
+        return 30 + (d - 10) * 6
+    if "1.1" in m:
+        return 12 if duration == 8 else 10
+    return 24
+
+
+def get_ledger_path():
+    env_p = os.environ.get("FLOW_CREDIT_LEDGER")
+    if env_p:
+        return Path(env_p).expanduser()
+    for base in [Path.cwd(), *Path.cwd().parents, Path(__file__).resolve().parent.parent.parent]:
+        target = base / "output" / "cl_staging" / "long" / "research" / "flow_credit_ledger.jsonl"
+        if target.parent.is_dir():
+            return target
+    return Path("output/cl_staging/long/research/flow_credit_ledger.jsonl")
+
+
+def record_credit_ledger(model, duration, credits_reported, prompt_tag, file, purpose="library"):
+    """Append one JSON record to the credit ledger."""
+    from datetime import datetime
+
+    ledger_path = get_ledger_path()
+    ledger_path.parent.mkdir(parents=True, exist_ok=True)
+
+    file_str = str(file)
+    try:
+        # ledger_path: <repo_root>/output/cl_staging/long/research/flow_credit_ledger.jsonl
+        # parents[0]=research, [1]=long, [2]=cl_staging, [3]=output, [4]=repo_root
+        resolved_ledger = ledger_path.resolve()
+        if len(resolved_ledger.parents) >= 5 and "cl_staging" in resolved_ledger.parts:
+            repo_root = resolved_ledger.parents[4]
+            rel = Path(file).resolve().relative_to(repo_root)
+            file_str = str(rel)
+        else:
+            rel = Path(file).resolve().relative_to(Path.cwd().resolve())
+            file_str = str(rel)
+    except Exception:
+        pass
+
+    entry = {
+        "ts": datetime.now().astimezone().isoformat(),
+        "model": model,
+        "duration": duration,
+        "credits_reported": credits_reported,
+        "prompt_tag": prompt_tag,
+        "file": file_str,
+        "purpose": purpose or "library",
+    }
+    with open(ledger_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    print(f"[credit ledger] logged: {entry}")
+    return entry
+
+
+def apply_settings(page, mode, model=None, count=1, duration=8, ratio=None, res=None):
     """Open the settings popup and set mode / ratio / (resolution, duration) / model / count."""
     # A one-off announcement dialog (cdk-overlay backdrop) can cover the editor on a new project:
     # dismiss it with Escape and retry instead of failing the whole batch (05/11).
@@ -129,27 +209,55 @@ def apply_settings(page, mode, model=None, count=1, duration=6, ratio=None, res=
                 raise
     word = "Image" if mode == "image" else "Video"
     page.get_by_role("radio", name=re.compile(rf"^\s*(image|videocam)?\s*{word}\s*$")).click()
-    # Model first: the ratio / resolution / duration radios depend on it (Omni 1.2 Flash has no
-    # duration choice; picking 8s under 1.1 then switching to 1.2 gave "failed to generate", 06/11).
+    # Model first: the ratio / resolution / duration radios or slider depend on it
     page.get_by_role("button", name="Select model family").click()
-    page.get_by_role("menuitem", name=re.compile(re.escape(model or DEFAULT_MODEL[mode]))).click()
+    target_model = model or DEFAULT_MODEL[mode]
+    page.get_by_role("menuitem", name=re.compile(re.escape(target_model))).click()
     page.wait_for_timeout(500)
     if ratio:
         page.get_by_role("radio", name=re.compile(re.escape(ratio))).click()
     if mode == "video":
         if res:
             page.get_by_role("radio", name=re.compile(re.escape(res))).click()
-        dur = page.get_by_role("radio", name=re.compile(rf"^{duration}s$"))
-        if dur.count():
-            dur.click()
+        slider = page.locator(".duration-slider input[type=range], input[type=range][aria-label='Length']")
+        if slider.count():
+            validate_duration(duration, has_slider=True)
+            slider_val = duration - 3
+            slider.first.fill(str(slider_val))
+            page.wait_for_timeout(300)
+            val_span = page.locator(".duration-slider-value")
+            displayed = val_span.inner_text().strip() if val_span.count() else ""
+            if displayed != f"{duration} Sec":
+                slider.first.evaluate(f"""e => {{
+                    e.value = "{slider_val}";
+                    e.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                    e.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                }}""")
+                page.wait_for_timeout(300)
+                displayed = val_span.inner_text().strip() if val_span.count() else ""
+            if displayed != f"{duration} Sec":
+                raise RuntimeError(f"Failed to set duration to {duration}s: slider displays '{displayed}' (expected '{duration} Sec')")
         else:
-            print(f"model has no {duration}s option here, using its own length")
+            dur = page.get_by_role("radio", name=re.compile(rf"^{duration}s$"))
+            if dur.count():
+                dur.click()
+            else:
+                print(f"model has no {duration}s option here, using its own length")
     page.get_by_role("radio", name=f"x{count}", exact=True).click()
     page.wait_for_timeout(500)
     cost = page.get_by_text(re.compile(r"will use \d+ credits?")).all()
+    cost_text = cost[0].inner_text() if cost else "cost not shown"
+    credits_reported = 0
+    if cost:
+        m_credits = re.search(r"(\d+)\s*credits?", cost_text)
+        if m_credits:
+            credits_reported = int(m_credits.group(1))
+    if not credits_reported and mode == "video":
+        credits_reported = estimate_credits(target_model, duration)
     print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "),
-          "|", cost[0].inner_text() if cost else "cost not shown")
+          "|", cost_text)
     page.keyboard.press("Escape")
+    return credits_reported
 
 
 def verify_start_frame_chip(page):
@@ -478,15 +586,16 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
     return saved
 
 
-def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=None, res=None,
+def generate(prompts, out, mode="image", model=None, count=1, duration=None, ratio=None, res=None,
              quality="720p", image=None, timeout=None, headless=False, session=None, strip_mark="crop",
-             keep_raw=False, image_size=None, max_per_project=2):
+             keep_raw=False, image_size=None, max_per_project=2, purpose="library"):
     """Generate for each (stem, prompt) in `prompts` inside Flow project(s); return saved files.
 
     `image` (video mode only) is uploaded once as the start frame, so every prompt animates that image.
     `strip_mark` applies to images (crop/fill/off) and videos (crop/delogo/off).
     `image_size` (image mode): 1K or 2K; None = 2K with a window, 1K headless.
     `max_per_project` (video mode): create a new project after N clips to avoid the 3rd-clip menu bug.
+    `purpose`: clip purpose recorded in the credit ledger (e.g. long_id or library).
     """
     if image and mode != "video":
         raise SystemExit("--image needs --mode video")
@@ -497,6 +606,15 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
     if mode == "image":
         image_size = image_size_for(image_size, headless)
         print("image size:", image_size)
+    if mode == "video":
+        target_model = model or DEFAULT_MODEL[mode]
+        is_omni11 = "1.1" in target_model.lower()
+        if duration is None:
+            duration = 6 if is_omni11 else 8
+        validate_duration(duration, has_slider=not is_omni11)
+    else:
+        if duration is None:
+            duration = 8
     from playwright.sync_api import sync_playwright
 
     out = Path(out)
@@ -507,13 +625,13 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
         try:
             page = ctx.pages[0] if ctx.pages else ctx.new_page()
             new_project(page, headless)
-            apply_settings(page, mode, model, count, duration, ratio, res)
+            credits_reported = apply_settings(page, mode, model, count, duration, ratio, res)
             clips_in_project = 0
             for stem, prompt in prompts:
                 if mode == "video" and max_per_project and clips_in_project >= max_per_project:
                     print(f"[flow] reached {clips_in_project} clip(s) in project (max {max_per_project}), opening new project...")
                     new_project(page, headless)
-                    apply_settings(page, mode, model, count, duration, ratio, res)
+                    credits_reported = apply_settings(page, mode, model, count, duration, ratio, res)
                     clips_in_project = 0
 
                 if mode == "video" and image:
@@ -527,6 +645,15 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=6, ratio=
                     if mode == "video":
                         got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
                         clips_in_project += len(got)
+                        for saved_file in got:
+                            record_credit_ledger(
+                                model=model or DEFAULT_MODEL[mode],
+                                duration=duration,
+                                credits_reported=credits_reported or estimate_credits(model or DEFAULT_MODEL[mode], duration),
+                                prompt_tag=stem,
+                                file=saved_file,
+                                purpose=purpose,
+                            )
                     else:
                         got = generate_images(page, prompt, out, stem, timeout or 240, strip_mark, keep_raw,
                                               image_size)
@@ -598,21 +725,25 @@ def parse_shots_file(shots_path, default_ref=None):
     return shots
 
 
-def resolve_model_info(model_str):
+def resolve_model_info(model_str=None, duration=None):
     """Resolve model string to Flow UI model name, credit estimate, and default duration."""
-    m = (model_str or "omni1.1").strip().lower()
-    if "1.2" in m or "12" in m:
-        return "Omni 1.2 Flash", 24, 8
-    return "Omni 1.1 Flash", 10, 6
+    m = (model_str or "omni12").strip().lower()
+    if "1.1" in m:
+        dur = 6 if duration is None else duration
+        validate_duration(dur, has_slider=False)
+        return "Omni 1.1 Flash", estimate_credits("Omni 1.1 Flash", dur), dur
+    dur = 8 if duration is None else duration
+    validate_duration(dur, has_slider=True)
+    return "Omni 1.2 Flash", estimate_credits("Omni 1.2 Flash", dur), dur
 
 
-def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
+def shots_generate(shots, out, ref=None, model="omni12", duration=None, ratio=None, res=None,
                    quality="1080p", timeout=None, headless=False, session=None,
-                   strip_mark="crop", keep_raw=False, max_per_project=2):
+                   strip_mark="crop", keep_raw=False, max_per_project=2, purpose="library"):
     """Generate image-to-video clips from a list of shots and write manifest.json."""
     from playwright.sync_api import sync_playwright
 
-    model_name, est_credits_per_clip, duration = resolve_model_info(model)
+    model_name, est_credits_per_clip, dur = resolve_model_info(model, duration)
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -623,6 +754,7 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
             page = ctx.pages[0] if ctx.pages else ctx.new_page()
             current_frame = None
             clips_in_project = 0
+            credits_reported = est_credits_per_clip
 
             for shot in shots:
                 name = shot["name"]
@@ -645,8 +777,10 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                         "prompt": prompt,
                         "frame": str(frame),
                         "model": model_name,
+                        "duration": dur,
                         "estimated_credits": est_credits_per_clip,
                         "file": target_file.name,
+                        "purpose": purpose,
                         "ai_generated": True,
                         "upscaled": is_upscaled,
                     })
@@ -661,7 +795,9 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                     if clips_in_project >= max_per_project and max_per_project:
                         print(f"[flow shots] reached {clips_in_project} clip(s) in project, starting fresh project...")
                     new_project(page, headless)
-                    apply_settings(page, "video", model_name, count=1, duration=duration, ratio=ratio, res=res)
+                    cr = apply_settings(page, "video", model_name, count=1, duration=dur, ratio=ratio, res=res)
+                    if cr:
+                        credits_reported = cr
                     clips_in_project = 0
 
                 # BLOCKER FIX: Set and verify start frame for EVERY shot
@@ -707,24 +843,38 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
                     else:
                         print(f"[shot] {name}: video is 1080p ({w}x{h}) from Flow")
 
+                if saved_file:
+                    record_credit_ledger(
+                        model=model_name,
+                        duration=dur,
+                        credits_reported=credits_reported or est_credits_per_clip,
+                        prompt_tag=name,
+                        file=saved_file,
+                        purpose=purpose,
+                    )
+
                 manifest_shots.append({
                     "name": name,
                     "prompt": prompt,
                     "frame": str(frame),
                     "model": model_name,
-                    "estimated_credits": est_credits_per_clip,
+                    "duration": dur,
+                    "estimated_credits": credits_reported or est_credits_per_clip,
                     "file": file_rel,
+                    "purpose": purpose,
                     "ai_generated": True,
                     "upscaled": upscaled,
                 })
-                print(f"[shot] {name}: saved {file_rel} (est. {est_credits_per_clip} credits, upscaled: {upscaled})")
+                print(f"[shot] {name}: saved {file_rel} (est. {credits_reported or est_credits_per_clip} credits, upscaled: {upscaled})")
 
                 # Save intermediate manifest
                 manifest_data = {
                     "ref": str(Path(ref).resolve()) if ref else None,
                     "model": model_name,
-                    "estimated_credits_per_clip": est_credits_per_clip,
-                    "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
+                    "duration": dur,
+                    "purpose": purpose,
+                    "estimated_credits_per_clip": credits_reported or est_credits_per_clip,
+                    "total_estimated_credits": len(manifest_shots) * (credits_reported or est_credits_per_clip),
                     "ai_generated": True,
                     "upscaled": any(s.get("upscaled", False) for s in manifest_shots),
                     "shots": manifest_shots,
@@ -736,8 +886,10 @@ def shots_generate(shots, out, ref=None, model="omni1.1", ratio=None, res=None,
     manifest_data = {
         "ref": str(Path(ref).resolve()) if ref else None,
         "model": model_name,
-        "estimated_credits_per_clip": est_credits_per_clip,
-        "total_estimated_credits": len(manifest_shots) * est_credits_per_clip,
+        "duration": dur,
+        "purpose": purpose,
+        "estimated_credits_per_clip": credits_reported or est_credits_per_clip,
+        "total_estimated_credits": len(manifest_shots) * (credits_reported or est_credits_per_clip),
         "ai_generated": True,
         "upscaled": any(s.get("upscaled", False) for s in manifest_shots),
         "shots": manifest_shots,
@@ -761,9 +913,9 @@ def add_parser(sub):
     src.add_argument("--prompt")
     src.add_argument("--prompts-file", help="'name | prompt' per line, '#' comments")
     g.add_argument("--out", default=str(default_out("flow")))
-    g.add_argument("--model", help="substring of the model name (default Nano Banana Pro / Omni 1.1 Flash)")
+    g.add_argument("--model", help="substring of the model name (default Nano Banana Pro / Omni 1.2 Flash)")
     g.add_argument("--count", type=int, choices=[1, 2, 3, 4], default=1, help="outputs per prompt")
-    g.add_argument("--duration", type=int, choices=[4, 6, 8, 10], default=6, help="video seconds")
+    g.add_argument("--duration", type=int, default=8, help="video seconds (4-15 for slider models, 4/6/8/10 for radio models)")
     g.add_argument("--ratio", choices=["16:9", "4:3", "1:1", "3:4", "9:16"])
     g.add_argument("--res", choices=["360p", "720p"], help="video generation resolution")
     g.add_argument("--quality", choices=["720p", "1080p", "4K"], default="720p", help="video download quality")
@@ -784,13 +936,15 @@ def add_parser(sub):
                    help="also keep the untouched download as *_raw when a sparkle was removed")
     g.add_argument("--max-per-project", type=int, default=2,
                    help="max video clips per Flow project before creating a new one (default 2, avoids 3rd clip bug)")
+    g.add_argument("--purpose", default="library", help="clip purpose for credit ledger (e.g. long_id or library)")
     g.set_defaults(func=_run_generate)
 
     sh = s.add_parser("shots", help="generate video shots from reference image and shots file")
     sh.add_argument("--ref", required=True, help="reference character image (image-to-video)")
     sh.add_argument("--shots", required=True, help="path to shots file ('name | prompt [| frame=<path>]')")
     sh.add_argument("--out", default=str(default_out("flow")), help="output directory")
-    sh.add_argument("--model", default="omni1.1", help="omni1.1 / Omni 1.1 Flash (default 10 credit/6s) or omni12 / Omni 1.2 Flash (24 credit/8s)")
+    sh.add_argument("--model", default="omni12", help="omni12 / Omni 1.2 Flash (default 24 credit/8s) or omni1.1 / Omni 1.1 Flash")
+    sh.add_argument("--duration", type=int, default=8, help="video duration in seconds (default 8, 4-15)")
     sh.add_argument("--ratio", choices=["16:9", "4:3", "1:1", "3:4", "9:16"])
     sh.add_argument("--res", choices=["360p", "720p"], help="video generation resolution")
     sh.add_argument("--quality", choices=["720p", "1080p", "4K"], default="1080p", help="video download quality (default 1080p)")
@@ -800,18 +954,20 @@ def add_parser(sub):
     sh.add_argument("--strip-mark", choices=["crop", "delogo", "off"], default="crop", help="remove the Gemini sparkle (default crop)")
     sh.add_argument("--keep-raw", action="store_true", help="also keep the untouched download as *_raw")
     sh.add_argument("--max-per-project", type=int, default=2, help="max clips per Flow project before creating a new one (default 2)")
+    sh.add_argument("--purpose", default="library", help="clip purpose for credit ledger and manifest (e.g. long_id or library)")
     sh.set_defaults(func=_run_shots)
 
 
 def _run_generate(a):
-    prompts = [("p1", a.prompt)] if a.prompt else parse_prompts(a.prompts_file)
+    prompts = [(slug(a.prompt, 30) or "p1", a.prompt)] if a.prompt else parse_prompts(a.prompts_file)
     generate(prompts, a.out, a.mode, a.model, a.count, a.duration, a.ratio, a.res, a.quality, a.image, a.timeout,
              a.headless, a.session, strip_mark=a.strip_mark, keep_raw=a.keep_raw, image_size=a.image_size,
-             max_per_project=a.max_per_project)
+             max_per_project=a.max_per_project, purpose=a.purpose)
 
 
 def _run_shots(a):
     shots = parse_shots_file(a.shots, a.ref)
-    shots_generate(shots, a.out, ref=a.ref, model=a.model, ratio=a.ratio, res=a.res,
+    shots_generate(shots, a.out, ref=a.ref, model=a.model, duration=a.duration, ratio=a.ratio, res=a.res,
                    quality=a.quality, timeout=a.timeout, headless=a.headless, session=a.session,
-                   strip_mark=a.strip_mark, keep_raw=a.keep_raw, max_per_project=a.max_per_project)
+                   strip_mark=a.strip_mark, keep_raw=a.keep_raw, max_per_project=a.max_per_project,
+                   purpose=a.purpose)
