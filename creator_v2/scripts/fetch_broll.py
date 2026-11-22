@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from factory.console import utf8_console
+    utf8_console()
     parser = argparse.ArgumentParser()
     parser.add_argument("topic")
     args = parser.parse_args()
