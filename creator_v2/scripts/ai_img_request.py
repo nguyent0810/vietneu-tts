@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import json
 import os
 import re
@@ -47,6 +48,7 @@ def main() -> int:
     ap.add_argument("topic")
     ap.add_argument("--wait", type=int, default=900, help="giây chờ tối đa")
     ap.add_argument("--no-send", action="store_true", help="chỉ chờ ảnh đã yêu cầu và chép về")
+    ap.add_argument("--redo", help="tên ảnh cần tạo lại, cách nhau bằng dấu phẩy")
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--images-only", action="store_true")
     mode.add_argument("--videos-only", action="store_true")
@@ -54,6 +56,8 @@ def main() -> int:
                     help="vẽ rõ mặt, giữ đúng 'Hồ sơ nhân vật' trong prompt_file: nhân vật giả định (CK 27/10/2026) "
                          "hoặc nhân vật lịch sử phỏng tác theo tư liệu (storytelling-guide §15, 17/11/2026)")
     a = ap.parse_args()
+    if a.redo and a.no_send:
+        ap.error("--redo không thể dùng cùng --no-send")
     prompts = ROOT / "data" / "long" / a.topic / "ai_prompts.md"
     out = ROOT / "motion" / "hf" / "assets" / "long" / a.topic / "img" / "ai"
     share_root = Path(os.environ.get("GROKBOT_SHARE_DIR") or (Path(os.environ.get("USERPROFILE") or Path.home()) / "Downloads" / "grokbot"))
@@ -65,12 +69,37 @@ def main() -> int:
     videos = [] if a.images_only else re.findall(r"^#+[ \t]+(vid_\d+\.mp4)\b", text, re.M)
     if not images and not videos:
         raise SystemExit(f"{prompts}: không có mục ảnh hoặc clip được chọn")
+    redo = []
+    if a.redo:
+        for item in a.redo.split(","):
+            name = item.strip()
+            if not name.endswith(".png"):
+                name += ".png"
+            if name not in images:
+                ap.error(f"ảnh --redo không có trong prompt đã chọn: {name}")
+            if name not in redo:
+                redo.append(name)
     video_out = ROOT / "output" / "long" / a.topic / "broll"
     share_out.mkdir(parents=True, exist_ok=True)
     shared_prompts = share / "ai_prompts.md"
     shutil.copy2(prompts, shared_prompts)
     if images:
         out.mkdir(parents=True, exist_ok=True)
+
+    if redo:
+        stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+        for directory in (out, share_out):
+            backup = directory / "_old" / stamp
+            # Preserve previous backups if invoked twice in one second.
+            suffix = 1
+            while backup.exists():
+                backup = directory / "_old" / f"{stamp}-{suffix}"
+                suffix += 1
+            for name in redo:
+                source = directory / name
+                if source.is_file():
+                    backup.mkdir(parents=True, exist_ok=True)
+                    shutil.move(str(source), str(backup / name))
 
     def local_name(name):
         """vid_NN.mp4 -> 9000NN.mp4: build_long chỉ nhận id b-roll toàn chữ số (regex broll/(\\d+)...)."""
