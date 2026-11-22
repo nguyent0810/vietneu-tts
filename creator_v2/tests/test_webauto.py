@@ -131,7 +131,7 @@ def test_flow_image_can_mode_video():
 def test_cli_dung_duoc_moi_lenh():
     p = cli.build_parser()
     g = p.parse_args(["flow", "generate", "--prompt", "x"])
-    assert (g.mode, g.count, g.duration, g.quality) == ("image", 1, 6, "720p")
+    assert (g.mode, g.count, g.duration, g.quality) == ("image", 1, 8, "720p")
     v = p.parse_args(["flow", "generate", "--mode", "video", "--image", "a.png", "--prompts-file", "f"])
     assert v.mode == "video" and v.image == "a.png"
     assert p.parse_args(["chatgpt", "images", "--prompts-file", "f"]).gap == 5
@@ -762,19 +762,76 @@ def test_cli_flow_shots_parser():
     assert args.ref == "monk.png"
     assert args.shots == "shots.txt"
     assert args.out == "out_dir"
-    assert args.model == "omni1.1"
+    assert args.model == "omni12"
+    assert args.duration == 8
+    assert args.purpose == "library"
     assert args.max_per_project == 2
     assert args.quality == "1080p"
 
-    args12 = p.parse_args(["flow", "shots", "--ref", "monk.png", "--shots", "shots.txt", "--model", "omni12"])
-    assert args12.model == "omni12"
+    args12 = p.parse_args(["flow", "shots", "--ref", "monk.png", "--shots", "shots.txt", "--model", "omni1.1", "--duration", "6", "--purpose", "long_id"])
+    assert args12.model == "omni1.1"
+    assert args12.duration == 6
+    assert args12.purpose == "long_id"
 
 
 def test_resolve_model_info():
-    assert flow.resolve_model_info(None) == ("Omni 1.1 Flash", 10, 6)
+    assert flow.resolve_model_info(None) == ("Omni 1.2 Flash", 24, 8)
     assert flow.resolve_model_info("omni1.1") == ("Omni 1.1 Flash", 10, 6)
+    assert flow.resolve_model_info("omni1.1", 8) == ("Omni 1.1 Flash", 12, 8)
     assert flow.resolve_model_info("omni12") == ("Omni 1.2 Flash", 24, 8)
     assert flow.resolve_model_info("omni1.2") == ("Omni 1.2 Flash", 24, 8)
+    assert flow.resolve_model_info("omni12", 6) == ("Omni 1.2 Flash", 18, 6)
+    assert flow.resolve_model_info("omni12", 12) == ("Omni 1.2 Flash", 42, 12)
+    assert flow.resolve_model_info("omni12", 15) == ("Omni 1.2 Flash", 60, 15)
+
+
+def test_validate_duration():
+    # Slider model (Omni 1.2 Flash): 3 < d <= 15
+    with pytest.raises(ValueError, match="3 < d <= 15"):
+        flow.validate_duration(3, has_slider=True)
+    assert flow.validate_duration(4, has_slider=True) == 4
+    assert flow.validate_duration(8, has_slider=True) == 8
+    assert flow.validate_duration(15, has_slider=True) == 15
+    with pytest.raises(ValueError, match="3 < d <= 15"):
+        flow.validate_duration(16, has_slider=True)
+    with pytest.raises(ValueError):
+        flow.validate_duration("invalid", has_slider=True)
+    # Radio model (Omni 1.1 Flash): positive int
+    assert flow.validate_duration(6, has_slider=False) == 6
+    assert flow.validate_duration(8, has_slider=False) == 8
+    with pytest.raises(ValueError):
+        flow.validate_duration(0, has_slider=False)
+
+
+def test_flow_credit_ledger(tmp_path, monkeypatch):
+    ledger_file = tmp_path / "test_ledger.jsonl"
+    monkeypatch.setenv("FLOW_CREDIT_LEDGER", str(ledger_file))
+
+    rec = flow.record_credit_ledger(
+        model="Omni 1.2 Flash",
+        duration=8,
+        credits_reported=24,
+        prompt_tag="test_shot",
+        file=str(tmp_path / "test_video.mp4"),
+        purpose="library"
+    )
+    assert rec["model"] == "Omni 1.2 Flash"
+    assert rec["duration"] == 8
+    assert rec["credits_reported"] == 24
+    assert rec["prompt_tag"] == "test_shot"
+    assert rec["purpose"] == "library"
+    assert "ts" in rec
+    assert "file" in rec
+
+    assert ledger_file.is_file()
+    lines = ledger_file.read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines) == 1
+    data = json.loads(lines[0])
+    for field in ["ts", "model", "duration", "credits_reported", "prompt_tag", "file", "purpose"]:
+        assert field in data
+    assert data["duration"] == 8
+    assert data["credits_reported"] == 24
+    assert data["purpose"] == "library"
 
 
 def test_parse_shots_file_valid_and_custom_frames(tmp_path):
@@ -818,6 +875,7 @@ def test_parse_shots_file_missing_frame_raises(tmp_path):
 
 def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
     """Chứng minh chạy 5 clip liền một lệnh: tự mở project mới sau mỗi 2 clip và luôn gắn ref cho từng clip."""
+    monkeypatch.setenv("FLOW_CREDIT_LEDGER", str(tmp_path / "test_ledger.jsonl"))
     calls = {"new_project": 0, "apply_settings": 0, "set_start_frame": 0, "generate_video": 0}
 
     class FakePage:
@@ -884,6 +942,7 @@ def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
 
 def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
     """Chứng minh flow shots chạy 5 clip, gắn ref mọi shot, ghi manifest.json đầy đủ trường."""
+    monkeypatch.setenv("FLOW_CREDIT_LEDGER", str(tmp_path / "test_ledger.jsonl"))
     calls = {"new_project": 0, "generate_video": 0, "set_start_frame": 0}
 
     class FakePage:

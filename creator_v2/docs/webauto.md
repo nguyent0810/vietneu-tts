@@ -38,8 +38,9 @@ Các trang đều cần tài khoản đã đăng nhập. webauto **không bao gi
 
 ### `flow generate`
 Tạo ảnh hoặc video trong một dự án Flow mới, tải về `<tên>_<n>_...`.
-- `--mode image|video` (mặc định image). Mặc định model: Nano Banana Pro (ảnh), Omni 1.1 Flash (video). `--model` nhận một đoạn tên model: `--model "Omni 1.2"` chọn Omni 1.2 Flash, `--model "Omni 1.1"` chọn Omni 1.1 Flash. Danh sách model video ngày 06/11/2026: Omni 1.2 Flash, Omni 1.1 Flash, Veo 3.1 - Lite, Veo 3.1 - Fast, Veo 3.1 - Quality. Lệnh chọn model **trước** rồi mới chọn tỉ lệ, độ phân giải, độ dài, vì các nút này đổi theo model: Omni 1.2 Flash không có nút độ dài (lệnh in "model has no 8s option" và để model tự quyết), Omni 1.1 Flash có 4/6/8/10s. Dòng `settings:` in kèm số credit Flow báo ("Generating will use N credits"). Video "failed to generate" thì lệnh dừng ngay thay vì chờ hết `--timeout`.
-- `--count 1-4` số kết quả mỗi prompt (mặc định 1), `--duration 4|6|8|10` giây (video, mặc định 6), `--ratio`, `--res`, `--quality 720p|1080p|4K` (chất lượng tải; 720p là bản gốc).
+- `--mode image|video` (mặc định image). Mặc định model: Nano Banana Pro (ảnh), Omni 1.2 Flash (video). `--model` nhận một đoạn tên model: `--model "Omni 1.2"` chọn Omni 1.2 Flash, `--model "Omni 1.1"` chọn Omni 1.1 Flash. Danh sách model video ngày 06/11/2026: Omni 1.2 Flash, Omni 1.1 Flash, Veo 3.1 - Lite, Veo 3.1 - Fast, Veo 3.1 - Quality. Lệnh chọn model **trước** rồi mới chọn tỉ lệ, độ phân giải, độ dài, vì các điều khiển này đổi theo model: Omni 1.2 Flash (mặc định cho video) chọn độ dài bằng thanh kéo (slider) từ 4 đến 15 giây (3 < d ≤ 15, mặc định 8 giây). Omni 1.1 Flash giữ các nút chọn radio 4/6/8/10s (mặc định 6 giây). Dòng `settings:` in kèm số credit Flow báo ("Generating will use N credits"). Video "failed to generate" thì lệnh dừng ngay thay vì chờ hết `--timeout`.
+- `--count 1-4` số kết quả mỗi prompt (mặc định 1), `--duration 4-15` giây (video, mặc định 8; nhận 4–15 cho model thanh kéo như Omni 1.2, hoặc 4/6/8/10 cho model radio như Omni 1.1), `--ratio`, `--res`, `--quality 720p|1080p|4K` (chất lượng tải; 720p là bản gốc).
+- `--purpose <long_id|library>` (mặc định `library`): mục đích tạo clip, tự động ghi một dòng vào sổ nhật ký credit `output/cl_staging/long/research/flow_credit_ledger.jsonl`.
 - `--image khung_dau.png` (video): ảnh làm **khung bắt đầu** (image-to-video). Một ảnh dùng cho mọi prompt trong lần chạy.
 - `--headless`: chạy không mở cửa sổ Chrome (đã thử 28/10/2026 trên macOS: 1 ảnh Nano Banana Pro 16:9 trong 35 giây, Flow không chặn). Profile phải đã đăng nhập: chạy ẩn thì không chờ đăng nhập mà báo lỗi ngay, khi đó chạy `flow login` rồi thử lại. Profile vẫn bị khoá nếu còn cửa sổ Flow khác đang mở.
 - `--session FILE` (hoặc biến `WEBAUTO_FLOW_SESSION`): dùng phiên đăng nhập đã xuất ra file thay cho profile, dành cho máy chủ không có cửa sổ để đăng nhập. Tạo file trên máy đã đăng nhập bằng `python -m webauto flow export-session --out <file>`; file được ghi quyền chỉ-chủ (600). **File này đăng nhập được Google thay bạn**: không commit, không gửi ai, chép sang máy chủ bằng `scp` rồi `chmod 600`. Phiên hết hạn thì xuất lại.
@@ -56,15 +57,35 @@ Tạo ảnh hoặc video trong một dự án Flow mới, tải về `<tên>_<n>
 - `--max-per-project N` (mặc định 2, chỉ video): tự động mở dự án mới sau mỗi N clip để tránh lỗi kẹt menu "More options" từ clip thứ 3 trong cùng một dự án.
 - Flow có thể tính credit (xem dòng "Generating will use N credits" trong popup cài đặt). Video tốn đáng kể: Omni 1.1 Flash 8s x2 báo 24 credit; ảnh Nano Banana 2.1 báo 0 credit; ảnh Nano Banana Pro (mặc định) cũng miễn phí, còn video Omni Flash 8s tốn 10 credit mỗi video (chủ tài khoản xác nhận 28/10/2026). Đo 06/11/2026 (đếm credit trong menu tài khoản trước/sau): Omni 1.2 Flash x1 báo và trừ **24 credit** mỗi clip (text-to-video lẫn image-to-video, dài 7,93 s, 24 fps), Omni 1.1 Flash 8s x1 báo 12, Veo 3.1 - Fast báo 20; tải video 1080p (phóng từ bản gốc 720p) **không** trừ thêm; clip "failed to generate" không trừ. Tải ảnh 2K không trừ. Một clip Omni 1.2 mất khoảng 2 phút từ lúc mở dự án tới file 1080p đã cắt dấu.
 
+#### Bảng credit Omni 1.2 Flash theo độ dài (đo ngày 21/11/2026 trong popup cài đặt Flow)
+
+| Độ dài (giây) | Credit Flow báo | Tỉ lệ tính |
+|---|---|---|
+| 3s | 9 | Min trên UI (code chặn ≤ 3) |
+| 4s | 12 | 3 credit / giây |
+| 5s | 15 | 3 credit / giây |
+| 6s | 18 | 3 credit / giây |
+| 7s | 21 | 3 credit / giây |
+| 8s (mặc định) | 24 | 3 credit / giây |
+| 9s | 27 | 3 credit / giây |
+| 10s | 30 | 3 credit / giây |
+| 11s | 36 | +6 credit / giây |
+| 12s | 42 | +6 credit / giây |
+| 13s | 48 | +6 credit / giây |
+| 14s | 54 | +6 credit / giây |
+| 15s | 60 | +6 credit / giây |
+
 ### `flow shots`
 Tạo lô video clip nhân vật xuyên suốt (image-to-video) từ ảnh nhân vật gốc và danh sách shots, xuất video kèm `manifest.json`.
 - `--ref <ảnh>`: ảnh nhân vật tham chiếu làm khung đầu (start frame) mặc định cho các shot. Khung đầu được gắn và xác thực chip nghiêm ngặt trong UI cho TỪNG shot (dù mở project mới hay chung project). Nếu UI không xác nhận được chip khung đầu thì shot lập tức dừng với lỗi, tuyệt đối không âm thầm sinh text-to-video.
 - `--shots <file>`: danh sách shot, mỗi dòng `tên | prompt chuyển động` hoặc khai khung đầu riêng từng shot `tên | prompt | frame=<ảnh>` (hoặc `tên | frame=<ảnh> | prompt`). Dòng `#` và dòng trống được bỏ qua.
 - `--out <thư mục>`: thư mục xuất video và file `manifest.json`.
-- `--model {omni1.1, omni12, ...}`: mặc định `omni1.1` (Omni 1.1 Flash, ước tính 10 credit / 6 s); `--model omni12` khi cần Omni 1.2 Flash (ước tính 24 credit / 8 s).
+- `--model {omni12, omni1.1, ...}`: mặc định `omni12` (Omni 1.2 Flash, ước tính 24 credit / 8 s); `--model omni1.1` khi cần Omni 1.1 Flash (ước tính 10 credit / 6 s).
+- `--duration 4-15`: độ dài video trong shot (mặc định 8 giây cho Omni 1.2, 6 giây cho Omni 1.1).
+- `--purpose <long_id|library>` (mặc định `library`): mục đích tạo shot, ghi vào manifest và sổ credit `output/cl_staging/long/research/flow_credit_ledger.jsonl`.
 - `--quality {720p, 1080p, 4K}`: mặc định `1080p`. Nếu menu Download của Flow có lựa chọn 1080p thì tải trực tiếp; nếu không có, tự động tải 720p và nâng lên 1920x1080 bằng ffmpeg (lanczos), đồng thời ghi nhận trong manifest `upscaled: true`.
 - `--max-per-project N`: mặc định 2. Tự động mở dự án Flow mới sau mỗi N clip, khắc phục triệt để lỗi Flow bị kẹt ở nút "More options" khi tạo từ clip thứ 3 trở đi trong cùng một dự án.
-- File `manifest.json` được ghi tự động gồm: `ref`, `model`, `estimated_credits_per_clip`, `total_estimated_credits`, `ai_generated: true`, `upscaled: bool`, danh sách `shots` (kèm `upscaled: bool`).
+- File `manifest.json` được ghi tự động gồm: `ref`, `model`, `duration`, `purpose`, `estimated_credits_per_clip`, `total_estimated_credits`, `ai_generated: true`, `upscaled: bool`, danh sách `shots` (kèm `upscaled: bool`).
 - Hỗ trợ các cờ phụ trợ như `flow generate`: `--ratio`, `--res`, `--timeout`, `--headless`, `--session`, `--strip-mark` (mặc định `crop`), `--keep-raw`.
 
 ### `chatgpt images`
