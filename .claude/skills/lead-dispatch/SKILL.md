@@ -53,6 +53,8 @@ Luật:
 
 File `output/cl_staging/grok/queue/<id>_<tên>.md`. Vòng lặp lấy theo thứ tự tên file, task chưa có `reports/<tên>.md`. P0 đặt id `000_…` để chạy trước; còn lại theo số kế tiếp. Ticket đang gác để ở `queue_hold/`.
 
+- **Ticket lô Short phủ lịch không đưa vào `queue_hold/` kèm “MỞ KHI”**: đưa thẳng vào `queue/` sớm ít nhất 10 ngày trước ngày cần phủ. Mỗi ticket ghi thợ dự phòng theo mẫu `> Dự phòng: grok` để chuyển ngay khi thợ chính hỏng hoặc hết hạn mức. Nếu báo cáo ghi **“THỢ KHÔNG GHI BÁO CÁO”**, Lead đọc log ngay.
+
 ```markdown
 ---
 id: 000_w44_review_tuan
