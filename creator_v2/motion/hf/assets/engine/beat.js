@@ -7,9 +7,11 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
      pop · rise · blur · slice · drop · marker · redact · stamp · tape · flicker · outline · type · scramble · strike.
      Hàm nhận phần tử .kin đã đặt chữ + vị trí, tự gắn animation vào tl tại q.at. sfx tương ứng ở sfx_long.py. */
   const words = (t) => esc(t).split(" ");
+  // bọc từng chữ, giữ xuống dòng "\n" của text (slam/kinetic hai dòng) thành <br/>, không gộp thành một dòng tràn khung
+  const wrapWords = (t, wrap) => String(t).split("\n").map((ln) => words(ln.trim()).map(wrap).join(" ")).join("<br/>");
   const inner = (e, cls) => { const s = el("span", "kt" + (cls ? " " + cls : ""), e.innerHTML); e.innerHTML = ""; e.appendChild(s); return s; };
   const wordMotion = (e, q, from, ease, center = false) => {
-    e.innerHTML = words(q.text).map((w) => `<span class="hfword dw">${w}</span>`).join(" ");
+    e.innerHTML = wrapWords(q.text, (w) => `<span class="hfword dw">${w}</span>`);
     const ws = [...e.querySelectorAll(".hfword")]; tl.set(e, { opacity: 1 }, q.at - 0.08);
     ws.forEach((w, k) => { const order = center ? Math.abs(k - (ws.length - 1) / 2) : k;
       const to = { opacity: 1, y: 0, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.42, ease, immediateRender: false };
@@ -32,7 +34,7 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
     "soft-drift": (e, q) => tl.fromTo(e, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
     "soft-zoom": (e, q) => tl.fromTo(e, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
     "soft-blur": (e, q) => tl.fromTo(e, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "sine.out", immediateRender: false }, q.at),
-    rise: (e, q) => { e.innerHTML = words(q.text).map((w) => `<span class="rw"><span>${w}</span></span>`).join(" ");
+    rise: (e, q) => { e.innerHTML = wrapWords(q.text, (w) => `<span class="rw"><span>${w}</span></span>`);
       tl.set(e, { opacity: 1 }, q.at - 0.12);
       tl.fromTo(e.querySelectorAll(".rw > span"), { yPercent: 115 }, { yPercent: 0, duration: 0.42, ease: "power3.out", stagger: 0.055, immediateRender: false }, q.at - 0.12); },
     // nhòe + giãn chữ -> nét (tiêu đề điện ảnh)
@@ -43,7 +45,7 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
       tl.fromTo(e.querySelector(".sl.a"), { x: -260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power4.out", immediateRender: false }, q.at - 0.2);
       tl.fromTo(e.querySelector(".sl.b"), { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power4.out", immediateRender: false }, q.at - 0.2); },
     // từng chữ rơi xuống, nảy nhẹ
-    drop: (e, q) => { e.innerHTML = words(q.text).map((w) => `<span class="dw">${w}</span>`).join(" ");
+    drop: (e, q) => { e.innerHTML = wrapWords(q.text, (w) => `<span class="dw">${w}</span>`);
       tl.set(e, { opacity: 1 }, q.at - 0.15);
       tl.fromTo(e.querySelectorAll(".dw"), { y: -90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "bounce.out", stagger: 0.07, immediateRender: false }, q.at - 0.15); },
     // bút dạ quang quét phía sau chữ (kiểu Johnny Harris)
@@ -88,7 +90,7 @@ window.makeBeat = ({ tl, el, esc, rnd }) => {
     // Chữ chưa đọc ẩn bằng CSS (.kin .sw opacity 0) -- khung dòng hiện ở chữ đầu, không chữ nào hiện sớm.
     // Chữ đầu được đọc muộn (> 1,2 s sau khi cảnh mở) -> cả dòng hiện mờ trước, khỏi "màn chết" (luật của v1 longform.js).
     sync: (e, q) => { if (!q.wt || !q.wt.length) return BEAT.rise(e, q);   // "sync" ghi tay mà không có mốc chữ
-      e.innerHTML = words(q.text).map((w) => `<span class="sw">${w}</span>`).join(" ");
+      e.innerHTML = wrapWords(q.text, (w) => `<span class="sw">${w}</span>`);
       const sw = e.querySelectorAll(".sw"), pre = !q.syncExact && q.t0 != null && q.wt[0] - q.t0 > 1.2;
       // q.emw (Short phối): mảng chỉ số chữ nhấn. KHÔNG dùng lại khoá q.em -- beat2 của video dài đã dùng q.em với kiểu khác
       // (12/10/2026: dùng chung khoá làm vỡ mọi cảnh sync của video dài, cảnh sau không dựng).
