@@ -30,6 +30,7 @@ TOOLS_DIR = HERE / "tools"
 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+from audio_script_rules import prepare_fs_short_plan
 if str(LONG_DIR) not in sys.path:
     sys.path.insert(0, str(LONG_DIR))
 if str(TOOLS_DIR) not in sys.path:
@@ -1066,6 +1067,7 @@ def build_tet_calendar_html(t: dict, dur: float, segs: list[dict]) -> str:
 # =========================================================================
 def build_and_render_all(target_ids: set[str] | None = None, force: bool = False) -> None:
     plan = make_plan()
+    plan = prepare_fs_short_plan(plan, PLAN_FILE)
     PLAN_FILE.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Plan saved to {PLAN_FILE} with {len(plan)} items.")
 

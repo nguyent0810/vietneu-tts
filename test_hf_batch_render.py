@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 import hf_batch_render as runner
+from audio_script_rules import apply_fs_short_defaults
 import hyperframes_bridge as HB
 
 
@@ -103,6 +104,28 @@ def test_short_v2_length_ignores_silent_ask_and_old_rows():
     assert any("tiếng" in x for x in runner.short_v2_warnings(_short(words[:2])))
     assert runner.short_v2_warnings(_short(words[:1], day="2026-11-01")) == []   # short cũ (trước v2) không chặn
     assert any("insight" in x for x in runner.short_v2_warnings(_short(words, insight="")))
+
+
+def test_fs_lookup_builder_defaults_preserve_existing_and_leave_bud_unchanged():
+    old = {"id": "old", "series": "fs", "style": "yeartable", "audio_profile": "legacy",
+           "duration_band": [18, 22], "dur": 19}
+    new_fs = {"id": "new", "series": "fs", "style": "yeartable"}
+    bud = {"id": "bud", "series": "bud", "style": "yeartable"}
+    rows = apply_fs_short_defaults([dict(old), new_fs, bud], [old])
+    assert rows[0] == old
+    assert rows[1]["audio_profile"] == "short_win_9_18"
+    assert rows[1]["duration_band"] == [10, 16]
+    assert rows[2] == bud
+
+
+def test_fs_lookup_v2_warning_uses_measured_band_not_v2_word_floor():
+    row = {"id": "fs-table", "series": "fs", "style": "yeartable", "lane": "lookup",
+           "day": "2026-11-23", "audio_profile": "short_win_9_18", "duration_band": [10, 16],
+           "duration_s": 12, "script": ["Tra bảng năm sinh."] , "insight": "x", "novelty_ok": "test"}
+    assert not any("68-88" in warning or "68–88" in warning or "tiếng" in warning
+                   for warning in runner.short_v2_warnings(row))
+    row["duration_s"] = 17
+    assert any("ngoài dải 10-16s" in warning for warning in runner.short_v2_warnings(row))
 
 
 def test_integrity_blocks_markup_and_short_repeats():

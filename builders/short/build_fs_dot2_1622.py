@@ -29,6 +29,7 @@ ROOT = HERE.parents[2]
 for p in (ROOT, ROOT / "output" / "cl_staging" / "long", HERE / "tools", HERE):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
+from audio_script_rules import prepare_fs_short_plan
 
 import hf_batch_render as R
 import amlich
@@ -1257,6 +1258,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
 
     plan = make_plan()
+    plan = prepare_fs_short_plan(plan, PLAN_FILE)
     plan_guard(plan)
 
     clean_plan = []

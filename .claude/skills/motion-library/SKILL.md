@@ -118,7 +118,7 @@ Mỗi 3–5 giây một thứ mới trên màn hình. Con số/năm → years/ti
 nhớ → quote. Một khái niệm mạnh (vô thường, tỉnh thức) → word. Mở chương cảm xúc → illus.
 Lời chào cuối → endcard. Còn lại để ảnh/video theo `layout_policy` của plan (skill long-video).
 
-## Công thức short v2 (BUD + FS, bắt buộc từ lịch 14/11/2026 — `hf_batch_render.short_v2_issues` chặn render)
+## Công thức short v2 (BUD + FS truyện, khuyến nghị biên tập từ lịch 14/11/2026 — `hf_batch_render.short_v2_issues` không chặn render)
 Rút từ đánh giá 28 ngày tới 03/10/2026 (`python hf_shorts_report.py <từ> <đến> --curves`): short nào cũng dừng ở
 ~900–1.000 view (vòng thử feed Shorts), chỉ bài xem hết > 90% mới bứt lên. Bài yếu rơi người xem ở 20–50% thời
 lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây bị feed đẩy kém (FS trung vị 122 view).
@@ -127,7 +127,7 @@ lượng = câu 2, khi câu 2 là định nghĩa/thuật ngữ. Bài < 20 giây 
 - Câu 3–4: nội dung, thuật ngữ, lời kinh (quote `variant: "type"` + số kinh), mẹo thực tế.
 - Câu 5: trả lời đúng câu hỏi của tiêu đề, nối ý về câu 1 (vòng lặp `loop`).
 - Câu 6: hỏi lặng (`ask`, `silence: [6]`) mời bình luận.
-- BUD 80–102, FS 68–88 tiếng đọc (không tính câu hỏi lặng) ≈ 21–27 giây. Năm sinh dùng `word`, không dùng `stat` (stat in "1.990").
+- BUD giữ 80–102 tiếng đọc (không tính câu hỏi lặng) ≈ 21–27 giây. FS dạng truyện dùng ngân sách v2 nếu phù hợp; FS tra cứu/lịch dùng profile `short_win_9_18`, đích thời lượng 10–16 giây, không áp floor tiếng. Căn cứ thử nghiệm FS trong brief 093: nhóm ≤16s median 2d 10.413 view (n=46), nhóm ≥23s 2.284 (n=16). Năm sinh dùng `word`, không dùng `stat` (stat in "1.990").
 - Row thêm `insight` (câu trả lời một câu → dòng đầu mô tả + hashtag có dấu), `tags_vi` (tag có dấu),
   tuỳ chọn `hashtags`, `cta`. Uploader (tools/publish/upload_bud.py / tools/publish/upload_fs.py) tự dựng mô tả mới khi có `insight`.
 - Chủ đề: BUD ưu tiên lane `niem`/`doi` (đời thường, cảm xúc — xem hết 78%), `phap` thuần lý thuyết yếu nhất (58%,

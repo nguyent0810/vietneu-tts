@@ -33,6 +33,7 @@ TOOLS_DIR = HERE / "tools"
 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+from audio_script_rules import prepare_fs_short_plan
 if str(LONG_DIR) not in sys.path:
     sys.path.insert(0, str(LONG_DIR))
 if str(TOOLS_DIR) not in sys.path:
@@ -1530,6 +1531,7 @@ def build_giao_thua_html(t: dict, dur: float, segs: list[dict]) -> str:
 # =========================================================================
 def build_and_render_all(target_ids: set[str] | None = None) -> None:
     plan = make_plan()
+    plan = prepare_fs_short_plan(plan, PLAN_FILE)
     validate(plan)
     PLAN_FILE.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Đã ghi plan {len(plan)} video vào {PLAN_FILE}")

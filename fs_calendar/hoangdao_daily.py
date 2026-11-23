@@ -27,6 +27,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent if (HERE.parent / "studio.py").is_file() else Path.cwd()
 sys.path.insert(0, str(ROOT))
+from audio_script_rules import apply_fs_short_defaults
 if (ROOT / "output/cl_staging/long").is_dir():
     sys.path.insert(0, str(ROOT / "output/cl_staging/long"))
 if (ROOT / "output/cl_staging/grok/tools").is_dir():
@@ -426,6 +427,8 @@ def get_week_meta(target_date: dt.date | str, day_idx: int | None = None) -> dic
         "slot": "23:00",
         "style": "daytable",
         "series": "fs",
+        "audio_profile": "short_win_9_18",
+        "duration_band": [10, 16],
         "badge": "",
         "title": title,
         "source": "",
@@ -1069,6 +1072,8 @@ def batch_render_week(start_date: dt.date | str | None = None, out_dir: Path | s
 
     # Ghi plan_hd_week_<start>.json và plan_hd_week.json
     plan_path = out_dir / f"plan_hd_week_{start_str}.json"
+    existing_rows = json.loads(plan_path.read_text(encoding="utf-8")) if plan_path.is_file() else []
+    plan_entries = apply_fs_short_defaults(plan_entries, existing_rows)
     plan_content = json.dumps(plan_entries, ensure_ascii=False, indent=2) + "\n"
     plan_path.write_text(plan_content, encoding="utf-8")
     (out_dir / "plan_hd_week.json").write_text(plan_content, encoding="utf-8")
