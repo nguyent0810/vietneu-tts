@@ -69,6 +69,7 @@ SLOTS_FS = {2000: ("2026-10-31", "12:00"), 2001: ("2026-11-01", "08:00"), 2002: 
             2003: ("2026-11-02", "12:00"), 2004: ("2026-11-03", "08:00"), 2005: ("2026-11-03", "12:00")}
 THEMES = {2000: "amber", 2001: "red", 2002: "navy", 2003: "jade", 2004: "amber", 2005: "red"}  # ivory: dòng mốc 2027 màu vàng chìm trên nền ngà (QA 26/10)
 FS_COMMON = {"series": "fs", "style": "yeartable", "mould": "A", "badge": "", "media": {}, "visuals": {}, "lane": "tuoi",
+             "audio_profile": "short_win_9_18", "duration_band": [10, 16],
              "test_cell": "R27_hoptuoi", "figures": {str(i): {"type": "none", "source": "rule"} for i in range(1, 7)},
              "cta": "Bạn và người ấy sinh năm nào? Bình luận để mình xem giúp nhé."}
 SRC = ("Quan hệ địa chi truyền thống (tính bằng canchi.py): tam hợp Thân-Tý-Thìn, Tỵ-Dậu-Sửu, Dần-Ngọ-Tuất, Hợi-Mão-Mùi; "

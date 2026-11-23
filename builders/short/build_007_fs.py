@@ -30,6 +30,7 @@ ROOT = HERE.parents[2]
 for p in (ROOT, ROOT / "output" / "cl_staging" / "long", HERE / "tools", HERE):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
+from audio_script_rules import prepare_fs_short_plan
 
 import hf_batch_render as R
 import amlich
@@ -704,6 +705,7 @@ if __name__ == "__main__":
     for it in plan:
         cp = {k: v for k, v in it.items()}
         clean_plan.append(cp)
+    clean_plan = prepare_fs_short_plan(clean_plan, PLAN_FILE)
 
     validate(clean_plan)
     PLAN_FILE.write_text(json.dumps(clean_plan, ensure_ascii=False, indent=2), encoding="utf-8")

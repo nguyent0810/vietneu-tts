@@ -32,7 +32,7 @@ from final_mix_lock import FinalMixLockTimeout, final_mix_lock
 from final_mix_lock import available_gb as mix_available_gb, fmt_gb as mix_fmt_gb, log as mix_log
 
 from audio_script_rules import (SHORT_WIN_PROFILE, comma_ending, effective_date,
-                                short_audio_profile)
+                                is_fs_lookup, short_audio_profile)
 
 PROJECT_ROOT = Path(__file__).parent
 # Giọng suy ra từ topic của kênh (topic_voices.json), không hardcode: kênh
@@ -593,11 +593,22 @@ def integrity_issues(row: dict) -> list[str]:
 def short_v2_warnings(row: dict) -> list[str]:
     """Gợi ý công thức short v2 (075b: không chặn): câu 2 là định nghĩa, độ dài lệch SHORT_V2_SYLLABLES (~21-27 giây;
     b28_c 101 tiếng = 26 giây, short Phase D ~63 tiếng = 17 giây), thiếu `insight` (dòng đầu mô tả)."""
-    if (row.get("lane") == "long" or short_audio_profile(row) == SHORT_WIN_PROFILE
-            or row.get("series") not in ("bud", "fs") or effective_date(row) < SHORT_V2_FROM):
+    if (row.get("lane") == "long" or row.get("series") not in ("bud", "fs")
+            or effective_date(row) < SHORT_V2_FROM):
         return []
     script = [x.replace("**", "") for x in row.get("script") or []]
     out = []
+    measured_duration = row.get("duration_s", row.get("measured_duration_s", row.get("dur")))
+    if row.get("duration_band") and measured_duration is not None:
+        try:
+            measured = float(measured_duration)
+            lo_d, hi_d = map(float, row["duration_band"])
+            if not lo_d <= measured <= hi_d:
+                out.append(f"thời lượng đo {measured:g}s ngoài dải {lo_d:g}-{hi_d:g}s")
+        except (TypeError, ValueError):
+            pass
+    if is_fs_lookup(row) or short_audio_profile(row) == SHORT_WIN_PROFILE:
+        return out
     if len(script) >= 2 and (DEFINE_OPENER.search(script[1]) or DEFINE_IN2.search(script[1])):
         out.append(f"câu 2 là định nghĩa/thuật ngữ (người xem rơi ở đây) -- đưa thuật ngữ xuống câu 3: {script[1][:60]}")
     mute = set(row.get("silence") or [])   # câu hỏi lặng (ask) không có tiếng đọc

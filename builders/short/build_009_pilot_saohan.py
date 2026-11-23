@@ -20,6 +20,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "output" / "cl_staging" / "long"))
+from audio_script_rules import prepare_fs_short_plan
 
 import canchi as C
 import fs_calendar.saohan as saohan
@@ -406,6 +407,7 @@ def create_preview_sheet(plan: list[dict], out_jpg: Path) -> None:
 
 def run_build_and_render() -> None:
     plan = make_plan()
+    plan = prepare_fs_short_plan(plan, FS_DIR / "plan_009_pilot_saohan.json")
 
     # 1. Kiểm tra toàn vẹn và assert dữ liệu code
     verify_plan_data(plan)

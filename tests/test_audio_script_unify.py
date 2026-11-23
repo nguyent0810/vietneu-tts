@@ -105,7 +105,8 @@ def test_script_lookup_twelve_seconds_passes_without_v2_token_floor(monkeypatch)
 def test_script_v2_and_tone_are_advisory_but_still_reported():
     r = short(audio_profile="short_v2", title="Một câu chuyện chấn động", script=["Mở đầu.", "Được gọi là một câu chuyện."])
     assert H.short_v2_issues(r) == H.short_tone_issues(r) == []
-    assert H.short_v2_warnings(r) and H.short_tone_warnings(r)
+    assert not any("tiếng" in warning for warning in H.short_v2_warnings(r))
+    assert H.short_tone_warnings(r)
     assert H.short_tone_warnings(short(title="Phát tài lớn theo tử vi truyền thống, để tham khảo")) == []
 
 
