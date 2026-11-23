@@ -23,17 +23,18 @@ def test_parse_quota():
 
 def test_pick_by_type_and_fallback():
     p = R.parse_quota(SAMPLE)
-    # 21/11: chỉ còn Flash; Flash bị chặn (5h 10% < 15) -> None, loop dùng Flash mặc định
-    assert R.pick("type: media/render\n", p) is None
-    assert R.pick("type: content\n", p) is None
-    assert R.pick("type: research\n", p) is None
+    # media: Flash bị chặn (5h 10% < 15) -> Argon medium
+    assert R.pick("type: media/render\n", p) == ("gemini-4-argon-medium", "medium")
+    # content: Opus cần Claude tuần >= 40 (đang 35) -> Argon
+    assert R.pick("type: content\n", p) == ("gemini-4-argon-high", "high")
+    assert R.pick("type: research\n", p) == ("gemini-4-argon-high", "high")
 
 
 def test_pin_and_full_quota():
     full = R.parse_quota(SAMPLE.replace("10%", "100%").replace("35%", "100%"))
-    assert R.pick("type: code_shared\n", full) == ("gemini-3.8-flash-high", "high")
-    assert R.pick("type: content\n", full) == ("gemini-3.8-flash-high", "high")
-    assert R.pick("type: media\n> Model: gemini-3.8-flash-low\n", full) == ("gemini-3.8-flash-low", "medium")
+    assert R.pick("type: code_shared\n", full) == ("gemini-4-argon-high", "high")
+    assert R.pick("type: content\n", full) == ("claude-opus-5-5-medium", "medium")
+    assert R.pick("type: media\n> Model: gemini-4-argon-low\n", full) == ("gemini-4-argon-low", "medium")
     assert R.pick("không có type\n", full)[0] == "gemini-3.8-flash-high"
 
 
@@ -75,7 +76,7 @@ def test_main_host_c_quota_va_pick(tmp_path, monkeypatch, capsys):
     t.write_text("type: review\n", encoding="utf-8")
     capsys.readouterr()
     assert R.main(["pick", "--host", "c", str(t)]) == 0      # cờ đặt trước tham số vị trí
-    assert capsys.readouterr().out.split()[0] == "gemini-3.8-flash-high"
+    assert capsys.readouterr().out.split()[0] == "gemini-4-argon-high"
 
 
 def test_host_loi_ro_rang():

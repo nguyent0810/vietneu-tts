@@ -33,13 +33,15 @@ GrokBot không báo về phiên Lead. Ngay sau khi `curl` trả 200, Lead chạy
 | Code chung / nhiều file | Codex → review Opus | Codex → review Codex phiên khác | Codex | Codex |
 | Code nhỏ có test | Codex | Codex/Agy → review Codex | Agy → review Codex | Agy |
 | Research sâu có số liệu | Grok → review Codex | Grok | Agy | Agy |
-| Nội dung / tài liệu | Agy → Opus duyệt | Agy | Agy | Agy |
+| Lời đọc Long BUD/FS (kịch bản) | **Gemini web** (`creator_v2/scripts/gemini_chat.py`, Neon · High) → Lead biên tập | Gemini web | Gemini web | Gemini web |
+| Tài liệu / nội dung khác (doc, brief phụ, mô tả) | Agy → Opus duyệt | Agy | Agy | Agy |
 | Render / media / script short | Agy | Agy | Agy | Agy |
 | Ảnh AI / thao tác web | GrokBot | GrokBot | GrokBot | GrokBot |
 | Review chỉ đọc | **agy Mac** (`review_gate.sh`) → Codex | agy Mac → Codex | agy Mac | agy Mac |
 | Đọc log, gom số | script / subagent rẻ | script / subagent | script | script |
 
 Luật:
+- **Lời đọc Long không giao Agy/Claude/Codex** (PO 19/11): Gemini web viết nháp theo `long-script/references/gemini-prompt.md`, Lead biên tập, soát số, lint. Dòng `content` trong `agy_route.py` chỉ cho ticket tài liệu.
 - **Máy C tạm bỏ khỏi hàng agent (PO 12/11)**: không giao việc gì cho agy máy C, kể cả việc chỉ đọc. Bật lại chỉ khi PO cho; ghi chép cũ ở `docs/agents/agy-machine-c.md`.
 - Thợ ≠ reviewer cho cùng ticket.
 - Agent `exhausted` hoặc đang chờ reset → chuyển agent đủ chuẩn kế tiếp, giữ nguyên ticket (lỗi hạn mức không tính là lỗi chất lượng). `UNKNOWN` → chỉ giao P2/P3 hoặc chạy thử 1 lượt.
