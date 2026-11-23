@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HERE = ROOT / "output/cl_staging"
 LOG = HERE / "review_log.json"
 BRIEFS = HERE / "briefs"
+RUNWAY = HERE / "short_runway.json"
 
 
 def load() -> dict:
@@ -46,6 +47,28 @@ def due(today: date, log: dict) -> list[str]:
     return out
 
 
+def runway_warnings(today: date, path: Path | None = None) -> list[str]:
+    """Cảnh báo chỉ đọc cache runway; tuyệt đối không gọi API."""
+    path = path or RUNWAY
+    if not path.exists():
+        return ["CẢNH BÁO ĐỎ: chưa có cache Short runway; chạy tools/short_runway.py"]
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        measured = datetime.fromisoformat(data["measured_at"])
+        measured_date = measured.date()
+    except (OSError, json.JSONDecodeError, KeyError, ValueError, TypeError):
+        return ["CẢNH BÁO ĐỎ: cache Short runway không hợp lệ; chạy tools/short_runway.py"]
+    warnings = []
+    age = (today - measured_date).days
+    if age > 2:
+        warnings.append(f"CẢNH BÁO ĐỎ: cache Short runway cũ {age} ngày; chạy tools/short_runway.py")
+    for channel, stats in data.get("channels", {}).items():
+        remaining = stats.get("days_covered")
+        if not isinstance(remaining, int) or remaining < 10:
+            warnings.append(f"CẢNH BÁO ĐỎ: {channel} còn {remaining if remaining is not None else 'UNKNOWN'} ngày phủ Short (< 10); chạy tools/short_runway.py")
+    return warnings
+
+
 def main(argv: list[str]) -> int:
     if argv == ["--help"]:
         import argparse
@@ -63,6 +86,7 @@ def main(argv: list[str]) -> int:
         print(f"ghi: review {argv[1]} {today}")
         return 0
     items = due(today, log)
+    items.extend(runway_warnings(today))
     print("\n".join(items) if items else f"không có review quá hạn (tuần {log.get('tuan')}, tháng {log.get('thang')})")
     return 0
 
