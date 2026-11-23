@@ -27,6 +27,7 @@ PROFILE = Path(os.environ.get("GEMINI_PROFILE") or Path.home() / "creator_v2" / 
 HOME = "https://gemini.google.com/app"
 INPUT = "rich-textarea div[contenteditable=true]"
 RESPONSE = "model-response"
+QUERY = "user-query"
 STOP = re.compile(r"dừng|stop", re.I)
 COPY = re.compile(r"sao chép|copy", re.I)
 
@@ -114,16 +115,24 @@ def cmd_ask(a) -> int:
         mode = pick_mode(page, a.model, a.thinking)
         print(f"model: {mode}")
         before = page.locator(RESPONSE).count()
+        asked = page.locator(QUERY).count()
         box = page.locator(INPUT).first
         box.click()
         box.fill(prompt)
         time.sleep(1.5)
         box.press("Enter")
         t0 = time.time()
+        # Thinking High có thể nghĩ vài phút rồi mới hiện khung trả lời. Đóng trình duyệt lúc này
+        # làm Gemini huỷ lượt đang viết (23/11: mất 3 lần gửi). Chỉ báo "không nhận" khi câu hỏi
+        # không vào chat VÀ không có nút Dừng sau 120 s; còn lại chờ tới --timeout.
         while page.locator(RESPONSE).count() <= before:
-            if time.time() - t0 > 120:
+            accepted = page.locator(QUERY).count() > asked or page.get_by_role("button", name=STOP).count() > 0
+            if not accepted and time.time() - t0 > 120:
                 ctx.close()
-                raise SystemExit("Gemini không nhận prompt (không có câu trả lời mới sau 120 s)")
+                raise SystemExit("Gemini không nhận prompt (câu hỏi không vào chat sau 120 s)")
+            if time.time() - t0 > a.timeout:
+                ctx.close()
+                raise SystemExit(f"quá {a.timeout} s mà Gemini chưa bắt đầu trả lời")
             time.sleep(2)
         last = page.locator(RESPONSE).last
         samples: list[str] = []
