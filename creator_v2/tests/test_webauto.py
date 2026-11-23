@@ -903,7 +903,7 @@ def test_generate_five_clips_auto_new_project(tmp_path, monkeypatch, capsys):
     def fake_set_start_frame(page, image):
         calls["set_start_frame"] += 1
 
-    def fake_generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
+    def fake_generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False, **kw):
         calls["generate_video"] += 1
         f = out / f"{tag}_1_{quality}.mp4"
         f.write_text("fake video bytes")
@@ -967,7 +967,7 @@ def test_shots_generate_five_shots_manifest(tmp_path, monkeypatch, capsys):
     from webauto import videofix
     monkeypatch.setattr(videofix, "_probe", lambda p: (1920, 1080))
 
-    def fake_generate_video(page, prompt, out, tag, quality="1080p", timeout_s=900, strip_mark="crop", keep_raw=False):
+    def fake_generate_video(page, prompt, out, tag, quality="1080p", timeout_s=900, strip_mark="crop", keep_raw=False, **kw):
         calls["generate_video"] += 1
         f = out / f"{tag}_1_{quality}.mp4"
         f.write_text("fake video bytes")
@@ -1138,3 +1138,94 @@ def test_generate_images_2k_fallback_to_1k_and_keyboard_type(tmp_path, monkeypat
     assert any(":not([disabled])" in w for w in waited)
 
 
+
+
+# --- #524: Flow "agent session" UI (23/11/2026) ---
+
+def test_agent_prompt_carries_duration_ratio_and_frame():
+    msg = flow.agent_prompt("slow dolly forward", duration=5, ratio="16:9", has_frame=True)
+    assert "exactly 5 seconds" in msg
+    assert "16:9" in msg
+    assert "start frame" in msg
+    assert msg.endswith("slow dolly forward")
+    plain = flow.agent_prompt("x")
+    assert "seconds" not in plain and "start frame" not in plain
+
+
+class _Loc:
+    """Locator stand-in that records clicks in `log` and chains like Playwright's."""
+    def __init__(self, log, name, count=1):
+        self.log, self.name, self._count = log, name, count
+        self.first = self
+
+    def click(self, **kw):
+        self.log.append(self.name)
+
+    def count(self):
+        return self._count
+
+    def filter(self, **kw):
+        return _Loc(self.log, f"{self.name}|{kw.get('has_text')}", self._count)
+
+
+class _SettingsPage:
+    def __init__(self):
+        self.log = []
+        self.keyboard = type("K", (), {"press": lambda s, k: None})()
+
+    def wait_for_timeout(self, ms):
+        pass
+
+    def locator(self, sel):
+        return _Loc(self.log, sel)
+
+    def get_by_role(self, role, name=None, **kw):
+        return _Loc(self.log, f"role:{role}:{getattr(name, 'pattern', name)}")
+
+    def get_by_text(self, pattern, **kw):
+        return _Loc(self.log, f"text:{getattr(pattern, 'pattern', pattern)}")
+
+
+def test_apply_settings_agent_ui_sets_model_ratio_outputs():
+    page = _SettingsPage()
+    credits = flow.apply_settings(page, "video", "Omni 1.2 Flash", 1, 5, "16:9")
+    assert credits == 15  # 5 s x 3 credits, one output
+    log = page.log
+    assert flow.AGENT_SETTINGS in log[0]
+    assert "button:has-text('Never')" in log          # no confirm dialog from the agent
+    assert any("Video defaults" in x for x in log)
+    assert any(x.startswith("text:") and "Omni" in x and "Flash" in x for x in log)
+    assert "button:has-text('16:9')" in log
+    assert "button:has-text('x1')" in log
+    assert log.count("role:button:Back") == 2          # back to the chat
+
+
+def test_apply_settings_rejects_image_mode():
+    with pytest.raises(SystemExit):
+        flow.apply_settings(_SettingsPage(), "image")
+
+
+def test_quality_menu_item_prefers_button_entries():
+    class P:
+        def __init__(self, present):
+            self.present = present
+
+        def locator(self, sel):
+            return _Loc([], sel, 1 if sel in self.present else 0)
+
+    assert flow.quality_menu_item(P({"button"}), "1080p").name.startswith("button|")
+    assert flow.quality_menu_item(P({"[role=menuitem]"}), "1080p").name.startswith("[role=menuitem]|")
+    assert flow.quality_menu_item(P(set()), "1080p") is None
+
+
+def test_verify_start_frame_chip_uses_ingredient_button():
+    class P:
+        def __init__(self, n):
+            self.n = n
+
+        def locator(self, sel):
+            assert "Ingredient" in sel
+            return _Loc([], sel, self.n)
+
+    assert flow.verify_start_frame_chip(P(1)) is True
+    assert flow.verify_start_frame_chip(P(0)) is False

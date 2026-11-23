@@ -194,147 +194,116 @@ def record_credit_ledger(model, duration, credits_reported, prompt_tag, file, pu
     return entry
 
 
+AGENT_BOX = "div[role=textbox][aria-label*='What do you want' i], flow-rich-text-editor div[role=textbox]"
+SUBMIT = "button[aria-label='Start generation']"
+INGREDIENT = "button[aria-label='Ingredient']"
+AGENT_SETTINGS = "button[aria-label='Agent settings']"
+# Flow turned the project page into an "agent session" chat on 23/11/2026 (#524): there is no
+# settings popup, mode / duration / start-frame controls any more. Defaults live in Agent settings >
+# Video defaults (model, aspect ratio, outputs); the duration and the start frame travel with the
+# prompt: the frame is an ingredient (+ > Upload media) and the length is written in the message.
+
+
+def agent_prompt(prompt, duration=None, ratio=None, has_frame=False):
+    """The chat message sent to Flow's agent: ask for exactly one clip, state the length / ratio and
+    say the attached ingredient is the first frame, so the agent does not ask questions back."""
+    bits = ["Generate exactly one video now, without asking me anything."]
+    if duration:
+        bits.append(f"Length: exactly {duration} seconds.")
+    if ratio:
+        bits.append(f"Aspect ratio {ratio}.")
+    if has_frame:
+        bits.append("Use the attached image as the start frame (image-to-video).")
+    bits.append("Scene and camera: " + prompt.strip())
+    return " ".join(bits)
+
+
+def _click_text_button(page, text, timeout=10000):
+    page.locator(f"button:has-text('{text}')").first.click(timeout=timeout)
+
+
 def apply_settings(page, mode, model=None, count=1, duration=8, ratio=None, res=None):
-    """Open the settings popup and set mode / ratio / (resolution, duration) / model / count."""
-    # A one-off announcement dialog (cdk-overlay backdrop) can cover the editor on a new project:
-    # dismiss it with Escape and retry instead of failing the whole batch (05/11).
+    """Agent settings: confirm-before-generating = Never, then Video defaults (model / ratio / outputs).
+    The duration cannot be set in the UI any more: it is written into the prompt (`agent_prompt`).
+    Returns the estimated credits (the agent chat shows no cost before sending)."""
+    if mode != "video":
+        raise SystemExit("webauto flow: sau khi Flow đổi giao diện (agent session, #524) chỉ còn mode video")
+    target_model = model or DEFAULT_MODEL[mode]
     for attempt in range(3):
         page.keyboard.press("Escape")
         page.wait_for_timeout(800)
         try:
-            page.locator(SETTINGS).click(timeout=10000)
+            page.locator(AGENT_SETTINGS).click(timeout=10000)
             break
         except Exception:
             if attempt == 2:
                 raise
-    word = "Image" if mode == "image" else "Video"
-    page.get_by_role("radio", name=re.compile(rf"^\s*(image|videocam)?\s*{word}\s*$")).click()
-    # Model first: the ratio / resolution / duration radios or slider depend on it
-    page.get_by_role("button", name="Select model family").click()
-    target_model = model or DEFAULT_MODEL[mode]
-    page.get_by_role("menuitem", name=re.compile(re.escape(target_model))).click()
+    # Never ask for permission: the agent would otherwise stop at a "Generate?" confirmation
+    _click_text_button(page, "Never")
+    page.wait_for_timeout(500)
+    page.get_by_role("button", name=re.compile("Video defaults")).click(timeout=10000)
+    page.wait_for_timeout(800)
+    page.get_by_text(re.compile(rf"^\s*{re.escape(target_model)}\s*$")).first.click(timeout=10000)
     page.wait_for_timeout(500)
     if ratio:
-        page.get_by_role("radio", name=re.compile(re.escape(ratio))).click()
-    if mode == "video":
-        if res:
-            page.get_by_role("radio", name=re.compile(re.escape(res))).click()
-        slider = page.locator(".duration-slider input[type=range], input[type=range][aria-label='Length']")
-        if slider.count():
-            validate_duration(duration, has_slider=True)
-            slider_val = duration - 3
-            slider.first.fill(str(slider_val))
-            page.wait_for_timeout(300)
-            val_span = page.locator(".duration-slider-value")
-            displayed = val_span.inner_text().strip() if val_span.count() else ""
-            if displayed != f"{duration} Sec":
-                slider.first.evaluate(f"""e => {{
-                    e.value = "{slider_val}";
-                    e.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                    e.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                }}""")
-                page.wait_for_timeout(300)
-                displayed = val_span.inner_text().strip() if val_span.count() else ""
-            if displayed != f"{duration} Sec":
-                raise RuntimeError(f"Failed to set duration to {duration}s: slider displays '{displayed}' (expected '{duration} Sec')")
-        else:
-            dur = page.get_by_role("radio", name=re.compile(rf"^{duration}s$"))
-            if dur.count():
-                dur.click()
-            else:
-                print(f"model has no {duration}s option here, using its own length")
-    page.get_by_role("radio", name=f"x{count}", exact=True).click()
+        _click_text_button(page, ratio)
+    page.locator(f"button:has-text('x{count}')").first.click(timeout=10000)
     page.wait_for_timeout(500)
-    cost = page.get_by_text(re.compile(r"will use \d+ credits?")).all()
-    cost_text = cost[0].inner_text() if cost else "cost not shown"
-    credits_reported = 0
-    if cost:
-        m_credits = re.search(r"(\d+)\s*credits?", cost_text)
-        if m_credits:
-            credits_reported = int(m_credits.group(1))
-    if not credits_reported and mode == "video":
-        credits_reported = estimate_credits(target_model, duration)
-    print("settings:", page.locator(SETTINGS).inner_text().replace("\n", " "),
-          "|", cost_text)
-    page.keyboard.press("Escape")
-    return credits_reported
+    print(f"settings: Never confirm | {target_model} | {ratio or 'default ratio'} | x{count} | {duration}s in prompt")
+    page.get_by_role("button", name="Back").click(timeout=10000)  # to Agent settings
+    page.wait_for_timeout(500)
+    page.get_by_role("button", name="Back").click(timeout=10000)  # to the chat
+    page.wait_for_timeout(800)
+    return estimate_credits(target_model, duration) * count
 
 
 def verify_start_frame_chip(page):
-    """Return True if the Start frame chip is confirmed present in the UI."""
-    return page.locator(".frame-trigger flow-image-ingredient-chip").count() > 0
+    """True if an ingredient (the start frame) is attached to the prompt box."""
+    return page.locator(f"{INGREDIENT}, .frame-trigger flow-image-ingredient-chip").count() > 0
+
+
+def clear_prompt_box(page):
+    """Remove the previous shot's ingredient and text (the 'Clear prompt' button, when shown)."""
+    btn = page.get_by_role("button", name="Clear prompt")
+    if btn.count():
+        try:
+            btn.first.click(timeout=3000)
+            page.wait_for_timeout(500)
+        except Exception:
+            pass
 
 
 def set_start_frame(page, image):
-    """Video mode > Frames > Start slot > Upload media: use `image` as the first frame."""
+    """Prompt box > + > Upload media: attach `image` as an ingredient (the agent uses it as first frame)."""
     close_overlays(page)
+    clear_prompt_box(page)
     image_resolved = str(Path(image).resolve())
-
-    # If a chip is already present, remove it to ensure a clean slot
-    chip = page.locator(".frame-trigger flow-image-ingredient-chip")
-    if chip.count():
-        for b in chip.locator("button, [aria-label*='remove' i], [aria-label*='delete' i], [aria-label*='close' i]").all():
-            try:
-                b.click(timeout=1000)
-            except Exception:
-                pass
-        page.wait_for_timeout(500)
-
-    page.locator(SETTINGS).click()
-    page.get_by_role("radio", name=re.compile("Frames")).click()
-    page.keyboard.press("Escape")
-    page.wait_for_timeout(800)
-
-    start_btn = page.locator(".frame-trigger button.empty-chip, .frame-trigger button:has-text('Start')")
-    if not start_btn.count():
-        start_btn = page.get_by_role("button", name="Start", exact=True)
-    if start_btn.count():
-        start_btn.first.click()
-    else:
-        page.get_by_role("button", name="Start", exact=True).click()
-
+    page.get_by_role("button", name="Add ingredients to the prompt box").click(timeout=10000)
+    page.wait_for_timeout(1500)
     with page.expect_file_chooser(timeout=30000) as fc:
         page.get_by_role("button", name="Upload media").click()  # get_by_text also matches a tooltip
     fc.value.set_files(image_resolved)
-    # in Flow media picker, wait for the uploaded thumbnail button to appear and click it
-    dialog = page.locator(".cdk-overlay-container")
-    img_btn = None
-    for _ in range(90):
-        candidates = dialog.locator("button:has(img)")
-        if candidates.count():
-            img_btn = candidates.first
-            break
-        page.wait_for_timeout(1000)
-    if not img_btn:
-        raise TimeoutError(f"uploaded image thumbnail did not appear in media picker for {image}")
-    img_btn.click()
-    page.wait_for_timeout(1000)
-    add = dialog.get_by_role("button", name="Add to prompt")
-    if add.count() and add.first.is_enabled():
-        add.first.click()
-    page.wait_for_selector("text=Select a frame image", state="detached", timeout=30000)
     page.wait_for_timeout(1500)
-
-    # verify that Start frame chip is populated
-    if not verify_start_frame_chip(page):
-        start_btn = page.locator(".frame-trigger button.empty-chip, .frame-trigger button:has-text('Start')")
-        if start_btn.count():
-            start_btn.first.click()
+    agree = page.get_by_role("button", name="I agree")  # one-off "Rights to use this image" dialog
+    if agree.count():
+        agree.first.click()
+    dialog = page.locator(".cdk-overlay-container")
+    for _ in range(90):
+        if page.locator(INGREDIENT).count():  # Flow attaches the upload by itself
+            break
+        thumbs = dialog.locator("button:has(img)")
+        if thumbs.count():  # picker still open: choose the uploaded thumbnail
+            thumbs.first.click()
             page.wait_for_timeout(1000)
-            cand = dialog.locator("button:has(img)")
-            if cand.count():
-                cand.first.click()
-                page.wait_for_timeout(1000)
-                add = dialog.get_by_role("button", name="Add to prompt")
-                if add.count() and add.first.is_enabled():
-                    add.first.click()
-            page.wait_for_selector("text=Select a frame image", state="detached", timeout=15000)
-            page.wait_for_timeout(1000)
-
+            add = dialog.get_by_role("button", name="Add to prompt")
+            if add.count() and add.first.is_enabled():
+                add.first.click()
+        page.wait_for_timeout(1000)
+    page.wait_for_timeout(1000)
     chip_ok = verify_start_frame_chip(page)
-    print("Start frame chip verified:", chip_ok)
+    print("Start frame ingredient verified:", chip_ok)
     if not chip_ok:
-        raise RuntimeError(f"UI failed to confirm start frame chip for {image}. Aborting to prevent text-to-video generation.")
+        raise RuntimeError(f"UI failed to confirm the start frame ingredient for {image}. Aborting to prevent text-to-video generation.")
 
 
 def media_srcs(page):
@@ -357,7 +326,9 @@ def image_size_for(size, headless):
 
 def close_overlays(page):
     """Dismiss toasts ("...downloaded!"), banners and leftover menus."""
-    for b in page.locator("button:has-text('Dismiss'), [aria-label*='dismiss' i], [aria-label*='close' i]").all():
+    # only toasts / dialogs: a bare [aria-label*=close] would also hit the agent panel's "Close" button
+    for b in page.locator(".cdk-overlay-container :is(button:has-text('Dismiss'), [aria-label*='dismiss' i], [aria-label*='close' i]), "
+                          "snack-bar-container :is(button, [aria-label*='close' i])").all():
         try:
             b.click(timeout=1000)
         except Exception:
@@ -485,17 +456,13 @@ def quality_item_name(quality):
 
 
 def quality_menu_item(page, quality):
-    """The `quality` item of the open Download submenu (the last opened menu), else the first
-    menuitem on the page matching `quality`."""
+    """The `quality` entry of the open Download submenu. Since 23/11/2026 the entries are plain
+    buttons ("1080p Upscaled", "720p Original size", "4K Upscaled"); the old UI used menuitems."""
     name = quality_item_name(quality)
-    menus = page.get_by_role("menu")
-    if menus.count():
-        item = menus.last.get_by_role("menuitem", name=name)
+    for sel in ("[role=menuitem]", "button"):
+        item = page.locator(sel).filter(has_text=name)
         if item.count():
             return item.first
-    item = page.get_by_role("menuitem", name=name)
-    if item.count():
-        return item.first
     return None
 
 
@@ -513,19 +480,15 @@ def download_video_tile(page, tile, out_path, quality="720p", timeout_s=180):
         tile.hover()
         more_btn.first.click(force=True, timeout=8000)
     page.wait_for_timeout(300)
-    page.get_by_role("menuitem", name=re.compile(r"Download|Tải xuống", re.I)).first.click()
-    page.wait_for_timeout(300)
+    page.locator("[role=menuitem], button").filter(has_text=re.compile(r"^\s*(download\s*)?(Download|Tải xuống)\s*$", re.I)).first.click()
+    page.wait_for_timeout(500)
 
     target_item = quality_menu_item(page, quality)
     if not target_item and quality == "1080p":
         print("[download_video_tile] 1080p not found in Flow download menu, falling back to 720p...")
         target_item = quality_menu_item(page, "720p")
     if not target_item:
-        menus = page.get_by_role("menu")
-        if menus.count() and menus.last.get_by_role("menuitem").count():
-            target_item = menus.last.get_by_role("menuitem").first
-        else:
-            target_item = page.get_by_role("menuitem").first
+        raise RuntimeError(f"Flow: no {quality} / 720p entry in the Download menu")
 
     with page.expect_download(timeout=timeout_s * 1000) as dl:
         target_item.click()
@@ -534,16 +497,25 @@ def download_video_tile(page, tile, out_path, quality="720p", timeout_s=180):
     return out_path
 
 
-def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False):
-    """Videos have no direct URL: use the tile menu > Download > quality (720p is the original, free)."""
+def submit_agent_prompt(page, message):
+    """Type `message` into the agent chat box (replacing leftover text, keeping the attached ingredient)
+    and press Start generation."""
+    box = page.locator(AGENT_BOX).first
+    box.click()
+    page.keyboard.press("Control+A")
+    page.keyboard.press("Delete")
+    page.keyboard.insert_text(message)
+    page.wait_for_selector(f"{SUBMIT}:not([disabled])", timeout=10000)
+    page.click(SUBMIT)
+
+
+def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_mark="crop", keep_raw=False,
+                   duration=None, ratio=None, has_frame=False):
+    """Videos have no direct URL: ask the agent in the chat, then use the tile menu > Download > quality
+    (720p is the original; 1080p is Flow's upscale)."""
     before = page.locator(VIDEO_DONE).count()
     failed_before = page.locator("flow-error-tile, .error-tile").count() + page.get_by_text(VIDEO_FAILED).count()
-    page.click(EDITOR)
-    page.keyboard.press("Meta+A")
-    page.keyboard.press("Backspace")
-    page.keyboard.type(prompt)
-    page.wait_for_selector(f"{GENERATE}:not([disabled])", timeout=5000)
-    page.click(GENERATE)
+    submit_agent_prompt(page, agent_prompt(prompt, duration, ratio, has_frame))
     deadline = time.time() + timeout_s
     while page.locator(VIDEO_DONE).count() <= before:
         err_count = page.locator("flow-error-tile, .error-tile").count() + page.get_by_text(VIDEO_FAILED).count()
@@ -558,30 +530,26 @@ def generate_video(page, prompt, out, tag, quality="720p", timeout_s=900, strip_
     time.sleep(2)
     saved = []
     for n in range(page.locator(VIDEO_DONE).count() - before):
-        tile = page.locator("flow-video-tile").nth(n)  # newest tiles come first
+        tile = page.locator("flow-grid-tile-container").filter(has=page.locator("flow-video-tile")).nth(n)  # newest first
         f = out / f"{tag}_{n + 1}_{quality}.mp4"
         try:
             download_video_tile(page, tile, f, quality=quality)
         finally:
             close_overlays(page)
-        if strip_mark != "off":
-            original = f.read_bytes() if keep_raw else None
-            from .videofix import strip_video
-            strip_video(f, strip_mark)
-            if keep_raw and f.read_bytes() != original:
-                f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
+        original = f.read_bytes() if keep_raw else None
         if quality == "1080p":
             from .videofix import _probe, upscale_video_1080p
             w, h = _probe(f)
-            if w < 1920 and h < 1920:
+            if w < 1920 and h < 1920:  # Flow's own 1080p download is already 1920x1080
                 print(f"[generate_video] clip is {w}x{h}, upscaling to 1080p via ffmpeg lanczos...")
                 upscale_video_1080p(f)
                 w_new, h_new = _probe(f)
                 print(f"[generate_video] successfully upscaled to {w_new}x{h_new}")
+        if strip_mark != "off":
             from .videofix import strip_video
             strip_video(f, strip_mark)
-            if keep_raw and f.read_bytes() != original:
-                f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
+        if keep_raw and f.read_bytes() != original:
+            f.with_name(f.stem + "_raw" + f.suffix).write_bytes(original)
         saved.append(f)
     return saved
 
@@ -643,7 +611,8 @@ def generate(prompts, out, mode="image", model=None, count=1, duration=None, rat
 
                 try:
                     if mode == "video":
-                        got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw)
+                        got = generate_video(page, prompt, out, stem, quality, timeout or 900, strip_mark, keep_raw,
+                                             duration=duration, ratio=ratio or '16:9', has_frame=bool(image))
                         clips_in_project += len(got)
                         for saved_file in got:
                             record_credit_ledger(
@@ -816,7 +785,8 @@ def shots_generate(shots, out, ref=None, model="omni12", duration=None, ratio=No
                 try:
                     got = generate_video(page, prompt, out, name, quality=quality,
                                          timeout_s=timeout or 900, strip_mark=strip_mark,
-                                         keep_raw=keep_raw)
+                                         keep_raw=keep_raw, duration=dur, ratio=ratio or "16:9",
+                                         has_frame=True)
                     clips_in_project += len(got)
                 except TimeoutError:
                     (out / f"fail_{name}.html").write_text(page.content(), encoding="utf-8")
