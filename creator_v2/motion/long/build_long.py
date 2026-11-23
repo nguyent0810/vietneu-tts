@@ -1157,6 +1157,15 @@ def do_html(topic, only=None, allow_opening=False):
     if bad_src:
         raise SystemExit("CK: nguồn trong mô tả là trang của công ty chứng khoán/ngân hàng (luật kênh: không tên thương hiệu): " + ", ".join(bad_src))
     variety.resolve_bgm(topic, spec, chs, od)   # bgm {"mood": ...} -> file cụ thể, tối thiểu trùng với video gần đây (retro 3 mục 9)
+    missing_bgm = []
+    for name, ch in chs:
+        bgm = ch.get("bgm")
+        items = [bgm] if isinstance(bgm, dict) else (bgm or [])
+        if bgm and not any(item.get("file") for item in items):
+            moods = ", ".join(str(item.get("mood") or "?") for item in items)
+            missing_bgm.append(f"{name} (mood {moods})")
+    if missing_bgm:
+        raise SystemExit(f"nhạc nền: {', '.join(missing_bgm)} không có bài cho mood đã chọn; chọn tay output/long/{topic}/bgm_picks.json")
     look = variety.look(spec.get("look"))
     for key, file in spec.get("imgs", {}).items():
         wh = fetch_img(file, od / "img" / f"{key}.jpg", credits)
@@ -1167,6 +1176,7 @@ def do_html(topic, only=None, allow_opening=False):
         geo[gname] = hf_geo.bake({"countries": g["countries"], "context": g.get("context", []), "labels": g.get("labels", {}),
                                   "bbox": g["bbox"], "pins": g["pins"]})["_geo"]
     vdur = {}
+    scene_errors = []
     for chapter_index, (name, ch) in enumerate(chs):
         d = durs[name]
         selected = not only or name in only
@@ -1175,7 +1185,15 @@ def do_html(topic, only=None, allow_opening=False):
             continue
         t = json.loads((od / name / "timing.json").read_text(encoding="utf-8"))
         lines = word_lines(t, od / name / "voice.wav")
-        scenes = plan(ch, lines, d)
+        try:
+            scenes = plan(ch, lines, d)
+        except ValueError as exc:
+            if "quá ngắn" not in str(exc):
+                raise
+            if selected:
+                scene_errors.append(f"{name}: {exc}")
+            cine_offset += d
+            continue
         if spec.get('cine_auto'):
             amb = [e for e in spec.get('ambience') or [] if isinstance(e, dict) and (not e.get('chapter') or LAMB.chapter_name(e['chapter']) == name)]
             import copy
@@ -1216,13 +1234,20 @@ def do_html(topic, only=None, allow_opening=False):
                     scene["label"].setdefault("at", round(scene["t0"] + 0.3, 2))   # sfx_long gõ nhịp theo label.at
         credits_path.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
         planned_check = scene_params.validate_topic([(name, scenes)], None, THEME["name"])
-        if planned_check["errors"]:
-            raise SystemExit("tham số cảnh:\n  " + "\n  ".join(planned_check["errors"]))
+        chapter_errors = list(planned_check["errors"])
         for warning in planned_check["warnings"]:
             print(f"  ! WARNING tham số cảnh: {warning}", flush=True)
         pano_bad = scene_params.pano_speed_problems(name, scenes, imgs)
-        if pano_bad:
-            raise SystemExit("tham số cảnh:\n  " + "\n  ".join(pano_bad))
+        chapter_errors.extend(pano_bad)
+        for i, scene in enumerate(scenes):
+            if scene.get("type") == "date":
+                groups = len("".join(c if c.isdigit() else " " for c in scene["date"]).split())
+                count = len(scene.get("groupAt") or [])
+                if count < groups:
+                    chapter_errors.append(f"{name}#{i} date: groupAt có {count} mốc, date có {groups} nhóm số")
+        if chapter_errors:
+            scene_errors.extend(chapter_errors)
+            continue
         late = late_first(scenes, name)
         if late:
             raise SystemExit("nhịp cảnh:\n  " + "\n  ".join(late))
@@ -1330,6 +1355,8 @@ def do_html(topic, only=None, allow_opening=False):
             if tot and hit / tot > 0.4:
                 print(f"  ! WARNING {name}: {hit}/{tot} dòng chữ lớn chép nguyên lời đọc — đổi thành từ khoá, con số, vế đối lập", flush=True)
 
+    if scene_errors:
+        raise SystemExit("tham số cảnh:\n  " + "\n  ".join(scene_errors))
     if spec.get("kinetic_auto", not is_legacy_topic(topic)):
         print("  text total fx:", json.dumps(dict(text_counts[0]), ensure_ascii=False, sort_keys=True), flush=True)
         print("  text total style:", json.dumps(dict(text_counts[1]), ensure_ascii=False, sort_keys=True), flush=True)
