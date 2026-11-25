@@ -41,12 +41,31 @@ def browser(p, headless: bool = False):
     return ctx, (ctx.pages[0] if ctx.pages else ctx.new_page())
 
 
-def stable_done(samples: list[str], busy: bool, need: int = 4) -> bool:
-    """Xong khi không còn nút Dừng và `need` lần đọc cuối giống nhau, khác rỗng."""
-    if busy or len(samples) < need:
+THINKING_ONLY = re.compile(r"^\s*(?:[^\n]{0,120}\n)?\s*Gemini (?:đã nói|said)\s*$", re.I)
+
+
+def looks_like_thinking(text: str) -> bool:
+    """Gemini đang nghĩ chỉ hiện tiêu đề "Figuring out…" + "Gemini said" (#529, 24/11)."""
+    return bool(THINKING_ONLY.match(text.strip()))
+
+
+def stable_done(samples: list[str], busy: bool, need: int = 4, copy_ready: bool = True, min_words: int = 0) -> bool:
+    """Xong khi: không còn nút Dừng, khung trả lời đã có nút Sao chép (giao diện chỉ hiện khi viết xong),
+    `need` lần đọc cuối giống nhau, đủ `min_words` chữ và không phải chỉ tiêu đề đang-nghĩ.
+    #529: giao diện mới bỏ tên nút Dừng nên chỉ dựa vào chữ đứng yên thì lưu nhầm tiêu đề thinking."""
+    if busy or not copy_ready or len(samples) < need:
         return False
     tail = samples[-need:]
-    return bool(tail[-1].strip()) and all(s == tail[-1] for s in tail)
+    text = tail[-1]
+    if not text.strip() or looks_like_thinking(text) or len(text.split()) < min_words:
+        return False
+    return all(s == text for s in tail)
+
+
+def chat_id(url: str) -> str:
+    """Mã cuộc chat trong link gemini.google.com/app/<id> (rỗng nếu là chat mới)."""
+    m = re.search(r"/app/([0-9a-f]{8,})", url or "")
+    return m.group(1) if m else ""
 
 
 MODE_BTN = "[data-test-id='bard-mode-menu-button']"
@@ -112,6 +131,10 @@ def cmd_ask(a) -> int:
         except Exception:
             ctx.close()
             raise SystemExit("không thấy ô chat Gemini: chưa đăng nhập? chạy `gemini_chat.py login`")
+        if a.chat and chat_id(a.chat) and chat_id(page.url) != chat_id(a.chat):
+            # #529: bị chuyển sang chat khác -> viết tiếp nhầm đề tài. Dừng, không gửi.
+            ctx.close()
+            raise SystemExit(f"không mở được đúng cuộc chat {a.chat} (đang ở {page.url}); không gửi prompt")
         mode = pick_mode(page, a.model, a.thinking)
         print(f"model: {mode}")
         before = page.locator(RESPONSE).count()
@@ -141,8 +164,9 @@ def cmd_ask(a) -> int:
                 ctx.close()
                 raise SystemExit(f"quá {a.timeout} s mà Gemini chưa viết xong")
             busy = page.get_by_role("button", name=STOP).count() > 0
+            copy_ready = last.get_by_role("button", name=COPY).count() > 0
             samples.append(last.inner_text())
-            if stable_done(samples, busy):
+            if stable_done(samples, busy, copy_ready=copy_ready, min_words=a.min_words):
                 break
             time.sleep(3)
         text = ""
@@ -156,6 +180,8 @@ def cmd_ask(a) -> int:
         text = clean(text or samples[-1])
         url = page.url
         ctx.close()
+    if looks_like_thinking(text) or len(text.split()) < a.min_words:
+        raise SystemExit(f"câu trả lời chỉ có {len(text.split())} chữ (tiêu đề đang nghĩ?): không lưu")
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
@@ -177,6 +203,7 @@ def main() -> int:
     q.add_argument("--model", default="Neon", help="chữ trên menu model: Neon (mặc định, thắng lượt so 19/11), Hydrogen, Auto; '' = giữ như tài khoản")
     q.add_argument("--thinking", default="High", help="Low / Medium / High (mặc định High); '' = giữ như tài khoản")
     q.add_argument("--timeout", type=int, default=900)
+    q.add_argument("--min-words", type=int, default=30, help="câu trả lời ngắn hơn thì coi là chưa xong / lỗi (#529)")
     q.add_argument("--headless", action="store_true")
     q.set_defaults(fn=cmd_ask)
     a = ap.parse_args()
