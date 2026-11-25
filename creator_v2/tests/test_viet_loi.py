@@ -54,10 +54,10 @@ def test_first_prompt_asks_beat_sheet_with_channel_sample():
     texts = ["hồ sơ", "dữ kiện", "MẪU CŨ", "CH00 · Mở\nCH01 · Tiếp"]
     p = V.first_prompt("MIM", texts)
     assert "tờ nhịp" in p and "CÁI GIÁ" in p
-    assert "Knight" in p and "MẪU CŨ" not in p
+    assert "Oppenheimer" in p and "MẪU CŨ" not in p
     assert "(#531" not in p
     assert "CH00 và CH01" in V.open_prompt()
 
 
 def test_channel_without_sample_keeps_input_sample():
-    assert V.channel_sample("FS", "MẪU CŨ") == "MẪU CŨ"
+    assert V.channel_sample("XX", "MẪU CŨ") == "MẪU CŨ"
