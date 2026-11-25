@@ -15,7 +15,7 @@ def _levels(metrics, **kwargs):
             if msg.startswith("chữ")]
 
 
-@pytest.mark.parametrize("percent,levels", [(12, []), (12.01, ["WARN"]), (15, ["WARN"]), (15.01, ["ERROR"])])
+@pytest.mark.parametrize("percent,levels", [(10, []), (10.01, ["ERROR"]), (15, ["ERROR"]), (15.01, ["ERROR"])])
 def test_visual_mix_text_seconds_boundaries(percent, levels):
     # Deliberately two scenes: the budget is duration, never scene count.
     metrics = VM.measure([_scene("slam", percent), _scene("map", 100-percent)])
@@ -62,6 +62,16 @@ def test_visual_mix_text_definition_and_data_graphics():
                          [_scene("word", 100, "background.jpg")])
     assert metrics["text_seconds"] == len(kinds)
     assert metrics["by_kind"]["word"]["seconds"] == 101
+
+
+def test_visual_mix_tracks_stock_by_duration_and_prints_shares():
+    scenes = [_scene("photo", 15, "stock.jpg"), _scene("video", 15), _scene("photo", 70)]
+    scenes[0]["stock_kind"] = "image"
+    scenes[1]["stock_kind"] = "video"
+    metrics = VM.measure(scenes)
+    assert metrics["stock_image_share"] == .15
+    assert metrics["stock_video_share"] == .15
+    assert "Pexels/stock video 15.00%" in VM.format_table(metrics)
 
 
 def test_visual_mix_fullscreen_text_beds_do_not_evade_budget():
