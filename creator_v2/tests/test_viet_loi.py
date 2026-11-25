@@ -37,7 +37,7 @@ def test_every_channel_has_profile():
         text = V.instructions(c)
         assert f"Hồ sơ kênh {c}:" in text and "Giới hạn cứng" in text
     p = V.first_prompt("CL", ["h", "d", "g", "CH00 · a\nCH01 · b"])
-    assert p.count("=====") == 10 and "Chỉ viết CH00 và CH01" in p
+    assert p.count("=====") == 10 and "tờ nhịp" in p  # #531 H2: lượt đầu là tờ nhịp
 
 
 def test_wrong_part_flags_foreign_or_empty_chapters():
@@ -48,3 +48,16 @@ def test_wrong_part_flags_foreign_or_empty_chapters():
     assert "không có chương" in wrong_part("Figuring out\nGemini said", ["CH02"], outline)
     # nhiễm chéo: chat của Long khác trả CH07 (24/11 Air Canada lẫn vào Dreyfus)
     assert "ngoài dàn chương" in wrong_part(ok + "\n## CH07 · C\n\nx", ["CH02", "CH03"], outline)
+
+
+def test_first_prompt_asks_beat_sheet_with_channel_sample():
+    texts = ["hồ sơ", "dữ kiện", "MẪU CŨ", "CH00 · Mở\nCH01 · Tiếp"]
+    p = V.first_prompt("MIM", texts)
+    assert "tờ nhịp" in p and "CÁI GIÁ" in p
+    assert "Knight" in p and "MẪU CŨ" not in p
+    assert "(#531" not in p
+    assert "CH00 và CH01" in V.open_prompt()
+
+
+def test_channel_without_sample_keeps_input_sample():
+    assert V.channel_sample("FS", "MẪU CŨ") == "MẪU CŨ"
