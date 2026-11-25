@@ -826,7 +826,8 @@ def done_mp4_count(out_dir: Path) -> int:
 
 
 def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = False) -> tuple[bool, str]:
-    if _is_long_row(row) and row.get("series") in {"fs", "bud"}:
+    if (_is_long_row(row) and row.get("series") in {"fs", "bud"}
+            and (row.get("text_rotation") or "media_mix" in row)):  # review 537: không đổi plan cũ đã render
         from tools.long_text_rotation import prepare
         row = prepare(row)
     rid = row["id"]

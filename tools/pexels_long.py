@@ -46,7 +46,17 @@ def has_visible_text(path: Path, min_words: int = 2) -> bool:
     Không có tesseract/ffmpeg thì trả False (không chặn), Lead vẫn soát tờ ảnh."""
     import shutil
     import tempfile
+    cache = Path(str(path) + ".ocr.json")
+    digest = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    if cache.is_file():
+        try:
+            data = json.loads(cache.read_text())
+            if data.get("sha256") == digest and data.get("min_words") == min_words:
+                return bool(data["text"])
+        except Exception:
+            pass
     if not shutil.which("tesseract"):
+        print(f"!! Pexels Long: không có tesseract, chưa lọc chữ {Path(path).name} — Lead soát tờ ảnh")
         return False
     with tempfile.TemporaryDirectory() as tmp:
         img = Path(path)
@@ -64,7 +74,9 @@ def has_visible_text(path: Path, min_words: int = 2) -> bool:
             w = cols[11].strip()
             if len(w) >= 4 and w.isalpha():
                 words += 1
-    return words >= min_words
+    found = words >= min_words
+    cache.write_text(json.dumps({"sha256": digest, "min_words": min_words, "text": found}))
+    return found
 
 
 def fetch(kind, query, used):

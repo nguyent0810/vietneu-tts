@@ -15,6 +15,8 @@ import math
 import re
 from pathlib import Path
 
+# Mốc 40 giây đầu tính trên timing ƯỚC lúc enrich -> chừa biên an toàn (review 537).
+OPENING_GUARD_S = 50.0
 DEFAULTS = {"enabled": True, "stock_video_share": .15, "stock_image_share": .15, "concept_broll": True}
 # Literal subjects, not translations of abstract fortunes or religious teaching.
 SUBJECTS = (
@@ -350,7 +352,7 @@ def _set_shot(media, line, cut, spec):
 
 def _stock_spec(original, kind, query):
     out = {"kind": kind, "provider": "pexels", "query": query,
-           "mix_auto": True, "layout": "full", "hold": original.get("hold", bool(original))}
+           "mix_auto": True, "layout": "full", "hold": bool(original.get("hold", False))}  # review 537: không tràn sang câu sau
     # Cut timing and later shots must survive replacement of the first shot.
     for key in ("at", "cuts"):
         if key in original:
@@ -368,6 +370,8 @@ def _scenes(row, spans):
 
 def enrich_stock(row, channel, spans, scene_descriptions=None, *, project_root=None, first_frames=()):
     """Offline stock selection; never fetch, render, or change protected shots."""
+    if "media_mix" not in row:
+        return  # opt-in theo plan (review 537): plan cũ không khai báo giữ nguyên
     config = row.get("media_mix", {})
     if config is False:
         return
@@ -403,7 +407,7 @@ def enrich_stock(row, channel, spans, scene_descriptions=None, *, project_root=N
         occupied.update(range(int(key), int(spec.get("until") or max([int(key), *ats])) + 1))
     candidates = []
     for i, (text, (a, b)) in enumerate(zip(script, spans), 1):
-        if a < 40 or str(text).strip().startswith("**") and str(text).strip().endswith("**"):
+        if a < OPENING_GUARD_S or str(text).strip().startswith("**") and str(text).strip().endswith("**"):
             continue
         head = media.get(str(i))
         if head is not None:
@@ -416,7 +420,7 @@ def enrich_stock(row, channel, spans, scene_descriptions=None, *, project_root=N
                     continue
                 query = prompt_query(descriptions.get(name), channel, names)
                 if (not query and config.get("concept_broll") and cut is None
-                        and not CHARACTERS.search(str(text))
+                        and not CHARACTERS.search(str(text)) and not PEOPLE.search(str(text))
                         and not any(re.search(rf"\b{re.escape(_fold(n))}\b", _fold(text)) for n in names if n)):
                     # Opt-in (Lead 25/11): câu giải thích khái niệm không nhắc nhân vật -> B-roll hợp nghĩa
                     # thay ảnh nhân vật lấp chỗ. Mặc định tắt; bật bằng media_mix.concept_broll = true.
@@ -499,6 +503,7 @@ def main():
         trial = json.loads(original_bytes)
         for row in trial if isinstance(trial, list) else [trial]:
             spans, timing = line_spans(row)
+            row.setdefault("media_mix", {})  # CLI xuất bản thử = bật rõ ràng
             if args.concept_broll:
                 row["media_mix"] = {**(row.get("media_mix") or {}), "concept_broll": True}
             enrich_stock(row, row.get("series"), spans, project_root=args.data_root)

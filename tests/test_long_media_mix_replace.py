@@ -230,3 +230,15 @@ def test_diversify_queries_caps_repeats_and_rotates_alternates():
     from collections import Counter
     c = Counter(q for _, _, q, _ in out)
     assert max(c.values()) <= 3 and len(c) >= 3
+
+
+def test_review537_stock_spec_does_not_hold_and_people_lines_kept():
+    from tools.long_media_mix import _stock_spec, OPENING_GUARD_S
+    assert _stock_spec({'kind': 'local', 'path': 'ai_001.png'}, 'image', 'q')['hold'] is False
+    assert OPENING_GUARD_S > 40
+    row = sample()
+    row['script'] = ['Gia đình nào cũng xem nạp âm và sao hạn theo truyền thống.'] * 120
+    row['media'] = {str(i): {'kind': 'local', 'path': f'ai_{i:03d}.png'} for i in range(1, 121)}
+    descriptions = {s['path']: 'A Vietnamese man at the desk.' for s in row['media'].values()}
+    enrich_stock(row, 'fs', [(i * 5., (i + 1) * 5.) for i in range(120)], descriptions)
+    assert row['media_mix_report']['ai_images_saved'] == 0

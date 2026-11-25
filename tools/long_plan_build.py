@@ -310,6 +310,7 @@ def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: 
         "style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
         "captions", "tts", "sound", "layout_policy", "media_mix",
     ) if key in base}
+    keep.setdefault("media_mix", {})  # plan Long mới: bật làn Pexels + xoay chữ (PO 25/11); plan cũ không có khoá này
     plan = {**keep,
         "id": ident,
         "series": series,
