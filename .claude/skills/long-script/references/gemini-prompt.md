@@ -8,6 +8,7 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 - Câu bắt buộc phải có (câu chạm người xem, câu khung dân gian) ghi ở mục riêng, nói rõ "được diễn đạt lại".
 - Chỉ cho ra đúng số chương được hỏi; mỗi chương chỉ viết ý của dòng dàn chương của nó.
 - #531/#534 (25/11, nghiên cứu prompt cho CL/MIM/CK): lời phải "kể cho tai" theo các mục trong khối KỂ CHO TAI dưới đây; giọng mẫu riêng từng kênh ở `creator_v2/docs/pm/giong-mau/FS.md`, `BUD.md` (hai đoạn giữa chương của Long giữ chân tốt nhất); trước khi viết văn có **lượt tờ nhịp** (mục cuối). FS Long tra cứu trả lời sớm (như CK); BUD truyện giữ lời đáp cho chương sở hữu nó (như CL).
+- 25/11: `gemini_chat.py` chỉ dán CHỮ của file prompt vào Gemini, không đính kèm file. Prompt không được nhắc tên file (`facts.json`, `brief.md`…) — Gemini không thấy chúng; mọi dữ kiện và chỉ dẫn phải dán thẳng vào các khối BẢNG DỮ KIỆN / CHỈ DẪN.
 - Lượt L02 (20/11): khuôn cũ mượn thẻ [PD] và dấu nghỉ ‖ của luồng CL (creator_v2). Luồng BUD/FS (`hf_voice`, `tools/prose_to_script.py`) không hiểu hai ký hiệu ấy: giọng đọc đọc ra chữ, và `[/PD] [PD]` làm nhiều câu dính thành một dòng. Tiêu đề "CH00 · …" cũng bị đọc. Định dạng dưới đây theo đúng L01: phần mở không tiêu đề, chương là câu hỏi `## …`.
 
 ---
