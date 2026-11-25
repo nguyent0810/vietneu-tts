@@ -7,7 +7,8 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 - Mọi model chép nguyên chữ ghi chú của brief vào lời ("nghịch lý này là lộ trình"). Vì vậy brief chia hai khối: **CHỈ DẪN** (không bao giờ đọc thành lời) và **CHI TIẾT ĐƯỢC DÙNG** (được kể lại bằng lời của người viết).
 - Câu bắt buộc phải có (câu chạm người xem, câu khung dân gian) ghi ở mục riêng, nói rõ "được diễn đạt lại".
 - Chỉ cho ra đúng số chương được hỏi; mỗi chương chỉ viết ý của dòng dàn chương của nó.
-- #531/#534 (25/11, nghiên cứu prompt cho CL/MIM/CK): lời phải "kể cho tai" theo các mục trong khối KỂ CHO TAI dưới đây; giọng mẫu riêng từng kênh ở `creator_v2/docs/pm/giong-mau/FS.md`, `BUD.md` (hai đoạn giữa chương của Long giữ chân tốt nhất); trước khi viết văn có **lượt tờ nhịp** (mục cuối). FS Long tra cứu trả lời sớm (như CK); BUD truyện giữ lời đáp cho chương sở hữu nó (như CL).
+- #531/#534 (25/11, nghiên cứu prompt cho CL/MIM/CK): lời phải "kể cho tai" theo các mục trong khối KỂ CHO TAI dưới đây; giọng mẫu riêng từng kênh ở `creator_v2/docs/pm/giong-mau/FS.md`, `BUD.md` (hai đoạn giữa chương của Long giữ chân tốt nhất); khung từng chương do Gemini tự lên trong đầu trong cùng prompt (thử lượt tờ nhịp riêng 25/11: lỗi treo). FS Long tra cứu trả lời sớm (như CK); BUD truyện giữ lời đáp cho chương sở hữu nó (như CL).
+- 25/11 PO: không ghi đích số chữ / số phút cho từng bài, chỉ ghi loại Long ngắn hay Long dài; Lead không cắt bản nháp cho vừa độ dài. Viết trọn bài trong MỘT prompt (lượt tờ nhịp riêng làm Gemini nghĩ quá lâu rồi lỗi, 25/11) — tự lên khung trong đầu, không in ra.
 - 25/11: `gemini_chat.py` chỉ dán CHỮ của file prompt vào Gemini, không đính kèm file. Prompt không được nhắc tên file (`facts.json`, `brief.md`…) — Gemini không thấy chúng; mọi dữ kiện và chỉ dẫn phải dán thẳng vào các khối BẢNG DỮ KIỆN / CHỈ DẪN.
 - Lượt L02 (20/11): khuôn cũ mượn thẻ [PD] và dấu nghỉ ‖ của luồng CL (creator_v2). Luồng BUD/FS (`hf_voice`, `tools/prose_to_script.py`) không hiểu hai ký hiệu ấy: giọng đọc đọc ra chữ, và `[/PD] [PD]` làm nhiều câu dính thành một dòng. Tiêu đề "CH00 · …" cũng bị đọc. Định dạng dưới đây theo đúng L01: phần mở không tiêu đề, chương là câu hỏi `## …`.
 
@@ -38,7 +39,7 @@ QUAN TRỌNG: khối CHỈ DẪN dưới đây là ghi chú cho bạn, KHÔNG đ
 - Không thẻ, không ký hiệu ([PD], ‖, *, #, ngoặc vuông): giọng đọc đọc mọi ký tự.
 - Không in đậm, in nghiêng, gạch đầu dòng hay ghi chú.
 
-NHIỆM VỤ: chỉ viết <CH00 và CH01> (dài khoảng <1> và <2> phút đọc, ~185 tiếng/phút). Mỗi chương chỉ viết đúng ý dòng dàn chương của nó, kết bằng một câu móc sang chương sau (không răn dạy, không tóm tắt).
+NHIỆM VỤ: viết <trọn bài, CH00 đến chương cuối, trong một lần trả lời> cho một <Long ngắn: một chủ đề hẹp, gọn | Long dài: viết đủ ý, không giới hạn số chữ>. Mỗi chương chỉ viết đúng ý dòng dàn chương của nó, kết bằng một câu móc sang chương sau (không răn dạy, không tóm tắt).
 
 === CHỈ DẪN (không đọc thành lời) ===
 Người nghe: <ai, tuổi, đang lo gì>
@@ -69,13 +70,7 @@ CH01 · <tên> · <phút>
 …
 ```
 
-Lượt tờ nhịp (#531 H2 — gửi TRƯỚC prompt chính, chat mới; prompt chính gửi tiếp bằng `--chat <url>` cùng chat):
-```
-Lượt này CHƯA viết văn xuôi. Đọc chỉ dẫn, bảng dữ kiện và dàn chương dưới đây rồi trả về tờ nhịp: với mỗi chương, đúng một dòng `CHnn: <ai> làm <gì>, vì <sao>, nhưng <điều gì chặn>`, lấy dữ kiện từ bảng, mỗi chương một ngã rẽ mới, không lặp ngã rẽ chương trước. Thêm dòng cuối `CÁI GIÁ: <ai đang lo mất gì>` cho phần mở. Tờ nhịp là khung cho bạn, không phải lời đọc.
-<dán khối CHỈ DẪN + BẢNG DỮ KIỆN + DÀN CHƯƠNG>
-```
-
-Lượt hai (cùng chat, `--chat <url>`):
+Lượt hai (chỉ khi lượt một bị cắt giữa chừng; cùng chat, `--chat <url>`):
 ```
 Viết tiếp CH02 đến CH<nn> theo đúng dàn chương, cùng giọng và định dạng như CH00–CH01 đã viết. Không viết lại CH00–CH01.
 <sửa đổi Lead muốn sau khi nghe thử, nếu có>
