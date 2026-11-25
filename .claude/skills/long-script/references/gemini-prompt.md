@@ -7,6 +7,7 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 - Mọi model chép nguyên chữ ghi chú của brief vào lời ("nghịch lý này là lộ trình"). Vì vậy brief chia hai khối: **CHỈ DẪN** (không bao giờ đọc thành lời) và **CHI TIẾT ĐƯỢC DÙNG** (được kể lại bằng lời của người viết).
 - Câu bắt buộc phải có (câu chạm người xem, câu khung dân gian) ghi ở mục riêng, nói rõ "được diễn đạt lại".
 - Chỉ cho ra đúng số chương được hỏi; mỗi chương chỉ viết ý của dòng dàn chương của nó.
+- #531/#534 (25/11, nghiên cứu prompt cho CL/MIM/CK): lời phải "kể cho tai" theo các mục trong khối KỂ CHO TAI dưới đây; giọng mẫu riêng từng kênh ở `creator_v2/docs/pm/giong-mau/FS.md`, `BUD.md` (hai đoạn giữa chương của Long giữ chân tốt nhất); trước khi viết văn có **lượt tờ nhịp** (mục cuối). FS Long tra cứu trả lời sớm (như CK); BUD truyện giữ lời đáp cho chương sở hữu nó (như CL).
 - Lượt L02 (20/11): khuôn cũ mượn thẻ [PD] và dấu nghỉ ‖ của luồng CL (creator_v2). Luồng BUD/FS (`hf_voice`, `tools/prose_to_script.py`) không hiểu hai ký hiệu ấy: giọng đọc đọc ra chữ, và `[/PD] [PD]` làm nhiều câu dính thành một dòng. Tiêu đề "CH00 · …" cũng bị đọc. Định dạng dưới đây theo đúng L01: phần mở không tiêu đề, chương là câu hỏi `## …`.
 
 ---
@@ -14,6 +15,15 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 ```
 Bạn là nhà văn viết lời kể cho phim tài liệu YouTube dài của kênh <FS: Phong Thuỷ, giọng truyền thống, ấm áp | BUD: Phật giáo, giọng tĩnh lặng, chữa lành | VSD: Văn Sử Địa, giọng kể sử gần gũi>.
 Lời được giọng AI đọc nguyên văn, nên viết cho tai nghe: dựng cảnh bằng chi tiết cụ thể (vật, âm thanh, cử chỉ) thay cho tính từ cảm xúc; ưu tiên câu ngầm (điều nhân vật chưa nói) hơn câu giải thích; mỗi câu chỉ đưa một con số; không sáo ngữ ("trớ trêu thay", "ngã ba đường"). Gọi người nghe là "bạn". Không bịa lời trích thật. Đoạn giọng mẫu chỉ để học giọng, không chép câu.
+
+KỂ CHO TAI:
+- Sau một câu trừu tượng hoặc dày từ Hán Việt (Thái Tuế, Hình, Phá, nạp âm, Tam Tai, Niết Bàn…), cho ngay một câu cảnh (nơi chốn, âm thanh, đồ vật, cơ thể) rồi mới sang ý mới. Không cấm từ Hán Việt.
+- Nghe một lần là hiểu: chuyển nhân vật, thời điểm hay khái niệm thì gọi tên rõ, không để đại từ lửng; không viết "như bạn thấy trên màn hình".
+- Có con số thì nói luôn nó nghĩa là gì với người nghe; ví dụ do bạn đặt ra phải nói rõ là ví dụ giả định.
+- Giữa chương có thể có MỘT câu phản tư buộc vào cảnh vừa kể, rồi câu sau quay lại việc; không thành đoạn, không đặt cuối chương, không răn dạy.
+- <FS: người nghe cần câu trả lời sơ bộ sớm (trong hai câu đầu mỗi chương), phần sau giải thích vì sao, có nơi tính khác ra sao, áp dụng thế nào | BUD: phần mở chỉ cho thấy ai đang gặp chuyện và mất gì; lời đáp để dành cho chương sở hữu nó>.
+- Kết video bằng câu trả lời cho câu hỏi đã mở ở đầu, có thể quay lại hình ảnh mở đầu; không tóm tắt cả video, không kêu gọi đăng ký chung chung.
+- Trước khi trả bài, tự rà từng đoạn như chỉ được nghe một lần: sửa câu phải nghe lại mới hiểu, cắt câu dẫn sáo rỗng, câu nhắc lại tiêu đề, câu kiểu "điều này cho thấy".
 
 QUAN TRỌNG: khối CHỈ DẪN dưới đây là ghi chú cho bạn, KHÔNG được chép chữ nào của nó vào lời đọc (ví dụ không viết "nghịch lý này là lộ trình", "cung chuyển", "mô-típ"). Chỉ dùng ý.
 
@@ -50,12 +60,18 @@ Khung lời: <FS: "theo cách tính dân gian", "có nơi…" chỗ nhiều các
 <số sinh bằng code, mỗi dòng một dữ kiện, kèm nhãn [dân gian]/[code]/[kinh …]>
 
 === GIỌNG MẪU ===
-<đoạn 80–150 chữ đã duyệt, KHÁC đề tài>
+<dán nguyên hai đoạn trong creator_v2/docs/pm/giong-mau/FS.md hoặc BUD.md; học giọng, không chép câu, không chép cấu trúc mở, không chép đề tài>
 
 === DÀN CHƯƠNG ===
 CH00 · <tên> · <phút>
 CH01 · <tên> · <phút>
 …
+```
+
+Lượt tờ nhịp (#531 H2 — gửi TRƯỚC prompt chính, chat mới; prompt chính gửi tiếp bằng `--chat <url>` cùng chat):
+```
+Lượt này CHƯA viết văn xuôi. Đọc chỉ dẫn, bảng dữ kiện và dàn chương dưới đây rồi trả về tờ nhịp: với mỗi chương, đúng một dòng `CHnn: <ai> làm <gì>, vì <sao>, nhưng <điều gì chặn>`, lấy dữ kiện từ bảng, mỗi chương một ngã rẽ mới, không lặp ngã rẽ chương trước. Thêm dòng cuối `CÁI GIÁ: <ai đang lo mất gì>` cho phần mở. Tờ nhịp là khung cho bạn, không phải lời đọc.
+<dán khối CHỈ DẪN + BẢNG DỮ KIỆN + DÀN CHƯƠNG>
 ```
 
 Lượt hai (cùng chat, `--chat <url>`):
