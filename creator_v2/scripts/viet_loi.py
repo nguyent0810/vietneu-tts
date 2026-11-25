@@ -30,6 +30,7 @@ from flow_viet_loi import tidy  # noqa: E402
 from gemini_chat import chat_id  # noqa: E402
 
 PROMPT = ROOT / "docs" / "pm" / "prompt-viet-loi.md"
+SAMPLES = ROOT / "docs" / "pm" / "giong-mau"   # #531 H1: giọng mẫu riêng từng kênh
 STATE = ROOT / "output" / "viet_loi"
 INBOX = ROOT / "output" / "script_inbox"
 LABELS = ["Hồ sơ truyện", "Bảng dữ kiện", "Giọng mẫu", "Dàn chương"]
@@ -86,14 +87,41 @@ def instructions(channel: str) -> str:
     return body.strip() + f"\n\nHồ sơ kênh {channel}: {m.group(1).strip()}\n"
 
 
+def channel_sample(channel: str, fallback: str) -> str:
+    """Giọng mẫu của kênh (docs/pm/giong-mau/<KÊNH>.md, #531 H1) thay file giọng mẫu trong input; không có thì giữ input."""
+    f = SAMPLES / f"{channel}.md"
+    if not f.is_file():
+        return fallback
+    text = f.read_text(encoding="utf-8")
+    i = text.find("## Ví dụ")   # phần đầu file là ghi chú cho người chọn mẫu, không gửi Gemini
+    return text[i:] if i >= 0 else text
+
+
+def beat_instructions() -> str:
+    """Khối `## Lượt tờ nhịp` của prompt (#531 H2), bỏ dòng ghi chú trong ngoặc."""
+    doc = PROMPT.read_text(encoding="utf-8")
+    m = re.search(r"(?ms)^## Lượt tờ nhịp\s*\n(.*?)(?=^## |\Z)", doc)
+    if not m:
+        raise SystemExit(f"{PROMPT.name} chưa có khối '## Lượt tờ nhịp'")
+    return "\n".join(l for l in m.group(1).strip().splitlines() if not l.startswith("(")).strip()
+
+
 def first_prompt(channel: str, texts: list[str]) -> str:
+    """Tin nhắn đầu: luật + 4 input, xin TỜ NHỊP (chưa viết văn)."""
+    texts = texts[:2] + [channel_sample(channel, texts[2])] + texts[3:]
     blocks = "\n\n".join(f"===== {lab} =====\n{t.strip()}" for lab, t in zip(LABELS, texts))
     return (instructions(channel) + "\n" + blocks +
-            "\n\n===== Lượt này =====\nChỉ viết CH00 và CH01 theo dàn chương, rồi dừng.\n")
+            "\n\n===== Lượt này: tờ nhịp =====\n" + beat_instructions() + "\n")
+
+
+def open_prompt() -> str:
+    """Tin nhắn thứ hai, cùng chat: viết CH00–CH01 theo tờ nhịp."""
+    return ("Giờ viết CH00 và CH01 theo tờ nhịp vừa lập và mọi luật, định dạng ở trên: không kéo nhịp của chương sau "
+            "lên sớm, không thêm nhịp ngoài tờ nhịp, không chép nguyên câu của tờ nhịp vào lời. Chỉ trả về hai chương này.\n")
 
 
 def rest_prompt(batch: list[str], last: str) -> str:
-    return (f"Viết tiếp {', '.join(batch)} theo dàn chương, nối liền mạch sau {last} và giữ đúng giọng các chương "
+    return (f"Viết tiếp {', '.join(batch)} theo dàn chương và tờ nhịp đã lập, nối liền mạch sau {last} và giữ đúng giọng các chương "
             "đã viết. Cùng mọi luật và định dạng như trên; số đọc như người nói, làm tròn tự nhiên, "
             "không đọc phần lẻ thập phân. Chỉ trả về các chương này.\n")
 
@@ -159,8 +187,9 @@ def main() -> int:
     st = json.loads(sf.read_text(encoding="utf-8")) if sf.is_file() else {}
 
     if a.phase == "ch00-01":
+        chat = ask(first_prompt(ch, texts), sd / "nhip.md", None, a)   # #531 H2: tờ nhịp trước, văn sau
         out = sd / "ch00-01.md"
-        chat = ask(first_prompt(ch, texts), out, None, a)
+        chat = ask(open_prompt(), out, chat, a)
         bad = wrong_part(out.read_text(encoding="utf-8"), ["CH00", "CH01"], want)
         if bad:
             raise SystemExit(f"lượt ch00-01 hỏng ({bad}); không ghi state, chạy lại")
