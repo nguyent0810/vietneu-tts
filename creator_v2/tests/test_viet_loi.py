@@ -61,3 +61,9 @@ def test_first_prompt_asks_beat_sheet_with_channel_sample():
 
 def test_channel_without_sample_keeps_input_sample():
     assert V.channel_sample("XX", "MẪU CŨ") == "MẪU CŨ"
+
+
+def test_fs_and_bud_have_channel_samples():
+    for ch in ("FS", "BUD"):
+        sample = V.channel_sample(ch, "MẪU CŨ")
+        assert sample != "MẪU CŨ" and "Ví dụ 1" in sample
