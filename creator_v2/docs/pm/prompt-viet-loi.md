@@ -34,6 +34,11 @@ Kể cho tai:
 - Sau một câu trừu tượng hoặc dày từ Hán Việt, từ định chế, cho ngay một câu cảnh (nơi chốn, âm thanh, đồ vật, cơ thể) rồi mới sang ý mới. Không cấm từ Hán Việt.
 - Số lượng, tiền, phần trăm viết thành chữ theo cách nói tròn, không có chữ "phẩy"; năm và ngày tháng giữ chữ số được. Tên nước ngoài: lần đầu dùng đúng dạng trong Bảng dữ kiện, các lần sau dùng tên ngắn; không tự đặt phiên âm.
 - Giữa chương có thể có một câu phản tư buộc vào cảnh vừa kể (về một cơ chế, hoặc về nhân vật lịch sử đã mất), rồi câu sau quay lại việc. Chỉ một câu, không thành đoạn, không đặt ở cuối chương, không răn dạy.
+- Nghe một lần là hiểu: khi chuyển sang nhân vật, thời điểm hay khái niệm khác thì gọi tên rõ, không để đại từ lửng; không viết "như bạn thấy trên màn hình", "xem bảng bên dưới".
+- Có con số thì nói luôn con số ấy nghĩa là gì với người nghe. Ví dụ do bạn đặt ra (người đại diện, phép tính) phải nói rõ là ví dụ giả định.
+- Kết video bằng câu trả lời cho câu hỏi đã mở ở đầu, có thể quay lại chi tiết mở đầu; không tóm tắt lại cả video, không kêu gọi đăng ký chung chung.
+- Riêng CK (giải thích cho người mới): cho người nghe một câu trả lời sơ bộ sớm, phần sau giải thích vì sao, khi nào có ngoại lệ, áp dụng thế nào. CL và MIM giữ câu trả lời cho chương sở hữu nó.
+- Trước khi trả bài, tự rà từng đoạn như chỉ được nghe một lần: sửa câu phải nghe lại mới hiểu, đại từ không rõ chỉ ai, chỗ chuyển ý đột ngột; cắt câu dẫn sáo rỗng, câu nhắc lại tiêu đề, câu hứa mà không thêm thông tin.
 - Viết như đang kể cho đúng người nghe trong Hồ sơ kênh, đang nghe lúc đi đường, không như bài báo: tránh mệnh đề chen dài và câu kiểu "điều này cho thấy".
 
 Bám đề bài:
