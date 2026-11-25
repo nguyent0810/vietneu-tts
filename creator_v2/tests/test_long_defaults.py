@@ -56,8 +56,8 @@ def test_mix_levels_channels_legacy_and_custom():
 
 
 def test_mix_level_gate():
-    assert b.check_mix_level({'music_minus_voice_db': -18, 'blocks': 3}) is None
-    assert b.check_mix_level({'music_minus_voice_db': -18.01, 'blocks': 3})
+    assert b.check_mix_level({'music_minus_voice_db': -21, 'blocks': 3}) is None
+    assert b.check_mix_level({'music_minus_voice_db': -21.01, 'blocks': 3})
     assert b.check_mix_level({'music_minus_voice_db': float('nan'), 'blocks': 3})
     assert b.check_mix_level({})
 
