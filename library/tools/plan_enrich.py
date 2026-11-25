@@ -56,6 +56,11 @@ _ILLUS_KEYS = (
 )
 _ILLUS_SCENES = ("sunrise", "lotus", "moon", "house", "road")
 
+def _apply_stock_mix(row: dict[str, Any], channel: str) -> int:
+    from tools.long_media_mix import enrich_stock
+    enrich_stock(row, channel, line_spans(row)[0])
+    return sum((row.get("media_mix_report") or {}).get("added", {}).values())
+
 
 def _line_count(row: dict[str, Any]) -> int:
     lines = row.get("script") or row.get("sentences") or row.get("lines") or []
@@ -470,6 +475,7 @@ def enrich_long_plan(plan: Any, channel: str) -> Any:
     for row in out:
         if not isinstance(row, dict) or row.get("lane") != "long":
             continue
+        _apply_stock_mix(row, channel)
         visuals = row.setdefault("visuals", {})
         media = row.setdefault("media", {})
         hand_lines = _keys(visuals)
@@ -528,6 +534,12 @@ def enrich_long_plan(plan: Any, channel: str) -> Any:
         _finish_mix(row, decisions, hand_lines, forbidden, {x["type"] for x in catalog["scenes"]
                     if (x.get("qa") or {}).get("trang_thai") == "dat"})
         row["scene_decision"] = decisions
+        from tools.long_text_rotation import prepare, issues
+        rotated = prepare(row)
+        row.clear()
+        row.update(rotated)
+        for warning in issues(row):
+            print(warning)
     return out if isinstance(plan, list) else out[0]
 
 

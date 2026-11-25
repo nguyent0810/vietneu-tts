@@ -14,8 +14,8 @@ from collections import Counter
 from urllib.parse import urlsplit
 
 VISUAL_MIX_SINCE = "2026-11-18"
-TEXT_WARN = 0.12
-TEXT_ERROR = 0.15
+TEXT_WARN = 0.10
+TEXT_ERROR = 0.10
 REPEAT_WARN = 4
 REPEAT_ERROR = 6
 MIN_IMAGES_PER_MINUTE = 4.0
@@ -57,6 +57,8 @@ def measure(scenes) -> dict:
     images = set()
     text_seconds = 0.0
     video_seconds, clip_count, pano_count, parallax_count = 0.0, 0, 0, 0
+    stock_video_seconds = stock_image_seconds = 0.0
+    sources = Counter()
     for scene in scenes:
         t0, t1 = float(scene["t0"]), float(scene["t1"])
         if not math.isfinite(t0) or not math.isfinite(t1) or t1 < t0:
@@ -67,6 +69,11 @@ def measure(scenes) -> dict:
         duration = t1 - t0
         seconds[kind] += duration
         counts[kind] += 1
+        sources[scene.get("source") or "unknown"] += duration
+        if scene.get("stock_kind") == "video":
+            stock_video_seconds += duration
+        elif scene.get("stock_kind") == "image":
+            stock_image_seconds += duration
         motion = scene.get("motion") or kind
         if motion in {"video", "clip", "pano", "parallax"}:
             video_seconds += duration
@@ -82,11 +89,17 @@ def measure(scenes) -> dict:
             text_seconds += duration
     total = sum(seconds.values())
     return {"seconds": total, "scenes": sum(counts.values()),
+            "by_source": {k: {"seconds": v, "share": v / total if total else 0}
+                          for k, v in sorted(sources.items())},
             "by_kind": {k: {"seconds": seconds[k], "scenes": counts[k],
                              "share": seconds[k] / total if total else 0.0}
                         for k in sorted(seconds, key=lambda k: (-seconds[k], k))},
             "text_seconds": text_seconds, "text_share": text_seconds / total if total else 0.0,
             "video_seconds": video_seconds, "video_share": video_seconds / total if total else 0.0,
+            "stock_video_seconds": stock_video_seconds,
+            "stock_video_share": stock_video_seconds / total if total else 0.0,
+            "stock_image_seconds": stock_image_seconds,
+            "stock_image_share": stock_image_seconds / total if total else 0.0,
             "clip_count": clip_count, "pano_count": pano_count, "parallax_count": parallax_count,
             "unique_images": len(images),
             "images_per_minute": len(images) * 60 / total if total else 0.0,
@@ -129,6 +142,9 @@ def format_table(metrics) -> str:
     rows.append(f"TỔNG | {metrics['seconds']:.2f} | {'100%' if metrics['seconds'] else '0%'} | {metrics['scenes']}")
     rows.append(f"Chữ {metrics['text_share']:.2%}; ảnh lặp max {metrics['max_repeat']}; "
                 f"{metrics['unique_images']} ảnh khác nhau; {metrics['images_per_minute']:.2f} ảnh/phút")
+    rows.append(f"Pexels/stock video {metrics.get('stock_video_share', 0):.2%} "
+                f"({metrics.get('stock_video_seconds', 0):.2f}s); stock ảnh "
+                f"{metrics.get('stock_image_share', 0):.2%} ({metrics.get('stock_image_seconds', 0):.2f}s)")
     rows.append(f"video_share {metrics['video_share']:.2%} ({metrics['video_seconds']:.2f}s clip + pano + parallax); "
                 f"clip {metrics['clip_count']} cảnh; pano {metrics['pano_count']} cảnh; "
                 f"parallax {metrics.get('parallax_count', 0)} cảnh")

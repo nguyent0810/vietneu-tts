@@ -1590,6 +1590,22 @@ def resolve_media(media: dict, sentence_id: int, stem: str,
             f"câu {sentence_id}: treatment {denied[0]!r} bị cấm trên media của kênh {domain}")
     grade = treatment or HOUSE_GRADE.get(domain, "")
 
+    if media.get("provider") == "pexels":
+        from tools.pexels_long import frozen_asset, prepare
+        # Direct bridge callers still resolve through the same safe route.
+        spec = media if media.get("stock_path") else prepare(
+            {"series": domain.lower(), "media": {"1": media}})["media"]["1"]
+        found = frozen_asset(spec)
+        source = spec.get("stock_source") or {}
+        credit = f"Pexels: {source.get('author', '')} ({source.get('page', '')})"
+        if kind == "image":
+            local = HF_ASSETS / f"{stem}_s{sentence_id}.jpg"
+            _shrink_image(found, local)
+        else:
+            local = HF_ASSETS / f"{stem}_s{sentence_id}.mp4"
+            shutil.copy2(found, local)
+        return local, query, credit, grade
+
     if kind == "image":
         import stock_image  # noqa: PLC0415
         found = stock_image.get_or_fetch_stock_image(query, orientation)
@@ -2663,6 +2679,8 @@ def media_holds(
         k = i
         last_valid = i
         while k + 1 < n:
+            if spec.get("hold") is False:
+                break  # Stock selected for one literal sentence must not spill into a character scene.
             nxt = lines[k + 1]
             in_opening = nxt.get("start", 0.0) < OPENING_HOLD_S
             vspec = _visual_spec_of(lines, nxt)
@@ -2823,6 +2841,9 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
     lines = build_lines(script, manifest, figures, figure_labels,
                         align_audio=wav if (lane == "long" or visuals or any(
                             isinstance(m, dict) and m.get("cuts") for m in (media or {}).values())) else None)
+    for sid, effect in (opts.get("text_effects") or {}).items():
+        if str(sid).isdigit() and 0 < int(sid) <= len(lines):
+            lines[int(sid)-1]["text_effect"] = effect
 
     media_tags: list[str] = []
     media_credits: list[str] = []

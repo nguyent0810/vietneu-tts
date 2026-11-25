@@ -352,3 +352,25 @@ class EnrichRenderableTests(unittest.TestCase):
         self.assertEqual("slow_zoom", result["media"]["1"]["preset"])
         self.assertNotIn("2", result.get("media", {}))
         self.assertEqual("push_detail", result["scene_decision"]["2"]["motion"]["preset"])
+
+class StockMixTests(unittest.TestCase):
+    def test_stock_mix_targets_only_eligible_noncharacter_ai_lines(self):
+        from library.tools.plan_enrich import _apply_stock_mix
+        row = {"lane": "long", "series": "fs", "script": ["Cảnh cây bên sông."] * 24,
+               "media": {"1": {"kind": "local", "path": "editor.jpg"}},
+               "visuals": {}}
+        # 185 wpm gives these short lines under 40s, so use realistic long sentences.
+        row["script"] = ["Bên cạnh chiếc đồng hồ, cây xanh đứng yên giữa khu vườn sau những ngày nắng dài."] * 24
+        changed = _apply_stock_mix(row, "fs")
+        self.assertGreater(changed, 0)
+        self.assertEqual("local", row["media"]["1"]["kind"])
+        self.assertTrue(any(s["kind"] == "video" for s in row["media"].values()))
+        self.assertTrue(any(s["kind"] == "image" for s in row["media"].values()))
+        self.assertTrue(all("query" in s for s in row["media"].values() if s["kind"] in {"video", "image"}))
+
+    def test_stock_mix_disabled_and_authored_media_preserved(self):
+        from library.tools.plan_enrich import _apply_stock_mix
+        row = {"lane": "long", "media_mix": {"enabled": False}, "script": ["Cây xanh."],
+               "media": {"1": {"kind": "local", "path": "a.jpg", "layout": "depth"}}}
+        self.assertEqual(0, _apply_stock_mix(row, "fs"))
+        self.assertEqual("local", row["media"]["1"]["kind"])

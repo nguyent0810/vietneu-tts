@@ -826,6 +826,9 @@ def done_mp4_count(out_dir: Path) -> int:
 
 
 def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = False) -> tuple[bool, str]:
+    if _is_long_row(row) and row.get("series") in {"fs", "bud"}:
+        from tools.long_text_rotation import prepare
+        row = prepare(row)
     rid = row["id"]
     try:
         from library.tools.production_gates import hook_lint_issues, long_script_report
@@ -923,6 +926,12 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
     stamp.write_text(digest + "\n", encoding="utf-8")
 
     bgm, gain = pick_bgm(row, wav)
+    if _is_long_row(row) and row.get("series") in {"fs", "bud"}:
+        from tools.pexels_long import prepare
+        try:
+            row = prepare(row)
+        except (ValueError, OSError) as exc:
+            return False, f"Pexels Long: {exc}"
     if row.get("chapters"):
         return render_chapters(row, out_dir, quality, txt, wav, bgm)
     layout_chosen = None
@@ -968,7 +977,7 @@ def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = F
             cmd += [flag, str(side)]
 
     # Phase D (tiếng động bám cảnh, phụ đề cụm chữ, kết vòng lặp, câu hỏi lặng).
-    opts = {k: row[k] for k in ("caps", "subs", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme") if k in row}
+    opts = {k: row[k] for k in ("caps", "subs", "loop", "silence", "sfx", "sfx_gain", "sound", "kinetic", "wordts", "theme", "text_effects") if k in row}
     if layout_chosen is not None:
         opts = layout_v2_opts(opts, row, layout_chosen)
     if opts:
@@ -1167,7 +1176,7 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
     file remain two scenes, even when adjacent. Crop/layout/cine do not alter ref.
     """
     import hyperframes_bridge as HB
-    from tools.visual_mix import media_motion_kind
+    from tools.visual_mix import TEXT_KINDS, media_motion_kind
     script = row.get("script") or []
     if segs is None:
         segs, t = [], 0.0
@@ -1201,6 +1210,19 @@ def visual_mix_scenes(row: dict, segs: list[dict] | None = None) -> list[dict]:
                  "t1": lines[i + 1]["start"] if i + 1 < len(lines) else line["end"],
                  "motion": media_motion_kind(spec) if visible_media else None,
                  "image": ref, "style": visual.get("type") if visual.get("type") in HB.STYLE_VISUAL_TYPES else None}
+        if visible_media:
+            source_kind = str(spec.get("kind") or "video").lower()
+            if source_kind in {"image", "video"}:
+                scene["stock_kind"] = source_kind
+                scene["source"] = "stock_" + source_kind
+            elif source_kind == "local":
+                scene["source"] = "ai_video" if media_motion_kind(spec) == "video" else "ai_image"
+            elif source_kind in {"commons", "museum", "ext", "openverse", "pdvideo"}:
+                scene["source"] = "commons_museum"
+            else:
+                scene["source"] = "data_graphic" if source_kind == "asset" else "other"
+        else:
+            scene["source"] = "text" if kind in TEXT_KINDS else "chapter" if line.get("heading") else "data_graphic"
         if scenes and token == previous_token and kind == scenes[-1]["kind"]:
             scenes[-1]["t1"] = scene["t1"]
         else:
@@ -1216,6 +1238,10 @@ def _is_long_row(row: dict) -> bool:
 def visual_mix_check(row: dict, segs: list[dict] | None = None) -> list[str]:
     """Print the shared report; return only blocking findings. Lỗi đo không bao giờ chặn render."""
     from tools import visual_mix
+    if _is_long_row(row) and row.get("series") in {"fs", "bud"}:
+        from tools.long_text_rotation import issues
+        for warning in issues(row):
+            print("    " + warning, flush=True)
     try:
         metrics = visual_mix.measure(visual_mix_scenes(row, segs))
     except Exception as exc:  # noqa: BLE001 — cổng đo, không được làm hỏng render
@@ -2150,7 +2176,7 @@ def chapter_key(row: dict, a: int, b: int, t0: float, t1: float, quality: str,
                 chapter_base: int = 0, seg_total: float = 0) -> str:
     """Băm nội dung chương theo thời gian cục bộ, không theo vị trí trong toàn video."""
     subs = {kind: {str(int(k) - a): _remap_at(v, a) for k, v in (row.get(kind) or {}).items() if a < int(k) <= b}
-            for kind in ("media", "visuals")}
+            for kind in ("media", "visuals", "text_effects")}
     for v in subs["media"].values():
         if isinstance(v, dict):
             for shot in [v, *v.get("cuts", [])]:
@@ -2254,6 +2280,8 @@ def render_chapters(row: dict, out_dir: Path, quality: str, txt: Path, wav: Path
         opts = chapter_render_opts(t0, total, video_only=True, chapter_base=base,
                 kinetic=bool(row.get("kinetic")), wordts=bool(row.get("wordts")),
                 theme=row.get("theme"), silence=[x - a for x in silence if a < x <= b])
+        if row.get("text_effects"):
+            opts["text_effects"] = {str(int(k)-a): v for k, v in row["text_effects"].items() if a < int(k) <= b}
         if row.get("subs"):
             opts["subs"] = row["subs"]
         if row.get("caps"):

@@ -179,7 +179,7 @@ def build(key: str, long_dir: Path = DEFAULT_LONG_DIR) -> Path:
     heads = [i for i, l in enumerate(lines, 1) if is_heading(l)]
     # KHÔNG chép seo/tags/playlists của plan mẫu (review 07/11: mang metadata tập khác) — điền ở bước đóng gói
     keep = {k: base[k] for k in ("style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
-                                 "captions", "tts", "sound", "layout_policy") if k in base}
+                                 "captions", "tts", "sound", "layout_policy", "media_mix") if k in base}
     plan = {**keep, "id": meta["id"], "day": None, "slot": None, "hold": True, "kicker": meta["kicker"],
             "title": meta["title"], "thumbnail": None, "script": lines}
     # khoảng nghỉ theo dòng của plan mẫu không áp được cho kịch bản mới
@@ -308,7 +308,7 @@ def build_new(script: Path, ident: str, series: str, base_path: Path, out_path: 
         attach_marker_visuals(visuals, markers, defaults)
     keep = {key: base[key] for key in (
         "style", "theme", "series", "lane", "badge", "chapters", "pacing", "kinetic",
-        "captions", "tts", "sound", "layout_policy",
+        "captions", "tts", "sound", "layout_policy", "media_mix",
     ) if key in base}
     plan = {**keep,
         "id": ident,

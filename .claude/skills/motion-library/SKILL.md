@@ -96,6 +96,10 @@ thuần của t, soát khung tĩnh trước render), 12 dạng cảnh D1–D12 k
 `paint_over`), và các thành phần engine đang vướng danh sách cấm (`blurfade`, hạt bung thẻ chương, `lens-flare`).
 Giao thợ viết cảnh mới bằng `prompt_mau.md`.
 
+## Xoay chữ toàn Long (151, PO 25/11)
+Beat text ≤10% thời lượng. `tools/long_text_rotation.py` chọn có trí nhớ trên toàn Long trước khi tách chương, lưu `text_effects`: không lặp hiệu ứng ở hai beat chữ kế nhau; mỗi hiệu ứng ≤25% khi ≥4 beat. Chọn hiệu ứng hợp nghĩa trước trong phần quota còn lại; không tự ép mọi câu phủ định sang gạch bỏ. Dưới 4 beat hoặc ghi tay làm bất khả thi thì lint/runner cảnh báo `!! chữ lặp hiệu ứng`.
+Kho có sẵn: word rise/drop/type/sync/flip/wipe/zoom/slam; dissolve/rays/ripple/grow theo nghĩa; strike chỉ câu phá ngộ nhận và vẫn theo quota. Keycard dùng stamp/cascade/placard/lens + brush (giấy) hoặc gold (tối); nếu quota cần kiểu thứ sáu thì dùng word có sẵn. Quote xoay 5 variant, list xoay 3 variant có sẵn và giữ nội dung; nếu trần 25% không thể thỏa trong cùng host thì cảnh báo để Lead chọn lại cảnh. Không thêm hiệu ứng mới. `fx`/`preset`/`variant` ghi tay giữ nguyên; preset khóa QA tiếp tục opt-in. `kinetic_suggest` chỉ là gợi ý, không tính thành hiệu ứng đã chạy; keycard auto của plan cũ chưa render thì không suy ra tần suất biến thể.
+
 ## Chữ theo nhịp — 8 preset opt-in (`longform.js`, khóa `preset`)
 Renderer chỉ chạy khi visual **đúng host** có `"preset"`. Không có preset thì word/stat/quote/compare/ask đi đường cũ. Catalog vẫn `qa: khoa` — `scene_picker` không chọn các tên này làm `type`. `plan_enrich` ghi `kinetic_suggest` (opt-in, người viết xoá được), không tự chép `preset` vào visual.
 

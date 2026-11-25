@@ -1182,6 +1182,10 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
         if p.count(":") >= 2 and re.search(r"(?i)\b(hỏi|thưa|đáp|nói|bảo)\b.*:.*\b(hỏi|thưa|đáp|nói|bảo)\b.*:", p):
             add(INFO, "hai_luot_thoai", f"dòng {i}: hai lượt thoại trong một dòng -- tách dòng để có nghỉ giữa hai người")
 
+    if row.get("lane") == "long" and row.get("series") in {"fs", "bud"}:
+        from tools.long_text_rotation import issues as text_rotation_issues
+        for warning in text_rotation_issues(row):
+            add(WARN, "chu_lap_hieu_ung", warning)
     runner = HBR.retention_issues({**row, "kind": kind})
     stats = {
         "id": row.get("id"), "format": fmt, "thời gian": time_src, "phút": round(total / 60, 1), "dòng": len(script), "câu nói": len(sents),

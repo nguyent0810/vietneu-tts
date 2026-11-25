@@ -549,7 +549,7 @@
       enter(tl, inner, ln, ctx) {
         const S = inner._lf, items = ln.visual.items || [];
         if (S.title) tl.fromTo(S.title, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 }, ln.start + .1);
-        const how = variantOf("list", ln.visual, ["cascade", "stack", "spotlight"]);
+        const how = variantOf("list", { ...ln.visual, variant: ln.visual.variant || (ln.text_effect || {}).list }, ["cascade", "stack", "spotlight"]);
         if (how === "spotlight")  // cả danh sách hiện mờ sẵn, câu nào nói tới thì mục đó sáng lên
           // Phải xong TRƯỚC lần làm sáng đầu tiên (đầu câu + .3s): tween mờ kết
           // thúc sau sẽ ghi đè mục đang được đọc về lại mờ.
@@ -814,7 +814,8 @@
   visuals.quote = {
     build(inner, ln) {
       if (KINETIC.take(inner, ln, "quote")) return;
-      const v = ln.visual, how = (v.variant === "type" || v.variant === "rise") ? v.variant : variantOf("quote", v, ["page", "kinetic", "glass"]);
+      const v = ln.visual, planned = v.variant || (ln.text_effect || {}).quote;
+      const how = ["page", "kinetic", "glass", "type", "rise"].includes(planned) ? planned : variantOf("quote", v, ["page", "kinetic", "glass"]);
       ln._q = how;
       const st = el("div", "lf-stage lf-q lf-q-" + how); inner.appendChild(st);
       const card = el("div", "lf-q-card"); st.appendChild(card);
@@ -1828,9 +1829,10 @@
       const v = ln.visual;
       const hot = (ln.words || []).filter((w) => w.hot).map((w) => clean(w.w).replace(/[.,:;!?]+$/, "")).join(" ");
       const raw = v.text || hot || clean((ln.key_parts || []).map((p) => p.t).join(" "));
-      let fx = v.fx || fxFor(raw.toUpperCase());
+      const plannedFx = (ln.text_effect || {}).word;
+      let fx = v.fx || plannedFx || fxFor(raw.toUpperCase());
       let ts = wordStyle(v, fx);   // "" = kiểu cũ (một phông, một màu) khi plan không bật "wordts"
-      if (ts && !v.fx) {           // chuyển động mượn bộ beat text của Youtube_Creator_V2 (engine/beat.js, 04/10/2026)
+      if (ts && !v.fx && !plannedFx) { // kế hoạch toàn Long đã xoay thì không tự ép strike
         if (/^(KHÔNG PHẢI|CHẲNG PHẢI|ĐỪNG|SAI)\b[^·]*·/i.test(raw.trim())) fx = "strike";   // "KHÔNG PHẢI X · Y": gạch vế X
         // split/crack chồng hai bản chữ khít nhau: với kiểu chữ wordts + câu dài/có "·" hai nửa lệch, ra chữ dồn nét
         // và vạch nứt cắt ngang (L_fs_21 câu 14 "LỖI NÀY HẠI GÌ · ...", 05/10/2026) -> chỉ giữ cho thẻ ngắn một vế.
@@ -2801,7 +2803,8 @@
       const hot = (ln.key_parts || []).filter((p) => p.hot).map((p) => p.t).join(" ");
       if (!hot) return;
       const key = clean(hot).replace(/[.:;,!?]+$/, "");
-      ln._kc = pick("keycard", KC_VARIANTS());
+      const planned = (ln.text_effect || {}).keycard;
+      ln._kc = KC_VARIANTS().includes(planned) ? planned : pick("keycard", KC_VARIANTS());
       const st = el("div", "lf-stage kc kc-" + ln._kc); inner.appendChild(st);
       const bs = blobs(st, 2);
       const box = el("div", "kc-box"); st.appendChild(box);
