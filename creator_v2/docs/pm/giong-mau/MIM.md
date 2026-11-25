@@ -1,11 +1,12 @@
 # Giọng mẫu kênh MIM (#531, H1)
 
-Hai đoạn ví dụ để HỌC GIỌNG: nhịp câu, cách đặt một cảnh cụ thể cạnh một ý trừu tượng, cách gọi "bạn", cách hỏi. Không chép câu, không chép cấu trúc mở, không chép đề tài. Thay mẫu: lấy từ Long đã đăng có giữ chân tốt nhất của kênh, khác đề tài bài đang viết, đoạn giữa chương (không lấy đoạn mở).
+Hai đoạn ví dụ để HỌC GIỌNG: nhịp câu, cách đặt một cảnh cụ thể cạnh một ý, cách gọi "bạn", cách hỏi. Không chép câu, không chép cấu trúc mở, không chép đề tài.
+Nguồn: đoạn giữa chương của Long đã đăng, ở chỗ đường giữ chân tốt nhất (YouTube Analytics 25/11/2026). Chi tiết, số liệu và dự phòng: `docs/pm/2026-11-giong-mau-de-xuat.md` (chủ kênh chọn phương án a, 25/11/2026).
 
-## Ví dụ 1 (Air Canada, CH02 Lời của chatbot)
+## Ví dụ 1 (Oppenheimer, máy Marchant)
 
-Khung chat đặt trên trang web chính thức của một hãng hàng không đóng đúng vai trò của chiếc quầy đó. Nó nằm trong địa chỉ mạng của hãng, mang màu sắc nhận diện của hãng, bật mở để đón khách khi họ cần hỏi gấp, và trả lời bằng giọng điệu chắc nịch như thể mọi chữ đều đã được kiểm duyệt. Khi một ô cửa sổ chính chủ vẽ ra cho bạn một quy trình có đầu có đuôi, kèm hẳn mốc chín mươi ngày rõ ràng, phản xạ tự nhiên là tin rằng đó chính là lời của hãng bay.
+Và cậu trẻ này cãi, chẳng cần biết mình đang nói với ai. Ngày đầu tiên, họ cần bình phương của bốn mươi tám. Feynman với tay sang chiếc máy cộng quay tay hiệu Marchant. Bethe nhanh hơn. Ông nói: khoảng hai nghìn ba trăm. Muốn chính xác thì là hai nghìn ba trăm linh bốn. Máy ra đúng con số ấy. Bethe có mẹo riêng cho những số gần năm mươi. Từ đó, hễ phải tính gì, hai người lại đua nhau tính nhẩm. Feynman kể ông thường thua, mãi vài năm sau mới thắng được chừng một lần trong bốn.
 
-## Ví dụ 2 (Knight Capital, CH02 Bản cập nhật cho chương trình mới)
+## Ví dụ 2 (AlphaGo, nước trông như sai)
 
-Để hiểu vì sao nó nằm đó lại nguy hiểm tới vậy, bạn cần nhìn vào mục tiêu mà Knight đang chạy đua trước ngày mùng một tháng tám năm hai nghìn mười hai. Đúng sáng hôm ấy, sàn giao dịch chứng khoán New York chính thức mở một chương trình thanh khoản mới dành riêng cho các lệnh nhỏ lẻ của nhà đầu tư cá nhân. Với một công ty sống nhờ lưu lượng giao dịch như Knight, chậm chân trước chương trình này đồng nghĩa với việc tự tay nhường khách hàng cho đối thủ. Họ phải sẵn sàng ngay từ giây mở cửa đầu tiên.
+Nó nối những đám quân đen lại với nhau, như thể đã được đặt sẵn từ trước. Về cuối ván còn một chuyện lạ nữa. AlphaGo đi vài nước trông rất lỏng tay, tới mức bình luận viên tưởng nó đánh sai. Bạn còn nhớ chi tiết mình dặn chứ? Nó không cố thắng đậm. Một người trong nhóm làm ra nó giải thích bằng một ví dụ. Giữa chín mươi chín phần trăm thắng với cách biệt một điểm rưỡi, và tám mươi phần trăm thắng với cách biệt hai mươi điểm, nó sẽ chọn cái đầu. Những nước trông như sai ấy, thật ra là lời tuyên bố rằng ván cờ đã xong.
