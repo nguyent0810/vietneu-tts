@@ -38,3 +38,13 @@ def test_every_channel_has_profile():
         assert f"Hồ sơ kênh {c}:" in text and "Giới hạn cứng" in text
     p = V.first_prompt("CL", ["h", "d", "g", "CH00 · a\nCH01 · b"])
     assert p.count("=====") == 10 and "Chỉ viết CH00 và CH01" in p
+
+
+def test_wrong_part_flags_foreign_or_empty_chapters():
+    from viet_loi import wrong_part
+    outline = ["CH00", "CH01", "CH02", "CH03"]
+    ok = "## CH02 · A\n\n" + "chữ " * 50 + "\n## CH03 · B\n\n" + "chữ " * 50
+    assert wrong_part(ok, ["CH02", "CH03"], outline) == ""
+    assert "không có chương" in wrong_part("Figuring out\nGemini said", ["CH02"], outline)
+    # nhiễm chéo: chat của Long khác trả CH07 (24/11 Air Canada lẫn vào Dreyfus)
+    assert "ngoài dàn chương" in wrong_part(ok + "\n## CH07 · C\n\nx", ["CH02", "CH03"], outline)

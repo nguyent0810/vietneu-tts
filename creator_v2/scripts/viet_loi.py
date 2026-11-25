@@ -27,6 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from flow_viet_loi import tidy  # noqa: E402
+from gemini_chat import chat_id  # noqa: E402
 
 PROMPT = ROOT / "docs" / "pm" / "prompt-viet-loi.md"
 STATE = ROOT / "output" / "viet_loi"
@@ -62,6 +63,18 @@ def chapters(text: str) -> dict[str, str]:
 def missing_chapters(text: str, want: list[str]) -> list[str]:
     have = {k: len(v.split("\n", 1)[1].split()) if "\n" in v else 0 for k, v in chapters(text).items()}
     return [c for c in want if have.get(c, 0) < MIN_WORDS]
+
+
+def wrong_part(text: str, want: list[str], outline: list[str]) -> str:
+    """Lý do một phần trả về không dùng được (#529), rỗng nếu ổn: không có chương nào trong `want`,
+    hoặc có chương ngoài dàn chương của đề tài (dấu hiệu nhiễm chéo từ chat của Long khác)."""
+    got = set(chapters(text))
+    if not got & set(want):
+        return f"không có chương nào trong {', '.join(want)}"
+    extra = sorted(got - set(outline))
+    if extra:
+        return f"có chương ngoài dàn chương: {', '.join(extra)}"
+    return ""
 
 
 def instructions(channel: str) -> str:
@@ -147,20 +160,30 @@ def main() -> int:
 
     if a.phase == "ch00-01":
         out = sd / "ch00-01.md"
-        st = {"chat": ask(first_prompt(ch, texts), out, None, a), "parts": [out.name]}
+        chat = ask(first_prompt(ch, texts), out, None, a)
+        bad = wrong_part(out.read_text(encoding="utf-8"), ["CH00", "CH01"], want)
+        if bad:
+            raise SystemExit(f"lượt ch00-01 hỏng ({bad}); không ghi state, chạy lại")
+        st = {"chat": chat, "parts": [out.name]}
         sf.write_text(json.dumps(st, ensure_ascii=False, indent=1), encoding="utf-8")
         want = ["CH00", "CH01"]
     else:
         if not st.get("chat"):
             raise SystemExit("chưa có lượt ch00-01 cho đề tài này (không thấy link chat)")
         done = chapters("\n".join((sd / p).read_text(encoding="utf-8") for p in st["parts"]))
+        if missing_chapters("\n".join(done.values()), ["CH00", "CH01"]):
+            raise SystemExit("CH00–CH01 trong state chưa hợp lệ: chạy lại `--phase ch00-01` trước (#529)")
         todo = [c for c in want if c not in done or missing_chapters(done[c], [c])]
         for i in range(0, len(todo), a.batch):
             batch = todo[i:i + a.batch]
             last = max(done) if done else "CH01"
             out = sd / f"{batch[0].lower()}-{batch[-1][2:]}.md"
             print(f"viết {', '.join(batch)}…", flush=True)
-            st["chat"] = ask(rest_prompt(batch, last), out, st["chat"], a)
+            chat = ask(rest_prompt(batch, last), out, st["chat"], a)
+            bad = wrong_part(out.read_text(encoding="utf-8"), batch, want)
+            if bad or (chat_id(chat) and chat_id(chat) != chat_id(st["chat"])):
+                raise SystemExit(f"phần {out.name} hỏng ({bad or 'Gemini chuyển sang chat khác ' + chat}); "
+                                 "không ghép, chạy lại `--phase rest`")
             st["parts"].append(out.name)
             sf.write_text(json.dumps(st, ensure_ascii=False, indent=1), encoding="utf-8")
             done.update(chapters(out.read_text(encoding="utf-8")))
