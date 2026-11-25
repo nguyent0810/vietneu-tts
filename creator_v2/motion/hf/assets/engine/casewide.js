@@ -247,7 +247,9 @@
 
   B.photo = (s, d) => {
     const m = IM(s.img), fx = (s.focus || [0.5, 0.4])[0], fy = (s.focus || [0.5, 0.4])[1];
-    if (s.frame ?? (m.w / m.h < 1.25 && !s.focus)) return photoFramed(s, d, m);   // ảnh dọc: vào khung (có "focus" = người viết đã chọn cách cắt)
+    // ảnh dọc/gần vuông LUÔN vào khung (chủ kênh 25/11/2026: mặt nhân vật HKV bị cắt khi "focus" ép tràn 16:9);
+    // chỉ "frame": false mới trải tràn. Việc làm toàn diện theo tỉ lệ: #532.
+    if (s.frame ?? (m.w / m.h < 1.25)) return photoFramed(s, d, m);
     const area = el("div", "abs", null, d); Object.assign(area.style, { left: 0, top: 0, width: px(W), height: px(H), overflow: "hidden" });
     const k = Math.max(W / m.w, H / m.h), iw = m.w * k, ih = m.h * k;
     const il = Math.min(0, Math.max(W - iw, W / 2 - fx * iw)), it = Math.min(0, Math.max(H - ih, H / 2 - fy * ih));

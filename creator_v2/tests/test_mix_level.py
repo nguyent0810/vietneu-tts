@@ -34,8 +34,8 @@ def test_calibration_and_real_sidechain(audio, amplitude):
                                    item, 6, levels, master=False)
     mix.mix_chapter({}, audio, 6, master=False, items=[item], levels=levels, measure_music=True)
     result = mix.measure_mix_level(audio / "voice_level.wav", audio / "music_level.wav")
-    assert result["music_minus_voice_db"] == pytest.approx(-14, abs=.2)
-    assert gain * amplitude == pytest.approx(.18 * 10 ** (-14 / 20) * 4 ** .75, rel=.5)
+    assert result["music_minus_voice_db"] == pytest.approx(-mix.MUSIC_UNDER_VOICE_DB, abs=.2)
+    assert gain * amplitude == pytest.approx(.18 * 10 ** (-mix.MUSIC_UNDER_VOICE_DB / 20) * 4 ** .75, rel=.5)
 
 
 @needs_ffmpeg
@@ -58,8 +58,8 @@ def test_legacy_mix_does_not_calibrate(audio, monkeypatch):
     assert (audio / "mix.wav").exists()
 
 
-@pytest.mark.parametrize("db, expected", [(-18.01, "nh\u1ea1c nh\u1ecf"), (-18, None), (-14, None),
-                                           (-8, None), (-7.99, "nh\u1ea1c to h\u01a1n m\u1ee9c cho ph\u00e9p"),
+@pytest.mark.parametrize("db, expected", [(-21.01, "nh\u1ea1c nh\u1ecf"), (-21, None), (-16, None),
+                                           (-12, None), (-11.99, "nh\u1ea1c to h\u01a1n m\u1ee9c cho ph\u00e9p"),
                                            (float("nan"), "kh\u00f4ng \u0111o \u0111\u01b0\u1ee3c")])
 def test_check_mix_level_bounds(db, expected):
     result = mix.check_mix_level({"music_minus_voice_db": db, "blocks": 1})
@@ -73,3 +73,20 @@ def test_calibration_rejects_silent_music(audio):
         mix.calibrated_bgm_gain(audio / "voice.wav", audio.parent / "bgm" / "silent.wav",
                                 {"start": 0, "end": 6}, 6,
                                 {"gain": .17, "threshold": .05, "ratio": 4}, master=False)
+
+
+def test_mix_level_gate_bounds():
+    assert mix.check_mix_level({"music_minus_voice_db": -10, "blocks": 5})   # HKV 16/11: quá to
+    assert mix.check_mix_level({"music_minus_voice_db": -16, "blocks": 5}) is None
+    assert mix.check_mix_level({"music_minus_voice_db": -19, "blocks": 5}) is None   # ch00 thấp thêm 3 dB
+    assert mix.check_mix_level({"music_minus_voice_db": -25, "blocks": 5})
+
+
+@needs_ffmpeg
+def test_item_gain_cannot_raise_music(audio):
+    item = {"file": "0.2.wav", "start": 0, "end": 6, "fin": 0, "fout": 0}
+    levels = {"gain": .17, "threshold": .05, "ratio": 4}
+    args = (audio / "voice.wav", audio.parent / "bgm" / item["file"])
+    base = mix.calibrated_bgm_gain(*args, item, 6, levels, master=False)
+    assert mix.calibrated_bgm_gain(*args, {**item, "gain": .2}, 6, levels, master=False) == pytest.approx(base, rel=.02)
+    assert mix.calibrated_bgm_gain(*args, item, 6, levels, master=False, extra_db=3) == pytest.approx(base * 10 ** (-3 / 20), rel=.02)

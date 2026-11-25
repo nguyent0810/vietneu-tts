@@ -1381,7 +1381,13 @@ def bgm_items(ch, lines, dur) -> list[dict]:
     return out
 
 
-def calibrated_bgm_gain(voice_path, music_path, item, dur, levels, quiet=(), master=True, music_lift=()):
+# Nhạc nền Long nằm dưới giọng MUSIC_UNDER_VOICE_DB; chương mở (ch00, cold open) thấp thêm OPEN_EXTRA_DB.
+# Chủ kênh 25/11/2026 (Hoàng Kim Vinh): nhạc mở đầu quá to; mức cũ -14 dB cộng gain cảnh .2 thành ~-10 dB.
+MUSIC_UNDER_VOICE_DB = 16.0
+OPEN_EXTRA_DB = 3.0
+
+
+def calibrated_bgm_gain(voice_path, music_path, item, dur, levels, quiet=(), master=True, music_lift=(), extra_db=0.0):
     """Measure this segment through the actual voice and sidechain filters at unit gain."""
     import numpy as np
 
@@ -1423,8 +1429,9 @@ def calibrated_bgm_gain(voice_path, music_path, item, dur, levels, quiet=(), mas
     if not blocks:
         raise ValueError(f'\u006b\u0068\u00f4ng c\u00f3 \u0111o\u1ea1n gi\u1ecdng v\u00e0 nh\u1ea1c c\u00f9ng ph\u00e1t \u0111\u1ec3 c\u00e2n gain: {music_path}')
     # The sidechain detector depends on voice, so its output scales linearly with music gain.
-    return (10 ** (-14 / 20) * math.sqrt(vp / mp)
-            * levels['gain'] / .17 * item.get('gain', .12) / .12)
+    # gain của từng đoạn chỉ được HẠ nhạc (<= 1), không đẩy nhạc lên trên mức chuẩn.
+    return (10 ** (-(MUSIC_UNDER_VOICE_DB + extra_db) / 20) * math.sqrt(vp / mp)
+            * levels['gain'] / .17 * min(1.0, item.get('gain', .12) / .12))
 
 
 def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None, levels=None, measure_music=False, music_lift=()):
@@ -1444,7 +1451,8 @@ def mix_chapter(ch, cd: Path, dur: float, quiet=(), master=True, items=None, lev
             L = max(0.5, q["end"] - q["start"])
             fi, fo = q.get("fin", 1.5), q.get("fout", 2.0)
             ms = int(q["start"] * 1000)
-            gain = (calibrated_bgm_gain(cd / 'voice.wav', cd.parent / 'bgm' / q['file'], q, dur, levels, quiet, master, music_lift)
+            gain = (calibrated_bgm_gain(cd / 'voice.wav', cd.parent / 'bgm' / q['file'], q, dur, levels, quiet, master, music_lift,
+                                        extra_db=OPEN_EXTRA_DB if cd.name == 'ch00' else 0.0)
                     if measure_music else q.get('gain', .16))
             fc += (f"[{k + 2}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{L:.3f},asetpts=PTS-STARTPTS,afade=t=in:d={fi},"
                    f"afade=t=out:st={max(0, L - fo):.3f}:d={fo},volume={gain},adelay={ms}|{ms},apad[b{k}];")
@@ -1500,10 +1508,11 @@ def check_mix_level(result):
     db = result.get('music_minus_voice_db')
     if not isinstance(db, (int, float)) or not math.isfinite(db) or not result.get('blocks'):
         return 'không đo được mức nhạc so với giọng; chạy lại html/mix'
-    if db < -18:
-        return f'nhạc nhỏ hơn giọng {-db:.1f} dB (>18 dB); tăng gain hoặc giảm nén rồi chạy lại html/mix'
-    if db > -8:
-        return f'nh\u1ea1c to h\u01a1n m\u1ee9c cho ph\u00e9p (nh\u1ecf h\u01a1n gi\u1ecdng {-db:.1f} dB; c\u1ea7n ít nh\u1ea5t 8 dB)'
+    low = MUSIC_UNDER_VOICE_DB + OPEN_EXTRA_DB + 2
+    if db < -low:
+        return f'nhạc nhỏ hơn giọng {-db:.1f} dB (>{low:.0f} dB); tăng gain hoặc giảm nén rồi chạy lại html/mix'
+    if db > -12:
+        return f'nhạc to hơn mức cho phép (nhỏ hơn giọng {-db:.1f} dB; cần ít nhất 12 dB, chủ kênh 25/11/2026)'
     return None
 
 
