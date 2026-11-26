@@ -101,8 +101,8 @@ def credits(rid: str, compact: bool = False) -> str:
         elif c.endswith(" via Openverse"):
             body = c.split(" — ", 1)[-1].replace(" via Openverse", "")
             openv.append(body)
-        elif (m := _re.match(r"Ảnh: (.+?) — Pexels", c)):
-            pexels.append(m.group(1).strip())
+        elif (m := _re.match(r"Ảnh: (.+?) — Pexels", c)) or (m := _re.match(r"Pexels: (.+?) \(https?://", c)):
+            pexels.append(m.group(1).strip())   # #537 ghi "Pexels: tên (url)"; giấy phép Pexels không bắt buộc url
         else:
             other.append(c)
     def _series(names: list[str]) -> list[str]:
@@ -132,7 +132,11 @@ def credits(rid: str, compact: bool = False) -> str:
     if openv:
         parts.append("Ảnh giấy phép mở qua Openverse: " + "; ".join(dict.fromkeys(openv)))
     if pexels:
-        parts.append("Ảnh Pexels: " + ", ".join(dict.fromkeys(pexels)))
+        px = list(dict.fromkeys(pexels))
+        if compact and len(px) > 12:   # giấy phép Pexels không bắt buộc ghi tên: bản gọn giữ 12 tên + số còn lại
+            parts.append(f"Ảnh/video Pexels ({len(px)} tác giả): " + ", ".join(px[:12]) + f" và {len(px) - 12} tác giả khác")
+        else:
+            parts.append("Ảnh Pexels: " + ", ".join(px))
     if compact:
         parts += [c.split(" — ")[-1][:160] for c in dict.fromkeys(other)]
         parts.append("Tác giả, giấy phép của từng tư liệu ghi ngay trên khung hình.")
