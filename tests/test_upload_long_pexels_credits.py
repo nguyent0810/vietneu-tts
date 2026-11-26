@@ -40,3 +40,14 @@ def test_compact_keeps_twelve_names(tmp_path, monkeypatch):
     text = mod.credits("L_y", compact=True)
     assert "(30 tác giả)" in text and "và 18 tác giả khác" in text
     assert "Tác giả 12" not in text
+
+
+def test_http_and_parenthesised_names(tmp_path, monkeypatch):
+    mod = _load()
+    monkeypatch.setattr(mod, "OUT", tmp_path)
+    credits = ["Pexels: Stephen (Why Steve) Jacobs (https://www.pexels.com/photo/a-1/)",
+               "Pexels: An Bình (http://www.pexels.com/video/b-2/)"]
+    (tmp_path / "L_z.render.json").write_text(json.dumps({"media_credits": credits}), encoding="utf-8")
+    text = mod.credits("L_z")
+    assert "Ảnh Pexels: Stephen (Why Steve) Jacobs, An Bình" in text
+    assert "http" not in text
