@@ -212,8 +212,9 @@ def cmd_ask(a) -> int:
                 else:
                     accepted = page.locator(QUERY).count() > asked or page.get_by_role("button", name=STOP).count() > 0
                     if not accepted and time.time() - t0 > 120:
-                        ctx.close()
-                        raise SystemExit("Gemini không nhận prompt (câu hỏi không vào chat sau 120 s)")
+                        # 27/11: Gemini có lúc tạo chat rồi bỏ lượt mà không hiện chữ lỗi -> thử lại như lỗi phía Gemini.
+                        last_reason = "câu hỏi không vào chat sau 120 s"
+                        break
                 if time.time() - t0 > a.timeout:
                     ctx.close()
                     raise SystemExit(f"quá {a.timeout} s mà Gemini chưa viết xong")
@@ -226,7 +227,7 @@ def cmd_ask(a) -> int:
                 if attempt < total:
                     continue
                 ctx.close()
-                raise SystemExit(f"Gemini lỗi phía máy chủ sau {total} lần: {last_reason}")
+                raise SystemExit(f"Gemini không trả lời sau {total} lần (lần cuối: {last_reason})")
             text = ""
             try:
                 last.hover()

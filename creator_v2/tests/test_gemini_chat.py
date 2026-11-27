@@ -132,3 +132,10 @@ def test_server_error_ignores_text_inside_prompt():
     q = "Viết bài: nếu thấy chữ An error occurred thì bỏ qua."
     assert not is_server_error(_Page("Gemini\n" + q, queries=[q]))
     assert is_server_error(_Page("Gemini\n" + q + "\nAn error occurred", queries=[q]))
+
+
+def test_not_accepted_is_retried_not_fatal():
+    """27/11 chạy thật: không có chữ lỗi, câu hỏi không vào chat -> phải thử lại, không thoát ngay."""
+    src = (Path(__file__).resolve().parents[1] / "scripts" / "gemini_chat.py").read_text(encoding="utf-8")
+    assert 'raise SystemExit("Gemini không nhận prompt' not in src
+    assert 'last_reason = "câu hỏi không vào chat sau 120 s"' in src
