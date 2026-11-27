@@ -2363,6 +2363,381 @@
     "tense",
     "mystery"
    ]
+  },
+  "airship_serenity": {
+   "file": "airship_serenity.mp3",
+   "title": "Airship Serenity",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600046",
+   "length": "00:04:00",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "bathed_in_the_light": {
+   "file": "bathed_in_the_light.mp3",
+   "title": "Bathed in the Light",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100308",
+   "length": "00:02:46",
+   "channel": "CK"
+  },
+  "cottages": {
+   "file": "cottages.mp3",
+   "title": "Cottages",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800014",
+   "length": "00:03:54",
+   "channel": "CK"
+  },
+  "daybreak": {
+   "file": "daybreak.mp3",
+   "title": "Daybreak",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100266",
+   "length": "00:03:21",
+   "channel": "CK"
+  },
+  "dream_culture": {
+   "file": "dream_culture.mp3",
+   "title": "Dream Culture",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "upbeat"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046",
+   "length": "00:03:34",
+   "channel": "CK"
+  },
+  "enchanted_journey": {
+   "file": "enchanted_journey.mp3",
+   "title": "Enchanted Journey",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100799",
+   "length": "00:04:30",
+   "channel": "CK"
+  },
+  "farm": {
+   "file": "farm.mp3",
+   "title": "Farm",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800016",
+   "length": "00:04:52",
+   "channel": "CK"
+  },
+  "fresh_air": {
+   "file": "fresh_air.mp3",
+   "title": "Fresh Air",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500084",
+   "length": "00:04:54",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "friday_morning": {
+   "file": "friday_morning.mp3",
+   "title": "Friday Morning",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100224",
+   "length": "00:03:30",
+   "channel": "CK"
+  },
+  "manor": {
+   "file": "manor.mp3",
+   "title": "Manor",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800015",
+   "length": "00:03:54",
+   "channel": "CK"
+  },
+  "melodie_victoria": {
+   "file": "melodie_victoria.mp3",
+   "title": "Melodie Victoria",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "curious",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100819",
+   "length": "00:04:01",
+   "channel": "CK"
+  },
+  "northern_glade": {
+   "file": "northern_glade.mp3",
+   "title": "Northern Glade",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800017",
+   "length": "00:05:15",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "numinous_shine": {
+   "file": "numinous_shine.mp3",
+   "title": "Numinous Shine",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100129",
+   "length": "00:04:18",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "simple_duet": {
+   "file": "simple_duet.mp3",
+   "title": "Simple Duet",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100074",
+   "length": "00:03:19",
+   "channel": "CK"
+  },
+  "slow_heat": {
+   "file": "slow_heat.mp3",
+   "title": "Slow Heat",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100835",
+   "length": "00:03:42",
+   "channel": "CK"
+  },
+  "vision_of_persistence": {
+   "file": "vision_of_persistence.mp3",
+   "title": "Vision of Persistence",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "warm",
+    "upbeat"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100024",
+   "length": "00:03:44",
+   "channel": "CK"
+  },
+  "odyssey": {
+   "file": "odyssey.mp3",
+   "title": "Odyssey",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "epic",
+    "warm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500012",
+   "length": "00:05:06",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "sancho_panza_gets_a_latte": {
+   "file": "sancho_panza_gets_a_latte.mp3",
+   "title": "Sancho Panza gets a Latte",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100088",
+   "length": "00:03:13",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "soaring": {
+   "file": "soaring.mp3",
+   "title": "Soaring",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600040",
+   "length": "00:06:20",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "water_prelude": {
+   "file": "water_prelude.mp3",
+   "title": "Water Prelude",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100017",
+   "length": "00:05:25",
+   "channel": [
+    "CK",
+    "MIM"
+   ]
+  },
+  "air_prelude": {
+   "file": "air_prelude.mp3",
+   "title": "Air Prelude",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100337",
+   "length": "00:05:41",
+   "channel": "MIM"
+  },
+  "earth_prelude": {
+   "file": "earth_prelude.mp3",
+   "title": "Earth Prelude",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100247",
+   "length": "00:03:49",
+   "channel": "MIM"
+  },
+  "alien_restaurant": {
+   "file": "alien_restaurant.mp3",
+   "title": "Alien Restaurant",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100335",
+   "length": "00:06:13",
+   "channel": "MIM"
+  },
+  "ossuary_7_resolve": {
+   "file": "ossuary_7_resolve.mp3",
+   "title": "Ossuary 7 - Resolve",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "calm"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500049",
+   "length": "00:04:18",
+   "channel": "MIM"
+  },
+  "magic_forest": {
+   "file": "magic_forest.mp3",
+   "title": "Magic Forest",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "epic"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600044",
+   "length": "00:04:20",
+   "channel": "MIM"
+  },
+  "immersed": {
+   "file": "immersed.mp3",
+   "title": "Immersed",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "calm",
+    "mystery"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600010",
+   "length": "00:04:09",
+   "channel": "MIM"
+  },
+  "digital_bark": {
+   "file": "digital_bark.mp3",
+   "title": "Digital Bark",
+   "author": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "mood": [
+    "mystery",
+    "curious"
+   ],
+   "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100260",
+   "length": "00:04:27",
+   "channel": "MIM"
   }
  }
 }
