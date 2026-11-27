@@ -59,6 +59,39 @@ def is_home_without_query(page) -> bool:
         return False
 
 
+NEW_CHAT = re.compile(r"new chat|cuộc trò chuyện mới|chat mới", re.I)
+
+
+def _norm(t: str) -> str:
+    return re.sub(r"\s+", " ", t or "").strip()
+
+
+def ensure_fresh(page) -> None:
+    """27/11: mở HOME đôi khi hiện lại cuộc chat cũ (có sẵn câu hỏi + trả lời) -> bấm Chat mới;
+    vẫn còn chat cũ thì dừng, không gửi (tránh chép nhầm câu trả lời cũ)."""
+    time.sleep(3)
+    if page.locator(QUERY).count() == 0 and page.locator(RESPONSE).count() == 0:
+        return
+    for role in ("link", "button"):
+        btn = page.get_by_role(role, name=NEW_CHAT)
+        if btn.count():
+            btn.first.click()
+            break
+    time.sleep(3)
+    if page.locator(QUERY).count() or page.locator(RESPONSE).count():
+        raise SystemExit(f"không mở được chat mới (trang vẫn là chat cũ {page.url}); không gửi prompt")
+
+
+def query_matches(page, prompt: str) -> bool:
+    """Câu hỏi cuối trong chat phải là prompt vừa gửi (so 80 ký tự đầu, bỏ khoảng trắng)."""
+    try:
+        q = _norm(page.locator(QUERY).last.inner_text())
+    except Exception:
+        return False
+    head = _norm(prompt)[:80]
+    return bool(head) and head[:60] in q
+
+
 def retry_thinking(level: str | None, attempt: int, retries: int, no_downgrade: bool = False) -> str | None:
     """Lower High to Medium on the final attempt after a retryable failure."""
     if no_downgrade or attempt != retries or not level:
@@ -169,6 +202,8 @@ def cmd_ask(a) -> int:
             # #529: bị chuyển sang chat khác -> viết tiếp nhầm đề tài. Dừng, không gửi.
             ctx.close()
             raise SystemExit(f"không mở được đúng cuộc chat {a.chat} (đang ở {page.url}); không gửi prompt")
+        if not a.chat:
+            ensure_fresh(page)
         total = a.retries + 1
         text = url = ""
         last_reason = ""
@@ -178,6 +213,7 @@ def cmd_ask(a) -> int:
                 print(f"Thử lần {attempt}/{total}: mở chat mới; chờ 60–120 giây sau lỗi Gemini ({prev_reason})")
                 page.goto(HOME)
                 time.sleep(random.uniform(60, 120))
+                ensure_fresh(page)
             level = retry_thinking(a.thinking, attempt, total, a.no_downgrade)
             if attempt == total and level != a.thinking:
                 print(f"Thử lần {attempt}/{total}: hạ thinking {a.thinking} → {level}")
@@ -228,6 +264,9 @@ def cmd_ask(a) -> int:
                     continue
                 ctx.close()
                 raise SystemExit(f"Gemini không trả lời sau {total} lần (lần cuối: {last_reason})")
+            if not query_matches(page, prompt):
+                ctx.close()
+                raise SystemExit("câu trả lời không thuộc prompt vừa gửi (trang đang ở chat khác): không lưu")
             text = ""
             try:
                 last.hover()
@@ -236,6 +275,9 @@ def cmd_ask(a) -> int:
                 text = page.evaluate("() => navigator.clipboard.readText()")
             except Exception as e:
                 print(f"không chép được bản Markdown ({type(e).__name__}), lấy chữ hiển thị", file=sys.stderr)
+            if text and _norm(text)[:120] and _norm(text)[:120][:60] not in _norm(samples[-1]):
+                print("bản chép từ clipboard không khớp câu trả lời đang hiện: dùng chữ hiển thị", file=sys.stderr)
+                text = ""
             text = clean(text or samples[-1])
             url = page.url
             break

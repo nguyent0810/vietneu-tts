@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from gemini_chat import clean, stable_done, is_server_error, is_home_without_query, retry_thinking
+from gemini_chat import clean, stable_done, is_server_error, is_home_without_query, retry_thinking, query_matches
 
 
 def test_not_done_while_busy():
@@ -139,3 +139,20 @@ def test_not_accepted_is_retried_not_fatal():
     src = (Path(__file__).resolve().parents[1] / "scripts" / "gemini_chat.py").read_text(encoding="utf-8")
     assert 'raise SystemExit("Gemini không nhận prompt' not in src
     assert 'last_reason = "câu hỏi không vào chat sau 120 s"' in src
+
+
+class _QPage:
+    def __init__(self, queries):
+        self.q = _Loc(list(queries))
+    def locator(self, sel):
+        class L:
+            def __init__(s, t): s.t = t
+            @property
+            def last(s): return _Loc([s.t[-1]]) if s.t else _Loc([""])
+        return L(self.q.texts)
+
+
+def test_query_matches_only_current_prompt():
+    p = "Bạn là một Đạo diễn Âm thanh và Biên kịch Audio chuyên nghiệp, viết cho Nhâm Tuất 1982"
+    assert query_matches(_QPage(["cũ", p]), p)
+    assert not query_matches(_QPage(["Bạn viết lời kể tài liệu YouTube cho kênh Phong Thuỷ (prompt cũ)"]), p)
