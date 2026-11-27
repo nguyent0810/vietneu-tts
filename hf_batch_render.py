@@ -226,6 +226,24 @@ def save_plan_rows(plan_file: Path | str, rows: list[dict] | dict, channel: str 
 
     wired = []
     for r in row_list:
+        if isinstance(r, dict) and isinstance(r.get("visuals"), dict):
+            from library.tools.visual_schema import visual_empty, visual_ready
+            for key, spec in list(r["visuals"].items()):
+                decision = (r.get("scene_decision") or {}).get(str(key), {})
+                if decision.get("source") == "picker":
+                    # Visual máy sinh: đòi đủ dữ liệu (word/ask trần do máy đặt từng ra khung trống, 27/11).
+                    ok, missing = visual_ready(spec)
+                    # loại chưa có bảng trường (style, film16…) thì chỉ chặn khi rỗng thật
+                    empty = (not ok) and not any(m.startswith("type không có schema") for m in missing)
+                    if not empty:
+                        empty, missing = visual_empty(spec)
+                else:
+                    empty, missing = visual_empty(spec)
+                if not empty:
+                    continue
+                if decision.get("source") == "picker":
+                    print(f"CẢNH BÁO visual rỗng: row {r.get('id')} câu {key}, bỏ visual (thiếu: {', '.join(missing)})")
+                    del r["visuals"][key]
         rid = r.get("id") if isinstance(r, dict) else None
         if rid and rid in existing_by_id:
             old_r = existing_by_id[rid]
@@ -826,6 +844,11 @@ def done_mp4_count(out_dir: Path) -> int:
 
 
 def render_one(row: dict, out_dir: Path, quality: str, allow_lint_fail: bool = False) -> tuple[bool, str]:
+    from library.tools.visual_schema import visual_empty
+    for sid, spec in (row.get("visuals") or {}).items():
+        empty, missing = visual_empty(spec)
+        if empty:
+            return False, f"visual_rong: câu {sid} ({spec.get('type') if isinstance(spec, dict) else 'không rõ loại'}) thiếu {', '.join(missing)}"
     if (_is_long_row(row) and row.get("series") in {"fs", "bud"}
             and (row.get("text_rotation") or "media_mix" in row)):  # review 537: không đổi plan cũ đã render
         from tools.long_text_rotation import prepare

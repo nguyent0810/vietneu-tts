@@ -913,6 +913,19 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     def add(level, code, msg):
         issues.append((level, code, msg))
 
+    from library.tools.visual_schema import visual_empty, visual_ready
+    visuals = row.get("visuals") or {}
+    if isinstance(visuals, dict):
+        for sid, spec in visuals.items():
+            empty, empty_missing = visual_empty(spec)
+            ready, missing = visual_ready(spec)
+            if empty:
+                typ = spec.get("type", "không rõ loại") if isinstance(spec, dict) else "không rõ loại"
+                add(ERROR, "visual_rong", f"visual câu {sid} ({typ}) thiếu dữ liệu: {', '.join(empty_missing)}")
+            elif not ready:
+                typ = spec.get("type", "không rõ loại") if isinstance(spec, dict) else "không rõ loại"
+                add(WARN, "visual_thieu_truong", f"visual câu {sid} ({typ}) có thể thiếu trường: {', '.join(missing)}")
+
     tts = row.get("tts") or {}
     line_fingerprints = tts.get("_line_fingerprints") or {}
     for tts_kind in ("pauses", "tempos"):  # KHÔNG đặt tên `kind`: sẽ đè tham số kind="night"

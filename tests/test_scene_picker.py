@@ -57,18 +57,19 @@ class ScenePickerTests(unittest.TestCase):
         row={'id':'x','series':'fs','script':['Tại Hà Nội, quần thể di tích còn lưu dấu.'],'visuals':{},'media':{}}
         _,log=sp.choose(row,profile,CAT)
         candidates={x['type'] for x in log['decisions'][0]['candidates'] if x['eligible']}
-        self.assertEqual({'map','photo'},candidates)
+        self.assertEqual({'map'},candidates)  # photo needs a source query/file, absent from sentence
     def test_bud_profile_explicitly_excludes_astrology(self):
         p=sp.load_profile(None,'bud')
         for tag in ('nap_am','que_dich','sao_chieu_menh','so_cuu_cung','huong_phuong_vi','quan_he_con_giap'):
             self.assertNotIn(tag,p['tags'])
         self.assertTrue(sp.FS_ONLY <= set(p['forbidden_types']))
     def test_forbidden_types_come_from_profile_not_series(self):
-        # series bud nhưng hồ sơ không cấm → vẫn chọn được cảnh tử vi
+        # Câu thiếu năm/element nên không tạo thẻ nạp âm rỗng dù hồ sơ cho phép.
         prof=self.profile({'nap_am':[{'type':'napam','requires':['nam_sinh_or_can_chi']}]}, forbidden=[])
         row={'id':'x','series':'bud','script':['Nạp âm theo tuổi Tý.'],'visuals':{},'media':{}}
         out,log=sp.choose(row,prof,CAT)
-        self.assertEqual('napam', out['1']['type'])
+        self.assertNotEqual('napam', (out.get('1') or {}).get('type'))
+        self.assertIn('không đủ dữ liệu', str(log['decisions'][0]['candidates']))
         self.assertNotIn('series', str(log['decisions'][0]['candidates']))
         # series fs nhưng hồ sơ cấm stat → không chọn stat
         prof2=self.profile({'so_don':[{'type':'stat','requires':['mot_so_lieu']}]}, forbidden=['stat'])
@@ -76,6 +77,11 @@ class ScenePickerTests(unittest.TestCase):
         out2,log2=sp.choose(row2,prof2,CAT)
         self.assertNotIn('stat',[v.get('type') for v in out2.values()])
         self.assertIn('hồ sơ kênh', str(log2['decisions'][0]['candidates']))
+
+    def test_selected_scene_has_payload_from_sentence(self):
+        prof=self.profile({'so_don':[{'type':'stat','requires':['mot_so_lieu']}]})
+        out,_=sp.choose({'id':'x','series':'fs','script':['Có 42 người.'],'visuals':{},'media':{}},prof,CAT)
+        self.assertEqual({'type':'stat','value':42,'label':'Có 42 người.','at':1},out['1'])
     def test_review_79r_false_meanings(self):
         c228='Huế dạy ta rằng, phong thủy giỏi nhất không phải là tìm được đất đẹp. Mà là biết **sống cùng** đất ấy, cả lúc nắng đẹp lẫn mùa nước lên.'
         c58='Con trưởng của ông là thái tử **Phù Tô**, người được coi là sẽ nối ngôi. Nhưng Phù Tô đang ở biên cương phía bắc.'

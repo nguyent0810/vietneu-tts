@@ -10,6 +10,20 @@ from library.tools.plan_enrich import (
 
 
 class PlanEnrichTests(unittest.TestCase):
+    def test_save_plan_rows_drops_only_picker_visual_that_is_empty(self):
+        from hf_batch_render import save_plan_rows
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "plan.json"
+            path.write_text(json.dumps([{"id": "row", "tts": {}, "sound": {}}]), encoding="utf-8")
+            row = {"id": "row", "script": ["Câu."], "visuals": {"1": {"type": "word"},
+                    "2": {"type": "word"}, "3": {"type": "film16", "query": "old film"}}, "scene_decision": {
+                    "1": {"source": "picker"}, "2": {"source": "editor"}, "3": {"source": "picker"}}}
+            save_plan_rows(path, row)
+            saved = json.loads(path.read_text(encoding="utf-8"))[0]
+            self.assertNotIn("1", saved["visuals"])
+            self.assertIn("2", saved["visuals"])
+            self.assertEqual("old film", saved["visuals"]["3"]["query"])
+
     def test_existing_visual_and_media_are_preserved_and_skipped(self):
         row = {"id": "editor", "lane": "long", "script": ["a", "b", "c"],
                "visuals": {"1": {"type": "photo"}},
@@ -28,6 +42,14 @@ class PlanEnrichTests(unittest.TestCase):
         self.assertTrue(picked)
         self.assertTrue(all("scene" in v and "motion" in v for v in picked))
         self.assertTrue(result["visuals"])
+
+    def test_picker_does_not_emit_visual_without_required_sentence_data(self):
+        row = {"id": "empty-v", "lane": "long", "series": "fs",
+               "script": ["Mệnh của bạn được nhắc đến."], "visuals": {}, "media": {}}
+        result = enrich_long_plan(row, "fs")
+        from library.tools.visual_schema import visual_ready
+        self.assertTrue(all(visual_ready(spec)[0] for spec in result["visuals"].values()))
+        self.assertNotIn("napam", {v.get("type") for v in result["visuals"].values()})
 
     def test_bud_forbidden_scene_and_repeatability(self):
         row = {"id": "bud-golden", "lane": "long", "series": "bud",
@@ -343,7 +365,8 @@ class EnrichRenderableTests(unittest.TestCase):
 
     def test_motion_goes_to_media_only_under_overlay(self):
         from library.tools import motion_picker, scene_picker
-        scenes = {"1": {"type": "stat", "overlay": True}, "2": {"type": "wheel"}}
+        scenes = {"1": {"type": "stat", "value": 1, "label": "Một câu", "overlay": True},
+                  "2": {"type": "wheel", "title": "Vòng", "steps": [{"at": 2, "chi": ["Tý"]}]}}
         motions = {"1": {"preset": "slow_zoom"}, "2": {"preset": "push_detail"}}
         row = {"id": "L_fs_mock", "lane": "long", "series": "fs", "script": ["Một câu.", "Hai câu."]}
         with patch.object(scene_picker, "choose", return_value=(scenes, {"decisions": []})), \

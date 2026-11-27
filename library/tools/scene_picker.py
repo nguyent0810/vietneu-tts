@@ -109,6 +109,58 @@ def _lesson(text: str) -> bool:
     n=(text or '').lower()
     return bool(re.search(r'dạy (?:ta|chúng ta)|bài học', n))
 
+
+def _visual_payload(typ: str, text: str, line: int) -> dict | None:
+    """Build only visual data that can be read from this sentence itself."""
+    from library.tools.visual_schema import visual_ready
+    from library.tools.plan_enrich import _list_items, _short, _YEAR_RE, _CONTRAST_SPLIT, _CONTRAST_WORD
+    nums = quantities(text)
+    if typ == 'stat' and nums:
+        return {'type': typ, 'value': int(nums[0]) if nums[0].is_integer() else nums[0], 'label': _short(text), 'at': line}
+    if typ == 'timeline':
+        years = _YEAR_RE.findall(text)
+        if years:
+            return {'type': typ, 'title': _short(text), 'items': [{'yr': y, 'label': y, 'at': line} for y in years[:4]]}
+    if typ == 'years':
+        years = _YEAR_RE.findall(text)
+        if years:
+            return {'type': typ, 'items': [{'yr': y, 'sub': '', 'note': '', 'at': line} for y in years[:4]]}
+    if typ == 'list':
+        items = _list_items(text)
+        if items:
+            return {'type': typ, 'title': _short(text), 'items': [{'at': line, 'text': item} for item in items[:6]]}
+    if typ == 'compare':
+        parts = _CONTRAST_SPLIT.split(text, maxsplit=1)
+        if len(parts) == 2 and all(x.strip() for x in parts) and (two_measurable_sides(text) or _CONTRAST_WORD.search(text)):
+            return {'type': typ, 'left': {'title': _short(parts[0])}, 'right': {'title': _short(parts[1])}}
+    if typ == 'map':
+        found = places_in(text)
+        if found:
+            countries, pins = [], []
+            for name in found[:6]:
+                lon, lat, country = gazetteer()[name]
+                if country not in countries: countries.append(country)
+                pins.append({'name': name, 'lon': float(lon), 'lat': float(lat), 'at': line})
+            return {'type': typ, 'countries': countries, 'pins': pins}
+    if typ == 'compass':
+        dirs = [{**d, 'at': line} for d in extract_dirs(text)]
+        if dirs: return {'type': typ, 'dirs': dirs}
+    if typ in ('word', 'keyword_spotlight', 'kinetic_punch', 'decode_reveal'):
+        marked = re.findall(r'\*\*(.+?)\*\*', text)
+        if marked: return {'type': typ, 'text': marked[0]}
+        if typ in ('word', 'kinetic_punch'):
+            return {'type': typ, 'text': _short(text, 5)} if text.strip() else None
+    if typ in ('quote', 'quote_reveal'):
+        return {'type': typ}
+    if typ == 'illus':
+        scene = next((scene for scene, keys in (('lotus', ('sen','hoa sen','đầm')), ('moon', ('trăng',)), ('house', ('nhà','cung','đền','chùa')), ('road', ('đường','ngựa')), ('sunrise', ('bình minh','mặt trời'))) if any(k in text.lower() for k in keys)), None)
+        if scene: return {'type': typ, 'scene': scene}
+    if typ == 'stat' and nums:
+        return {'type': typ, 'value': nums[0]}
+    candidate = {'type': typ}
+    ok, _ = visual_ready(candidate)
+    return candidate if ok else None
+
 def places_in(text: str) -> list[str]:
     """Địa danh gazetteer đang được dùng như nơi chốn, không phải câu triết lý."""
     if _lesson(text):
@@ -474,25 +526,20 @@ def choose(row: dict, profile: dict, catalog: dict) -> tuple[dict,dict]:
                 active_motion={ca.get(t,{}).get('motion_label') for t in recent if t in ca}
                 if motion and motion in active_motion: reason.append('trùng loại chuyển động gần đây'); valid=False
                 candidate_log.append({'type':typ,'semantic':tag['tag'],'eligible':valid,'reasons':reason})
-                if valid: choices.append({'type':typ,'tag':tag['tag'],'requires':item.get('requires',[]),'priority':(tag_priority.get(tag['tag'],10**6),int(item.get('priority',candidate_order)))})
+                payload = _visual_payload(typ, text, idx) if valid else None
+                if valid and payload is None:
+                    reason.append('không đủ dữ liệu trong câu để dựng visual')
+                    valid = False
+                    candidate_log[-1]['eligible'] = False
+                    candidate_log[-1]['reasons'] = reason
+                if valid: choices.append({'type':typ,'tag':tag['tag'],'requires':item.get('requires',[]),'payload':payload,'priority':(tag_priority.get(tag['tag'],10**6),int(item.get('priority',candidate_order)))})
         selected=None; why=''
         if choices:
             best=min(x['priority'] for x in choices)
             tied=[x for x in choices if x['priority']==best]
             rank=int(hashlib.sha256(f'{seed}:{idx}'.encode()).hexdigest()[:8],16)%len(tied)
             selected=tied[rank]; why='ứng viên đạt QA, đủ điều kiện, khớp nghĩa; ưu tiên hồ sơ, tie-break theo seed id+câu'
-            typ=selected['type']; suggestions[str(idx)]={'type':typ}
-            if typ=='map':
-                found=places_in(text)
-                if found:
-                    countries=[]; pins=[]
-                    for name in found[:6]:
-                        lon,lat,country=gazetteer()[name]
-                        if country not in countries: countries.append(country)
-                        pins.append({'name':name,'lon':float(lon),'lat':float(lat),'at':idx})
-                    suggestions[str(idx)].update({'countries':countries,'pins':pins})
-            if typ=='compass':
-                suggestions[str(idx)]['dirs']=[{**d,'at':idx} for d in extract_dirs(text)]
+            typ=selected['type']; suggestions[str(idx)]=selected['payload']
             recent.append(typ); recent=recent[-k:] if k else []
         else:
             selected={'type':'anh_tinh_ken_burns'}; why='không có ứng viên phù hợp; giữ media hiện có hoặc cần ảnh tĩnh + Ken Burns'
