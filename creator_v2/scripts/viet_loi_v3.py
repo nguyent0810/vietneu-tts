@@ -325,9 +325,18 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
 
 
+def _no_root(o):
+    """Bỏ khoá "_root" (con trỏ ngược từ state v3 về state gốc) để json không gặp vòng tham chiếu."""
+    if isinstance(o, dict):
+        return {k: _no_root(v) for k, v in o.items() if k != "_root"}
+    if isinstance(o, list):
+        return [_no_root(v) for v in o]
+    return o
+
+
 def save_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    path.write_text(json.dumps(_no_root(data), ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def save_inbox(channel: str, slug: str, text: str) -> Path:
