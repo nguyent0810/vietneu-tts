@@ -1,6 +1,6 @@
 # Khuôn Long vừa (v3) — dán nguyên khối dưới đường kẻ vào Gemini web
 
-Chỗ điền: {KENH_LUAT} (từ kenh_luat.md), {CHU_DE}, {DOI_TUONG}, {GIONG} (từ kenh_luat.md), {CACH_TRIEN_KHAI} (một cách, từ kenh_luat.md), {DU_KIEN}.
+Chỗ điền: {TRANH_LAP} (cảnh mở của 3–5 bài gần nhất cùng kênh, mỗi cảnh vài chữ), {KENH_LUAT} (từ kenh_luat.md), {CHU_DE}, {DOI_TUONG}, {GIONG} (từ kenh_luat.md), {CACH_TRIEN_KHAI} (một cách, từ kenh_luat.md), {DU_KIEN}.
 Phần "QUY TẮC VIẾT CHO TAI" giữ nguyên chữ của khuôn v2 đã được chủ kênh khen. Không ghi đích số chữ.
 Lưu ý khi dán: không nhắc tên file; mọi dữ kiện dán thẳng vào {DU_KIEN}.
 
@@ -33,6 +33,9 @@ QUY TẮC "VIẾT CHO TAI" (BẮT BUỘC TUÂN THỦ)
 ◦ Xuất ra văn bản thuần sẵn sàng để đưa vào công cụ TTS.
 ◦ KHÔNG dùng gạch đầu dòng, KHÔNG dùng ký hiệu Markdown (**, *), KHÔNG dùng ngoặc đơn giải thích, KHÔNG dùng emoji hay ghi chú đạo diễn.
 ◦ Dùng một dòng trống để đánh dấu khoảng nghỉ dài (chuyển đoạn/chuyển ý).
+
+MỞ BÀI KHÁC CÁC BÀI GẦN ĐÂY
+Các bài gần đây của kênh đã mở bằng: {TRANH_LAP}. Hãy chọn một khung cảnh, thời điểm và hành động mở khác hẳn.
 
 CÁCH TRIỂN KHAI BÀI NÀY
 {CACH_TRIEN_KHAI}
