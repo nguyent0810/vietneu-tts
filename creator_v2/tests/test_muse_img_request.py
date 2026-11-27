@@ -32,3 +32,10 @@ def test_newest_image(tmp_path):
     (tmp_path / "a.txt").write_text("x")
     (tmp_path / "media-generation-1.png").write_bytes(b"png")
     assert M.newest_image(tmp_path).name == "media-generation-1.png"
+
+
+def test_wait_new_image_returns_unseen(monkeypatch):
+    rows = [{"seq": 1, "kind": "image", "message_id": "a"}, {"seq": 2, "kind": "file"}, {"seq": 3, "kind": "image", "message_id": "b"}]
+    monkeypatch.setattr(M, "thread_images", lambda th: [r for r in rows if r["kind"] == "image"])
+    assert M.wait_new_image("t", {1}, wait=5, poll=0)["message_id"] == "b"
+    assert M.wait_new_image("t", {1, 3}, wait=0.01, poll=0) is None

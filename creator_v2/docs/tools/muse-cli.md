@@ -24,7 +24,7 @@ Muse (muse.ai) là agent AI cá nhân của chủ kênh. `muse-cli` cho phép g�
    ```
    - Mỗi topic dùng một side chat riêng (tạo tự động, id lưu ở `output/long/<topic>/muse_thread.txt`), không lẫn với chat chính của chủ kênh.
    - Ảnh về `motion/hf/assets/long/<topic>/img/ai/ai_NN.png`, rồi script chạy `scripts/ai_img_import.py` để nhập như đường cũ (`img/aiNN.jpg`).
-   - Mỗi ảnh khoảng 8–9 phút (đo 27/11/2026); bộ 25 ảnh khoảng 3,5–4 giờ. Mặc định chờ 1.200 giây mỗi ảnh (`--wait`).
+   - Mỗi ảnh khoảng 1 phút (đo 27/11/2026: Muse trả ảnh sau ~30–45 s); bộ 25 ảnh khoảng 30 phút. Script gửi với `send --wait 60` rồi dò `muse-cli files` tới khi có ảnh mới (mặc định tối đa 600 s mỗi ảnh, `--wait`).
    - Hết giờ mà chưa có ảnh: message id được ghi vào `output/long/<topic>/muse_pending.json`; chạy lại lệnh sẽ TẢI LẠI theo id, không gửi lại prompt (không tốn thêm lượt).
 3. Lead soát bằng mắt (contact sheet) trước khi dùng: không chữ/số/logo, đúng nhân vật, đúng 16:9. Ảnh hỏng thì xoá file `ai_NN.png` rồi chạy lại `--only ai_NN`.
 4. Ảnh khởi đầu clip Flow (thường `ai_01`, `ai_02`) nên tạo trước bằng `--only` để Flow chạy song song với phần còn lại.
@@ -48,5 +48,6 @@ Muse (muse.ai) là agent AI cá nhân của chủ kênh. `muse-cli` cho phép g�
 ## Sự cố đã gặp
 
 - `history` lỗi `UnicodeEncodeError` → thiếu `PYTHONIOENCODING=utf-8`.
-- `send --wait 540` báo "no assistant reply" nhưng ảnh về vài phút sau → tăng `--wait` hoặc tải lại theo id (script tự làm).
+- `send --wait N` báo "no assistant reply" dù ảnh đã có sau ~30 s: muse-cli không nhận ra câu trả lời dạng ảnh. Đừng chờ bằng `--wait`; dò `muse-cli files --thread <id>` (script tự làm).
+- `send --wait 0` (fire-and-forget) làm tin bị rơi, agent không nhận được. Luôn gửi với `--wait` ≥ 30.
 - Webhook bot nhận 26 prompt mà 75 phút không trả ảnh (CK FTSE, 25/11) → lý do chuyển sang `muse-cli`.
