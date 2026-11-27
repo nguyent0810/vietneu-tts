@@ -5,7 +5,7 @@
 - Đọc `data/long/<topic>/ai_prompts.md` (mục `## ai_NN.png …` như ai_img_request.py), mỗi ảnh còn thiếu gửi MỘT tin
   vào một side chat riêng của topic (thread id lưu ở `output/long/<topic>/muse_thread.txt`), chờ agent trả ảnh,
   tải về `motion/hf/assets/long/<topic>/img/ai/ai_NN.png`, cuối cùng chạy `scripts/ai_img_import.py` như đường cũ.
-- Muse mất ~8–9 phút một ảnh (thử 27/11/2026). Hết giờ chờ thì ghi message id vào `muse_pending.json`; lần chạy sau
+- Muse trả ảnh sau ~30 s (đo 27/11/2026); script dò `muse-cli files` thay vì `send --wait` (không nhận ra ảnh). Hết giờ chờ thì ghi message id vào `muse_pending.json`; lần chạy sau
   tải lại theo id ấy trước, không gửi lại prompt.
 - Không in thông tin tài khoản; muse-cli tự giữ phiên đăng nhập.
 """
@@ -70,6 +70,27 @@ def thread_for(topic: str, od: Path) -> str:
     return m.group(1)
 
 
+def thread_images(thread: str) -> list[dict]:
+    """Ảnh agent đã tạo trong side chat (muse-cli files), cũ -> mới."""
+    try:
+        rows = json.loads(muse("files", "--thread", thread, "--limit", "50"))
+    except (RuntimeError, json.JSONDecodeError):
+        return []
+    return sorted((r for r in rows if r.get("kind") == "image"), key=lambda r: r.get("seq", 0))
+
+
+def wait_new_image(thread: str, seen: set, wait: int, poll: int = 8) -> dict | None:
+    """Dò `files` mỗi `poll` giây tới khi có ảnh mới (seq chưa thấy). muse-cli `send --wait` không nhận ra
+    câu trả lời dạng ảnh (delta.presentation) nên chờ hết giờ dù ảnh có sau ~30 s (#539, 27/11/2026)."""
+    t0 = time.time()
+    while time.time() - t0 < wait:
+        new = [r for r in thread_images(thread) if r.get("seq") not in seen]
+        if new:
+            return new[-1]
+        time.sleep(poll)
+    return None
+
+
 def newest_image(d: Path) -> Path | None:
     files = [p for p in d.iterdir() if p.suffix.lower() in IMG_EXT]
     return max(files, key=lambda p: p.stat().st_mtime) if files else None
@@ -91,7 +112,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("topic")
     ap.add_argument("--only", help="ai_03,ai_07 …")
-    ap.add_argument("--wait", type=int, default=1200, help="giây chờ mỗi ảnh")
+    ap.add_argument("--wait", type=int, default=600, help="giây chờ tối đa mỗi ảnh (thường ~30 s)")
     ap.add_argument("--no-import", action="store_true")
     a = ap.parse_args()
     text = (ROOT / "data" / "long" / a.topic / "ai_prompts.md").read_text(encoding="utf-8")
@@ -122,9 +143,13 @@ def main() -> int:
                     print(f"  {name}: tải lại theo id lỗi ({e}); gửi lại prompt")
             if not newest_image(t):
                 t0 = time.time()
+                seen = {r.get("seq") for r in thread_images(thread)}
                 print(f"gửi {name}…", flush=True)
-                muse("send", "--thread", thread, "--wait", str(a.wait), "--download", str(t),
-                     prompt_for(secs[name], style), timeout=a.wait + 120)
+                # --wait 0 (fire-and-forget) làm tin bị rơi; giữ kết nối ~60 s cho tin vào chat, rồi dò files.
+                muse("send", "--thread", thread, "--wait", "60", prompt_for(secs[name], style), timeout=200)
+                got = wait_new_image(thread, seen, a.wait)
+                if got:
+                    muse("download", got["message_id"], "--thread", thread, "-o", str(t), timeout=300)
                 print(f"  {name}: {time.time() - t0:.0f}s", flush=True)
             img = newest_image(t)
             if not img:
