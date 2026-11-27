@@ -121,3 +121,14 @@ def test_template_parts_cut_at_second_turn():
     body, cont = V.template_parts("dai")
     assert body.startswith("VAI TRÒ") and "LƯỢT HAI" not in body and not body.endswith("---")
     assert "{DU_KIEN}" in body and cont.startswith("Viết tiếp")
+
+
+def test_save_json_drops_root_backref(tmp_path):
+    root = {"v2": {"x": 1}}
+    st = {"chat": "", "parts": []}
+    st["_root"] = root
+    root["v3"] = st
+    f = tmp_path / "state.json"
+    V.save_json(f, root)
+    import json as _j
+    assert _j.loads(f.read_text(encoding="utf-8")) == {"v2": {"x": 1}, "v3": {"chat": "", "parts": []}}
