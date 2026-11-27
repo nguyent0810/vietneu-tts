@@ -60,6 +60,17 @@ FOOTER = {"MIM": "Mind in the Machine — AI và công nghệ, kể dễ hiểu 
 DATA_CREDIT = {"CK": "📊 DỮ LIỆU BIỂU ĐỒ: VN-Index — HOSE; vàng miếng — SJC (sjc.com.vn); truy xuất qua Vnstock. Bitcoin — CoinGecko."}
 
 
+PEXELS_NAMES = 8   # giấy phép Pexels không bắt buộc ghi tên; danh sách dài đẩy mô tả quá 5.000 byte (#538)
+
+
+def pexels_by(users: list[str], cap: int = PEXELS_NAMES) -> str:
+    """" — quay bởi A, B, … và N tác giả khác" (rỗng nếu không có tên)."""
+    if not users:
+        return ""
+    more = len(users) - cap
+    return " — quay bởi " + ", ".join(users[:cap]) + (f" và {more} tác giả khác" if more > 0 else "")
+
+
 def mim_lines(spec, meta, chapters, used, vids, music, od):
     """Kênh MIM / CK: nguồn gốc (không phải Wikipedia), ảnh CC BY ghi đủ tác giả + giấy phép + link trang Commons, ghi tên
     người quay clip; kênh CK thêm nguồn dữ liệu biểu đồ (giấy phép Vnstock yêu cầu trích dẫn công cụ)."""
@@ -92,7 +103,7 @@ def mim_lines(spec, meta, chapters, used, vids, music, od):
     idx = json.loads(idx_p.read_text(encoding="utf-8")) if idx_p.exists() else {}
     users = sorted({idx[v]["user"] for v in vids if v in idx})
     if vids:   # 23/10/2026: chỉ ghi dòng Pexels khi video thật sự có clip Pexels
-        L += ["", "🎬 VIDEO: Pexels (pexels.com), giấy phép Pexels" + (" — quay bởi " + ", ".join(users) if users else "")]
+        L += ["", "🎬 VIDEO: Pexels (pexels.com), giấy phép Pexels" + pexels_by(users)]
     pd_lines = pdvideo.credit_lines(od)
     if pd_lines:
         L += ["", "🎬 VIDEO TƯ LIỆU", *pd_lines]
