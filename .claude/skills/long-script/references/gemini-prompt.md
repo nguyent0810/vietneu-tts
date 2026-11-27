@@ -1,5 +1,8 @@
 # Khuôn prompt gửi Gemini viết lời Long (FS / BUD / VSD)
 
+> **Từ 27/11/2026: dùng khuôn v3 dùng chung 5 kênh ở `docs/prompts/long-v3/`** (README, khuôn Long vừa và Long dài, luật kênh, cách triển khai xoay vòng, biên tập nhẹ tay). Các luật bên dưới (khối KỂ CHO TAI, giọng mẫu, khung chương bắt buộc, đích số chữ) chỉ còn là tài liệu tham khảo cũ; khi lệch nhau thì làm theo v3.
+
+
 Dùng với `creator_v2/scripts/gemini_chat.py ask <prompt.md> --out prose.md` (mặc định Neon · thinking High).
 Lead điền các chỗ `<...>`, lưu thành `prompt.md`. Lượt đầu chỉ CH00–CH01; nghe thử xong mới gửi lượt hai bằng `--chat <url>`.
 
