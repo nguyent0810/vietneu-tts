@@ -162,7 +162,8 @@ def _replace_ask(text: str, line: int, seed: str, forbidden: set[str], ok: set[s
     nums = scene_picker.quantities(text)
     if nums and _allowed("stat", forbidden, ok):
         value = nums[0]
-        spec: dict[str, Any] = {"type": "stat", "value": int(value) if value == int(value) else value}
+        spec: dict[str, Any] = {"type": "stat", "value": int(value) if value == int(value) else value,
+                                "label": _short(text), "at": line}
         if "%" in (text or ""):
             spec["suffix"] = "%"
         return spec
@@ -174,7 +175,8 @@ def _replace_ask(text: str, line: int, seed: str, forbidden: set[str], ok: set[s
         return {"type": "list", "items": [{"text": it, "at": line} for it in items[:6]]}
     years = _YEAR_RE.findall(text or "")
     if years and _allowed("timeline", forbidden, ok):
-        return {"type": "timeline", "items": [{"yr": y, "at": line} for y in years[:4]]}
+        return {"type": "timeline", "title": _short(text),
+                "items": [{"yr": y, "label": y, "at": line} for y in years[:4]]}
     if _allowed("map", forbidden, ok):
         found = scene_picker.places_in(text)
         if found:
@@ -194,11 +196,17 @@ def _replace_ask(text: str, line: int, seed: str, forbidden: set[str], ok: set[s
                 "left": {"title": _short(parts[0].strip(" ,.;:"))},
                 "right": {"title": _short(parts[1].strip(" ,.;:"))}}
     if "khai_niem" in tags and _allowed("word", forbidden, ok):
-        return {"type": "word"}
+        marked = re.findall(r"\*\*(.+?)\*\*", text or "")
+        return {"type": "word", "text": marked[0] if marked else _short(text, 5)}
     if _allowed("illus", forbidden, ok):
-        return {"type": "illus", "scene": _illus_scene(text, seed, line)}
+        # A deterministic stock illustration is useful only when the sentence
+        # names a motif; a random scene would invent visual meaning.
+        scene = next((scene for scene, keys in _ILLUS_KEYS if any(k in (text or "").lower() for k in keys)), None)
+        if scene:
+            return {"type": "illus", "scene": scene}
     if _allowed("word", forbidden, ok):
-        return {"type": "word"}
+        marked = re.findall(r"\*\*(.+?)\*\*", text or "")
+        return {"type": "word", "text": marked[0] if marked else _short(text, 5)}
     return None
 
 
@@ -486,6 +494,9 @@ def enrich_long_plan(plan: Any, channel: str) -> Any:
         scene_input["visuals"] = {k: v for k, v in visuals.items() if str(k).isdigit() and int(k) in edited}
         scene_input["media"] = {k: v for k, v in media.items() if str(k).isdigit() and int(k) in edited}
         scene_patch, scene_log = scene_picker.choose(scene_input, scene_profile, catalog)
+        from library.tools.visual_schema import visual_ready
+        # Last shared-contract guard: only place picker visuals with a complete payload.
+        scene_patch = {key: spec for key, spec in scene_patch.items() if visual_ready(spec)[0]}
 
         # Motion picker consumes media entries. Add newly picked scenes to a
         # temporary media view before merging visuals, so they are not blocked.

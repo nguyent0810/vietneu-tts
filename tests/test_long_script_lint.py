@@ -25,6 +25,55 @@ def codes(rep):
     return {c for _, c, _ in rep["issues"]}
 
 
+@pytest.mark.parametrize("visual", [
+    {"type": "timeline"}, {"type": "napam"},
+])
+def test_visual_rong_is_lint_error(visual):
+    row = {"id": "visual-rong", "script": ["Một câu kiểm tra visual."], "visuals": {"1": visual}}
+    hit = [x for x in LL.lint(row)["issues"] if x[1] == "visual_rong"]
+    assert hit and hit[0][0] == LL.ERROR
+
+
+def test_visual_day_du_duoc_giu_qua_lint():
+    row = {"id": "visual-ok", "script": ["Mốc 2020 còn được nhắc."],
+           "visuals": {"1": {"type": "timeline", "items": [{"yr": "2020", "label": "2020", "at": 1}]}}}
+    assert "visual_rong" not in codes(LL.lint(row))
+
+
+def test_render_gate_names_sentence_for_empty_visual(tmp_path):
+    ok, reason = HBR.render_one({"id": "visual-rong", "visuals": {"7": {"type": "timeline"}}},
+                                tmp_path, "preview")
+    assert not ok
+    assert "visual_rong" in reason and "câu 7" in reason and "items" in reason
+
+
+@pytest.mark.parametrize("visual", [
+    {"type": "film16", "query": "old film"},
+    {"type": "woodcut", "scene": "village"},
+    {"type": "timeline", "year": "2020", "text": "Mốc cũ"},
+    {"type": "napam", "chi": "Tý", "year": 2027},
+])
+def test_render_gate_allows_payload_without_schema_fields(tmp_path, visual):
+    ok, reason = HBR.render_one({"id": "payload", "script": [], "visuals": {"1": visual}}, tmp_path, "preview")
+    assert ok, reason
+    assert "visual_rong" not in reason
+
+
+@pytest.mark.parametrize("visual", [{"type": "timeline"}, {"type": "napam"}])
+def test_render_gate_blocks_meta_only_visual(tmp_path, visual):
+    ok, reason = HBR.render_one({"id": "empty", "visuals": {"1": visual}}, tmp_path, "preview")
+    assert not ok and "visual_rong" in reason
+
+
+def test_lint_reports_missing_schema_as_warning_and_legacy_shapes_pass():
+    row = {"id": "legacy-timeline", "script": ["Mốc lịch sử."],
+           "visuals": {"1": {"type": "timeline", "year": "2020", "text": "Mốc cũ"}}}
+    issues = LL.lint(row)["issues"]
+    assert "visual_rong" not in {code for _, code, _ in issues}
+    issue = next(x for x in issues if x[1] == "visual_thieu_truong")
+    assert issue[0] == LL.WARN
+
+
 @pytest.mark.parametrize("n,words", [
     (1983, "một nghìn chín trăm tám mươi ba"),
     (2027, "hai nghìn không trăm hai mươi bảy"),
@@ -889,3 +938,11 @@ def test_open40_depth_parallax_counts_like_pano(parallax):
     """PO 21/11: hiệu ứng chiều sâu đạt như ảnh lia."""
     row = {"script": ["Vì sao cánh cửa vẫn đóng?"], "media": {"1": {"kind": "local", "path": "a.jpg", **parallax}}}
     assert not {"mo_40s_an_tuong", "mo_cau1_clip_pano"} & set(_codes_open(row))
+
+
+def test_line_text_types_pass_render_gate():
+    from library.tools.visual_schema import visual_empty
+    for typ in ("ask", "quote", "word"):
+        assert visual_empty({"type": typ}) == (False, [])
+    assert visual_empty({"type": "timeline"})[0] is True
+    assert visual_empty({"type": "napam"})[0] is True
