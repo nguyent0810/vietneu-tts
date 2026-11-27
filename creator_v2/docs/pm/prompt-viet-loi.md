@@ -1,3 +1,5 @@
+> **Từ 27/11/2026 (#548): MIM/CK/CL viết lời bằng `scripts/viet_loi_v3.py`** (khuôn v3 ở `docs/prompts/long-v3/`, nhiều lượt trong một chat, tự gắn mốc `## CHnn`). `viet_loi.py` và khuôn bên dưới giữ làm dự phòng. Giọng mẫu `docs/pm/giong-mau/` không dùng ở v3.
+
 # Prompt viết lời Long (dùng bởi `scripts/viet_loi.py`)
 
 > **Từ 27/11/2026: dùng khuôn v3 dùng chung 5 kênh ở `docs/prompts/long-v3/`** (README, khuôn Long vừa và Long dài, luật kênh, cách triển khai xoay vòng, biên tập nhẹ tay). Các luật bên dưới (khối KỂ CHO TAI, giọng mẫu, khung chương bắt buộc, đích số chữ) chỉ còn là tài liệu tham khảo cũ; khi lệch nhau thì làm theo v3.
