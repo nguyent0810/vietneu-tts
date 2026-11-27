@@ -11,6 +11,9 @@ Khung chương của bản trụ ~30 phút lấy quyết định 21/10 (mục 0)
 Mỗi luật có nguồn: `references/sources.md` hoặc `references/evidence.md` (B3, B5, F1, F3, F4, F6) và
 `output/cl_staging/long/phan_tich_long_2026-10-21.md`.
 
+
+> **27/11/2026 (PO):** lời Long viết bằng Gemini theo khuôn v3 `docs/prompts/long-v3/` (ít luật, xoay cách triển khai, có kịch tính; Long vừa thay Long ngắn, Long dài nhiều hồi). Biên tập nhẹ tay, chỉ sửa thông tin cần chính xác. Độ dài theo chất liệu. Các mục dưới về ngân sách tiếng, khung 12–14 chương là tham khảo cũ, không bắt buộc.
+
 ## 0. Chuẩn lời đọc và hồ sơ
 
 Đọc [lõi audio-script §1–10](../../../docs/script/audio-script.md); ngân sách theo [giọng đo](../../../docs/script/voice-rates.md). Chọn [Long chuẩn](../../../docs/script/profiles/long-standard.md) hoặc [nhân vật](../../../docs/script/profiles/long-nhan-vat.md)/[đêm nghe](../../../docs/script/profiles/night.md), cộng [BUD](../../../docs/script/profiles/bud.md)/[FS](../../../docs/script/profiles/fs.md); tra cứu/tuyển tập/Q&A có delta riêng trong mục hồ sơ. Các heuristic nghề kể là CB/gợi ý, không bắt đệm câu hay sửa chữ để chiều regex.
