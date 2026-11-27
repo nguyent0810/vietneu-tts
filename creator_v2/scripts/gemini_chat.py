@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import random
 import re
 import sys
 import time
@@ -30,6 +31,39 @@ RESPONSE = "model-response"
 QUERY = "user-query"
 STOP = re.compile(r"dừng|stop", re.I)
 COPY = re.compile(r"sao chép|copy", re.I)
+SERVER_ERROR = re.compile(r"an error occurred|something went wrong|đã xảy ra lỗi|có lỗi xảy ra", re.I)
+
+
+def is_server_error(page) -> bool:
+    """True when Gemini displays one of its server-side error messages.
+
+    Text of the user's own prompt (user-query, composer) is removed first, so a prompt that
+    happens to contain "An error occurred" is not mistaken for a Gemini error (review 153)."""
+    try:
+        body = page.locator("body").inner_text()
+        for sel in (QUERY, INPUT):
+            for i in range(page.locator(sel).count()):
+                body = body.replace(page.locator(sel).nth(i).inner_text(), "")
+        return bool(SERVER_ERROR.search(body))
+    except Exception:
+        return False
+
+
+def is_home_without_query(page) -> bool:
+    """Detect a failed chat reset: home URL and an empty composer with no query."""
+    try:
+        home_url = not re.search(r"/app/[0-9a-f]{8,}", page.url or "", re.I)
+        empty_box = not page.locator(INPUT).first.inner_text().strip()
+        return home_url and empty_box and page.locator(QUERY).count() == 0
+    except Exception:
+        return False
+
+
+def retry_thinking(level: str | None, attempt: int, retries: int, no_downgrade: bool = False) -> str | None:
+    """Lower High to Medium on the final attempt after a retryable failure."""
+    if no_downgrade or attempt != retries or not level:
+        return level
+    return {"high": "Medium", "medium": "Low"}.get(level.lower(), level)
 
 
 def browser(p, headless: bool = False):
@@ -135,50 +169,75 @@ def cmd_ask(a) -> int:
             # #529: bị chuyển sang chat khác -> viết tiếp nhầm đề tài. Dừng, không gửi.
             ctx.close()
             raise SystemExit(f"không mở được đúng cuộc chat {a.chat} (đang ở {page.url}); không gửi prompt")
-        mode = pick_mode(page, a.model, a.thinking)
-        print(f"model: {mode}")
-        before = page.locator(RESPONSE).count()
-        asked = page.locator(QUERY).count()
-        box = page.locator(INPUT).first
-        box.click()
-        box.fill(prompt)
-        time.sleep(1.5)
-        box.press("Enter")
-        t0 = time.time()
-        # Thinking High có thể nghĩ vài phút rồi mới hiện khung trả lời. Đóng trình duyệt lúc này
-        # làm Gemini huỷ lượt đang viết (23/11: mất 3 lần gửi). Chỉ báo "không nhận" khi câu hỏi
-        # không vào chat VÀ không có nút Dừng sau 120 s; còn lại chờ tới --timeout.
-        while page.locator(RESPONSE).count() <= before:
-            accepted = page.locator(QUERY).count() > asked or page.get_by_role("button", name=STOP).count() > 0
-            if not accepted and time.time() - t0 > 120:
+        total = a.retries + 1
+        text = url = ""
+        last_reason = ""
+        for attempt in range(1, total + 1):
+            prev_reason, last_reason = last_reason, ""  # mỗi lượt tính lại; lượt sau thành công không bị coi là lỗi
+            if attempt > 1:
+                print(f"Thử lần {attempt}/{total}: mở chat mới; chờ 60–120 giây sau lỗi Gemini ({prev_reason})")
+                page.goto(HOME)
+                time.sleep(random.uniform(60, 120))
+            level = retry_thinking(a.thinking, attempt, total, a.no_downgrade)
+            if attempt == total and level != a.thinking:
+                print(f"Thử lần {attempt}/{total}: hạ thinking {a.thinking} → {level}")
+            mode = pick_mode(page, a.model, level)
+            print(f"Lần thử {attempt}/{total}: gửi prompt ({mode})")
+            before = page.locator(RESPONSE).count()
+            asked = page.locator(QUERY).count()
+            box = page.locator(INPUT).first
+            box.click()
+            box.fill(prompt)
+            time.sleep(1.5)
+            box.press("Enter")
+            t0 = time.time()
+            samples: list[str] = []
+            last = None
+            while True:
+                # Chỉ dò chữ lỗi khi Gemini CHƯA trả lời: bài viết hay tiêu đề chat có thể chứa "đã xảy ra lỗi".
+                if page.locator(RESPONSE).count() <= before and is_server_error(page):
+                    last_reason = "thông báo lỗi phía Gemini"
+                    break
+                # Gemini sometimes discards the request and returns to its empty home page.
+                if time.time() - t0 > 10 and is_home_without_query(page) and page.locator(QUERY).count() <= asked:
+                    last_reason = "quay về trang chủ, prompt không còn trong chat"
+                    break
+                if page.locator(RESPONSE).count() > before:
+                    last = page.locator(RESPONSE).last
+                    busy = page.get_by_role("button", name=STOP).count() > 0
+                    copy_ready = last.get_by_role("button", name=COPY).count() > 0
+                    samples.append(last.inner_text())
+                    if stable_done(samples, busy, copy_ready=copy_ready, min_words=a.min_words):
+                        break
+                else:
+                    accepted = page.locator(QUERY).count() > asked or page.get_by_role("button", name=STOP).count() > 0
+                    if not accepted and time.time() - t0 > 120:
+                        ctx.close()
+                        raise SystemExit("Gemini không nhận prompt (câu hỏi không vào chat sau 120 s)")
+                if time.time() - t0 > a.timeout:
+                    ctx.close()
+                    raise SystemExit(f"quá {a.timeout} s mà Gemini chưa viết xong")
+                if last is None or not samples or not stable_done(samples, page.get_by_role("button", name=STOP).count() > 0,
+                                                                   copy_ready=last.get_by_role("button", name=COPY).count() > 0,
+                                                                   min_words=a.min_words):
+                    time.sleep(2)
+            if last_reason:
+                print(f"Lần thử {attempt}/{total} thất bại: {last_reason}")
+                if attempt < total:
+                    continue
                 ctx.close()
-                raise SystemExit("Gemini không nhận prompt (câu hỏi không vào chat sau 120 s)")
-            if time.time() - t0 > a.timeout:
-                ctx.close()
-                raise SystemExit(f"quá {a.timeout} s mà Gemini chưa bắt đầu trả lời")
-            time.sleep(2)
-        last = page.locator(RESPONSE).last
-        samples: list[str] = []
-        while True:
-            if time.time() - t0 > a.timeout:
-                ctx.close()
-                raise SystemExit(f"quá {a.timeout} s mà Gemini chưa viết xong")
-            busy = page.get_by_role("button", name=STOP).count() > 0
-            copy_ready = last.get_by_role("button", name=COPY).count() > 0
-            samples.append(last.inner_text())
-            if stable_done(samples, busy, copy_ready=copy_ready, min_words=a.min_words):
-                break
-            time.sleep(3)
-        text = ""
-        try:
-            last.hover()
-            last.get_by_role("button", name=COPY).last.click()
-            time.sleep(1)
-            text = page.evaluate("() => navigator.clipboard.readText()")
-        except Exception as e:
-            print(f"không chép được bản Markdown ({type(e).__name__}), lấy chữ hiển thị", file=sys.stderr)
-        text = clean(text or samples[-1])
-        url = page.url
+                raise SystemExit(f"Gemini lỗi phía máy chủ sau {total} lần: {last_reason}")
+            text = ""
+            try:
+                last.hover()
+                last.get_by_role("button", name=COPY).last.click()
+                time.sleep(1)
+                text = page.evaluate("() => navigator.clipboard.readText()")
+            except Exception as e:
+                print(f"không chép được bản Markdown ({type(e).__name__}), lấy chữ hiển thị", file=sys.stderr)
+            text = clean(text or samples[-1])
+            url = page.url
+            break
         ctx.close()
     if looks_like_thinking(text) or len(text.split()) < a.min_words:
         raise SystemExit(f"câu trả lời chỉ có {len(text.split())} chữ (tiêu đề đang nghĩ?): không lưu")
@@ -205,6 +264,8 @@ def main() -> int:
     q.add_argument("--timeout", type=int, default=900)
     q.add_argument("--min-words", type=int, default=30, help="câu trả lời ngắn hơn thì coi là chưa xong / lỗi (#529)")
     q.add_argument("--headless", action="store_true")
+    q.add_argument("--retries", type=int, default=2, help="số lần thử lại sau lỗi Gemini (mặc định 2)")
+    q.add_argument("--no-downgrade", action="store_true", help="không hạ thinking ở lần thử cuối")
     q.set_defaults(fn=cmd_ask)
     a = ap.parse_args()
     return a.fn(a)
