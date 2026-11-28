@@ -90,12 +90,11 @@ def test_first_120s_long_sentence_gate_is_unchanged():
     row = {'id': 'sample', 'script': [' '.join(['lời'] * 40) + '.'],
            'media': {'1': {'kind': 'local', 'path': 'fixture.jpg'}}}
     segments = [{'start': 0, 'end': 13}]
-    assert any('tĩnh dài 13.0s' in msg and '> 4.0s' in msg
+    assert any('tĩnh dài 13.0s' in msg and '> 8.0s' in msg
                for msg in hbr.pace_gate_issues(row, segments))
     row['media']['1']['pan'] = {'dir': 'ltr', 'stops': [{'line': 1, 'x': 0.0}]}
     assert hbr._pan_stop_lines(row['media']) == set()
-    assert any('có chuyển động dài 13.0s' in msg and '> 8.0s' in msg
-               for msg in hbr.pace_gate_issues(row, segments))
+    assert hbr.pace_gate_issues(row, segments) == []  # 13s dưới ngưỡng cảnh báo 15s
 
 
 def test_tts_sample_with_fake_engine(tmp_path, monkeypatch):

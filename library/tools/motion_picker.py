@@ -124,7 +124,7 @@ def choose(row: dict, profile: dict) -> tuple[dict, list[dict]]:
     window_k = max(0, int(profile.get("window_k") or 0))
     hold_split = float(profile.get("hold_split_s") or 8)
     max_shots = max(1, min(3, int(profile.get("max_shots") or 3)))
-    min_shot = float(profile.get("min_shot_s") or 2.5)
+    min_shot = max(3.0, float(profile.get("min_shot_s") or 3.0))
     lines, clock = _segments(row)
     media = {int(k): v for k, v in (row.get("media") or {}).items() if isinstance(v, dict)}
     blocked = {int(k) for k in (row.get("visuals") or {})}
@@ -179,8 +179,13 @@ def choose(row: dict, profile: dict) -> tuple[dict, list[dict]]:
             n_shots = min(n_shots, max_shots)
         chosen_idx = [i]
         if n_shots > 1:
-            chosen_idx += _sample(cuts, n_shots - 1)
-            chosen_idx = sorted(set(chosen_idx))[:max_shots]
+            candidates = _sample(cuts, n_shots - 1)
+            # Keep every resulting shot at least three seconds, including the tail.
+            for candidate in sorted(set(candidates)):
+                if lines[candidate]["start"] - lines[chosen_idx[-1]]["start"] >= min_shot:
+                    chosen_idx.append(candidate)
+            chosen_idx = [idx for idx in chosen_idx
+                          if idx == i or lines[end_i]["end"] - lines[idx]["start"] >= min_shot]
         shots = []
         for n, a in enumerate(chosen_idx):
             if n + 1 < len(chosen_idx):

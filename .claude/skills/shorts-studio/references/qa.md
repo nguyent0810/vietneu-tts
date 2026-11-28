@@ -1,5 +1,9 @@
 # Cổng QA (Bộ Kiểm Bắt Buộc Trước Khi Báo Xong)
 
+## Nhịp cảnh (#161)
+- Không chia một câu/ảnh thành shot dưới 3 giây chỉ để tăng nhịp; kiểm tra thời lượng từng shot theo timeline TTS thực khi có, nếu không thì ước theo 185 tiếng/phút.
+- Ảnh hoặc thẻ tĩnh kéo dài thì ưu tiên chuyển động chậm có chủ đích (pan, push, parallax) thay vì cắt vụn. Shot dưới 3 giây là CẢNH BÁO QA để biên tập xem lại, không tự động chặn render.
+
 Mọi video short trước khi báo hoàn thành và gửi Lead review phải vượt qua đầy đủ các bước kiểm tra tự động và thẩm định hình ảnh trực quan:
 
 ```bash

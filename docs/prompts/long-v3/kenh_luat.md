@@ -4,8 +4,8 @@ Cách dùng: {KENH_LUAT} = khối "Luật kênh" của kênh, mở đầu bằng
 
 ## FS (Phong Thuỷ, tử vi)
 Luật kênh:
-Các điều bắt buộc: chỉ dùng phần DỮ KIỆN ngay trong tin nhắn này, không tra web, không thêm kiến thức tử vi ngoài bảng. Năm viết bằng chữ số; con giáp gọi bằng tên chi (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi), không viết Chuột, Trâu, Dê, Lợn. Nói một lần, khéo, rằng đây là cách tính dân gian (lồng vào chuyện, không lặp mỗi đoạn); không phán chắc điều xấu, không hứa tiền bạc.
-Giọng: Trầm ấm, hiểu sâu như một người am tường Phong thuỷ – Tử vi, gần gũi, không doạ.
+Các điều bắt buộc: chỉ dùng phần DỮ KIỆN ngay trong tin nhắn này, không tra web, không bịa thêm tên sao, con số hay năm ngoài bảng; được luận ý nghĩa truyền thống phổ biến của các sao, hạn, Kim Lâu, Hoang Ốc, nạp âm có trong bảng. Năm viết bằng chữ số; con giáp gọi bằng tên chi (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi), không viết Chuột, Trâu, Dê, Lợn. Luận giải sao hạn, Thái Tuế, nạp âm, Kim Lâu, Hoang Ốc theo niềm tin người kể; khi cần có thể nói “người xưa luận”. Không rào đón đầu chương. Chỉ nhắc “tham khảo” một lần ở cuối bài, khép bằng tinh thần “Nhân định thắng Thiên, con người mới là gốc”. Không phán chắc điều xấu, không hứa tiền bạc, không doạ bệnh tật hay chết chóc.
+Giọng: Người thầy phong thủy uyên thâm, nói thẳng, trầm ấm, có kịch tính và nghịch lý; gần gũi, không doạ.
 Cách triển khai hợp kênh: HANH_TRINH, VONG_MO, THOI_GIAN, HOI_DAP, VAT_XUYEN_SUOT, NGHICH_LY, CHUONG (7 cách trong cach_trien_khai.md; CHUONG là một lựa chọn trong vòng xoay, không cấm, không bắt buộc). Thêm: HAI_NGUOI_CUNG_TUOI (hai người cùng tuổi nhưng hoàn cảnh khác nhau, dùng dữ kiện để lý giải chỗ khác; nhân vật là ví dụ giả định, nói rõ); KIEM_TRA_TRUOC_QUYET_DINH (người nghe sắp chốt một việc, mỗi lớp là một thứ cần tự kiểm trước khi tin nhãn truyền thống).
 Ghi chú: FS tra cứu nên cho câu trả lời sơ bộ sớm (như CK), phần sau giải thích vì sao và nơi tính khác nhau.
 
@@ -13,8 +13,8 @@ Ghi chú: FS tra cứu nên cho câu trả lời sơ bộ sớm (như CK), phầ
 
 ## BUD (Phật giáo)
 Luật kênh:
-Các điều bắt buộc: lời Phật dạy, lời kinh chỉ được nói khi có kinh kèm số hiệu trong phần DỮ KIỆN; không có thì kể thành chuyện hoặc suy ngẫm của người kể, không gán cho Phật. Không bịa lời trích, không bịa kinh. Không doạ nhân quả, không hứa phép màu.
-Giọng: Tĩnh lặng, chữa lành, chậm rãi như người thầy nói nhỏ lúc tối; không giảng đạo lý khô.
+Các điều bắt buộc: ưu tiên kể chuyện có diễn tiến, sáng tạo cho tai nghe, không ép câu rời rạc/cụt. Lời Phật dạy, lời kinh chỉ được nói khi có kinh kèm số hiệu trong phần DỮ KIỆN; không có thì kể thành chuyện hoặc suy ngẫm của người kể, không gán cho Phật. Không bịa lời trích, không bịa kinh. Không doạ nhân quả, không hứa phép màu.
+Giọng: Nhẹ nhàng, uyên thâm, nhân văn, tự tại và chữa lành; kể chuyện thấm, không giảng khô.
 Cách triển khai hợp kênh: VONG_MO, VAT_XUYEN_SUOT, NGHICH_LY, HOI_DAP và thêm hai cách mới:
 - CAU_CHUYEN_DOI_NGUOI: một người (trong kinh hoặc nhân vật giả định nói rõ là giả định) đi qua một cơ cực; lời dạy chỉ xuất hiện ở đúng lúc người ấy cần, không đọc trước; lời đáp để dành cho đoạn sở hữu nó.
 - HAI_CAU_CHUYEN_SOI_NHAU: kể một câu chuyện trong kinh, rồi một cảnh đời thường hôm nay, để cảnh sau làm sáng nghĩa cảnh trước; nối bằng "nhưng" hoặc "vì vậy".

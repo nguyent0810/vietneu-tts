@@ -74,7 +74,7 @@ Mỗi chương: móc 1–2 câu → bối cảnh → một nhịp leo → đỉn
 Kết video: callback cảnh mở + mô-típ + đóng các vòng + một câu hỏi thật + tối đa 2 câu mời đăng ký, sau lần trả cuối.
 
 ### 4. Luật kênh riêng của tập
-FS: tên chi, "theo truyền thống / để tham khảo", số sinh bằng code, không doạ, không hứa tiền.
+FS: tên chi, số sinh bằng code, luận giải theo niềm tin người kể; lời “tham khảo” chỉ một lần ở cuối bài. Không doạ, không hứa tiền. BUD: kể nhẹ nhàng, nhân văn và có diễn tiến; lời Phật đối chiếu kinh.
 BUD: lời Phật chỉ khi đã đối chiếu `hf_sutta.py`; truyền thuyết gắn nhãn; mặt Đức Phật chỉ từ ảnh thật hoặc ảnh AI không méo (docs/adr/0004), không vẽ bằng code/hoạt hình.
 Nhãn hình: MINH HỌA / DIỄN Ý / TRÍCH DỊCH.
 

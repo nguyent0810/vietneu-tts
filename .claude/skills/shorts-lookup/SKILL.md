@@ -166,3 +166,7 @@ Mọi short (FS và BUD) trước khi gửi Lead review phải vượt qua 6 c�
 
 ## Adapter câu đọc
 Theo [lõi §9](../../../docs/script/audio-script.md#9-adapter-và-mức-kiểm) và hồ sơ Short thắng; chọn profile dùng lại, không xin miễn từng lần. `pd_scenes`/chip theo shorts-studio; rào nguồn là gợi ý, giữ khung làm rõ nghĩa. Quy trình hình/mix/kiểm ở trên không đổi.
+
+
+### Giọng FS/BUD (PO 28/11/2026)
+FS dùng giọng thầy phong thủy uyên thâm, nói thẳng, có kịch tính/nghịch lý; có thể luận sao hạn, Thái Tuế, nạp âm, Kim Lâu, Hoang Ốc theo niềm tin người kể. Không rào đón đầu; “tham khảo” chỉ một lần ở cuối bài. Short mở bằng câu kịch tính hoặc nghịch lý ngay trong 3 giây đầu, không chào/rào. BUD nhẹ nhàng, uyên thâm, nhân văn và chữa lành; kể chuyện thấm, không giảng khô; lời Phật đối chiếu kinh.

@@ -2926,6 +2926,17 @@ def render(script: Path, wav: Path, series: str, output: Path, *, badge: str = "
                 ln["words"], ln["word_timing_source"] = segment_words(
                     raw_script[ln["sentence_id"] - 1], ln)
         lines, media = expand_media_cuts(lines, media)
+        short_cuts = [ln for ln in lines if ln.get("word_cut")
+                      and float(ln.get("end", 0)) - float(ln.get("start", 0)) < 3.0]
+        if short_cuts:
+            grouped = {}
+            for ln in short_cuts:
+                grouped.setdefault(ln.get("source_sentence_id", ln["sentence_id"]), []).append(
+                    float(ln.get("end", 0)) - float(ln.get("start", 0)))
+            for sid, durations in grouped.items():
+                print(f"!! cut_ngan câu {sid}: {len(durations)} đoạn dưới 3s "
+                      f"({', '.join(f'{d:.2f}' for d in durations)}s); render tiếp, cân nhắc giữ cảnh dài và dùng cine/pan",
+                      file=sys.stderr)
         for ln in lines:
             if ln.get("word_cut") and ln.get("shot_index") == 0:
                 print(f"cuts câu {ln['source_sentence_id']}: timing {ln['word_timing_source']}"

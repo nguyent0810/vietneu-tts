@@ -129,7 +129,7 @@ def test_mixed_clip_static_moving_limits_and_source_line_errors():
         segs[0]["words"][i]["t"] = 18 + (i - 20) * .175
     assert not any("có chuyển động" in e for e in B.pace_gate_issues(row, segs))
     cut["path"] = "still.jpg"
-    assert any("tĩnh dài 4.8s từ câu 1" in e for e in B.pace_gate_issues(row, segs))
+    assert not any("tĩnh dài" in e for e in B.pace_gate_issues(row, segs))
 
 
 def test_byte_duplicate_cut_rejected_in_bridge(tmp_path, monkeypatch):

@@ -110,3 +110,55 @@ upload_long.py ghi nguồn ĐỦ mọi bài đã phát (render.json bgm_used). G
   Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Clean%20Soul.mp3
 - shores_of_avalon.mp3 (video dài Phong Thuỷ) -- tên gốc "Shores of Avalon"
   Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Shores%20of%20Avalon.mp3
+- healing.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Healing"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Healing.mp3
+- calmant.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Calmant"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Calmant.mp3
+- gymnopedie_no_1.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Gymnopedie No 1"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Gymnopedie%20No%201.mp3
+- gymnopedie_no_2.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Gymnopedie No 2"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Gymnopedie%20No%202.mp3
+- bathed_in_the_light.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Bathed in the Light"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Bathed%20in%20the%20Light.mp3
+- angel_share.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Angel Share"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Angel%20Share.mp3
+- at_rest.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "At Rest"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/At%20Rest.mp3
+- wholesome.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Wholesome"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Wholesome.mp3
+- morning.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Morning"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Morning.mp3
+- dreams_become_real.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Dreams Become Real"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dreams%20Become%20Real.mp3
+- relaxing_piano_music.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Relaxing Piano Music"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Relaxing%20Piano%20Music.mp3
+- dewdrop_fantasy.mp3 (video Long/Short Phật Giáo, thêm 28/11) -- tên gốc "Dewdrop Fantasy"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dewdrop%20Fantasy.mp3
+- mesmerize.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Mesmerize"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Mesmerize.mp3
+- dark_fog.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Dark Fog"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dark%20Fog.mp3
+- floating_cities.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Floating Cities"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Floating%20Cities.mp3
+- spellbound.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Spellbound"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Spellbound.mp3
+- hiding_your_reality.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Hiding Your Reality"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Hiding%20Your%20Reality.mp3
+- enchanted_journey.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Enchanted Journey"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Enchanted%20Journey.mp3
+- anamalie.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Anamalie"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Anamalie.mp3
+- kalimba_relaxation_music.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Kalimba Relaxation Music"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Kalimba%20Relaxation%20Music.mp3
+- mystic_force.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Mystic Force"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Mystic%20Force.mp3
+- crypto.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Crypto"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Crypto.mp3
+- lightless_dawn.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Lightless Dawn"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Lightless%20Dawn.mp3
+- darkling.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Darkling"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Darkling.mp3
+- lost_time.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Lost Time"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Lost%20Time.mp3
+- ossuary_1_a_beginning.mp3 (video Long/Short Phong Thuỷ, thêm 28/11) -- tên gốc "Ossuary 1 - A Beginning"
+  Nguồn: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ossuary%201%20-%20A%20Beginning.mp3

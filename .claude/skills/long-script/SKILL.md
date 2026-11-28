@@ -75,6 +75,11 @@ Mở bằng hình (PO15/11) giữ ở long-video §4: 10 giây đầu clip/pano/
 - `references/sources.md` — luật nào lấy từ đâu (hyperframes-creative, faceless-explainer, research, long-video, số liệu kênh).
 - `long_script_lint.py` (gốc repo) + `tests/test_long_script_lint.py`.
 
+### Giọng FS và BUD (#161)
+- FS nói thẳng như người thầy phong thuỷ uyên thâm: có luận giải, kịch tính và nghịch lý; được diễn giải sao hạn, Thái Tuế, nạp âm, Kim Lâu, Hoang Ốc theo truyền thống bằng niềm tin người kể. Không mở chương bằng lời rào; “tham khảo” chỉ một lần ở cuối bài, gắn với ý con người làm chủ lựa chọn. Không doạ bệnh/chết cụ thể, không hứa tiền/trúng thưởng; gọi con giáp bằng tên chi.
+- BUD nhẹ nhàng, uyên thâm, nhân văn, tự tại và chữa lành; kể chuyện thấm thay vì giảng khô. Lời Phật phải đối chiếu `hf_sutta.py`.
+- Kể cho tai: ưu tiên cảnh, nghịch lý và cảm xúc có căn cứ; không ép câu ngắn, liệt kê hay ý rời rạc để chạy nhịp hình.
+
 ## Thumbnail Long V2 (quyết định 21/10; ticket 54b)
 > Chi tiết luật đóng gói tiêu đề + thumbnail theo số liệu thực nghiệm kênh: xem skill `long-packaging` (`.claude/skills/long-packaging/SKILL.md`). Kiểm tra lời hứa bằng `.venv/bin/python tools/long_packaging/promise_check.py <plan>`.
 - Mỗi Long chuẩn bị ba bản A/B/C để Lead chọn; thumbnail ưu tiên 2–5 từ, tối đa 8 từ khi cần để nói rõ nghịch lý (PO 03/11: không xét bằng số từ đơn thuần) — đọc hiểu trong 1–2 giây trên điện thoại, dễ đọc, bổ sung cho hình và title, không lặp nguyên title, mọi tuyên bố đúng nguồn; từ khóa viết HOA, bám chi tiết trong cold open.
