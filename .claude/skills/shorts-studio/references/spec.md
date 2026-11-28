@@ -76,3 +76,7 @@ Kiểm plan trước khi chốt:
 ```
 
 Nguồn runtime: `library/tools/hook_lint.py`, dữ liệu `library/tools/hook_terms.json`. `TRUU_TUONG`/`KHONG_DANH_TU_CU_THE` chỉ gợi ý; chỉ `KHUNG_DAU_TRONG` chặn hình cũ (exit1). Chuẩn lời và profile: [audio-script §8–9](../../../../docs/script/audio-script.md#8-chọn-hồ-sơ-chỉ-đọc-phần-khác-lõi).
+
+
+### Nhịp và lời đọc FS/BUD
+Không tạo `cuts` để chia shot dưới 3 giây; nếu có shot dưới 3 giây thì cảnh báo khi lint/render. Cảnh dài dùng cine/pan/parallax chậm thay vì cắt vụn. FS mở bằng lời luận trực tiếp, không rào đón; chỉ một lời “tham khảo” ở cuối kịch bản. BUD kể nhẹ nhàng, nhân văn và giàu chuyện; lời Phật phải đối chiếu kinh. Short phải có hook kịch tính/nghịch lý trong 3 giây đầu, không chào hay rào đón.

@@ -305,6 +305,54 @@ def timeline(row: dict, plan_path: Path | None = None, rate: float = RATE) -> tu
     return out, f"ước {rate * 60:.0f} tiếng/phút"
 
 
+def media_plan_warnings(row: dict, times: list[tuple[float, float]], rate: float = RATE) -> list[tuple[str, str]]:
+    """Warnings for tiny manual media cuts and adjacent near-duplicate local images."""
+    out: list[tuple[str, str]] = []
+    media = row.get("media") or {}
+    from library.tools.image_similarity import near_duplicate
+
+    previous: tuple[int, str] | None = None
+    duplicates = 0
+    for sid_raw, spec in sorted(media.items(), key=lambda item: int(item[0]) if str(item[0]).isdigit() else 10**9):
+        if not isinstance(spec, dict) or not str(sid_raw).isdigit():
+            continue
+        sid = int(sid_raw)
+        path = next((spec.get(k) for k in ("path", "file", "src") if spec.get(k)), None)
+        if path:
+            path = str(path)
+            if not Path(path).is_absolute():
+                path = str(Path(__file__).resolve().parent / path)
+            if previous and sid == previous[0] + 1 and near_duplicate(previous[1], path):
+                duplicates += 1
+            previous = (sid, path)
+        else:
+            previous = None
+
+        cuts = spec.get("cuts") or []
+        if not isinstance(cuts, list) or not cuts or sid < 1 or sid > len(times):
+            continue
+        line = str((row.get("script") or [])[sid - 1])
+        start, end = times[sid - 1]
+        points = [0.0]
+        last = 0
+        for cut in cuts:
+            marker = str(cut.get("at", "")) if isinstance(cut, dict) else ""
+            hit = line.lower().find(marker.lower(), last) if marker else -1
+            if hit >= 0:
+                points.append(sum(1 for _ in re.finditer(r"\S+", line[:hit])) / max(1, len(line.split())))
+                last = hit + len(marker)
+            else:
+                points.append(len(points) / (len(cuts) + 1))
+        points.append(1.0)
+        spans = [(points[i + 1] - points[i]) * (end - start) for i in range(len(points) - 1)]
+        short = [round(span, 2) for span in spans if span < 3.0]
+        if short:
+            out.append(("cut_ngan", f"câu {sid}: cuts tạo {len(short)} đoạn dưới 3s ({', '.join(map(str, short))}s; dùng {end-start:.1f}s dòng)"))
+    if duplicates:
+        out.append(("anh_lap_ke", f"{duplicates} cặp ảnh local gần giống nhau liền kề"))
+    return out
+
+
 # ---------------------------------------------------------------- các phép đo
 
 
@@ -913,6 +961,9 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     def add(level, code, msg):
         issues.append((level, code, msg))
 
+    for code, msg in media_plan_warnings(row, times, rate):
+        add(WARN, code, msg)
+
     from library.tools.visual_schema import visual_empty, visual_ready
     visuals = row.get("visuals") or {}
     if isinstance(visuals, dict):
@@ -1018,6 +1069,11 @@ def lint(row: dict, plan_path: Path | None = None, kind: str = "standard", rate:
     if row.get("series") == "fs":
         for msg in HBR.zodiac_naming_errors(script):
             add(ERROR, "ten_con_vat", f"{msg} -- FS gọi con giáp bằng tên chi (runner chặn)")
+        body_text = "\n".join(plain(x) for x in script if not is_heading(x))
+        refs = len(re.findall(r"(?i)tham khảo", body_text))
+        first_quarter = body_text[:max(1, len(body_text) // 4)]
+        if refs > 1 or re.search(r"(?i)tham khảo", first_quarter):
+            add(WARN, "rao_don", f"{refs} lần 'tham khảo'; giữ tối đa một lần ở cuối bài, tránh rào đón ở phần mở")
     for i, line in enumerate(script, 1):
         if is_heading(line):
             continue

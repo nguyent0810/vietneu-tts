@@ -21,6 +21,8 @@ import json
 import re
 from pathlib import Path
 
+from library.tools.image_similarity import near_duplicate
+
 ROOT = Path(__file__).resolve().parents[2]
 EVERY_LINE_S = 135
 EARLY_S, EARLY_MIN_DISTINCT = 42, 8
@@ -75,7 +77,8 @@ def assign(script: list[str], *, open_img: str, path_of, visuals: dict | None = 
     `pd`: các dòng phỏng dựng -> ảnh mang nhãn PHỎNG DỰNG (luật 16/11, #431 mục C); câu không ảnh riêng thì gắn ảnh mới."""
     visuals, pick, kw_img, alt, pd = visuals or {}, pick or {}, kw_img or [], alt or {}, pd or set()
     starts = starts or line_starts(script)
-    pool = sorted({v for _, v in kw_img} | set(pick.values()) | {open_img})
+    pool = sorted({v for _, v in kw_img} | set(pick.values()) | {open_img}
+                  | {x for values in alt.values() for x in values})
     covered = {j for k, v in visuals.items() for j in range(int(k), int(v.get("until", k)) + 1)}
     media: dict[str, dict] = {}
     used: dict[str, int] = {open_img: 1}
@@ -95,6 +98,17 @@ def assign(script: list[str], *, open_img: str, path_of, visuals: dict | None = 
             if name in early and len(early) < len(pool):
                 name = next(x for x in pool if x not in early)
             early.add(name)
+        # A semantic pick is editorial input. Automatic fallback among the local pool
+        # skips a thumbnail-near-identical image to the preceding assigned scene.
+        if str(i) not in pick and near_duplicate(path_of(last), path_of(name)):
+            is_early = starts[i - 1] < EARLY_S
+            ok = [c for c in pool if c != name and not (is_early and c in early)
+                  and not near_duplicate(path_of(last), path_of(c))]
+            if ok:
+                if is_early:
+                    early.discard(name)
+                    early.add(ok[0])
+                name = ok[0]
         if used.get(name, 0) > len(CROPS):
             alts = [a for a in alt.get(name, []) if used.get(a, 0) <= len(CROPS)]
             name = alts[0] if alts else min(pool, key=lambda x: used.get(x, 0))

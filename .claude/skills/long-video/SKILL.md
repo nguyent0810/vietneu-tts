@@ -47,6 +47,10 @@ thêm visual `{"type": "studio", "device": ...}` (18 thiết bị khổ ngang). 
   → (đo 01/10, đã thay) dồn sức vào 30–90 giây đầu; độ dài giữ ≥ 30 phút theo quyết định 22/10 (docs/adr/0001).
 
 ## 2. Kịch bản (skill faceless-explainer `references/story-design.md`)
+
+### Giọng FS/BUD (PO 28/11/2026)
+FS kể bằng giọng thầy phong thủy uyên thâm, nói thẳng, có kịch tính và nghịch lý; được luận sao hạn, Thái Tuế, nạp âm, Kim Lâu, Hoang Ốc theo niềm tin người kể, có thể dẫn “người xưa luận”. Không mở chương bằng lời rào; “tham khảo” xuất hiện một lần ở cuối bài, nhấn “Nhân định thắng Thiên, con người mới là gốc”. Không hứa tiền, không doạ bệnh tật/chết chóc; gọi con giáp bằng tên chi. BUD kể nhẹ nhàng, nhân văn, tự tại và chữa lành; kể chuyện thấm thay vì giảng khô, lời Phật vẫn phải đối chiếu kinh. Cả hai viết cho tai: câu chuyện có diễn tiến, không ép ý rời rạc hay câu cụt.
+
 - **Viết kịch bản 30-90 phút: skill `long-script`** (quy trình brief -> nghiên cứu -> khung -> beat sheet -> dòng,
   4 format, 10 luật rút từ đường giữ chân B3/B5/F1/F3/F4/F6). Soát trước TTS:
   `python long_script_lint.py output/cl_staging/long/plan_long_wNN.json --only <id>` (gọi lại `retention_issues`).

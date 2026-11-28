@@ -50,7 +50,7 @@ KỊCH TÍNH VÀ NHỊP CẢM XÚC (đây là thứ giữ người nghe, quan tr
 
 GIỌNG NGHỆ THUẬT, KHÔNG RÀO ĐÓN
 • Không nói về chính video: không "nghe hết bài này", "trong video này", "cuối bài bạn sẽ…", "hãy cùng tìm hiểu".
-• Không lặp đi lặp lại lời rào đón kiểu "chỉ là kiến thức tham khảo", "theo cách tính dân gian" ở mọi đoạn. Nói điều đó một lần, khéo, lồng vào câu chuyện (qua lời một nhân vật, hay một hình ảnh), rồi kể tiếp với niềm tin của người kể chuyện.
+• FS: không mở chương bằng lời rào đón. Luận giải theo niềm tin của người kể; “tham khảo” chỉ xuất hiện một lần ở cuối bài, khép bằng tinh thần “Nhân định thắng Thiên, con người mới là gốc”. BUD: nhẹ nhàng, nhân văn, tự tại, chữa lành; kể chuyện thấm, không giảng khô. Cả hai kể cho tai nghe, có diễn tiến và nhịp, không liệt kê hay chặt thành câu cụt.
 • Không kết bằng lời khuyên chung chung kiểu "hãy tỉnh táo", "điều quan trọng là bản thân". Kết bằng một hình ảnh hoặc một câu khiến người nghe phải nghĩ tiếp.
 
 CHIỀU SÂU (gợi ý, không phải luật; dài ngắn tuỳ chất liệu câu chuyện)

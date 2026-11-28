@@ -1,5 +1,5 @@
 """Test cổng nhịp cắt 120s đầu cho video dài:
-- Cảnh có chuyển động <= 8.0s, tĩnh <= 4.0s; nền trống liên tục <= 1.5s (mức ERROR).
+- Cảnh động >15s cảnh báo, ảnh/chữ tĩnh trơn >8s chặn; nền trống liên tục <= 1.5s (mức ERROR).
 - Cờ plan `pace_gate: off` để tắt cho Long cũ. Sau 120s giữ luật cũ.
 """
 import sys
@@ -39,31 +39,34 @@ def test_pace_gate_pass_under_4s_and_no_naked_run():
     assert not any(x.startswith("120s đầu:") for x in bad)
 
 
-def test_pace_gate_moving_shots_allow_6s_but_fail_over_8s():
+def test_pace_gate_moving_shots_warn_only_over_15s():
     script = [f"Câu {i}." for i in range(1, 5)]
-    durs = [3.0, 6.0, 9.0, 2.5]
+    durs = [3.0, 6.0, 16.0, 2.5]
     media = {
         "1": {"kind": "commons", "ref": "m1"},
         "2": {"kind": "commons", "ref": "m2"},
         "3": {"kind": "commons", "ref": "m3"},
         "4": {"kind": "commons", "ref": "m4"},
     }
-    # Ảnh cine 6s đạt; 9s vượt ngưỡng chuyển động 8s.
+    # Ảnh cine 6s đạt; 16s vượt ngưỡng cảnh báo chuyển động 15s.
     media["2"]["cine"] = {"cam": "push_in"}
     media["3"]["cine"] = {"cam": "push_in"}
     row = {"script": script, "media": media, "visuals": {}, "kinetic": True}
     segs = _segs_from_durs(durs)
-    errs = HBR.pace_gate_issues(row, segs)
-    assert any("120s đầu: cảnh 'tư liệu' có chuyển động dài 9.0s từ câu 3 (> 8.0s)" in e for e in errs)
+    warns = []
+    errs = HBR.pace_gate_issues(row, segs, warns)
+    assert errs == []  # cảnh động dài không chặn render
+    assert any("có chuyển động dài 16.0s từ câu 3" in e for e in warns)
     assert not any("câu 2" in e for e in errs)
     _, bad = HBR.pacing(row, segs)
-    assert any("cảnh 'tư liệu' có chuyển động dài 9.0s" in x for x in bad)
+    assert not any("cảnh 'tư liệu'" in x for x in bad)
 
 
-def test_pace_gate_static_6s_fails():
+def test_pace_gate_static_6s_passes_and_over_8_fails():
     row = {"script": ["Ảnh tĩnh."], "media": {"1": {"kind": "commons", "ref": "m1"}}}
-    assert any("tĩnh dài 6.0s" in e and "(> 4.0s)" in e
-               for e in HBR.pace_gate_issues(row, _segs_from_durs([6.0])))
+    assert HBR.pace_gate_issues(row, _segs_from_durs([6.0])) == []
+    assert any("tĩnh dài 8.9s" in e and "(> 8.0s)" in e
+               for e in HBR.pace_gate_issues(row, _segs_from_durs([9.0])))
 
 
 def test_pace_gate_fail_naked_run_over_1_5s_in_first_120s():
@@ -108,23 +111,23 @@ def test_pace_gate_allows_shots_and_naked_run_after_120s():
 
 
 def test_pace_gate_media_holds_tracking():
-    # Câu 1 (2.0s) có ảnh, câu 2 (2.5s) giữ ảnh đó -> tổng cảnh 4.5s > 4.0s
+    # Câu 1 (2.0s) có ảnh, câu 2 (2.5s) giữ ảnh đó -> tổng cảnh 4.5s không vượt trần 8s
     script = [f"Câu {i}." for i in range(1, 4)]
     durs = [2.0, 2.5, 2.0]
     media = {"1": {"kind": "commons", "ref": "m1"}, "3": {"kind": "commons", "ref": "m3"}}
     row = {"script": script, "media": media, "visuals": {}, "kinetic": True}
     segs = _segs_from_durs(durs)
     errs = HBR.pace_gate_issues(row, segs)
-    assert any("cảnh 'tư liệu' tĩnh dài 4.5s từ câu 1 (> 4.0s)" in e for e in errs)
+    assert errs == []
 
-    # Nếu giữ 1.5s + 1.8s = 3.3s <= 4.0s -> ĐẠT và câu 2 không bị tính là naked
+    # Nếu giữ 1.5s + 1.8s = 3.3s đạt -> ĐẠT và câu 2 không bị tính là naked
     durs_ok = [1.5, 1.8, 2.0]
     segs_ok = _segs_from_durs(durs_ok)
     assert HBR.pace_gate_issues(row, segs_ok) == []
 
 
 def test_pace_gate_pan_stops_count_as_cuts():
-    # Ảnh rộng câu 1 lia qua 4 câu (11s): mỗi điểm dừng pan là một khung mới -> không vượt 4s.
+    # Ảnh rộng câu 1 lia qua 4 câu (11s): mỗi điểm dừng pan là một khung mới -> không vượt 8s.
     script = [f"Câu {i}." for i in range(1, 6)]
     durs = [2.5, 2.0, 3.0, 3.5, 3.0]
     pan = {"dir": "ltr", "stops": [{"line": 1, "x": 0.0}, {"line": 2, "x": 0.3}, {"line": 3, "x": 0.6}, {"line": 4, "x": 1.0}]}
@@ -132,16 +135,20 @@ def test_pace_gate_pan_stops_count_as_cuts():
     row = {"script": script, "media": media, "visuals": {}, "kinetic": True}
     segs = _segs_from_durs(durs)
     assert HBR.pace_gate_issues(row, segs) == []
-    # Bỏ điểm dừng giữa -> 7.5s vẫn trong ngưỡng động 8s; kéo dài trên 8s mới bị chặn.
+    # Bỏ điểm dừng giữa -> 9.5s vẫn là cảnh động, không bị chặn hay cảnh báo cho tới >15s.
     pan2 = {"dir": "ltr", "stops": [{"line": 1, "x": 0.0}, {"line": 4, "x": 1.0}]}
     row["media"]["1"]["pan"] = pan2
     assert HBR.pace_gate_issues(row, segs) == []
     segs_long = _segs_from_durs([3.0, 3.0, 3.5, 3.0, 3.0])
     errs = HBR.pace_gate_issues(row, segs_long)
-    assert any("có chuyển động dài 9.5s từ câu 1 (> 8.0s)" in e for e in errs)
+    assert errs == []
+    segs_warn = _segs_from_durs([3.0, 5.0, 5.0, 5.0, 3.0])
+    errs = HBR.pace_gate_issues(row, segs_warn)
+    assert errs == []
 
 
 def test_pace_gate_text_line_without_media_is_static():
     """Lead 17/11: dòng không có media không được coi là clip (kind mặc định 'video')."""
     row = {"script": ["Chỉ có chữ."], "media": {}}
-    assert any("tĩnh dài 6.0s" in e for e in HBR.pace_gate_issues(row, _segs_from_durs([6.0])))
+    assert any("chữ trên nền trống 6.0s" in e for e in HBR.pace_gate_issues(row, _segs_from_durs([6.0])))
+    assert any("chữ trên nền trống 8.9s" in e for e in HBR.pace_gate_issues(row, _segs_from_durs([9.0])))

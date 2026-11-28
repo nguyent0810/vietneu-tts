@@ -21,6 +21,6 @@ Nguyên tắc (chủ kênh 25/11: "biên tập giữ giọng hay cho tai, không
 
 ## Bỏ sáo, giữ kịch (PO 27/11)
 - Xoá câu nói về chính video ("nghe hết bài này", "trong video này", "cuối bài bạn sẽ…").
-- Lời rào "chỉ là kiến thức tham khảo / theo cách tính dân gian" chỉ giữ MỘT lần ở chỗ khéo nhất; lời nhắc tham khảo đầy đủ đặt ở mô tả video.
+- Lời rào "chỉ là kiến thức tham khảo / theo cách tính dân gian" chỉ giữ MỘT lần, ở CUỐI bài (kiểu "Nhân định thắng Thiên, con người mới là gốc"); đầu và giữa bài xoá hết; lời nhắc tham khảo đầy đủ đặt ở mô tả video.
 - Kết bằng lời khuyên chung chung ("hãy tỉnh táo") thì thay bằng hình ảnh hoặc câu gợi nghĩ có sẵn trong bài.
 - Không san phẳng chỗ cao trào: câu ngắn ở đỉnh và khoảng lặng sau đỉnh phải giữ.

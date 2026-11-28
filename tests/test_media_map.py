@@ -2,6 +2,9 @@
 import sys
 from pathlib import Path
 
+import numpy as np
+from PIL import Image
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools" / "long"))
 
 import media_map as M  # noqa: E402
@@ -45,6 +48,25 @@ def test_bang_chon_theo_nghia_uu_tien_hon_tu_khoa():
     s = _script(10, heads=())
     m = M.assign(s, open_img="img0", path_of=P, pick={"4": "img7"}, kw_img=[("kể", "img1")])
     assert m["4"]["path"].endswith("img7.png")
+
+
+def test_auto_pick_skips_image_near_duplicate_of_previous(tmp_path):
+    images = {
+        "first": np.full((36, 64, 3), 100, dtype=np.uint8),
+        "near": np.full((36, 64, 3), 108, dtype=np.uint8),
+        "other": np.full((36, 64, 3), 220, dtype=np.uint8),
+    }
+    for name, pixels in images.items():
+        Image.fromarray(pixels).save(tmp_path / f"{name}.png")
+
+    def path_of(name):
+        return str(tmp_path / f"{name}.png")
+
+    script = ["**Mở**", "Câu số 2 kể chuyện.", "Câu số 3 tiếp nối."]
+    media = M.assign(script, open_img="first", path_of=path_of,
+                     starts=[0, 10, 20], kw_img=[("số 2", "near")],
+                     alt={"near": ["other"]}, pd={2})
+    assert media["2"]["path"] != path_of("near")
 
 
 def test_120_giay_dau_bo_the_chu_nen_trong_va_rut_the_khac():

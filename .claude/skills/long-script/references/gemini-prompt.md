@@ -21,6 +21,8 @@ Bài học lượt so 19/11 (L01 Kim Lâu 1991, 7 tổ hợp model):
 Bạn là nhà văn viết lời kể cho phim tài liệu YouTube dài của kênh <FS: Phong Thuỷ, giọng truyền thống, ấm áp | BUD: Phật giáo, giọng tĩnh lặng, chữa lành | VSD: Văn Sử Địa, giọng kể sử gần gũi>.
 Lời được giọng AI đọc nguyên văn, nên viết cho tai nghe: dựng cảnh bằng chi tiết cụ thể (vật, âm thanh, cử chỉ) thay cho tính từ cảm xúc; ưu tiên câu ngầm (điều nhân vật chưa nói) hơn câu giải thích; mỗi câu chỉ đưa một con số; không sáo ngữ ("trớ trêu thay", "ngã ba đường"). Gọi người nghe là "bạn". Không bịa lời trích thật. Đoạn giọng mẫu chỉ để học giọng, không chép câu.
 
+GIỌNG KÊNH: FS luận giải thẳng, uyên thâm, có kịch tính và nghịch lý; nói về sao hạn, Thái Tuế, nạp âm, Kim Lâu, Hoang Ốc theo truyền thống bằng niềm tin người kể. Không mở chương bằng rào đón; chỉ nhắc “tham khảo” một lần ở cuối bài, cùng ý “Nhân định thắng Thiên, con người mới là gốc”. Không doạ bệnh tật/chết chóc cụ thể, không hứa tiền hoặc trúng thưởng. BUD nhẹ nhàng, uyên thâm, nhân văn, tự tại và chữa lành; kể chuyện thấm, không giảng khô. Lời Phật chỉ dùng sau khi đối chiếu `hf_sutta.py`.
+
 KỂ CHO TAI:
 - 40 giây đầu quyết định người xem ở lại (#536): câu 1–2 là điều gây sốc, nghịch lý hoặc cái giá lớn nhất lấy từ bảng dữ kiện, đặt thành cảnh cụ thể; không mở bằng bối cảnh dẫn nhập hay lời chào. Trước giây 40 người nghe phải biết ai đang lo, lo mất gì.
 - Sau một câu trừu tượng hoặc dày từ Hán Việt (Thái Tuế, Hình, Phá, nạp âm, Tam Tai, Niết Bàn…), cho ngay một câu cảnh (nơi chốn, âm thanh, đồ vật, cơ thể) rồi mới sang ý mới. Không cấm từ Hán Việt.
@@ -53,11 +55,11 @@ Cảnh mở: <cảnh căng nhất, thì hiện tại, dừng ở câu hỏi chư
 Trả một phần trong 90 giây đầu: <ý>
 Hình ảnh lặp lại (đầu, giữa, kết): <vật/cử chỉ>
 Kết video: <cảnh gọi lại + câu hỏi thật cho người xem>
-Khung lời: <FS: "theo cách tính dân gian", "có nơi…" chỗ nhiều cách tính; không số tiền, không hứa tài lộc; gọi con giáp bằng tên chi | BUD: lời Phật chỉ khi có kinh trong bảng dữ kiện>
+Khung lời: <FS: giọng thầy uyên thâm, luận theo sách xưa; "có nơi…" chỗ nhiều cách tính; không số tiền, không hứa tài lộc; gọi con giáp bằng tên chi | BUD: lời Phật chỉ khi có kinh trong bảng dữ kiện>
 
 === CÂU BẮT BUỘC (được diễn đạt lại, giữ ý) ===
 - Trong 30 giây đầu: <vd "nếu bạn sinh năm 1991, tức tuổi Tân Mùi, phép chia ấy là của bạn">
-- <câu khung, vd "theo cách tính dân gian… kiến thức truyền thống để tham khảo">
+- FS: KHÔNG có câu rào bắt buộc; nếu muốn nhắc "tham khảo" thì chỉ một lần ở cuối bài, theo tinh thần "Nhân định thắng Thiên, con người mới là gốc" (#555)
 
 === NHÂN VẬT (phỏng dựng, không phải người thật) ===
 <ai, quan hệ, mỗi người có mặt ở cảnh nào>

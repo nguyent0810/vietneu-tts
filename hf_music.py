@@ -47,12 +47,23 @@ CATALOG = {
             ("ripples.mp3", "Ripples"), ("starry.mp3", "Starry"),
             ("parting_of_the_ways_part_1.mp3", "Parting of the Ways - Part 1"),
             ("meditation_impromptu_01.mp3", "Meditation Impromptu 01"), ("meditation_impromptu_02.mp3", "Meditation Impromptu 02"),
-            ("meditation_impromptu_03.mp3", "Meditation Impromptu 03")],
+            ("meditation_impromptu_03.mp3", "Meditation Impromptu 03"),
+            # 28/11 (#555): thêm, RMS 5 giây dao động ≤ 14 dB
+            ("healing.mp3", "Healing"), ("calmant.mp3", "Calmant"), ("gymnopedie_no_1.mp3", "Gymnopedie No 1"),
+            ("gymnopedie_no_2.mp3", "Gymnopedie No 2"), ("bathed_in_the_light.mp3", "Bathed in the Light"), ("angel_share.mp3", "Angel Share"),
+            ("at_rest.mp3", "At Rest"), ("wholesome.mp3", "Wholesome"), ("morning.mp3", "Morning"),
+            ("dreams_become_real.mp3", "Dreams Become Real"), ("relaxing_piano_music.mp3", "Relaxing Piano Music"), ("dewdrop_fantasy.mp3", "Dewdrop Fantasy")],
     "fs": [("eastern_thought.mp3", "Eastern Thought"), ("ishikari_lore.mp3", "Ishikari Lore"), ("senbazuru.mp3", "Senbazuru"),
            ("eastminster.mp3", "Eastminster"), ("frozen_star.mp3", "Frozen Star"), ("clean_soul.mp3", "Clean Soul"),
            ("shores_of_avalon.mp3", "Shores of Avalon"),
            ("deliberate_thought.mp3", "Deliberate Thought"), ("thinking_music.mp3", "Thinking Music"),
-           ("comfortable_mystery_4.mp3", "Comfortable Mystery 4")],
+           ("comfortable_mystery_4.mp3", "Comfortable Mystery 4"),
+           # 28/11 (#555): thêm, RMS 5 giây dao động ≤ 14 dB
+           ("mesmerize.mp3", "Mesmerize"), ("dark_fog.mp3", "Dark Fog"), ("floating_cities.mp3", "Floating Cities"),
+           ("spellbound.mp3", "Spellbound"), ("hiding_your_reality.mp3", "Hiding Your Reality"), ("enchanted_journey.mp3", "Enchanted Journey"),
+           ("anamalie.mp3", "Anamalie"), ("kalimba_relaxation_music.mp3", "Kalimba Relaxation Music"), ("mystic_force.mp3", "Mystic Force"),
+           ("crypto.mp3", "Crypto"), ("lightless_dawn.mp3", "Lightless Dawn"),
+           ("darkling.mp3", "Darkling"), ("lost_time.mp3", "Lost Time"), ("ossuary_1_a_beginning.mp3", "Ossuary 1 - A Beginning")],
 }
 # Ticket 68 (đo 23/10): RMS 5 giây dao động > 14 dB hoặc dồn năng lượng dải giữa (trùng dải giọng) -> dễ lấn lời.
 # Bỏ khỏi vòng xoay nhạc Long (vẫn giữ trong CATALOG/TITLES để ghi nguồn video cũ và cho Short).

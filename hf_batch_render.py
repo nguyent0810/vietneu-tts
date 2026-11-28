@@ -1103,11 +1103,11 @@ _NAKED_KINDS = {"chữ khoá", "card", "quote", "ask", "word", "stamp", "stat", 
 # Ảnh/tư liệu mỗi lần một hình khác: không tính là "3 cảnh cùng loại".
 _RUN_OK = {*PHOTO_LABELS, "chương", "photo", "museum", "napam", "doc", "relic"}
 
-# Cổng nhịp cắt 120s đầu: ảnh/clip có chuyển động ≤ 8s; cảnh tĩnh ≤ 4s.
-# Cờ plan `pace_gate: off` để tắt cho Long cũ. Sau 120s giữ luật cũ.
+# Cổng nhịp 120s đầu: cảnh động dài chỉ cảnh báo; ảnh/chữ tĩnh trơn quá 8s mới chặn.
+# Bảng/sơ đồ cần đọc được miễn trần. Cờ plan `pace_gate: off` tắt cho Long cũ.
 PACE_GATE_S = 120.0
-PACE_MAX_MOVING = 8.0
-PACE_MAX_STATIC = 4.0
+PACE_WARN_MOVING = 15.0
+PACE_MAX_STATIC = 8.0
 PACE_GATE_MAX_NAKED = 1.5
 
 
@@ -1295,8 +1295,8 @@ def _pan_stop_lines(media: dict) -> set[int]:
     return out
 
 
-def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
-    """Cổng nhịp 120s đầu: cảnh động ≤ 8s, tĩnh ≤ 4s; nền trống liên tục ≤ 1,5s."""
+def pace_gate_issues(row: dict, segs: list[dict], warnings: list[str] | None = None) -> list[str]:
+    """Cổng nhịp 120s đầu: cảnh động >15s cảnh báo; cảnh tĩnh trơn >8s chặn; nền trống ≤1,5s."""
     if not _pace_gate_on(row):
         return []
     import hyperframes_bridge as HB  # noqa: PLC0415
@@ -1351,18 +1351,20 @@ def pace_gate_issues(row: dict, segs: list[dict]) -> list[str]:
         starts.append(t_first)
     errs = []
     for sec_len, k, moving, t0 in zip(shots, shot_kinds, shot_moving, starts):
-        limit = PACE_MAX_MOVING if moving else PACE_MAX_STATIC
-        if t0 < PACE_GATE_S and sec_len > limit + 1e-6:
+        # Bảng, sơ đồ, timeline và thống kê cần thời gian đọc; không áp giới hạn tĩnh.
+        readable = k in {"ledger", "list", "compare", "timeline", "map", "stat"}
+        # Long moving shots are advisory; keep them out of the blocking gate.
+        limit = PACE_MAX_STATIC
+        if moving:
+            if t0 < PACE_GATE_S and sec_len > PACE_WARN_MOVING + 1e-6 and warnings is not None:
+                shot = next(ln for ln in lines if ln["start"] >= t0 - 1e-6)
+                sid = shot.get("source_sentence_id", shot["sentence_id"])
+                warnings.append(f"120s đầu: cảnh '{k}' có chuyển động dài {sec_len:.1f}s từ câu {sid} (> {PACE_WARN_MOVING:.1f}s)")
+            continue
+        if t0 < PACE_GATE_S and not readable and sec_len > limit + 1e-6:
             shot = next(ln for ln in lines if ln["start"] >= t0 - 1e-6)
             sid = shot.get("source_sentence_id", shot["sentence_id"])
-            state = "có chuyển động" if moving else "tĩnh"
-            errs.append(f"120s đầu: cảnh '{k}' {state} dài {sec_len:.1f}s từ câu {sid} (> {limit:.1f}s)")
-            candidates = [w for ln in lines if ln.get("source_sentence_id", ln["sentence_id"]) == sid
-                          for w in ln.get("words", []) if t0 + .1 < w["t"] < t0 + sec_len]
-            if candidates:
-                target = t0 + limit - .25
-                word = min(candidates, key=lambda w: abs(w["t"] - target))
-                errs[-1] += f"; thêm `cuts` ở từ {word['w']!r} (timing {shot.get('word_timing_source', 'ước')})"
+            errs.append(f"120s đầu: cảnh '{k}' tĩnh dài {sec_len:.1f}s từ câu {sid} (> {limit:.1f}s)")
     naked_run, naked_sid = 0.0, None
     for i, ln in enumerate(lines):
         if ln["start"] >= PACE_GATE_S:
@@ -1468,12 +1470,13 @@ def pacing(row: dict, segs: list[dict]) -> tuple[dict, list[str]]:
             shot = next(ln for ln in lines if ln["start"] >= t0 - 1e-6)
             sid = shot.get("source_sentence_id", shot["sentence_id"])
             if sid not in reasons:
-                bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- chèn nhịp cắt, "
+                bad.append(f"cảnh đứng {sec_len:.0f}s từ câu {sid} (> 25s) -- gán cine chuyển động, "
                            f"hoặc ghi lý do: \"slow_hold\": {{\"{sid}\": \"...\"}}")
-    bad.extend(pace_gate_issues(row, original_segs))
+    pace_warns: list[str] = []
+    bad.extend(pace_gate_issues(row, original_segs, pace_warns))
     o_errs, o_warns = opening_gate(row, original_segs)
     bad.extend(o_errs)
-    san.extend(o_warns)
+    rep["sàn"] = rep["sàn"] + pace_warns + o_warns
     return rep, bad
 
 
