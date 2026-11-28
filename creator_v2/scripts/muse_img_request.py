@@ -92,7 +92,7 @@ def wait_new_image(thread: str, seen: set, wait: int, poll: int = 8) -> dict | N
 
 
 def newest_image(d: Path) -> Path | None:
-    files = [p for p in d.iterdir() if p.suffix.lower() in IMG_EXT]
+    files = [p for p in d.iterdir() if p.suffix.lower() in IMG_EXT and p.stat().st_size > 0]  # file 0 byte = tai hong
     return max(files, key=lambda p: p.stat().st_mtime) if files else None
 
 
@@ -129,7 +129,9 @@ def main() -> int:
     for name in want:
         dest = out / name
         if dest.is_file():
-            continue
+            if dest.stat().st_size > 0:
+                continue
+            dest.unlink()   # anh 0 byte tu lan truoc: tai lai
         if name not in secs:
             print(f"!! {name}: không có trong ai_prompts.md")
             failed.append(name)
